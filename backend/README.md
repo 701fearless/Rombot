@@ -39,6 +39,7 @@ Modes:
 ```text
 mock: no model call; generates demo frames/tags for frontend integration
 grounded_sam2: calls the configured Grounded-SAM-2 Lite service
+doubao_grounding_sam: Doubao labels -> Grounding DINO bbox -> SAM mask -> analysis.json
 manual: keeps the same output shape for manually corrected analysis files
 ```
 
@@ -180,6 +181,42 @@ Expected response:
 ```
 
 `bbox` can be pixel coordinates `[x1, y1, x2, y2]` or normalized coordinates `[0.1, 0.2, 0.5, 0.8]`. The backend maps English labels to Chinese tags and saves `cropUrl` / `maskUrl` under `outputs/<frameId>/`.
+
+Doubao + Grounding DINO + SAM offline preprocessing:
+
+```powershell
+$env:DOUBAO_ENDPOINT="https://your-doubao-vision-endpoint"
+$env:DOUBAO_API_KEY="your_key"
+$env:DOUBAO_MODEL="your_vision_model"
+$env:GROUNDING_DINO_ENDPOINT="http://your-4090-host:8001"
+$env:GROUNDING_DINO_API_KEY="optional"
+$env:SAM_ENDPOINT="http://your-4090-host:8002"
+$env:SAM_API_KEY="optional"
+```
+
+`SAM_ENDPOINT` is optional. If it is missing or fails, preprocessing falls back to a rectangular bbox mask so the video analysis can still be generated.
+
+Preprocess one video:
+
+```powershell
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "http://127.0.0.1:8000/api/video/preprocess" `
+  -ContentType "application/json" `
+  -Body (@{
+    videoId = "dining_room_001"
+    videoUrl = "/sample_data/videos/dining_room_001.mp4"
+    sampleIntervalSec = 1.0
+    mode = "doubao_grounding_sam"
+    maxFrames = 15
+  } | ConvertTo-Json)
+```
+
+This mode runs:
+
+```text
+extract frames -> Doubao furniture labels -> Grounding DINO short prompt boxes -> SAM masks -> analysis.json
+```
 
 SAM 3 compatible segmentation-only endpoint:
 

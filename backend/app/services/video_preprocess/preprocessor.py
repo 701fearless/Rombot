@@ -4,14 +4,20 @@ from app.schemas import DetectRequest, DetectedObject, VideoAnalysis, VideoAnaly
 from app.services.detection.grounded_sam2_provider import GroundedSAM2DetectionProvider
 from app.services.detection.mock_provider import MockDetectionProvider
 from app.services.segmentation.mock_provider import MockSegmentationProvider
+from app.services.video_preprocess.doubao_grounding_sam_pipeline import DoubaoGroundingSamPipeline
 from app.services.video_preprocess.analysis_store import video_output_dir, write_analysis
 from app.services.video_preprocess.extractor import extract_frames
 from app.storage.local_store import file_to_data_url, path_to_output_url
 
 
 class VideoPreprocessor:
-    def __init__(self, grounded_sam2_provider: GroundedSAM2DetectionProvider | None = None) -> None:
+    def __init__(
+        self,
+        grounded_sam2_provider: GroundedSAM2DetectionProvider | None = None,
+        doubao_grounding_sam_pipeline: DoubaoGroundingSamPipeline | None = None,
+    ) -> None:
         self.grounded_sam2_provider = grounded_sam2_provider
+        self.doubao_grounding_sam_pipeline = doubao_grounding_sam_pipeline
 
     async def preprocess(self, request: VideoPreprocessRequest) -> VideoAnalysis:
         output_dir = video_output_dir(request.videoId)
@@ -60,6 +66,8 @@ class VideoPreprocessor:
         if request.mode == "grounded_sam2" and self.grounded_sam2_provider:
             response = await self.grounded_sam2_provider.detect(detect_request)
             objects = response.objects
+        elif request.mode == "doubao_grounding_sam" and self.doubao_grounding_sam_pipeline:
+            return await self.doubao_grounding_sam_pipeline.process_frame(frame_id, frame_path, frame_data_url)
         elif request.mode in {"mock", "manual"}:
             response = await MockDetectionProvider().detect(detect_request)
             objects = response.objects
