@@ -1,5 +1,12 @@
 import os
 from functools import lru_cache
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+
+BACKEND_ROOT = Path(__file__).resolve().parents[1]
+load_dotenv(BACKEND_ROOT / ".env")
 
 
 class Settings:
@@ -21,6 +28,17 @@ class Settings:
     grounding_dino_max_objects: int
     sam_endpoint: str | None
     sam_api_key: str | None
+    ark_api_key: str | None
+    ark_base_url: str
+    ark_vision_model: str
+    ark_image_model: str
+    ark_image_size: str
+    enable_ark_reference_image: bool
+    hunyuan_api_key: str | None
+    hunyuan_base_url: str
+    hunyuan_model: str
+    hunyuan_poll_interval_sec: float
+    hunyuan_poll_attempts: int
     sam3_api_key: str | None
     sam3_endpoint: str | None
     pixal3d_api_key: str | None
@@ -52,6 +70,17 @@ class Settings:
         self.grounding_dino_max_objects = int(os.getenv("GROUNDING_DINO_MAX_OBJECTS", "8"))
         self.sam_endpoint = os.getenv("SAM_ENDPOINT")
         self.sam_api_key = os.getenv("SAM_API_KEY")
+        self.ark_api_key = os.getenv("ARK_API_KEY")
+        self.ark_base_url = os.getenv("ARK_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3").rstrip("/")
+        self.ark_vision_model = os.getenv("ARK_VISION_MODEL", "doubao-seed-2-1-pro-260628")
+        self.ark_image_model = os.getenv("ARK_IMAGE_MODEL", "doubao-seedream-4-0-250828")
+        self.ark_image_size = os.getenv("ARK_IMAGE_SIZE", "1024x1024")
+        self.enable_ark_reference_image = os.getenv("ENABLE_ARK_REFERENCE_IMAGE", "false").lower() == "true"
+        self.hunyuan_api_key = os.getenv("HUNYUAN_API_KEY")
+        self.hunyuan_base_url = os.getenv("HUNYUAN_BASE_URL", "https://tokenhub.tencentmaas.com").rstrip("/")
+        self.hunyuan_model = os.getenv("HUNYUAN_MODEL", "hy-3d-3.1")
+        self.hunyuan_poll_interval_sec = float(os.getenv("HUNYUAN_POLL_INTERVAL_SEC", "5"))
+        self.hunyuan_poll_attempts = int(os.getenv("HUNYUAN_POLL_ATTEMPTS", "72"))
         self.sam3_api_key = os.getenv("SAM3_API_KEY")
         self.sam3_endpoint = os.getenv("SAM3_ENDPOINT")
         self.pixal3d_api_key = os.getenv("PIXAL3D_API_KEY")

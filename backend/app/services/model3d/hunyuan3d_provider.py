@@ -1,0 +1,128 @@
+import asyncio
+
+import httpx
+
+from app.schemas import DetectedObject, ObjectAnalysis, SelectObjectResponse, SelectedAsset
+from app.services.image_generation.ark_seedream_provider import ArkSeedreamProvider
+from app.services.model3d.base import Model3DProvider
+from app.services.model3d.mock_provider import MockModel3DProvider
+
+
+class Hunyuan3DProvider(Model3DProvider):
+    def __init__(
+        self,
+        api_key: str,
+        base_url: str,
+        model: str,
+        poll_interval_sec: float,
+        poll_attempts: int,
+        reference_provider: ArkSeedreamProvider | None = None,
+    ) -> None:
+        self.api_key = api_key
+        self.base_url = base_url.rstrip("/")
+        self.model = model
+        self.poll_interval_sec = poll_interval_sec
+        self.poll_attempts = poll_attempts
+        self.reference_provider = reference_provider
+
+    async def generate_asset(
+        self,
+        frame_id: str,
+        detected_object: DetectedObject,
+        image_url: str | None = None,
+    ) -> SelectObjectResponse:
+        if not image_url:
+            return await MockModel3DProvider().generate_asset(frame_id, detected_object)
+        try:
+            generation_image = image_url
+            if self.reference_provider:
+                generation_image = await self.reference_provider.generate_reference_image(
+                    image_data_url=image_url,
+                    label=detected_object.label,
+                    name=detected_object.name,
+                )
+            task_id = await self._submit(generation_image)
+            result = await self._poll(task_id)
+            glb_url = self._extract_glb_url(result)
+            if not glb_url:
+                return await MockModel3DProvider().generate_asset(frame_id, detected_object, image_url=image_url)
+            return SelectObjectResponse(
+                taskId=task_id,
+                status=str(result.get("status") or result.get("task_status") or "succeeded"),
+                object=SelectedAsset(
+                    id=detected_object.id,
+                    label=detected_object.label,
+                    name=detected_object.name,
+                    bbox=detected_object.bbox,
+                    cropUrl=image_url,
+                    maskUrl=f"/outputs/{frame_id}/{detected_object.id}_mask.png",
+                    glbUrl=glb_url,
+                ),
+                analysis=ObjectAnalysis(
+                    summary=f"{detected_object.name}已通过混元 3D 生成模型资产。",
+                    placementAdvice="生成后建议按真实尺寸缩放，再放入用户房间 scene.json。",
+                ),
+            )
+        except Exception:
+            return await MockModel3DProvider().generate_asset(frame_id, detected_object, image_url=image_url)
+
+    async def _submit(self, image_data_url: str) -> str:
+        payload = {
+            "model": self.model,
+            "image_base64": self._strip_data_uri(image_data_url),
+            "result_format": "glb",
+        }
+        async with httpx.AsyncClient(timeout=120) as client:
+            response = await client.post(
+                f"{self.base_url}/v1/api/3d/submit",
+                headers=self._headers(),
+                json=payload,
+            )
+            response.raise_for_status()
+            data = response.json()
+        task_id = data.get("id") or data.get("task_id") or data.get("taskId") or (data.get("data") or {}).get("id")
+        if not task_id:
+            raise ValueError("Hunyuan submit response did not include task id")
+        return str(task_id)
+
+    async def _poll(self, task_id: str) -> dict:
+        payload = {"model": self.model, "id": task_id}
+        async with httpx.AsyncClient(timeout=60) as client:
+            for _ in range(self.poll_attempts):
+                response = await client.post(
+                    f"{self.base_url}/v1/api/3d/query",
+                    headers=self._headers(),
+                    json=payload,
+                )
+                response.raise_for_status()
+                data = response.json()
+                status = str(data.get("status") or data.get("task_status") or data.get("state") or "").lower()
+                if status in {"succeeded", "success", "completed", "complete", "done"} or self._extract_glb_url(data):
+                    return data
+                if status in {"failed", "error", "cancelled", "canceled"}:
+                    return data
+                await asyncio.sleep(self.poll_interval_sec)
+        return {"status": "timeout", "id": task_id}
+
+    def _headers(self) -> dict[str, str]:
+        return {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
+
+    def _strip_data_uri(self, value: str) -> str:
+        return value.split(",", 1)[1] if value.startswith("data:") and "," in value else value
+
+    def _extract_glb_url(self, data: dict) -> str | None:
+        candidates = data.get("data") or data.get("result") or data.get("results") or []
+        if isinstance(candidates, dict):
+            direct = candidates.get("glb") or candidates.get("glb_url") or candidates.get("url")
+            if direct:
+                return str(direct)
+            candidates = candidates.get("files") or candidates.get("assets") or []
+        if isinstance(candidates, list):
+            for item in candidates:
+                if not isinstance(item, dict):
+                    continue
+                item_type = str(item.get("type") or item.get("format") or "").lower()
+                url = item.get("url") or item.get("file_url") or item.get("download_url")
+                if url and (item_type == "glb" or str(url).lower().endswith(".glb")):
+                    return str(url)
+        return data.get("glbUrl") or data.get("glb_url")

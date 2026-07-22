@@ -1,0 +1,402 @@
+{
+  "videoId": "2",
+  "status": "succeeded",
+  "sampleIntervalSec": 1.0,
+  "frames": [
+    {
+      "frameId": "2_000001",
+      "time": 0.0,
+      "frameImageUrl": "/outputs/videos/2/frames/000001.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001_001",
+          "label": "sofa",
+          "name": "沙发",
+          "confidence": 0.91,
+          "bbox": [
+            118,
+            420,
+            690,
+            850
+          ],
+          "tagPosition": [
+            0.43,
+            0.61
+          ],
+          "cropUrl": "/outputs/2_000001/obj_sofa_001_001_crop.jpg",
+          "maskUrl": "/outputs/2_000001/obj_sofa_001_001_mask.png"
+        },
+        {
+          "id": "obj_chandelier_001_002",
+          "label": "chandelier",
+          "name": "吊灯",
+          "confidence": 0.84,
+          "bbox": [
+            350,
+            80,
+            520,
+            230
+          ],
+          "tagPosition": [
+            0.52,
+            0.18
+          ],
+          "cropUrl": "/outputs/2_000001/obj_chandelier_001_002_crop.jpg",
+          "maskUrl": "/outputs/2_000001/obj_chandelier_001_002_mask.png"
+        },
+        {
+          "id": "obj_coffee_table_001_003",
+          "label": "coffee_table",
+          "name": "茶几",
+          "confidence": 0.78,
+          "bbox": [
+            260,
+            700,
+            580,
+            910
+          ],
+          "tagPosition": [
+            0.45,
+            0.76
+          ],
+          "cropUrl": "/outputs/2_000001/obj_coffee_table_001_003_crop.jpg",
+          "maskUrl": "/outputs/2_000001/obj_coffee_table_001_003_mask.png"
+        },
+        {
+          "id": "obj_rug_001_004",
+          "label": "rug",
+          "name": "地毯",
+          "confidence": 0.73,
+          "bbox": [
+            190,
+            760,
+            760,
+            1030
+          ],
+          "tagPosition": [
+            0.5,
+            0.84
+          ],
+          "cropUrl": "/outputs/2_000001/obj_rug_001_004_crop.jpg",
+          "maskUrl": "/outputs/2_000001/obj_rug_001_004_mask.png"
+        }
+      ]
+    },
+    {
+      "frameId": "2_000002",
+      "time": 1.0,
+      "frameImageUrl": "/outputs/videos/2/frames/000002.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001_001",
+          "label": "sofa",
+          "name": "沙发",
+          "confidence": 0.91,
+          "bbox": [
+            118,
+            420,
+            690,
+            850
+          ],
+          "tagPosition": [
+            0.43,
+            0.61
+          ],
+          "cropUrl": "/outputs/2_000002/obj_sofa_001_001_crop.jpg",
+          "maskUrl": "/outputs/2_000002/obj_sofa_001_001_mask.png"
+        },
+        {
+          "id": "obj_chandelier_001_002",
+          "label": "chandelier",
+          "name": "吊灯",
+          "confidence": 0.84,
+          "bbox": [
+            350,
+            80,
+            520,
+            230
+          ],
+          "tagPosition": [
+            0.52,
+            0.18
+          ],
+          "cropUrl": "/outputs/2_000002/obj_chandelier_001_002_crop.jpg",
+          "maskUrl": "/outputs/2_000002/obj_chandelier_001_002_mask.png"
+        },
+        {
+          "id": "obj_coffee_table_001_003",
+          "label": "coffee_table",
+          "name": "茶几",
+          "confidence": 0.78,
+          "bbox": [
+            260,
+            700,
+            580,
+            910
+          ],
+          "tagPosition": [
+            0.45,
+            0.76
+          ],
+          "cropUrl": "/outputs/2_000002/obj_coffee_table_001_003_crop.jpg",
+          "maskUrl": "/outputs/2_000002/obj_coffee_table_001_003_mask.png"
+        },
+        {
+          "id": "obj_rug_001_004",
+          "label": "rug",
+          "name": "地毯",
+          "confidence": 0.73,
+          "bbox": [
+            190,
+            760,
+            760,
+            1030
+          ],
+          "tagPosition": [
+            0.5,
+            0.84
+          ],
+          "cropUrl": "/outputs/2_000002/obj_rug_001_004_crop.jpg",
+          "maskUrl": "/outputs/2_000002/obj_rug_001_004_mask.png"
+        }
+      ]
+    },
+    {
+      "frameId": "2_000003",
+      "time": 2.0,
+      "frameImageUrl": "/outputs/videos/2/frames/000003.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001_001",
+          "label": "sofa",
+          "name": "沙发",
+          "confidence": 0.91,
+          "bbox": [
+            118,
+            420,
+            690,
+            850
+          ],
+          "tagPosition": [
+            0.43,
+            0.61
+          ],
+          "cropUrl": "/outputs/2_000003/obj_sofa_001_001_crop.jpg",
+          "maskUrl": "/outputs/2_000003/obj_sofa_001_001_mask.png"
+        },
+        {
+          "id": "obj_chandelier_001_002",
+          "label": "chandelier",
+          "name": "吊灯",
+          "confidence": 0.84,
+          "bbox": [
+            350,
+            80,
+            520,
+            230
+          ],
+          "tagPosition": [
+            0.52,
+            0.18
+          ],
+          "cropUrl": "/outputs/2_000003/obj_chandelier_001_002_crop.jpg",
+          "maskUrl": "/outputs/2_000003/obj_chandelier_001_002_mask.png"
+        },
+        {
+          "id": "obj_coffee_table_001_003",
+          "label": "coffee_table",
+          "name": "茶几",
+          "confidence": 0.78,
+          "bbox": [
+            260,
+            700,
+            580,
+            910
+          ],
+          "tagPosition": [
+            0.45,
+            0.76
+          ],
+          "cropUrl": "/outputs/2_000003/obj_coffee_table_001_003_crop.jpg",
+          "maskUrl": "/outputs/2_000003/obj_coffee_table_001_003_mask.png"
+        },
+        {
+          "id": "obj_rug_001_004",
+          "label": "rug",
+          "name": "地毯",
+          "confidence": 0.73,
+          "bbox": [
+            190,
+            760,
+            760,
+            1030
+          ],
+          "tagPosition": [
+            0.5,
+            0.84
+          ],
+          "cropUrl": "/outputs/2_000003/obj_rug_001_004_crop.jpg",
+          "maskUrl": "/outputs/2_000003/obj_rug_001_004_mask.png"
+        }
+      ]
+    },
+    {
+      "frameId": "2_000004",
+      "time": 3.0,
+      "frameImageUrl": "/outputs/videos/2/frames/000004.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001_001",
+          "label": "sofa",
+          "name": "沙发",
+          "confidence": 0.91,
+          "bbox": [
+            118,
+            420,
+            690,
+            850
+          ],
+          "tagPosition": [
+            0.43,
+            0.61
+          ],
+          "cropUrl": "/outputs/2_000004/obj_sofa_001_001_crop.jpg",
+          "maskUrl": "/outputs/2_000004/obj_sofa_001_001_mask.png"
+        },
+        {
+          "id": "obj_chandelier_001_002",
+          "label": "chandelier",
+          "name": "吊灯",
+          "confidence": 0.84,
+          "bbox": [
+            350,
+            80,
+            520,
+            230
+          ],
+          "tagPosition": [
+            0.52,
+            0.18
+          ],
+          "cropUrl": "/outputs/2_000004/obj_chandelier_001_002_crop.jpg",
+          "maskUrl": "/outputs/2_000004/obj_chandelier_001_002_mask.png"
+        },
+        {
+          "id": "obj_coffee_table_001_003",
+          "label": "coffee_table",
+          "name": "茶几",
+          "confidence": 0.78,
+          "bbox": [
+            260,
+            700,
+            580,
+            910
+          ],
+          "tagPosition": [
+            0.45,
+            0.76
+          ],
+          "cropUrl": "/outputs/2_000004/obj_coffee_table_001_003_crop.jpg",
+          "maskUrl": "/outputs/2_000004/obj_coffee_table_001_003_mask.png"
+        },
+        {
+          "id": "obj_rug_001_004",
+          "label": "rug",
+          "name": "地毯",
+          "confidence": 0.73,
+          "bbox": [
+            190,
+            760,
+            760,
+            1030
+          ],
+          "tagPosition": [
+            0.5,
+            0.84
+          ],
+          "cropUrl": "/outputs/2_000004/obj_rug_001_004_crop.jpg",
+          "maskUrl": "/outputs/2_000004/obj_rug_001_004_mask.png"
+        }
+      ]
+    },
+    {
+      "frameId": "2_000005",
+      "time": 4.0,
+      "frameImageUrl": "/outputs/videos/2/frames/000005.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001_001",
+          "label": "sofa",
+          "name": "沙发",
+          "confidence": 0.91,
+          "bbox": [
+            118,
+            420,
+            690,
+            850
+          ],
+          "tagPosition": [
+            0.43,
+            0.61
+          ],
+          "cropUrl": "/outputs/2_000005/obj_sofa_001_001_crop.jpg",
+          "maskUrl": "/outputs/2_000005/obj_sofa_001_001_mask.png"
+        },
+        {
+          "id": "obj_chandelier_001_002",
+          "label": "chandelier",
+          "name": "吊灯",
+          "confidence": 0.84,
+          "bbox": [
+            350,
+            80,
+            520,
+            230
+          ],
+          "tagPosition": [
+            0.52,
+            0.18
+          ],
+          "cropUrl": "/outputs/2_000005/obj_chandelier_001_002_crop.jpg",
+          "maskUrl": "/outputs/2_000005/obj_chandelier_001_002_mask.png"
+        },
+        {
+          "id": "obj_coffee_table_001_003",
+          "label": "coffee_table",
+          "name": "茶几",
+          "confidence": 0.78,
+          "bbox": [
+            260,
+            700,
+            580,
+            910
+          ],
+          "tagPosition": [
+            0.45,
+            0.76
+          ],
+          "cropUrl": "/outputs/2_000005/obj_coffee_table_001_003_crop.jpg",
+          "maskUrl": "/outputs/2_000005/obj_coffee_table_001_003_mask.png"
+        },
+        {
+          "id": "obj_rug_001_004",
+          "label": "rug",
+          "name": "地毯",
+          "confidence": 0.73,
+          "bbox": [
+            190,
+            760,
+            760,
+            1030
+          ],
+          "tagPosition": [
+            0.5,
+            0.84
+          ],
+          "cropUrl": "/outputs/2_000005/obj_rug_001_004_crop.jpg",
+          "maskUrl": "/outputs/2_000005/obj_rug_001_004_mask.png"
+        }
+      ]
+    }
+  ]
+}

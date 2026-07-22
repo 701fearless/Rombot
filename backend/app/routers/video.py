@@ -2,9 +2,11 @@ from fastapi import APIRouter, HTTPException, Query
 
 from app.config import get_settings
 from app.schemas import DetectResponse, VideoAnalysis, VideoAnalysisFrame, VideoPreprocessRequest, VideoPreprocessResponse
+from app.services.detection.ark_grounding_provider import ArkGroundingProvider
 from app.services.detection.grounded_sam2_provider import GroundedSAM2DetectionProvider
 from app.services.detection.grounding_dino_provider import GroundingDinoProvider
 from app.services.segmentation.sam_box_provider import SamBoxProvider
+from app.services.video_preprocess.ark_grounding_pipeline import ArkGroundingPipeline
 from app.services.video_preprocess.doubao_grounding_sam_pipeline import DoubaoGroundingSamPipeline
 from app.services.video_preprocess.analysis_store import analysis_url, nearest_frame, read_analysis
 from app.services.video_preprocess.preprocessor import VideoPreprocessor
@@ -53,6 +55,19 @@ def get_doubao_grounding_sam_pipeline() -> DoubaoGroundingSamPipeline | None:
     )
 
 
+def get_ark_grounding_pipeline() -> ArkGroundingPipeline | None:
+    settings = get_settings()
+    if not settings.ark_api_key:
+        return None
+    return ArkGroundingPipeline(
+        grounding_provider=ArkGroundingProvider(
+            api_key=settings.ark_api_key,
+            base_url=settings.ark_base_url,
+            model=settings.ark_vision_model,
+        )
+    )
+
+
 @router.post("/preprocess", response_model=VideoPreprocessResponse)
 async def preprocess_video(request: VideoPreprocessRequest) -> VideoPreprocessResponse:
     if request.mode == "grounded_sam2" and not get_settings().grounded_sam2_endpoint:
@@ -62,10 +77,13 @@ async def preprocess_video(request: VideoPreprocessRequest) -> VideoPreprocessRe
             status_code=500,
             detail="DOUBAO_ENDPOINT, DOUBAO_API_KEY, and GROUNDING_DINO_ENDPOINT are required for doubao_grounding_sam mode",
         )
+    if request.mode == "ark_grounding" and not get_ark_grounding_pipeline():
+        raise HTTPException(status_code=500, detail="ARK_API_KEY is required for ark_grounding mode")
     try:
         analysis = await VideoPreprocessor(
             grounded_sam2_provider=get_grounded_sam2_provider(),
             doubao_grounding_sam_pipeline=get_doubao_grounding_sam_pipeline(),
+            ark_grounding_pipeline=get_ark_grounding_pipeline(),
         ).preprocess(request)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc

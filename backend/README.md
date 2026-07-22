@@ -38,6 +38,7 @@ Modes:
 
 ```text
 mock: no model call; generates demo frames/tags for frontend integration
+ark_grounding: Ark Doubao visual grounding returns furniture bbox directly
 grounded_sam2: calls the configured Grounded-SAM-2 Lite service
 doubao_grounding_sam: Doubao labels -> Grounding DINO bbox -> SAM mask -> analysis.json
 manual: keeps the same output shape for manually corrected analysis files
@@ -129,6 +130,51 @@ Defaults are mock providers.
 $env:DETECTION_PROVIDER="mock"
 $env:SEGMENTATION_PROVIDER="mock"
 $env:MODEL3D_PROVIDER="mock"
+```
+
+Ark Doubao visual grounding:
+
+```powershell
+$env:ARK_API_KEY="your_key"
+$env:ARK_BASE_URL="https://ark.cn-beijing.volces.com/api/v3"
+$env:ARK_VISION_MODEL="doubao-seed-2-1-pro-260628"
+```
+
+Preprocess with Ark Grounding:
+
+```powershell
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "http://127.0.0.1:8000/api/video/preprocess" `
+  -ContentType "application/json" `
+  -Body (@{
+    videoId = "dining_room_001"
+    videoUrl = "/sample_data/videos/dining_room_001.mp4"
+    sampleIntervalSec = 1.0
+    mode = "ark_grounding"
+    maxFrames = 15
+  } | ConvertTo-Json)
+```
+
+Ark returns bbox coordinates normalized to a 1000 x 1000 coordinate space. The backend converts them to pixel bbox, saves crop/mask files, and writes `analysis.json`.
+
+Hunyuan full 3D generation:
+
+```powershell
+$env:MODEL3D_PROVIDER="hunyuan3d"
+$env:HUNYUAN_API_KEY="your_key"
+$env:HUNYUAN_BASE_URL="https://tokenhub.tencentmaas.com"
+$env:HUNYUAN_MODEL="hy-3d-3.1"
+$env:HUNYUAN_POLL_INTERVAL_SEC="5"
+$env:HUNYUAN_POLL_ATTEMPTS="72"
+```
+
+Optional Ark Seedream reference image before Hunyuan 3D:
+
+```powershell
+$env:ENABLE_ARK_REFERENCE_IMAGE="true"
+$env:ARK_IMAGE_MODEL="doubao-seedream-4-0-250828"
+$env:ARK_IMAGE_SIZE="1024x1024"
 ```
 
 Grounded-SAM-2 detection + segmentation endpoint:

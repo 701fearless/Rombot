@@ -5,6 +5,8 @@ from fastapi import APIRouter, HTTPException
 from app.config import get_settings
 from app.schemas import DetectRequest, DetectResponse, FeedPipelineRequest, FeedPipelineResponse, SelectObjectRequest, SelectObjectResponse
 from app.services.detection.grounded_sam2_provider import GroundedSAM2DetectionProvider
+from app.services.image_generation.ark_seedream_provider import ArkSeedreamProvider
+from app.services.model3d.hunyuan3d_provider import Hunyuan3DProvider
 from app.services.detection.mock_provider import MockDetectionProvider
 from app.services.model3d.meshy_provider import MeshyModel3DProvider
 from app.services.model3d.mock_provider import MockModel3DProvider
@@ -46,6 +48,25 @@ def get_detection_provider() -> MockDetectionProvider | GroundedSAM2DetectionPro
 
 def get_model3d_provider() -> MockModel3DProvider | MeshyModel3DProvider:
     settings = get_settings()
+    if settings.model3d_provider == "hunyuan3d" and settings.hunyuan_api_key:
+        reference_provider = (
+            ArkSeedreamProvider(
+                api_key=settings.ark_api_key,
+                base_url=settings.ark_base_url,
+                model=settings.ark_image_model,
+                image_size=settings.ark_image_size,
+            )
+            if settings.enable_ark_reference_image and settings.ark_api_key
+            else None
+        )
+        return Hunyuan3DProvider(
+            api_key=settings.hunyuan_api_key,
+            base_url=settings.hunyuan_base_url,
+            model=settings.hunyuan_model,
+            poll_interval_sec=settings.hunyuan_poll_interval_sec,
+            poll_attempts=settings.hunyuan_poll_attempts,
+            reference_provider=reference_provider,
+        )
     if settings.model3d_provider == "meshy" and settings.meshy_api_key:
         return MeshyModel3DProvider(api_key=settings.meshy_api_key, base_url=settings.meshy_base_url)
     if settings.model3d_provider == "pixal3d" and settings.pixal3d_endpoint:

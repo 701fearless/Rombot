@@ -74,6 +74,11 @@ class FeedPipelineResponse(BaseModel):
     selected: SelectObjectResponse
 
 
+class DebugImagePipelineRequest(BaseModel):
+    imagePath: str = "/sample_data/videos/sample.png"
+    objectIndex: int = Field(default=0, ge=0)
+
+
 class VideoPreprocessRequest(BaseModel):
     videoId: str
     videoUrl: str | None = None
