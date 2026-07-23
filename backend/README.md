@@ -122,6 +122,40 @@ POST /api/room/scan
 }
 ```
 
+### Spatial feasibility check (V1)
+
+拖拽家具落位后，调用基础空间可行性检测（空间适配 / 家具冲突 / 门窗可达性 / 活动空间）：
+
+```http
+POST /api/room/spatial-check
+```
+
+```json
+{
+  "sceneId": "demo_living_room",
+  "candidate": {
+    "id": "candidate_sofa",
+    "label": "sofa",
+    "name": "沙发",
+    "position": [1.2, 0.0, 2.1],
+    "rotation": [0.0, 0.0, 0.0],
+    "size": [2.0, 0.9, 0.8]
+  }
+}
+```
+
+也可直接传入完整 `scene`（含 `openings` 门窗）。活动空间阈值见：
+
+```text
+app/services/layout_reasoning/rules/clearance_rules.json
+```
+
+本地验证：
+
+```powershell
+python scripts/test_spatial_check.py
+```
+
 ## Provider switches
 
 Defaults are mock providers.

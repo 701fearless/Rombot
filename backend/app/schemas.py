@@ -125,7 +125,20 @@ class SceneObject(BaseModel):
     position: list[float] = Field(min_length=3, max_length=3)
     rotation: list[float] = Field(min_length=3, max_length=3)
     size: list[float] = Field(min_length=3, max_length=3)
-    glbUrl: str
+    glbUrl: str | None = None
+
+
+class SceneOpening(BaseModel):
+    """门/窗开口。position 为开口中心，size 为 [宽, 高, 进深]。"""
+
+    id: str
+    type: str  # door | window
+    name: str
+    position: list[float] = Field(min_length=3, max_length=3)
+    rotation: list[float] = Field(default_factory=lambda: [0.0, 0.0, 0.0], min_length=3, max_length=3)
+    size: list[float] = Field(min_length=3, max_length=3)
+    # 门开启/窗前净空区域深度（米），沿开口朝向房间内侧延伸
+    clearanceDepth: float = 0.9
 
 
 class SceneSuggestion(BaseModel):
@@ -138,4 +151,39 @@ class SceneResponse(BaseModel):
     unit: str
     room: RoomSize
     objects: list[SceneObject]
+    openings: list[SceneOpening] = Field(default_factory=list)
     suggestions: list[SceneSuggestion]
+
+
+class PlacementCandidate(BaseModel):
+    """待检测的家具摆放姿态。position 为包围盒中心，size 为 [宽, 高, 深]（米）。"""
+
+    id: str
+    label: str
+    name: str
+    position: list[float] = Field(min_length=3, max_length=3)
+    rotation: list[float] = Field(default_factory=lambda: [0.0, 0.0, 0.0], min_length=3, max_length=3)
+    size: list[float] = Field(min_length=3, max_length=3)
+
+
+class SpatialCheckRequest(BaseModel):
+    """拖拽落位后的基础空间可行性检测请求。"""
+
+    candidate: PlacementCandidate
+    sceneId: str | None = None
+    scene: SceneResponse | None = None
+
+
+class CheckDetail(BaseModel):
+    ruleId: str
+    name: str
+    status: str  # pass | fail | warn
+    message: str
+    suggestion: str | None = None
+    details: dict = Field(default_factory=dict)
+
+
+class SpatialCheckResponse(BaseModel):
+    overallStatus: str  # pass | fail | warn
+    checks: list[CheckDetail]
+    feedback: str

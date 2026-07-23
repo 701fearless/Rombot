@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "unit": "meter",
+  "defaultFrontAxis": [0.0, -1.0],
+  "nonSolidLabels": ["rug", "curtain", "plant", "vase", "painting"],
+  "furniture": {
+    "sofa": {
+      "name": "沙发",
+      "sides": {
+        "front": 0.60
+      },
+      "hint": "前方活动空间"
+    },
+    "dining_table": {
+      "name": "餐桌",
+      "sides": {
+        "front": 0.75,
+        "back": 0.75,
+        "left": 0.75,
+        "right": 0.75
+      },
+      "hint": "椅子拉开空间"
+    },
+    "wardrobe": {
+      "name": "衣柜",
+      "sides": {
+        "front": 0.60
+      },
+      "hint": "柜门开启空间"
+    },
+    "cabinet": {
+      "name": "柜子",
+      "sides": {
+        "front": 0.60
+      },
+      "hint": "柜门开启空间"
+    },
+    "bed": {
+      "name": "床",
+      "sides": {
+        "left": 0.60,
+        "right": 0.60
+      },
+      "hint": "上下床空间"
+    },
+    "desk": {
+      "name": "书桌",
+      "sides": {
+        "front": 0.80
+      },
+      "hint": "座椅活动空间"
+    }
+  },
+  "accessibility": {
+    "doorDefaultClearanceDepth": 0.90,
+    "windowDefaultClearanceDepth": 0.30
+  }
+}
