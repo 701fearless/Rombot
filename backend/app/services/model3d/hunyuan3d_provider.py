@@ -17,6 +17,9 @@ class Hunyuan3DProvider(Model3DProvider):
         poll_interval_sec: float,
         poll_attempts: int,
         reference_provider: ArkSeedreamProvider | None = None,
+        generate_type: str = "LowPoly",
+        face_count: int = 30000,
+        enable_pbr: bool = False,
     ) -> None:
         self.api_key = api_key
         self.base_url = base_url.rstrip("/")
@@ -24,6 +27,9 @@ class Hunyuan3DProvider(Model3DProvider):
         self.poll_interval_sec = poll_interval_sec
         self.poll_attempts = poll_attempts
         self.reference_provider = reference_provider
+        self.generate_type = generate_type
+        self.face_count = face_count
+        self.enable_pbr = enable_pbr
 
     async def generate_asset(
         self,
@@ -40,6 +46,8 @@ class Hunyuan3DProvider(Model3DProvider):
                     image_data_url=image_url,
                     label=detected_object.label,
                     name=detected_object.name,
+                    visual_features=detected_object.visualFeatures,
+                    generation_hints=detected_object.generationHints,
                 )
             task_id = await self._submit(generation_image)
             result = await self._poll(task_id)
@@ -70,8 +78,19 @@ class Hunyuan3DProvider(Model3DProvider):
         payload = {
             "model": self.model,
             "image_base64": self._strip_data_uri(image_data_url),
-            "result_format": "glb",
+            "enable_pbr": self.enable_pbr,
         }
+        if self.model in {"hy-3d-3.0", "hy-3d-3.1"}:
+            payload.update(
+                {
+                    "generate_type": self.generate_type,
+                    "face_count": self.face_count,
+                }
+            )
+            if self.generate_type == "LowPoly":
+                payload["polygon_type"] = "triangle"
+        else:
+            payload["result_format"] = "glb"
         async with httpx.AsyncClient(timeout=120) as client:
             response = await client.post(
                 f"{self.base_url}/v1/api/3d/submit",

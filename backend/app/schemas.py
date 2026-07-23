@@ -10,6 +10,8 @@ class DetectedObject(BaseModel):
     tagPosition: list[float] = Field(min_length=2, max_length=2)
     cropUrl: str | None = None
     maskUrl: str | None = None
+    visualFeatures: dict = Field(default_factory=dict)
+    generationHints: dict = Field(default_factory=dict)
 
 
 class DetectRequest(BaseModel):
@@ -55,11 +57,40 @@ class ObjectAnalysis(BaseModel):
     placementAdvice: str
 
 
+class GenerationArtifact(BaseModel):
+    type: str
+    url: str | None = None
+    path: str | None = None
+    note: str | None = None
+
+
+class FurnitureGenerationBrief(BaseModel):
+    objectId: str
+    category: str
+    observed: dict = Field(default_factory=dict)
+    inferred: dict = Field(default_factory=dict)
+    symmetryPrior: dict = Field(default_factory=dict)
+    textureFeatures: dict = Field(default_factory=dict)
+    constraints: dict = Field(default_factory=dict)
+    prompt: str
+    negativePrompt: str
+    confidence: dict = Field(default_factory=dict)
+
+
+class FurnitureGenerationTrace(BaseModel):
+    briefUrl: str | None = None
+    referenceImages: list[GenerationArtifact] = Field(default_factory=list)
+    textureReferences: list[GenerationArtifact] = Field(default_factory=list)
+    provider: str
+    notes: list[str] = Field(default_factory=list)
+
+
 class SelectObjectResponse(BaseModel):
     taskId: str
     status: str
     object: SelectedAsset
     analysis: ObjectAnalysis
+    generation: FurnitureGenerationTrace | None = None
 
 
 class FeedPipelineRequest(BaseModel):

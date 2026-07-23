@@ -1,0 +1,40 @@
+{
+  "objectId": "obj_shuangrenchuang",
+  "category": "double_bed",
+  "observed": {
+    "topBedding": "cream white vertically ribbed plush throw blanket",
+    "baseBedding": "warm caramel brown short velvet fabric with natural soft folds",
+    "decorativePillow": "off-white base, brown cartoon pattern, four-corner tassels",
+    "headPillow": "caramel brown short velvet material",
+    "visibleFabricState": "soft, slightly rumpled, warm light cast on partial surface"
+  },
+  "inferred": {
+    "fullDimensions": "standard double bed size, complete rectangular sleeping surface",
+    "unseenComponents": "symmetrical headboard, bed side rails, bed foot, support legs",
+    "occludedAreaFill": "regions covered by UI/subtitles use continuous matching fabric texture",
+    "hiddenBeddingState": "consistent fabric drape, symmetrical pillow arrangement on unshown side"
+  },
+  "symmetryPrior": {
+    "overallForm": "bilateral symmetry along the longitudinal axis of the bed",
+    "patternContinuation": "vertical rib texture of the plush blanket extends symmetrically across the full bed width",
+    "componentLayout": "sleeping pillows are symmetrically placed, bed frame parts are left-right symmetrical"
+  },
+  "textureFeatures": {
+    "plushBlanket": "fluffy soft faux fur, raised vertical quilted ribs, matte cream white finish",
+    "velvetBedding": "smooth dense short fleece, soft drape, warm muted caramel brown color",
+    "decorPillow": "matte woven cotton surface, printed brown illustrative motif, knitted tassel trim at corners",
+    "overallTexture": "cozy, soft, warm winter bedding tactile quality"
+  },
+  "constraints": {
+    "subjectIsolation": "The only retained subject is the double bed, including its properly laid bedding and the decorative pillow placed on its surface; all non-subject elements including video UI, subtitles, hands, people, chairs, nightstands, plants, lamps, curtains, windows, wall fixtures and room environment are fully removed.",
+    "occlusionCompletion": "Bed surface areas blocked by video player UI and text captions are filled with continuous, identical fabric texture with no gaps or pattern breaks; unseen bed parts (headboard, side rails, footboard, legs) are completed following standard double bed symmetrical structure, with no added random decorations, maintaining material consistency."
+  },
+  "prompt": "Isolated single double bed, complete standalone home furniture asset, presented against a plain solid light neutral background, with no hands, people, UI elements, captions, surrounding furniture or environmental clutter included. The bed follows strict bilateral symmetry, with repeated texture pattern continuation across all visible and completed areas, ensuring no missing texture gaps or broken pattern sections. Visible portions feature a soft cream white vertically ribbed plush throw blanket layered over warm caramel brown short velvet bedding with natural soft wrinkles, one off-white decorative pillow with brown cartoon print and tasseled corners, and a matching brown sleeping pillow at the head area. Inferred sections complete the full bed structure with consistent material texture, maintaining a soft warm cozy winter bedding aesthetic, realistic natural fabric folds, and accurate soft furnishing texture.",
+  "negativePrompt": "hands, people, UI controls, video player interface, text captions, subtitles, table, chair, nightstand, potted plant, table lamp, curtains, window blinds, outdoor view, wall switches, power outlets, background props, room interior, extra clutter",
+  "confidence": {
+    "subjectRecognition": 0.98,
+    "visibleFabricTexture": 0.95,
+    "uiOccludedAreaCompletion": 0.9,
+    "unseenBedStructureInference": 0.7
+  }
+}

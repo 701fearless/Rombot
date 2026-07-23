@@ -71,7 +71,7 @@ POST /api/feed/detect
 }
 ```
 
-If `outputs/videos/<videoId>/analysis.json` exists, this endpoint reads the nearest preprocessed frame and returns immediately. If there is no preprocessed analysis, it falls back to the realtime mock/Grounded-SAM-2 provider.
+If `outputs/videos/<videoId>/analysis.json` exists, this endpoint reads the nearest preprocessed frame and returns immediately. Otherwise it uses the configured realtime provider, including `ark_grounding`, `grounded_sam2`, or `mock`.
 
 ### Select, segment, and generate a furniture model
 
@@ -135,10 +135,15 @@ $env:MODEL3D_PROVIDER="mock"
 Ark Doubao visual grounding:
 
 ```powershell
+$env:DETECTION_PROVIDER="ark_grounding"
 $env:ARK_API_KEY="your_key"
 $env:ARK_BASE_URL="https://ark.cn-beijing.volces.com/api/v3"
 $env:ARK_VISION_MODEL="doubao-seed-2-1-pro-260628"
 ```
+
+The same Ark call returns bbox, visible geometry/material/texture features, clutter
+state, cleanup actions, and conservative symmetry/occlusion/pattern completion hints.
+These fields are stored in `detection.json`/`analysis.json` and reused by image generation.
 
 Preprocess with Ark Grounding:
 
@@ -161,21 +166,27 @@ Ark returns bbox coordinates normalized to a 1000 x 1000 coordinate space. The b
 Hunyuan full 3D generation:
 
 ```powershell
-$env:MODEL3D_PROVIDER="hunyuan3d"
+$env:MODEL3D_PROVIDER="feature_hunyuan"
 $env:HUNYUAN_API_KEY="your_key"
 $env:HUNYUAN_BASE_URL="https://tokenhub.tencentmaas.com"
-$env:HUNYUAN_MODEL="hy-3d-3.1"
+$env:HUNYUAN_MODEL="hy-3d-3.0"
+$env:HUNYUAN_GENERATE_TYPE="LowPoly"
+$env:HUNYUAN_FACE_COUNT="30000"
+$env:HUNYUAN_ENABLE_PBR="false"
 $env:HUNYUAN_POLL_INTERVAL_SEC="5"
-$env:HUNYUAN_POLL_ATTEMPTS="72"
+$env:HUNYUAN_POLL_ATTEMPTS="120"
 ```
 
-Optional Ark Seedream reference image before Hunyuan 3D:
+Ark Seedream reference image before Hunyuan 3D:
 
 ```powershell
-$env:ENABLE_ARK_REFERENCE_IMAGE="true"
-$env:ARK_IMAGE_MODEL="doubao-seedream-4-0-250828"
-$env:ARK_IMAGE_SIZE="1024x1024"
+$env:ARK_IMAGE_MODEL="doubao-seedream-5-0-lite-260128"
+$env:ARK_IMAGE_SIZE="2048x2048"
 ```
+
+`feature_hunyuan` creates one 45-degree reference image, then submits it to Hunyuan.
+Set `SEGMENTATION_PROVIDER=mock` to use the bbox crop/mask. Set it to `sam3` with a
+valid endpoint to refine the mask; SAM failure falls back to the bbox result.
 
 Grounded-SAM-2 detection + segmentation endpoint:
 

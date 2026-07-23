@@ -1,2 +1,29 @@
-
 backend/.env
+**/__pycache__/
+**/*.py[cod]
+.venv/
+.venv_local/
+backend/.venv/
+backend/.venv_local/
+
+# Heavy generated assets
+*.glb
+*.zip
+*.obj
+*.mtl
+*.png
+*.jpg
+*.jpeg
+backend/outputs/**/extracted/
+
+# Keep lightweight demo metadata + viewer pages
+!backend/outputs/demos/**/
+!backend/outputs/demos/**/*.html
+!backend/outputs/demos/**/*.json
+
+# Signed COS URLs / runtime job metadata
+backend/outputs/demos/**/hunyuan_result.json
+backend/outputs/demos/**/meta.json
+backend/outputs/demos/**/meta_partial.json
+backend/outputs/demos/**/submit.json
+

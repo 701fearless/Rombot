@@ -99,7 +99,11 @@ def iou(a: list[int], b: list[int]) -> float:
     return intersection / union if union else 0
 
 
-def dedupe_objects(objects: list[DetectedObject], iou_threshold: float = 0.7, max_items: int = 6) -> list[DetectedObject]:
+def dedupe_objects(
+    objects: list[DetectedObject],
+    iou_threshold: float = 0.7,
+    max_items: int = 6,
+) -> list[DetectedObject]:
     deduped: list[DetectedObject] = []
     for item in sorted(objects, key=lambda obj: obj.confidence, reverse=True):
         if any(item.label == kept.label and iou(item.bbox, kept.bbox) >= iou_threshold for kept in deduped):
@@ -110,19 +114,19 @@ def dedupe_objects(objects: list[DetectedObject], iou_threshold: float = 0.7, ma
     return deduped
 
 
-DOUBAO_FURNITURE_PROMPT = """请识别这张室内家装图片中适合打暂停 tag 的主要家具和家居物品。
-只允许从以下英文类别中选择：
+DOUBAO_FURNITURE_PROMPT = """
+Identify the main furniture and home objects in this room image.
+Only use these English labels:
 sofa, bed, chair, armchair, dining_table, coffee_table, desk,
 cabinet, wardrobe, tv_stand, bookshelf, nightstand,
 chandelier, pendant_light, floor_lamp, table_lamp,
 rug, curtain, plant, vase, mirror, painting.
 
-不要输出餐具、食物、书本、小摆件、人物、宠物。
-最多输出 6 个。
-只输出 JSON：
+Exclude tableware, food, books, loose decorations, people and pets.
+Return at most 6 objects as JSON only:
 {
   "objects": [
-    { "label": "dining_table", "name": "餐桌" }
+    {"label": "dining_table", "name": "餐桌"}
   ]
 }
 """

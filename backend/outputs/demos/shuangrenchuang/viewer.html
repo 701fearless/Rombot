@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GLB 模型预览</title>
+  <style>
+    :root {
+      --bg0: #1a1410;
+      --ink: #f3ebe2;
+      --muted: #c4b4a4;
+      --accent: #d4a574;
+      --panel: rgba(20, 14, 10, 0.78);
+      --line: rgba(212, 165, 116, 0.28);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg0); color: var(--ink);
+    }
+    #canvas-wrap { position: absolute; inset: 0; }
+    canvas { display: block; width: 100%; height: 100%; }
+    .panel {
+      position: absolute;
+      left: 24px;
+      top: 24px;
+      width: min(380px, calc(100vw - 48px));
+      padding: 18px 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      z-index: 2;
+    }
+    .panel h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .panel p { font-size: 13px; line-height: 1.6; color: var(--muted); margin-bottom: 14px; }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(212, 165, 116, 0.14);
+      color: var(--ink);
+      padding: 8px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .btn:hover { background: rgba(212, 165, 116, 0.24); border-color: rgba(212, 165, 116, 0.45); }
+    #file-input { display: none; }
+    #file-name {
+      font-size: 12px;
+      color: var(--muted);
+      word-break: break-all;
+      line-height: 1.5;
+      min-height: 1.5em;
+    }
+    .hint {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(20, 14, 10, 0.55);
+      padding: 10px 14px;
+      border: 1px solid rgba(212, 165, 116, 0.2);
+      z-index: 2;
+      pointer-events: none;
+    }
+    #status {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      white-space: pre-line;
+      z-index: 1;
+      pointer-events: none;
+    }
+    #drop-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      background: rgba(26, 20, 16, 0.72);
+      border: 2px dashed rgba(212, 165, 116, 0.55);
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+    }
+    body.dragging #drop-overlay { display: flex; }
+  </style>
+</head>
+<body>
+  <div id="canvas-wrap"></div>
+  <div id="drop-overlay">松开以加载 GLB</div>
+
+  <div class="panel">
+    <h1>GLB 模型预览</h1>
+    <p>选择本地 `.glb` / `.gltf` 文件进行旋转查看。<br />拖拽旋转 · 滚轮缩放 · 右键平移</p>
+    <div class="actions">
+      <button class="btn" id="pick-btn" type="button">选择本地模型</button>
+      <input id="file-input" type="file" accept=".glb,.gltf,model/gltf-binary,model/gltf+json" />
+    </div>
+    <div id="file-name">尚未选择文件</div>
+  </div>
+
+  <div class="hint">支持点击选择或拖拽文件到页面</div>
+  <div id="status">请选择本地 GLB 模型</div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+    import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+    import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+    const statusEl = document.getElementById("status");
+    const fileNameEl = document.getElementById("file-name");
+    const fileInput = document.getElementById("file-input");
+    const pickBtn = document.getElementById("pick-btn");
+    const wrap = document.getElementById("canvas-wrap");
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+    wrap.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x1a1410);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 100);
+    camera.position.set(1.6, 1.2, 1.8);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.target.set(0, 0.2, 0);
+    controls.minDistance = 0.2;
+    controls.maxDistance = 20;
+
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+    scene.add(new THREE.HemisphereLight(0xfff2e4, 0x2a1c12, 0.85));
+    const key = new THREE.DirectionalLight(0xffe3c4, 1.35);
+    key.position.set(2.5, 4, 2);
+    scene.add(key);
+    const fill = new THREE.DirectionalLight(0xb8c7ff, 0.35);
+    fill.position.set(-3, 1.5, -2);
+    scene.add(fill);
+
+    const ground = new THREE.Mesh(
+      new THREE.CircleGeometry(2.2, 64),
+      new THREE.MeshStandardMaterial({ color: 0x2a2118, roughness: 0.92, metalness: 0.05 })
+    );
+    ground.rotation.x = -Math.PI / 2;
+    ground.position.y = -0.001;
+    scene.add(ground);
+
+    const loader = new GLTFLoader();
+    let currentRoot = null;
+    let objectUrl = null;
+
+    function disposeObject(root) {
+      root.traverse((obj) => {
+        if (obj.geometry) obj.geometry.dispose();
+        if (obj.material) {
+          const materials = Array.isArray(obj.material) ? obj.material : [obj.material];
+          for (const mat of materials) {
+            for (const key of Object.keys(mat)) {
+              const value = mat[key];
+              if (value && value.isTexture) value.dispose();
+            }
+            mat.dispose();
+          }
+        }
+      });
+    }
+
+    function clearModel() {
+      if (currentRoot) {
+        scene.remove(currentRoot);
+        disposeObject(currentRoot);
+        currentRoot = null;
+      }
+      if (objectUrl) {
+        URL.revokeObjectURL(objectUrl);
+        objectUrl = null;
+      }
+    }
+
+    function fitCameraToObject(root) {
+      const box = new THREE.Box3().setFromObject(root);
+      const size = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z) || 1;
+      const scale = 1.2 / maxDim;
+      root.scale.setScalar(scale);
+      root.position.sub(center.multiplyScalar(scale));
+      root.position.y -= new THREE.Box3().setFromObject(root).min.y;
+
+      const fitted = new THREE.Box3().setFromObject(root);
+      const fittedCenter = fitted.getCenter(new THREE.Vector3());
+      const fittedSize = fitted.getSize(new THREE.Vector3());
+      const dist = Math.max(fittedSize.x, fittedSize.y, fittedSize.z) * 1.8 + 0.6;
+      controls.target.copy(fittedCenter);
+      camera.position.set(fittedCenter.x + dist * 0.75, fittedCenter.y + dist * 0.55, fittedCenter.z + dist * 0.9);
+      controls.update();
+    }
+
+    function loadModel(url, label) {
+      statusEl.style.display = "block";
+      statusEl.textContent = "正在加载模型…";
+      fileNameEl.textContent = label || url;
+
+      loader.load(
+        url,
+        (gltf) => {
+          clearModel();
+          currentRoot = gltf.scene;
+          scene.add(currentRoot);
+          fitCameraToObject(currentRoot);
+          statusEl.style.display = "none";
+        },
+        (event) => {
+          if (!event.total) return;
+          const pct = Math.round((event.loaded / event.total) * 100);
+          statusEl.textContent = `正在加载模型… ${pct}%`;
+        },
+        (error) => {
+          console.error(error);
+          statusEl.style.display = "block";
+          statusEl.textContent = `模型加载失败：${label || url}\n请确认文件为有效的 .glb / .gltf。`;
+        }
+      );
+    }
+
+    function loadLocalFile(file) {
+      if (!file) return;
+      const lower = file.name.toLowerCase();
+      if (!lower.endsWith(".glb") && !lower.endsWith(".gltf")) {
+        statusEl.style.display = "block";
+        statusEl.textContent = "请选择 .glb 或 .gltf 文件";
+        return;
+      }
+      clearModel();
+      objectUrl = URL.createObjectURL(file);
+      loadModel(objectUrl, file.name);
+    }
+
+    pickBtn.addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files && fileInput.files[0];
+      loadLocalFile(file);
+      fileInput.value = "";
+    });
+
+    window.addEventListener("dragenter", (e) => {
+      e.preventDefault();
+      document.body.classList.add("dragging");
+    });
+    window.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      document.body.classList.add("dragging");
+    });
+    window.addEventListener("dragleave", (e) => {
+      if (e.relatedTarget === null) document.body.classList.remove("dragging");
+    });
+    window.addEventListener("drop", (e) => {
+      e.preventDefault();
+      document.body.classList.remove("dragging");
+      const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      loadLocalFile(file);
+    });
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Optional: ?model=./xxx.glb still works for quick open of a sibling file.
+    const params = new URLSearchParams(location.search);
+    const preset = params.get("model");
+    if (preset) {
+      loadModel(preset, preset);
+    }
+  </script>
+</body>
+</html>
