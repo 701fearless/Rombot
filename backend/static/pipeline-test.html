@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>家具生成链路测试台</title>
+  <style>
+    :root {
+      --paper: #f7f4ef;
+      --ink: #20201d;
+      --muted: #706b61;
+      --line: #d7cec1;
+      --panel: #fffdf8;
+      --accent: #0f6d62;
+      --accent-ink: #f7fffb;
+      --warn: #a76315;
+      --ok: #31745b;
+      --dark: #141817;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--paper); color: var(--ink); }
+    body {
+      font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    button, input, select, textarea { font: inherit; }
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+    }
+    .left {
+      border-right: 1px solid var(--line);
+      background: #f1ece3;
+      padding: 22px;
+      overflow: auto;
+    }
+    .right {
+      min-width: 0;
+      display: grid;
+      grid-template-rows: minmax(360px, 58vh) minmax(320px, 1fr);
+    }
+    h1 { margin: 0 0 6px; font-size: 24px; line-height: 1.15; }
+    .subtitle { margin: 0 0 18px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .drop {
+      border: 1px dashed #a69b8a;
+      background: var(--panel);
+      min-height: 190px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+    .drop:hover, body.dragging .drop { border-color: var(--accent); background: #fbfff9; }
+    .drop input { display: none; }
+    .drop-inner { text-align: center; display: grid; gap: 10px; justify-items: center; }
+    .upload-mark {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      color: var(--accent);
+      font-size: 28px;
+      background: #f9f7f1;
+    }
+    .preview {
+      width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+      background: #ece6da;
+      border: 1px solid var(--line);
+      display: none;
+    }
+    .controls { display: grid; gap: 10px; margin-top: 14px; }
+    .field { display: grid; gap: 6px; }
+    .field label { color: var(--muted); font-size: 12px; }
+    .field input {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 10px 11px;
+      min-width: 0;
+    }
+    .primary {
+      border: 0;
+      background: var(--accent);
+      color: var(--accent-ink);
+      padding: 12px 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .primary:disabled { opacity: 0.45; cursor: wait; }
+    .steps {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 22px 1fr auto;
+      gap: 9px;
+      align-items: center;
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.74);
+      min-height: 46px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border: 1px solid #9e9486;
+      background: #f6f0e7;
+      justify-self: center;
+    }
+    .step.running .dot { background: var(--warn); border-color: var(--warn); animation: pulse 0.9s infinite alternate; }
+    .step.done .dot { background: var(--ok); border-color: var(--ok); }
+    .step.failed .dot { background: #b33a2e; border-color: #b33a2e; }
+    .step-title { font-size: 13px; font-weight: 700; }
+    .step-note { color: var(--muted); font-size: 12px; margin-top: 2px; word-break: break-word; }
+    .elapsed { color: var(--muted); font-size: 12px; }
+    @keyframes pulse { from { transform: scale(0.8); } to { transform: scale(1.15); } }
+    .viewer {
+      position: relative;
+      min-width: 0;
+      min-height: 360px;
+      background: var(--dark);
+    }
+    #canvas-wrap { position: absolute; inset: 0; }
+    .viewer-status {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      color: #dfd6ca;
+      background: rgba(20, 24, 23, 0.74);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 9px 11px;
+      font-size: 12px;
+      max-width: calc(100% - 36px);
+      z-index: 2;
+    }
+    .output {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.95fr) minmax(300px, 1.05fr);
+      min-height: 0;
+      border-top: 1px solid var(--line);
+    }
+    .pane {
+      min-width: 0;
+      padding: 18px;
+      overflow: auto;
+      border-right: 1px solid var(--line);
+    }
+    .pane:last-child { border-right: 0; }
+    .pane h2 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.55;
+      color: #2a2824;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 12px;
+      min-height: 220px;
+    }
+    .refs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+    .ref {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+    }
+    .ref img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #eee7dc; }
+    .ref span { font-size: 12px; color: var(--muted); word-break: break-word; }
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 1fr; }
+      .left { border-right: 0; border-bottom: 1px solid var(--line); }
+      .right { grid-template-rows: minmax(360px, 52vh) auto; }
+      .output { grid-template-columns: 1fr; }
+      .pane { border-right: 0; border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <aside class="left">
+      <h1>家具生成链路测试台</h1>
+      <p class="subtitle">上传一张房间或商品图，页面会先展示豆包识图结果，再展示参考图，最后加载 Tripo Turbo 生成的 GLB。</p>
+
+      <label class="drop" id="drop">
+        <input id="file" type="file" accept="image/*" />
+        <img class="preview" id="preview" alt="待测试图片预览" />
+        <span class="drop-inner" id="dropHint">
+          <span class="upload-mark">+</span>
+          <strong>选择或拖入图片</strong>
+          <small>jpg / png / webp</small>
+        </span>
+      </label>
+
+      <div class="controls">
+        <div class="field">
+          <label for="videoId">测试 ID</label>
+          <input id="videoId" value="tripo_turbo_test" />
+        </div>
+        <button class="primary" id="run" type="button" disabled>开始生成</button>
+      </div>
+
+      <section class="steps" aria-label="链路进度">
+        <div class="step" id="step-upload"><span class="dot"></span><div><div class="step-title">图片就绪</div><div class="step-note">等待上传</div></div><span class="elapsed"></span></div>
+        <div class="step" id="step-detect"><span class="dot"></span><div><div class="step-title">豆包识图与打标</div><div class="step-note">等待开始</div></div><span class="elapsed"></span></div>
+        <div class="step" id="step-generate"><span class="dot"></span><div><div class="step-title">参考图与 Tripo Turbo</div><div class="step-note">等待开始</div></div><span class="elapsed"></span></div>
+        <div class="step" id="step-model"><span class="dot"></span><div><div class="step-title">最终模型预览</div><div class="step-note">等待 GLB</div></div><span class="elapsed"></span></div>
+      </section>
+    </aside>
+
+    <section class="right">
+      <div class="viewer">
+        <div id="canvas-wrap"></div>
+        <div class="viewer-status" id="viewerStatus">GLB 模型会显示在这里。拖拽旋转，滚轮缩放。</div>
+      </div>
+      <div class="output">
+        <section class="pane">
+          <h2>识图结果</h2>
+          <pre id="detectJson">尚未运行</pre>
+        </section>
+        <section class="pane">
+          <h2>生图结果与模型地址</h2>
+          <div class="refs" id="refs"></div>
+          <pre id="selectedJson">尚未运行</pre>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+    import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+    import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+    const fileInput = document.getElementById("file");
+    const preview = document.getElementById("preview");
+    const dropHint = document.getElementById("dropHint");
+    const runButton = document.getElementById("run");
+    const videoIdInput = document.getElementById("videoId");
+    const detectJson = document.getElementById("detectJson");
+    const selectedJson = document.getElementById("selectedJson");
+    const refs = document.getElementById("refs");
+    const viewerStatus = document.getElementById("viewerStatus");
+    let frameImage = null;
+    let timer = null;
+
+    const steps = {
+      upload: document.getElementById("step-upload"),
+      detect: document.getElementById("step-detect"),
+      generate: document.getElementById("step-generate"),
+      model: document.getElementById("step-model")
+    };
+
+    function setStep(name, state, note, elapsed = "") {
+      const el = steps[name];
+      el.classList.remove("running", "done", "failed");
+      if (state) el.classList.add(state);
+      el.querySelector(".step-note").textContent = note || "";
+      el.querySelector(".elapsed").textContent = elapsed;
+    }
+
+    function startElapsed(name) {
+      const start = performance.now();
+      clearInterval(timer);
+      timer = setInterval(() => {
+        const seconds = Math.floor((performance.now() - start) / 1000);
+        steps[name].querySelector(".elapsed").textContent = `${seconds}s`;
+      }, 500);
+      return () => {
+        const seconds = Math.round((performance.now() - start) / 1000);
+        clearInterval(timer);
+        timer = null;
+        steps[name].querySelector(".elapsed").textContent = `${seconds}s`;
+      };
+    }
+
+    function readFile(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        frameImage = reader.result;
+        preview.src = frameImage;
+        preview.style.display = "block";
+        dropHint.style.display = "none";
+        runButton.disabled = false;
+        setStep("upload", "done", file.name);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    fileInput.addEventListener("change", () => readFile(fileInput.files && fileInput.files[0]));
+    window.addEventListener("dragenter", (event) => {
+      event.preventDefault();
+      document.body.classList.add("dragging");
+    });
+    window.addEventListener("dragover", (event) => event.preventDefault());
+    window.addEventListener("dragleave", (event) => {
+      if (event.relatedTarget === null) document.body.classList.remove("dragging");
+    });
+    window.addEventListener("drop", (event) => {
+      event.preventDefault();
+      document.body.classList.remove("dragging");
+      readFile(event.dataTransfer.files && event.dataTransfer.files[0]);
+    });
+
+    async function postJson(url, body) {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+      const text = await response.text();
+      let data;
+      try { data = JSON.parse(text); } catch { data = { raw: text }; }
+      if (!response.ok) throw new Error(data.detail || text || response.statusText);
+      return data;
+    }
+
+    runButton.addEventListener("click", async () => {
+      if (!frameImage) return;
+      runButton.disabled = true;
+      detectJson.textContent = "识图中...";
+      selectedJson.textContent = "等待识图完成...";
+      refs.innerHTML = "";
+      setStep("detect", "running", "正在请求 /api/feed/detect");
+      setStep("generate", "", "等待开始");
+      setStep("model", "", "等待 GLB");
+      viewerStatus.textContent = "正在运行链路...";
+
+      try {
+        const videoId = `${videoIdInput.value || "tripo_turbo_test"}_${Date.now()}`;
+        let stop = startElapsed("detect");
+        const detection = await postJson("/api/feed/detect", { videoId, time: 0, frameImage });
+        stop();
+        detectJson.textContent = JSON.stringify(detection, null, 2);
+        const object = detection.objects && detection.objects[0];
+        if (!object) throw new Error("未识别到家具主体");
+        setStep("detect", "done", `${object.name || object.label} / bbox ${object.bbox.join(", ")}`);
+
+        setStep("generate", "running", "Seedream 参考图 + Tripo Turbo 生成中");
+        stop = startElapsed("generate");
+        const selected = await postJson("/api/feed/select-object", {
+          frameId: detection.frameId,
+          objectId: object.id,
+          frameImage
+        });
+        stop();
+        selectedJson.textContent = JSON.stringify(selected, null, 2);
+        renderReferences(selected);
+        setStep("generate", "done", selected.status || "完成");
+
+        setStep("model", "running", "正在加载 GLB");
+        await loadModel(selected.object.glbUrl);
+        setStep("model", "done", selected.object.glbUrl);
+      } catch (error) {
+        console.error(error);
+        clearInterval(timer);
+        selectedJson.textContent = String(error.message || error);
+        viewerStatus.textContent = String(error.message || error);
+        if (steps.detect.classList.contains("running")) setStep("detect", "failed", "失败");
+        else if (steps.generate.classList.contains("running")) setStep("generate", "failed", "失败");
+        else setStep("model", "failed", "失败");
+      } finally {
+        runButton.disabled = false;
+      }
+    });
+
+    function renderReferences(selected) {
+      refs.innerHTML = "";
+      const generation = selected.generation || {};
+      const images = [...(generation.referenceImages || []), ...(generation.textureReferences || [])];
+      for (const item of images) {
+        if (!item.url) continue;
+        const figure = document.createElement("figure");
+        figure.className = "ref";
+        const img = document.createElement("img");
+        img.src = item.url;
+        img.alt = item.type || "reference image";
+        const caption = document.createElement("span");
+        caption.textContent = `${item.type || "reference"} ${item.note || ""}`;
+        figure.append(img, caption);
+        refs.appendChild(figure);
+      }
+    }
+
+    const wrap = document.getElementById("canvas-wrap");
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    wrap.appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x141817);
+    const camera = new THREE.PerspectiveCamera(42, 1, 0.01, 100);
+    camera.position.set(1.8, 1.2, 2.1);
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.target.set(0, 0.35, 0);
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    scene.add(new THREE.HemisphereLight(0xfff2df, 0x243331, 0.9));
+    const key = new THREE.DirectionalLight(0xffffff, 1.25);
+    key.position.set(2.5, 4, 2);
+    scene.add(key);
+    const loader = new GLTFLoader();
+    let currentRoot = null;
+
+    function resizeViewer() {
+      const rect = wrap.getBoundingClientRect();
+      renderer.setSize(rect.width, rect.height);
+      camera.aspect = Math.max(rect.width, 1) / Math.max(rect.height, 1);
+      camera.updateProjectionMatrix();
+    }
+    window.addEventListener("resize", resizeViewer);
+    resizeViewer();
+
+    function clearModel() {
+      if (!currentRoot) return;
+      currentRoot.traverse((obj) => {
+        if (obj.geometry) obj.geometry.dispose();
+        const materials = obj.material ? (Array.isArray(obj.material) ? obj.material : [obj.material]) : [];
+        for (const mat of materials) {
+          for (const value of Object.values(mat)) {
+            if (value && value.isTexture) value.dispose();
+          }
+          mat.dispose();
+        }
+      });
+      scene.remove(currentRoot);
+      currentRoot = null;
+    }
+
+    function fit(root) {
+      const box = new THREE.Box3().setFromObject(root);
+      const size = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z) || 1;
+      const scale = 1.4 / maxDim;
+      root.scale.setScalar(scale);
+      root.position.sub(center.multiplyScalar(scale));
+      const fitted = new THREE.Box3().setFromObject(root);
+      root.position.y -= fitted.min.y;
+      const refit = new THREE.Box3().setFromObject(root);
+      const target = refit.getCenter(new THREE.Vector3());
+      const dist = Math.max(...refit.getSize(new THREE.Vector3()).toArray()) * 1.9 + 0.5;
+      controls.target.copy(target);
+      camera.position.set(target.x + dist * 0.75, target.y + dist * 0.48, target.z + dist);
+      controls.update();
+    }
+
+    function loadModel(url) {
+      return new Promise((resolve, reject) => {
+        viewerStatus.textContent = `加载模型：${url}`;
+        loader.load(url, (gltf) => {
+          clearModel();
+          currentRoot = gltf.scene;
+          scene.add(currentRoot);
+          fit(currentRoot);
+          viewerStatus.textContent = "模型加载完成。";
+          resolve();
+        }, undefined, reject);
+      });
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>

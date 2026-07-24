@@ -27,11 +27,16 @@ Apply these conservative cleanup/completion rules: {json.dumps(generation_hints 
 Regularize temporary household disorder: align loose cushions/pillows, smooth and center
 blankets or throws, remove clothes/dishes/cables/small clutter, align doors/drawers/handles,
 flatten curled rug edges, and arrange curtains into orderly natural folds when relevant.
+Simplify the object for efficient 3D generation: remove tangled fabric, crumpled bedding,
+deep wrinkles, dense tiny folds, scattered pillows, cables, fringe tangles and overlapping
+temporary layers. Replace them with broad clean surfaces, shallow orderly folds, aligned
+soft parts, simple curtain waves and clearly separated non-intersecting components.
 Complete occluded or unseen parts with ordinary category structure, bilateral/axial
 symmetry, repeated modules and continuous material. Continue visible repeated patterns
 without blank gaps. Do not invent random ornaments, extra parts, bizarre shapes or
 over-designed furniture. Show one complete isolated object on a plain light background.
 Exclude people, hands, UI, captions, watermarks, room background and unrelated props.
+Avoid complex soft-body drapery, high-frequency wrinkles, chaotic overlaps and clutter piles.
 """
         payload = {
             "model": self.model,

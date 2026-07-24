@@ -26,3 +26,4 @@ app.include_router(debug.router, prefix="/api/debug", tags=["debug"])
 
 app.mount("/sample_data", StaticFiles(directory="sample_data"), name="sample_data")
 app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
+app.mount("/static", StaticFiles(directory="static"), name="static")

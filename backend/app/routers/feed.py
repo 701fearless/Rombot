@@ -16,6 +16,7 @@ from app.services.model3d.mock_provider import MockModel3DProvider
 from app.services.model3d.pixal3d_provider import Pixal3DModel3DProvider
 from app.services.model3d.feature_meshy_provider import FeatureMeshyModel3DProvider
 from app.services.model3d.feature_hunyuan_provider import FeatureHunyuanModel3DProvider
+from app.services.model3d.feature_tripo_provider import FeatureTripoModel3DProvider
 from app.services.segmentation.mock_provider import MockSegmentationProvider
 from app.services.segmentation.sam3_provider import SAM3SegmentationProvider
 from app.services.video_preprocess.analysis_store import detect_response_for_time, find_object as find_preprocessed_object
@@ -66,6 +67,7 @@ def get_model3d_provider() -> (
     | MeshyModel3DProvider
     | FeatureMeshyModel3DProvider
     | FeatureHunyuanModel3DProvider
+    | FeatureTripoModel3DProvider
     | Hunyuan3DProvider
 ):
     settings = get_settings()
@@ -92,8 +94,36 @@ def get_model3d_provider() -> (
             hunyuan_generate_type=settings.hunyuan_generate_type,
             hunyuan_face_count=settings.hunyuan_face_count,
             hunyuan_enable_pbr=settings.hunyuan_enable_pbr,
+            hunyuan_enable_geometry=settings.hunyuan_enable_geometry,
+            hunyuan_result_format=settings.hunyuan_result_format,
             hunyuan_poll_interval_sec=settings.hunyuan_poll_interval_sec,
             hunyuan_poll_attempts=settings.hunyuan_poll_attempts,
+        )
+    if settings.model3d_provider == "feature_tripo":
+        missing = []
+        if not settings.ark_api_key:
+            missing.append("ARK_API_KEY")
+        if not settings.tripo_api_key:
+            missing.append("TRIPO_API_KEY")
+        if missing:
+            raise HTTPException(status_code=500, detail=f"Missing required keys for feature_tripo: {', '.join(missing)}")
+        return FeatureTripoModel3DProvider(
+            ark_api_key=settings.ark_api_key,
+            ark_base_url=settings.ark_base_url,
+            ark_vision_model=settings.ark_vision_model,
+            ark_image_model=settings.ark_image_model,
+            ark_image_size=settings.ark_image_size,
+            tripo_api_key=settings.tripo_api_key,
+            tripo_base_url=settings.tripo_base_url,
+            tripo_model_version=settings.tripo_model_version,
+            tripo_texture=settings.tripo_texture,
+            tripo_pbr=settings.tripo_pbr,
+            tripo_texture_quality=settings.tripo_texture_quality,
+            tripo_texture_alignment=settings.tripo_texture_alignment,
+            tripo_export_uv=settings.tripo_export_uv,
+            tripo_enable_image_autofix=settings.tripo_enable_image_autofix,
+            tripo_poll_interval_sec=settings.tripo_poll_interval_sec,
+            tripo_poll_attempts=settings.tripo_poll_attempts,
         )
     if settings.model3d_provider == "feature_meshy":
         missing = []
@@ -136,6 +166,8 @@ def get_model3d_provider() -> (
             generate_type=settings.hunyuan_generate_type,
             face_count=settings.hunyuan_face_count,
             enable_pbr=settings.hunyuan_enable_pbr,
+            enable_geometry=settings.hunyuan_enable_geometry,
+            result_format=settings.hunyuan_result_format,
         )
     if settings.model3d_provider == "meshy" and settings.meshy_api_key:
         return MeshyModel3DProvider(api_key=settings.meshy_api_key, base_url=settings.meshy_base_url)
@@ -234,11 +266,16 @@ async def select_object(request: SelectObjectRequest) -> SelectObjectResponse:
             segmentation_crop_image = segmentation.cropImage
 
     model_provider = get_model3d_provider()
-    response = await model_provider.generate_asset(
-        frame_id=request.frameId,
-        detected_object=detected_object,
-        image_url=request.imageUrl or request.cropImage or segmentation_crop_image or segmentation_crop_url,
-    )
+    try:
+        response = await model_provider.generate_asset(
+            frame_id=request.frameId,
+            detected_object=detected_object,
+            image_url=request.imageUrl or request.cropImage or segmentation_crop_image or segmentation_crop_url,
+        )
+    except httpx.HTTPStatusError as exc:
+        detail = exc.response.text[:1200] if exc.response is not None else str(exc)
+        status = exc.response.status_code if exc.response is not None else "unknown"
+        raise HTTPException(status_code=502, detail=f"3D provider HTTP {status}: {detail}") from exc
     response.object.cropUrl = segmentation_crop_url
     response.object.maskUrl = segmentation_mask_url
     return response

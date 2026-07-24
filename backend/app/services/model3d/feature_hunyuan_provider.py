@@ -32,6 +32,8 @@ class FeatureHunyuanModel3DProvider(FeatureMeshyModel3DProvider):
         hunyuan_generate_type: str,
         hunyuan_face_count: int,
         hunyuan_enable_pbr: bool,
+        hunyuan_enable_geometry: bool,
+        hunyuan_result_format: str,
         hunyuan_poll_interval_sec: float,
         hunyuan_poll_attempts: int,
     ) -> None:
@@ -59,6 +61,8 @@ class FeatureHunyuanModel3DProvider(FeatureMeshyModel3DProvider):
         self.hunyuan_generate_type = hunyuan_generate_type
         self.hunyuan_face_count = hunyuan_face_count
         self.hunyuan_enable_pbr = hunyuan_enable_pbr
+        self.hunyuan_enable_geometry = hunyuan_enable_geometry
+        self.hunyuan_result_format = hunyuan_result_format
         self.hunyuan_poll_interval_sec = hunyuan_poll_interval_sec
         self.hunyuan_poll_attempts = hunyuan_poll_attempts
 
@@ -144,6 +148,10 @@ Required behavior:
    - rugs/curtains: flatten curled edges or use orderly natural folds;
    - lamps/vases/frames/mirrors: restore continuous borders, axial/bilateral symmetry,
      repeated decorative patterns and complete occluded areas.
+   - simplify for efficient 3D generation: remove temporary overlapping fabric layers,
+     tangled throws, crumpled bedding, scattered pillows, cables, piles, fringe tangles,
+     deep wrinkles and dense tiny folds; convert them into clean broad surfaces, shallow
+     regular folds and separated non-intersecting parts.
 4. Complete unseen back, side, underside and occluded regions conservatively using
    category priors, symmetry, repeated modules, material continuity and closed geometry.
 5. Repeated texture must continue through occluded or low-confidence regions. Never
@@ -161,6 +169,7 @@ Return these exact fields:
   "constraints": {{
     "subjectIsolation": "string",
     "regularization": [],
+    "complexityReduction": [],
     "occlusionCompletion": "string"
   }},
   "prompt": "80-170 word English product-generation prompt",
@@ -232,6 +241,7 @@ Return these exact fields:
         cleanup_actions = hints.get("cleanupActions") or []
         symmetry = hints.get("symmetry") or {}
         occlusion = hints.get("occlusionCompletion") or []
+        complexity_reduction = hints.get("complexityReduction") or []
         pattern_completion = hints.get("patternCompletion") or "continue repeated visible motifs without gaps"
         preserve = hints.get("preserve") or []
         remove = hints.get("remove") or []
@@ -242,6 +252,8 @@ Return these exact fields:
             f"{features.get('style', 'ordinary coherent design')}. "
             f"Use materials {materials} and colors {colors}. Preserve {preserve}. "
             f"Regularize temporary disorder with {cleanup_actions}. "
+            f"Simplify modeling complexity with {complexity_reduction}: use clean broad surfaces, "
+            "shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. "
             f"Complete occluded, back, side and underside regions using {symmetry} and {occlusion}. "
             f"Texture rule: {texture_pattern}; {pattern_completion}. "
             "Use conservative category structure, repeated modules, continuous closed geometry, and one "
@@ -258,6 +270,7 @@ Return these exact fields:
             observed=features,
             inferred={
                 "cleanupActions": cleanup_actions,
+                "complexityReduction": complexity_reduction,
                 "occlusionCompletion": occlusion,
                 "patternCompletion": pattern_completion,
             },
@@ -270,6 +283,7 @@ Return these exact fields:
             constraints={
                 "subjectIsolation": "one isolated main object only",
                 "regularization": cleanup_actions,
+                "complexityReduction": complexity_reduction,
                 "occlusionCompletion": occlusion,
                 "preserve": preserve,
                 "remove": remove,
@@ -346,7 +360,14 @@ Return these exact fields:
         else:
             payload["prompt"] = self._limit_prompt(brief.prompt)
 
-        if self.hunyuan_model in {"hy-3d-3.0", "hy-3d-3.1"}:
+        if self.hunyuan_model == "hy-3d-express":
+            payload.update(
+                {
+                    "result_format": self.hunyuan_result_format,
+                    "enable_geometry": self.hunyuan_enable_geometry,
+                }
+            )
+        elif self.hunyuan_model in {"hy-3d-3.0", "hy-3d-3.1"}:
             payload.update(
                 {
                     "generate_type": self.hunyuan_generate_type,
@@ -396,6 +417,11 @@ CRITICAL SUBJECT RULES:
 - Apply the brief's regularization actions: align loose cushions and pillows, smooth
   blankets or throws, close/align repeated doors and drawers, clear temporary clutter,
   and restore regular folds or paired components as appropriate for the category.
+- Simplify the generated reference for faster 3D modeling: use broad clean surfaces,
+  shallow low-frequency folds, tidy bedding, aligned pillows/cushions, flat rugs,
+  simple hanging curtain waves and clearly separated components. Remove tangled cloth,
+  crumpled blankets, deep wrinkles, dense tiny folds, fringe tangles, cables, piles,
+  scattered loose objects and overlapping temporary layers.
 - Show one complete centered object on a plain white/light studio background.
 - If the object has a rectangular frame, panel, tray, cabinet door, picture-frame vase, or decorative inset, keep all borders continuous and equal-width.
 - Continue repeated decorative textures across missing, occluded, or low-confidence areas by mirroring, translating, or tiling the visible pattern. No blank texture gaps are allowed.
@@ -414,6 +440,7 @@ Constraints:
 {json.dumps(brief.constraints, ensure_ascii=False)}
 
 Avoid: {brief.negativePrompt}; hands; people; UI icons; captions; furniture clutter; merged background objects.
+Also avoid high-frequency wrinkles, excessive folds, intersecting cloth layers, chaotic overlaps, thin dangling strands, clutter piles and complex soft-body drapery.
 """
 
     async def _poll_3d_task(self, task_id: str) -> dict[str, Any]:
@@ -445,7 +472,7 @@ Avoid: {brief.negativePrompt}; hands; people; UI icons; captions; furniture clut
             data.get("job_id"),
             data.get("JobId"),
         ]
-        for container_name in ("result", "data"):
+        for container_name in ("result", "data", "Response", "response"):
             container = data.get(container_name)
             if isinstance(container, dict):
                 candidates.extend(
@@ -462,6 +489,20 @@ Avoid: {brief.negativePrompt}; hands; people; UI icons; captions; furniture clut
         return next((str(item) for item in candidates if item), None)
 
     def _extract_glb_url(self, result: dict[str, Any]) -> str | None:
+        for response_key in ("Response", "response"):
+            response = result.get(response_key)
+            if not isinstance(response, dict):
+                continue
+            rapid_files = response.get("ResultFile3Ds") or response.get("result_file_3ds") or []
+            if isinstance(rapid_files, list):
+                for item in rapid_files:
+                    if not isinstance(item, dict):
+                        continue
+                    item_type = str(item.get("Type") or item.get("type") or "").lower()
+                    url = item.get("Url") or item.get("url")
+                    if item_type == "glb" and url:
+                        return str(url)
+
         # Prefer explicit glb entries first — Hunyuan often returns obj zip before glb.
         for container_name in ("data", "result", "output"):
             container = result.get(container_name)
@@ -495,10 +536,10 @@ Avoid: {brief.negativePrompt}; hands; people; UI icons; captions; furniture clut
 
     def _normalize_status(self, data: dict[str, Any]) -> str:
         raw_status = data.get("status") or data.get("state")
-        for container_name in ("result", "data", "output"):
+        for container_name in ("result", "data", "output", "Response", "response"):
             container = data.get(container_name)
             if not raw_status and isinstance(container, dict):
-                raw_status = container.get("status") or container.get("state")
+                raw_status = container.get("status") or container.get("state") or container.get("Status")
 
         status = str(raw_status or "").upper()
         if status in {"SUCCEEDED", "SUCCESS", "DONE", "COMPLETED", "FINISHED"}:
@@ -507,7 +548,7 @@ Avoid: {brief.negativePrompt}; hands; people; UI icons; captions; furniture clut
             return "FAILED"
         if status in {"EXPIRED", "TIMEOUT"}:
             return "EXPIRED"
-        # queued / in_progress / running / pending all keep polling
+        # queued / in_progress / running / pending / WAIT / RUN all keep polling
         return "RUNNING"
 
     def _hunyuan_headers(self) -> dict[str, str]:

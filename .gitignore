@@ -6,6 +6,9 @@ backend/.env
 backend/.venv/
 backend/.venv_local/
 
+# Local standalone experiment (exclude from this branch)
+room_scan_standalone/
+
 # Heavy generated assets
 *.glb
 *.zip
@@ -15,6 +18,14 @@ backend/.venv_local/
 *.jpg
 *.jpeg
 backend/outputs/**/extracted/
+backend/outputs/**/*.log
+
+# Runtime test outputs often contain signed COS URLs
+backend/outputs/frame_*/
+backend/outputs/hunyuan_speed_tests/
+backend/outputs/tripo_speed_tests/
+backend/outputs/server_*.log
+backend/outputs/server_*.err.log
 
 # Keep lightweight demo metadata + viewer pages
 !backend/outputs/demos/**/
@@ -26,4 +37,5 @@ backend/outputs/demos/**/hunyuan_result.json
 backend/outputs/demos/**/meta.json
 backend/outputs/demos/**/meta_partial.json
 backend/outputs/demos/**/submit.json
-
+backend/outputs/demos/**/model3d_result.json
+backend/outputs/demos/**/model3d_task.json

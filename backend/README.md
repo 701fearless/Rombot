@@ -163,19 +163,56 @@ Invoke-RestMethod `
 
 Ark returns bbox coordinates normalized to a 1000 x 1000 coordinate space. The backend converts them to pixel bbox, saves crop/mask files, and writes `analysis.json`.
 
+Tripo Turbo full 3D generation:
+
+```powershell
+$env:MODEL3D_PROVIDER="feature_tripo"
+$env:TRIPO_API_KEY="your_key"
+$env:TRIPO_BASE_URL="https://api.tripo3d.com"
+$env:TRIPO_MODEL_VERSION="v3.0-20250812"
+$env:TRIPO_TEXTURE="true"
+$env:TRIPO_PBR="false"
+$env:TRIPO_TEXTURE_QUALITY="standard"
+$env:TRIPO_TEXTURE_ALIGNMENT="geometry"
+$env:TRIPO_EXPORT_UV="false"
+$env:TRIPO_ENABLE_IMAGE_AUTOFIX="false"
+$env:TRIPO_POLL_INTERVAL_SEC="5"
+$env:TRIPO_POLL_ATTEMPTS="72"
+```
+
+`feature_tripo` keeps the same Ark feature brief and one 45-degree Seedream
+reference image, then submits that reference to Tripo Turbo. `TRIPO_EXPORT_UV=false`
+is the speed-first setting; enable it only when UV editing is needed later.
+Use `https://api.tripo3d.com` for the v2 Turbo OpenAPI endpoint in the current
+China network. The provider also accepts `https://openapi.tripo3d.com/v3` and
+switches to the v3 payload shape automatically.
+
+Open the local pipeline test page after starting the backend:
+
+```text
+http://127.0.0.1:8000/static/pipeline-test.html
+```
+
+The page accepts an image, displays `/api/feed/detect` results, shows generated
+reference/material images returned by `/api/feed/select-object`, and previews the
+final GLB in the embedded viewer.
+
 Hunyuan full 3D generation:
 
 ```powershell
 $env:MODEL3D_PROVIDER="feature_hunyuan"
 $env:HUNYUAN_API_KEY="your_key"
 $env:HUNYUAN_BASE_URL="https://tokenhub.tencentmaas.com"
-$env:HUNYUAN_MODEL="hy-3d-3.0"
-$env:HUNYUAN_GENERATE_TYPE="LowPoly"
-$env:HUNYUAN_FACE_COUNT="30000"
+$env:HUNYUAN_MODEL="hy-3d-express"
 $env:HUNYUAN_ENABLE_PBR="false"
+$env:HUNYUAN_ENABLE_GEOMETRY="false"
+$env:HUNYUAN_RESULT_FORMAT="GLB"
 $env:HUNYUAN_POLL_INTERVAL_SEC="5"
 $env:HUNYUAN_POLL_ATTEMPTS="120"
 ```
+
+`hy-3d-express` follows the Rapid API contract. It does not send the professional
+model fields `generate_type`, `face_count`, or `polygon_type`.
 
 Ark Seedream reference image before Hunyuan 3D:
 

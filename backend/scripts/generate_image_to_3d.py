@@ -74,6 +74,8 @@ def build_provider() -> FeatureHunyuanModel3DProvider:
         hunyuan_generate_type=settings.hunyuan_generate_type,
         hunyuan_face_count=settings.hunyuan_face_count,
         hunyuan_enable_pbr=settings.hunyuan_enable_pbr,
+        hunyuan_enable_geometry=settings.hunyuan_enable_geometry,
+        hunyuan_result_format=settings.hunyuan_result_format,
         hunyuan_poll_interval_sec=settings.hunyuan_poll_interval_sec,
         hunyuan_poll_attempts=settings.hunyuan_poll_attempts,
     )

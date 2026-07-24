@@ -45,11 +45,24 @@ class Settings:
     hunyuan_generate_type: str
     hunyuan_face_count: int
     hunyuan_enable_pbr: bool
+    hunyuan_enable_geometry: bool
+    hunyuan_result_format: str
     hunyuan_poll_interval_sec: float
     hunyuan_poll_attempts: int
     meshy_ai_model: str
     meshy_poll_interval_sec: float
     meshy_poll_attempts: int
+    tripo_api_key: str | None
+    tripo_base_url: str
+    tripo_model_version: str
+    tripo_texture: bool
+    tripo_pbr: bool
+    tripo_texture_quality: str
+    tripo_texture_alignment: str
+    tripo_export_uv: bool
+    tripo_enable_image_autofix: bool
+    tripo_poll_interval_sec: float
+    tripo_poll_attempts: int
     sam3_api_key: str | None
     sam3_endpoint: str | None
     pixal3d_api_key: str | None
@@ -94,10 +107,17 @@ class Settings:
         self.openai_image_size = os.getenv("OPENAI_IMAGE_SIZE", "1024x1024")
         self.hunyuan_api_key = os.getenv("HUNYUAN_API_KEY")
         self.hunyuan_base_url = os.getenv("HUNYUAN_BASE_URL", "https://tokenhub.tencentmaas.com").rstrip("/")
-        self.hunyuan_model = os.getenv("HUNYUAN_MODEL", "hy-3d-3.0")
+        self.hunyuan_model = os.getenv("HUNYUAN_MODEL", "hy-3d-express")
         self.hunyuan_generate_type = os.getenv("HUNYUAN_GENERATE_TYPE", "LowPoly")
         self.hunyuan_face_count = int(os.getenv("HUNYUAN_FACE_COUNT", "30000"))
         self.hunyuan_enable_pbr = os.getenv("HUNYUAN_ENABLE_PBR", "false").lower() in {"1", "true", "yes", "on"}
+        self.hunyuan_enable_geometry = os.getenv("HUNYUAN_ENABLE_GEOMETRY", "false").lower() in {
+            "1",
+            "true",
+            "yes",
+            "on",
+        }
+        self.hunyuan_result_format = os.getenv("HUNYUAN_RESULT_FORMAT", "GLB").upper()
         self.hunyuan_poll_interval_sec = float(os.getenv("HUNYUAN_POLL_INTERVAL_SEC", "5"))
         self.hunyuan_poll_attempts = int(os.getenv("HUNYUAN_POLL_ATTEMPTS", "120"))
         self.sam3_api_key = os.getenv("SAM3_API_KEY")
@@ -109,6 +129,22 @@ class Settings:
         self.meshy_ai_model = os.getenv("MESHY_AI_MODEL", "meshy-6")
         self.meshy_poll_interval_sec = float(os.getenv("MESHY_POLL_INTERVAL_SEC", "5"))
         self.meshy_poll_attempts = int(os.getenv("MESHY_POLL_ATTEMPTS", "72"))
+        self.tripo_api_key = os.getenv("TRIPO_API_KEY")
+        self.tripo_base_url = os.getenv("TRIPO_BASE_URL", "https://api.tripo3d.com").rstrip("/")
+        self.tripo_model_version = os.getenv("TRIPO_MODEL_VERSION", "v3.0-20250812")
+        self.tripo_texture = os.getenv("TRIPO_TEXTURE", "true").lower() in {"1", "true", "yes", "on"}
+        self.tripo_pbr = os.getenv("TRIPO_PBR", "false").lower() in {"1", "true", "yes", "on"}
+        self.tripo_texture_quality = os.getenv("TRIPO_TEXTURE_QUALITY", "standard")
+        self.tripo_texture_alignment = os.getenv("TRIPO_TEXTURE_ALIGNMENT", "geometry")
+        self.tripo_export_uv = os.getenv("TRIPO_EXPORT_UV", "false").lower() in {"1", "true", "yes", "on"}
+        self.tripo_enable_image_autofix = os.getenv("TRIPO_ENABLE_IMAGE_AUTOFIX", "false").lower() in {
+            "1",
+            "true",
+            "yes",
+            "on",
+        }
+        self.tripo_poll_interval_sec = float(os.getenv("TRIPO_POLL_INTERVAL_SEC", "5"))
+        self.tripo_poll_attempts = int(os.getenv("TRIPO_POLL_ATTEMPTS", "72"))
         raw_origins = os.getenv(
             "CORS_ORIGINS",
             "http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000,http://127.0.0.1:5173",

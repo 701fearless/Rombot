@@ -47,6 +47,7 @@ Return one compact JSON object and nothing else:
       "generationHints": {
         "clutterState": "clean|messy|occluded",
         "cleanupActions": ["specific action for a clean product presentation"],
+        "complexityReduction": ["specific simplification for faster 3D generation"],
         "symmetry": {
           "type": "bilateral|axial|radial|repeated_modules|none",
           "completionRule": "how missing regular structure should be completed"
@@ -71,14 +72,20 @@ Rules:
 - Describe visible evidence in features. Put inferred cleanup/completion only in generationHints.
 - Regularize ordinary household disorder before image generation while preserving
   the product identity, style, material and color:
-  * bed: straighten and center blankets/duvets, align pillows, remove clothes;
-  * sofa/armchair: align cushions and pillows, smooth throws, restore repeated seats;
+  * bed: straighten and center blankets/duvets, reduce bedding to broad simple
+    surfaces with only shallow natural folds, align pillows, remove clothes;
+  * sofa/armchair: align cushions and pillows, smooth throws, restore repeated seats,
+    remove scattered pillows unless they are identity-defining;
   * table/desk/nightstand: clear dishes, cables and loose items, preserve built-in parts;
   * cabinet/wardrobe/bookshelf/tv stand: align doors/drawers/handles and repeated modules;
   * chair: center removable cushions and restore paired legs/arms;
   * rug/curtain: flatten curled edges or arrange regular hanging folds;
   * lamp/vase/mirror/painting: restore axial/bilateral symmetry, continuous borders,
     complete repeated decorative patterns, and remove hands or temporary contents.
+- Reduce 3D modeling complexity in generationHints.complexityReduction:
+  remove temporary overlapping layers, tangled fabric, deep wrinkles, crumpled bedding,
+  scattered cushions, piles, cables, fringe tangles and dense tiny folds; replace them
+  with clean large surfaces, shallow orderly folds and non-intersecting components.
 - For unseen or occluded parts, prefer symmetry, repeated modules, continuous material,
   closed outlines and standard category structure. Do not invent bizarre shapes,
   random ornaments, extra components or over-designed furniture.

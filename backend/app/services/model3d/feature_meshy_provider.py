@@ -92,8 +92,10 @@ class FeatureMeshyModel3DProvider(Model3DProvider):
         result = await self._poll_3d_task(task_id)
         result_path = work_dir / "model3d_result.json"
         result_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
-        glb_url = self._extract_glb_url(result) or "/sample_data/models/sofa.glb"
-        status = result.get("status", "unknown") if self._extract_glb_url(result) else "fallback_mock"
+        remote_glb_url = self._extract_glb_url(result)
+        glb_url = await self._cache_remote_glb(remote_glb_url, work_dir) if remote_glb_url else None
+        glb_url = glb_url or remote_glb_url or "/sample_data/models/sofa.glb"
+        status = result.get("status", "unknown") if remote_glb_url else "fallback_mock"
 
         generation = FurnitureGenerationTrace(
             briefUrl=path_to_output_url(brief_path),
@@ -105,6 +107,7 @@ class FeatureMeshyModel3DProvider(Model3DProvider):
                 "Scanned OBB should remain the source of truth for scale, placement, and collision.",
                 f"3D task metadata: {path_to_output_url(task_path)}",
                 f"3D result metadata: {path_to_output_url(result_path)}",
+                f"Remote GLB source: {remote_glb_url}" if remote_glb_url else "No remote GLB URL found; using fallback.",
             ],
         )
 
@@ -148,6 +151,11 @@ Read the furniture image and produce a detailed generation brief for a full gene
 The final 3D model will be generated, not reconstructed. Visible evidence should constrain the asset;
 unseen back, side, underside, and occluded parts should be inferred using furniture symmetry,
 category priors, repeated components, and material consistency.
+Before writing the prompt, regularize household disorder and reduce 3D modeling
+complexity: remove temporary clutter, overlapping fabric layers, crumpled bedding,
+scattered pillows, cables, piles, deep wrinkles, dense tiny folds and fringe tangles.
+Prefer broad clean surfaces, shallow orderly folds, aligned soft parts, simple curtain
+waves and clearly separated non-intersecting components.
 
 Detected object:
 - id: {detected_object.id}
@@ -317,6 +325,22 @@ Mark uncertain inferred details with low confidence values.
             return model_urls.get("glb")
         return None
 
+    async def _cache_remote_glb(self, glb_url: str | None, work_dir: Path) -> str | None:
+        if not glb_url or glb_url.startswith("/"):
+            return glb_url
+        if not glb_url.startswith(("http://", "https://")):
+            return None
+
+        output_path = work_dir / "generated_model.glb"
+        async with httpx.AsyncClient(timeout=180, follow_redirects=True) as client:
+            response = await client.get(glb_url)
+            response.raise_for_status()
+            content = response.content
+        if content[:4] != b"glTF":
+            raise ValueError(f"Downloaded model is not a GLB file: {content[:16]!r}")
+        output_path.write_bytes(content)
+        return path_to_output_url(output_path)
+
     def _reference_view_prompt(self, brief: FurnitureGenerationBrief, view_text: str) -> str:
         return f"""
 Create a clean isolated product reference image for 3D generation.
@@ -333,6 +357,9 @@ Inferred details:
 
 Use a plain white background. Show one complete object only. Keep the object centered, realistic,
 regular, and consistent with the visible evidence. Do not add labels, text, people, room background, or extra props.
+Simplify for fast 3D modeling: broad surfaces, shallow regular folds, aligned cushions or pillows,
+flat rugs, simple curtain waves and no tangled fabric, deep wrinkles, dense tiny folds,
+clutter piles, cables, fringe tangles or intersecting temporary layers.
 Avoid: {brief.negativePrompt}
 """
 
