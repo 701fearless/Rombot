@@ -4,3 +4,6 @@ pydantic>=2.11,<3
 httpx==0.28.1
 Pillow>=10,<12
 python-dotenv>=1.0,<2
+torch>=2.5,<3
+torchvision>=0.20,<1
+transformers>=4.45,<5

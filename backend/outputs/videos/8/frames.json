@@ -1,0 +1,36 @@
+{
+  "videoId": "8",
+  "sourceFileName": "8.mp4",
+  "durationSec": 14.9,
+  "samplingMode": "manual",
+  "plannedFrameCount": 5,
+  "retainedFrameCount": 5,
+  "samplingIntervalSec": 1.464502,
+  "frames": [
+    {
+      "timeSec": 1.961714,
+      "timeMs": 1962,
+      "fileName": "frame_t000001962ms.jpg"
+    },
+    {
+      "timeSec": 3.426216,
+      "timeMs": 3426,
+      "fileName": "frame_t000003426ms.jpg"
+    },
+    {
+      "timeSec": 8.539281,
+      "timeMs": 8539,
+      "fileName": "frame_t000008539ms.jpg"
+    },
+    {
+      "timeSec": 11.396727,
+      "timeMs": 11397,
+      "fileName": "frame_t000011397ms.jpg"
+    },
+    {
+      "timeSec": 13.131768,
+      "timeMs": 13132,
+      "fileName": "frame_t000013132ms.jpg"
+    }
+  ]
+}

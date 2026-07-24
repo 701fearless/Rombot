@@ -1,0 +1,18 @@
+{
+  "id": "candidate_sofa_002",
+  "label": "sofa",
+  "name": "布艺沙发",
+  "representativeFrameId": "4_000002",
+  "representativeObjectId": "obj_sofa_002",
+  "annotatedImageUrl": "/outputs/videos/4/deduplicated/candidate_sofa_002/annotated.jpg",
+  "cropUrl": "/outputs/videos/4/deduplicated/candidate_sofa_002/crop.jpg",
+  "maskUrl": "/outputs/videos/4/objects/4_000002_obj_sofa_002_mask.png",
+  "bbox": [
+    0,
+    0,
+    303,
+    1918
+  ],
+  "confidence": 0.96,
+  "duplicateCount": 1
+}

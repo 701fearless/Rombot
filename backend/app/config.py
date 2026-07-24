@@ -70,6 +70,11 @@ class Settings:
     meshy_api_key: str | None
     meshy_base_url: str
     cors_origins: list[str]
+    furniture_dedupe_enabled: bool
+    furniture_dedupe_model: str
+    furniture_dedupe_device: str
+    furniture_dedupe_threshold: float
+    furniture_dedupe_batch_size: int
 
     def __init__(self) -> None:
         self.detection_provider = os.getenv("DETECTION_PROVIDER", "mock").lower()
@@ -145,6 +150,19 @@ class Settings:
         }
         self.tripo_poll_interval_sec = float(os.getenv("TRIPO_POLL_INTERVAL_SEC", "5"))
         self.tripo_poll_attempts = int(os.getenv("TRIPO_POLL_ATTEMPTS", "72"))
+        self.furniture_dedupe_enabled = os.getenv("FURNITURE_DEDUPE_ENABLED", "true").lower() in {
+            "1",
+            "true",
+            "yes",
+            "on",
+        }
+        self.furniture_dedupe_model = os.getenv(
+            "FURNITURE_DEDUPE_MODEL",
+            "openai/clip-vit-base-patch32",
+        )
+        self.furniture_dedupe_device = os.getenv("FURNITURE_DEDUPE_DEVICE", "auto").lower()
+        self.furniture_dedupe_threshold = float(os.getenv("FURNITURE_DEDUPE_THRESHOLD", "0.88"))
+        self.furniture_dedupe_batch_size = max(1, int(os.getenv("FURNITURE_DEDUPE_BATCH_SIZE", "16")))
         raw_origins = os.getenv(
             "CORS_ORIGINS",
             "http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000,http://127.0.0.1:5173",

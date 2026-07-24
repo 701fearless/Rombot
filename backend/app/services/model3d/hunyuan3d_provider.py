@@ -6,6 +6,7 @@ from app.schemas import DetectedObject, ObjectAnalysis, SelectObjectResponse, Se
 from app.services.image_generation.ark_seedream_provider import ArkSeedreamProvider
 from app.services.model3d.base import Model3DProvider
 from app.services.model3d.mock_provider import MockModel3DProvider
+from app.storage.local_store import frame_output_dir, path_to_output_url
 
 
 class Hunyuan3DProvider(Model3DProvider):
@@ -67,7 +68,7 @@ class Hunyuan3DProvider(Model3DProvider):
                     name=detected_object.name,
                     bbox=detected_object.bbox,
                     cropUrl=image_url,
-                    maskUrl=f"/outputs/{frame_id}/{detected_object.id}_mask.png",
+                    maskUrl=path_to_output_url(frame_output_dir(frame_id) / f"{detected_object.id}_mask.png"),
                     glbUrl=glb_url,
                 ),
                 analysis=ObjectAnalysis(

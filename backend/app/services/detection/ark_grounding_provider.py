@@ -1,3 +1,4 @@
+import asyncio
 import base64
 import json
 import re
@@ -120,14 +121,7 @@ class ArkGroundingProvider:
             "thinking": {"type": "disabled"},
         }
         timeout = httpx.Timeout(connect=20, read=120, write=30, pool=20)
-        async with httpx.AsyncClient(timeout=timeout) as client:
-            response = await client.post(
-                f"{self.base_url}/chat/completions",
-                headers=self._headers(),
-                json=payload,
-            )
-            response.raise_for_status()
-            data = response.json()
+        data = await self._post_with_rate_limit_retry(payload, timeout)
 
         self.last_response_text = self._extract_text(data)
         raw_items = self._parse_items(self.last_response_text)
@@ -171,6 +165,30 @@ class ArkGroundingProvider:
 
     def _headers(self) -> dict[str, str]:
         return {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
+
+    async def _post_with_rate_limit_retry(self, payload: dict, timeout: httpx.Timeout) -> dict:
+        last_error: httpx.HTTPStatusError | None = None
+        for attempt in range(6):
+            async with httpx.AsyncClient(timeout=timeout) as client:
+                response = await client.post(
+                    f"{self.base_url}/chat/completions",
+                    headers=self._headers(),
+                    json=payload,
+                )
+            try:
+                response.raise_for_status()
+                return response.json()
+            except httpx.HTTPStatusError as exc:
+                if exc.response.status_code != 429 or attempt >= 5:
+                    raise
+                last_error = exc
+                retry_after = exc.response.headers.get("retry-after")
+                try:
+                    wait_sec = float(retry_after) if retry_after else 20 + attempt * 20
+                except ValueError:
+                    wait_sec = 20 + attempt * 20
+                await asyncio.sleep(wait_sec)
+        raise last_error or RuntimeError("Ark grounding request failed")
 
     def _extract_text(self, data: dict) -> str:
         if "choices" in data:

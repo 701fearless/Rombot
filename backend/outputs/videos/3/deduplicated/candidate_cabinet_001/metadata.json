@@ -1,0 +1,18 @@
+{
+  "id": "candidate_cabinet_001",
+  "label": "cabinet",
+  "name": "餐边柜",
+  "representativeFrameId": "3_000012",
+  "representativeObjectId": "obj_cabinet_001",
+  "annotatedImageUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+  "maskUrl": "/outputs/videos/3/objects/3_000012_obj_cabinet_001_mask.png",
+  "bbox": [
+    24,
+    390,
+    1076,
+    1789
+  ],
+  "confidence": 0.98,
+  "duplicateCount": 9
+}

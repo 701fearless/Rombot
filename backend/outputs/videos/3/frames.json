@@ -1,0 +1,81 @@
+{
+  "videoId": "3",
+  "sourceFileName": "3.mp4",
+  "durationSec": 23.433333,
+  "samplingMode": "manual",
+  "plannedFrameCount": 14,
+  "retainedFrameCount": 14,
+  "samplingIntervalSec": 0.352224,
+  "frames": [
+    {
+      "timeSec": 0.852296,
+      "timeMs": 852,
+      "fileName": "frame_t000000852ms.jpg"
+    },
+    {
+      "timeSec": 3.371061,
+      "timeMs": 3371,
+      "fileName": "frame_t000003371ms.jpg"
+    },
+    {
+      "timeSec": 3.723285,
+      "timeMs": 3723,
+      "fileName": "frame_t000003723ms.jpg"
+    },
+    {
+      "timeSec": 4.763516,
+      "timeMs": 4764,
+      "fileName": "frame_t000004764ms.jpg"
+    },
+    {
+      "timeSec": 6.997966,
+      "timeMs": 6998,
+      "fileName": "frame_t000006998ms.jpg"
+    },
+    {
+      "timeSec": 9.83288,
+      "timeMs": 9833,
+      "fileName": "frame_t000009833ms.jpg"
+    },
+    {
+      "timeSec": 11.677343,
+      "timeMs": 11677,
+      "fileName": "frame_t000011677ms.jpg"
+    },
+    {
+      "timeSec": 13.266508,
+      "timeMs": 13267,
+      "fileName": "frame_t000013267ms.jpg"
+    },
+    {
+      "timeSec": 15.076413,
+      "timeMs": 15076,
+      "fileName": "frame_t000015076ms.jpg"
+    },
+    {
+      "timeSec": 15.796126,
+      "timeMs": 15796,
+      "fileName": "frame_t000015796ms.jpg"
+    },
+    {
+      "timeSec": 17.18585,
+      "timeMs": 17186,
+      "fileName": "frame_t000017186ms.jpg"
+    },
+    {
+      "timeSec": 18.701108,
+      "timeMs": 18701,
+      "fileName": "frame_t000018701ms.jpg"
+    },
+    {
+      "timeSec": 20.732728,
+      "timeMs": 20733,
+      "fileName": "frame_t000020733ms.jpg"
+    },
+    {
+      "timeSec": 22.516803,
+      "timeMs": 22517,
+      "fileName": "frame_t000022517ms.jpg"
+    }
+  ]
+}

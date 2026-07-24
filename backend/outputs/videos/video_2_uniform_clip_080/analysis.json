@@ -1,0 +1,1836 @@
+{
+  "videoId": "video_2_uniform_clip_080",
+  "status": "succeeded",
+  "sampleIntervalSec": 5.3172993,
+  "frames": [
+    {
+      "frameId": "video_2_uniform_clip_080_000001",
+      "time": 0.0,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000001.jpg",
+      "objects": [
+        {
+          "id": "obj_wardrobe_001",
+          "label": "wardrobe",
+          "name": "原木色隐形衣柜",
+          "confidence": 0.98,
+          "bbox": [
+            545,
+            36,
+            977,
+            1572
+          ],
+          "tagPosition": [
+            0.7432,
+            0.4418
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000001_obj_wardrobe_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000001_obj_wardrobe_001_mask.png",
+          "visualFeatures": {
+            "geometry": "tall rectangular full-height cabinet, flush door",
+            "materials": [
+              "wood veneer"
+            ],
+            "colors": [
+              "light natural wood"
+            ],
+            "style": "minimalist modern",
+            "texturePattern": "subtle vertical wood grain",
+            "visibleComponents": [
+              "flush cabinet door",
+              "side panel"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "align door flush with frame"
+            ],
+            "complexityReduction": [
+              "simplify to flat smooth door panel"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "complete full height from floor to ceiling"
+            },
+            "occlusionCompletion": [
+              "extend unbroken panel to floor"
+            ],
+            "patternCompletion": "continue uniform wood grain across panel",
+            "preserve": [
+              "flush handleless door design",
+              "light wood finish"
+            ],
+            "remove": [
+              "text watermark overlays"
+            ]
+          }
+        },
+        {
+          "id": "obj_wardrobe_002",
+          "label": "wardrobe",
+          "name": "白色隐形衣柜",
+          "confidence": 0.92,
+          "bbox": [
+            126,
+            608,
+            334,
+            1068
+          ],
+          "tagPosition": [
+            0.2246,
+            0.4604
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000001_obj_wardrobe_002_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000001_obj_wardrobe_002_mask.png",
+          "visualFeatures": {
+            "geometry": "tall rectangular full-height cabinet, flush door",
+            "materials": [
+              "matte painted wood"
+            ],
+            "colors": [
+              "off-white"
+            ],
+            "style": "minimalist modern",
+            "texturePattern": "smooth matte finish",
+            "visibleComponents": [
+              "flush cabinet door"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "align door flush with wall"
+            ],
+            "complexityReduction": [
+              "simplify to flat smooth door panel"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "complete full height from floor to ceiling"
+            },
+            "occlusionCompletion": [
+              "extend unbroken panel to floor"
+            ],
+            "patternCompletion": "keep uniform matte white finish",
+            "preserve": [
+              "flush handleless door design",
+              "off-white matte finish"
+            ],
+            "remove": [
+              "text watermark overlays"
+            ]
+          }
+        },
+        {
+          "id": "obj_rug_003",
+          "label": "rug",
+          "name": "浅色地毯",
+          "confidence": 0.88,
+          "bbox": [
+            65,
+            1097,
+            402,
+            1270
+          ],
+          "tagPosition": [
+            0.228,
+            0.6503
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000001_obj_rug_003_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000001_obj_rug_003_mask.png",
+          "visualFeatures": {
+            "geometry": "flat rectangular area rug, low pile",
+            "materials": [
+              "woven textile"
+            ],
+            "colors": [
+              "off-white"
+            ],
+            "style": "minimalist",
+            "texturePattern": "subtle woven texture",
+            "visibleComponents": [
+              "flat rug surface",
+              "straight edge"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "flatten curled edges, smooth surface"
+            ],
+            "complexityReduction": [
+              "simplify to flat even surface"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "complete rectangular shape with straight edges"
+            },
+            "occlusionCompletion": [
+              "extend rug to full visible floor area"
+            ],
+            "patternCompletion": "continue subtle uniform woven texture",
+            "preserve": [
+              "light neutral color",
+              "low pile flat profile"
+            ],
+            "remove": []
+          }
+        }
+      ]
+    },
+    {
+      "frameId": "video_2_uniform_clip_080_000002",
+      "time": 5.3172993,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000002.jpg",
+      "objects": [
+        {
+          "id": "obj_coffee_table_001",
+          "label": "coffee_table",
+          "name": "玻璃茶几",
+          "confidence": 0.98,
+          "bbox": [
+            169,
+            1292,
+            850,
+            1665
+          ],
+          "tagPosition": [
+            0.4976,
+            0.8124
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000002_obj_coffee_table_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000002_obj_coffee_table_001_mask.png",
+          "visualFeatures": {
+            "geometry": "rectangular glass top, thin metal legs, curved cross support",
+            "materials": [
+              "clear glass",
+              "brushed metal"
+            ],
+            "colors": [
+              "transparent",
+              "silver"
+            ],
+            "style": "minimalist modern",
+            "texturePattern": "smooth glass, matte metal finish",
+            "visibleComponents": [
+              "glass tabletop",
+              "metal legs",
+              "cross stretcher"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "remove all small items from tabletop"
+            ],
+            "complexityReduction": [
+              "simplify metal joints to clean smooth forms"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "mirror leg and support structure across center"
+            },
+            "occlusionCompletion": [
+              "complete hidden leg segments to floor"
+            ],
+            "patternCompletion": "maintain uniform smooth glass and metal finish",
+            "preserve": [
+              "clear glass top",
+              "thin metal leg structure"
+            ],
+            "remove": [
+              "books, ashtray, bowl, photo frame on table"
+            ]
+          }
+        },
+        {
+          "id": "obj_sofa_002",
+          "label": "sofa",
+          "name": "白色休闲沙发",
+          "confidence": 0.96,
+          "bbox": [
+            0,
+            1019,
+            548,
+            1429
+          ],
+          "tagPosition": [
+            0.2676,
+            0.6725
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000002_obj_sofa_002_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000002_obj_sofa_002_mask.png",
+          "visualFeatures": {
+            "geometry": "low-profile curved lounge shape, horizontal padded segments",
+            "materials": [
+              "soft fabric upholstery"
+            ],
+            "colors": [
+              "off-white"
+            ],
+            "style": "modern casual lounge",
+            "texturePattern": "horizontal stitched padded channels",
+            "visibleComponents": [
+              "padded seat",
+              "padded backrest",
+              "curved armrests"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "smooth out fabric wrinkles"
+            ],
+            "complexityReduction": [
+              "flatten deep creases to even padded surfaces"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "mirror curved arm and seat shape across center"
+            },
+            "occlusionCompletion": [
+              "complete hidden lower base to floor"
+            ],
+            "patternCompletion": "continue horizontal padded stitching evenly",
+            "preserve": [
+              "horizontal channel stitching",
+              "curved lounge silhouette"
+            ],
+            "remove": [
+              "none"
+            ]
+          }
+        },
+        {
+          "id": "obj_rug_003",
+          "label": "rug",
+          "name": "浅色地毯",
+          "confidence": 0.94,
+          "bbox": [
+            0,
+            1374,
+            1022,
+            1818
+          ],
+          "tagPosition": [
+            0.499,
+            0.8769
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000002_obj_rug_003_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000002_obj_rug_003_mask.png",
+          "visualFeatures": {
+            "geometry": "large flat rectangular floor covering",
+            "materials": [
+              "woven textile"
+            ],
+            "colors": [
+              "light beige"
+            ],
+            "style": "minimalist modern",
+            "texturePattern": "scattered thin dark speckled lines",
+            "visibleComponents": [
+              "flat woven surface"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "remove open book from rug surface"
+            ],
+            "complexityReduction": [
+              "flatten surface to even smooth weave"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "extend pattern evenly across visible area"
+            },
+            "occlusionCompletion": [
+              "extend pattern under table and sofa"
+            ],
+            "patternCompletion": "continue scattered dark speckles uniformly",
+            "preserve": [
+              "light beige base",
+              "subtle dark speckle pattern"
+            ],
+            "remove": [
+              "open book on rug surface"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frameId": "video_2_uniform_clip_080_000003",
+      "time": 10.6345986,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000003.jpg",
+      "objects": [
+        {
+          "id": "obj_cabinet_001",
+          "label": "cabinet",
+          "name": "左侧厨房橱柜",
+          "confidence": 0.98,
+          "bbox": [
+            0,
+            0,
+            394,
+            1816
+          ],
+          "tagPosition": [
+            0.1924,
+            0.4989
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000003_obj_cabinet_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000003_obj_cabinet_001_mask.png",
+          "visualFeatures": {
+            "geometry": "长条形上下分体布局，沿墙面延伸",
+            "materials": [
+              "木饰面",
+              "石英石台面"
+            ],
+            "colors": [
+              "暖棕色",
+              "浅米白色"
+            ],
+            "style": "极简日式",
+            "texturePattern": "顺直浅木纹",
+            "visibleComponents": [
+              "吊柜",
+              "地柜",
+              "嵌入式洗碗机",
+              "抽油烟机"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除台面上的锅具、纸巾等杂物"
+            ],
+            "complexityReduction": [
+              "简化五金细节为平整板面"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "柜门按等宽模块对齐排布"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的柜体连续板面"
+            ],
+            "patternCompletion": "木纹沿柜体长度方向连续延伸",
+            "preserve": [
+              "暖棕木色、无把手极简设计"
+            ],
+            "remove": [
+              "台面临时摆放的厨具杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_cabinet_002",
+          "label": "cabinet",
+          "name": "右侧厨房橱柜",
+          "confidence": 0.98,
+          "bbox": [
+            710,
+            311,
+            1022,
+            1816
+          ],
+          "tagPosition": [
+            0.8457,
+            0.5843
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000003_obj_cabinet_002_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000003_obj_cabinet_002_mask.png",
+          "visualFeatures": {
+            "geometry": "长条形地柜加金属搁板，沿墙面延伸",
+            "materials": [
+              "木饰面",
+              "石英石台面",
+              "金属"
+            ],
+            "colors": [
+              "暖棕色",
+              "浅米白色",
+              "银灰色"
+            ],
+            "style": "极简日式",
+            "texturePattern": "顺直浅木纹",
+            "visibleComponents": [
+              "地柜抽屉",
+              "台面",
+              "墙面金属搁板"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除台面上的碗盘杂物"
+            ],
+            "complexityReduction": [
+              "简化抽屉缝隙为平整分割线"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "抽屉按等高模块对齐排布"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的柜体连续板面"
+            ],
+            "patternCompletion": "木纹沿柜体长度方向连续延伸",
+            "preserve": [
+              "暖棕木色、无把手极简设计"
+            ],
+            "remove": [
+              "台面临时摆放的餐具杂物"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frameId": "video_2_uniform_clip_080_000004",
+      "time": 15.9518979,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000004.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001",
+          "label": "sofa",
+          "name": "白色沙发",
+          "confidence": 0.98,
+          "bbox": [
+            0,
+            1443,
+            1022,
+            1818
+          ],
+          "tagPosition": [
+            0.499,
+            0.8959
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000004_obj_sofa_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000004_obj_sofa_001_mask.png",
+          "visualFeatures": {
+            "geometry": "长条形软包沙发，带分段饱满靠垫",
+            "materials": [
+              "皮革/科技布软包"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "细腻平滑软质纹理",
+            "visibleComponents": [
+              "软包座面",
+              "分段靠垫"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "抚平软包表面自然褶皱"
+            ],
+            "complexityReduction": [
+              "简化为大面平滑软包结构"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿长度方向对称补全完整沙发形态"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的沙发完整轮廓"
+            ],
+            "patternCompletion": "保持软包纹理均匀连续",
+            "preserve": [
+              "米白色软包质感",
+              "分段靠垫造型"
+            ],
+            "remove": [
+              "无多余杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_mirror_002",
+          "label": "mirror",
+          "name": "异形装饰镜",
+          "confidence": 0.97,
+          "bbox": [
+            261,
+            719,
+            356,
+            1016
+          ],
+          "tagPosition": [
+            0.3013,
+            0.4766
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000004_obj_mirror_002_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000004_obj_mirror_002_mask.png",
+          "visualFeatures": {
+            "geometry": "竖长不规则有机曲线造型",
+            "materials": [
+              "镜面玻璃",
+              "金属细边框"
+            ],
+            "colors": [
+              "银色镜面",
+              "黑色细边框"
+            ],
+            "style": "现代艺术风",
+            "texturePattern": "镜面光滑高反射，边框纤细",
+            "visibleComponents": [
+              "异形镜面",
+              "细包边"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "保持镜面干净无污渍"
+            ],
+            "complexityReduction": [
+              "简化边框为均匀细线条"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "保持现有流畅不规则轮廓"
+            },
+            "occlusionCompletion": [
+              "完整呈现现有曲线轮廓"
+            ],
+            "patternCompletion": "保持边框连续无断点",
+            "preserve": [
+              "不规则有机曲线造型",
+              "高反光镜面质感"
+            ],
+            "remove": [
+              "无多余遮挡物"
+            ]
+          }
+        },
+        {
+          "id": "obj_chair_003",
+          "label": "chair",
+          "name": "透明折叠椅",
+          "confidence": 0.96,
+          "bbox": [
+            515,
+            1087,
+            811,
+            1449
+          ],
+          "tagPosition": [
+            0.6475,
+            0.6967
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000004_obj_chair_003_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000004_obj_chair_003_mask.png",
+          "visualFeatures": {
+            "geometry": "折叠结构，金属框架配透明座靠",
+            "materials": [
+              "镀铬金属",
+              "透明亚克力/网布"
+            ],
+            "colors": [
+              "银色",
+              "黑色透明感"
+            ],
+            "style": "现代极简工业风",
+            "texturePattern": "金属亮面，座面通透无纹",
+            "visibleComponents": [
+              "交叉金属支架",
+              "透明靠背",
+              "黑色座面"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "摆正椅子位置，对齐支架"
+            ],
+            "complexityReduction": [
+              "简化金属支架交叉结构"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "左右对称补全椅腿支架结构"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的椅脚底部"
+            ],
+            "patternCompletion": "保持金属框架线条流畅连续",
+            "preserve": [
+              "透明靠背质感",
+              "金属折叠支架结构"
+            ],
+            "remove": [
+              "无多余杂物"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frameId": "video_2_uniform_clip_080_000005",
+      "time": 21.2691972,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000005.jpg",
+      "objects": [
+        {
+          "id": "obj_mirror_001",
+          "label": "mirror",
+          "name": "方形浴室镜",
+          "confidence": 0.98,
+          "bbox": [
+            310,
+            246,
+            821,
+            864
+          ],
+          "tagPosition": [
+            0.5522,
+            0.3049
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000005_obj_mirror_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000005_obj_mirror_001_mask.png",
+          "visualFeatures": {
+            "geometry": "竖版长方形，薄边框，平整镜面",
+            "materials": [
+              "玻璃",
+              "金属边"
+            ],
+            "colors": [
+              "银灰色"
+            ],
+            "style": "极简现代",
+            "texturePattern": "光滑高反光镜面",
+            "visibleComponents": [
+              "镜面",
+              "窄边框"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "去除镜面反射的临时杂物"
+            ],
+            "complexityReduction": [
+              "简化边框为等宽细边"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "左右对称补全边框轮廓"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的边框部分"
+            ],
+            "patternCompletion": "保持镜面连续光滑无瑕疵",
+            "preserve": [
+              "方形轮廓",
+              "高反光镜面质感"
+            ],
+            "remove": [
+              "镜面反射的无关环境细节"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frameId": "video_2_uniform_clip_080_000006",
+      "time": 26.586496500000003,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000006.jpg",
+      "objects": [
+        {
+          "id": "obj_cabinet_001",
+          "label": "cabinet",
+          "name": "岛台水柜",
+          "confidence": 0.92,
+          "bbox": [
+            138,
+            1121,
+            1022,
+            1816
+          ],
+          "tagPosition": [
+            0.5664,
+            0.8069
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_cabinet_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_cabinet_001_mask.png",
+          "visualFeatures": {
+            "geometry": "长方体块状岛台，平整台面",
+            "materials": [
+              "洞石/混凝土"
+            ],
+            "colors": [
+              "浅米灰色"
+            ],
+            "style": "极简侘寂风",
+            "texturePattern": "自然横向层理纹理",
+            "visibleComponents": [
+              "台面",
+              "金属水龙头"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "移除台面上零散小物件"
+            ],
+            "complexityReduction": [
+              "简化石材纹理为大面平整质感"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "补全被遮挡的对称柜体侧面"
+            },
+            "occlusionCompletion": [
+              "补全被吧台遮挡的下部柜体"
+            ],
+            "patternCompletion": "延续横向石材纹理到遮挡区域",
+            "preserve": [
+              "金属水龙头造型",
+              "石材自然肌理"
+            ],
+            "remove": [
+              "台面上的小型金属配件"
+            ]
+          }
+        },
+        {
+          "id": "obj_chair_002",
+          "label": "chair",
+          "name": "金属网椅",
+          "confidence": 0.9,
+          "bbox": [
+            0,
+            1370,
+            189,
+            1816
+          ],
+          "tagPosition": [
+            0.0923,
+            0.8753
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_chair_002_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_chair_002_mask.png",
+          "visualFeatures": {
+            "geometry": "细金属框架，镂空网面靠背座面",
+            "materials": [
+              "金属"
+            ],
+            "colors": [
+              "银灰色"
+            ],
+            "style": "现代工业风",
+            "texturePattern": "均匀方格冲孔网面",
+            "visibleComponents": [
+              "金属椅腿",
+              "网面靠背",
+              "金属扶手"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "摆正椅身对齐结构"
+            ],
+            "complexityReduction": [
+              "简化网孔为统一规整网格"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "补全被遮挡的对称椅腿与框架"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的后半部分椅身"
+            ],
+            "patternCompletion": "延续均匀网格到遮挡网面区域",
+            "preserve": [
+              "细金属框架结构",
+              "冲孔网面特征"
+            ],
+            "remove": []
+          }
+        },
+        {
+          "id": "obj_pendant_light_003",
+          "label": "pendant_light",
+          "name": "长条吊灯",
+          "confidence": 0.88,
+          "bbox": [
+            0,
+            0,
+            307,
+            388
+          ],
+          "tagPosition": [
+            0.1499,
+            0.1066
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_pendant_light_003_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_pendant_light_003_mask.png",
+          "visualFeatures": {
+            "geometry": "长条形水平灯体，细吊线悬挂",
+            "materials": [
+              "金属"
+            ],
+            "colors": [
+              "枪灰色",
+              "暖白光"
+            ],
+            "style": "极简现代风",
+            "texturePattern": "光滑金属表面",
+            "visibleComponents": [
+              "发光灯条",
+              "金属灯架",
+              "吊线"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "理顺吊线保持垂直"
+            ],
+            "complexityReduction": [
+              "简化灯架细节为简洁长条结构"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿灯体长轴补全对称结构"
+            },
+            "occlusionCompletion": [
+              "补全被画面截断的灯体右端"
+            ],
+            "patternCompletion": "延续光滑金属表面到截断部分",
+            "preserve": [
+              "长条发光造型",
+              "细吊线设计"
+            ],
+            "remove": []
+          }
+        },
+        {
+          "id": "obj_cabinet_004",
+          "label": "cabinet",
+          "name": "深色高柜",
+          "confidence": 0.85,
+          "bbox": [
+            0,
+            0,
+            1022,
+            1265
+          ],
+          "tagPosition": [
+            0.499,
+            0.3475
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_cabinet_004_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_cabinet_004_mask.png",
+          "visualFeatures": {
+            "geometry": "整面竖向高柜，平整门板",
+            "materials": [
+              "烤漆/木饰面"
+            ],
+            "colors": [
+              "深棕黑色"
+            ],
+            "style": "极简暗调风",
+            "texturePattern": "光滑哑光表面，竖向分缝",
+            "visibleComponents": [
+              "竖向柜门",
+              "分缝线条"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐柜门分缝保持竖直"
+            ],
+            "complexityReduction": [
+              "简化门板为大面平整哑光面"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "延续竖向柜门模块补全画面外部分"
+            },
+            "occlusionCompletion": [
+              "补全被岛台遮挡的下部柜体"
+            ],
+            "patternCompletion": "延续哑光深色表面到遮挡区域",
+            "preserve": [
+              "竖向分缝设计",
+              "深哑光质感"
+            ],
+            "remove": []
+          }
+        }
+      ]
+    },
+    {
+      "frameId": "video_2_uniform_clip_080_000007",
+      "time": 31.9037958,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000007.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001",
+          "label": "sofa",
+          "name": "白色沙发",
+          "confidence": 0.98,
+          "bbox": [
+            0,
+            1401,
+            965,
+            1818
+          ],
+          "tagPosition": [
+            0.4712,
+            0.8843
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_sofa_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_sofa_001_mask.png",
+          "visualFeatures": {
+            "geometry": "长条形靠背，横向分段绗缝设计",
+            "materials": [
+              "软包面料"
+            ],
+            "colors": [
+              "白色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "方格绗缝纹理",
+            "visibleComponents": [
+              "靠背"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "平滑表面褶皱"
+            ],
+            "complexityReduction": [
+              "简化绗缝深度，保持大平面"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿中线对称补全完整沙发形态"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的座面与沙发腿"
+            ],
+            "patternCompletion": "延续横向分段绗缝纹理",
+            "preserve": [
+              "白色软包质感",
+              "方格绗缝设计"
+            ],
+            "remove": []
+          }
+        },
+        {
+          "id": "obj_coffee_table_002",
+          "label": "coffee_table",
+          "name": "玻璃茶几",
+          "confidence": 0.92,
+          "bbox": [
+            372,
+            1269,
+            666,
+            1431
+          ],
+          "tagPosition": [
+            0.5068,
+            0.7418
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_coffee_table_002_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_coffee_table_002_mask.png",
+          "visualFeatures": {
+            "geometry": "长方形玻璃台面，金属细支脚",
+            "materials": [
+              "钢化玻璃",
+              "金属"
+            ],
+            "colors": [
+              "透明",
+              "黑色"
+            ],
+            "style": "现代极简",
+            "texturePattern": "光滑玻璃面，哑光金属脚",
+            "visibleComponents": [
+              "台面",
+              "支脚"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除台面上的书籍杂物"
+            ],
+            "complexityReduction": [
+              "简化支脚结构，保持简洁线条"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿中线对称补全支脚与底座"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的底座部分"
+            ],
+            "patternCompletion": "保持玻璃与金属材质连续",
+            "preserve": [
+              "透明玻璃台面",
+              "细金属支脚"
+            ],
+            "remove": [
+              "台面上的书籍、小摆件"
+            ]
+          }
+        },
+        {
+          "id": "obj_tv_stand_003",
+          "label": "tv_stand",
+          "name": "电视背景柜体",
+          "confidence": 0.9,
+          "bbox": [
+            438,
+            834,
+            755,
+            1249
+          ],
+          "tagPosition": [
+            0.5825,
+            0.5723
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_tv_stand_003_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_tv_stand_003_mask.png",
+          "visualFeatures": {
+            "geometry": "竖向长方体，内嵌电视与长条音响",
+            "materials": [
+              "微水泥/哑光板材"
+            ],
+            "colors": [
+              "浅灰色"
+            ],
+            "style": "侘寂现代",
+            "texturePattern": "哑光细腻肌理",
+            "visibleComponents": [
+              "柜体正面",
+              "电视",
+              "音响"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "保持柜体表面平整无杂物"
+            ],
+            "complexityReduction": [
+              "简化柜体侧面细节，保持大平面"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "保持正面居中对称结构"
+            },
+            "occlusionCompletion": [
+              "补全柜体被遮挡的侧面"
+            ],
+            "patternCompletion": "延续哑光浅灰材质肌理",
+            "preserve": [
+              "内嵌电视设计",
+              "哑光浅灰质感"
+            ],
+            "remove": []
+          }
+        },
+        {
+          "id": "obj_rug_004",
+          "label": "rug",
+          "name": "浅灰色地毯",
+          "confidence": 0.88,
+          "bbox": [
+            170,
+            1303,
+            1022,
+            1816
+          ],
+          "tagPosition": [
+            0.582,
+            0.8569
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_rug_004_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_rug_004_mask.png",
+          "visualFeatures": {
+            "geometry": "长方形，铺设于茶几下方",
+            "materials": [
+              "短绒织物"
+            ],
+            "colors": [
+              "浅灰色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "短绒素面，边缘带细微深色点缀",
+            "visibleComponents": [
+              "毯面"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "铺平毯面，整理边缘"
+            ],
+            "complexityReduction": [
+              "简化绒面细节，保持平整大面"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿中线对称补全被遮挡毯面"
+            },
+            "occlusionCompletion": [
+              "补全被沙发、茶几遮挡的部分"
+            ],
+            "patternCompletion": "延续短绒素面质感与边缘点缀",
+            "preserve": [
+              "浅灰短绒质感"
+            ],
+            "remove": []
+          }
+        }
+      ]
+    },
+    {
+      "frameId": "video_2_uniform_clip_080_000008",
+      "time": 37.2210951,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000008.jpg",
+      "objects": [
+        {
+          "id": "obj_rug_001",
+          "label": "rug",
+          "name": "编织地毯",
+          "confidence": 0.96,
+          "bbox": [
+            0,
+            1401,
+            891,
+            1818
+          ],
+          "tagPosition": [
+            0.4351,
+            0.8843
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000008_obj_rug_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000008_obj_rug_001_mask.png",
+          "visualFeatures": {
+            "geometry": "长方形，平铺地面，边缘带棕色包边",
+            "materials": [
+              "编织纤维"
+            ],
+            "colors": [
+              "米白色",
+              "深棕色"
+            ],
+            "style": "侘寂自然风",
+            "texturePattern": "带细碎黑色斑点，编织纹理",
+            "visibleComponents": [
+              "毯面",
+              "棕色侧边包边"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "铺平毯面，整理边缘"
+            ],
+            "complexityReduction": [
+              "简化细碎纹理为均匀编织面"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "延续斑点与编织纹理至完整矩形"
+            },
+            "occlusionCompletion": [
+              "补全被茶几遮挡的毯面部分"
+            ],
+            "patternCompletion": "均匀延续黑色细碎斑点纹理",
+            "preserve": [
+              "米白底色",
+              "棕色包边",
+              "编织质感"
+            ],
+            "remove": [
+              "毯面压痕、局部褶皱"
+            ]
+          }
+        },
+        {
+          "id": "obj_coffee_table_002",
+          "label": "coffee_table",
+          "name": "玻璃金属茶几",
+          "confidence": 0.92,
+          "bbox": [
+            551,
+            1316,
+            892,
+            1643
+          ],
+          "tagPosition": [
+            0.7046,
+            0.8129
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000008_obj_coffee_table_002_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000008_obj_coffee_table_002_mask.png",
+          "visualFeatures": {
+            "geometry": "透明玻璃桌面，细金属支腿，低矮长方形",
+            "materials": [
+              "钢化玻璃",
+              "抛光金属"
+            ],
+            "colors": [
+              "透明",
+              "银灰色"
+            ],
+            "style": "极简现代",
+            "texturePattern": "光滑无纹理",
+            "visibleComponents": [
+              "玻璃台面",
+              "金属支腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除桌面书籍、小容器等杂物"
+            ],
+            "complexityReduction": [
+              "简化金属底座为简洁支撑结构"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿中线补全对称支腿与底座"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的另一侧支腿"
+            ],
+            "patternCompletion": "保持玻璃与金属表面光滑连续",
+            "preserve": [
+              "透明玻璃台面",
+              "细金属支腿造型"
+            ],
+            "remove": [
+              "桌面堆叠的书籍、小型容器"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frameId": "video_2_uniform_clip_080_000009",
+      "time": 42.5383944,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000009.jpg",
+      "objects": [
+        {
+          "id": "obj_cabinet_001",
+          "label": "cabinet",
+          "name": "壁挂浴室柜",
+          "confidence": 0.92,
+          "bbox": [
+            0,
+            96,
+            219,
+            1787
+          ],
+          "tagPosition": [
+            0.1069,
+            0.5173
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000009_obj_cabinet_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000009_obj_cabinet_001_mask.png",
+          "visualFeatures": {
+            "geometry": "竖版长方形无把手平板柜门",
+            "materials": [
+              "哑光烤漆板"
+            ],
+            "colors": [
+              "浅灰色"
+            ],
+            "style": "极简现代",
+            "texturePattern": "光滑无纹理",
+            "visibleComponents": [
+              "平板柜门"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐柜门缝隙"
+            ],
+            "complexityReduction": [
+              "简化为平整大面板"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "补全被裁切的柜体部分"
+            },
+            "occlusionCompletion": [
+              "补全下方被遮挡的柜体"
+            ],
+            "patternCompletion": "保持表面光滑无纹理",
+            "preserve": [
+              "哑光浅灰质感",
+              "极简无把手设计"
+            ],
+            "remove": [
+              "无多余杂物"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frameId": "video_2_uniform_clip_080_000010",
+      "time": 47.8556937,
+      "frameImageUrl": "/outputs/videos/video_2_uniform_clip_080/frames/000010.jpg",
+      "objects": [
+        {
+          "id": "obj_coffee_table_001",
+          "label": "coffee_table",
+          "name": "玻璃茶几",
+          "confidence": 0.92,
+          "bbox": [
+            238,
+            1274,
+            1022,
+            1647
+          ],
+          "tagPosition": [
+            0.6152,
+            0.8025
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000010_obj_coffee_table_001_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000010_obj_coffee_table_001_mask.png",
+          "visualFeatures": {
+            "geometry": "low rectangular table with glass top and metal legs",
+            "materials": [
+              "clear glass",
+              "brushed metal"
+            ],
+            "colors": [
+              "transparent",
+              "silver gray"
+            ],
+            "style": "minimalist modern",
+            "texturePattern": "smooth glossy glass, matte metal finish",
+            "visibleComponents": [
+              "glass tabletop",
+              "metal support legs"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "remove all books and small items from tabletop"
+            ],
+            "complexityReduction": [
+              "simplify metal supports to clean straight bars"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "mirror visible leg structure across table center"
+            },
+            "occlusionCompletion": [
+              "complete hidden table legs and full tabletop"
+            ],
+            "patternCompletion": "maintain uniform smooth glass and metal finish",
+            "preserve": [
+              "clear glass top, minimalist metal frame"
+            ],
+            "remove": [
+              "stacked books, pen, small decorative objects"
+            ]
+          }
+        },
+        {
+          "id": "obj_rug_002",
+          "label": "rug",
+          "name": "毛绒地毯",
+          "confidence": 0.9,
+          "bbox": [
+            0,
+            1461,
+            1022,
+            1667
+          ],
+          "tagPosition": [
+            0.499,
+            0.8593
+          ],
+          "cropUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000010_obj_rug_002_crop.jpg",
+          "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000010_obj_rug_002_mask.png",
+          "visualFeatures": {
+            "geometry": "flat low-pile rectangular floor covering",
+            "materials": [
+              "soft woven textile"
+            ],
+            "colors": [
+              "off-white",
+              "dark gray speckles"
+            ],
+            "style": "minimalist casual",
+            "texturePattern": "shaggy plush surface with scattered dark spots",
+            "visibleComponents": [
+              "flat laid rug surface"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "flatten rug to remove uneven indentations"
+            ],
+            "complexityReduction": [
+              "simplify speckle pattern to sparse uniform spots"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "extend plush texture evenly across full rug"
+            },
+            "occlusionCompletion": [
+              "complete rug area under coffee table"
+            ],
+            "patternCompletion": "continue soft plush texture and sparse speckles",
+            "preserve": [
+              "off-white base, dark scattered speckles, plush texture"
+            ],
+            "remove": [
+              "indentations from table legs"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "deduplicatedObjects": [
+    {
+      "id": "candidate_wardrobe_001",
+      "label": "wardrobe",
+      "name": "原木色隐形衣柜",
+      "representativeFrameId": "video_2_uniform_clip_080_000001",
+      "representativeObjectId": "obj_wardrobe_001",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_wardrobe_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_wardrobe_001/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000001_obj_wardrobe_001_mask.png",
+      "bbox": [
+        545,
+        36,
+        977,
+        1572
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 2
+    },
+    {
+      "id": "candidate_rug_001",
+      "label": "rug",
+      "name": "浅灰色地毯",
+      "representativeFrameId": "video_2_uniform_clip_080_000007",
+      "representativeObjectId": "obj_rug_004",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_rug_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_rug_001/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_rug_004_mask.png",
+      "bbox": [
+        170,
+        1303,
+        1022,
+        1816
+      ],
+      "confidence": 0.88,
+      "duplicateCount": 3
+    },
+    {
+      "id": "candidate_coffee_table_001",
+      "label": "coffee table",
+      "name": "玻璃茶几",
+      "representativeFrameId": "video_2_uniform_clip_080_000002",
+      "representativeObjectId": "obj_coffee_table_001",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_coffee_table_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_coffee_table_001/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000002_obj_coffee_table_001_mask.png",
+      "bbox": [
+        169,
+        1292,
+        850,
+        1665
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 2
+    },
+    {
+      "id": "candidate_sofa_001",
+      "label": "sofa",
+      "name": "白色休闲沙发",
+      "representativeFrameId": "video_2_uniform_clip_080_000002",
+      "representativeObjectId": "obj_sofa_002",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_sofa_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_sofa_001/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000002_obj_sofa_002_mask.png",
+      "bbox": [
+        0,
+        1019,
+        548,
+        1429
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_rug_002",
+      "label": "rug",
+      "name": "浅色地毯",
+      "representativeFrameId": "video_2_uniform_clip_080_000002",
+      "representativeObjectId": "obj_rug_003",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_rug_002/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_rug_002/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000002_obj_rug_003_mask.png",
+      "bbox": [
+        0,
+        1374,
+        1022,
+        1818
+      ],
+      "confidence": 0.94,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_cabinet_001",
+      "label": "cabinet",
+      "name": "右侧厨房橱柜",
+      "representativeFrameId": "video_2_uniform_clip_080_000003",
+      "representativeObjectId": "obj_cabinet_002",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_cabinet_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_cabinet_001/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000003_obj_cabinet_002_mask.png",
+      "bbox": [
+        710,
+        311,
+        1022,
+        1816
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 2
+    },
+    {
+      "id": "candidate_sofa_002",
+      "label": "sofa",
+      "name": "白色沙发",
+      "representativeFrameId": "video_2_uniform_clip_080_000004",
+      "representativeObjectId": "obj_sofa_001",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_sofa_002/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_sofa_002/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000004_obj_sofa_001_mask.png",
+      "bbox": [
+        0,
+        1443,
+        1022,
+        1818
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_mirror_001",
+      "label": "mirror",
+      "name": "异形装饰镜",
+      "representativeFrameId": "video_2_uniform_clip_080_000004",
+      "representativeObjectId": "obj_mirror_002",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_mirror_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_mirror_001/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000004_obj_mirror_002_mask.png",
+      "bbox": [
+        261,
+        719,
+        356,
+        1016
+      ],
+      "confidence": 0.97,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_chair_001",
+      "label": "chair",
+      "name": "透明折叠椅",
+      "representativeFrameId": "video_2_uniform_clip_080_000004",
+      "representativeObjectId": "obj_chair_003",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_chair_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_chair_001/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000004_obj_chair_003_mask.png",
+      "bbox": [
+        515,
+        1087,
+        811,
+        1449
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 2
+    },
+    {
+      "id": "candidate_mirror_002",
+      "label": "mirror",
+      "name": "方形浴室镜",
+      "representativeFrameId": "video_2_uniform_clip_080_000005",
+      "representativeObjectId": "obj_mirror_001",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_mirror_002/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_mirror_002/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000005_obj_mirror_001_mask.png",
+      "bbox": [
+        310,
+        246,
+        821,
+        864
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_cabinet_002",
+      "label": "cabinet",
+      "name": "岛台水柜",
+      "representativeFrameId": "video_2_uniform_clip_080_000006",
+      "representativeObjectId": "obj_cabinet_001",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_cabinet_002/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_cabinet_002/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_cabinet_001_mask.png",
+      "bbox": [
+        138,
+        1121,
+        1022,
+        1816
+      ],
+      "confidence": 0.92,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_pendant_light_001",
+      "label": "pendant light",
+      "name": "长条吊灯",
+      "representativeFrameId": "video_2_uniform_clip_080_000006",
+      "representativeObjectId": "obj_pendant_light_003",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_pendant_light_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_pendant_light_001/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_pendant_light_003_mask.png",
+      "bbox": [
+        0,
+        0,
+        307,
+        388
+      ],
+      "confidence": 0.88,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_cabinet_003",
+      "label": "cabinet",
+      "name": "深色高柜",
+      "representativeFrameId": "video_2_uniform_clip_080_000006",
+      "representativeObjectId": "obj_cabinet_004",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_cabinet_003/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_cabinet_003/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_cabinet_004_mask.png",
+      "bbox": [
+        0,
+        0,
+        1022,
+        1265
+      ],
+      "confidence": 0.85,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_sofa_003",
+      "label": "sofa",
+      "name": "白色沙发",
+      "representativeFrameId": "video_2_uniform_clip_080_000007",
+      "representativeObjectId": "obj_sofa_001",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_sofa_003/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_sofa_003/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_sofa_001_mask.png",
+      "bbox": [
+        0,
+        1401,
+        965,
+        1818
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_coffee_table_002",
+      "label": "coffee table",
+      "name": "玻璃茶几",
+      "representativeFrameId": "video_2_uniform_clip_080_000010",
+      "representativeObjectId": "obj_coffee_table_001",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_coffee_table_002/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_coffee_table_002/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000010_obj_coffee_table_001_mask.png",
+      "bbox": [
+        238,
+        1274,
+        1022,
+        1647
+      ],
+      "confidence": 0.92,
+      "duplicateCount": 2
+    },
+    {
+      "id": "candidate_tv_stand_001",
+      "label": "tv stand",
+      "name": "电视背景柜体",
+      "representativeFrameId": "video_2_uniform_clip_080_000007",
+      "representativeObjectId": "obj_tv_stand_003",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_tv_stand_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_tv_stand_001/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_tv_stand_003_mask.png",
+      "bbox": [
+        438,
+        834,
+        755,
+        1249
+      ],
+      "confidence": 0.9,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_rug_003",
+      "label": "rug",
+      "name": "编织地毯",
+      "representativeFrameId": "video_2_uniform_clip_080_000008",
+      "representativeObjectId": "obj_rug_001",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_rug_003/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_rug_003/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000008_obj_rug_001_mask.png",
+      "bbox": [
+        0,
+        1401,
+        891,
+        1818
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 1
+    },
+    {
+      "id": "candidate_cabinet_004",
+      "label": "cabinet",
+      "name": "壁挂浴室柜",
+      "representativeFrameId": "video_2_uniform_clip_080_000009",
+      "representativeObjectId": "obj_cabinet_001",
+      "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_cabinet_004/annotated.jpg",
+      "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_cabinet_004/crop.jpg",
+      "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000009_obj_cabinet_001_mask.png",
+      "bbox": [
+        0,
+        96,
+        219,
+        1787
+      ],
+      "confidence": 0.92,
+      "duplicateCount": 1
+    }
+  ],
+  "dedupeWarning": null
+}

@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw
 
 from app.schemas import DetectedObject, SegmentationResult
 from app.services.segmentation.base import SegmentationProvider
-from app.storage.local_store import OUTPUTS_ROOT, path_to_output_url
+from app.storage.local_store import frame_output_dir, path_to_output_url
 
 
 class MockSegmentationProvider(SegmentationProvider):
@@ -17,7 +17,7 @@ class MockSegmentationProvider(SegmentationProvider):
         frame_image_path: Path | None = None,
         frame_image_data_url: str | None = None,
     ) -> SegmentationResult:
-        output_dir = OUTPUTS_ROOT / frame_id
+        output_dir = frame_output_dir(frame_id)
         output_dir.mkdir(parents=True, exist_ok=True)
         crop_path = output_dir / f"{detected_object.id}_crop.jpg"
         mask_path = output_dir / f"{detected_object.id}_mask.png"

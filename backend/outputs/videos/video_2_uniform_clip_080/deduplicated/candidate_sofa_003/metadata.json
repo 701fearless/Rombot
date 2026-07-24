@@ -1,0 +1,18 @@
+{
+  "id": "candidate_sofa_003",
+  "label": "sofa",
+  "name": "白色沙发",
+  "representativeFrameId": "video_2_uniform_clip_080_000007",
+  "representativeObjectId": "obj_sofa_001",
+  "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_sofa_003/annotated.jpg",
+  "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_sofa_003/crop.jpg",
+  "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000007_obj_sofa_001_mask.png",
+  "bbox": [
+    0,
+    1401,
+    965,
+    1818
+  ],
+  "confidence": 0.98,
+  "duplicateCount": 1
+}

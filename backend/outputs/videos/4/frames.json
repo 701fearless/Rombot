@@ -1,0 +1,106 @@
+{
+  "videoId": "4",
+  "sourceFileName": "4.mp4",
+  "durationSec": 85.9,
+  "samplingMode": "manual",
+  "plannedFrameCount": 19,
+  "retainedFrameCount": 19,
+  "samplingIntervalSec": 1.488763,
+  "frames": [
+    {
+      "timeSec": 1.675957,
+      "timeMs": 1676,
+      "fileName": "frame_t000001676ms.jpg"
+    },
+    {
+      "timeSec": 3.607333,
+      "timeMs": 3607,
+      "fileName": "frame_t000003607ms.jpg"
+    },
+    {
+      "timeSec": 5.303624,
+      "timeMs": 5304,
+      "fileName": "frame_t000005304ms.jpg"
+    },
+    {
+      "timeSec": 8.943974,
+      "timeMs": 8944,
+      "fileName": "frame_t000008944ms.jpg"
+    },
+    {
+      "timeSec": 11.472225,
+      "timeMs": 11472,
+      "fileName": "frame_t000011472ms.jpg"
+    },
+    {
+      "timeSec": 13.99565,
+      "timeMs": 13996,
+      "fileName": "frame_t000013996ms.jpg"
+    },
+    {
+      "timeSec": 22.598787,
+      "timeMs": 22599,
+      "fileName": "frame_t000022599ms.jpg"
+    },
+    {
+      "timeSec": 28.092797,
+      "timeMs": 28093,
+      "fileName": "frame_t000028093ms.jpg"
+    },
+    {
+      "timeSec": 29.985426,
+      "timeMs": 29985,
+      "fileName": "frame_t000029985ms.jpg"
+    },
+    {
+      "timeSec": 35.798822,
+      "timeMs": 35799,
+      "fileName": "frame_t000035799ms.jpg"
+    },
+    {
+      "timeSec": 37.984108,
+      "timeMs": 37984,
+      "fileName": "frame_t000037984ms.jpg"
+    },
+    {
+      "timeSec": 39.472871,
+      "timeMs": 39473,
+      "fileName": "frame_t000039473ms.jpg"
+    },
+    {
+      "timeSec": 52.830413,
+      "timeMs": 52830,
+      "fileName": "frame_t000052830ms.jpg"
+    },
+    {
+      "timeSec": 58.802995,
+      "timeMs": 58803,
+      "fileName": "frame_t000058803ms.jpg"
+    },
+    {
+      "timeSec": 61.735041,
+      "timeMs": 61735,
+      "fileName": "frame_t000061735ms.jpg"
+    },
+    {
+      "timeSec": 70.564776,
+      "timeMs": 70565,
+      "fileName": "frame_t000070565ms.jpg"
+    },
+    {
+      "timeSec": 76.334267,
+      "timeMs": 76334,
+      "fileName": "frame_t000076334ms.jpg"
+    },
+    {
+      "timeSec": 82.982148,
+      "timeMs": 82982,
+      "fileName": "frame_t000082982ms.jpg"
+    },
+    {
+      "timeSec": 84.915309,
+      "timeMs": 84915,
+      "fileName": "frame_t000084915ms.jpg"
+    }
+  ]
+}

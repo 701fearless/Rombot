@@ -1,0 +1,18 @@
+{
+  "id": "candidate_painting_001",
+  "label": "painting",
+  "name": "装饰画",
+  "representativeFrameId": "4_000007",
+  "representativeObjectId": "obj_painting_002",
+  "annotatedImageUrl": "/outputs/videos/4/deduplicated/candidate_painting_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/4/deduplicated/candidate_painting_001/crop.jpg",
+  "maskUrl": "/outputs/videos/4/objects/4_000007_obj_painting_002_mask.png",
+  "bbox": [
+    141,
+    154,
+    624,
+    657
+  ],
+  "confidence": 0.94,
+  "duplicateCount": 2
+}

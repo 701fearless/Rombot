@@ -1,0 +1,18 @@
+{
+  "id": "candidate_dining_table_001",
+  "label": "dining table",
+  "name": "餐桌",
+  "representativeFrameId": "1_000011",
+  "representativeObjectId": "obj_dining_table_001",
+  "annotatedImageUrl": "/outputs/videos/1/deduplicated/candidate_dining_table_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/1/deduplicated/candidate_dining_table_001/crop.jpg",
+  "maskUrl": "/outputs/videos/1/objects/1_000011_obj_dining_table_001_mask.png",
+  "bbox": [
+    0,
+    1697,
+    2156,
+    3832
+  ],
+  "confidence": 0.98,
+  "duplicateCount": 5
+}

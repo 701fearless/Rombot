@@ -1,0 +1,18 @@
+{
+  "id": "candidate_mirror_001",
+  "label": "mirror",
+  "name": "落地全身镜",
+  "representativeFrameId": "1_000020",
+  "representativeObjectId": "obj_mirror_001",
+  "annotatedImageUrl": "/outputs/videos/1/deduplicated/candidate_mirror_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/1/deduplicated/candidate_mirror_001/crop.jpg",
+  "maskUrl": "/outputs/videos/1/objects/1_000020_obj_mirror_001_mask.png",
+  "bbox": [
+    879,
+    1947,
+    1218,
+    2934
+  ],
+  "confidence": 0.93,
+  "duplicateCount": 3
+}

@@ -1,0 +1,146 @@
+{
+  "videoId": "1",
+  "sourceFileName": "1.mp4",
+  "durationSec": 190.242495,
+  "samplingMode": "manual",
+  "plannedFrameCount": 27,
+  "retainedFrameCount": 27,
+  "samplingIntervalSec": 0.960149,
+  "frames": [
+    {
+      "timeSec": 7.223658,
+      "timeMs": 7224,
+      "fileName": "frame_t000007224ms.jpg"
+    },
+    {
+      "timeSec": 8.427101,
+      "timeMs": 8427,
+      "fileName": "frame_t000008427ms.jpg"
+    },
+    {
+      "timeSec": 14.297574,
+      "timeMs": 14298,
+      "fileName": "frame_t000014298ms.jpg"
+    },
+    {
+      "timeSec": 17.667889,
+      "timeMs": 17668,
+      "fileName": "frame_t000017668ms.jpg"
+    },
+    {
+      "timeSec": 18.628038,
+      "timeMs": 18628,
+      "fileName": "frame_t000018628ms.jpg"
+    },
+    {
+      "timeSec": 21.413777,
+      "timeMs": 21414,
+      "fileName": "frame_t000021414ms.jpg"
+    },
+    {
+      "timeSec": 23.162766,
+      "timeMs": 23163,
+      "fileName": "frame_t000023163ms.jpg"
+    },
+    {
+      "timeSec": 40.064694,
+      "timeMs": 40065,
+      "fileName": "frame_t000040065ms.jpg"
+    },
+    {
+      "timeSec": 50.279482,
+      "timeMs": 50279,
+      "fileName": "frame_t000050279ms.jpg"
+    },
+    {
+      "timeSec": 54.323763,
+      "timeMs": 54324,
+      "fileName": "frame_t000054324ms.jpg"
+    },
+    {
+      "timeSec": 61.004361,
+      "timeMs": 61004,
+      "fileName": "frame_t000061004ms.jpg"
+    },
+    {
+      "timeSec": 66.150201,
+      "timeMs": 66150,
+      "fileName": "frame_t000066150ms.jpg"
+    },
+    {
+      "timeSec": 70.648075,
+      "timeMs": 70648,
+      "fileName": "frame_t000070648ms.jpg"
+    },
+    {
+      "timeSec": 84.224686,
+      "timeMs": 84225,
+      "fileName": "frame_t000084225ms.jpg"
+    },
+    {
+      "timeSec": 100.879009,
+      "timeMs": 100879,
+      "fileName": "frame_t000100879ms.jpg"
+    },
+    {
+      "timeSec": 104.419991,
+      "timeMs": 104420,
+      "fileName": "frame_t000104420ms.jpg"
+    },
+    {
+      "timeSec": 108.050271,
+      "timeMs": 108050,
+      "fileName": "frame_t000108050ms.jpg"
+    },
+    {
+      "timeSec": 120.108725,
+      "timeMs": 120109,
+      "fileName": "frame_t000120109ms.jpg"
+    },
+    {
+      "timeSec": 124.197638,
+      "timeMs": 124198,
+      "fileName": "frame_t000124198ms.jpg"
+    },
+    {
+      "timeSec": 134.424194,
+      "timeMs": 134424,
+      "fileName": "frame_t000134424ms.jpg"
+    },
+    {
+      "timeSec": 141.802194,
+      "timeMs": 141802,
+      "fileName": "frame_t000141802ms.jpg"
+    },
+    {
+      "timeSec": 151.273871,
+      "timeMs": 151274,
+      "fileName": "frame_t000151274ms.jpg"
+    },
+    {
+      "timeSec": 172.661497,
+      "timeMs": 172661,
+      "fileName": "frame_t000172661ms.jpg"
+    },
+    {
+      "timeSec": 178.478666,
+      "timeMs": 178479,
+      "fileName": "frame_t000178479ms.jpg"
+    },
+    {
+      "timeSec": 183.360099,
+      "timeMs": 183360,
+      "fileName": "frame_t000183360ms.jpg"
+    },
+    {
+      "timeSec": 184.857811,
+      "timeMs": 184858,
+      "fileName": "frame_t000184858ms.jpg"
+    },
+    {
+      "timeSec": 189.094755,
+      "timeMs": 189095,
+      "fileName": "frame_t000189095ms.jpg"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "candidate_rug_002",
+  "label": "rug",
+  "name": "棋盘格地毯",
+  "representativeFrameId": "3_000006",
+  "representativeObjectId": "obj_rug_003",
+  "annotatedImageUrl": "/outputs/videos/3/deduplicated/candidate_rug_002/annotated.jpg",
+  "cropUrl": "/outputs/videos/3/deduplicated/candidate_rug_002/crop.jpg",
+  "maskUrl": "/outputs/videos/3/objects/3_000006_obj_rug_003_mask.png",
+  "bbox": [
+    0,
+    1521,
+    514,
+    1918
+  ],
+  "confidence": 0.94,
+  "duplicateCount": 1
+}

@@ -1,0 +1,18 @@
+{
+  "id": "candidate_pendant_light_001",
+  "label": "pendant light",
+  "name": "长条吊灯",
+  "representativeFrameId": "video_2_uniform_clip_080_000006",
+  "representativeObjectId": "obj_pendant_light_003",
+  "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_pendant_light_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_pendant_light_001/crop.jpg",
+  "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000006_obj_pendant_light_003_mask.png",
+  "bbox": [
+    0,
+    0,
+    307,
+    388
+  ],
+  "confidence": 0.88,
+  "duplicateCount": 1
+}

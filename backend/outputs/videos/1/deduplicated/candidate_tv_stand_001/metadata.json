@@ -1,0 +1,18 @@
+{
+  "id": "candidate_tv_stand_001",
+  "label": "tv stand",
+  "name": "黑色电视柜",
+  "representativeFrameId": "1_000002",
+  "representativeObjectId": "obj_tv_stand_004",
+  "annotatedImageUrl": "/outputs/videos/1/deduplicated/candidate_tv_stand_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/1/deduplicated/candidate_tv_stand_001/crop.jpg",
+  "maskUrl": "/outputs/videos/1/objects/1_000002_obj_tv_stand_004_mask.png",
+  "bbox": [
+    410,
+    2331,
+    1115,
+    2761
+  ],
+  "confidence": 0.9,
+  "duplicateCount": 2
+}

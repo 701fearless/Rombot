@@ -1,0 +1,18 @@
+{
+  "id": "candidate_rug_001",
+  "label": "rug",
+  "name": "浅灰色地毯",
+  "representativeFrameId": "2_000009",
+  "representativeObjectId": "obj_rug_003",
+  "annotatedImageUrl": "/outputs/videos/2/deduplicated/candidate_rug_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/2/deduplicated/candidate_rug_001/crop.jpg",
+  "maskUrl": "/outputs/videos/2/objects/2_000009_obj_rug_003_mask.png",
+  "bbox": [
+    185,
+    1375,
+    1078,
+    1916
+  ],
+  "confidence": 0.9,
+  "duplicateCount": 3
+}

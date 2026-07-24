@@ -1,0 +1,18 @@
+{
+  "id": "candidate_wardrobe_001",
+  "label": "wardrobe",
+  "name": "嵌入式衣柜",
+  "representativeFrameId": "1_000016",
+  "representativeObjectId": "obj_wardrobe_002",
+  "annotatedImageUrl": "/outputs/videos/1/deduplicated/candidate_wardrobe_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/1/deduplicated/candidate_wardrobe_001/crop.jpg",
+  "maskUrl": "/outputs/videos/1/objects/1_000016_obj_wardrobe_002_mask.png",
+  "bbox": [
+    410,
+    192,
+    1326,
+    3832
+  ],
+  "confidence": 0.92,
+  "duplicateCount": 1
+}

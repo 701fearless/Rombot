@@ -21,7 +21,7 @@ from app.services.segmentation.mock_provider import MockSegmentationProvider
 from app.services.segmentation.sam3_provider import SAM3SegmentationProvider
 from app.services.video_preprocess.analysis_store import detect_response_for_time, find_object as find_preprocessed_object
 from app.storage.local_store import (
-    OUTPUTS_ROOT,
+    frame_output_dir,
     find_saved_frame,
     load_detected_object,
     path_to_output_url,
@@ -186,13 +186,13 @@ def get_segmentation_provider() -> MockSegmentationProvider | SAM3SegmentationPr
 def save_frame_image(frame_id: str, frame_image: str | None) -> Path | None:
     if not frame_image:
         return find_saved_frame(frame_id)
-    output_path = OUTPUTS_ROOT / frame_id / "frame.jpg"
+    output_path = frame_output_dir(frame_id) / "frame.jpg"
     return save_data_url(frame_image, output_path)
 
 
 @router.post("/detect", response_model=DetectResponse)
 async def detect(request: DetectRequest) -> DetectResponse:
-    preprocessed_response = detect_response_for_time(request.videoId, request.time)
+    preprocessed_response = detect_response_for_time(request.videoId, request.time, request.frameImage)
     if preprocessed_response:
         return preprocessed_response
 

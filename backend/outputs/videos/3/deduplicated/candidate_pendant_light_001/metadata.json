@@ -1,0 +1,18 @@
+{
+  "id": "candidate_pendant_light_001",
+  "label": "pendant light",
+  "name": "飞碟吊灯",
+  "representativeFrameId": "3_000006",
+  "representativeObjectId": "obj_pendant_light_002",
+  "annotatedImageUrl": "/outputs/videos/3/deduplicated/candidate_pendant_light_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/3/deduplicated/candidate_pendant_light_001/crop.jpg",
+  "maskUrl": "/outputs/videos/3/objects/3_000006_obj_pendant_light_002_mask.png",
+  "bbox": [
+    467,
+    0,
+    838,
+    465
+  ],
+  "confidence": 0.96,
+  "duplicateCount": 1
+}

@@ -3,6 +3,12 @@ from pathlib import Path
 
 from app.schemas import DetectedObject, DetectResponse, VideoAnalysis, VideoAnalysisFrame
 from app.storage.local_store import OUTPUTS_ROOT
+from app.storage.local_store import output_url_to_path
+from app.services.video_preprocess.frame_similarity import (
+    difference_hash_data_url,
+    difference_hash_path,
+    hash_distance,
+)
 
 
 def video_output_dir(video_id: str) -> Path:
@@ -31,15 +37,58 @@ def read_analysis(video_id: str) -> VideoAnalysis | None:
     return VideoAnalysis.model_validate(json.loads(path.read_text(encoding="utf-8")))
 
 
-def nearest_frame(video_id: str, timestamp: float) -> VideoAnalysisFrame | None:
+def nearest_frame(
+    video_id: str,
+    timestamp: float,
+    pause_frame_image: str | None = None,
+) -> VideoAnalysisFrame | None:
     analysis = read_analysis(video_id)
     if not analysis or not analysis.frames:
         return None
-    return min(analysis.frames, key=lambda frame: abs(frame.time - timestamp))
+    frames = sorted(analysis.frames, key=lambda frame: frame.time)
+    exact = next((frame for frame in frames if abs(frame.time - timestamp) <= 1e-6), None)
+    if exact is not None:
+        return exact
+
+    previous = next((frame for frame in reversed(frames) if frame.time < timestamp), None)
+    following = next((frame for frame in frames if frame.time > timestamp), None)
+    candidates = [frame for frame in (previous, following) if frame is not None]
+    if len(candidates) == 1:
+        return candidates[0]
+    if not pause_frame_image:
+        return min(candidates, key=lambda frame: (abs(frame.time - timestamp), frame.time > timestamp))
+
+    try:
+        pause_hash = difference_hash_data_url(pause_frame_image)
+        scored: list[tuple[int, float, bool, VideoAnalysisFrame]] = []
+        for frame in candidates:
+            frame_hash = frame.perceptualHash
+            if not frame_hash:
+                frame_path = output_url_to_path(frame.frameImageUrl)
+                if frame_path is None or not frame_path.exists():
+                    continue
+                frame_hash = difference_hash_path(frame_path)
+            scored.append(
+                (
+                    hash_distance(pause_hash, frame_hash),
+                    abs(frame.time - timestamp),
+                    frame.time > timestamp,
+                    frame,
+                )
+            )
+        if scored:
+            return min(scored, key=lambda item: item[:3])[3]
+    except (OSError, TypeError, ValueError):
+        pass
+    return min(candidates, key=lambda frame: (abs(frame.time - timestamp), frame.time > timestamp))
 
 
-def detect_response_for_time(video_id: str, timestamp: float) -> DetectResponse | None:
-    frame = nearest_frame(video_id, timestamp)
+def detect_response_for_time(
+    video_id: str,
+    timestamp: float,
+    pause_frame_image: str | None = None,
+) -> DetectResponse | None:
+    frame = nearest_frame(video_id, timestamp, pause_frame_image)
     if not frame:
         return None
     return DetectResponse(frameId=frame.frameId, objects=frame.objects, frameImageUrl=frame.frameImageUrl)

@@ -115,7 +115,8 @@ class VideoPreprocessRequest(BaseModel):
     videoUrl: str | None = None
     sampleIntervalSec: float = Field(default=1.0, gt=0)
     mode: str = "mock"
-    maxFrames: int = Field(default=6, gt=0, le=120)
+    maxFrames: int | None = Field(default=None, gt=0, le=120)
+    reuseExistingFrames: bool = False
 
 
 class VideoAnalysisFrame(BaseModel):
@@ -123,6 +124,21 @@ class VideoAnalysisFrame(BaseModel):
     time: float = Field(ge=0)
     frameImageUrl: str
     objects: list[DetectedObject]
+    perceptualHash: str | None = None
+
+
+class DeduplicatedObject(BaseModel):
+    id: str
+    label: str
+    name: str
+    representativeFrameId: str
+    representativeObjectId: str
+    annotatedImageUrl: str
+    cropUrl: str
+    maskUrl: str | None = None
+    bbox: list[int] = Field(min_length=4, max_length=4)
+    confidence: float = Field(ge=0, le=1)
+    duplicateCount: int = Field(ge=1)
 
 
 class VideoAnalysis(BaseModel):
@@ -130,13 +146,47 @@ class VideoAnalysis(BaseModel):
     status: str
     sampleIntervalSec: float
     frames: list[VideoAnalysisFrame]
+    deduplicatedObjects: list[DeduplicatedObject] = Field(default_factory=list)
+    dedupeWarning: str | None = None
 
 
 class VideoPreprocessResponse(BaseModel):
     videoId: str
     status: str
     frameCount: int
+    detectedObjectCount: int = 0
+    deduplicatedObjectCount: int = 0
     analysisUrl: str
+
+
+class VideoUploadResponse(BaseModel):
+    videoId: str
+    fileName: str
+    videoUrl: str
+    sizeBytes: int = Field(ge=1)
+
+
+class ManualFrameSaveRequest(BaseModel):
+    videoId: str
+    sourceFileName: str
+    durationSec: float = Field(gt=0)
+    timeSec: float = Field(ge=0)
+    frameImage: str
+
+
+class ManualFrameItem(BaseModel):
+    timeSec: float = Field(ge=0)
+    timeMs: int = Field(ge=0)
+    fileName: str
+    imageUrl: str
+
+
+class ManualFramesResponse(BaseModel):
+    videoId: str
+    sourceFileName: str | None = None
+    durationSec: float | None = None
+    samplingMode: str | None = None
+    frames: list[ManualFrameItem] = Field(default_factory=list)
 
 
 class RoomScanRequest(BaseModel):

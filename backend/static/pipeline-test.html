@@ -3,393 +3,527 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>家具生成链路测试台</title>
+  <title>家具识别与生成测试台</title>
   <style>
     :root {
-      --paper: #f7f4ef;
-      --ink: #20201d;
-      --muted: #706b61;
-      --line: #d7cec1;
-      --panel: #fffdf8;
-      --accent: #0f6d62;
-      --accent-ink: #f7fffb;
-      --warn: #a76315;
-      --ok: #31745b;
-      --dark: #141817;
+      --bg: #f4f5f2;
+      --surface: #ffffff;
+      --surface-alt: #eef0ec;
+      --ink: #1d2421;
+      --muted: #66706b;
+      --line: #ccd2cd;
+      --green: #176b57;
+      --green-dark: #105342;
+      --red: #c74435;
+      --amber: #9a671e;
+      --black: #101412;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; background: var(--paper); color: var(--ink); }
-    body {
-      font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
-      letter-spacing: 0;
-    }
-    button, input, select, textarea { font: inherit; }
-    .app {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
-    }
-    .left {
-      border-right: 1px solid var(--line);
-      background: #f1ece3;
-      padding: 22px;
-      overflow: auto;
-    }
-    .right {
-      min-width: 0;
-      display: grid;
-      grid-template-rows: minmax(360px, 58vh) minmax(320px, 1fr);
-    }
-    h1 { margin: 0 0 6px; font-size: 24px; line-height: 1.15; }
-    .subtitle { margin: 0 0 18px; color: var(--muted); font-size: 13px; line-height: 1.6; }
-    .drop {
-      border: 1px dashed #a69b8a;
-      background: var(--panel);
-      min-height: 190px;
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      cursor: pointer;
-      transition: border-color 0.18s ease, background 0.18s ease;
-    }
-    .drop:hover, body.dragging .drop { border-color: var(--accent); background: #fbfff9; }
+    html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); }
+    body { font-family: "Microsoft YaHei", "Segoe UI", sans-serif; letter-spacing: 0; }
+    button, input, select { font: inherit; letter-spacing: 0; }
+    button { cursor: pointer; }
+    button:disabled { cursor: wait; opacity: 0.48; }
+    .app { min-height: 100vh; display: grid; grid-template-columns: 370px minmax(0, 1fr); }
+    .sidebar { border-right: 1px solid var(--line); background: #e9ece7; padding: 18px; overflow: auto; }
+    h1 { margin: 0; font-size: 21px; line-height: 1.25; }
+    .eyebrow { color: var(--muted); font-size: 12px; margin: 5px 0 16px; }
+    .segmented { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); background: var(--surface); }
+    .segmented button { border: 0; border-right: 1px solid var(--line); background: transparent; padding: 10px; color: var(--muted); }
+    .segmented button:last-child { border-right: 0; }
+    .segmented button.active { background: var(--green); color: white; }
+    .mode-panel { display: none; margin-top: 14px; }
+    .mode-panel.active { display: block; }
+    .drop { min-height: 150px; border: 1px dashed #909b94; background: var(--surface); display: grid; place-items: center; padding: 14px; text-align: center; }
+    .drop:hover { border-color: var(--green); }
     .drop input { display: none; }
-    .drop-inner { text-align: center; display: grid; gap: 10px; justify-items: center; }
-    .upload-mark {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line);
-      color: var(--accent);
-      font-size: 28px;
-      background: #f9f7f1;
-    }
-    .preview {
-      width: 100%;
-      max-height: 280px;
-      object-fit: contain;
-      background: #ece6da;
-      border: 1px solid var(--line);
-      display: none;
-    }
-    .controls { display: grid; gap: 10px; margin-top: 14px; }
-    .field { display: grid; gap: 6px; }
+    .drop-content { display: grid; justify-items: center; gap: 8px; color: var(--muted); }
+    .drop-content strong { color: var(--ink); font-size: 14px; }
+    .drop-content svg { color: var(--green); }
+    .source-preview { width: 100%; max-height: 250px; object-fit: contain; background: var(--black); display: none; }
+    .video-shell { display: none; background: var(--black); border: 1px solid #252b28; }
+    .video-shell video { width: 100%; max-height: 260px; display: block; }
+    .fields { display: grid; gap: 10px; margin-top: 12px; }
+    .field { display: grid; gap: 5px; }
     .field label { color: var(--muted); font-size: 12px; }
-    .field input {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      padding: 10px 11px;
-      min-width: 0;
-    }
-    .primary {
-      border: 0;
-      background: var(--accent);
-      color: var(--accent-ink);
-      padding: 12px 14px;
-      cursor: pointer;
-      font-weight: 700;
-    }
-    .primary:disabled { opacity: 0.45; cursor: wait; }
-    .steps {
-      display: grid;
-      gap: 8px;
-      margin-top: 18px;
-    }
-    .step {
-      display: grid;
-      grid-template-columns: 22px 1fr auto;
-      gap: 9px;
-      align-items: center;
-      padding: 10px 11px;
-      border: 1px solid var(--line);
-      background: rgba(255, 253, 248, 0.74);
-      min-height: 46px;
-    }
-    .dot {
-      width: 12px;
-      height: 12px;
-      border: 1px solid #9e9486;
-      background: #f6f0e7;
-      justify-self: center;
-    }
-    .step.running .dot { background: var(--warn); border-color: var(--warn); animation: pulse 0.9s infinite alternate; }
-    .step.done .dot { background: var(--ok); border-color: var(--ok); }
-    .step.failed .dot { background: #b33a2e; border-color: #b33a2e; }
-    .step-title { font-size: 13px; font-weight: 700; }
-    .step-note { color: var(--muted); font-size: 12px; margin-top: 2px; word-break: break-word; }
-    .elapsed { color: var(--muted); font-size: 12px; }
-    @keyframes pulse { from { transform: scale(0.8); } to { transform: scale(1.15); } }
-    .viewer {
-      position: relative;
-      min-width: 0;
-      min-height: 360px;
-      background: var(--dark);
-    }
+    .field input, .field select { min-width: 0; width: 100%; border: 1px solid var(--line); background: var(--surface); padding: 9px 10px; }
+    .actions { display: grid; gap: 8px; margin-top: 12px; }
+    .btn { min-height: 42px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 9px 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn.primary { border-color: var(--green); background: var(--green); color: white; font-weight: 700; }
+    .btn.primary:hover { background: var(--green-dark); }
+    .btn.secondary:hover { border-color: var(--green); color: var(--green); }
+    .steps { margin-top: 16px; display: grid; gap: 7px; }
+    .step { min-height: 44px; display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); background: rgba(255,255,255,0.62); }
+    .step-dot { width: 10px; height: 10px; border: 1px solid #8c9690; background: transparent; }
+    .step.running .step-dot { border-color: var(--amber); background: var(--amber); animation: pulse .8s infinite alternate; }
+    .step.done .step-dot { border-color: var(--green); background: var(--green); }
+    .step.failed .step-dot { border-color: var(--red); background: var(--red); }
+    .step-title { font-size: 12px; font-weight: 700; }
+    .step-note, .elapsed { color: var(--muted); font-size: 11px; word-break: break-word; }
+    @keyframes pulse { to { transform: scale(1.35); } }
+    .workspace { min-width: 0; display: grid; grid-template-rows: auto minmax(380px, 58vh) minmax(300px, auto); }
+    .view-tabs { display: flex; align-items: center; gap: 2px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--surface); }
+    .view-tabs button { border: 0; background: transparent; padding: 8px 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 7px; }
+    .view-tabs button.active { color: var(--green); box-shadow: inset 0 -2px var(--green); }
+    .stage { position: relative; min-height: 380px; background: var(--black); overflow: hidden; }
+    .stage-view { position: absolute; inset: 0; display: none; }
+    .stage-view.active { display: grid; }
+    .comparison { grid-template-columns: 1fr 1fr; min-width: 0; }
+    .media-pane { min-width: 0; position: relative; display: grid; place-items: center; overflow: hidden; border-right: 1px solid #333a36; }
+    .media-pane:last-child { border-right: 0; }
+    .media-pane canvas { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; }
+    .media-label { position: absolute; left: 12px; top: 12px; z-index: 2; padding: 7px 9px; background: rgba(16,20,18,.82); color: #f4f6f3; border: 1px solid rgba(255,255,255,.16); font-size: 12px; }
+    .empty-state { color: #aeb7b1; font-size: 13px; padding: 24px; text-align: center; }
+    #modelView { display: none; }
+    #modelView.active { display: block; }
     #canvas-wrap { position: absolute; inset: 0; }
-    .viewer-status {
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      color: #dfd6ca;
-      background: rgba(20, 24, 23, 0.74);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 9px 11px;
-      font-size: 12px;
-      max-width: calc(100% - 36px);
-      z-index: 2;
-    }
-    .output {
-      display: grid;
-      grid-template-columns: minmax(280px, 0.95fr) minmax(300px, 1.05fr);
-      min-height: 0;
-      border-top: 1px solid var(--line);
-    }
-    .pane {
-      min-width: 0;
-      padding: 18px;
-      overflow: auto;
-      border-right: 1px solid var(--line);
-    }
-    .pane:last-child { border-right: 0; }
-    .pane h2 {
-      margin: 0 0 12px;
-      font-size: 15px;
-      line-height: 1.2;
-    }
-    pre {
-      margin: 0;
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-family: "Cascadia Mono", Consolas, monospace;
-      font-size: 12px;
-      line-height: 1.55;
-      color: #2a2824;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      padding: 12px;
-      min-height: 220px;
-    }
-    .refs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-    }
-    .ref {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      padding: 10px;
-      display: grid;
-      gap: 8px;
-    }
-    .ref img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #eee7dc; }
-    .ref span { font-size: 12px; color: var(--muted); word-break: break-word; }
+    .viewer-status { position: absolute; left: 14px; bottom: 14px; z-index: 2; max-width: calc(100% - 28px); padding: 8px 10px; color: #dbe1dc; background: rgba(16,20,18,.82); border: 1px solid rgba(255,255,255,.14); font-size: 12px; }
+    .results { min-width: 0; display: grid; grid-template-columns: minmax(260px, .8fr) minmax(320px, 1.2fr); border-top: 1px solid var(--line); background: var(--surface); }
+    .result-pane { min-width: 0; padding: 15px; overflow: auto; border-right: 1px solid var(--line); }
+    .result-pane:last-child { border-right: 0; }
+    .pane-head { min-height: 32px; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+    .pane-head h2 { margin: 0; font-size: 14px; }
+    .badge { border: 1px solid var(--line); color: var(--muted); padding: 4px 7px; font-size: 11px; }
+    .objects { display: grid; gap: 6px; }
+    .object-row { width: 100%; border: 1px solid var(--line); background: var(--surface-alt); padding: 9px 10px; display: grid; grid-template-columns: 1fr auto; gap: 8px; text-align: left; }
+    .object-row.active { border-color: var(--green); box-shadow: inset 3px 0 var(--green); background: #f4faf6; }
+    .object-name { font-size: 13px; font-weight: 700; }
+    .object-meta { color: var(--muted); font-size: 11px; margin-top: 2px; }
+    .confidence { color: var(--green); font-size: 12px; font-weight: 700; }
+    pre { margin: 10px 0 0; min-height: 120px; max-height: 280px; overflow: auto; white-space: pre-wrap; word-break: break-word; border: 1px solid var(--line); background: #f7f8f5; padding: 10px; font: 11px/1.5 "Cascadia Mono", Consolas, monospace; }
+    .refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 8px; }
+    .ref { margin: 0; border: 1px solid var(--line); padding: 7px; display: grid; gap: 5px; }
+    .ref img { width: 100%; aspect-ratio: 1; object-fit: contain; background: var(--surface-alt); }
+    .ref figcaption { color: var(--muted); font-size: 11px; }
     @media (max-width: 980px) {
       .app { grid-template-columns: 1fr; }
-      .left { border-right: 0; border-bottom: 1px solid var(--line); }
-      .right { grid-template-rows: minmax(360px, 52vh) auto; }
-      .output { grid-template-columns: 1fr; }
-      .pane { border-right: 0; border-bottom: 1px solid var(--line); }
+      .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
+      .workspace { grid-template-rows: auto minmax(520px, 70vh) auto; }
+      .comparison, .results { grid-template-columns: 1fr; }
+      .media-pane { border-right: 0; border-bottom: 1px solid #333a36; }
+      .result-pane { border-right: 0; border-bottom: 1px solid var(--line); }
     }
   </style>
 </head>
 <body>
   <main class="app">
-    <aside class="left">
-      <h1>家具生成链路测试台</h1>
-      <p class="subtitle">上传一张房间或商品图，页面会先展示豆包识图结果，再展示参考图，最后加载 Tripo Turbo 生成的 GLB。</p>
+    <aside class="sidebar">
+      <h1>家具识别与生成测试台</h1>
+      <div class="eyebrow">检测 · 暂停匹配 · Image-to-3D</div>
+      <a href="/static/frame-selector.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--green);font-size:12px;text-decoration:none;margin-bottom:14px"><i data-lucide="list-video"></i>打开手动筛帧</a>
 
-      <label class="drop" id="drop">
-        <input id="file" type="file" accept="image/*" />
-        <img class="preview" id="preview" alt="待测试图片预览" />
-        <span class="drop-inner" id="dropHint">
-          <span class="upload-mark">+</span>
-          <strong>选择或拖入图片</strong>
-          <small>jpg / png / webp</small>
-        </span>
-      </label>
-
-      <div class="controls">
-        <div class="field">
-          <label for="videoId">测试 ID</label>
-          <input id="videoId" value="tripo_turbo_test" />
-        </div>
-        <button class="primary" id="run" type="button" disabled>开始生成</button>
+      <div class="segmented" role="tablist" aria-label="输入类型">
+        <button id="imageModeButton" class="active" type="button"><i data-lucide="image"></i>图片</button>
+        <button id="videoModeButton" type="button"><i data-lucide="video"></i>视频</button>
       </div>
 
-      <section class="steps" aria-label="链路进度">
-        <div class="step" id="step-upload"><span class="dot"></span><div><div class="step-title">图片就绪</div><div class="step-note">等待上传</div></div><span class="elapsed"></span></div>
-        <div class="step" id="step-detect"><span class="dot"></span><div><div class="step-title">豆包识图与打标</div><div class="step-note">等待开始</div></div><span class="elapsed"></span></div>
-        <div class="step" id="step-generate"><span class="dot"></span><div><div class="step-title">参考图与 Tripo Turbo</div><div class="step-note">等待开始</div></div><span class="elapsed"></span></div>
-        <div class="step" id="step-model"><span class="dot"></span><div><div class="step-title">最终模型预览</div><div class="step-note">等待 GLB</div></div><span class="elapsed"></span></div>
+      <section id="imagePanel" class="mode-panel active">
+        <label class="drop" id="imageDrop">
+          <input id="imageFile" type="file" accept="image/*" />
+          <span class="drop-content" id="imageHint"><i data-lucide="image-up"></i><strong>选择图片</strong><small>JPG / PNG / WEBP</small></span>
+          <img id="imagePreview" class="source-preview" alt="输入图片" />
+        </label>
+        <div class="actions"><button id="detectImageButton" class="btn primary" type="button" disabled><i data-lucide="scan-search"></i>识别图片</button></div>
+      </section>
+
+      <section id="videoPanel" class="mode-panel">
+        <label class="drop" id="videoDrop">
+          <input id="videoFile" type="file" accept="video/*" />
+          <span class="drop-content" id="videoHint"><i data-lucide="file-video"></i><strong>选择视频</strong><small>MP4 / MOV / MKV / AVI / WEBM</small></span>
+        </label>
+        <div id="videoShell" class="video-shell"><video id="videoPreview" controls playsinline preload="metadata"></video></div>
+        <div class="fields">
+          <div class="field"><label for="videoId">视频 ID</label><input id="videoId" value="video_pause_demo" /></div>
+          <div class="field"><label for="detectionMode">检测模式</label><select id="detectionMode"><option value="ark_grounding">Ark Grounding</option><option value="mock">Mock</option></select></div>
+        </div>
+        <div class="actions"><button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="list-video"></i>识别已有抽帧</button></div>
+      </section>
+
+      <div class="actions"><button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>生成所选模型</button></div>
+
+      <section class="steps" aria-label="处理进度">
+        <div class="step" id="step-source"><span class="step-dot"></span><div><div class="step-title">输入就绪</div><div class="step-note">等待文件</div></div><span class="elapsed"></span></div>
+        <div class="step" id="step-preprocess"><span class="step-dot"></span><div><div class="step-title">视频预处理</div><div class="step-note">等待视频</div></div><span class="elapsed"></span></div>
+        <div class="step" id="step-match"><span class="step-dot"></span><div><div class="step-title">暂停匹配与打标</div><div class="step-note">等待识别</div></div><span class="elapsed"></span></div>
+        <div class="step" id="step-model"><span class="step-dot"></span><div><div class="step-title">模型生成</div><div class="step-note">等待选择家具</div></div><span class="elapsed"></span></div>
       </section>
     </aside>
 
-    <section class="right">
-      <div class="viewer">
-        <div id="canvas-wrap"></div>
-        <div class="viewer-status" id="viewerStatus">GLB 模型会显示在这里。拖拽旋转，滚轮缩放。</div>
-      </div>
-      <div class="output">
-        <section class="pane">
-          <h2>识图结果</h2>
+    <section class="workspace">
+      <nav class="view-tabs" aria-label="结果视图">
+        <button class="active" data-view="comparisonView" type="button"><i data-lucide="scan-line"></i>暂停匹配</button>
+        <button data-view="modelView" type="button"><i data-lucide="box"></i>3D 模型</button>
+      </nav>
+      <section class="stage">
+        <div id="comparisonView" class="stage-view comparison active">
+          <div class="media-pane"><span class="media-label" id="pauseLabel">输入画面</span><canvas id="pauseCanvas"></canvas><div id="pauseEmpty" class="empty-state">等待图片或视频暂停帧</div></div>
+          <div class="media-pane"><span class="media-label" id="matchedLabel">匹配帧与打标</span><canvas id="matchedCanvas"></canvas><div id="matchedEmpty" class="empty-state">等待检测结果</div></div>
+        </div>
+        <div id="modelView" class="stage-view">
+          <div id="canvas-wrap"></div>
+          <div class="viewer-status" id="viewerStatus">等待生成 GLB</div>
+        </div>
+      </section>
+      <section class="results">
+        <div class="result-pane">
+          <div class="pane-head"><h2>检测对象</h2><span id="matchBadge" class="badge">尚未匹配</span></div>
+          <div id="objects" class="objects"></div>
           <pre id="detectJson">尚未运行</pre>
-        </section>
-        <section class="pane">
-          <h2>生图结果与模型地址</h2>
-          <div class="refs" id="refs"></div>
+        </div>
+        <div class="result-pane">
+          <div class="pane-head"><h2>生成结果</h2><span id="modelBadge" class="badge">尚未生成</span></div>
+          <div id="refs" class="refs"></div>
           <pre id="selectedJson">尚未运行</pre>
-        </section>
-      </div>
+        </div>
+      </section>
     </section>
   </main>
 
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
-      "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
-    }
-  }
-  </script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.js"></script>
+  <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.170.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.170.0/examples/jsm/"}}</script>
   <script type="module">
     import * as THREE from "three";
     import { OrbitControls } from "three/addons/controls/OrbitControls.js";
     import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
     import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 
-    const fileInput = document.getElementById("file");
-    const preview = document.getElementById("preview");
-    const dropHint = document.getElementById("dropHint");
-    const runButton = document.getElementById("run");
-    const videoIdInput = document.getElementById("videoId");
-    const detectJson = document.getElementById("detectJson");
-    const selectedJson = document.getElementById("selectedJson");
-    const refs = document.getElementById("refs");
-    const viewerStatus = document.getElementById("viewerStatus");
-    let frameImage = null;
-    let timer = null;
+    const $ = (id) => document.getElementById(id);
+    const imageModeButton = $("imageModeButton");
+    const videoModeButton = $("videoModeButton");
+    const imagePanel = $("imagePanel");
+    const videoPanel = $("videoPanel");
+    const imageFile = $("imageFile");
+    const imagePreview = $("imagePreview");
+    const imageHint = $("imageHint");
+    const videoFile = $("videoFile");
+    const videoPreview = $("videoPreview");
+    const videoShell = $("videoShell");
+    const videoHint = $("videoHint");
+    const videoIdInput = $("videoId");
+    const detectionMode = $("detectionMode");
+    const detectImageButton = $("detectImageButton");
+    const prepareVideoButton = $("prepareVideoButton");
+    const generateButton = $("generateButton");
+    const pauseCanvas = $("pauseCanvas");
+    const matchedCanvas = $("matchedCanvas");
+    const pauseEmpty = $("pauseEmpty");
+    const matchedEmpty = $("matchedEmpty");
+    const pauseLabel = $("pauseLabel");
+    const matchedLabel = $("matchedLabel");
+    const objects = $("objects");
+    const detectJson = $("detectJson");
+    const selectedJson = $("selectedJson");
+    const refs = $("refs");
+    const matchBadge = $("matchBadge");
+    const modelBadge = $("modelBadge");
+    const viewerStatus = $("viewerStatus");
+
+    let mode = "image";
+    let imageDataUrl = null;
+    let selectedVideoFile = null;
+    let videoObjectUrl = null;
+    let preparedVideoId = null;
+    let currentDetection = null;
+    let selectedObject = null;
+    let pauseFrameDataUrl = null;
+    let matching = false;
+    let activeTimer = null;
 
     const steps = {
-      upload: document.getElementById("step-upload"),
-      detect: document.getElementById("step-detect"),
-      generate: document.getElementById("step-generate"),
-      model: document.getElementById("step-model")
+      source: $("step-source"),
+      preprocess: $("step-preprocess"),
+      match: $("step-match"),
+      model: $("step-model")
     };
 
-    function setStep(name, state, note, elapsed = "") {
-      const el = steps[name];
-      el.classList.remove("running", "done", "failed");
-      if (state) el.classList.add(state);
-      el.querySelector(".step-note").textContent = note || "";
-      el.querySelector(".elapsed").textContent = elapsed;
+    function refreshIcons() { if (window.lucide) window.lucide.createIcons({ attrs: { width: 17, height: 17, "stroke-width": 1.8 } }); }
+    refreshIcons();
+
+    function setMode(next) {
+      mode = next;
+      imageModeButton.classList.toggle("active", next === "image");
+      videoModeButton.classList.toggle("active", next === "video");
+      imagePanel.classList.toggle("active", next === "image");
+      videoPanel.classList.toggle("active", next === "video");
+      setStep("preprocess", "", next === "video" ? "等待上传视频" : "图片模式无需预处理");
     }
 
-    function startElapsed(name) {
-      const start = performance.now();
-      clearInterval(timer);
-      timer = setInterval(() => {
-        const seconds = Math.floor((performance.now() - start) / 1000);
-        steps[name].querySelector(".elapsed").textContent = `${seconds}s`;
+    imageModeButton.addEventListener("click", () => setMode("image"));
+    videoModeButton.addEventListener("click", () => setMode("video"));
+
+    function setStep(name, state, note, elapsed = "") {
+      const element = steps[name];
+      element.classList.remove("running", "done", "failed");
+      if (state) element.classList.add(state);
+      element.querySelector(".step-note").textContent = note || "";
+      element.querySelector(".elapsed").textContent = elapsed;
+    }
+
+    function startTimer(name) {
+      const started = performance.now();
+      clearInterval(activeTimer);
+      activeTimer = setInterval(() => {
+        steps[name].querySelector(".elapsed").textContent = `${Math.floor((performance.now() - started) / 1000)}s`;
       }, 500);
       return () => {
-        const seconds = Math.round((performance.now() - start) / 1000);
-        clearInterval(timer);
-        timer = null;
-        steps[name].querySelector(".elapsed").textContent = `${seconds}s`;
+        clearInterval(activeTimer);
+        activeTimer = null;
+        steps[name].querySelector(".elapsed").textContent = `${Math.round((performance.now() - started) / 1000)}s`;
       };
     }
-
-    function readFile(file) {
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        frameImage = reader.result;
-        preview.src = frameImage;
-        preview.style.display = "block";
-        dropHint.style.display = "none";
-        runButton.disabled = false;
-        setStep("upload", "done", file.name);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    fileInput.addEventListener("change", () => readFile(fileInput.files && fileInput.files[0]));
-    window.addEventListener("dragenter", (event) => {
-      event.preventDefault();
-      document.body.classList.add("dragging");
-    });
-    window.addEventListener("dragover", (event) => event.preventDefault());
-    window.addEventListener("dragleave", (event) => {
-      if (event.relatedTarget === null) document.body.classList.remove("dragging");
-    });
-    window.addEventListener("drop", (event) => {
-      event.preventDefault();
-      document.body.classList.remove("dragging");
-      readFile(event.dataTransfer.files && event.dataTransfer.files[0]);
-    });
 
     async function postJson(url, body) {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
-      });
+      const response = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       const text = await response.text();
       let data;
       try { data = JSON.parse(text); } catch { data = { raw: text }; }
-      if (!response.ok) throw new Error(data.detail || text || response.statusText);
+      if (!response.ok) throw new Error(errorMessage(data, text, response.statusText));
       return data;
     }
 
-    runButton.addEventListener("click", async () => {
-      if (!frameImage) return;
-      runButton.disabled = true;
-      detectJson.textContent = "识图中...";
-      selectedJson.textContent = "等待识图完成...";
-      refs.innerHTML = "";
-      setStep("detect", "running", "正在请求 /api/feed/detect");
-      setStep("generate", "", "等待开始");
-      setStep("model", "", "等待 GLB");
-      viewerStatus.textContent = "正在运行链路...";
+    function errorMessage(data, text, fallback) {
+      if (typeof data?.detail === "string") return data.detail;
+      if (Array.isArray(data?.detail)) {
+        return data.detail.map((item) => item.msg || JSON.stringify(item)).join("; ");
+      }
+      if (data?.detail) return JSON.stringify(data.detail);
+      return text || fallback || "请求失败";
+    }
 
+    function fileAsDataUrl(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    imageFile.addEventListener("change", async () => {
+      const file = imageFile.files && imageFile.files[0];
+      if (!file) return;
+      imageDataUrl = await fileAsDataUrl(file);
+      imagePreview.src = imageDataUrl;
+      imagePreview.style.display = "block";
+      imageHint.style.display = "none";
+      detectImageButton.disabled = false;
+      setStep("source", "done", file.name);
+      await drawDataUrl(pauseCanvas, imageDataUrl);
+      pauseEmpty.style.display = "none";
+      pauseLabel.textContent = "输入图片";
+    });
+
+    videoFile.addEventListener("change", async () => {
+      const file = videoFile.files && videoFile.files[0];
+      if (!file) return;
+      selectedVideoFile = file;
+      preparedVideoId = null;
+      if (videoObjectUrl) URL.revokeObjectURL(videoObjectUrl);
+      videoObjectUrl = URL.createObjectURL(file);
+      videoPreview.src = videoObjectUrl;
+      videoShell.style.display = "block";
+      videoHint.innerHTML = `<strong>${escapeHtml(file.name)}</strong><small>${formatBytes(file.size)}</small>`;
+      const base = file.name.replace(/\.[^.]+$/, "").replace(/[^A-Za-z0-9_-]+/g, "_") || "video";
+      videoIdInput.value = base;
+      prepareVideoButton.disabled = true;
+      setStep("source", "done", file.name);
+      setStep("preprocess", "running", "正在读取人工帧清单");
       try {
-        const videoId = `${videoIdInput.value || "tripo_turbo_test"}_${Date.now()}`;
-        let stop = startElapsed("detect");
-        const detection = await postJson("/api/feed/detect", { videoId, time: 0, frameImage });
-        stop();
-        detectJson.textContent = JSON.stringify(detection, null, 2);
-        const object = detection.objects && detection.objects[0];
-        if (!object) throw new Error("未识别到家具主体");
-        setStep("detect", "done", `${object.name || object.label} / bbox ${object.bbox.join(", ")}`);
+        const response = await fetch(`/api/video/manual-frames/${encodeURIComponent(base)}`);
+        const manualFrames = await response.json();
+        if (!response.ok) throw new Error(manualFrames.detail || "人工帧读取失败");
+        if (manualFrames.samplingMode !== "manual") {
+          throw new Error(`视频 ${base} 尚未切换为人工筛帧模式`);
+        }
+        if (!manualFrames.frames.length) throw new Error(`视频 ${base} 没有已选人工帧`);
+        prepareVideoButton.disabled = false;
+        setStep("preprocess", "done", `已找到 ${manualFrames.frames.length} 个人工帧`);
+      } catch (error) {
+        setStep("preprocess", "failed", String(error.message || error));
+      }
+    });
 
-        setStep("generate", "running", "Seedream 参考图 + Tripo Turbo 生成中");
-        stop = startElapsed("generate");
-        const selected = await postJson("/api/feed/select-object", {
-          frameId: detection.frameId,
-          objectId: object.id,
-          frameImage
+    detectImageButton.addEventListener("click", async () => {
+      if (!imageDataUrl) return;
+      detectImageButton.disabled = true;
+      try {
+        setStep("match", "running", "正在识别图片");
+        const stop = startTimer("match");
+        const detection = await postJson("/api/feed/detect", { videoId: `image_${Date.now()}`, time: 0, frameImage: imageDataUrl });
+        stop();
+        await presentDetection(detection, imageDataUrl, "输入图片");
+        setStep("match", "done", `识别到 ${detection.objects.length} 个对象`);
+      } catch (error) {
+        showError(error, "match");
+      } finally {
+        detectImageButton.disabled = false;
+      }
+    });
+
+    prepareVideoButton.addEventListener("click", async () => {
+      if (!selectedVideoFile) return;
+      prepareVideoButton.disabled = true;
+      preparedVideoId = null;
+      const videoId = sanitizeVideoId(videoIdInput.value) || `video_${Date.now()}`;
+      videoIdInput.value = videoId;
+      try {
+        setStep("preprocess", "running", "读取已有抽帧、检测与去重中");
+        const stop = startTimer("preprocess");
+        const result = await postJson("/api/video/preprocess", {
+          videoId,
+          mode: detectionMode.value,
+          reuseExistingFrames: true
         });
+        stop();
+        preparedVideoId = videoId;
+        setStep("preprocess", "done", `${result.frameCount} 帧 · ${result.deduplicatedObjectCount} 个候选`);
+        setStep("match", "", "播放视频并暂停");
+        matchBadge.textContent = "等待暂停";
+      } catch (error) {
+        showError(error, "preprocess");
+      } finally {
+        prepareVideoButton.disabled = false;
+      }
+    });
+
+    videoPreview.addEventListener("pause", () => {
+      if (preparedVideoId && !videoPreview.ended && videoPreview.readyState >= 2) matchPausedVideo();
+    });
+
+    async function matchPausedVideo() {
+      if (matching) return;
+      matching = true;
+      try {
+        pauseFrameDataUrl = captureVideoFrame(videoPreview, pauseCanvas);
+        pauseEmpty.style.display = "none";
+        pauseLabel.textContent = `暂停画面 · ${formatTime(videoPreview.currentTime)}`;
+        setStep("match", "running", "正在比较前后抽帧");
+        const stop = startTimer("match");
+        const detection = await postJson("/api/feed/detect", {
+          videoId: preparedVideoId,
+          time: videoPreview.currentTime,
+          frameImage: pauseFrameDataUrl
+        });
+        stop();
+        await presentDetection(detection, pauseFrameDataUrl, `暂停 ${formatTime(videoPreview.currentTime)}`);
+        setStep("match", "done", `${detection.frameId} · ${detection.objects.length} 个对象`);
+      } catch (error) {
+        showError(error, "match");
+      } finally {
+        matching = false;
+      }
+    }
+
+    async function presentDetection(detection, sourceDataUrl, sourceText) {
+      currentDetection = detection;
+      selectedObject = detection.objects && detection.objects[0] || null;
+      detectJson.textContent = JSON.stringify(detection, null, 2);
+      matchBadge.textContent = detection.frameId;
+      pauseLabel.textContent = sourceText;
+      if (mode === "image") await drawDataUrl(pauseCanvas, sourceDataUrl);
+      const matchedUrl = detection.frameImageUrl || sourceDataUrl;
+      await drawAnnotated(matchedCanvas, matchedUrl, detection.objects || [], selectedObject && selectedObject.id);
+      matchedEmpty.style.display = "none";
+      matchedLabel.textContent = `匹配帧 · ${detection.frameId}`;
+      renderObjects();
+      generateButton.disabled = !selectedObject;
+      switchView("comparisonView");
+    }
+
+    function renderObjects() {
+      objects.innerHTML = "";
+      const list = currentDetection && currentDetection.objects || [];
+      for (const item of list) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `object-row${selectedObject && selectedObject.id === item.id ? " active" : ""}`;
+        button.innerHTML = `<span><span class="object-name">${escapeHtml(item.name || item.label)}</span><span class="object-meta">${escapeHtml(item.label)} · bbox ${item.bbox.join(", ")}</span></span><span class="confidence">${Math.round(item.confidence * 100)}%</span>`;
+        button.addEventListener("click", async () => {
+          selectedObject = item;
+          renderObjects();
+          generateButton.disabled = false;
+          await drawAnnotated(matchedCanvas, currentDetection.frameImageUrl || imageDataUrl, list, item.id);
+        });
+        objects.appendChild(button);
+      }
+      if (!list.length) objects.innerHTML = '<div class="empty-state">未检测到家具</div>';
+    }
+
+    generateButton.addEventListener("click", async () => {
+      if (!currentDetection || !selectedObject) return;
+      generateButton.disabled = true;
+      try {
+        setStep("model", "running", `正在生成 ${selectedObject.name || selectedObject.label}`);
+        switchView("modelView");
+        const stop = startTimer("model");
+        const body = { frameId: currentDetection.frameId, objectId: selectedObject.id };
+        if (mode === "image") body.frameImage = imageDataUrl;
+        const selected = await postJson("/api/feed/select-object", body);
         stop();
         selectedJson.textContent = JSON.stringify(selected, null, 2);
         renderReferences(selected);
-        setStep("generate", "done", selected.status || "完成");
-
-        setStep("model", "running", "正在加载 GLB");
+        modelBadge.textContent = selected.status || "完成";
         await loadModel(selected.object.glbUrl);
         setStep("model", "done", selected.object.glbUrl);
       } catch (error) {
-        console.error(error);
-        clearInterval(timer);
-        selectedJson.textContent = String(error.message || error);
-        viewerStatus.textContent = String(error.message || error);
-        if (steps.detect.classList.contains("running")) setStep("detect", "failed", "失败");
-        else if (steps.generate.classList.contains("running")) setStep("generate", "failed", "失败");
-        else setStep("model", "failed", "失败");
+        showError(error, "model");
       } finally {
-        runButton.disabled = false;
+        generateButton.disabled = false;
       }
     });
+
+    function captureVideoFrame(video, canvas) {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+      return canvas.toDataURL("image/jpeg", .9);
+    }
+
+    function drawDataUrl(canvas, url) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => {
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          canvas.getContext("2d").drawImage(image, 0, 0);
+          resolve();
+        };
+        image.onerror = reject;
+        image.src = url;
+      });
+    }
+
+    function drawAnnotated(canvas, url, detections, activeId) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => {
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          const context = canvas.getContext("2d");
+          context.drawImage(image, 0, 0);
+          const scale = Math.max(2, Math.round(Math.min(canvas.width, canvas.height) / 250));
+          context.font = `${Math.max(14, scale * 5)}px Microsoft YaHei`;
+          context.textBaseline = "top";
+          for (const item of detections) {
+            const [x1, y1, x2, y2] = item.bbox;
+            const active = item.id === activeId;
+            context.strokeStyle = active ? "#27d49a" : "#ff5b4b";
+            context.fillStyle = active ? "#176b57" : "#c74435";
+            context.lineWidth = active ? scale + 2 : scale;
+            context.strokeRect(x1, y1, x2 - x1, y2 - y1);
+            const label = `${item.name || item.label} ${Math.round(item.confidence * 100)}%`;
+            const width = context.measureText(label).width + 12;
+            const top = Math.max(0, y1 - Math.max(22, scale * 7));
+            context.fillRect(x1, top, width, Math.max(22, scale * 7));
+            context.fillStyle = "white";
+            context.fillText(label, x1 + 6, top + 3);
+          }
+          resolve();
+        };
+        image.onerror = reject;
+        image.src = url;
+      });
+    }
 
     function renderReferences(selected) {
       refs.innerHTML = "";
@@ -399,30 +533,44 @@
         if (!item.url) continue;
         const figure = document.createElement("figure");
         figure.className = "ref";
-        const img = document.createElement("img");
-        img.src = item.url;
-        img.alt = item.type || "reference image";
-        const caption = document.createElement("span");
-        caption.textContent = `${item.type || "reference"} ${item.note || ""}`;
-        figure.append(img, caption);
+        figure.innerHTML = `<img src="${escapeHtml(item.url)}" alt="参考图"><figcaption>${escapeHtml(item.type || "reference")}</figcaption>`;
         refs.appendChild(figure);
       }
     }
 
-    const wrap = document.getElementById("canvas-wrap");
+    function showError(error, step) {
+      console.error(error);
+      clearInterval(activeTimer);
+      setStep(step, "failed", String(error.message || error));
+      selectedJson.textContent = String(error.message || error);
+    }
+
+    function sanitizeVideoId(value) { return value.trim().replace(/[^A-Za-z0-9_-]+/g, "_").slice(0, 80); }
+    function formatBytes(value) { return value < 1048576 ? `${(value / 1024).toFixed(1)} KB` : `${(value / 1048576).toFixed(1)} MB`; }
+    function formatTime(seconds) { const m = Math.floor(seconds / 60); return `${m}:${String((seconds % 60).toFixed(2)).padStart(5, "0")}`; }
+    function escapeHtml(value) { const div = document.createElement("div"); div.textContent = String(value ?? ""); return div.innerHTML; }
+
+    document.querySelectorAll(".view-tabs button").forEach((button) => button.addEventListener("click", () => switchView(button.dataset.view)));
+    function switchView(id) {
+      document.querySelectorAll(".view-tabs button").forEach((button) => button.classList.toggle("active", button.dataset.view === id));
+      document.querySelectorAll(".stage-view").forEach((view) => view.classList.toggle("active", view.id === id));
+      if (id === "modelView") resizeViewer();
+    }
+
+    const wrap = $("canvas-wrap");
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     wrap.appendChild(renderer.domElement);
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x141817);
-    const camera = new THREE.PerspectiveCamera(42, 1, 0.01, 100);
+    scene.background = new THREE.Color(0x101412);
+    const camera = new THREE.PerspectiveCamera(42, 1, .01, 100);
     camera.position.set(1.8, 1.2, 2.1);
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.target.set(0, 0.35, 0);
+    controls.target.set(0, .35, 0);
     const pmrem = new THREE.PMREMGenerator(renderer);
-    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-    scene.add(new THREE.HemisphereLight(0xfff2df, 0x243331, 0.9));
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), .04).texture;
+    scene.add(new THREE.HemisphereLight(0xfff2df, 0x243331, .9));
     const key = new THREE.DirectionalLight(0xffffff, 1.25);
     key.position.set(2.5, 4, 2);
     scene.add(key);
@@ -431,24 +579,19 @@
 
     function resizeViewer() {
       const rect = wrap.getBoundingClientRect();
-      renderer.setSize(rect.width, rect.height);
+      renderer.setSize(Math.max(rect.width, 1), Math.max(rect.height, 1));
       camera.aspect = Math.max(rect.width, 1) / Math.max(rect.height, 1);
       camera.updateProjectionMatrix();
     }
-    window.addEventListener("resize", resizeViewer);
+    addEventListener("resize", resizeViewer);
     resizeViewer();
 
     function clearModel() {
       if (!currentRoot) return;
-      currentRoot.traverse((obj) => {
-        if (obj.geometry) obj.geometry.dispose();
-        const materials = obj.material ? (Array.isArray(obj.material) ? obj.material : [obj.material]) : [];
-        for (const mat of materials) {
-          for (const value of Object.values(mat)) {
-            if (value && value.isTexture) value.dispose();
-          }
-          mat.dispose();
-        }
+      currentRoot.traverse((object) => {
+        if (object.geometry) object.geometry.dispose();
+        const materials = object.material ? (Array.isArray(object.material) ? object.material : [object.material]) : [];
+        for (const material of materials) material.dispose();
       });
       scene.remove(currentRoot);
       currentRoot = null;
@@ -458,17 +601,15 @@
       const box = new THREE.Box3().setFromObject(root);
       const size = box.getSize(new THREE.Vector3());
       const center = box.getCenter(new THREE.Vector3());
-      const maxDim = Math.max(size.x, size.y, size.z) || 1;
-      const scale = 1.4 / maxDim;
+      const scale = 1.4 / (Math.max(size.x, size.y, size.z) || 1);
       root.scale.setScalar(scale);
       root.position.sub(center.multiplyScalar(scale));
       const fitted = new THREE.Box3().setFromObject(root);
       root.position.y -= fitted.min.y;
-      const refit = new THREE.Box3().setFromObject(root);
-      const target = refit.getCenter(new THREE.Vector3());
-      const dist = Math.max(...refit.getSize(new THREE.Vector3()).toArray()) * 1.9 + 0.5;
+      const target = new THREE.Box3().setFromObject(root).getCenter(new THREE.Vector3());
+      const distance = Math.max(...new THREE.Box3().setFromObject(root).getSize(new THREE.Vector3()).toArray()) * 1.9 + .5;
       controls.target.copy(target);
-      camera.position.set(target.x + dist * 0.75, target.y + dist * 0.48, target.z + dist);
+      camera.position.set(target.x + distance * .75, target.y + distance * .48, target.z + distance);
       controls.update();
     }
 
@@ -480,18 +621,13 @@
           currentRoot = gltf.scene;
           scene.add(currentRoot);
           fit(currentRoot);
-          viewerStatus.textContent = "模型加载完成。";
+          viewerStatus.textContent = "模型加载完成";
           resolve();
         }, undefined, reject);
       });
     }
 
-    function animate() {
-      requestAnimationFrame(animate);
-      controls.update();
-      renderer.render(scene, camera);
-    }
-    animate();
+    (function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); })();
   </script>
 </body>
 </html>

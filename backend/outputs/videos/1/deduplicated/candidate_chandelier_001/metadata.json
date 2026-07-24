@@ -1,0 +1,18 @@
+{
+  "id": "candidate_chandelier_001",
+  "label": "chandelier",
+  "name": "吊灯",
+  "representativeFrameId": "1_000012",
+  "representativeObjectId": "obj_chandelier_001",
+  "annotatedImageUrl": "/outputs/videos/1/deduplicated/candidate_chandelier_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/1/deduplicated/candidate_chandelier_001/crop.jpg",
+  "maskUrl": "/outputs/videos/1/objects/1_000012_obj_chandelier_001_mask.png",
+  "bbox": [
+    758,
+    568,
+    1326,
+    1359
+  ],
+  "confidence": 0.98,
+  "duplicateCount": 3
+}

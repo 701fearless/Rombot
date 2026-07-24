@@ -18,7 +18,13 @@ from app.schemas import (
     SelectedAsset,
 )
 from app.services.model3d.base import Model3DProvider
-from app.storage.local_store import OUTPUTS_ROOT, file_to_data_url, output_url_to_path, path_to_output_url, save_data_url
+from app.storage.local_store import (
+    file_to_data_url,
+    frame_output_dir,
+    output_url_to_path,
+    path_to_output_url,
+    save_data_url,
+)
 
 
 VIEW_SPECS = [
@@ -68,7 +74,7 @@ class FeatureMeshyModel3DProvider(Model3DProvider):
         if not image_url:
             raise ValueError("feature_meshy requires a segmented crop image or image URL")
 
-        work_dir = OUTPUTS_ROOT / frame_id / f"{detected_object.id}_feature_generation"
+        work_dir = frame_output_dir(frame_id) / f"{detected_object.id}_feature_generation"
         work_dir.mkdir(parents=True, exist_ok=True)
 
         source_image = self._normalize_image_input(image_url)
@@ -120,7 +126,7 @@ class FeatureMeshyModel3DProvider(Model3DProvider):
                 name=detected_object.name,
                 bbox=detected_object.bbox,
                 cropUrl=image_url,
-                maskUrl=f"/outputs/{frame_id}/{detected_object.id}_mask.png",
+                maskUrl=path_to_output_url(frame_output_dir(frame_id) / f"{detected_object.id}_mask.png"),
                 glbUrl=glb_url,
             ),
             analysis=ObjectAnalysis(

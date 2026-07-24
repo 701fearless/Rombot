@@ -1,3 +1,4 @@
+import asyncio
 from pathlib import Path
 
 from app.schemas import DetectRequest, DetectedObject, VideoAnalysis, VideoAnalysisFrame, VideoPreprocessRequest
@@ -7,7 +8,9 @@ from app.services.segmentation.mock_provider import MockSegmentationProvider
 from app.services.video_preprocess.ark_grounding_pipeline import ArkGroundingPipeline
 from app.services.video_preprocess.doubao_grounding_sam_pipeline import DoubaoGroundingSamPipeline
 from app.services.video_preprocess.analysis_store import video_output_dir, write_analysis
-from app.services.video_preprocess.extractor import extract_frames
+from app.services.video_preprocess.clip_deduplicator import ClipFurnitureDeduplicator
+from app.services.video_preprocess.extractor import extract_frames, load_existing_frames
+from app.services.video_preprocess.frame_similarity import difference_hash_path
 from app.storage.local_store import file_to_data_url, path_to_output_url
 
 
@@ -17,25 +20,32 @@ class VideoPreprocessor:
         grounded_sam2_provider: GroundedSAM2DetectionProvider | None = None,
         doubao_grounding_sam_pipeline: DoubaoGroundingSamPipeline | None = None,
         ark_grounding_pipeline: ArkGroundingPipeline | None = None,
+        furniture_deduplicator: ClipFurnitureDeduplicator | None = None,
+        furniture_dedupe_enabled: bool = True,
     ) -> None:
         self.grounded_sam2_provider = grounded_sam2_provider
         self.doubao_grounding_sam_pipeline = doubao_grounding_sam_pipeline
         self.ark_grounding_pipeline = ark_grounding_pipeline
+        self.furniture_deduplicator = furniture_deduplicator
+        self.furniture_dedupe_enabled = furniture_dedupe_enabled
 
     async def preprocess(self, request: VideoPreprocessRequest) -> VideoAnalysis:
         output_dir = video_output_dir(request.videoId)
         frame_dir = output_dir / "frames"
         allow_placeholder = request.mode in {"mock", "manual"}
-        frame_paths = extract_frames(
-            video_url=request.videoUrl,
-            output_dir=frame_dir,
-            sample_interval_sec=request.sampleIntervalSec,
-            max_frames=request.maxFrames,
-            allow_placeholder=allow_placeholder,
-        )
+        if request.reuseExistingFrames:
+            extraction = load_existing_frames(output_dir)
+        else:
+            extraction = extract_frames(
+                video_url=request.videoUrl,
+                output_dir=frame_dir,
+                sample_interval_sec=request.sampleIntervalSec,
+                max_frames=request.maxFrames,
+                allow_placeholder=allow_placeholder,
+            )
 
         frames: list[VideoAnalysisFrame] = []
-        for index, (frame_path, timestamp) in enumerate(frame_paths, start=1):
+        for index, (frame_path, timestamp) in enumerate(extraction.frames, start=1):
             frame_id = f"{request.videoId}_{index:06d}"
             objects = await self._detect_frame(request, frame_id, frame_path, timestamp)
             frames.append(
@@ -44,14 +54,28 @@ class VideoPreprocessor:
                     time=timestamp,
                     frameImageUrl=path_to_output_url(frame_path),
                     objects=objects,
+                    perceptualHash=difference_hash_path(frame_path),
                 )
+            )
+
+        deduplicated_objects = []
+        dedupe_warning = None
+        if self.furniture_deduplicator is not None:
+            deduplicated_objects, dedupe_warning = await asyncio.to_thread(
+                self.furniture_deduplicator.deduplicate,
+                request.videoId,
+                frames,
+                output_dir,
+                self.furniture_dedupe_enabled,
             )
 
         analysis = VideoAnalysis(
             videoId=request.videoId,
             status="succeeded",
-            sampleIntervalSec=request.sampleIntervalSec,
+            sampleIntervalSec=extraction.sample_interval_sec,
             frames=frames,
+            deduplicatedObjects=deduplicated_objects,
+            dedupeWarning=dedupe_warning,
         )
         write_analysis(analysis)
         return analysis

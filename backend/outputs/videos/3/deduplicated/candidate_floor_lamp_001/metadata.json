@@ -1,0 +1,18 @@
+{
+  "id": "candidate_floor_lamp_001",
+  "label": "floor lamp",
+  "name": "酒红色蘑菇头落地灯",
+  "representativeFrameId": "3_000014",
+  "representativeObjectId": "obj_floor_lamp_001",
+  "annotatedImageUrl": "/outputs/videos/3/deduplicated/candidate_floor_lamp_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/3/deduplicated/candidate_floor_lamp_001/crop.jpg",
+  "maskUrl": "/outputs/videos/3/objects/3_000014_obj_floor_lamp_001_mask.png",
+  "bbox": [
+    454,
+    261,
+    685,
+    925
+  ],
+  "confidence": 0.97,
+  "duplicateCount": 1
+}

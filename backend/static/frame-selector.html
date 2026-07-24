@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>视频手动筛帧</title>
+  <style>
+    :root { --bg:#f2f3f0; --surface:#fff; --ink:#1d2421; --muted:#66706b; --line:#cbd1cc; --green:#176b57; --green-dark:#105342; --red:#b53f32; --black:#101412; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; min-height:100%; background:var(--bg); color:var(--ink); }
+    body { font-family:"Microsoft YaHei","Segoe UI",sans-serif; letter-spacing:0; }
+    button,input { font:inherit; letter-spacing:0; }
+    button { cursor:pointer; }
+    button:disabled { opacity:.45; cursor:wait; }
+    .app { min-height:100vh; display:grid; grid-template-rows:auto 1fr; }
+    header { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 20px; background:var(--surface); border-bottom:1px solid var(--line); }
+    .title { display:flex; align-items:center; gap:12px; }
+    h1 { margin:0; font-size:19px; }
+    .status { color:var(--muted); font-size:12px; }
+    .back { color:var(--green); text-decoration:none; display:inline-flex; align-items:center; gap:6px; font-size:13px; }
+    main { min-height:0; display:grid; grid-template-columns:minmax(0,1fr) 380px; }
+    .video-area { min-width:0; padding:18px; display:grid; grid-template-rows:auto minmax(360px,1fr) auto; gap:12px; }
+    .toolbar { display:grid; grid-template-columns:minmax(180px,1fr) minmax(180px,1fr) auto auto; gap:10px; align-items:end; }
+    .field { display:grid; gap:5px; }
+    .field label { color:var(--muted); font-size:12px; }
+    .field input { width:100%; min-width:0; border:1px solid var(--line); background:var(--surface); padding:9px 10px; }
+    .file-button,.button { min-height:40px; border:1px solid var(--line); background:var(--surface); color:var(--ink); padding:8px 12px; display:inline-flex; align-items:center; justify-content:center; gap:7px; }
+    .file-button input { display:none; }
+    .button.primary { background:var(--green); border-color:var(--green); color:#fff; font-weight:700; }
+    .button.primary:hover { background:var(--green-dark); }
+    .button.danger { color:var(--red); border-color:#d8aaa4; }
+    .player { position:relative; min-height:360px; display:grid; place-items:center; background:var(--black); border:1px solid #282e2b; overflow:hidden; }
+    .player video { display:none; width:100%; height:100%; max-height:calc(100vh - 190px); object-fit:contain; }
+    .empty { color:#aeb7b1; font-size:13px; text-align:center; padding:24px; }
+    .capture-bar { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .capture-actions { display:flex; align-items:center; gap:8px; }
+    .toggle { display:inline-flex; align-items:center; gap:7px; color:var(--muted); font-size:12px; }
+    .time { font:600 14px "Cascadia Mono",Consolas,monospace; }
+    .frames-panel { min-width:0; border-left:1px solid var(--line); background:var(--surface); display:grid; grid-template-rows:auto 1fr; }
+    .frames-head { padding:15px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .frames-head h2 { margin:0; font-size:14px; }
+    .count { color:var(--muted); border:1px solid var(--line); padding:4px 7px; font-size:11px; }
+    .frames { overflow:auto; padding:10px; display:grid; align-content:start; gap:8px; }
+    .frame-row { min-width:0; display:grid; grid-template-columns:112px 1fr auto; gap:9px; align-items:center; border:1px solid var(--line); background:#f7f8f5; padding:7px; }
+    .frame-row img { width:112px; aspect-ratio:16/9; object-fit:cover; background:var(--black); }
+    .frame-time { font:600 12px "Cascadia Mono",Consolas,monospace; }
+    .frame-name { margin-top:4px; color:var(--muted); font-size:10px; word-break:break-all; }
+    .icon-button { width:34px; height:34px; border:1px solid var(--line); background:var(--surface); display:grid; place-items:center; color:var(--muted); }
+    .icon-button:hover { color:var(--red); border-color:#d8aaa4; }
+    .frame-main { cursor:pointer; min-width:0; }
+    @media (max-width:900px) {
+      main { grid-template-columns:1fr; }
+      .frames-panel { border-left:0; border-top:1px solid var(--line); min-height:360px; }
+      .toolbar { grid-template-columns:1fr; }
+      .player video { max-height:55vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="title"><i data-lucide="list-video"></i><div><h1>视频手动筛帧</h1><div id="status" class="status">等待选择视频</div></div></div>
+      <a class="back" href="/static/pipeline-test.html"><i data-lucide="arrow-left"></i>识别与建模测试台</a>
+    </header>
+    <main>
+      <section class="video-area">
+        <div class="toolbar">
+          <label class="file-button"><i data-lucide="file-video"></i>选择本地视频<input id="videoFile" type="file" accept="video/*" /></label>
+          <div class="field"><label for="videoId">视频 ID（对应 outputs/videos 下目录）</label><input id="videoId" value="1" /></div>
+          <button id="loadButton" class="button" type="button"><i data-lucide="refresh-cw"></i>加载已选帧</button>
+          <button id="startButton" class="button danger" type="button" disabled><i data-lucide="replace"></i>替换旧帧</button>
+        </div>
+        <div class="player">
+          <video id="video" controls playsinline preload="metadata"></video>
+          <div id="empty" class="empty">选择视频后拖动时间轴，在目标画面暂停</div>
+        </div>
+        <div class="capture-bar">
+          <div><div id="currentTime" class="time">00:00.000</div><label class="toggle"><input id="autoSave" type="checkbox" checked />暂停时自动保存</label></div>
+          <div class="capture-actions">
+            <button id="clearButton" class="button danger" type="button" disabled><i data-lucide="trash-2"></i>清空</button>
+            <button id="saveButton" class="button primary" type="button" disabled><i data-lucide="camera"></i>保存当前帧</button>
+          </div>
+        </div>
+      </section>
+      <aside class="frames-panel">
+        <div class="frames-head"><h2>已选时间点</h2><span id="count" class="count">0 帧</span></div>
+        <div id="frames" class="frames"><div class="empty">暂无已选帧</div></div>
+      </aside>
+    </main>
+  </div>
+  <canvas id="captureCanvas" hidden></canvas>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.js"></script>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const videoFile = $("videoFile");
+    const videoId = $("videoId");
+    const video = $("video");
+    const empty = $("empty");
+    const status = $("status");
+    const currentTime = $("currentTime");
+    const autoSave = $("autoSave");
+    const saveButton = $("saveButton");
+    const clearButton = $("clearButton");
+    const loadButton = $("loadButton");
+    const startButton = $("startButton");
+    const framesElement = $("frames");
+    const count = $("count");
+    const captureCanvas = $("captureCanvas");
+    let selectedFile = null;
+    let objectUrl = null;
+    let hasPlayed = false;
+    let saving = false;
+    let manifest = { frames: [] };
+    let manualSession = false;
+
+    if (window.lucide) window.lucide.createIcons({ attrs: { width:17, height:17, "stroke-width":1.8 } });
+
+    videoFile.addEventListener("change", async () => {
+      const file = videoFile.files && videoFile.files[0];
+      if (!file) return;
+      selectedFile = file;
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+      objectUrl = URL.createObjectURL(file);
+      video.src = objectUrl;
+      video.style.display = "block";
+      empty.style.display = "none";
+      videoId.value = sanitizeId(file.name.replace(/\.[^.]+$/, "")) || "video";
+      status.textContent = file.name;
+      hasPlayed = false;
+      saveButton.disabled = true;
+      startButton.disabled = false;
+      await loadFrames();
+    });
+
+    video.addEventListener("play", () => { hasPlayed = true; });
+    video.addEventListener("timeupdate", () => { currentTime.textContent = formatTime(video.currentTime); });
+    video.addEventListener("seeked", () => { currentTime.textContent = formatTime(video.currentTime); });
+    video.addEventListener("pause", () => {
+      if (manualSession && autoSave.checked && hasPlayed && !video.ended && video.readyState >= 2) saveCurrentFrame();
+    });
+    saveButton.addEventListener("click", saveCurrentFrame);
+    loadButton.addEventListener("click", loadFrames);
+
+    async function saveCurrentFrame() {
+      if (!selectedFile || !manualSession || saving || video.readyState < 2) return;
+      saving = true;
+      saveButton.disabled = true;
+      try {
+        captureCanvas.width = video.videoWidth;
+        captureCanvas.height = video.videoHeight;
+        captureCanvas.getContext("2d").drawImage(video, 0, 0);
+        const frameImage = captureCanvas.toDataURL("image/jpeg", .92);
+        status.textContent = `保存 ${formatTime(video.currentTime)}`;
+        manifest = await requestJson("/api/video/manual-frames", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            videoId: sanitizeId(videoId.value),
+            sourceFileName: selectedFile.name,
+            durationSec: video.duration,
+            timeSec: video.currentTime,
+            frameImage
+          })
+        });
+        renderFrames();
+        status.textContent = `已保存 ${formatTime(video.currentTime)}`;
+      } catch (error) {
+        status.textContent = String(error.message || error);
+      } finally {
+        saving = false;
+        saveButton.disabled = !selectedFile || !manualSession;
+      }
+    }
+
+    async function loadFrames() {
+      const id = sanitizeId(videoId.value);
+      if (!id) return;
+      videoId.value = id;
+      try {
+        manifest = await requestJson(`/api/video/manual-frames/${encodeURIComponent(id)}`);
+        manualSession = manifest.samplingMode === "manual";
+        saveButton.disabled = !selectedFile || !manualSession;
+        startButton.disabled = !selectedFile || manualSession;
+        renderFrames();
+        status.textContent = manualSession
+          ? `${id} · 人工帧 ${manifest.frames.length} 个`
+          : `${id} · 当前是自动帧，点击“替换旧帧”开始人工筛选`;
+      } catch (error) {
+        status.textContent = String(error.message || error);
+      }
+    }
+
+    startButton.addEventListener("click", async () => {
+      const id = sanitizeId(videoId.value);
+      if (!selectedFile || !id) return;
+      if (!confirm(`开始视频 ${id} 的人工筛选？现有自动帧和旧识别结果将被清空。`)) return;
+      manifest = await requestJson(`/api/video/manual-frames/${encodeURIComponent(id)}`, { method:"DELETE" });
+      manualSession = true;
+      saveButton.disabled = false;
+      startButton.disabled = true;
+      renderFrames();
+      status.textContent = `${id} · 人工筛选已开始`;
+    });
+
+    function renderFrames() {
+      const frames = manifest.frames || [];
+      count.textContent = `${frames.length} 帧`;
+      clearButton.disabled = frames.length === 0;
+      framesElement.innerHTML = "";
+      if (!frames.length) {
+        framesElement.innerHTML = '<div class="empty">暂无已选帧</div>';
+        return;
+      }
+      for (const frame of frames) {
+        const row = document.createElement("div");
+        row.className = "frame-row";
+        const image = document.createElement("img");
+        image.src = `${frame.imageUrl}?v=${Date.now()}`;
+        image.alt = formatTime(frame.timeSec);
+        const main = document.createElement("div");
+        main.className = "frame-main";
+        main.innerHTML = `<div class="frame-time">${formatTime(frame.timeSec)}</div><div class="frame-name">${escapeHtml(frame.fileName)}</div>`;
+        main.addEventListener("click", () => { if (selectedFile) video.currentTime = frame.timeSec; });
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "icon-button";
+        remove.title = "删除这一帧";
+        remove.innerHTML = '<i data-lucide="x"></i>';
+        remove.addEventListener("click", () => deleteFrame(frame.timeMs));
+        row.append(image, main, remove);
+        framesElement.appendChild(row);
+      }
+      if (window.lucide) window.lucide.createIcons({ attrs: { width:16, height:16, "stroke-width":1.8 } });
+    }
+
+    async function deleteFrame(timeMs) {
+      manifest = await requestJson(`/api/video/manual-frames/${encodeURIComponent(sanitizeId(videoId.value))}/${timeMs}`, { method:"DELETE" });
+      renderFrames();
+      status.textContent = "已删除时间点";
+    }
+
+    clearButton.addEventListener("click", async () => {
+      if (!confirm(`清空视频 ${sanitizeId(videoId.value)} 的全部已选帧？`)) return;
+      manifest = await requestJson(`/api/video/manual-frames/${encodeURIComponent(sanitizeId(videoId.value))}`, { method:"DELETE" });
+      manualSession = true;
+      renderFrames();
+      status.textContent = "已清空";
+    });
+
+    async function requestJson(url, options) {
+      const response = await fetch(url, options);
+      const text = await response.text();
+      let data;
+      try { data = JSON.parse(text); } catch { data = { detail:text }; }
+      if (!response.ok) throw new Error(data.detail || response.statusText);
+      return data;
+    }
+
+    function sanitizeId(value) { return value.trim().replace(/[^A-Za-z0-9_-]+/g, "_").slice(0,80); }
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds)) return "00:00.000";
+      const minutes = Math.floor(seconds / 60);
+      const remainder = (seconds % 60).toFixed(3).padStart(6,"0");
+      return `${String(minutes).padStart(2,"0")}:${remainder}`;
+    }
+    function escapeHtml(value) { const div=document.createElement("div"); div.textContent=String(value??""); return div.innerHTML; }
+  </script>
+</body>
+</html>

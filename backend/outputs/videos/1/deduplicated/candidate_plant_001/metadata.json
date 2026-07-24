@@ -1,0 +1,18 @@
+{
+  "id": "candidate_plant_001",
+  "label": "plant",
+  "name": "雪柳绿植盆栽",
+  "representativeFrameId": "1_000004",
+  "representativeObjectId": "obj_plant_002",
+  "annotatedImageUrl": "/outputs/videos/1/deduplicated/candidate_plant_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/1/deduplicated/candidate_plant_001/crop.jpg",
+  "maskUrl": "/outputs/videos/1/objects/1_000004_obj_plant_002_mask.png",
+  "bbox": [
+    959,
+    1674,
+    2156,
+    3832
+  ],
+  "confidence": 0.93,
+  "duplicateCount": 1
+}

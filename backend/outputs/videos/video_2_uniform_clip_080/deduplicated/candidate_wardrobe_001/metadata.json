@@ -1,0 +1,18 @@
+{
+  "id": "candidate_wardrobe_001",
+  "label": "wardrobe",
+  "name": "原木色隐形衣柜",
+  "representativeFrameId": "video_2_uniform_clip_080_000001",
+  "representativeObjectId": "obj_wardrobe_001",
+  "annotatedImageUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_wardrobe_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/video_2_uniform_clip_080/deduplicated/candidate_wardrobe_001/crop.jpg",
+  "maskUrl": "/outputs/videos/video_2_uniform_clip_080/objects/video_2_uniform_clip_080_000001_obj_wardrobe_001_mask.png",
+  "bbox": [
+    545,
+    36,
+    977,
+    1572
+  ],
+  "confidence": 0.98,
+  "duplicateCount": 2
+}

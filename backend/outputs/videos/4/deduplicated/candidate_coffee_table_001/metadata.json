@@ -1,0 +1,18 @@
+{
+  "id": "candidate_coffee_table_001",
+  "label": "coffee table",
+  "name": "木质茶几",
+  "representativeFrameId": "4_000019",
+  "representativeObjectId": "obj_coffee_table_001",
+  "annotatedImageUrl": "/outputs/videos/4/deduplicated/candidate_coffee_table_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/4/deduplicated/candidate_coffee_table_001/crop.jpg",
+  "maskUrl": "/outputs/videos/4/objects/4_000019_obj_coffee_table_001_mask.png",
+  "bbox": [
+    266,
+    589,
+    1078,
+    1772
+  ],
+  "confidence": 0.98,
+  "duplicateCount": 11
+}

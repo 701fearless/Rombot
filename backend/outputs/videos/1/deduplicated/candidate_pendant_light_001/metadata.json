@@ -1,0 +1,18 @@
+{
+  "id": "candidate_pendant_light_001",
+  "label": "pendant light",
+  "name": "可移动轨道吊灯",
+  "representativeFrameId": "1_000013",
+  "representativeObjectId": "obj_pendant_light_001",
+  "annotatedImageUrl": "/outputs/videos/1/deduplicated/candidate_pendant_light_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/1/deduplicated/candidate_pendant_light_001/crop.jpg",
+  "maskUrl": "/outputs/videos/1/objects/1_000013_obj_pendant_light_001_mask.png",
+  "bbox": [
+    719,
+    1329,
+    2156,
+    3832
+  ],
+  "confidence": 0.98,
+  "duplicateCount": 8
+}

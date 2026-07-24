@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw
 from app.schemas import DetectRequest, DetectResponse, DetectedObject
 from app.services.detection.base import DetectionProvider
 from app.services.detection.furniture_labels import label_to_zh, normalize_label
-from app.storage.local_store import OUTPUTS_ROOT, data_url_to_bytes, load_detected_object, path_to_output_url, save_data_url
+from app.storage.local_store import data_url_to_bytes, frame_output_dir, load_detected_object, path_to_output_url, save_data_url
 
 
 class GroundedSAM2DetectionProvider(DetectionProvider):
@@ -29,7 +29,7 @@ class GroundedSAM2DetectionProvider(DetectionProvider):
             raise ValueError("frameImage is required for grounded_sam2 detection")
 
         frame_id = self._frame_id(request.videoId, request.time)
-        frame_path = OUTPUTS_ROOT / frame_id / "frame.jpg"
+        frame_path = frame_output_dir(frame_id) / "frame.jpg"
         save_data_url(request.frameImage, frame_path)
 
         payload = {
@@ -107,7 +107,7 @@ class GroundedSAM2DetectionProvider(DetectionProvider):
         return [left, top, right, bottom]
 
     def _save_crop(self, frame_id: str, object_id: str, image: Image.Image, bbox: list[int]) -> str:
-        crop_path = OUTPUTS_ROOT / frame_id / f"{object_id}_crop.jpg"
+        crop_path = frame_output_dir(frame_id) / f"{object_id}_crop.jpg"
         crop_path.parent.mkdir(parents=True, exist_ok=True)
         crop = image.crop(tuple(bbox))
         crop.save(crop_path, quality=92)
@@ -116,12 +116,12 @@ class GroundedSAM2DetectionProvider(DetectionProvider):
     def _save_mask(self, frame_id: str, object_id: str, mask_data: str | None) -> str | None:
         if not mask_data:
             return None
-        mask_path = OUTPUTS_ROOT / frame_id / f"{object_id}_mask.png"
+        mask_path = frame_output_dir(frame_id) / f"{object_id}_mask.png"
         save_data_url(mask_data, mask_path)
         return path_to_output_url(mask_path)
 
     def _save_box_mask(self, frame_id: str, object_id: str, image_size: tuple[int, int], bbox: list[int]) -> str:
-        mask_path = OUTPUTS_ROOT / frame_id / f"{object_id}_mask.png"
+        mask_path = frame_output_dir(frame_id) / f"{object_id}_mask.png"
         mask_path.parent.mkdir(parents=True, exist_ok=True)
         mask = Image.new("L", image_size, 0)
         draw = ImageDraw.Draw(mask)
