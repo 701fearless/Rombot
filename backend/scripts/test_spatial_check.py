@@ -1,44 +1,35 @@
-"""手工验证基础空间可行性检测（Fit / Collision / Accessibility / Clearance）。"""
+"""验证单家具 placement-check 与全屋 room-layout 两套模式。"""
 
+from __future__ import annotations
+
+import asyncio
 import json
+import os
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+os.environ.setdefault("SPATIAL_AGENT_PROVIDER", "mock")
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 from app.schemas import PlacementCandidate
-from app.services.layout_reasoning import run_spatial_check
+from app.services.layout_reasoning import (
+    run_layout_module,
+    run_room_layout,
+    run_scenario_advice,
+    run_spatial_check,
+)
 from app.services.room_scan.mock_scene import build_mock_scene
 
 
-def _print_result(title: str, result) -> None:
-    print(f"\n=== {title} ===")
-    print(f"overall: {result.overallStatus}")
-    for check in result.checks:
-        mark = {"pass": "OK", "warn": "WARN", "fail": "FAIL"}[check.status]
-        print(f"  [{mark}] {check.name}: {check.message}")
-        if check.suggestion:
-            print(f"         -> {check.suggestion}")
-    print(f"feedback: {result.feedback}")
-
-
-def main() -> None:
+async def main() -> None:
     scene = build_mock_scene("demo_living_room")
 
-    # 1) 与茶几重叠 + 沙发前方空间不足
-    overlapping_sofa = PlacementCandidate(
-        id="candidate_sofa",
-        label="sofa",
-        name="沙发",
-        position=[1.2, 0.0, 2.1],
-        rotation=[0.0, 0.0, 0.0],
-        size=[2.0, 0.9, 0.8],
-    )
-    _print_result("重叠沙发", run_spatial_check(overlapping_sofa, scene))
-
-    # 2) 堵在门口
-    blocking_door = PlacementCandidate(
+    print("===== 模式一：单家具摆放 =====")
+    candidate = PlacementCandidate(
         id="candidate_cabinet",
         label="wardrobe",
         name="衣柜",
@@ -46,33 +37,37 @@ def main() -> None:
         rotation=[0.0, 0.0, 0.0],
         size=[0.6, 2.0, 0.5],
     )
-    _print_result("堵门衣柜", run_spatial_check(blocking_door, scene))
-
-    # 3) 超出房间
-    oversized = PlacementCandidate(
-        id="candidate_table",
-        label="dining_table",
-        name="餐桌",
-        position=[3.8, 0.0, 1.8],
-        rotation=[0.0, 0.0, 0.0],
-        size=[1.6, 0.75, 0.9],
+    geo = run_spatial_check(candidate, scene)
+    layout = await run_layout_module(candidate=candidate, scene=scene, checks=geo.checks)
+    print("overall:", geo.overallStatus)
+    print("moves:", len(layout.moves), layout.moves[0].reason if layout.moves else None)
+    print("advices:", [a.title for a in layout.advices])
+    scen = await run_scenario_advice(
+        scenarios=["elder", "pet"],
+        mode="placement",
+        candidate=candidate,
+        scene=scene,
+        layout=layout,
+        geometry_checks=geo.checks,
     )
-    _print_result("越界餐桌", run_spatial_check(oversized, scene))
+    print("scenario:", scen.mode, list(scen.advicesByScenario.keys()))
 
-    # 4) 合理空位书桌
-    ok_desk = PlacementCandidate(
-        id="candidate_desk",
-        label="desk",
-        name="书桌",
-        position=[3.5, 0.0, 2.6],
-        rotation=[0.0, 0.0, 0.0],
-        size=[1.2, 0.75, 0.6],
+    print("\n===== 模式二：全屋布局 =====")
+    room = await run_room_layout(scene=scene, enable_agents=True)
+    print("overall:", room.overallStatus)
+    print("objectChecks:", len(room.objectChecks))
+    print("moves:", len(room.layout.moves) if room.layout else 0)
+    print("advices:", [a.title for a in (room.layout.advices if room.layout else [])])
+    scen2 = await run_scenario_advice(
+        scenarios=["fengshui", "elder"],
+        mode="room",
+        candidate=None,
+        scene=scene,
+        layout=room.layout,
     )
-    result = run_spatial_check(ok_desk, scene)
-    _print_result("空位书桌", result)
-    print("\nJSON sample:")
-    print(json.dumps(result.model_dump(), ensure_ascii=False, indent=2))
+    print("scenario:", scen2.mode, scen2.summary)
+    print(json.dumps({k: [i.title for i in v] for k, v in scen2.advicesByScenario.items()}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

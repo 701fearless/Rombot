@@ -1,11 +1,31 @@
 from fastapi import APIRouter, HTTPException
 
-from app.schemas import RoomScanRequest, SceneResponse, SpatialCheckRequest, SpatialCheckResponse
+from app.schemas import (
+    PlacementCheckRequest,
+    PlacementCheckResponse,
+    RoomLayoutRequest,
+    RoomLayoutResponse,
+    RoomScanRequest,
+    ScenarioAdviceRequest,
+    ScenarioAdviceResponse,
+    SceneResponse,
+    SpatialCheckRequest,
+    SpatialCheckResponse,
+)
 from app.services.layout_reasoning import run_spatial_check
+from app.services.layout_reasoning.agents.phase1 import get_scenario_options, run_layout_module
+from app.services.layout_reasoning.agents.room_layout import run_room_layout
+from app.services.layout_reasoning.agents.scenario_agent import run_scenario_advice
 from app.services.room_scan.mock_scene import build_mock_scene
 
 
 router = APIRouter()
+
+
+def _resolve_scene(scene: SceneResponse | None, scene_id: str | None) -> SceneResponse:
+    if scene is not None:
+        return scene
+    return build_mock_scene(scene_id=scene_id or "demo_living_room")
 
 
 @router.post("/scan", response_model=SceneResponse)
@@ -14,15 +34,75 @@ async def scan_room(request: RoomScanRequest | None = None) -> SceneResponse:
     return build_mock_scene(scene_id=scan_id)
 
 
-@router.post("/spatial-check", response_model=SpatialCheckResponse)
-async def spatial_check(request: SpatialCheckRequest) -> SpatialCheckResponse:
-    """基础空间可行性检测：空间适配 / 障碍物 / 门窗可达性 / 活动空间。"""
-    scene = request.scene
-    if scene is None:
-        scene_id = request.sceneId or "demo_living_room"
-        scene = build_mock_scene(scene_id=scene_id)
+async def _run_placement_check(request: PlacementCheckRequest) -> PlacementCheckResponse:
+    scene = _resolve_scene(request.scene, request.sceneId)
     if scene.room.width <= 0 or scene.room.depth <= 0:
         raise HTTPException(status_code=400, detail="房间尺寸无效")
     if any(v <= 0 for v in request.candidate.size):
         raise HTTPException(status_code=400, detail="家具尺寸无效")
-    return run_spatial_check(request.candidate, scene)
+
+    result = run_spatial_check(request.candidate, scene)
+    layout = None
+    options = get_scenario_options()
+    if request.enableAgents:
+        layout = await run_layout_module(
+            candidate=request.candidate,
+            scene=scene,
+            checks=result.checks,
+        )
+
+    return PlacementCheckResponse(
+        mode="placement",
+        overallStatus=result.overallStatus,
+        checks=result.checks,
+        feedback=result.feedback,
+        layout=layout,
+        scenarioOptions=options,
+        agentReport=None,
+    )
+
+
+@router.post("/placement-check", response_model=PlacementCheckResponse)
+async def placement_check(request: PlacementCheckRequest) -> PlacementCheckResponse:
+    """模式一：单家具摆放建议（几何检测 + 该家具移动位姿 + 中文布局建议）。"""
+    return await _run_placement_check(request)
+
+
+@router.post("/spatial-check", response_model=SpatialCheckResponse, deprecated=True)
+async def spatial_check(request: SpatialCheckRequest) -> SpatialCheckResponse:
+    """兼容旧接口，等价于 /placement-check。"""
+    return await _run_placement_check(request)
+
+
+@router.post("/room-layout", response_model=RoomLayoutResponse)
+async def room_layout(request: RoomLayoutRequest) -> RoomLayoutResponse:
+    """模式二：全屋布局建议（逐件几何扫描 + 多家具移动 + 全屋中文建议）。"""
+    scene = _resolve_scene(request.scene, request.sceneId)
+    if scene.room.width <= 0 or scene.room.depth <= 0:
+        raise HTTPException(status_code=400, detail="房间尺寸无效")
+    if not scene.objects:
+        raise HTTPException(status_code=400, detail="场景中没有家具，无法进行全屋布局分析")
+    return await run_room_layout(scene=scene, enable_agents=request.enableAgents)
+
+
+@router.post("/scenario-advice", response_model=ScenarioAdviceResponse)
+async def scenario_advice(request: ScenarioAdviceRequest) -> ScenarioAdviceResponse:
+    """场景深化：养老/育婴/养宠/风水。mode=placement|room。"""
+    scene = _resolve_scene(request.scene, request.sceneId)
+    if scene.room.width <= 0 or scene.room.depth <= 0:
+        raise HTTPException(status_code=400, detail="房间尺寸无效")
+    if request.candidate is not None and any(v <= 0 for v in request.candidate.size):
+        raise HTTPException(status_code=400, detail="家具尺寸无效")
+
+    try:
+        return await run_scenario_advice(
+            scenarios=request.scenarios,
+            mode=request.mode,
+            candidate=request.candidate,
+            scene=scene,
+            layout=request.layout,
+            geometry_checks=request.geometryChecks,
+            user_profile=request.userProfile,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc

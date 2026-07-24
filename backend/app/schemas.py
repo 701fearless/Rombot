@@ -166,12 +166,41 @@ class PlacementCandidate(BaseModel):
     size: list[float] = Field(min_length=3, max_length=3)
 
 
+class UserProfile(BaseModel):
+    """Optional lifestyle context for multi-agent advice."""
+
+    familyMembers: list[str] = Field(default_factory=list)
+    hasChildren: bool = False
+    hasElderly: bool = False
+    pets: list[str] = Field(default_factory=list)
+    dailyHabits: list[str] = Field(default_factory=list)
+    storageHabits: str | None = None
+    fengShuiPreference: bool = False
+    preferPrivacy: bool = True
+    preferComfort: bool = True
+
+
 class SpatialCheckRequest(BaseModel):
-    """拖拽落位后的基础空间可行性检测请求。"""
+    """拖拽落位后的基础空间可行性检测请求（兼容旧名）。"""
 
     candidate: PlacementCandidate
     sceneId: str | None = None
     scene: SceneResponse | None = None
+    userProfile: UserProfile | None = None
+    enableAgents: bool = True
+
+
+# 单家具摆放模式
+PlacementCheckRequest = SpatialCheckRequest
+
+
+class RoomLayoutRequest(BaseModel):
+    """全屋布局优化请求（不绑定单件家具）。"""
+
+    sceneId: str | None = None
+    scene: SceneResponse | None = None
+    userProfile: UserProfile | None = None
+    enableAgents: bool = True
 
 
 class CheckDetail(BaseModel):
@@ -183,7 +212,133 @@ class CheckDetail(BaseModel):
     details: dict = Field(default_factory=dict)
 
 
+class ObjectCheckBundle(BaseModel):
+    """全屋模式下单件家具的几何检测摘要。"""
+
+    objectId: str
+    name: str
+    label: str
+    overallStatus: str
+    checks: list[CheckDetail] = Field(default_factory=list)
+
+
+class FurnitureMove(BaseModel):
+    """建议移动后的家具位姿（米）。"""
+
+    objectId: str
+    name: str
+    fromPosition: list[float] = Field(min_length=3, max_length=3)
+    toPosition: list[float] = Field(min_length=3, max_length=3)
+    fromRotation: list[float] | None = Field(default=None, min_length=3, max_length=3)
+    toRotation: list[float] | None = Field(default=None, min_length=3, max_length=3)
+    reason: str
+    source: str = "geometry"  # geometry | layout_agent
+
+
+class LayoutAdviceItem(BaseModel):
+    id: str
+    priority: str  # 高 | 中 | 低
+    title: str
+    problem: str
+    suggestion: str
+    relatedObjectIds: list[str] = Field(default_factory=list)
+
+
+class LayoutModule(BaseModel):
+    moves: list[FurnitureMove] = Field(default_factory=list)
+    advices: list[LayoutAdviceItem] = Field(default_factory=list)
+    summary: str = ""
+
+
+class ScenarioOption(BaseModel):
+    id: str  # elder | infant | pet | fengshui
+    name: str
+    description: str
+
+
+class ScenarioAdviceItem(BaseModel):
+    id: str
+    scenarioId: str
+    priority: str  # 高 | 中 | 低
+    title: str
+    reason: str
+    action: str
+    relatedObjectIds: list[str] = Field(default_factory=list)
+    targetPosition: list[float] | None = Field(default=None, min_length=3, max_length=3)
+
+
+class ScenarioAdviceRequest(BaseModel):
+    """用户选择场景后的深化建议请求。"""
+
+    scenarios: list[str] = Field(min_length=1)
+    mode: str = "placement"  # placement | room
+    candidate: PlacementCandidate | None = None
+    sceneId: str | None = None
+    scene: SceneResponse | None = None
+    layout: LayoutModule | None = None
+    geometryChecks: list[CheckDetail] = Field(default_factory=list)
+    userProfile: UserProfile | None = None
+
+
+class ScenarioAdviceResponse(BaseModel):
+    selectedScenarios: list[str]
+    mode: str = "placement"
+    advicesByScenario: dict[str, list[ScenarioAdviceItem]] = Field(default_factory=dict)
+    summary: str
+
+
+class AgentSuggestionModel(BaseModel):
+    id: str
+    category: str
+    priority: str
+    title: str
+    reason: str
+    action: str
+    confidence: float = Field(ge=0, le=1, default=0.8)
+
+
+class AgentOutputModel(BaseModel):
+    agent: str
+    suggestions: list[AgentSuggestionModel] = Field(default_factory=list)
+
+
+class ScoreDimensionsModel(BaseModel):
+    layout: int = Field(ge=0, le=100)
+    comfort: int = Field(ge=0, le=100)
+    functionality: int = Field(ge=0, le=100)
+    lifestyleCompatibility: int = Field(ge=0, le=100)
+
+
+class AgentReportModel(BaseModel):
+    score: int = Field(ge=0, le=100)
+    scoreDimensions: ScoreDimensionsModel
+    summary: str
+    highlights: list[str] = Field(default_factory=list)
+    suggestions: list[AgentSuggestionModel] = Field(default_factory=list)
+    agentOutputs: list[AgentOutputModel] = Field(default_factory=list)
+
+
 class SpatialCheckResponse(BaseModel):
+    """单家具摆放检测响应（亦用于 /placement-check）。"""
+
+    mode: str = "placement"
     overallStatus: str  # pass | fail | warn
     checks: list[CheckDetail]
     feedback: str
+    layout: LayoutModule | None = None
+    scenarioOptions: list[ScenarioOption] = Field(default_factory=list)
+    agentReport: AgentReportModel | None = None  # debug only
+
+
+PlacementCheckResponse = SpatialCheckResponse
+
+
+class RoomLayoutResponse(BaseModel):
+    """全屋布局优化响应。"""
+
+    mode: str = "room"
+    overallStatus: str  # pass | fail | warn
+    objectChecks: list[ObjectCheckBundle] = Field(default_factory=list)
+    feedback: str
+    layout: LayoutModule | None = None
+    scenarioOptions: list[ScenarioOption] = Field(default_factory=list)
