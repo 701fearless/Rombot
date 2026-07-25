@@ -6,6 +6,8 @@ async function errorOf(response: Response, fallback: string) {
 async function json<T>(url: string, init?: RequestInit): Promise<T> {
   const response = await fetch(url, init)
   if (!response.ok) throw await errorOf(response, `${init?.method ?? 'GET'} ${url} 请求失败 (${response.status})`)
+  const contentType = response.headers.get('content-type') ?? ''
+  if (!contentType.toLowerCase().includes('application/json')) throw new Error(`${url} 返回了非 JSON 内容，请检查本机后端接口路径`)
   return response.json() as Promise<T>
 }
 export async function detectPausedFrame(videoId: string, time: number, frameHash?: string, signal?: AbortSignal) {

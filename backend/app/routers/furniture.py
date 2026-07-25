@@ -8,6 +8,7 @@ from pathlib import Path
 from fastapi import APIRouter, File, HTTPException, Path as PathParam, UploadFile
 from pydantic import BaseModel, Field
 
+from app.schemas import EstimatedDimensions
 from app.storage.local_store import OUTPUTS_ROOT, path_to_output_url
 
 
@@ -16,6 +17,7 @@ UPLOAD_DIR = OUTPUTS_ROOT / "uploaded_furniture"
 MANIFEST_PATH = UPLOAD_DIR / "manifest.json"
 MAX_UPLOAD_BYTES = 50 * 1024 * 1024
 GLB_MAGIC = b"glTF"
+VIDEOS_DIR = OUTPUTS_ROOT / "videos"
 
 
 class FurnitureItem(BaseModel):
@@ -28,6 +30,82 @@ class FurnitureItem(BaseModel):
 
 class FurnitureUploadResponse(FurnitureItem):
     message: str
+
+
+class GeneratedFurnitureItem(BaseModel):
+    id: str
+    videoId: str
+    candidateId: str
+    representativeFrameId: str
+    representativeObjectId: str
+    label: str
+    category: str
+    name: str
+    previewUrl: str
+    glbUrl: str
+    sizeBytes: int = Field(ge=1)
+    estimatedDimensions: EstimatedDimensions | None = None
+
+
+def _category_for_label(label: str) -> str:
+    normalized = label.lower().replace("_", " ")
+    categories = (
+        (("sofa",), "沙发"),
+        (("bed",), "床"),
+        (("table", "desk"), "桌"),
+        (("chair", "armchair"), "椅"),
+        (("cabinet", "bookshelf", "wardrobe", "nightstand", "tv stand"), "柜"),
+        (("lamp", "light", "chandelier"), "灯"),
+        (("rug", "carpet"), "地毯"),
+        (("curtain",), "软装"),
+        (("vase", "mirror", "painting", "plant", "decoration"), "装饰"),
+    )
+    return next((category for keywords, category in categories if any(keyword in normalized for keyword in keywords)), "其他")
+
+
+def _load_generated_items() -> list[GeneratedFurnitureItem]:
+    items: list[GeneratedFurnitureItem] = []
+    if not VIDEOS_DIR.is_dir():
+        return items
+    for video_dir in sorted(VIDEOS_DIR.iterdir(), key=lambda path: (not path.name.isdigit(), path.name)):
+        if not video_dir.is_dir() or not re.fullmatch(r"[A-Za-z0-9_-]+", video_dir.name):
+            continue
+        analysis_path = video_dir / "analysis.json"
+        try:
+            analysis = json.loads(analysis_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for candidate in analysis.get("deduplicatedObjects") or []:
+            if not isinstance(candidate, dict):
+                continue
+            candidate_id = str(candidate.get("id") or "")
+            if not re.fullmatch(r"[A-Za-z0-9_-]+", candidate_id):
+                continue
+            glb_path = video_dir / "glb" / f"{candidate_id}.glb"
+            if not glb_path.is_file():
+                glb_path = video_dir / "generated" / candidate_id / "generated_model.glb"
+            preview_path = video_dir / "deduplicated" / candidate_id / "crop.jpg"
+            if not glb_path.is_file() or not preview_path.is_file():
+                continue
+            label = str(candidate.get("label") or "furniture")
+            try:
+                items.append(GeneratedFurnitureItem(
+                    id=f"video-{video_dir.name}-{candidate_id}",
+                    videoId=video_dir.name,
+                    candidateId=candidate_id,
+                    representativeFrameId=str(candidate.get("representativeFrameId") or ""),
+                    representativeObjectId=str(candidate.get("representativeObjectId") or ""),
+                    label=label,
+                    category=_category_for_label(label),
+                    name=str(candidate.get("name") or label),
+                    previewUrl=path_to_output_url(preview_path),
+                    glbUrl=path_to_output_url(glb_path),
+                    sizeBytes=glb_path.stat().st_size,
+                    estimatedDimensions=candidate.get("estimatedDimensions"),
+                ))
+            except (OSError, ValueError):
+                continue
+    return items
 
 
 def _safe_stem(filename: str) -> str:
@@ -109,6 +187,11 @@ async def upload_furniture_glb(file: UploadFile = File(...)) -> FurnitureUploadR
 async def list_uploaded_furniture() -> list[FurnitureItem]:
     items = [item for item in _load_items() if _item_path(item).is_file()]
     return sorted(items, key=lambda item: item.uploadedAt, reverse=True)
+
+
+@router.get("/generated", response_model=list[GeneratedFurnitureItem])
+async def list_generated_furniture() -> list[GeneratedFurnitureItem]:
+    return _load_generated_items()
 
 
 @router.delete("/{furniture_id}")
