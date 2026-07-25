@@ -8,6 +8,7 @@ import {
   AUTO_SECTION_RAY_SAMPLES,
   AUTO_SECTION_MIN_POLAR_ANGLE,
   createWallSectionIndex,
+  selectFrontmostSectionWall,
   selectSectionWall,
   wallIdFromObject,
   type SectionRayHit,
@@ -153,6 +154,7 @@ describe("competition whitebox compatibility", () => {
     root.position.sub(initialBounds.getCenter(new THREE.Vector3()))
     root.updateMatrixWorld(true)
     const index = createWallSectionIndex(root)
+    console.log('ROOM6_WALL_GROUPS', JSON.stringify([...index.groups.values()].map((item) => ({ id: item.id, normal: item.normal.toArray().map((value) => Number(value.toFixed(3))), planeOffset: Number(item.planeOffset.toFixed(3)), minAlong: Number(item.minAlong.toFixed(3)), maxAlong: Number(item.maxAlong.toFixed(3)), meshes: item.wallMeshes.length }))))
     const radius = Math.max(size.x, size.y, size.z, 1)
     const camera = new THREE.PerspectiveCamera(42, 680 / 520, 0.01, radius * 100)
     const raycaster = new THREE.Raycaster()
@@ -200,5 +202,52 @@ describe("competition whitebox compatibility", () => {
         0,
       ),
     ).toBeGreaterThan(0)
+  })
+
+  it("selects a front wall throughout a full desktop orbit", async () => {
+    const root = await loadCompetitionWhitebox()
+    const initialBounds = new THREE.Box3().setFromObject(root)
+    const size = initialBounds.getSize(new THREE.Vector3())
+    root.position.sub(initialBounds.getCenter(new THREE.Vector3()))
+    root.updateMatrixWorld(true)
+    const index = createWallSectionIndex(root)
+    const radius = Math.max(size.x, size.y, size.z, 1)
+    const camera = new THREE.PerspectiveCamera(42, 680 / 520, 0.01, radius * 100)
+    const raycaster = new THREE.Raycaster()
+    const selectedWalls = new Set<string>()
+    let currentWallId: string | null = null
+
+    for (let step = 0; step < 24; step += 1) {
+      const angle = step / 24 * Math.PI * 2
+      camera.position.set(
+        Math.cos(angle) * radius * 1.55,
+        radius * .95,
+        Math.sin(angle) * radius * 1.55,
+      )
+      camera.lookAt(0, 0, 0)
+      camera.updateMatrixWorld(true)
+      const targetDistance = camera.position.length()
+      const rayHits: SectionRayHit[] = []
+      for (const sample of AUTO_SECTION_RAY_SAMPLES) {
+        raycaster.setFromCamera(sample, camera)
+        const intersection = raycaster.intersectObjects(index.wallMeshes, false)[0]
+        if (!intersection) continue
+        const wallId = index.meshToWallId.get(intersection.object)
+        if (wallId) rayHits.push({ wallId, distance: intersection.distance })
+      }
+      const selected = selectFrontmostSectionWall({
+        hits: rayHits,
+        groups: index.groups,
+        viewDirectionXZ: new THREE.Vector2(-camera.position.x, -camera.position.z),
+        polarAngle: Math.acos(camera.position.y / targetDistance),
+        cameraTargetDistance: targetDistance,
+        currentWallId,
+      })
+      expect(selected, `orbit step ${step}`).not.toBeNull()
+      currentWallId = selected?.wallId ?? null
+      if (currentWallId) selectedWalls.add(currentWallId)
+    }
+
+    expect(selectedWalls.size).toBeGreaterThanOrEqual(4)
   })
 })

@@ -11,7 +11,7 @@ export interface SnapshotObject {
   semantic: { label: string; name: string; category: string; colors: string[]; materials: string[]; styles: string[]; functions: string[] }
   geometry: { size: Vector3; glbUrl?: string | null; cropUrl?: string | null }
   transform: { position: Vector3; rotation: Vector3; scale: Vector3 }
-  placement: { isExisting: boolean; locked: boolean; zone: string }
+  placement: { isExisting: boolean; locked: boolean; zone: string; surface?: 'floor' | 'wall' | 'object'; supportObjectId?: string | null }
 }
 export interface SnapshotWall { id: string; start: [number, number]; end: [number, number]; height: number; thickness?: number; [key: string]: unknown }
 export interface SceneSnapshot {

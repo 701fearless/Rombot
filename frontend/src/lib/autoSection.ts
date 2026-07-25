@@ -49,13 +49,85 @@ export interface SectionWallCandidate {
   proximity: number
 }
 
-interface SelectSectionWallInput {
+export interface SelectSectionWallInput {
   hits: SectionRayHit[]
   groups: Map<string, Pick<WallSectionGroup, "normal">>
   viewDirectionXZ: THREE.Vector2
   polarAngle: number
   cameraTargetDistance: number
   currentWallId: string | null
+}
+
+export function selectFrontmostSectionWall({
+  hits,
+  groups,
+  viewDirectionXZ,
+  polarAngle,
+  cameraTargetDistance,
+  currentWallId,
+}: SelectSectionWallInput): SectionWallCandidate | null {
+  if (
+    polarAngle < AUTO_SECTION_MIN_POLAR_ANGLE ||
+    viewDirectionXZ.lengthSq() < 1e-8 ||
+    !hits.length
+  ) return null
+
+  const view = viewDirectionXZ.clone().normalize()
+  const minimumIncidence = Math.cos(
+    THREE.MathUtils.degToRad(AUTO_SECTION_HALF_ANGLE_DEGREES),
+  )
+  const stats = new Map<string, { count: number; nearest: number }>()
+  for (const hit of hits) {
+    const state = stats.get(hit.wallId) ?? {
+      count: 0,
+      nearest: Number.POSITIVE_INFINITY,
+    }
+    state.count += 1
+    state.nearest = Math.min(state.nearest, hit.distance)
+    stats.set(hit.wallId, state)
+  }
+
+  const eligible = [...stats].flatMap(([wallId, state]) => {
+    const group = groups.get(wallId)
+    if (!group) return []
+    const incidence = Math.abs(view.dot(group.normal))
+    if (incidence < minimumIncidence) return []
+    const coverage = state.count / AUTO_SECTION_RAY_SAMPLES.length
+    const proximity = clamp01(
+      1 - state.nearest / Math.max(cameraTargetDistance * 1.5, 0.001),
+    )
+    return [{
+      wallId,
+      coverage,
+      incidence,
+      proximity,
+      nearest: state.nearest,
+      count: state.count,
+      score: coverage * .45 + incidence * .25 + proximity * .3,
+    }]
+  })
+  const supported = eligible.filter((candidate) => candidate.count >= 2)
+  const candidates = supported.length ? supported : eligible
+  candidates.sort((left, right) =>
+    left.nearest - right.nearest ||
+    right.count - left.count ||
+    right.incidence - left.incidence ||
+    left.wallId.localeCompare(right.wallId),
+  )
+  const best = candidates[0]
+  if (!best) return null
+
+  const current = currentWallId
+    ? candidates.find((candidate) => candidate.wallId === currentWallId)
+    : undefined
+  const chosen = current && current.nearest <= best.nearest + .18 ? current : best
+  return {
+    wallId: chosen.wallId,
+    coverage: chosen.coverage,
+    incidence: chosen.incidence,
+    proximity: chosen.proximity,
+    score: chosen.score,
+  }
 }
 
 function inheritedUserData(

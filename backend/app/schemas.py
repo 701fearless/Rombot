@@ -1,4 +1,5 @@
 import math
+from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -613,6 +614,8 @@ class SnapshotPlacement(BaseModel):
     isExisting: bool = False
     locked: bool = False
     zone: str = "living_area"
+    surface: Literal["floor", "wall", "object"] = "floor"
+    supportObjectId: str | None = None
 
 
 class SnapshotObject(BaseModel):
