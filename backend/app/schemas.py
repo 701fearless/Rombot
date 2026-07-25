@@ -619,6 +619,7 @@ class SnapshotObject(BaseModel):
 
 class SnapshotRoom(BaseModel):
     name: str
+    whiteboxGlbUrl: str = ""
     floorPolygon: list[list[float]]
     walls: list[dict] = Field(default_factory=list)
     openings: list[dict] = Field(default_factory=list)

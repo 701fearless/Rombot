@@ -7,6 +7,7 @@
   "coordinateSystem": "threejs-xz-ground-y-up",
   "room": {
     "name": "Living room",
+    "whiteboxGlbUrl": "/sample_data/floorplans/preprocessed/room6/whitebox.glb",
     "floorPolygon": [[0.0, 0.0], [6.0, 0.0], [6.0, 4.2], [0.0, 4.2]],
     "walls": [
       {"id": "wall_south", "start": [0.0, 0.0], "end": [6.0, 0.0], "height": 3.0},

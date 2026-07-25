@@ -44,7 +44,7 @@ def build_mock_scene(scene_id: str) -> SceneResponse:
                 id="tv_stand_1",
                 label="tv_stand",
                 name="电视柜",
-                position=[1.2, 0.0, 0.35],
+                position=[1.2, 0.225, 0.35],
                 rotation=[0.0, 0.0, 0.0],
                 size=[1.6, 0.45, 0.4],
                 glbUrl="/sample_data/models/tv_stand.glb",

@@ -33,7 +33,13 @@ from app.services.video_preprocess.clip_deduplicator import ClipFurnitureDedupli
 from app.services.video_preprocess.dimension_estimator import ArkFurnitureDimensionEstimator
 from app.services.video_preprocess.preprocessor import VideoPreprocessor
 from app.services.vision_semantics.doubao_provider import DoubaoVisionProvider
-from app.storage.local_store import BACKEND_ROOT, OUTPUTS_ROOT, path_to_output_url, save_data_url
+from app.storage.local_store import (
+    BACKEND_ROOT,
+    OUTPUTS_ROOT,
+    output_url_to_path,
+    path_to_output_url,
+    save_data_url,
+)
 
 
 router = APIRouter()
@@ -530,6 +536,8 @@ async def clip_search_products(request: ClipSearchRequest) -> dict:
                 )
         elif request.cropUrl:
             image_path = resolve_media_path(request.cropUrl)
+            if image_path is None or not image_path.exists():
+                image_path = output_url_to_path(request.cropUrl)
             if image_path is None or not image_path.exists():
                 relative = request.cropUrl.lstrip("/").removeprefix("outputs/")
                 candidate = OUTPUTS_ROOT / Path(relative)

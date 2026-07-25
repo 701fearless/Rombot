@@ -32,6 +32,7 @@ backend/outputs/tripo_speed_tests/
 backend/outputs/floorplans/
 backend/outputs/server_*.log
 backend/outputs/server_*.err.log
+backend/server.*.log
 backend/outputs/videos/**/hunyuan_task.json
 backend/outputs/videos/**/hunyuan_result.json
 backend/outputs/videos/**/hunyuan_batch_report.json
