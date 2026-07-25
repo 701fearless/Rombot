@@ -1,0 +1,15 @@
+// DouyinLinkSheet 样式（面板骨架复用全局 .add-sheet，本文件只写粘贴框）
+.douyin-sheet {
+  &__field {
+    display: flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    padding: 0 var(--space-m);
+  }
+
+  &__input {
+    width: 100%;
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+  }
+}

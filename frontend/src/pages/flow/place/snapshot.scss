@@ -1,0 +1,43 @@
+.snapshot-place {
+  min-height: 100vh; padding: calc(var(--app-header-h) + 12px) 12px 34px; box-sizing: border-box;
+  display: flex; flex-direction: column; gap: 12px; background: #f4f1eb; color: #2c352e;
+  &__state { margin-top: 80px; display: flex; flex-direction: column; align-items: center; gap: 18px; color: #697168; }
+  &__back { min-height: 44px; padding: 0 18px; display: flex; align-items: center; border: 1px solid #344238; border-radius: 6px; color: #344238; }
+  &__summary { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  &__summary > view:first-child { display: flex; flex-direction: column; gap: 2px; }
+  &__title { font-family: var(--font-family-serif); font-size: 20px; }
+  &__meta { font-size: 11px; color: #747c74; }
+  &__save-state { padding: 6px 9px; border-radius: 5px; background: #dce6d8; color: #344238; font-size: 10px; &.is-local { background: #f5d9ca; color: #7b4338; } }
+  &__canvas { position: relative; align-self: center; overflow: hidden; border: 6px solid #485249; border-radius: 4px; background: #fffdf9; box-shadow: 0 14px 35px rgba(35,45,38,.12); }
+  &__grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(52,66,56,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(52,66,56,.08) 1px, transparent 1px); background-size: 28px 28px; }
+  &__door, &__window { position: absolute; z-index: 2; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #6e766e; background: #fffdf9; }
+  &__door { bottom: -6px; left: 54px; width: 52px; height: 12px; border-top: 2px solid #d8a27f; }
+  &__window { top: -6px; right: 78px; width: 82px; height: 12px; border-bottom: 3px solid #7fa5b8; }
+  &__controls { min-height: 48px; display: flex; align-items: center; gap: 6px; }
+  &__control { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border: 1px solid #cbd0c9; border-radius: 5px; background: #fffdf9; font-size: 20px; }
+  &__selection { min-width: 0; flex: 1; display: flex; flex-direction: column; align-items: flex-end; font-size: 10px; color: #697168; }
+  &__selection text:first-child { max-width: 100%; color: #2c352e; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  &__save { min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #344238; color: #fff; font-size: 14px; font-weight: 600; }
+}
+.snapshot-object {
+  position: absolute; z-index: 4; min-width: 0; box-sizing: border-box; border: 1px solid rgba(52,66,56,.26); border-radius: 4px; background: #dfe3dc; box-shadow: 0 4px 10px rgba(30,38,32,.12); touch-action: none;
+  &.is-new { border-color: #c67755; }
+  &.is-selected { z-index: 8; outline: 3px solid rgba(216,162,127,.65); outline-offset: 2px; }
+  &__image, &__placeholder { width: 100%; height: 100%; border-radius: 3px; }
+  &__placeholder { background: linear-gradient(135deg, #d8ddd5, #b7c0b5); }
+  &__name { position: absolute; left: 3px; right: 3px; bottom: 3px; padding: 2px 3px; border-radius: 2px; background: rgba(255,253,249,.9); color: #344238; font-size: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+.snapshot-advice {
+  padding: 14px; display: flex; flex-direction: column; gap: 10px; border: 1px solid #d6dbd3; border-radius: 6px; background: #fffdf9;
+  &__head { display: flex; align-items: center; justify-content: space-between; }
+  &__title { font-family: var(--font-family-serif); font-size: 18px; }
+  &__mock { padding: 4px 6px; border-radius: 3px; background: #f5d9ca; color: #7b4338; font-size: 9px; }
+  &__summary { font-size: 11px; line-height: 1.5; color: #697168; }
+  &__list { display: flex; flex-direction: column; gap: 7px; }
+  &__item { display: grid; grid-template-columns: 22px minmax(0,1fr); gap: 8px; padding: 9px; border-radius: 4px; background: #f1f4ee; }
+  &__priority { color: #9a5a43; font-size: 10px; font-weight: 600; }
+  &__item > view { display: flex; flex-direction: column; gap: 2px; }
+  &__item-title { font-size: 12px; font-weight: 600; }
+  &__item-copy { font-size: 10px; line-height: 1.45; color: #697168; }
+  &__apply { min-height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid #344238; border-radius: 5px; color: #344238; font-size: 13px; font-weight: 600; }
+}

@@ -54,15 +54,12 @@ def prebuilt_model_path(
     candidate_id = detected_object.deduplicatedObjectId
     if not video_id or not candidate_id:
         return None
-    candidate_path = (
-        OUTPUTS_ROOT
-        / "videos"
-        / video_id
-        / "generated"
-        / candidate_id
-        / "generated_model.glb"
+    video_dir = OUTPUTS_ROOT / "videos" / video_id
+    candidate_paths = (
+        video_dir / "generated" / candidate_id / "generated_model.glb",
+        video_dir / "glb" / f"{candidate_id}.glb",
     )
-    return candidate_path if candidate_path.is_file() else None
+    return next((path for path in candidate_paths if path.is_file()), None)
 
 
 def attach_prebuilt_urls(response: DetectResponse) -> DetectResponse:

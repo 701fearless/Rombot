@@ -1,0 +1,235 @@
+// 识别流样式
+.recognize {
+  min-height: 100vh;
+  padding: calc(var(--app-header-h) + 8px) var(--space-m)
+    calc(var(--app-tabbar-h) + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+
+  &__hint {
+    font-size: var(--font-size-subtitle);
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding: var(--space-l) 0;
+  }
+
+  &__entries {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  &__entry {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    min-height: var(--touch-min);
+  }
+
+  &__entry-title {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-title);
+    color: var(--color-text-primary);
+  }
+
+  &__entry-desc {
+    font-size: var(--font-size-body);
+    color: var(--color-text-secondary);
+  }
+
+  // ---------- 识别中（liquid-glass 浮层） ----------
+  &__scanning {
+    margin-top: var(--space-xl);
+    padding: var(--space-xl);
+    border-radius: var(--radius-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-m);
+  }
+
+  &__scan-pulse {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    animation: recognize-pulse 1.4s ease-in-out infinite;
+  }
+
+  &__scan-text {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-title);
+    color: var(--color-text-primary);
+  }
+
+  &__scan-sub {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+  }
+
+  // ---------- 结果 ----------
+  &__result {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  &__fallback {
+    padding: var(--space-s) var(--space-m);
+    border-radius: var(--radius-btn);
+    background: var(--color-bg-secondary);
+  }
+
+  &__fallback-text {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  &__card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &__card-title {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-title);
+    color: var(--color-text-primary);
+  }
+
+  &__card-meta {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--space-m);
+  }
+
+  &__cta {
+    flex: 1;
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent);
+    border-radius: var(--radius-btn);
+    box-shadow: var(--shadow-emboss);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.98);
+      box-shadow: var(--shadow-emboss-inset);
+    }
+  }
+
+  &__cta-text {
+    font-size: var(--font-size-subtitle);
+    color: var(--color-text-primary);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  &__back {
+    min-width: 120px;
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-btn);
+    box-shadow: var(--shadow-emboss);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.95);
+      box-shadow: var(--shadow-emboss-inset);
+    }
+  }
+
+  &__back-text {
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+  }
+
+  // ---------- 房间选择 ----------
+  &__picker {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  &__picker-title {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-subtitle);
+    color: var(--color-text-primary);
+  }
+
+  &__picker-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  &__picker-home {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  &__picker-rooms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+  }
+
+  &__room-pill {
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-m);
+    border-radius: var(--radius-btn);
+    box-shadow: var(--shadow-emboss);
+    transition: transform 0.18s ease;
+
+    &.is-active {
+      background: var(--color-accent);
+      box-shadow: var(--shadow-emboss-inset);
+    }
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.93);
+    }
+  }
+
+  &__room-pill-text {
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+
+    &.is-active {
+      color: var(--color-text-primary);
+    }
+  }
+}
+
+@keyframes recognize-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.5;
+  }
+}

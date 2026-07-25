@@ -1,9 +1,13 @@
 import re
 import json
 import shutil
+import subprocess
+import sys
+import tempfile
 from pathlib import Path
 
 from fastapi import APIRouter, HTTPException, Query, Request
+from pydantic import BaseModel, Field
 
 from app.config import get_settings
 from app.schemas import (
@@ -28,12 +32,129 @@ from app.services.video_preprocess.clip_deduplicator import ClipFurnitureDedupli
 from app.services.video_preprocess.dimension_estimator import ArkFurnitureDimensionEstimator
 from app.services.video_preprocess.preprocessor import VideoPreprocessor
 from app.services.vision_semantics.doubao_provider import DoubaoVisionProvider
-from app.storage.local_store import path_to_output_url, save_data_url
+from app.storage.local_store import (
+    BACKEND_ROOT,
+    OUTPUTS_ROOT,
+    output_url_to_path,
+    path_to_output_url,
+    save_data_url,
+)
 
 
 router = APIRouter()
 
 SUPPORTED_VIDEO_SUFFIXES = {".mp4", ".mov", ".mkv", ".avi", ".webm"}
+
+
+class ClipSearchRequest(BaseModel):
+    cropUrl: str | None = None
+    image: str | None = None
+    bbox: list[int] | None = Field(default=None, min_length=4, max_length=4)
+    topK: int = Field(default=3, ge=1, le=20)
+    imageName: str | None = None
+    analysis: dict | None = None
+    hint: dict | None = None
+    textWeight: float = Field(default=0.45, ge=0.0, le=0.85)
+
+
+def _retrieval_python() -> Path:
+    return Path(sys.executable)
+
+
+def _crop_from_data_url(image: str, bbox: list[int], output_path: Path) -> Path:
+    from PIL import Image
+    import io
+    import base64
+
+    if "," in image:
+        _, encoded = image.split(",", 1)
+    else:
+        encoded = image
+    raw = base64.b64decode(encoded)
+    with Image.open(io.BytesIO(raw)) as img:
+        rgb = img.convert("RGB")
+        x1, y1, x2, y2 = [int(v) for v in bbox]
+        x1, y1 = max(0, x1), max(0, y1)
+        x2, y2 = min(rgb.width, x2), min(rgb.height, y2)
+        if x2 <= x1 or y2 <= y1:
+            raise HTTPException(status_code=400, detail="Invalid bbox for crop")
+        cropped = rgb.crop((x1, y1, x2, y2))
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        cropped.save(output_path, format="JPEG", quality=90)
+    return output_path
+
+
+def _resolve_search_hint(request: ClipSearchRequest) -> dict | None:
+    if request.hint:
+        return request.hint
+    if not request.analysis:
+        return None
+    hints_dir = BACKEND_ROOT / "scripts" / "product_retrieval"
+    if str(hints_dir) not in sys.path:
+        sys.path.insert(0, str(hints_dir))
+    from hints import find_object_hint  # noqa: WPS433
+
+    ref = request.imageName or request.cropUrl or ""
+    return find_object_hint(request.analysis, ref)
+
+
+def _run_clip_search(
+    image_path: Path,
+    top_k: int,
+    *,
+    hint: dict | None = None,
+    text_weight: float = 0.45,
+) -> dict:
+    python_exe = _retrieval_python()
+    script = BACKEND_ROOT / "scripts" / "product_retrieval" / "search.py"
+    pretrained = BACKEND_ROOT / "data" / "product_index" / "ViT-B-32.pt"
+    hints_path: Path | None = None
+    cmd = [
+        str(python_exe),
+        str(script),
+        "--image",
+        str(image_path),
+        "--top-k",
+        str(top_k),
+        "--text-weight",
+        str(text_weight),
+        "--json",
+    ]
+    if pretrained.exists():
+        cmd.extend(["--pretrained", str(pretrained)])
+    try:
+        if hint:
+            hints_path = Path(tempfile.mkdtemp(prefix="clip_hints_")) / "hint.json"
+            hints_path.write_text(json.dumps(hint, ensure_ascii=False), encoding="utf-8")
+            cmd.extend(["--hints-json", str(hints_path)])
+            if hint.get("label"):
+                cmd.extend(["--label", str(hint["label"])])
+        completed = subprocess.run(
+            cmd,
+            cwd=str(BACKEND_ROOT),
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=180,
+            check=False,
+        )
+    except subprocess.TimeoutExpired as exc:
+        raise HTTPException(status_code=504, detail="CLIP search timed out") from exc
+    finally:
+        if hints_path is not None:
+            try:
+                shutil.rmtree(hints_path.parent, ignore_errors=True)
+            except Exception:  # noqa: BLE001
+                pass
+    if completed.returncode != 0:
+        detail = (completed.stderr or completed.stdout or "clip search failed").strip()
+        raise HTTPException(status_code=500, detail=detail[-800:])
+    try:
+        payload = json.loads(completed.stdout)
+    except json.JSONDecodeError as exc:
+        raise HTTPException(status_code=500, detail="Invalid CLIP search JSON output") from exc
+    return payload
 
 
 def _validate_video_id(video_id: str) -> None:
@@ -336,3 +457,85 @@ async def detect_from_analysis(video_id: str, time: float = Query(ge=0)) -> Dete
     if not frame:
         raise HTTPException(status_code=404, detail="Video analysis frame not found")
     return DetectResponse(frameId=frame.frameId, objects=frame.objects, frameImageUrl=frame.frameImageUrl)
+
+
+@router.get("/{video_id}/product-matches")
+async def get_product_matches(video_id: str) -> dict:
+    """Return offline IKEA CLIP match cache for a video (no live retrieval)."""
+    _validate_video_id(video_id)
+    path = video_output_dir(video_id) / "product_matches.json"
+    if not path.exists():
+        raise HTTPException(
+            status_code=404,
+            detail=(
+                f"product_matches.json not found for videoId={video_id}. "
+                "Run scripts/product_retrieval/batch_match_products.py first."
+            ),
+        )
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError as exc:
+        raise HTTPException(status_code=500, detail="Invalid product_matches.json") from exc
+    if not isinstance(payload, dict):
+        raise HTTPException(status_code=500, detail="Invalid product_matches.json")
+    return payload
+
+
+@router.post("/clip-search")
+async def clip_search_products(request: ClipSearchRequest) -> dict:
+    """Live IKEA CLIP search for an arbitrary crop (image mode / ad-hoc)."""
+    temp_path: Path | None = None
+    try:
+        if request.cropUrl:
+            image_path = output_url_to_path(request.cropUrl)
+            if image_path is None or not image_path.exists():
+                # also allow absolute-ish /outputs paths with forward slashes
+                relative = request.cropUrl.lstrip("/").removeprefix("outputs/")
+                candidate = OUTPUTS_ROOT / Path(relative)
+                image_path = candidate if candidate.exists() else None
+            if image_path is None or not image_path.exists():
+                raise HTTPException(status_code=404, detail=f"cropUrl not found: {request.cropUrl}")
+        elif request.image and request.bbox:
+            temp_path = Path(tempfile.mkdtemp(prefix="clip_search_")) / "crop.jpg"
+            image_path = _crop_from_data_url(request.image, request.bbox, temp_path)
+        elif request.image:
+            # Full-image query (no detection / no bbox)
+            temp_dir = Path(tempfile.mkdtemp(prefix="clip_search_"))
+            temp_path = temp_dir / "query.jpg"
+            from PIL import Image
+            import io
+            import base64
+
+            if "," in request.image:
+                _, encoded = request.image.split(",", 1)
+            else:
+                encoded = request.image
+            raw = base64.b64decode(encoded)
+            with Image.open(io.BytesIO(raw)) as img:
+                img.convert("RGB").save(temp_path, format="JPEG", quality=92)
+            image_path = temp_path
+        else:
+            raise HTTPException(status_code=400, detail="Provide cropUrl, image, or image + bbox")
+
+        hint = _resolve_search_hint(request)
+        payload = _run_clip_search(
+            image_path,
+            request.topK,
+            hint=hint,
+            text_weight=request.textWeight,
+        )
+        return {
+            "source": "ikea_clip_live",
+            "topK": request.topK,
+            "queryText": payload.get("queryText"),
+            "label": payload.get("label") or (hint or {}).get("label"),
+            "hint": hint,
+            "textWeight": request.textWeight,
+            "results": payload.get("results") or [],
+        }
+    finally:
+        if temp_path is not None:
+            try:
+                shutil.rmtree(temp_path.parent, ignore_errors=True)
+            except Exception:  # noqa: BLE001
+                pass

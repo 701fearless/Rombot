@@ -41,6 +41,7 @@ class Settings:
     openai_image_model: str
     openai_image_size: str
     spatial_agent_provider: str
+    spatial_agent_provider: str
     hunyuan_api_key: str | None
     hunyuan_base_url: str
     hunyuan_model: str

@@ -1,6 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Path as PathParam
 
 from app.schemas import (
+    LayoutModule,
     PlacementCheckRequest,
     PlacementCheckResponse,
     RoomLayoutRequest,
@@ -8,6 +9,7 @@ from app.schemas import (
     RoomScanRequest,
     ScenarioAdviceRequest,
     ScenarioAdviceResponse,
+    SceneSnapshot,
     SceneResponse,
     SpatialCheckRequest,
     SpatialCheckResponse,
@@ -16,10 +18,43 @@ from app.services.layout_reasoning import run_spatial_check
 from app.services.layout_reasoning.agents.phase1 import get_scenario_options, run_layout_module
 from app.services.layout_reasoning.agents.room_layout import run_room_layout
 from app.services.layout_reasoning.agents.scenario_agent import run_scenario_advice
+from app.services.layout_reasoning.propose_moves import propose_moves_from_geometry
 from app.services.room_scan.mock_scene import build_mock_scene
+from app.services.scene_snapshot import load_snapshot, reset_snapshot, save_snapshot
 
 
 router = APIRouter()
+
+
+@router.get("/snapshots/{scene_id}", response_model=SceneSnapshot)
+async def get_scene_snapshot(
+    scene_id: str = PathParam(pattern=r"^[A-Za-z0-9_-]+$"),
+) -> SceneSnapshot:
+    try:
+        return load_snapshot(scene_id)
+    except (FileNotFoundError, ValueError) as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@router.put("/snapshots/{scene_id}", response_model=SceneSnapshot)
+async def put_scene_snapshot(
+    snapshot: SceneSnapshot,
+    scene_id: str = PathParam(pattern=r"^[A-Za-z0-9_-]+$"),
+) -> SceneSnapshot:
+    try:
+        return save_snapshot(scene_id, snapshot)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@router.post("/snapshots/{scene_id}/reset", response_model=SceneSnapshot)
+async def restore_scene_snapshot(
+    scene_id: str = PathParam(pattern=r"^[A-Za-z0-9_-]+$"),
+) -> SceneSnapshot:
+    try:
+        return reset_snapshot(scene_id)
+    except (FileNotFoundError, ValueError) as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
 def _resolve_scene(scene: SceneResponse | None, scene_id: str | None) -> SceneResponse:
@@ -49,6 +84,17 @@ async def _run_placement_check(request: PlacementCheckRequest) -> PlacementCheck
             candidate=request.candidate,
             scene=scene,
             checks=result.checks,
+        )
+    else:
+        moves = propose_moves_from_geometry(request.candidate, scene, result.checks)
+        layout = LayoutModule(
+            moves=moves,
+            advices=[],
+            summary=(
+                "几何检查已给出建议移动位置。"
+                if moves
+                else "当前位置未产生确定性移动建议。"
+            ),
         )
 
     return PlacementCheckResponse(

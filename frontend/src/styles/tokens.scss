@@ -1,0 +1,94 @@
+// ============================================================
+// Mobile design tokens: calm, tactile, residential.
+// `page` serves WeChat Mini Program; `:root` serves H5.
+// ============================================================
+
+@mixin home-ai-tokens {
+  // Surfaces
+  --color-bg-primary: #f7f4ef;
+  --color-bg-secondary: #ece8e1;
+  --color-surface: #fffdf9;
+  --color-surface-elevated: #ffffff;
+
+  // Brand and accents
+  --color-primary: #344238;
+  --color-primary-light: #657766;
+  --color-accent: #d8a27f;
+  --color-secondary: #c7d1c0;
+  --color-burgundy: #914f48;
+  --color-on-accent: #2b312c;
+  --color-on-dark: #fffdf9;
+
+  // Text and structure
+  --color-text-primary: #272b28;
+  --color-text-secondary: #697069;
+  --color-border: #d8d2c9;
+  --color-divider: rgba(52, 66, 56, 0.1);
+
+  // Semantic colors
+  --color-info: #6f8990;
+  --color-success: #708567;
+  --color-warning: #c48952;
+  --color-error: #a6524b;
+  --color-surface-dark: #344238;
+  --color-highlight: #d8a27f;
+
+  // Residential palette for covers and empty states
+  --color-pastel-green: #d6dfd0;
+  --color-pastel-blue: #cad9dc;
+  --color-pastel-cream: #f1e9df;
+  --color-pastel-peach: #efd4c3;
+
+  // Restrained depth: clear enough for touch hierarchy, never glossy.
+  --emboss-light: #fffdf9;
+  --emboss-dark: rgba(52, 66, 56, 0.12);
+  --shadow-emboss: 0 8px 22px rgba(52, 66, 56, 0.09),
+    0 1px 2px rgba(52, 66, 56, 0.06);
+  --shadow-emboss-inset: inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(52, 66, 56, 0.1);
+  --shadow-lift: 0 16px 34px rgba(43, 53, 46, 0.18);
+
+  // Shape and type
+  --radius-card: 16px;
+  --radius-btn: 12px;
+  --type-display: 30px;
+  --type-page-title: 22px;
+  --type-section-title: 20px;
+  --type-card-title: 17px;
+  --type-body: 15px;
+  --type-label: 14px;
+  --type-caption: 12px;
+  --type-micro: 11px;
+  --font-size-hero: 38px;
+  --font-size-h1: var(--type-display);
+  --font-size-title: var(--type-page-title);
+  --font-size-subtitle: var(--type-card-title);
+  --font-size-body: var(--type-body);
+  --font-size-caption: var(--type-caption);
+  --line-height-body: 1.55;
+  --letter-spacing-tight: 0;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0;
+  --letter-spacing-hero: 0;
+  --font-family-ui: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC',
+    'Microsoft YaHei', sans-serif;
+  --font-family-serif: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+
+  // Mobile rhythm
+  --space-xs: 6px;
+  --space-s: 10px;
+  --space-m: 16px;
+  --space-l: 24px;
+  --space-xl: 32px;
+  --touch-min: 48px;
+  --app-header-h: 60px;
+  --app-tabbar-h: 64px;
+}
+
+page {
+  @include home-ai-tokens;
+}
+
+:root {
+  @include home-ai-tokens;
+}

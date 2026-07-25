@@ -1,4 +1,6 @@
-from pydantic import BaseModel, Field
+import math
+
+from pydantic import BaseModel, Field, field_validator
 
 
 class EstimatedDimensions(BaseModel):
@@ -476,3 +478,170 @@ class RoomLayoutResponse(BaseModel):
     feedback: str
     layout: LayoutModule | None = None
     scenarioOptions: list[ScenarioOption] = Field(default_factory=list)
+
+
+class ProductHints(BaseModel):
+    category: str
+    queryTags: list[str] = Field(default_factory=list)
+    recommendApi: str = "/api/product/recommend"
+
+
+class ProductAttributes(BaseModel):
+    color: str | None = None
+    material: str | None = None
+    style: str | None = None
+
+
+class ProductRecognizeRequest(BaseModel):
+    objectId: str | None = None
+    frameId: str | None = None
+    cropUrl: str | None = None
+    image: str | None = None
+    label: str | None = None
+    sceneId: str | None = None
+
+
+class ProductRecognizeResponse(BaseModel):
+    category: str
+    name: str
+    attributes: ProductAttributes
+    estimatedSize_m: list[float] = Field(min_length=3, max_length=3)
+    sizeConfidence: str = "low"
+    queryTags: list[str] = Field(default_factory=list)
+    source: str = "mock"
+
+
+class ProductRecommendItem(BaseModel):
+    productId: str
+    title: str
+    matchType: str
+    score: float = Field(ge=0, le=1)
+    price: float = Field(ge=0)
+    currency: str = "CNY"
+    size_m: list[float] = Field(min_length=3, max_length=3)
+    imageUrl: str | None = None
+    glbUrl: str | None = None
+    buyUrl: str | None = None
+    reason: str
+    sizeFit: str = "unknown"
+    category: str
+    tags: list[str] = Field(default_factory=list)
+
+
+class ProductRecommendRequest(ProductRecognizeRequest):
+    query: ProductRecognizeResponse | None = None
+    budget: float | None = Field(default=None, gt=0)
+    preferSame: bool = False
+    limit: int = Field(default=6, ge=1, le=20)
+    scene: SceneResponse | None = None
+    candidate: PlacementCandidate | None = None
+
+
+class ProductRecommendResponse(BaseModel):
+    query: ProductRecognizeResponse
+    items: list[ProductRecommendItem] = Field(default_factory=list)
+
+
+class ProductRecognizeAndRecommendRequest(ProductRecommendRequest):
+    pass
+
+
+class ProductRecognizeAndRecommendResponse(BaseModel):
+    recognition: ProductRecognizeResponse
+    items: list[ProductRecommendItem] = Field(default_factory=list)
+
+
+class SnapshotSource(BaseModel):
+    type: str = "feed"
+    videoId: str | None = None
+    time: float | None = Field(default=None, ge=0)
+    frameId: str | None = None
+    objectId: str | None = None
+
+
+class SnapshotSemantic(BaseModel):
+    label: str
+    name: str
+    category: str
+    colors: list[str] = Field(default_factory=list)
+    materials: list[str] = Field(default_factory=list)
+    styles: list[str] = Field(default_factory=list)
+    functions: list[str] = Field(default_factory=list)
+
+
+class SnapshotGeometry(BaseModel):
+    size: list[float] = Field(min_length=3, max_length=3)
+    glbUrl: str | None = None
+    cropUrl: str | None = None
+
+    @field_validator("size")
+    @classmethod
+    def validate_size(cls, value: list[float]) -> list[float]:
+        if any(not math.isfinite(item) or item <= 0 for item in value):
+            raise ValueError("Furniture size values must be finite and greater than zero")
+        return value
+
+
+class SnapshotTransform(BaseModel):
+    position: list[float] = Field(min_length=3, max_length=3)
+    rotation: list[float] = Field(min_length=3, max_length=3)
+    scale: list[float] = Field(min_length=3, max_length=3)
+
+    @field_validator("position", "rotation")
+    @classmethod
+    def validate_finite_vector(cls, value: list[float]) -> list[float]:
+        if any(not math.isfinite(item) for item in value):
+            raise ValueError("Transform values must be finite")
+        return value
+
+    @field_validator("scale")
+    @classmethod
+    def validate_scale(cls, value: list[float]) -> list[float]:
+        if any(not math.isfinite(item) or item <= 0 for item in value):
+            raise ValueError("Scale values must be finite and greater than zero")
+        return value
+
+
+class SnapshotPlacement(BaseModel):
+    isExisting: bool = False
+    locked: bool = False
+    zone: str = "living_area"
+
+
+class SnapshotObject(BaseModel):
+    instanceId: str
+    source: SnapshotSource
+    semantic: SnapshotSemantic
+    geometry: SnapshotGeometry
+    transform: SnapshotTransform
+    placement: SnapshotPlacement = Field(default_factory=SnapshotPlacement)
+
+
+class SnapshotRoom(BaseModel):
+    name: str
+    floorPolygon: list[list[float]]
+    walls: list[dict] = Field(default_factory=list)
+    openings: list[dict] = Field(default_factory=list)
+
+    @field_validator("floorPolygon")
+    @classmethod
+    def validate_floor_polygon(cls, value: list[list[float]]) -> list[list[float]]:
+        if len(value) < 3 or any(
+            len(point) != 2 or any(not math.isfinite(item) for item in point)
+            for point in value
+        ):
+            raise ValueError("floorPolygon must contain at least three finite [x, z] points")
+        return value
+
+
+class SceneSnapshot(BaseModel):
+    schemaVersion: str = "1.0"
+    snapshotId: str
+    revision: int = Field(default=0, ge=0)
+    sceneId: str
+    unit: str = "meter"
+    coordinateSystem: str = "threejs-xz-ground-y-up"
+    room: SnapshotRoom
+    objects: list[SnapshotObject] = Field(default_factory=list)
+    userContext: UserProfile = Field(default_factory=UserProfile)
+    updatedAt: str

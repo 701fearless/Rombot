@@ -1,0 +1,54 @@
+.cover-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-bg-secondary);
+
+  &__skeleton {
+    position: absolute;
+    inset: 0;
+    background: var(--color-bg-secondary);
+    // 骨架呼吸感（仅用 opacity，reduced-motion 由 effects.scss 全局关闭）
+    animation: cover-skeleton-breathe 1.6s ease-in-out infinite;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+
+    &.is-loaded {
+      opacity: 1;
+    }
+  }
+
+  // 无图兜底：浮雕凹陷 + 衬线首字符
+  &__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-secondary);
+    box-shadow: var(--shadow-emboss-inset);
+  }
+
+  &__initial {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-hero);
+    color: var(--color-primary);
+    letter-spacing: var(--letter-spacing-hero);
+  }
+}
+
+@keyframes cover-skeleton-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}

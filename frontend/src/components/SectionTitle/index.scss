@@ -1,0 +1,30 @@
+.section-title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 var(--space-m);
+  margin-bottom: var(--space-s);
+
+  &__texts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &__title {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-title);
+    color: var(--color-text-primary);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+  }
+
+  &__extra {
+    display: flex;
+    align-items: center;
+  }
+}
