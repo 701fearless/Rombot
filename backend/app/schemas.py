@@ -234,7 +234,23 @@ class SceneObject(BaseModel):
     position: list[float] = Field(min_length=3, max_length=3)
     rotation: list[float] = Field(min_length=3, max_length=3)
     size: list[float] = Field(min_length=3, max_length=3)
-    glbUrl: str
+    glbUrl: str | None = None
+
+
+class SceneOpening(BaseModel):
+    """Door/window opening. position is center; size is [width, height, depth]."""
+
+    id: str
+    type: str  # door | window
+    name: str
+    position: list[float] = Field(min_length=3, max_length=3)
+    rotation: list[float] = Field(
+        default_factory=lambda: [0.0, 0.0, 0.0],
+        min_length=3,
+        max_length=3,
+    )
+    size: list[float] = Field(min_length=3, max_length=3)
+    clearanceDepth: float = 0.9
 
 
 class SceneSuggestion(BaseModel):
@@ -247,4 +263,181 @@ class SceneResponse(BaseModel):
     unit: str
     room: RoomSize
     objects: list[SceneObject]
-    suggestions: list[SceneSuggestion]
+    openings: list[SceneOpening] = Field(default_factory=list)
+    suggestions: list[SceneSuggestion] = Field(default_factory=list)
+
+
+class PlacementCandidate(BaseModel):
+    """Furniture pose for placement checks. position is AABB center; size=[w,h,d]."""
+
+    id: str
+    label: str
+    name: str
+    position: list[float] = Field(min_length=3, max_length=3)
+    rotation: list[float] = Field(
+        default_factory=lambda: [0.0, 0.0, 0.0],
+        min_length=3,
+        max_length=3,
+    )
+    size: list[float] = Field(min_length=3, max_length=3)
+
+
+class UserProfile(BaseModel):
+    familyMembers: list[str] = Field(default_factory=list)
+    hasChildren: bool = False
+    hasElderly: bool = False
+    pets: list[str] = Field(default_factory=list)
+    dailyHabits: list[str] = Field(default_factory=list)
+    storageHabits: str | None = None
+    fengShuiPreference: bool = False
+    preferPrivacy: bool = True
+    preferComfort: bool = True
+
+
+class SpatialCheckRequest(BaseModel):
+    candidate: PlacementCandidate
+    sceneId: str | None = None
+    scene: SceneResponse | None = None
+    userProfile: UserProfile | None = None
+    enableAgents: bool = True
+
+
+PlacementCheckRequest = SpatialCheckRequest
+
+
+class RoomLayoutRequest(BaseModel):
+    sceneId: str | None = None
+    scene: SceneResponse | None = None
+    userProfile: UserProfile | None = None
+    enableAgents: bool = True
+
+
+class CheckDetail(BaseModel):
+    ruleId: str
+    name: str
+    status: str  # pass | fail | warn
+    message: str
+    suggestion: str | None = None
+    details: dict = Field(default_factory=dict)
+
+
+class ObjectCheckBundle(BaseModel):
+    objectId: str
+    name: str
+    label: str
+    overallStatus: str
+    checks: list[CheckDetail] = Field(default_factory=list)
+
+
+class FurnitureMove(BaseModel):
+    objectId: str
+    name: str
+    fromPosition: list[float] = Field(min_length=3, max_length=3)
+    toPosition: list[float] = Field(min_length=3, max_length=3)
+    fromRotation: list[float] | None = Field(default=None, min_length=3, max_length=3)
+    toRotation: list[float] | None = Field(default=None, min_length=3, max_length=3)
+    reason: str
+    source: str = "geometry"  # geometry | layout_agent
+
+
+class LayoutAdviceItem(BaseModel):
+    id: str
+    priority: str
+    title: str
+    problem: str
+    suggestion: str
+    relatedObjectIds: list[str] = Field(default_factory=list)
+
+
+class LayoutModule(BaseModel):
+    moves: list[FurnitureMove] = Field(default_factory=list)
+    advices: list[LayoutAdviceItem] = Field(default_factory=list)
+    summary: str = ""
+
+
+class ScenarioOption(BaseModel):
+    id: str
+    name: str
+    description: str
+
+
+class ScenarioAdviceItem(BaseModel):
+    id: str
+    scenarioId: str
+    priority: str
+    title: str
+    reason: str
+    action: str
+    relatedObjectIds: list[str] = Field(default_factory=list)
+    targetPosition: list[float] | None = Field(default=None, min_length=3, max_length=3)
+
+
+class ScenarioAdviceRequest(BaseModel):
+    scenarios: list[str] = Field(min_length=1)
+    mode: str = "placement"
+    candidate: PlacementCandidate | None = None
+    sceneId: str | None = None
+    scene: SceneResponse | None = None
+    layout: LayoutModule | None = None
+    geometryChecks: list[CheckDetail] = Field(default_factory=list)
+    userProfile: UserProfile | None = None
+
+
+class ScenarioAdviceResponse(BaseModel):
+    selectedScenarios: list[str]
+    mode: str = "placement"
+    advicesByScenario: dict[str, list[ScenarioAdviceItem]] = Field(default_factory=dict)
+    summary: str
+
+
+class AgentSuggestionModel(BaseModel):
+    id: str
+    category: str
+    priority: str
+    title: str
+    reason: str
+    action: str
+    confidence: float = Field(ge=0, le=1, default=0.8)
+
+
+class AgentOutputModel(BaseModel):
+    agent: str
+    suggestions: list[AgentSuggestionModel] = Field(default_factory=list)
+
+
+class ScoreDimensionsModel(BaseModel):
+    layout: int = Field(ge=0, le=100)
+    comfort: int = Field(ge=0, le=100)
+    functionality: int = Field(ge=0, le=100)
+    lifestyleCompatibility: int = Field(ge=0, le=100)
+
+
+class AgentReportModel(BaseModel):
+    score: int = Field(ge=0, le=100)
+    scoreDimensions: ScoreDimensionsModel
+    summary: str
+    highlights: list[str] = Field(default_factory=list)
+    suggestions: list[AgentSuggestionModel] = Field(default_factory=list)
+    agentOutputs: list[AgentOutputModel] = Field(default_factory=list)
+
+
+class SpatialCheckResponse(BaseModel):
+    mode: str = "placement"
+    overallStatus: str  # pass | fail | warn
+    checks: list[CheckDetail]
+    feedback: str
+    layout: LayoutModule | None = None
+    scenarioOptions: list[ScenarioOption] = Field(default_factory=list)
+    agentReport: AgentReportModel | None = None
+
+
+PlacementCheckResponse = SpatialCheckResponse
+
+
+class RoomLayoutResponse(BaseModel):
+    mode: str = "room"
+    overallStatus: str
+    objectChecks: list[ObjectCheckBundle] = Field(default_factory=list)
+    feedback: str
+    layout: LayoutModule | None = None
+    scenarioOptions: list[ScenarioOption] = Field(default_factory=list)

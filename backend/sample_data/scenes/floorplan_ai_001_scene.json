@@ -1,0 +1,211 @@
+{
+  "sceneId": "floorplan_ai_001",
+  "unit": "meter",
+  "room": {
+    "width": 6.47,
+    "depth": 7.78,
+    "height": 3.0
+  },
+  "objects": [],
+  "openings": [
+    {
+      "id": "door_entry",
+      "type": "door",
+      "name": "入户门",
+      "position": [
+        3.95,
+        1.05,
+        7.78
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "size": [
+        0.9,
+        2.1,
+        0.12
+      ],
+      "clearanceDepth": 0.9
+    },
+    {
+      "id": "door_toilet",
+      "type": "door",
+      "name": "卫生间门",
+      "position": [
+        5.99,
+        1.05,
+        6.7
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "size": [
+        0.8,
+        2.1,
+        0.12
+      ],
+      "clearanceDepth": 0.9
+    },
+    {
+      "id": "door_kitchen",
+      "type": "door",
+      "name": "厨房门",
+      "position": [
+        4.71,
+        1.05,
+        4.83
+      ],
+      "rotation": [
+        0.0,
+        -1.570796,
+        0.0
+      ],
+      "size": [
+        0.9,
+        2.1,
+        0.12
+      ],
+      "clearanceDepth": 0.9
+    },
+    {
+      "id": "door_balcony",
+      "type": "door",
+      "name": "阳台门",
+      "position": [
+        4.36,
+        1.05,
+        2.88
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "size": [
+        1.0,
+        2.1,
+        0.12
+      ],
+      "clearanceDepth": 0.9
+    },
+    {
+      "id": "door_bedroom",
+      "type": "door",
+      "name": "卧室门",
+      "position": [
+        3.01,
+        1.05,
+        2.68
+      ],
+      "rotation": [
+        0.0,
+        -1.570796,
+        0.0
+      ],
+      "size": [
+        0.9,
+        2.1,
+        0.12
+      ],
+      "clearanceDepth": 0.9
+    },
+    {
+      "id": "window_toilet",
+      "type": "window",
+      "name": "卫生间窗",
+      "position": [
+        6.47,
+        1.5,
+        6.48
+      ],
+      "rotation": [
+        0.0,
+        -1.570796,
+        0.0
+      ],
+      "size": [
+        0.8,
+        1.2,
+        0.12
+      ],
+      "clearanceDepth": 0.3
+    },
+    {
+      "id": "window_kitchen",
+      "type": "window",
+      "name": "厨房窗",
+      "position": [
+        6.34,
+        1.5,
+        1.38
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "size": [
+        1.5,
+        1.2,
+        0.12
+      ],
+      "clearanceDepth": 0.3
+    },
+    {
+      "id": "window_balcony",
+      "type": "window",
+      "name": "阳台窗",
+      "position": [
+        4.61,
+        1.5,
+        0.73
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "size": [
+        1.5,
+        1.2,
+        0.12
+      ],
+      "clearanceDepth": 0.3
+    },
+    {
+      "id": "window_bay",
+      "type": "window",
+      "name": "飘窗",
+      "position": [
+        2.52,
+        1.5,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "size": [
+        1.8,
+        1.2,
+        0.12
+      ],
+      "clearanceDepth": 0.3
+    }
+  ],
+  "suggestions": [
+    {
+      "type": "warning",
+      "text": "Dimensions converted from millimeter labels; minor rounding applied; bedroom door placed on east partition wall as no clear door symbol was visible."
+    },
+    {
+      "type": "adapter",
+      "text": "户型为多边形+隔墙；SceneResponse 仅用包围盒矩形房间近似。原点平移=(0.0,-0.73)，房间约 6.47×7.78×3.00m。"
+    }
+  ]
+}
