@@ -122,6 +122,133 @@ POST /api/room/scan
 }
 ```
 
+### 两种布局模式 API
+
+系统提供两套主接口：
+
+| 模式 | 接口 | 用途 |
+|------|------|------|
+| 单家具摆放 | `POST /api/room/placement-check` | 拖拽一件家具后的可行性与移动建议 |
+| 全屋布局 | `POST /api/room/room-layout` | 不绑定单件，对整屋家具做系统优化 |
+| 场景深化 | `POST /api/room/scenario-advice` | 用户选择养老/育婴/养宠/风水后的专项建议 |
+
+> 旧接口 `POST /api/room/spatial-check` 仍可用，等价于 `placement-check`（已标记 deprecated）。
+
+#### 模式一：单家具摆放 `placement-check`
+
+```http
+POST /api/room/placement-check
+```
+
+```json
+{
+  "enableAgents": true,
+  "sceneId": "demo_living_room",
+  "candidate": {
+    "id": "candidate_sofa",
+    "label": "sofa",
+    "name": "沙发",
+    "position": [1.2, 0.0, 2.1],
+    "rotation": [0.0, 0.0, 0.0],
+    "size": [2.0, 0.9, 0.8]
+  }
+}
+```
+
+响应：
+
+- `mode`: `"placement"`
+- `checks` / `feedback`：针对该 candidate 的几何硬约束
+- `layout.moves`：该家具建议移动位姿
+- `layout.advices`：中文布局建议
+- `scenarioOptions`：可选生活场景
+
+#### 模式二：全屋布局 `room-layout`
+
+```http
+POST /api/room/room-layout
+```
+
+```json
+{
+  "enableAgents": true,
+  "sceneId": "demo_living_room"
+}
+```
+
+也可直接传完整 `scene`（含 `objects` + `openings`）。**不需要 candidate。**
+
+响应：
+
+- `mode`: `"room"`
+- `objectChecks`：逐件家具几何摘要
+- `layout.moves`：多件家具建议移动
+- `layout.advices`：全屋中文布局建议
+- `scenarioOptions`：可选生活场景
+
+#### 场景深化（两模式共用）
+
+```http
+POST /api/room/scenario-advice
+```
+
+```json
+{
+  "mode": "placement",
+  "scenarios": ["elder", "pet"],
+  "sceneId": "demo_living_room",
+  "candidate": {
+    "id": "candidate_sofa",
+    "label": "sofa",
+    "name": "沙发",
+    "position": [1.2, 0.0, 2.1],
+    "rotation": [0.0, 0.0, 0.0],
+    "size": [2.0, 0.9, 0.8]
+  },
+  "layout": { "moves": [], "advices": [], "summary": "" },
+  "geometryChecks": []
+}
+```
+
+全屋模式示例：
+
+```json
+{
+  "mode": "room",
+  "scenarios": ["fengshui", "elder"],
+  "sceneId": "demo_living_room",
+  "layout": { "moves": [], "advices": [], "summary": "" }
+}
+```
+
+`scenarios` 可选：`elder`（养老）、`infant`（育婴）、`pet`（养宠）、`fengshui`（风水），支持多选。
+
+活动空间阈值见：
+
+```text
+app/services/layout_reasoning/rules/clearance_rules.json
+```
+
+Agent 开关：
+
+```powershell
+$env:SPATIAL_AGENT_PROVIDER="mock"   # 或 ark（无 ARK_API_KEY 时自动回退 mock）
+$env:ARK_TEXT_MODEL="GLM-4-Flash"
+```
+
+本地验证：
+
+```powershell
+$env:SPATIAL_AGENT_PROVIDER="mock"
+python scripts/test_spatial_check.py
+```
+
+案例效果文档：
+
+```text
+docs/spatial_modular_scenario_cases.md
+```
+
 ## Provider switches
 
 Defaults are mock providers.

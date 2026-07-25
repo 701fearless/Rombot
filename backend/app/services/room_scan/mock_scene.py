@@ -1,4 +1,10 @@
-from app.schemas import RoomSize, SceneObject, SceneResponse, SceneSuggestion
+from app.schemas import (
+    RoomSize,
+    SceneObject,
+    SceneOpening,
+    SceneResponse,
+    SceneSuggestion,
+)
 
 
 def build_mock_scene(scene_id: str) -> SceneResponse:
@@ -31,8 +37,39 @@ def build_mock_scene(scene_id: str) -> SceneResponse:
                 name="地毯",
                 position=[1.2, 0.01, 1.9],
                 rotation=[0.0, 0.0, 0.0],
-                size=[2.4, 1.6, 0.02],
+                size=[2.4, 0.02, 1.6],
                 glbUrl="/sample_data/models/rug.glb",
+            ),
+            SceneObject(
+                id="tv_stand_1",
+                label="tv_stand",
+                name="电视柜",
+                position=[1.2, 0.0, 0.35],
+                rotation=[0.0, 0.0, 0.0],
+                size=[1.6, 0.45, 0.4],
+                glbUrl="/sample_data/models/tv_stand.glb",
+            ),
+        ],
+        openings=[
+            # 南墙房门：开口贴墙，clearanceDepth 为门扇向房间内开启的扇形近似矩形
+            SceneOpening(
+                id="door_1",
+                type="door",
+                name="房门",
+                position=[0.6, 1.05, 0.0],
+                rotation=[0.0, 0.0, 0.0],
+                size=[0.9, 2.1, 0.12],
+                clearanceDepth=0.9,
+            ),
+            # 北墙窗户
+            SceneOpening(
+                id="window_1",
+                type="window",
+                name="窗户",
+                position=[2.8, 1.4, 3.6],
+                rotation=[0.0, 0.0, 0.0],
+                size=[1.5, 1.2, 0.12],
+                clearanceDepth=0.3,
             ),
         ],
         suggestions=[
