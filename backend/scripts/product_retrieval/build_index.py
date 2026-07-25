@@ -3,9 +3,9 @@ Build OpenCLIP embeddings + FAISS (or numpy) index from local IKEA catalog image
 
 Prefer a Python 3.9–3.12 venv (torch/open_clip may not support 3.14 yet):
 
-  py -3.9 -m venv .venv-retrieval
-  .\\.venv-retrieval\\Scripts\\python.exe -m pip install -r requirements-product-retrieval.txt
-  .\\.venv-retrieval\\Scripts\\python.exe scripts\\product_retrieval\\build_index.py
+  conda activate ml2025
+  python -m pip install -r requirements-product-retrieval.txt
+  python scripts\\product_retrieval\\build_index.py
 """
 
 from __future__ import annotations
@@ -43,7 +43,7 @@ def _load_clip(model_name: str, pretrained: str, device: str):
         import torch
     except ImportError as exc:
         raise SystemExit(
-            "Missing open_clip/torch. Create .venv-retrieval with Python 3.9–3.12 and install "
+            "Missing open_clip/torch in Conda ml2025. Install "
             "requirements-product-retrieval.txt"
         ) from exc
 

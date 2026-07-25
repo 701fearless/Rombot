@@ -1,6 +1,6 @@
-import { defineConfig, devices } from "@playwright/test"
+import { defineConfig, devices } from '@playwright/test'
 
-const backendPython = process.env.PLAYWRIGHT_PYTHON ?? "python"
+const backendPython = process.env.PLAYWRIGHT_PYTHON ?? 'E:\\Anaconda3\\envs\\ml2025\\python.exe'
 
 export default defineConfig({
   testDir: "./e2e",
@@ -13,10 +13,8 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   projects: [
-    {
-      name: "mobile-chrome",
-      use: { ...devices["Pixel 7"], channel: "chrome" },
-    },
+    { name: 'desktop-chrome', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
+    { name: 'narrow-chrome', use: { viewport: { width: 430, height: 900 }, channel: 'chrome' } },
   ],
   webServer: {
     command: `"${backendPython}" -m uvicorn app.main:app --host 127.0.0.1 --port 8000`,

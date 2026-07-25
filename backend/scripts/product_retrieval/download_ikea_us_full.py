@@ -394,9 +394,9 @@ def main() -> None:
         }
     )
     print(f"Done. catalog={CATALOG_PATH} count={kept} skipped={skipped} scanned={scanned}")
-    print("Next: rebuild CLIP index with .venv-retrieval:")
+    print("Next: activate Conda ml2025 and rebuild the CLIP index:")
     print(
-        r"  .\.venv-retrieval\Scripts\python.exe scripts\product_retrieval\build_index.py "
+        r"  python scripts\product_retrieval\build_index.py "
         r"--pretrained data\product_index\ViT-B-32.pt"
     )
 

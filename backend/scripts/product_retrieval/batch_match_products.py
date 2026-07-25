@@ -3,8 +3,9 @@ Batch-match vedios/*/deduplicated/*/crop.jpg against the local IKEA CLIP index.
 
 Writes outputs/videos/<videoId>/product_matches.json and optionally syncs crops.
 
-  .\\.venv-retrieval\\Scripts\\python.exe scripts\\product_retrieval\\batch_match_products.py ^
-    --videos-root ..\\vedios --video-ids 1,2,3,4,5 --top-k 3 ^
+  conda activate ml2025
+  python scripts\\product_retrieval\\batch_match_products.py ^
+    --videos-root ..\\vedios --video-ids 1,2,3,4,5,6 --top-k 3 ^
     --pretrained data\\product_index\\ViT-B-32.pt
 """
 

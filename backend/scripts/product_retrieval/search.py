@@ -1,7 +1,8 @@
 """
 Offline visual search against the local IKEA FAISS/numpy index.
 
-  .\\.venv-retrieval\\Scripts\\python.exe scripts\\product_retrieval\\search.py ^
+  conda activate ml2025
+  python scripts\\product_retrieval\\search.py ^
     --image outputs\\1_000003\\obj_chandelier_001_002_crop.jpg --top-k 10
 """
 
@@ -48,7 +49,7 @@ def load_clip_model(*, model_name: str, pretrained: str, device: str):
         import open_clip
     except ImportError as exc:
         raise SystemExit(
-            "Missing open_clip/torch. Use .venv-retrieval (Python 3.9–3.12) + "
+            "Missing open_clip/torch in Conda ml2025. Install "
             "requirements-product-retrieval.txt"
         ) from exc
 

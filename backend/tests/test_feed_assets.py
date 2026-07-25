@@ -1,8 +1,12 @@
 import tempfile
 import unittest
+import json
 from pathlib import Path
 from unittest.mock import patch
 
+from fastapi.testclient import TestClient
+
+from app.main import app
 from app.routers.feed import prebuilt_model_path
 from app.schemas import DetectedObject
 
@@ -49,6 +53,19 @@ class PrebuiltModelPathTests(unittest.TestCase):
         ):
             self.assertIsNone(prebuilt_model_path("4_000001", detected()))
             self.assertIsNone(prebuilt_model_path("4_000001", detected(None)))
+
+    def test_videos_one_to_six_have_cached_models(self) -> None:
+        client = TestClient(app)
+        outputs = Path(__file__).resolve().parents[1] / "outputs" / "videos"
+        for video_id in map(str, range(1, 7)):
+            analysis = json.loads((outputs / video_id / "analysis.json").read_text(encoding="utf-8"))
+            response = client.post(
+                "/api/feed/detect",
+                json={"videoId": video_id, "time": analysis["frames"][0]["time"]},
+            )
+            self.assertEqual(response.status_code, 200, video_id)
+            objects = response.json()["objects"]
+            self.assertTrue(any(item.get("prebuiltGlbUrl") for item in objects), video_id)
 
 
 if __name__ == "__main__":

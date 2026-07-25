@@ -265,15 +265,18 @@ class SceneObject(BaseModel):
 
 
 class SceneOpening(BaseModel):
-    """门/窗开口。position 为开口中心，size 为 [宽, 高, 进深]。"""
+    """Door/window opening. position is center; size is [width, height, depth]."""
 
     id: str
     type: str  # door | window
     name: str
     position: list[float] = Field(min_length=3, max_length=3)
-    rotation: list[float] = Field(default_factory=lambda: [0.0, 0.0, 0.0], min_length=3, max_length=3)
+    rotation: list[float] = Field(
+        default_factory=lambda: [0.0, 0.0, 0.0],
+        min_length=3,
+        max_length=3,
+    )
     size: list[float] = Field(min_length=3, max_length=3)
-    # 门开启/窗前净空区域深度（米），沿开口朝向房间内侧延伸
     clearanceDepth: float = 0.9
 
 
@@ -288,17 +291,21 @@ class SceneResponse(BaseModel):
     room: RoomSize
     objects: list[SceneObject]
     openings: list[SceneOpening] = Field(default_factory=list)
-    suggestions: list[SceneSuggestion]
+    suggestions: list[SceneSuggestion] = Field(default_factory=list)
 
 
 class PlacementCandidate(BaseModel):
-    """待检测的家具摆放姿态。position 为包围盒中心，size 为 [宽, 高, 深]（米）。"""
+    """Furniture pose for placement checks. position is AABB center; size=[w,h,d]."""
 
     id: str
     label: str
     name: str
     position: list[float] = Field(min_length=3, max_length=3)
-    rotation: list[float] = Field(default_factory=lambda: [0.0, 0.0, 0.0], min_length=3, max_length=3)
+    rotation: list[float] = Field(
+        default_factory=lambda: [0.0, 0.0, 0.0],
+        min_length=3,
+        max_length=3,
+    )
     size: list[float] = Field(min_length=3, max_length=3)
 
 
@@ -373,7 +380,7 @@ class FurnitureMove(BaseModel):
 
 class LayoutAdviceItem(BaseModel):
     id: str
-    priority: str  # 高 | 中 | 低
+    priority: str
     title: str
     problem: str
     suggestion: str
@@ -387,7 +394,7 @@ class LayoutModule(BaseModel):
 
 
 class ScenarioOption(BaseModel):
-    id: str  # elder | infant | pet | fengshui
+    id: str
     name: str
     description: str
 
@@ -395,7 +402,7 @@ class ScenarioOption(BaseModel):
 class ScenarioAdviceItem(BaseModel):
     id: str
     scenarioId: str
-    priority: str  # 高 | 中 | 低
+    priority: str
     title: str
     reason: str
     action: str
@@ -407,7 +414,7 @@ class ScenarioAdviceRequest(BaseModel):
     """用户选择场景后的深化建议请求。"""
 
     scenarios: list[str] = Field(min_length=1)
-    mode: str = "placement"  # placement | room
+    mode: str = "placement"
     candidate: PlacementCandidate | None = None
     sceneId: str | None = None
     scene: SceneResponse | None = None
@@ -463,7 +470,7 @@ class SpatialCheckResponse(BaseModel):
     feedback: str
     layout: LayoutModule | None = None
     scenarioOptions: list[ScenarioOption] = Field(default_factory=list)
-    agentReport: AgentReportModel | None = None  # debug only
+    agentReport: AgentReportModel | None = None
 
 
 PlacementCheckResponse = SpatialCheckResponse
@@ -473,7 +480,7 @@ class RoomLayoutResponse(BaseModel):
     """全屋布局优化响应。"""
 
     mode: str = "room"
-    overallStatus: str  # pass | fail | warn
+    overallStatus: str
     objectChecks: list[ObjectCheckBundle] = Field(default_factory=list)
     feedback: str
     layout: LayoutModule | None = None
@@ -619,6 +626,7 @@ class SnapshotObject(BaseModel):
 
 class SnapshotRoom(BaseModel):
     name: str
+    whiteboxGlbUrl: str = ""
     floorPolygon: list[list[float]]
     walls: list[dict] = Field(default_factory=list)
     openings: list[dict] = Field(default_factory=list)
