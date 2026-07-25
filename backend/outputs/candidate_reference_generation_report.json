@@ -1,8 +1,517 @@
 [
   {
+    "videoId": "1",
+    "candidateId": "candidate_pendant_light_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_vase_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_dining_table_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_curtain_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_chandelier_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_mirror_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_sofa_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_tv_stand_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_coffee_table_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_chair_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_plant_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_cabinet_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_dining_table_002",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_bookshelf_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_plant_002",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_table_lamp_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_painting_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_bookshelf_002",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_wardrobe_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_bed_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "1",
+    "candidateId": "candidate_floor_lamp_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_chair_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_coffee_table_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_wardrobe_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_rug_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_sofa_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_rug_002",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_cabinet_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_table_lamp_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_mirror_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_pendant_light_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_dining_table_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "2",
+    "candidateId": "candidate_curtain_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_armchair_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_rug_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_cabinet_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_chair_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_desk_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_bookshelf_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_curtain_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_bed_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_pendant_light_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_rug_002",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_plant_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_sofa_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_bookshelf_002",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_chandelier_001",
+    "status": "skipped"
+  },
+  {
     "videoId": "3",
     "candidateId": "candidate_mirror_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_painting_001",
     "status": "generated",
-    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\3\\generated\\candidate_mirror_001\\reference_oblique_3quarter.png"
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\3\\generated\\candidate_painting_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "3",
+    "candidateId": "candidate_floor_lamp_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\3\\generated\\candidate_floor_lamp_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_sofa_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_sofa_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_rug_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_rug_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_coffee_table_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_coffee_table_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_rug_002",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_rug_002\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_sofa_002",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_sofa_002\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_coffee_table_002",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_coffee_table_002\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_chandelier_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_chandelier_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_armchair_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_armchair_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_painting_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_painting_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_curtain_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_curtain_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_bookshelf_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_bookshelf_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_pendant_light_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_pendant_light_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_plant_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_plant_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_vase_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_vase_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_floor_lamp_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_floor_lamp_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_bookshelf_002",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_bookshelf_002\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_table_lamp_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_table_lamp_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "4",
+    "candidateId": "candidate_nightstand_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\4\\generated\\candidate_nightstand_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_dining_table_001",
+    "status": "skipped"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_chair_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_chair_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_sofa_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_sofa_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_rug_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_rug_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_plant_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_plant_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_rug_002",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_rug_002\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_cabinet_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_cabinet_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_curtain_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_curtain_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_cabinet_002",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_cabinet_002\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_wardrobe_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_wardrobe_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "5",
+    "candidateId": "candidate_dining_table_002",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\5\\generated\\candidate_dining_table_002\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_armchair_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_armchair_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_coffee_table_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_coffee_table_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_sofa_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_sofa_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_vase_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_vase_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_plant_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_plant_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_dining_table_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_dining_table_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_pendant_light_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_pendant_light_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_desk_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_desk_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_curtain_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_curtain_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_table_lamp_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_table_lamp_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_chair_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_chair_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_cabinet_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_cabinet_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_painting_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_painting_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_bookshelf_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_bookshelf_001\\reference_oblique_3quarter.png"
+  },
+  {
+    "videoId": "6",
+    "candidateId": "candidate_rug_001",
+    "status": "generated",
+    "reference": "F:\\DREAME\\Qiuliying\\lucky\\backend\\outputs\\videos\\6\\generated\\candidate_rug_001\\reference_oblique_3quarter.png"
   }
 ]

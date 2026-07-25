@@ -39,3 +39,11 @@ backend/outputs/demos/**/meta_partial.json
 backend/outputs/demos/**/submit.json
 backend/outputs/demos/**/model3d_result.json
 backend/outputs/demos/**/model3d_task.json
+
+# Web frontend build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/playwright-report/
+frontend/test-results/
+frontend/*.tsbuildinfo

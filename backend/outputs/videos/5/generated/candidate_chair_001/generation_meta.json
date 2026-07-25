@@ -1,0 +1,25 @@
+{
+  "videoId": "5",
+  "candidateId": "candidate_chair_001",
+  "label": "chair",
+  "name": "实木餐椅",
+  "sourceCropUrl": "/outputs/videos/5/deduplicated/candidate_chair_001/crop.jpg",
+  "referenceFile": "reference_oblique_3quarter.png",
+  "referenceView": "45-degree front-left oblique",
+  "referenceSize": [
+    2048,
+    2048
+  ],
+  "estimatedDimensions": {
+    "widthM": 0.52,
+    "depthM": 0.55,
+    "heightM": 0.88,
+    "unit": "m",
+    "source": "ark_category_prior",
+    "isMeasured": false,
+    "selectionRule": "range_min_plus_0.10m_capped_at_max"
+  },
+  "arkImageModel": "doubao-seedream-5-0-lite-260128",
+  "arkImageSize": "2048x2048",
+  "generatedAt": "2026-07-25T06:43:12.994859+00:00"
+}

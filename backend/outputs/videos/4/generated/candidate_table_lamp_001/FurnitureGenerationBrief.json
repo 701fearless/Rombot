@@ -1,0 +1,81 @@
+{
+  "objectId": "candidate_table_lamp_001",
+  "category": "table_lamp",
+  "observed": {
+    "geometry": "锥形灯座，上窄下宽，配锥形灯罩",
+    "materials": [
+      "实木",
+      "布艺"
+    ],
+    "colors": [
+      "深棕色",
+      "米白色"
+    ],
+    "style": "中古简约台灯",
+    "texturePattern": "实木纹理，布艺哑光质感",
+    "visibleComponents": [
+      "灯座",
+      "灯罩"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "摆正台灯，保持完整展示"
+    ],
+    "complexityReduction": [
+      "简化灯座纹理，保留基础造型"
+    ],
+    "occlusionCompletion": [
+      "补全灯座底部细节"
+    ],
+    "patternCompletion": "延续实木纹理和布艺质感"
+  },
+  "symmetryPrior": {
+    "type": "axial",
+    "completionRule": "按中心轴对称补全完整造型"
+  },
+  "textureFeatures": {
+    "materials": [
+      "实木",
+      "布艺"
+    ],
+    "colors": [
+      "深棕色",
+      "米白色"
+    ],
+    "texturePattern": "实木纹理，布艺哑光质感"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "摆正台灯，保持完整展示"
+    ],
+    "complexityReduction": [
+      "简化灯座纹理，保留基础造型"
+    ],
+    "occlusionCompletion": [
+      "补全灯座底部细节"
+    ],
+    "preserve": [
+      "锥形木灯座，米白锥形灯罩"
+    ],
+    "remove": [],
+    "physicalDimensionsMeters": {
+      "widthM": 0.38,
+      "depthM": 0.38,
+      "heightM": 0.55,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated table_lamp as a regular household product. Visible geometry and style: 锥形灯座，上窄下宽，配锥形灯罩; 中古简约台灯. Use materials ['实木', '布艺'] and colors ['深棕色', '米白色']. Preserve ['锥形木灯座，米白锥形灯罩']. Regularize temporary disorder with ['摆正台灯，保持完整展示']. Simplify modeling complexity with ['简化灯座纹理，保留基础造型']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'axial', 'completionRule': '按中心轴对称补全完整造型'} and ['补全灯座底部细节']. Texture rule: 实木纹理，布艺哑光质感; 延续实木纹理和布艺质感. Target plausible real-world dimensions are approximately 0.38 m wide, 0.38 m deep and 0.55 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, [], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.93,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

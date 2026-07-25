@@ -1,0 +1,78 @@
+{
+  "objectId": "candidate_cabinet_001",
+  "category": "cabinet",
+  "observed": {
+    "geometry": "通顶高柜，内嵌平开门，整体方正薄款",
+    "materials": [
+      "木饰面"
+    ],
+    "colors": [
+      "暖棕色"
+    ],
+    "style": "现代极简",
+    "texturePattern": "细腻平直木纹理",
+    "visibleComponents": [
+      "平开门、长条形金属门把手、侧边面板"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "对齐柜门缝隙，保持表面平整无杂物"
+    ],
+    "complexityReduction": [
+      "简化门侧边电子设备细节，保留柜体大面"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的柜体侧边与顶部收边"
+    ],
+    "patternCompletion": "延续均匀细腻的木纹理，无断纹"
+  },
+  "symmetryPrior": {
+    "type": "repeated_modules",
+    "completionRule": "按可见竖向分缝延续等宽柜门模块"
+  },
+  "textureFeatures": {
+    "materials": [
+      "木饰面"
+    ],
+    "colors": [
+      "暖棕色"
+    ],
+    "texturePattern": "细腻平直木纹理"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "对齐柜门缝隙，保持表面平整无杂物"
+    ],
+    "complexityReduction": [
+      "简化门侧边电子设备细节，保留柜体大面"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的柜体侧边与顶部收边"
+    ],
+    "preserve": [
+      "无把手隐形设计、暖棕木色、通顶结构"
+    ],
+    "remove": [
+      "门侧小型电子设备"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 1.6,
+      "depthM": 0.4,
+      "heightM": 2.3,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated cabinet as a regular household product. Visible geometry and style: 通顶高柜，内嵌平开门，整体方正薄款; 现代极简. Use materials ['木饰面'] and colors ['暖棕色']. Preserve ['无把手隐形设计、暖棕木色、通顶结构']. Regularize temporary disorder with ['对齐柜门缝隙，保持表面平整无杂物']. Simplify modeling complexity with ['简化门侧边电子设备细节，保留柜体大面']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'repeated_modules', 'completionRule': '按可见竖向分缝延续等宽柜门模块'} and ['补全被遮挡的柜体侧边与顶部收边']. Texture rule: 细腻平直木纹理; 延续均匀细腻的木纹理，无断纹. Target plausible real-world dimensions are approximately 1.60 m wide, 0.40 m deep and 2.30 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['门侧小型电子设备'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.92,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

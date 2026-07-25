@@ -1,0 +1,84 @@
+{
+  "objectId": "candidate_painting_001",
+  "category": "painting",
+  "observed": {
+    "geometry": "双拼竖长方形，两扇等大拼接",
+    "materials": [
+      "绢布",
+      "木质边框"
+    ],
+    "colors": [
+      "暖橘色",
+      "灰绿色",
+      "米白色"
+    ],
+    "style": "日式浮世绘风",
+    "texturePattern": "秋草花卉工笔纹样",
+    "visibleComponents": [
+      "左右两扇画芯，窄边框"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "移除前方遮挡的花瓶摆件"
+    ],
+    "complexityReduction": [
+      "简化花卉枝叶细碎细节"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的底部画芯纹样"
+    ],
+    "patternCompletion": "延续秋草花卉工笔风格补全画面"
+  },
+  "symmetryPrior": {
+    "type": "none",
+    "completionRule": "保持双扇独立画面构图"
+  },
+  "textureFeatures": {
+    "materials": [
+      "绢布",
+      "木质边框"
+    ],
+    "colors": [
+      "暖橘色",
+      "灰绿色",
+      "米白色"
+    ],
+    "texturePattern": "秋草花卉工笔纹样"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "移除前方遮挡的花瓶摆件"
+    ],
+    "complexityReduction": [
+      "简化花卉枝叶细碎细节"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的底部画芯纹样"
+    ],
+    "preserve": [
+      "暖橘底色，秋草花卉主题，双拼结构"
+    ],
+    "remove": [
+      "前方遮挡的花艺容器"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 1.6,
+      "depthM": 0.08,
+      "heightM": 1.7,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated painting as a regular household product. Visible geometry and style: 双拼竖长方形，两扇等大拼接; 日式浮世绘风. Use materials ['绢布', '木质边框'] and colors ['暖橘色', '灰绿色', '米白色']. Preserve ['暖橘底色，秋草花卉主题，双拼结构']. Regularize temporary disorder with ['移除前方遮挡的花瓶摆件']. Simplify modeling complexity with ['简化花卉枝叶细碎细节']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'none', 'completionRule': '保持双扇独立画面构图'} and ['补全被遮挡的底部画芯纹样']. Texture rule: 秋草花卉工笔纹样; 延续秋草花卉工笔风格补全画面. Target plausible real-world dimensions are approximately 1.60 m wide, 0.08 m deep and 1.70 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['前方遮挡的花艺容器'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.96,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}
