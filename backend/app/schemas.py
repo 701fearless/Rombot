@@ -120,6 +120,31 @@ class PrebuiltAssetResponse(BaseModel):
     estimatedDimensions: EstimatedDimensions | None = None
 
 
+class MockProductSearchRequest(BaseModel):
+    objectId: str
+    label: str
+    name: str | None = None
+    estimatedDimensions: EstimatedDimensions | None = None
+
+
+class ProductMatch(BaseModel):
+    productId: str
+    name: str
+    category: str
+    score: float = Field(ge=0, le=1)
+    priceCny: int = Field(gt=0)
+    sizeText: str
+    reason: str
+
+
+class ProductSearchResponse(BaseModel):
+    objectId: str
+    queryLabel: str
+    source: str = "mock_catalog"
+    isMock: bool = True
+    matches: list[ProductMatch] = Field(default_factory=list)
+
+
 class FeedPipelineRequest(BaseModel):
     videoId: str
     time: float = Field(ge=0)
