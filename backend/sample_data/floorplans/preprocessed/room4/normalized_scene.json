@@ -1,0 +1,137 @@
+{
+  "sceneId": "room4",
+  "unit": "meter",
+  "wallHeight": 3.0,
+  "defaultWallThickness": 0.1,
+  "floorPolygon": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      6.0,
+      0.0
+    ],
+    [
+      6.0,
+      4.2
+    ],
+    [
+      0.0,
+      4.2
+    ]
+  ],
+  "walls": [
+    {
+      "id": "wall_south",
+      "start": [
+        0.0,
+        0.0
+      ],
+      "end": [
+        6.0,
+        0.0
+      ],
+      "thickness": 0.1,
+      "height": 3.0
+    },
+    {
+      "id": "wall_east",
+      "start": [
+        6.0,
+        0.0
+      ],
+      "end": [
+        6.0,
+        4.2
+      ],
+      "thickness": 0.1,
+      "height": 3.0
+    },
+    {
+      "id": "wall_north",
+      "start": [
+        6.0,
+        4.2
+      ],
+      "end": [
+        0.0,
+        4.2
+      ],
+      "thickness": 0.1,
+      "height": 3.0
+    },
+    {
+      "id": "wall_west",
+      "start": [
+        0.0,
+        4.2
+      ],
+      "end": [
+        0.0,
+        0.0
+      ],
+      "thickness": 0.1,
+      "height": 3.0
+    },
+    {
+      "id": "wall_divider",
+      "start": [
+        3.4,
+        0.0
+      ],
+      "end": [
+        3.4,
+        4.2
+      ],
+      "thickness": 0.1,
+      "height": 3.0
+    }
+  ],
+  "wallFixtures": [
+    {
+      "id": "door_entry",
+      "type": "door",
+      "wallId": "wall_south",
+      "offset": 1.2,
+      "width": 0.9,
+      "bottom": 0.0,
+      "height": 2.1,
+      "style": "minimal_panel_door",
+      "side": "front"
+    },
+    {
+      "id": "window_living",
+      "type": "window",
+      "wallId": "wall_north",
+      "offset": 2.0,
+      "width": 1.6,
+      "bottom": 0.9,
+      "height": 1.2,
+      "style": "simple_framed_window",
+      "side": "front"
+    },
+    {
+      "id": "window_bedroom",
+      "type": "window",
+      "wallId": "wall_east",
+      "offset": 2.4,
+      "width": 1.2,
+      "bottom": 0.9,
+      "height": 1.2,
+      "style": "simple_framed_window",
+      "side": "front"
+    },
+    {
+      "id": "door_inner",
+      "type": "door",
+      "wallId": "wall_divider",
+      "offset": 2.9,
+      "width": 0.82,
+      "bottom": 0.0,
+      "height": 2.1,
+      "style": "minimal_panel_door",
+      "side": "back"
+    }
+  ]
+}

@@ -1,10 +1,19 @@
 from pathlib import Path
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 import httpx
 
 from app.config import get_settings
-from app.schemas import DetectRequest, DetectResponse, FeedPipelineRequest, FeedPipelineResponse, SelectObjectRequest, SelectObjectResponse
+from app.schemas import (
+    DetectRequest,
+    DetectResponse,
+    DetectedObject,
+    FeedPipelineRequest,
+    FeedPipelineResponse,
+    PrebuiltAssetResponse,
+    SelectObjectRequest,
+    SelectObjectResponse,
+)
 from app.services.detection.ark_feed_provider import ArkFeedDetectionProvider
 from app.services.detection.ark_grounding_provider import ArkGroundingProvider
 from app.services.detection.grounded_sam2_provider import GroundedSAM2DetectionProvider
@@ -24,15 +33,45 @@ from app.storage.local_store import (
     frame_output_dir,
     find_saved_frame,
     load_detected_object,
+    OUTPUTS_ROOT,
     path_to_output_url,
     output_url_to_path,
     file_to_data_url,
     save_data_url,
     save_detection_response,
+    video_id_from_frame_id,
 )
 
 
 router = APIRouter()
+
+
+def prebuilt_model_path(
+    frame_id: str,
+    detected_object: DetectedObject,
+) -> Path | None:
+    video_id = video_id_from_frame_id(frame_id)
+    candidate_id = detected_object.deduplicatedObjectId
+    if not video_id or not candidate_id:
+        return None
+    candidate_path = (
+        OUTPUTS_ROOT
+        / "videos"
+        / video_id
+        / "generated"
+        / candidate_id
+        / "generated_model.glb"
+    )
+    return candidate_path if candidate_path.is_file() else None
+
+
+def attach_prebuilt_urls(response: DetectResponse) -> DetectResponse:
+    for detected_object in response.objects:
+        model_path = prebuilt_model_path(response.frameId, detected_object)
+        detected_object.prebuiltGlbUrl = (
+            path_to_output_url(model_path) if model_path else None
+        )
+    return response
 
 
 def get_detection_provider() -> MockDetectionProvider | GroundedSAM2DetectionProvider | ArkFeedDetectionProvider:
@@ -199,7 +238,7 @@ async def detect(request: DetectRequest) -> DetectResponse:
         request.frameHash,
     )
     if preprocessed_response:
-        return preprocessed_response
+        return attach_prebuilt_urls(preprocessed_response)
 
     provider = get_detection_provider()
     try:
@@ -211,7 +250,35 @@ async def detect(request: DetectRequest) -> DetectResponse:
     if frame_path:
         response.frameImageUrl = path_to_output_url(frame_path)
     save_detection_response(response)
-    return response
+    return attach_prebuilt_urls(response)
+
+
+@router.get("/prebuilt-asset", response_model=PrebuiltAssetResponse)
+async def get_prebuilt_asset(
+    frameId: str = Query(min_length=1),
+    objectId: str = Query(min_length=1),
+) -> PrebuiltAssetResponse:
+    detected_object = find_preprocessed_object(frameId, objectId)
+    if detected_object is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Object not found for the given frameId/objectId",
+        )
+    model_path = prebuilt_model_path(frameId, detected_object)
+    if model_path is None or not detected_object.deduplicatedObjectId:
+        raise HTTPException(
+            status_code=404,
+            detail="Prebuilt furniture model is not available",
+        )
+    return PrebuiltAssetResponse(
+        frameId=frameId,
+        objectId=objectId,
+        label=detected_object.label,
+        name=detected_object.name,
+        deduplicatedObjectId=detected_object.deduplicatedObjectId,
+        glbUrl=path_to_output_url(model_path),
+        estimatedDimensions=detected_object.estimatedDimensions,
+    )
 
 
 @router.post("/select-object", response_model=SelectObjectResponse)

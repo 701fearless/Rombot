@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "presets": [
+    {
+      "sceneId": "room1",
+      "title": "户型 1",
+      "sourceImageUrl": "/sample_data/floorplans/room1.png",
+      "sourceSha256": "8c0e995bc96413351d95832bfda996674befeb998e04753f3e4645214475de17",
+      "sceneUrl": "/sample_data/floorplans/preprocessed/room1/normalized_scene.json",
+      "whiteboxGlbUrl": "/sample_data/floorplans/preprocessed/room1/whitebox.glb",
+      "quality": "placeholder"
+    },
+    {
+      "sceneId": "room2",
+      "title": "户型 2",
+      "sourceImageUrl": "/sample_data/floorplans/room2.png",
+      "sourceSha256": "4a4f2a67856dae3b26bd642356eaff2723f225aea26196fae3d2cc4323704966",
+      "sceneUrl": "/sample_data/floorplans/preprocessed/room2/normalized_scene.json",
+      "whiteboxGlbUrl": "/sample_data/floorplans/preprocessed/room2/whitebox.glb",
+      "quality": "placeholder"
+    },
+    {
+      "sceneId": "room3",
+      "title": "户型 3",
+      "sourceImageUrl": "/sample_data/floorplans/room3.png",
+      "sourceSha256": "2838fd9af3c033a32fa8768c17abf6e602c55199ec281ac2b26fa506349132c9",
+      "sceneUrl": "/sample_data/floorplans/preprocessed/room3/normalized_scene.json",
+      "whiteboxGlbUrl": "/sample_data/floorplans/preprocessed/room3/whitebox.glb",
+      "quality": "placeholder"
+    },
+    {
+      "sceneId": "room4",
+      "title": "户型 4",
+      "sourceImageUrl": "/sample_data/floorplans/room4.png",
+      "sourceSha256": "aec2cb3147cdbc3c90cfc1025aed068ce7ac228c4815bd1199bfdb43771ee7fd",
+      "sceneUrl": "/sample_data/floorplans/preprocessed/room4/normalized_scene.json",
+      "whiteboxGlbUrl": "/sample_data/floorplans/preprocessed/room4/whitebox.glb",
+      "quality": "placeholder"
+    },
+    {
+      "sceneId": "room5",
+      "title": "户型 5",
+      "sourceImageUrl": "/sample_data/floorplans/room5.png",
+      "sourceSha256": "82479470703a4ac6c96e97614af90d9f3f10f5cf1477eb164af87360708e14bd",
+      "sceneUrl": "/sample_data/floorplans/preprocessed/room5/normalized_scene.json",
+      "whiteboxGlbUrl": "/sample_data/floorplans/preprocessed/room5/whitebox.glb",
+      "quality": "placeholder"
+    },
+    {
+      "sceneId": "room6",
+      "title": "户型 6",
+      "sourceImageUrl": "/sample_data/floorplans/room6.png",
+      "sourceSha256": "a972462e4905fa41bd39124199edb18ed5fb12ee313045468bec28a9bd2affdc",
+      "sceneUrl": "/sample_data/floorplans/preprocessed/room6/normalized_scene.json",
+      "whiteboxGlbUrl": "/sample_data/floorplans/preprocessed/room6/whitebox.glb",
+      "quality": "placeholder"
+    },
+    {
+      "sceneId": "room7",
+      "title": "户型 7",
+      "sourceImageUrl": "/sample_data/floorplans/room7.png",
+      "sourceSha256": "49a77725f77c0547c4155cccc89166c69a6e63c2a21de18c4151bd1c42c152a6",
+      "sceneUrl": "/sample_data/floorplans/preprocessed/room7/normalized_scene.json",
+      "whiteboxGlbUrl": "/sample_data/floorplans/preprocessed/room7/whitebox.glb",
+      "quality": "placeholder"
+    }
+  ]
+}

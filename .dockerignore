@@ -20,6 +20,11 @@ backend/outputs/videos/*/frames
 backend/outputs/videos/*/objects
 backend/outputs/videos/*/deduplicated
 backend/outputs/videos/*/generated
+!backend/outputs/videos/2/generated
+backend/outputs/videos/2/generated/*
+!backend/outputs/videos/2/generated/*/
+backend/outputs/videos/2/generated/*/*
+!backend/outputs/videos/2/generated/*/generated_model.glb
 backend/sample_data/videos/1.mp4
 backend/sample_data/videos/5.mp4
 backend/sample_data/videos/8.mp4

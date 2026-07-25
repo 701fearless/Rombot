@@ -36,7 +36,10 @@ def brief() -> FurnitureGenerationBrief:
     )
 
 
-def provider() -> FeatureHunyuanModel3DProvider:
+def provider(
+    face_count: int | None = None,
+    model: str = "hy-3d-3.1",
+) -> FeatureHunyuanModel3DProvider:
     return FeatureHunyuanModel3DProvider(
         ark_api_key="ark-test",
         ark_base_url="https://ark.example/api/v3",
@@ -45,9 +48,9 @@ def provider() -> FeatureHunyuanModel3DProvider:
         ark_image_size="2048x2048",
         hunyuan_api_key="hunyuan-test",
         hunyuan_base_url="https://hunyuan.example",
-        hunyuan_model="hy-3d-3.1",
+        hunyuan_model=model,
         hunyuan_generate_type="Normal",
-        hunyuan_face_count=30000,
+        hunyuan_face_count=face_count,
         hunyuan_enable_pbr=False,
         hunyuan_enable_geometry=False,
         hunyuan_result_format="GLB",
@@ -111,7 +114,48 @@ class HunyuanReferenceProtocolTest(unittest.TestCase):
         payload = post.await_args.kwargs["json"]
         self.assertEqual(payload["image_base64"], "cmVmZXJlbmNl")
         self.assertEqual(payload["generate_type"], "Normal")
+        self.assertNotIn("face_count", payload)
         self.assertNotIn("multi_view_images", payload)
+
+    def test_hunyuan_payload_sends_face_count_only_when_explicit(self) -> None:
+        response = httpx.Response(
+            200,
+            request=httpx.Request("POST", "https://hunyuan.example/v1/api/3d/submit"),
+            json={"id": "task-456"},
+        )
+        with patch("httpx.AsyncClient.post", new=AsyncMock(return_value=response)) as post:
+            asyncio.run(
+                provider(face_count=30000)._create_3d_task(
+                    ["data:image/png;base64,cmVmZXJlbmNl"],
+                    brief(),
+                )
+            )
+
+        payload = post.await_args.kwargs["json"]
+        self.assertEqual(payload["face_count"], 30000)
+
+    def test_hunyuan_express_payload_uses_rapid_fields(self) -> None:
+        response = httpx.Response(
+            200,
+            request=httpx.Request("POST", "https://hunyuan.example/v1/api/3d/submit"),
+            json={"id": "task-express"},
+        )
+        with patch("httpx.AsyncClient.post", new=AsyncMock(return_value=response)) as post:
+            task_id = asyncio.run(
+                provider(model="hy-3d-express")._create_3d_task(
+                    ["data:image/png;base64,cmVmZXJlbmNl"],
+                    brief(),
+                )
+            )
+
+        self.assertEqual(task_id, "task-express")
+        payload = post.await_args.kwargs["json"]
+        self.assertEqual(payload["model"], "hy-3d-express")
+        self.assertEqual(payload["result_format"], "GLB")
+        self.assertFalse(payload["enable_geometry"])
+        self.assertFalse(payload["enable_pbr"])
+        self.assertNotIn("generate_type", payload)
+        self.assertNotIn("face_count", payload)
 
     def test_estimated_dimensions_are_added_to_generation_brief_and_prompt(self) -> None:
         detected = DetectedObject(

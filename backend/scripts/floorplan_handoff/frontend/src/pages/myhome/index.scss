@@ -1,0 +1,385 @@
+// Tab3 我的家样式
+.myhome {
+  min-height: 100vh;
+  padding: var(--space-m);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+
+  // ---------- 页首操作（共建/分享） ----------
+  &__topbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-s);
+  }
+
+  &__topbar-title {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__top-actions {
+    flex-shrink: 0;
+    display: flex;
+    gap: var(--space-s);
+  }
+
+  // 共建/分享：次级行动 = 淡蓝底 + Burgundy 红字（CTA 仍留给黄色）
+  &__top-btn {
+    min-height: var(--touch-min);
+    padding: 0 var(--space-m);
+    display: flex;
+    align-items: center;
+    border-radius: var(--radius-btn);
+    background: var(--color-secondary);
+    box-shadow: var(--shadow-emboss);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.94);
+      box-shadow: var(--shadow-emboss-inset);
+    }
+  }
+
+  &__top-btn-text {
+    font-size: var(--font-size-caption);
+    color: var(--color-burgundy);
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  // ---------- 房屋切换容器（相对定位，承载浮层下拉） ----------
+  &__home-switch {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // ---------- 房屋选择条（一行收起 / 点开浮层下拉） ----------
+  &__home-bar {
+    margin: 0 var(--space-m);
+    min-height: var(--touch-min);
+    padding: var(--space-s) var(--space-l);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.99);
+      box-shadow: var(--shadow-emboss-inset);
+    }
+  }
+
+  &__home-bar-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__home-bar-name {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-subtitle);
+    color: var(--color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__home-bar-meta {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+  }
+
+  &__home-bar-toggle {
+    flex-shrink: 0;
+    font-size: var(--font-size-body);
+    color: var(--color-primary);
+  }
+
+  // ---------- 房屋列表（浮层下拉：覆盖在内容上方，不推挤下方布局） ----------
+  &__homes {
+    position: absolute;
+    top: calc(100% + var(--space-s));
+    left: var(--space-m);
+    right: var(--space-m);
+    z-index: 30;
+    display: flex;
+    gap: var(--space-m);
+    padding: var(--space-m);
+    overflow-x: auto;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-lift);
+  }
+
+  &__home-card {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-m) var(--space-l);
+    min-height: var(--touch-min);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+    &.is-active {
+      box-shadow: var(--shadow-emboss-inset);
+    }
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.96);
+      box-shadow: var(--shadow-emboss-inset);
+    }
+  }
+
+  &__home-name {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-subtitle);
+    color: var(--color-text-primary);
+  }
+
+  &__home-meta {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+  }
+
+  // ---------- 房间切换 ----------
+  &__room-pills {
+    display: flex;
+    gap: var(--space-s);
+    padding: 0 var(--space-m);
+  }
+
+  &__room-pill {
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-m);
+    border-radius: var(--radius-btn);
+    box-shadow: var(--shadow-emboss);
+    transition: transform 0.18s ease;
+
+    &.is-active {
+      background: var(--color-accent);
+      box-shadow: var(--shadow-emboss-inset);
+    }
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.93);
+    }
+  }
+
+  &__room-pill-text {
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+
+    &.is-active {
+      color: var(--color-text-primary);
+    }
+  }
+
+  // ---------- 2D 俯视画布 ----------
+  &__canvas {
+    position: relative;
+    margin: 0 var(--space-m);
+    aspect-ratio: 1 / 1; // 方形 3D 空间展开
+    overflow: hidden;
+  }
+
+  // 3D 空间底图：铺满方形画布、居中裁切（贴纸/菜单层级在其上）
+  &__canvas-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__canvas-empty {
+    // 需压过 absolute 底图（定位元素层级高于普通流）
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // 空房提示词：半透白底胶囊，保证在 3D 底图上可读
+  &__canvas-empty-text {
+    padding: var(--space-xs) var(--space-m);
+    border-radius: var(--radius-btn);
+    background: rgba(255, 255, 255, 0.85);
+    font-size: var(--font-size-body);
+    color: var(--color-text-secondary);
+  }
+
+  // 家具贴纸（绝对定位，坐标系 = Placement.transform px）
+  &__sticker {
+    position: absolute;
+    width: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__sticker-name {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 64px;
+  }
+
+  // 旧家具角标 + 移除（≥44px 可点区域）
+  &__sticker-remove {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    transition: transform 0.15s ease;
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.85);
+    }
+  }
+
+  &__sticker-remove-text {
+    padding: 2px var(--space-xs);
+    border-radius: var(--radius-btn);
+    background: var(--color-error);
+    color: var(--emboss-light);
+    font-size: var(--font-size-caption);
+  }
+
+  // ---------- 画布宠物菜单（左下角） + 虚拟宠物贴纸 ----------
+  &__pet-menu {
+    position: absolute;
+    left: var(--space-s);
+    bottom: var(--space-s);
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+  }
+
+  &__pet-fab {
+    width: var(--touch-min);
+    height: var(--touch-min);
+    border-radius: 50%;
+    background: var(--color-bg-primary);
+    box-shadow: var(--shadow-emboss);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.9);
+      box-shadow: var(--shadow-emboss-inset);
+    }
+  }
+
+  &__pet-fab-text {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  &__pet-options {
+    display: flex;
+    gap: var(--space-s);
+  }
+
+  &__pet-option {
+    width: var(--touch-min);
+    height: var(--touch-min);
+    border-radius: 50%;
+    background: var(--color-bg-primary);
+    box-shadow: var(--shadow-emboss);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__pet-option-text {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  // 虚拟宠物贴纸：点按抱走（≥44px 可点区域）
+  &__pet {
+    position: absolute;
+    z-index: 5;
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease;
+
+    &:active {
+      transform: scale(0.85);
+    }
+  }
+
+  &__pet-text {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  // ---------- 拖拽提示词 ----------
+  &__hint {
+    padding: 0 var(--space-l);
+    font-size: var(--font-size-body);
+    color: var(--color-text-secondary);
+    text-align: center;
+  }
+
+  // ---------- AI 建议（整行黄底蓝字，本页唯一 CTA） ----------
+  &__cta-ai {
+    margin: 0 var(--space-m);
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent);
+    border-radius: var(--radius-btn);
+    box-shadow: var(--shadow-emboss);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+    // 触摸按压反馈（P0-1）
+    &:active {
+      transform: scale(0.98);
+      box-shadow: var(--shadow-emboss-inset);
+    }
+  }
+
+  &__cta-ai-text {
+    font-size: var(--font-size-subtitle);
+    color: var(--color-primary);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+}

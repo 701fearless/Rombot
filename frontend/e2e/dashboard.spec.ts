@@ -7,11 +7,21 @@ test("handoff dashboard exposes live data and the complete OpenAPI inventory", a
   await expect(page.getByText("本地后端在线")).toBeVisible()
   await expect(page.locator(".video-status-card")).toHaveCount(5)
   await expect(page.locator(".video-ready.is-ready")).toHaveCount(5)
-  await expect(page.locator(".endpoint-card")).toHaveCount(15)
+  await expect(page.locator(".endpoint-card")).toHaveCount(19)
 
   await page.getByPlaceholder("搜索路径、功能或分组").fill("/api/feed/detect")
   await expect(page.locator(".endpoint-card")).toHaveCount(1)
   await expect(page.locator(".endpoint-card code").first()).toHaveText("/api/feed/detect")
+})
+
+test("dashboard includes the floorplan reconstruction contracts", async ({ page }) => {
+  await page.goto("/dashboard")
+  await page.getByPlaceholder("搜索路径、功能或分组").fill("/api/floorplan")
+  await expect(page.locator(".endpoint-card")).toHaveCount(4)
+  await expect(page.getByText("/api/floorplan/presets", { exact: true })).toBeVisible()
+  await expect(page.getByText("/api/floorplan/presets/{scene_id}", { exact: true })).toBeVisible()
+  await expect(page.getByText("/api/floorplan/reconstruct", { exact: true })).toBeVisible()
+  await expect(page.getByText("/api/floorplan/build-whitebox", { exact: true })).toBeVisible()
 })
 
 test("dashboard links to the working feed and API reference", async ({ page }) => {

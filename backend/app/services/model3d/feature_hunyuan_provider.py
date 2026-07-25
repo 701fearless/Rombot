@@ -30,7 +30,7 @@ class FeatureHunyuanModel3DProvider(FeatureMeshyModel3DProvider):
         hunyuan_base_url: str,
         hunyuan_model: str,
         hunyuan_generate_type: str,
-        hunyuan_face_count: int,
+        hunyuan_face_count: int | None,
         hunyuan_enable_pbr: bool,
         hunyuan_enable_geometry: bool,
         hunyuan_result_format: str,
@@ -420,12 +420,12 @@ Return these exact fields:
                 }
             )
         elif self.hunyuan_model in {"hy-3d-3.0", "hy-3d-3.1"}:
-            payload.update(
-                {
-                    "generate_type": self.hunyuan_generate_type,
-                    "face_count": self.hunyuan_face_count,
-                }
-            )
+            payload["generate_type"] = self.hunyuan_generate_type
+            # Omitting face_count uses Hunyuan's provider default and avoids the
+            # custom FaceCount add-on. Set HUNYUAN_FACE_COUNT only when a custom
+            # polygon budget is explicitly required.
+            if self.hunyuan_face_count is not None:
+                payload["face_count"] = self.hunyuan_face_count
             # LowPoly / Sketch are supported on 3.0; 3.1 rejects LowPoly.
             if self.hunyuan_generate_type == "LowPoly":
                 payload["polygon_type"] = "triangle"

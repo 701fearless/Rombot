@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test"
 
+const backendPython = process.env.PLAYWRIGHT_PYTHON ?? "python"
+
 export default defineConfig({
   testDir: "./e2e",
   timeout: 30_000,
@@ -13,11 +15,11 @@ export default defineConfig({
   projects: [
     {
       name: "mobile-chrome",
-      use: { ...devices["Pixel 7"], channel: "chrome", reducedMotion: "reduce" },
+      use: { ...devices["Pixel 7"], channel: "chrome" },
     },
   ],
   webServer: {
-    command: "python -m uvicorn app.main:app --host 127.0.0.1 --port 8000",
+    command: `"${backendPython}" -m uvicorn app.main:app --host 127.0.0.1 --port 8000`,
     cwd: "../backend",
     url: "http://127.0.0.1:8000/health",
     reuseExistingServer: true,

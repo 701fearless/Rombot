@@ -21,6 +21,7 @@ interface VideoFeedItemProps {
   index: number
   isActive: boolean
   shouldPreload: boolean
+  sceneId?: string
 }
 
 interface Size {
@@ -33,6 +34,7 @@ export function VideoFeedItem({
   index,
   isActive,
   shouldPreload,
+  sceneId,
 }: VideoFeedItemProps) {
   const itemRef = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -146,6 +148,7 @@ export function VideoFeedItem({
     window.location.assign(
       buildSpaceUrl({
         video,
+        sceneId,
         time: pausedAt,
         frameId: detection.frameId,
         objectId: object.id,
@@ -231,15 +234,24 @@ export function VideoFeedItem({
             return (
               <button
                 key={object.id}
-                className="furniture-tag"
+                className={`furniture-tag ${object.prebuiltGlbUrl ? "" : "furniture-tag--unavailable"}`}
                 type="button"
+                disabled={!object.prebuiltGlbUrl}
                 style={{ left: point.x, top: point.y }}
                 onClick={(event) => enterSpace(event, object)}
-                aria-label={`选择${object.name || object.label}，进入我的小屋`}
+                aria-label={
+                  object.prebuiltGlbUrl
+                    ? `选择${object.name || object.label}，放进我的户型`
+                    : `${object.name || object.label}模型准备中`
+                }
               >
                 <span className="tag-dot" aria-hidden="true" />
                 <span>{object.name || object.label}</span>
-                <small>{Math.round(object.confidence * 100)}%</small>
+                <small>
+                  {object.prebuiltGlbUrl
+                    ? "放进户型"
+                    : "模型准备中"}
+                </small>
               </button>
             )
           })}
@@ -258,7 +270,11 @@ export function VideoFeedItem({
             家装灵感
           </button>
         </nav>
-        <a className="room-link" href="/space" onClick={(event) => event.stopPropagation()}>
+        <a
+          className="room-link"
+          href={sceneId ? `/space?sceneId=${encodeURIComponent(sceneId)}` : "/space"}
+          onClick={(event) => event.stopPropagation()}
+        >
           我的小屋
         </a>
       </header>

@@ -21,6 +21,17 @@ export interface DetectedObject {
   maskUrl?: string | null
   deduplicatedObjectId?: string | null
   deduplicatedCropUrl?: string | null
+  prebuiltGlbUrl?: string | null
+  estimatedDimensions?: EstimatedDimensions | null
+}
+
+export interface EstimatedDimensions {
+  widthM: number
+  depthM: number
+  heightM: number
+  unit: string
+  source: string
+  isMeasured: boolean
 }
 
 export interface DetectResponse {
@@ -30,10 +41,41 @@ export interface DetectResponse {
 }
 
 export interface SpaceEntryParams {
+  sceneId?: string
   videoId: string
   time: string
   sceneType: SceneType
   frameId: string
   objectId: string
   objectLabel: string
+}
+
+export interface FloorplanPreset {
+  sceneId: string
+  title: string
+  sourceImageUrl: string
+  sourceSha256: string
+  sceneUrl: string
+  whiteboxGlbUrl: string
+  quality: "placeholder" | "ark"
+}
+
+export interface PrebuiltAsset {
+  frameId: string
+  objectId: string
+  label: string
+  name: string
+  deduplicatedObjectId: string
+  glbUrl: string
+  estimatedDimensions?: EstimatedDimensions | null
+}
+
+export interface FloorplanReconstructResponse {
+  sceneId: string
+  status: "succeeded"
+  sceneUrl: string
+  whiteboxGlbUrl: string
+  aiRawUrl: string
+  originalImageUrl: string
+  warnings: string[]
 }

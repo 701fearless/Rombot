@@ -38,7 +38,7 @@ test("mobile feed pauses, renders furniture tags, and hands off to space", async
   await tag.click()
 
   await expect(page).toHaveURL(/\/space\?/)
-  await expect(page.getByText("沙发，已经送到小屋门口")).toBeVisible()
+  await expect(page.getByText("沙发，正在等待它的房间")).toBeVisible()
   const url = new URL(page.url())
   expect(url.searchParams.get("videoId")).toBe("2")
   expect(url.searchParams.get("frameId")).toBe("2_000003")
@@ -49,6 +49,6 @@ test("space route survives a direct page load", async ({ page }) => {
   await page.goto(
     "/space?videoId=4&time=8.20&sceneType=living_room&frameId=4_000002&objectId=obj_sofa_002&objectLabel=sofa",
   )
-  await expect(page.getByText("沙发，已经送到小屋门口")).toBeVisible()
+  await expect(page.getByText("沙发，正在等待它的房间")).toBeVisible()
   await expect(page.getByText("#4")).toBeVisible()
 })

@@ -22,6 +22,7 @@ class DetectedObject(BaseModel):
     maskUrl: str | None = None
     deduplicatedObjectId: str | None = None
     deduplicatedCropUrl: str | None = None
+    prebuiltGlbUrl: str | None = None
     estimatedDimensions: EstimatedDimensions | None = None
     visualFeatures: dict = Field(default_factory=dict)
     generationHints: dict = Field(default_factory=dict)
@@ -107,6 +108,16 @@ class SelectObjectResponse(BaseModel):
     object: SelectedAsset
     analysis: ObjectAnalysis
     generation: FurnitureGenerationTrace | None = None
+
+
+class PrebuiltAssetResponse(BaseModel):
+    frameId: str
+    objectId: str
+    label: str
+    name: str
+    deduplicatedObjectId: str
+    glbUrl: str
+    estimatedDimensions: EstimatedDimensions | None = None
 
 
 class FeedPipelineRequest(BaseModel):

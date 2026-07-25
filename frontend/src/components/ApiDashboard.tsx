@@ -82,32 +82,39 @@ const METHODS: HttpMethod[] = ["get", "post", "put", "patch", "delete"]
 
 const FLOW_STEPS = [
   {
-    icon: Play,
+    icon: LayoutTemplate,
     index: "01",
+    title: "匹配预处理户型",
+    detail: "模拟上传 room1–7 原图，浏览器计算 SHA-256，与预设清单匹配后取得 sceneId。",
+    contract: "GET /api/floorplan/presets",
+  },
+  {
+    icon: Play,
+    index: "02",
     title: "刷到家装视频",
-    detail: "Feed 用静态列表播放五条 H.264 竖屏视频，不依赖登录或推荐服务。",
-    contract: "FeedVideo[]",
+    detail: "Feed 用静态列表播放五条 H.264 竖屏视频，并在整个流程中保留 sceneId。",
+    contract: "/feed?sceneId=room1",
   },
   {
     icon: Tags,
-    index: "02",
+    index: "03",
     title: "暂停并匹配家具",
-    detail: "前端计算 64-bit dHash，只上传 videoId、time 和 frameHash。",
+    detail: "前端计算 64-bit dHash；返回对象带 prebuiltGlbUrl 时才允许放入户型。",
     contract: "POST /api/feed/detect",
   },
   {
     icon: Box,
-    index: "03",
-    title: "点选具体家具",
-    detail: "后端返回 bbox、tagPosition、crop 和去重候选，前端把 Tag 对齐到家具。",
-    contract: "DetectResponse.objects",
+    index: "04",
+    title: "读取缓存家具",
+    detail: "使用 frameId + objectId 解析去重候选和已生成 GLB；缓存不存在直接返回 404。",
+    contract: "GET /api/feed/prebuilt-asset",
   },
   {
     icon: Sparkles,
-    index: "04",
-    title: "交给空间页",
-    detail: "携带 frameId + objectId 跳转；空间页无需重新识别即可继续生成 GLB。",
-    contract: "/space?...",
+    index: "05",
+    title: "同场景组合查看",
+    detail: "Space 在同一个 Three.js Scene 加载户型与家具 GLB，并支持位移、旋转、缩放和重置。",
+    contract: "/space?sceneId=room1&...",
   },
 ]
 
@@ -134,31 +141,26 @@ const CORE_CONTRACTS = [
           bbox: [118, 420, 690, 850],
           tagPosition: [0.43, 0.61],
           deduplicatedCropUrl: "/outputs/videos/2/deduplicated/...",
+          prebuiltGlbUrl: "/outputs/videos/2/generated/candidate_sofa_001/generated_model.glb",
         },
       ],
     },
   },
   {
-    method: "POST",
-    path: "/api/feed/select-object",
-    title: "选物并生成 3D",
-    description: "空间页使用 frameId + objectId 继续生成。当前接口同步等待 GLB，Feed 本身不会调用它。",
+    method: "GET",
+    path: "/api/feed/prebuilt-asset",
+    title: "读取缓存家具模型",
+    description: "比赛主链只查找预生成 GLB，不调用 Ark、Seedream 或 3D Provider；未命中返回 404。",
     request: {
-      frameId: "2_000003",
+      frameId: "2_000002",
       objectId: "obj_sofa_001",
     },
     response: {
-      taskId: "task_xxx",
-      status: "success",
-      object: {
-        id: "obj_sofa_001",
-        name: "沙发",
-        glbUrl: "/outputs/videos/2/generated/.../model.glb",
-      },
-      generation: {
-        provider: "feature_hunyuan",
-        briefUrl: "/outputs/videos/2/generated/.../FurnitureGenerationBrief.json",
-      },
+      frameId: "2_000002",
+      objectId: "obj_sofa_001",
+      deduplicatedObjectId: "candidate_sofa_001",
+      glbUrl: "/outputs/videos/2/generated/candidate_sofa_001/generated_model.glb",
+      estimatedDimensions: { widthM: 2.2, heightM: 0.85, depthM: 0.9 },
     },
   },
   {
@@ -180,9 +182,27 @@ const CORE_CONTRACTS = [
       analysisUrl: "/outputs/videos/7/analysis.json",
     },
   },
+  {
+    method: "GET",
+    path: "/api/floorplan/presets",
+    title: "读取比赛户型预设",
+    description: "返回 room1–7 原图 SHA-256 与静态白模资源。placeholder 模式统一复用 sample_data/floorplans/whitebox.glb。",
+    request: {},
+    response: {
+      presets: [
+        {
+          sceneId: "room1",
+          sourceSha256: "8c0e...",
+          whiteboxGlbUrl: "/sample_data/floorplans/preprocessed/room1/whitebox.glb",
+          quality: "placeholder",
+        },
+      ],
+    },
+  },
 ]
 
 const SPACE_QUERY = {
+  sceneId: "room1",
   videoId: "2",
   time: "12.40",
   sceneType: "living_room",
@@ -469,7 +489,7 @@ export function ApiDashboard() {
           <div className="section-heading">
             <div>
               <span>03 / CORE CONTRACTS</span>
-              <h2>前端必须理解的三个接口</h2>
+              <h2>前端必须理解的四个接口</h2>
             </div>
             <p>其余接口在下方自动生成的完整 OpenAPI 区域中查看。</p>
           </div>

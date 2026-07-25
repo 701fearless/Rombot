@@ -19,7 +19,7 @@ class Hunyuan3DProvider(Model3DProvider):
         poll_attempts: int,
         reference_provider: ArkSeedreamProvider | None = None,
         generate_type: str = "LowPoly",
-        face_count: int = 30000,
+        face_count: int | None = None,
         enable_pbr: bool = False,
         enable_geometry: bool = False,
         result_format: str = "GLB",
@@ -94,12 +94,9 @@ class Hunyuan3DProvider(Model3DProvider):
                 }
             )
         elif self.model in {"hy-3d-3.0", "hy-3d-3.1"}:
-            payload.update(
-                {
-                    "generate_type": self.generate_type,
-                    "face_count": self.face_count,
-                }
-            )
+            payload["generate_type"] = self.generate_type
+            if self.face_count is not None:
+                payload["face_count"] = self.face_count
             if self.generate_type == "LowPoly":
                 payload["polygon_type"] = "triangle"
         else:

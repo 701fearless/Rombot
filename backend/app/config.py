@@ -43,7 +43,7 @@ class Settings:
     hunyuan_base_url: str
     hunyuan_model: str
     hunyuan_generate_type: str
-    hunyuan_face_count: int
+    hunyuan_face_count: int | None
     hunyuan_enable_pbr: bool
     hunyuan_enable_geometry: bool
     hunyuan_result_format: str
@@ -75,6 +75,9 @@ class Settings:
     furniture_dedupe_device: str
     furniture_dedupe_threshold: float
     furniture_dedupe_batch_size: int
+    floorplan_ai_timeout_sec: float
+    floorplan_ai_input_max_side: int
+    floorplan_max_upload_mb: int
 
     def __init__(self) -> None:
         self.detection_provider = os.getenv("DETECTION_PROVIDER", "mock").lower()
@@ -115,7 +118,15 @@ class Settings:
         self.hunyuan_model = os.getenv("HUNYUAN_MODEL", "hy-3d-express")
         default_hunyuan_generate_type = "Normal" if self.hunyuan_model == "hy-3d-3.1" else "LowPoly"
         self.hunyuan_generate_type = os.getenv("HUNYUAN_GENERATE_TYPE", default_hunyuan_generate_type)
-        self.hunyuan_face_count = int(os.getenv("HUNYUAN_FACE_COUNT", "30000"))
+        raw_hunyuan_face_count = os.getenv("HUNYUAN_FACE_COUNT", "").strip()
+        self.hunyuan_face_count = (
+            int(raw_hunyuan_face_count) if raw_hunyuan_face_count else None
+        )
+        if (
+            self.hunyuan_face_count is not None
+            and not 3000 <= self.hunyuan_face_count <= 1500000
+        ):
+            raise ValueError("HUNYUAN_FACE_COUNT must be between 3000 and 1500000")
         self.hunyuan_enable_pbr = os.getenv("HUNYUAN_ENABLE_PBR", "false").lower() in {"1", "true", "yes", "on"}
         self.hunyuan_enable_geometry = os.getenv("HUNYUAN_ENABLE_GEOMETRY", "false").lower() in {
             "1",
@@ -164,6 +175,12 @@ class Settings:
         self.furniture_dedupe_device = os.getenv("FURNITURE_DEDUPE_DEVICE", "auto").lower()
         self.furniture_dedupe_threshold = float(os.getenv("FURNITURE_DEDUPE_THRESHOLD", "0.88"))
         self.furniture_dedupe_batch_size = max(1, int(os.getenv("FURNITURE_DEDUPE_BATCH_SIZE", "16")))
+        self.floorplan_ai_timeout_sec = max(1.0, float(os.getenv("FLOORPLAN_AI_TIMEOUT_SEC", "180")))
+        self.floorplan_ai_input_max_side = max(
+            256,
+            min(2048, int(os.getenv("FLOORPLAN_AI_INPUT_MAX_SIDE", "768"))),
+        )
+        self.floorplan_max_upload_mb = max(1, int(os.getenv("FLOORPLAN_MAX_UPLOAD_MB", "15")))
         raw_origins = os.getenv(
             "CORS_ORIGINS",
             "http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000,http://127.0.0.1:5173",

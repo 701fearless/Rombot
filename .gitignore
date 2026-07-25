@@ -24,8 +24,12 @@ backend/outputs/**/*.log
 backend/outputs/frame_*/
 backend/outputs/hunyuan_speed_tests/
 backend/outputs/tripo_speed_tests/
+backend/outputs/floorplans/
 backend/outputs/server_*.log
 backend/outputs/server_*.err.log
+backend/outputs/videos/**/hunyuan_task.json
+backend/outputs/videos/**/hunyuan_result.json
+backend/outputs/videos/**/hunyuan_batch_report.json
 
 # Keep lightweight demo metadata + viewer pages
 !backend/outputs/demos/**/
@@ -47,3 +51,16 @@ frontend/coverage/
 frontend/playwright-report/
 frontend/test-results/
 frontend/*.tsbuildinfo
+
+# Curated floorplan fixtures are source data, not runtime outputs.
+!backend/sample_data/floorplans/
+!backend/sample_data/floorplans/*.jpg
+!backend/sample_data/floorplans/*.jpeg
+!backend/sample_data/floorplans/*.png
+!backend/sample_data/floorplans/*.webp
+!backend/sample_data/floorplans/whitebox.glb
+!backend/sample_data/floorplans/preprocessed/
+!backend/sample_data/floorplans/preprocessed/**/*.glb
+
+# Competition cache: only the top-level, already generated video-2 furniture models.
+!backend/outputs/videos/2/generated/*/generated_model.glb

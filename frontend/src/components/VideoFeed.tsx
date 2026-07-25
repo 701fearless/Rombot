@@ -6,6 +6,7 @@ import { VideoFeedItem } from "./VideoFeedItem"
 export function VideoFeed() {
   const containerRef = useRef<HTMLElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const sceneId = new URLSearchParams(window.location.search).get("sceneId") ?? undefined
 
   useEffect(() => {
     const container = containerRef.current
@@ -36,6 +37,7 @@ export function VideoFeed() {
           index={index}
           isActive={index === activeIndex}
           shouldPreload={Math.abs(index - activeIndex) <= 1}
+          sceneId={sceneId}
         />
       ))}
     </main>
