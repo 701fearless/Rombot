@@ -1,0 +1,34 @@
+{
+  "productId": "00339794",
+  "sku": "00339794",
+  "title": "VILJESTARK vase",
+  "productName": "VILJESTARK vase",
+  "description": "VILJESTARK vase, clear glass, 3 ¼\" VILJESTARK doesn’t need a whole bouquet to create attention – a small flower or a twig is enough. Or just let the vase be a beautiful object on its own to add atmosphere to your home. The unique shape makes the vase beautiful both with and without flowers.",
+  "features": [
+    "The material in this product may be recyclable. Please check the recycling rules in your community and if recycling facilities exist in your area."
+  ],
+  "materialAndCare": "Glass",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 0.99,
+  "currency": "USD",
+  "category": "Vases & decorating bowls",
+  "subcategory": "Flower vases",
+  "category1": "Home decor & accessories",
+  "category2": "Vases & decorating bowls",
+  "category3": "Flower vases",
+  "category4": "VILJESTARKVase",
+  "categoryTree": [
+    "Home decor & accessories",
+    "Vases & decorating bowls",
+    "Flower vases",
+    "VILJESTARKVase"
+  ],
+  "localImage": "images/00339794.jpg",
+  "imageUrl": "/product_index/images/00339794.jpg",
+  "detailUrl": "/static/shop.html#/p/00339794",
+  "rank": 2,
+  "score": 0.7271
+}

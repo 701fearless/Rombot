@@ -1,0 +1,35 @@
+{
+  "productId": "90263902",
+  "sku": "90263902",
+  "title": "IVAR chair",
+  "productName": "IVAR chair",
+  "description": "IVAR chair, pine Solid wood is a durable natural material which can be sanded and surface treated when required.",
+  "features": [
+    "May be completed with FIXA self-adhesive floor protectors to protect the underlying surface against wear."
+  ],
+  "materialAndCare": "Solid pine",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 40.0,
+  "currency": "USD",
+  "category": "Dining furniture",
+  "subcategory": "Dining chairs",
+  "category1": "Tables & chairs",
+  "category2": "Dining furniture",
+  "category3": "Dining chairs",
+  "category4": "Dining chairs",
+  "categoryTree": [
+    "Tables & chairs",
+    "Dining furniture",
+    "Dining chairs",
+    "Dining chairs",
+    "IVARChair"
+  ],
+  "localImage": "images/90263902.jpg",
+  "imageUrl": "/product_index/images/90263902.jpg",
+  "detailUrl": "/static/shop.html#/p/90263902",
+  "rank": 3,
+  "score": 0.7354
+}

@@ -1,0 +1,36 @@
+{
+  "productId": "50482464",
+  "sku": "50482464",
+  "title": "DVALA fitted sheet",
+  "productName": "DVALA fitted sheet",
+  "description": "DVALA fitted sheet, light gray, King DVALA fitted sheet is made from 100% natural cotton that breathes and absorbs moisture, so you experience an even sleep temperature all night. With each wash, the sheet gets softer and cozier. Pure cotton that feels soft and nice against your skin.",
+  "features": [
+    "152 thread count.",
+    "Thread count indicates the number of threads per square inch of fabric. The higher the thread count the more densely woven the fabric."
+  ],
+  "materialAndCare": "100 % cotton",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 16.99,
+  "currency": "USD",
+  "category": "Bedding & bedding sets",
+  "subcategory": "Bed linens & bed linen sets",
+  "category1": "Home textiles",
+  "category2": "Bedding & bedding sets",
+  "category3": "Bed linens & bed linen sets",
+  "category4": "Bed sheets",
+  "categoryTree": [
+    "Home textiles",
+    "Bedding & bedding sets",
+    "Bed linens & bed linen sets",
+    "Bed sheets",
+    "DVALAFitted sheet"
+  ],
+  "localImage": "images/50482464.jpg",
+  "imageUrl": "/product_index/images/50482464.jpg",
+  "detailUrl": "/static/shop.html#/p/50482464",
+  "rank": 5,
+  "score": 0.72
+}

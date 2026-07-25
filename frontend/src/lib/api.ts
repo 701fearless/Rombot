@@ -2,7 +2,10 @@ import type {
   DetectResponse,
   FloorplanPreset,
   FloorplanReconstructResponse,
+  PlacementCandidate,
+  PlacementCheckResponse,
   PrebuiltAsset,
+  SceneResponse,
 } from "../types"
 
 const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim() ?? ""
@@ -128,4 +131,52 @@ export async function getPrebuiltAsset(
     throw await readApiError(response, `家具模型未预生成（${response.status}）`)
   }
   return (await response.json()) as PrebuiltAsset
+}
+
+export async function saveFloorplanWhitebox(
+  sceneId: string,
+  glb: ArrayBuffer,
+  signal?: AbortSignal,
+): Promise<{ sceneId: string; whiteboxGlbUrl: string; bytesWritten: number }> {
+  const response = await fetch(
+    apiUrl(`/api/floorplan/presets/${encodeURIComponent(sceneId)}/whitebox`),
+    {
+      method: "PUT",
+      headers: { "Content-Type": "model/gltf-binary" },
+      body: glb,
+      signal,
+    },
+  )
+  if (!response.ok) {
+    throw await readApiError(response, `保存户型 GLB 失败（${response.status}）`)
+  }
+  return (await response.json()) as {
+    sceneId: string
+    whiteboxGlbUrl: string
+    bytesWritten: number
+  }
+}
+
+export async function placementCheck(input: {
+  candidate: PlacementCandidate
+  scene: SceneResponse
+  sceneId?: string
+  enableAgents?: boolean
+  signal?: AbortSignal
+}): Promise<PlacementCheckResponse> {
+  const response = await fetch(apiUrl("/api/room/placement-check"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      candidate: input.candidate,
+      scene: input.scene,
+      sceneId: input.sceneId ?? input.scene.sceneId,
+      enableAgents: input.enableAgents ?? false,
+    }),
+    signal: input.signal,
+  })
+  if (!response.ok) {
+    throw await readApiError(response, `摆放检测失败（${response.status}）`)
+  }
+  return (await response.json()) as PlacementCheckResponse
 }

@@ -104,7 +104,6 @@
     .ref { margin: 0; border: 1px solid var(--line); padding: 7px; display: grid; gap: 5px; }
     .ref img { width: 100%; aspect-ratio: 1; object-fit: contain; background: var(--surface-alt); }
     .ref figcaption { color: var(--muted); font-size: 11px; }
-<<<<<<< HEAD
     .workflow { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); background: #e9ece7; }
     .workflow-pane { min-width: 0; padding: 15px; border-right: 1px solid var(--line); }
     .workflow-pane:last-child { border-right: 0; }
@@ -118,7 +117,7 @@
     .flow-result.warn { border-left: 4px solid var(--amber); }
     .flow-result.fail { border-left: 4px solid var(--red); }
     .mock-flag { color: var(--amber); font-weight: 700; }
-=======
+
     .products { display: grid; gap: 8px; margin-top: 8px; }
     .product-card { border: 1px solid var(--line); background: var(--surface-alt); padding: 8px; display: grid; grid-template-columns: 72px 1fr; gap: 10px; text-decoration: none; color: inherit; }
     .product-card:hover { border-color: var(--green); }
@@ -126,7 +125,6 @@
     .product-title { font-size: 12px; font-weight: 700; line-height: 1.35; }
     .product-meta { color: var(--muted); font-size: 11px; margin-top: 4px; }
     .product-empty { color: var(--muted); font-size: 12px; padding: 8px 0; }
->>>>>>> origin/cutting
     @media (max-width: 980px) {
       .app { grid-template-columns: 1fr; }
       .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -171,23 +169,10 @@
           <div class="field"><label for="videoId">视频 ID</label><input id="videoId" value="video_pause_demo" /></div>
           <div class="field"><label for="detectionMode">检测模式</label><select id="detectionMode"><option value="ark_grounding">Ark Grounding</option><option value="mock">Mock</option></select></div>
         </div>
-<<<<<<< HEAD
         <div class="actions"><button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="database"></i>加载已有分析</button></div>
       </section>
 
       <div class="actions"><button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>加载 / 生成所选模型</button></div>
-=======
-        <div class="actions">
-          <button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="list-video"></i>识别已有抽帧</button>
-        </div>
-      </section>
-
-      <div class="actions">
-        <button id="searchIkeaButton" class="btn secondary" type="button" disabled><i data-lucide="shopping-bag"></i>搜宜家相似商品</button>
-        <button id="loadMatchesButton" class="btn secondary" type="button"><i data-lucide="database"></i>加载视频商品缓存</button>
-        <button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>生成所选模型</button>
-      </div>
->>>>>>> origin/cutting
 
       <section class="steps" aria-label="处理进度">
         <div class="step" id="step-source"><span class="step-dot"></span><div><div class="step-title">输入就绪</div><div class="step-note">等待文件</div></div><span class="elapsed"></span></div>
@@ -223,8 +208,8 @@
         <div class="result-pane">
           <div class="pane-head"><h2>生成结果</h2><span id="modelBadge" class="badge">尚未生成</span></div>
           <div id="refs" class="refs"></div>
-          <div class="pane-head" style="margin-top:12px"><h2>宜家相似商品</h2><span id="productBadge" class="badge">未加载</span></div>
-          <div id="products" class="products"><div class="product-empty">选中物体或点击「加载宜家商品缓存」</div></div>
+          <div class="pane-head" style="margin-top:12px"><h2>相似商品</h2><span id="productBadge" class="badge">未加载</span></div>
+          <div id="products" class="products"><div class="product-empty">选中物体或点击「加载本地商品缓存」</div></div>
           <pre id="selectedJson">尚未运行</pre>
         </div>
       </section>
@@ -581,15 +566,11 @@
       matchedLabel.textContent = `匹配帧 · ${detection.frameId}`;
       renderObjects();
       generateButton.disabled = !selectedObject;
-<<<<<<< HEAD
       generateButton.innerHTML = selectedObject?.prebuiltGlbUrl
         ? '<i data-lucide="database"></i>加载缓存模型'
         : '<i data-lucide="box"></i>生成所选模型';
       resetExtensionResults();
       refreshIcons();
-=======
-      searchIkeaButton.disabled = !selectedObject;
->>>>>>> origin/cutting
       switchView("comparisonView");
       await showProductsForSelection(selectedObject);
     }
@@ -669,7 +650,7 @@
         return;
       }
       if (!productMatchesCache) {
-        productsEl.innerHTML = '<div class="product-empty">图片模式请点「搜宜家相似商品」；视频模式也可「加载视频商品缓存」</div>';
+        productsEl.innerHTML = '<div class="product-empty">图片模式请点「搜相似商品」；视频模式也可「加载视频商品缓存」</div>';
         return;
       }
       const hit = resolveCandidateMatch(item);
@@ -711,7 +692,7 @@
 
     async function showProductsForSelection(item) {
       if (!item) {
-        productsEl.innerHTML = '<div class="product-empty">选中物体后点「搜宜家相似商品」</div>';
+        productsEl.innerHTML = '<div class="product-empty">选中物体后点「搜相似商品」</div>';
         return;
       }
       // Image mode: live CLIP on crop. Video mode: prefer offline cache, else live.
@@ -807,19 +788,7 @@
         button.type = "button";
         button.className = `object-row${selectedObject && selectedObject.id === item.id ? " active" : ""}`;
         button.innerHTML = `<span><span class="object-name">${escapeHtml(item.name || item.label)}</span><span class="object-meta">${escapeHtml(item.label)} · bbox ${item.bbox.join(", ")}</span></span><span class="confidence">${Math.round(item.confidence * 100)}%</span>`;
-<<<<<<< HEAD
         button.addEventListener("click", () => selectDetectedObject(item));
-=======
-        button.addEventListener("click", async () => {
-          selectedObject = item;
-          liveProductResults = null;
-          renderObjects();
-          generateButton.disabled = false;
-          searchIkeaButton.disabled = false;
-          await drawAnnotated(matchedCanvas, currentDetection.frameImageUrl || imageDataUrl, list, item.id);
-          await showProductsForSelection(item);
-        });
->>>>>>> origin/cutting
         objects.appendChild(button);
       }
       if (!list.length) objects.innerHTML = '<div class="empty-state">未检测到家具</div>';

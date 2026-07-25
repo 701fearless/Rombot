@@ -1,0 +1,39 @@
+{
+  "productId": "10579694",
+  "sku": "10579694",
+  "title": "GULVIAL bath sheet",
+  "productName": "GULVIAL bath sheet",
+  "description": "GULVIAL bath sheet, turquoise, 39x59\" Soft and fluffy GULVIAL towel in turquoise is medium-thick (500 g/m²) and made of 100% cotton which makes it durable, highly absorbent and ideal for everyday use. A terry towel in medium thickness that is soft and absorbent (weight 500 g/m²).",
+  "features": [
+    "This product is suitable for use in smaller hotels, inns and B&Bs as the design and material are optimized for frequent use and washing.",
+    "The towel will reach full absorbency after one washing.",
+    "Grams per square meter (g/m2) indicates the surface density of the fabric. The higher the surface density the more absorbent the towel. A towel with a lower surface density dries faster.",
+    "Available in different colors.",
+    "Available in different sizes."
+  ],
+  "materialAndCare": "100 % cotton",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 17.99,
+  "currency": "USD",
+  "category": "Bathroom textiles",
+  "subcategory": "Towels",
+  "category1": "Home textiles",
+  "category2": "Bathroom textiles",
+  "category3": "Towels",
+  "category4": "Bath sheets",
+  "categoryTree": [
+    "Home textiles",
+    "Bathroom textiles",
+    "Towels",
+    "Bath sheets",
+    "GULVIALBath sheet"
+  ],
+  "localImage": "images/10579694.jpg",
+  "imageUrl": "/product_index/images/10579694.jpg",
+  "detailUrl": "/static/shop.html#/p/10579694",
+  "rank": 3,
+  "score": 0.7275
+}

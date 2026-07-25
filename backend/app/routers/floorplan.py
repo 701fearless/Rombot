@@ -8,7 +8,7 @@ from io import BytesIO
 from pathlib import Path
 
 import httpx
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, Field, model_validator
 
@@ -105,6 +105,53 @@ async def get_floorplan_preset(scene_id: str) -> FloorplanPreset:
     if preset is None:
         raise HTTPException(status_code=404, detail="Floorplan preset not found")
     return preset
+
+
+class FloorplanWhiteboxSaveResponse(BaseModel):
+    sceneId: str
+    status: str
+    whiteboxGlbUrl: str
+    bytesWritten: int
+
+
+@router.put("/presets/{scene_id}/whitebox", response_model=FloorplanWhiteboxSaveResponse)
+async def save_floorplan_preset_whitebox(
+    scene_id: str,
+    request: Request,
+) -> FloorplanWhiteboxSaveResponse:
+    """Overwrite a preset whitebox.glb with an edited sandbox export (local demo)."""
+    cleaned = _clean_scene_id(scene_id)
+    if not cleaned:
+        raise HTTPException(status_code=400, detail="Invalid sceneId")
+
+    preset = next(
+        (item for item in _read_floorplan_presets() if item.sceneId == cleaned),
+        None,
+    )
+    if preset is None:
+        raise HTTPException(status_code=404, detail="Floorplan preset not found")
+
+    body = await request.body()
+    if not body:
+        raise HTTPException(status_code=400, detail="Empty GLB body")
+    if len(body) > 80 * 1024 * 1024:
+        raise HTTPException(status_code=413, detail="GLB exceeds 80 MB")
+    if body[:4] != b"glTF":
+        raise HTTPException(status_code=415, detail="Body must be a binary GLB (glTF)")
+
+    target = (FLOORPLAN_PRESETS_ROOT / "preprocessed" / cleaned / "whitebox.glb").resolve()
+    root = (FLOORPLAN_PRESETS_ROOT / "preprocessed").resolve()
+    if target != root and root not in target.parents:
+        raise HTTPException(status_code=400, detail="Invalid whitebox path")
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes(body)
+
+    return FloorplanWhiteboxSaveResponse(
+        sceneId=cleaned,
+        status="saved",
+        whiteboxGlbUrl=f"/sample_data/floorplans/preprocessed/{cleaned}/whitebox.glb",
+        bytesWritten=len(body),
+    )
 
 
 @router.post("/reconstruct", response_model=FloorplanReconstructResponse)

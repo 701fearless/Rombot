@@ -1,0 +1,31 @@
+{
+  "productId": "80546704",
+  "sku": "80546704",
+  "title": "DRYCK BUBBEL PÄRON sparkling drink",
+  "productName": "DRYCK BUBBEL PÄRON sparkling drink",
+  "description": "DRYCK BUBBEL PÄRON sparkling drink, pear, 25 oz",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 5.99,
+  "currency": "USD",
+  "category": "Beverages",
+  "subcategory": "DRYCK BUBBEL PÄRONSparkling drink",
+  "category1": "Food & Swedish restaurant",
+  "category2": "Beverages",
+  "category3": "DRYCK BUBBEL PÄRONSparkling drink",
+  "category4": "",
+  "categoryTree": [
+    "Food & Swedish restaurant",
+    "Beverages",
+    "DRYCK BUBBEL PÄRONSparkling drink"
+  ],
+  "localImage": "images/80546704.jpg",
+  "imageUrl": "/product_index/images/80546704.jpg",
+  "detailUrl": "/static/shop.html#/p/80546704",
+  "rank": 1,
+  "score": 0.7221
+}

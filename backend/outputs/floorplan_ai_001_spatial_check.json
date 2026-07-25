@@ -1,0 +1,389 @@
+{
+  "provider": "ark",
+  "llmLive": true,
+  "llmUsed": true,
+  "llmCalls": {
+    "ok": 2,
+    "fail": 0,
+    "errors": []
+  },
+  "fallbackToLocal": false,
+  "scenePath": "D:\\桌面\\Roombot\\Rombot\\backend\\sample_data\\scenes\\floorplan_ai_001_scene.json",
+  "conversionNotes": {
+    "roomFrom": "floorPolygon AABB (origin-shifted)",
+    "openingsFrom": "wallFixtures on walls",
+    "polygonWalls": "not modeled; interior partitions ignored by rectangular room model"
+  },
+  "placementCheck": {
+    "overallStatus": "pass",
+    "feedback": "沙发可以放入当前房间，四项基础空间检测均通过，可正常使用。",
+    "checks": [
+      {
+        "ruleId": "fit",
+        "name": "空间适配",
+        "status": "pass",
+        "message": "家具可正常放置",
+        "suggestion": null,
+        "details": {
+          "withinRoom": true,
+          "overflow_m": {
+            "left": 0.0,
+            "right": 0.0,
+            "back": 0.0,
+            "front": 0.0
+          }
+        }
+      },
+      {
+        "ruleId": "collision",
+        "name": "家具冲突",
+        "status": "pass",
+        "message": "未与其他家具发生重叠",
+        "suggestion": null,
+        "details": {
+          "conflicts": []
+        }
+      },
+      {
+        "ruleId": "accessibility",
+        "name": "门窗可达性",
+        "status": "pass",
+        "message": "不影响门窗使用",
+        "suggestion": null,
+        "details": {
+          "blocked": []
+        }
+      },
+      {
+        "ruleId": "clearance",
+        "name": "活动空间",
+        "status": "pass",
+        "message": "前方活动空间充足",
+        "suggestion": null,
+        "details": {
+          "sides": [
+            {
+              "side": "front",
+              "required_m": 0.6,
+              "available_m": 1.0,
+              "ok": true
+            }
+          ]
+        }
+      }
+    ],
+    "candidate": {
+      "id": "candidate_sofa",
+      "label": "sofa",
+      "name": "沙发",
+      "position": [
+        2.2,
+        0.0,
+        5.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.0,
+        0.9,
+        0.85
+      ]
+    },
+    "layout": {
+      "moves": [],
+      "advices": [
+        {
+          "id": "layout_001",
+          "priority": "高",
+          "title": "沙发摆放位置建议",
+          "problem": "当前沙发摆放位置靠近入户门，影响入门视线和空间流动。",
+          "suggestion": "将沙发向房间内部移动，距离入户门至少1米，以改善空间流动性和视觉效果。",
+          "relatedObjectIds": [
+            "candidate_sofa",
+            "door_entry"
+          ]
+        },
+        {
+          "id": "layout_002",
+          "priority": "中",
+          "title": "厨房门旁空间利用",
+          "problem": "厨房门旁空间较为狭窄，影响通行。",
+          "suggestion": "在厨房门旁设置小型储物柜或矮柜，既增加储物空间，又不妨碍通行。",
+          "relatedObjectIds": [
+            "door_kitchen"
+          ]
+        },
+        {
+          "id": "layout_003",
+          "priority": "中",
+          "title": "卧室门旁空间优化",
+          "problem": "卧室门旁空间较为空旷，未充分利用。",
+          "suggestion": "在卧室门旁设置小型书架或衣柜，提高空间利用率。",
+          "relatedObjectIds": [
+            "door_bedroom"
+          ]
+        },
+        {
+          "id": "layout_004",
+          "priority": "低",
+          "title": "飘窗利用建议",
+          "problem": "飘窗空间未得到充分利用。",
+          "suggestion": "在飘窗上放置舒适的坐垫和靠枕，将其打造成休闲区。",
+          "relatedObjectIds": [
+            "window_bay"
+          ]
+        },
+        {
+          "id": "layout_005",
+          "priority": "低",
+          "title": "厨房窗下空间利用",
+          "problem": "厨房窗下空间未得到充分利用。",
+          "suggestion": "在厨房窗下设置吊柜或储物架，增加厨房的储物空间。",
+          "relatedObjectIds": [
+            "window_kitchen"
+          ]
+        }
+      ],
+      "summary": "优化空间布局，提高空间利用率。"
+    }
+  },
+  "roomLayout": {
+    "overallStatus": "warn",
+    "feedback": "全屋检测发现 1 件家具存在净空不足等警告，建议优化活动空间。",
+    "objectChecks": [
+      {
+        "objectId": "demo_sofa",
+        "name": "沙发",
+        "label": "sofa",
+        "overallStatus": "warn",
+        "checks": [
+          {
+            "ruleId": "fit",
+            "name": "空间适配",
+            "status": "pass",
+            "message": "家具可正常放置",
+            "suggestion": null,
+            "details": {
+              "withinRoom": true,
+              "overflow_m": {
+                "left": 0.0,
+                "right": 0.0,
+                "back": 0.0,
+                "front": 0.0
+              }
+            }
+          },
+          {
+            "ruleId": "collision",
+            "name": "家具冲突",
+            "status": "pass",
+            "message": "未与其他家具发生重叠",
+            "suggestion": null,
+            "details": {
+              "conflicts": []
+            }
+          },
+          {
+            "ruleId": "accessibility",
+            "name": "门窗可达性",
+            "status": "pass",
+            "message": "不影响门窗使用",
+            "suggestion": null,
+            "details": {
+              "blocked": []
+            }
+          },
+          {
+            "ruleId": "clearance",
+            "name": "活动空间",
+            "status": "warn",
+            "message": "前方活动空间不足（30 cm，需 ≥ 60 cm）",
+            "suggestion": "沙发前方活动空间不足，建议向后移动约 30 cm。",
+            "details": {
+              "sides": [
+                {
+                  "side": "front",
+                  "required_m": 0.6,
+                  "available_m": 0.3,
+                  "ok": false
+                }
+              ],
+              "shortages": [
+                {
+                  "side": "front",
+                  "required_m": 0.6,
+                  "available_m": 0.3,
+                  "ok": false
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "objectId": "demo_coffee_table",
+        "name": "茶几",
+        "label": "coffee_table",
+        "overallStatus": "pass",
+        "checks": [
+          {
+            "ruleId": "fit",
+            "name": "空间适配",
+            "status": "pass",
+            "message": "家具可正常放置",
+            "suggestion": null,
+            "details": {
+              "withinRoom": true,
+              "overflow_m": {
+                "left": 0.0,
+                "right": 0.0,
+                "back": 0.0,
+                "front": 0.0
+              }
+            }
+          },
+          {
+            "ruleId": "collision",
+            "name": "家具冲突",
+            "status": "pass",
+            "message": "未与其他家具发生重叠",
+            "suggestion": null,
+            "details": {
+              "conflicts": []
+            }
+          },
+          {
+            "ruleId": "accessibility",
+            "name": "门窗可达性",
+            "status": "pass",
+            "message": "不影响门窗使用",
+            "suggestion": null,
+            "details": {
+              "blocked": []
+            }
+          },
+          {
+            "ruleId": "clearance",
+            "name": "活动空间",
+            "status": "pass",
+            "message": "该家具类型暂无活动空间阈值，跳过检测",
+            "suggestion": null,
+            "details": {
+              "sides": [],
+              "skipped": true
+            }
+          }
+        ]
+      }
+    ],
+    "layout": {
+      "moves": [
+        {
+          "objectId": "demo_sofa",
+          "name": "沙发",
+          "fromPosition": [
+            2.2,
+            0.0,
+            5.23
+          ],
+          "toPosition": [
+            2.2,
+            0.0,
+            5.53
+          ],
+          "fromRotation": null,
+          "toRotation": null,
+          "reason": "增加前方活动空间，优化使用体验。",
+          "source": "layout_agent"
+        },
+        {
+          "objectId": "demo_coffee_table",
+          "name": "茶几",
+          "fromPosition": [
+            2.2,
+            0.0,
+            4.23
+          ],
+          "toPosition": [
+            2.2,
+            0.0,
+            4.53
+          ],
+          "fromRotation": null,
+          "toRotation": null,
+          "reason": "调整茶几位置，保持与沙发适当距离。",
+          "source": "layout_agent"
+        }
+      ],
+      "advices": [
+        {
+          "id": "room_001",
+          "priority": "高",
+          "title": "沙发位置调整",
+          "problem": "沙发前方活动空间不足，影响使用。",
+          "suggestion": "将沙发向后移动约30厘米，增加前方活动空间。",
+          "relatedObjectIds": [
+            "demo_sofa"
+          ]
+        },
+        {
+          "id": "room_002",
+          "priority": "中",
+          "title": "茶几位置优化",
+          "problem": "茶几位置与沙发距离过近，使用不便。",
+          "suggestion": "将茶几向沙发方向移动，保持适当距离。",
+          "relatedObjectIds": [
+            "demo_coffee_table",
+            "demo_sofa"
+          ]
+        },
+        {
+          "id": "room_003",
+          "priority": "中",
+          "title": "厨房门通行空间",
+          "problem": "厨房门通行空间较窄，影响通行。",
+          "suggestion": "在厨房门附近留出更多空间，确保通行顺畅。",
+          "relatedObjectIds": [
+            "demo_coffee_table",
+            "demo_sofa"
+          ]
+        },
+        {
+          "id": "room_004",
+          "priority": "低",
+          "title": "飘窗利用",
+          "problem": "飘窗空间未充分利用。",
+          "suggestion": "在飘窗处设置小型书架或储物柜，增加空间利用率。",
+          "relatedObjectIds": [
+            "demo_bay_window"
+          ]
+        },
+        {
+          "id": "room_005",
+          "priority": "低",
+          "title": "卧室门位置调整",
+          "problem": "卧室门位置影响整体布局。",
+          "suggestion": "考虑调整卧室门的位置，优化整体布局。",
+          "relatedObjectIds": [
+            "demo_bedroom_door"
+          ]
+        },
+        {
+          "id": "room_006",
+          "priority": "低",
+          "title": "卫生间门位置调整",
+          "problem": "卫生间门位置影响整体布局。",
+          "suggestion": "考虑调整卫生间门的位置，优化整体布局。",
+          "relatedObjectIds": [
+            "demo_toilet_door"
+          ]
+        }
+      ],
+      "summary": "整体布局需优化，确保动线流畅且空间利用率高。"
+    },
+    "demoFurnitureNote": "demo sofa + coffee table injected only for room-layout"
+  }
+}

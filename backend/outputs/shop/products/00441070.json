@@ -1,0 +1,35 @@
+{
+  "productId": "00441070",
+  "sku": "00441070",
+  "title": "GOTTORP Pendant lamp shade",
+  "productName": "GOTTORP Pendant lamp shade",
+  "description": "GOTTORP Pendant lamp shade, bamboo, Height: 15\" Diameter: 22\". The shapes are similar to old industrial lamps, but these lampshades are not made on an assembly line. They’re hand-woven in bamboo and spread a warm, cozy light.",
+  "features": [
+    "Light bulb sold separately. recommends LED bulb E27."
+  ],
+  "materialAndCare": "Metal parts: Steel, Polyester powder coating; Shade: Bamboo, Clear lacquer",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 44.99,
+  "currency": "USD",
+  "category": "Lamps & light fixtures",
+  "subcategory": "Lamp parts & heads",
+  "category1": "Lighting",
+  "category2": "Lamps & light fixtures",
+  "category3": "Lamp parts & heads",
+  "category4": "Lamp shades",
+  "categoryTree": [
+    "Lighting",
+    "Lamps & light fixtures",
+    "Lamp parts & heads",
+    "Lamp shades",
+    "GOTTORPPendant lamp shade"
+  ],
+  "localImage": "images/00441070.jpg",
+  "imageUrl": "/product_index/images/00441070.jpg",
+  "detailUrl": "/static/shop.html#/p/00441070",
+  "rank": 4,
+  "score": 0.4105
+}

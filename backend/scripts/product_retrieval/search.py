@@ -142,7 +142,7 @@ def search(query: np.ndarray, embeddings: np.ndarray, top_k: int) -> tuple[np.nd
 
 
 def search_with_hints(
-    image_path: Path,
+    image_path: Path | None,
     *,
     catalog: list[dict],
     embeddings: np.ndarray,
@@ -154,12 +154,23 @@ def search_with_hints(
     query_text: str = "",
     label: str | None = None,
     text_weight: float = 0.4,
+    text_only: bool = False,
 ) -> list[dict]:
-    image_feat = encode_with_model(image_path, model, preprocess, device)
     text_feat = None
     if query_text.strip():
         text_feat = encode_text_with_model(query_text.strip(), model, tokenizer, device)
-    query = fuse_embeddings(image_feat, text_feat, text_weight if text_feat is not None else 0.0)
+
+    if text_only:
+        if text_feat is None:
+            raise ValueError("text_only search requires query text / hint keywords")
+        query = text_feat.astype("float32")
+        if query.ndim == 1:
+            query = query.reshape(1, -1)
+    else:
+        if image_path is None:
+            raise ValueError("image search requires an image path")
+        image_feat = encode_with_model(image_path, model, preprocess, device)
+        query = fuse_embeddings(image_feat, text_feat, text_weight if text_feat is not None else 0.0)
 
     pool = max(top_k * 12, 36)
     pool = min(pool, len(catalog))
@@ -194,8 +205,8 @@ def main() -> None:
         except Exception:  # noqa: BLE001
             pass
 
-    parser = argparse.ArgumentParser(description="Search local IKEA CLIP index with a crop image")
-    parser.add_argument("--image", required=True, help="Query image path (crop / screenshot)")
+    parser = argparse.ArgumentParser(description="Search local product CLIP index (image and/or text)")
+    parser.add_argument("--image", default=None, help="Query image path (crop / screenshot)")
     parser.add_argument("--top-k", type=int, default=10)
     parser.add_argument("--model", default=None)
     parser.add_argument("--pretrained", default=None)
@@ -205,15 +216,35 @@ def main() -> None:
     parser.add_argument("--label", default=None, help="Furniture label for category rerank")
     parser.add_argument("--text-weight", type=float, default=0.4)
     parser.add_argument("--hints-json", default=None, help="Optional hint object JSON file")
+    parser.add_argument(
+        "--text-only",
+        action="store_true",
+        help="Ignore image; search using only keywords/text from --text or --hints-json",
+    )
     args = parser.parse_args()
 
-    image_path = Path(args.image)
-    if not image_path.is_absolute():
-        image_path = (ROOT / image_path).resolve()
-    if not image_path.exists():
-        raise SystemExit(f"Image not found: {image_path}")
     if not EMBEDDINGS_PATH.exists():
         raise SystemExit(f"Embeddings missing. Run build_index.py first: {EMBEDDINGS_PATH}")
+
+    hint = None
+    if args.hints_json:
+        hint = json.loads(Path(args.hints_json).read_text(encoding="utf-8-sig"))
+    query_text = args.text or build_query_text(hint or {})
+    label = args.label or (hint or {}).get("label")
+    text_only = bool(args.text_only) or not args.image
+
+    image_path: Path | None = None
+    if args.image:
+        image_path = Path(args.image)
+        if not image_path.is_absolute():
+            image_path = (ROOT / image_path).resolve()
+        if not image_path.exists():
+            raise SystemExit(f"Image not found: {image_path}")
+
+    if text_only and not query_text.strip():
+        raise SystemExit("text-only search needs --text or --hints-json with keywords")
+    if not text_only and image_path is None:
+        raise SystemExit("Provide --image, or use --text-only with keywords")
 
     meta = load_meta()
     model_name = args.model or meta.get("clipModel") or DEFAULT_CLIP_MODEL
@@ -226,12 +257,6 @@ def main() -> None:
             f"Catalog/embedding size mismatch: catalog={len(catalog)} embeddings={embeddings.shape[0]}. "
             "Rebuild index."
         )
-
-    hint = None
-    if args.hints_json:
-        hint = json.loads(Path(args.hints_json).read_text(encoding="utf-8-sig"))
-    query_text = args.text or build_query_text(hint or {})
-    label = args.label or (hint or {}).get("label")
 
     model, preprocess, tokenizer = load_clip_model(
         model_name=model_name, pretrained=pretrained, device=args.device
@@ -248,16 +273,18 @@ def main() -> None:
         query_text=query_text,
         label=label,
         text_weight=args.text_weight,
+        text_only=text_only,
     )
 
     if args.json:
         print(
             json.dumps(
                 {
-                    "query": str(image_path),
+                    "query": str(image_path) if image_path else None,
                     "queryText": query_text,
                     "label": label,
-                    "textWeight": args.text_weight,
+                    "textWeight": 1.0 if text_only else args.text_weight,
+                    "textOnly": text_only,
                     "results": results,
                 },
                 ensure_ascii=False,
@@ -266,8 +293,9 @@ def main() -> None:
         )
         return
 
-    print(f"Query: {image_path}")
+    print(f"Query: {image_path or '(text-only)'}")
     print(f"Text: {query_text or '(none)'}")
+    print(f"Mode: {'text-only' if text_only else 'image+text'}")
     print(f"Index size: {embeddings.shape[0]}  model={model_name}/{pretrained}")
     print("-" * 72)
     for row in results:
