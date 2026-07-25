@@ -2549,7 +2549,385 @@ button {
   }
 }
 
+/* ========== SHOWROOM - 多家具场景展示页 ========== */
+
+.showroom {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  height: 100dvh;
+  overflow: hidden;
+  color: #f0f4e7;
+  font-family: var(--font-stack);
+}
+
+.showroom__bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  transition: background 0.8s ease;
+}
+
+/* Header */
+.showroom__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: max(14px, env(safe-area-inset-top)) 20px 12px;
+  background: rgba(10, 11, 9, 0.72);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 100;
+}
+
+.showroom__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(240, 244, 231, 0.78);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+}
+
+.showroom__back:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(215, 255, 103, 0.3);
+}
+
+.showroom__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: rgba(240, 244, 231, 0.5);
+}
+
+.showroom__actions {
+  display: flex;
+  gap: 6px;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: rgba(240, 244, 231, 0.72);
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(215, 255, 103, 0.35);
+}
+
+.icon-btn.is-active {
+  color: #14170f;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Viewport */
+.showroom__viewport {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+}
+
+.showroom__viewport canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Loading */
+.showroom__loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(10, 11, 9, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 50;
+}
+
+.showroom__loading-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(215, 255, 103, 0.15);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.showroom__loading p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(240, 244, 231, 0.82);
+}
+
+.showroom__progress {
+  width: 200px;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.showroom__progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #9ac51f);
+  transition: width 0.3s ease;
+}
+
+.showroom__loading span {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Schemes Panel */
+.showroom__schemes {
+  padding: 12px 20px;
+  background: rgba(10, 11, 9, 0.88);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.showroom__schemes::-webkit-scrollbar {
+  height: 0;
+}
+
+.showroom__schemes-scroll {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+}
+
+.scheme-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 180px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.scheme-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.scheme-card.is-active {
+  border-color: var(--scheme-color, var(--accent));
+  background: rgba(215, 255, 103, 0.08);
+  box-shadow: 0 4px 20px rgba(215, 255, 103, 0.1);
+}
+
+.scheme-card__accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 16px 0 0 16px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.scheme-card.is-active .scheme-card__accent {
+  opacity: 1;
+}
+
+.scheme-card__info {
+  display: grid;
+  gap: 2px;
+}
+
+.scheme-card h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.scheme-card p {
+  margin: 0;
+  font-size: 10px;
+  color: rgba(240, 244, 231, 0.45);
+}
+
+.scheme-card__style {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(240, 244, 231, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.scheme-card.is-active .scheme-card__style {
+  color: #14170f;
+  background: var(--scheme-color, var(--accent));
+}
+
+/* Info Bar */
+.showroom__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(10, 11, 9, 0.72);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.showroom__info-main h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  transition: color 0.5s ease;
+}
+
+.showroom__info-main p {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: rgba(240, 244, 231, 0.45);
+}
+
+.showroom__info-furniture {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(240, 244, 231, 0.4);
+}
+
+.showroom__info-furniture svg {
+  opacity: 0.6;
+}
+
+/* Furniture Tags */
+.showroom__furniture-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 20px 14px;
+  background: rgba(10, 11, 9, 0.6);
+}
+
+.furniture-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(240, 244, 231, 0.75);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.furniture-tag__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
 @media (max-width: 720px) {
+  .showroom__header {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .showroom__brand {
+    display: none;
+  }
+
+  .showroom__back span {
+    display: none;
+  }
+
+  .showroom__schemes {
+    padding: 10px 12px;
+  }
+
+  .scheme-card {
+    min-width: 150px;
+    padding: 10px 12px;
+  }
+
+  .scheme-card__style {
+    display: none;
+  }
+
+  .showroom__info {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+    padding: 10px 12px;
+  }
+
+  .showroom__furniture-list {
+    padding: 6px 12px 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .showroom__actions {
+    gap: 4px;
+  }
+
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
   .dashboard-topbar {
     min-height: 62px;
     padding: 10px 14px;
@@ -2660,4 +3038,690 @@ button {
     align-items: flex-start;
     flex-direction: column;
   }
+}
+
+/* ========== FURNITURE UPLOADER - 家具上传组件 ========== */
+
+/* Showroom 主内容区（3D视口 + 侧边栏） */
+.showroom__main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.showroom__viewport {
+  flex: 1;
+}
+
+/* 侧边栏 */
+.showroom__sidebar {
+  width: 300px;
+  min-width: 280px;
+  max-width: 360px;
+  height: 100%;
+  overflow-y: auto;
+  background: rgba(10, 11, 9, 0.92);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px;
+}
+
+/* 当侧边栏关闭时隐藏 */
+.showroom[data-sidebar="closed"] .showroom__sidebar {
+  display: none;
+}
+
+/* Furniture Uploader 组件 */
+.furniture-uploader {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.furniture-uploader--compact {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.furniture-uploader__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.furniture-uploader__header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f0f4e7;
+}
+
+.furniture-count {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #14170f;
+  background: var(--accent);
+}
+
+/* 上传区域 */
+.furniture-upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 16px;
+  border: 2px dashed rgba(215, 255, 103, 0.25);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.furniture-upload-zone:hover {
+  border-color: rgba(215, 255, 103, 0.55);
+  background: rgba(215, 255, 103, 0.04);
+}
+
+.furniture-upload-zone.is-uploading {
+  border-color: var(--accent);
+  background: rgba(215, 255, 103, 0.06);
+  cursor: wait;
+}
+
+.furniture-upload-zone svg {
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+.furniture-upload-zone strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f0f4e7;
+}
+
+.furniture-upload-zone span {
+  font-size: 11px;
+  color: rgba(240, 244, 231, 0.45);
+}
+
+/* 错误提示 */
+.furniture-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 145, 56, 0.2);
+  border-radius: 12px;
+  color: #ffd095;
+  background: rgba(255, 145, 56, 0.07);
+  font-size: 12px;
+}
+
+.furniture-error svg {
+  flex-shrink: 0;
+  width: 16px;
+}
+
+/* 加载状态 */
+.furniture-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(240, 244, 231, 0.6);
+}
+
+/* 家具列表 */
+.furniture-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.furniture-list h4 {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240, 244, 231, 0.45);
+}
+
+.furniture-list__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.2s ease;
+}
+
+.furniture-list__item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.furniture-list__icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 92, 246, 0.15);
+  border-radius: 8px;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.furniture-list__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.furniture-list__info .name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f0f4e7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.furniture-list__info .url {
+  font-size: 10px;
+  color: rgba(240, 244, 231, 0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.furniture-list__actions {
+  display: flex;
+  gap: 4px;
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn--add {
+  color: #d7ff67;
+  background: rgba(215, 255, 103, 0.1);
+}
+
+.action-btn--add:hover {
+  background: rgba(215, 255, 103, 0.2);
+}
+
+.action-btn--delete {
+  color: #ffb4b4;
+  background: rgba(255, 180, 180, 0.1);
+}
+
+.action-btn--delete:hover {
+  background: rgba(255, 180, 180, 0.2);
+}
+
+/* 空状态 */
+.furniture-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 32px 16px;
+  text-align: center;
+  color: rgba(240, 244, 231, 0.35);
+}
+
+.furniture-empty p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.furniture-empty .hint {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+/* 紧凑模式按钮 */
+.furniture-upload-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: 10px;
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, 0.1);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.furniture-upload-btn:hover {
+  background: rgba(139, 92, 246, 0.18);
+  border-color: rgba(139, 92, 246, 0.55);
+}
+
+.furniture-quick-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.furniture-quick-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(240, 244, 231, 0.75);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.furniture-quick-item:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.35);
+  color: #c4b5fd;
+}
+
+/* 场景中的家具列表 */
+.scene-furniture-list {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.scene-furniture-list h4 {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240, 244, 231, 0.45);
+}
+
+.scene-furniture-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+}
+
+.scene-furniture-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.scene-furniture-item.is-selected {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.35);
+}
+
+.scene-furniture-item__name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #f0f4e7;
+}
+
+.scene-furniture-item__remove {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  color: rgba(255, 180, 180, 0.8);
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scene-furniture-item__remove:hover {
+  background: rgba(255, 100, 100, 0.2);
+  color: #ffb4b4;
+}
+
+/* 自定义家具标签样式 */
+.furniture-tag--custom {
+  border-color: rgba(139, 92, 246, 0.35);
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.furniture-tag--custom .furniture-tag__dot {
+  background: #8B5CF6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18);
+}
+
+.furniture-tag__badge {
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #14170f;
+  background: #8B5CF6;
+}
+
+/* ========== MULTI FURNITURE LIST - 多家具摆放列表 ========== */
+
+.multi-furniture-list {
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid rgba(215, 255, 103, 0.15);
+  border-radius: 16px;
+  background: rgba(10, 12, 9, 0.6);
+}
+
+.multi-furniture-list h4 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.multi-furniture-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.multi-furniture-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: rgba(240, 244, 231, 0.75);
+  font-size: 12px;
+}
+
+.multi-furniture-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.multi-furniture-item.is-selected {
+  background: rgba(215, 255, 103, 0.12);
+  border-color: rgba(215, 255, 103, 0.5);
+  color: #d7ff67;
+  box-shadow: 0 0 0 1px rgba(215, 255, 103, 0.2);
+}
+
+.multi-furniture-name {
+  font-weight: 600;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.multi-furniture-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 6px;
+  color: rgba(255, 160, 160, 0.7);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.multi-furniture-remove:hover {
+  background: rgba(255, 80, 80, 0.2);
+  color: #ffb4b4;
+}
+
+.multi-furniture-hint {
+  margin: 10px 0 0;
+  font-size: 11px;
+  color: rgba(240, 244, 231, 0.45);
+}
+
+/* 上传按钮样式 */
+.furniture-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 10px;
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, 0.12);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.furniture-upload-btn:hover:not(:disabled) {
+  background: rgba(139, 92, 246, 0.22);
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.15);
+}
+
+.furniture-upload-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.furniture-upload-btn.is-uploading {
+  animation: pulse-glow 1.5s ease infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(139, 92, 246, 0); }
+}
+
+/* 上传错误 */
+.furniture-upload-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 145, 56, 0.25);
+  border-radius: 12px;
+  color: #ffd095;
+  background: rgba(255, 145, 56, 0.08);
+  font-size: 12px;
+}
+
+.furniture-upload-error button {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.furniture-upload-error button:hover {
+  opacity: 1;
+}
+
+/* ========== SPACE LAYOUT - 空间页面布局 ========== */
+
+.space-layout {
+
+/* 上传家具 GLB 按钮 */
+.furniture-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border: 1.5px solid rgba(139, 92, 246, 0.5);
+  border-radius: 12px;
+  color: #c4b5fd;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.08));
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.furniture-upload-btn:hover {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.28), rgba(139, 92, 246, 0.15));
+  border-color: rgba(139, 92, 246, 0.75);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
+}
+
+.furniture-upload-btn.is-uploading {
+  opacity: 0.7;
+  cursor: wait;
+  border-color: rgba(215, 255, 103, 0.5);
+  color: #d7ff67;
+}
+
+.furniture-upload-btn.has-furniture {
+  border-color: rgba(215, 255, 103, 0.45);
+  color: #d7ff67;
+  background: linear-gradient(135deg, rgba(215, 255, 103, 0.12), rgba(215, 255, 103, 0.05));
+}
+
+.furniture-upload-btn.has-furniture:hover {
+  background: linear-gradient(135deg, rgba(215, 255, 103, 0.22), rgba(215, 255, 103, 0.1));
+  border-color: rgba(215, 255, 103, 0.65);
+}
+
+/* 清除家具按钮 */
+.furniture-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  border-radius: 10px;
+  color: #ffb4b4;
+  background: rgba(255, 100, 100, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.furniture-clear-btn:hover {
+  background: rgba(255, 100, 100, 0.2);
+  border-color: rgba(255, 100, 100, 0.55);
+  color: #ff8888;
+}
+
+/* 上传错误提示 */
+.furniture-upload-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 145, 56, 0.25);
+  border-radius: 14px;
+  color: #ffd095;
+  background: rgba(255, 145, 56, 0.08);
+  font-size: 12px;
+}
+
+.furniture-upload-error svg {
+  flex-shrink: 0;
+}
+
+.furniture-upload-error span {
+  flex: 1;
+}
+
+.furniture-upload-error button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 6px;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.furniture-upload-error button:hover {
+  opacity: 1;
+}
+
+/* 自定义家具信息条 */
+.custom-furniture-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 12px;
+  background: rgba(139, 92, 246, 0.08);
+  font-size: 12px;
+  color: rgba(240, 244, 231, 0.75);
+}
+
+.custom-furniture-info svg {
+  flex-shrink: 0;
+  color: #8B5CF6;
+}
+
+.custom-furniture-info strong {
+  color: #c4b5fd;
+}
+
+.custom-furniture-hint {
+  margin-left: auto;
+  opacity: 0.5;
+  font-size: 10px;
 }
