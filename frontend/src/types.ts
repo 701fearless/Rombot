@@ -185,3 +185,17 @@ export interface FurnitureTransformChange {
   size: [number, number, number]
   reason: "drag" | "rotate" | "scale" | "reset" | "apply"
 }
+
+// ============ 家具上传相关 ============
+
+export interface FurnitureUploadItem {
+  id: string
+  name: string
+  glbUrl: string
+}
+
+export interface UploadedFurnitureWithTransform extends FurnitureUploadItem {
+  position: [number, number, number]
+  rotation: [number, number, number]
+  scale: number
+}

@@ -2,6 +2,7 @@ import type {
   DetectResponse,
   FloorplanPreset,
   FloorplanReconstructResponse,
+  FurnitureUploadItem,
   PlacementCandidate,
   PlacementCheckResponse,
   PrebuiltAsset,
@@ -179,4 +180,59 @@ export async function placementCheck(input: {
     throw await readApiError(response, `摆放检测失败（${response.status}）`)
   }
   return (await response.json()) as PlacementCheckResponse
+}
+
+// ============ 家具上传相关 API ============
+
+export async function uploadFurnitureGlb(
+  file: File,
+  signal?: AbortSignal,
+): Promise<{ id: string; name: string; glbUrl: string; sizeBytes: number }> {
+  const formData = new FormData()
+  formData.append("file", file)
+  
+  const response = fetch(apiUrl("/api/furniture/upload"), {
+    method: "POST",
+    body: formData,
+    signal,
+  })
+  
+  const res = await response
+  if (!res.ok) {
+    let message = `上传失败（${res.status}）`
+    try {
+      const payload = (await res.json()) as { detail?: string }
+      if (payload.detail) message = payload.detail
+    } catch {
+      // ignore
+    }
+    throw new Error(message)
+  }
+  
+  return res.json() as Promise<{ id: string; name: string; glbUrl: string; sizeBytes: number }>
+}
+
+export async function listUploadedFurniture(
+  signal?: AbortSignal,
+): Promise<FurnitureUploadItem[]> {
+  const response = fetch(apiUrl("/api/furniture/list"), { signal })
+  const res = await response
+  if (!res.ok) {
+    throw await readApiError(res, "获取家具列表失败")
+  }
+  return res.json() as Promise<FurnitureUploadItem[]>
+}
+
+export async function deleteFurniture(
+  furnitureId: string,
+  signal?: AbortSignal,
+): Promise<void> {
+  const response = fetch(apiUrl(`/api/furniture/${encodeURIComponent(furnitureId)}`), {
+    method: "DELETE",
+    signal,
+  })
+  const res = await response
+  if (!res.ok) {
+    throw await readApiError(res, "删除家具失败")
+  }
 }
