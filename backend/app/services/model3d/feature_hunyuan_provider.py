@@ -118,6 +118,14 @@ class FeatureHunyuanModel3DProvider(FeatureMeshyModel3DProvider):
 """
         step1_features = json.dumps(detected_object.visualFeatures, ensure_ascii=False)
         step1_hints = json.dumps(detected_object.generationHints, ensure_ascii=False)
+        dimension_evidence = json.dumps(
+            (
+                detected_object.estimatedDimensions.model_dump()
+                if detected_object.estimatedDimensions
+                else None
+            ),
+            ensure_ascii=False,
+        )
         prompt = f"""
 You are a senior furniture asset director. Return one compact JSON object only.
 The output will drive a single generated product reference image and then a 3D model.
@@ -127,6 +135,7 @@ Detected object:
 - category: {detected_object.label}
 - display name: {detected_object.name}
 - bbox: {detected_object.bbox}
+- estimated metric dimensions: {dimension_evidence}
 
 Step-1 evidence already extracted from the original frame:
 visualFeatures = {step1_features}
@@ -230,6 +239,9 @@ Return these exact fields:
                 parsed[key] = {}
             elif isinstance(value, list):
                 parsed[key] = {"items": value}
+        if detected_object.estimatedDimensions:
+            parsed["constraints"]["physicalDimensionsMeters"] = self._dimension_constraint(detected_object)
+            parsed["confidence"]["dimensionEstimate"] = "category-prior initial size"
         return FurnitureGenerationBrief.model_validate(parsed)
 
     def _brief_from_step1(self, detected_object: DetectedObject) -> FurnitureGenerationBrief:
@@ -245,6 +257,17 @@ Return these exact fields:
         pattern_completion = hints.get("patternCompletion") or "continue repeated visible motifs without gaps"
         preserve = hints.get("preserve") or []
         remove = hints.get("remove") or []
+        dimension_constraint = self._dimension_constraint(detected_object)
+        dimension_prompt = ""
+        if dimension_constraint:
+            dimension_prompt = (
+                f"Target plausible real-world dimensions are approximately "
+                f"{dimension_constraint['widthM']:.2f} m wide, "
+                f"{dimension_constraint['depthM']:.2f} m deep and "
+                f"{dimension_constraint['heightM']:.2f} m high. "
+                "Preserve the corresponding width-to-depth-to-height proportions. "
+                "These are category-prior estimates rather than pixel measurements. "
+            )
 
         prompt = (
             f"Create one complete, realistic, isolated {detected_object.label} as a regular household product. "
@@ -256,6 +279,7 @@ Return these exact fields:
             "shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. "
             f"Complete occluded, back, side and underside regions using {symmetry} and {occlusion}. "
             f"Texture rule: {texture_pattern}; {pattern_completion}. "
+            f"{dimension_prompt}"
             "Use conservative category structure, repeated modules, continuous closed geometry, and one "
             "45-degree product view on a plain light background. Keep only the main object."
         )
@@ -287,6 +311,7 @@ Return these exact fields:
                 "occlusionCompletion": occlusion,
                 "preserve": preserve,
                 "remove": remove,
+                "physicalDimensionsMeters": dimension_constraint,
             },
             prompt=prompt,
             negativePrompt=negative_prompt,
@@ -294,8 +319,27 @@ Return these exact fields:
                 "step1Detection": detected_object.confidence,
                 "visibleEvidence": "high",
                 "inferredHiddenParts": "medium",
+                "dimensionEstimate": (
+                    "category-prior initial size"
+                    if detected_object.estimatedDimensions
+                    else "unavailable"
+                ),
             },
         )
+
+    def _dimension_constraint(self, detected_object: DetectedObject) -> dict:
+        dimensions = detected_object.estimatedDimensions
+        if dimensions is None:
+            return {}
+        return {
+            "widthM": dimensions.widthM,
+            "depthM": dimensions.depthM,
+            "heightM": dimensions.heightM,
+            "unit": dimensions.unit,
+            "source": dimensions.source,
+            "isMeasured": dimensions.isMeasured,
+            "selectionRule": dimensions.selectionRule,
+        }
 
     async def _create_reference_views(
         self,
@@ -307,10 +351,9 @@ Return these exact fields:
         for view_id, view_text in [
             ("oblique_3quarter", "single 45-degree front-left oblique product reference render"),
         ]:
-            prompt = self._reference_view_prompt(brief, view_text)
             payload = {
                 "model": self.ark_image_model,
-                "prompt": prompt,
+                "prompt": self._reference_view_prompt(brief, view_text),
                 "size": self.ark_image_size,
                 "sequential_image_generation": "disabled",
                 "stream": False,
@@ -343,11 +386,20 @@ Return these exact fields:
                     )
                 )
             elif image_result_url:
-                artifacts.append(GenerationArtifact(type=f"reference_{view_id}", url=image_result_url, note=view_text))
+                artifacts.append(
+                    GenerationArtifact(
+                        type=f"reference_{view_id}",
+                        url=image_result_url,
+                        note=view_text,
+                    )
+                )
+            else:
+                raise ValueError("Seedream returned no reference image payload")
         return artifacts
 
     async def _create_3d_task(self, image_inputs: list[str], brief: FurnitureGenerationBrief) -> str:
-        # Step 3 is the canonical input for Hunyuan. The original crop only guides Seedream.
+        # The original crop guides Seedream. Hunyuan consumes the final generated
+        # 45-degree product reference, matching 识图生图生3D协议与Prompt.md.
         primary_image = image_inputs[-1] if image_inputs else None
         payload: dict[str, Any] = {
             "model": self.hunyuan_model,
@@ -592,21 +644,6 @@ Also avoid high-frequency wrinkles, excessive folds, intersecting cloth layers, 
         if "," in data_url:
             return data_url.split(",", 1)[1]
         return data_url
-
-    def _build_multi_view_images(self, image_inputs: list[str]) -> list[dict[str, str]]:
-        # Keep one generated reference view to reduce Seedream and Hunyuan latency.
-        view_types = ["left_front"]
-        result: list[dict[str, str]] = []
-        for image_input, view_type in zip(image_inputs, view_types):
-            if not image_input:
-                continue
-            item: dict[str, str] = {"view_type": view_type}
-            if image_input.startswith("data:image/"):
-                item["view_image_base64"] = self._data_url_to_base64(image_input)
-            else:
-                item["view_image_url"] = image_input
-            result.append(item)
-        return result
 
     def _limit_prompt(self, prompt: str) -> str:
         limit = 200 if self.hunyuan_model.lower().endswith("express") else 1024

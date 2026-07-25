@@ -1,0 +1,18 @@
+{
+  "id": "candidate_chair_001",
+  "label": "chair",
+  "name": "复古办公椅",
+  "representativeFrameId": "6_000013",
+  "representativeObjectId": "obj_chair_003",
+  "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_chair_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/6/deduplicated/candidate_chair_001/crop.jpg",
+  "maskUrl": "/outputs/videos/6/objects/6_000013_obj_chair_003_mask.png",
+  "bbox": [
+    654,
+    1202,
+    1078,
+    1893
+  ],
+  "confidence": 0.95,
+  "duplicateCount": 3
+}

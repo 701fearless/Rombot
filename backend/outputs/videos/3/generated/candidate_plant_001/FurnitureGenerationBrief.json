@@ -1,0 +1,82 @@
+{
+  "objectId": "candidate_plant_001",
+  "category": "plant",
+  "observed": {
+    "geometry": "长茎舒展，掌状裂叶，黑圆花盆",
+    "materials": [
+      "植物纤维",
+      "塑料花盆"
+    ],
+    "colors": [
+      "深绿",
+      "黑色"
+    ],
+    "style": "自然简约",
+    "texturePattern": "叶片光滑带叶脉纹理",
+    "visibleComponents": [
+      "茎干",
+      "叶片",
+      "花盆"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "整理舒展叶片，摆正花盆"
+    ],
+    "complexityReduction": [
+      "简化细碎叶脉，减少叶片数量"
+    ],
+    "occlusionCompletion": [
+      "补充被墙面遮挡的花盆侧面"
+    ],
+    "patternCompletion": "保持叶片掌状分裂的自然纹理"
+  },
+  "symmetryPrior": {
+    "type": "none",
+    "completionRule": "按自然生长形态补充遮挡叶片"
+  },
+  "textureFeatures": {
+    "materials": [
+      "植物纤维",
+      "塑料花盆"
+    ],
+    "colors": [
+      "深绿",
+      "黑色"
+    ],
+    "texturePattern": "叶片光滑带叶脉纹理"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "整理舒展叶片，摆正花盆"
+    ],
+    "complexityReduction": [
+      "简化细碎叶脉，减少叶片数量"
+    ],
+    "occlusionCompletion": [
+      "补充被墙面遮挡的花盆侧面"
+    ],
+    "preserve": [
+      "掌状裂叶形态，黑色花盆"
+    ],
+    "remove": [],
+    "physicalDimensionsMeters": {
+      "widthM": 0.9,
+      "depthM": 0.8,
+      "heightM": 1.0,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated plant as a regular household product. Visible geometry and style: 长茎舒展，掌状裂叶，黑圆花盆; 自然简约. Use materials ['植物纤维', '塑料花盆'] and colors ['深绿', '黑色']. Preserve ['掌状裂叶形态，黑色花盆']. Regularize temporary disorder with ['整理舒展叶片，摆正花盆']. Simplify modeling complexity with ['简化细碎叶脉，减少叶片数量']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'none', 'completionRule': '按自然生长形态补充遮挡叶片'} and ['补充被墙面遮挡的花盆侧面']. Texture rule: 叶片光滑带叶脉纹理; 保持叶片掌状分裂的自然纹理. Target plausible real-world dimensions are approximately 0.90 m wide, 0.80 m deep and 1.00 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, [], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.92,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

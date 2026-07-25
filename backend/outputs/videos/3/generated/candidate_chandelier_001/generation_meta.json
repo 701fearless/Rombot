@@ -1,0 +1,25 @@
+{
+  "videoId": "3",
+  "candidateId": "candidate_chandelier_001",
+  "label": "chandelier",
+  "name": "多头吊灯",
+  "sourceCropUrl": "/outputs/videos/3/deduplicated/candidate_chandelier_001/crop.jpg",
+  "referenceFile": "reference_oblique_3quarter.png",
+  "referenceView": "45-degree front-left oblique",
+  "referenceSize": [
+    2048,
+    2048
+  ],
+  "estimatedDimensions": {
+    "widthM": 0.8,
+    "depthM": 0.8,
+    "heightM": 0.85,
+    "unit": "m",
+    "source": "ark_category_prior",
+    "isMeasured": false,
+    "selectionRule": "range_min_plus_0.10m_capped_at_max"
+  },
+  "arkImageModel": "doubao-seedream-5-0-lite-260128",
+  "arkImageSize": "2048x2048",
+  "generatedAt": "2026-07-25T05:58:29.994244+00:00"
+}

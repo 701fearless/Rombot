@@ -1,0 +1,97 @@
+{
+  "objectId": "candidate_cabinet_001",
+  "category": "cabinet",
+  "observed": {
+    "geometry": "高柜造型，上层玻璃柜中层洞洞板下层柜门抽屉",
+    "materials": [
+      "实木",
+      "玻璃",
+      "金属"
+    ],
+    "colors": [
+      "深棕色",
+      "米白色",
+      "黑色"
+    ],
+    "style": "中古风复古餐边柜",
+    "texturePattern": "实木木纹，洞洞板均匀圆孔",
+    "visibleComponents": [
+      "玻璃柜门",
+      "洞洞板背板",
+      "推拉柜门",
+      "抽屉",
+      "细支腿"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "清空柜内和台面的零散物品",
+      "对齐柜门与抽屉"
+    ],
+    "complexityReduction": [
+      "移除洞洞板挂的小物件",
+      "简化柜内储物细节"
+    ],
+    "occlusionCompletion": [
+      "补全被植物遮挡的右侧抽屉"
+    ],
+    "patternCompletion": "延续木纹和洞洞板圆孔规律"
+  },
+  "symmetryPrior": {
+    "type": "none",
+    "completionRule": "按可见结构延伸完整柜体"
+  },
+  "textureFeatures": {
+    "materials": [
+      "实木",
+      "玻璃",
+      "金属"
+    ],
+    "colors": [
+      "深棕色",
+      "米白色",
+      "黑色"
+    ],
+    "texturePattern": "实木木纹，洞洞板均匀圆孔"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "清空柜内和台面的零散物品",
+      "对齐柜门与抽屉"
+    ],
+    "complexityReduction": [
+      "移除洞洞板挂的小物件",
+      "简化柜内储物细节"
+    ],
+    "occlusionCompletion": [
+      "补全被植物遮挡的右侧抽屉"
+    ],
+    "preserve": [
+      "撞色柜门设计",
+      "洞洞板中层结构",
+      "细实木支腿"
+    ],
+    "remove": [
+      "台面的咖啡机等小电器",
+      "柜内的酒水零食"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 1.3,
+      "depthM": 0.45,
+      "heightM": 1.7,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated cabinet as a regular household product. Visible geometry and style: 高柜造型，上层玻璃柜中层洞洞板下层柜门抽屉; 中古风复古餐边柜. Use materials ['实木', '玻璃', '金属'] and colors ['深棕色', '米白色', '黑色']. Preserve ['撞色柜门设计', '洞洞板中层结构', '细实木支腿']. Regularize temporary disorder with ['清空柜内和台面的零散物品', '对齐柜门与抽屉']. Simplify modeling complexity with ['移除洞洞板挂的小物件', '简化柜内储物细节']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'none', 'completionRule': '按可见结构延伸完整柜体'} and ['补全被植物遮挡的右侧抽屉']. Texture rule: 实木木纹，洞洞板均匀圆孔; 延续木纹和洞洞板圆孔规律. Target plausible real-world dimensions are approximately 1.30 m wide, 0.45 m deep and 1.70 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['台面的咖啡机等小电器', '柜内的酒水零食'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.98,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

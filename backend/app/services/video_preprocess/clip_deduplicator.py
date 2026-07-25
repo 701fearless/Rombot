@@ -136,6 +136,7 @@ class ClipFurnitureDeduplicator:
         frames: list[VideoAnalysisFrame],
         video_output_dir: Path,
         enabled: bool = True,
+        fallback_on_error: bool = True,
     ) -> tuple[list[DeduplicatedObject], str | None]:
         observations, invalid = self._collect_observations(frames)
         warning: str | None = None
@@ -148,6 +149,8 @@ class ClipFurnitureDeduplicator:
                     raise RuntimeError("CLIP returned an unexpected number of embeddings")
                 groups = self._group(observations, embeddings)
             except Exception as exc:
+                if not fallback_on_error:
+                    raise
                 warning = f"Furniture deduplication was skipped: {type(exc).__name__}: {exc}"
                 groups = self._individual_groups(observations)
         else:
@@ -245,6 +248,10 @@ class ClipFurnitureDeduplicator:
                 confidence=detected.confidence,
                 duplicateCount=len(group.members),
             )
+            candidate_crop_url = candidate.cropUrl
+            for member in group.members:
+                member.detected_object.deduplicatedObjectId = candidate_id
+                member.detected_object.deduplicatedCropUrl = candidate_crop_url
             metadata_path = candidate_dir / "metadata.json"
             metadata_path.write_text(candidate.model_dump_json(indent=2), encoding="utf-8")
             candidates.append(candidate)

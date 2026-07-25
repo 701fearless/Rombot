@@ -113,7 +113,8 @@ class Settings:
         self.hunyuan_api_key = os.getenv("HUNYUAN_API_KEY")
         self.hunyuan_base_url = os.getenv("HUNYUAN_BASE_URL", "https://tokenhub.tencentmaas.com").rstrip("/")
         self.hunyuan_model = os.getenv("HUNYUAN_MODEL", "hy-3d-express")
-        self.hunyuan_generate_type = os.getenv("HUNYUAN_GENERATE_TYPE", "LowPoly")
+        default_hunyuan_generate_type = "Normal" if self.hunyuan_model == "hy-3d-3.1" else "LowPoly"
+        self.hunyuan_generate_type = os.getenv("HUNYUAN_GENERATE_TYPE", default_hunyuan_generate_type)
         self.hunyuan_face_count = int(os.getenv("HUNYUAN_FACE_COUNT", "30000"))
         self.hunyuan_enable_pbr = os.getenv("HUNYUAN_ENABLE_PBR", "false").lower() in {"1", "true", "yes", "on"}
         self.hunyuan_enable_geometry = os.getenv("HUNYUAN_ENABLE_GEOMETRY", "false").lower() in {

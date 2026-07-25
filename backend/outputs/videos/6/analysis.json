@@ -1,0 +1,3879 @@
+{
+  "videoId": "6",
+  "status": "succeeded",
+  "sampleIntervalSec": 0.828616,
+  "frames": [
+    {
+      "frameId": "6_000001",
+      "time": 0.153978,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000000154ms.jpg",
+      "objects": [
+        {
+          "id": "obj_armchair_001",
+          "label": "armchair",
+          "name": "姜黄色单人休闲椅",
+          "confidence": 0.94,
+          "bbox": [
+            423,
+            645,
+            1034,
+            1263
+          ],
+          "tagPosition": [
+            0.6745,
+            0.4969
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000001_obj_armchair_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000001_obj_armchair_001_mask.png",
+          "deduplicatedObjectId": "candidate_armchair_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_armchair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.95,
+            "depthM": 0.9,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "饱满方块软包造型，宽厚扶手靠背",
+            "materials": [
+              "绒布"
+            ],
+            "colors": [
+              "姜黄色"
+            ],
+            "style": "现代奶油休闲风",
+            "texturePattern": "绒面哑光细腻纹理",
+            "visibleComponents": [
+              "座垫",
+              "扶手",
+              "靠背搭毯"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理靠背搭毯，对齐软包模块"
+            ],
+            "complexityReduction": [
+              "简化搭毯流苏，减少软包细碎褶皱"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿中心轴对称补全左右结构"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的椅腿部分"
+            ],
+            "patternCompletion": "延续绒面纹理，保持均匀质感",
+            "preserve": [
+              "饱满方块软包造型，姜黄绒面质感"
+            ],
+            "remove": [
+              "无多余杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_coffee_table_002",
+          "label": "coffee_table",
+          "name": "原木矮茶几",
+          "confidence": 0.93,
+          "bbox": [
+            788,
+            1171,
+            1078,
+            1897
+          ],
+          "tagPosition": [
+            0.8639,
+            0.799
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000001_obj_coffee_table_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000001_obj_coffee_table_002_mask.png",
+          "deduplicatedObjectId": "candidate_coffee_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_coffee_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.6,
+            "depthM": 1.1,
+            "heightM": 0.4,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形矮桌，厚实木腿，横撑加固",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "浅棕色"
+            ],
+            "style": "日式原木风",
+            "texturePattern": "清晰自然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "桌腿",
+              "横向支撑梁"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除桌面零散摆件，清理桌面"
+            ],
+            "complexityReduction": [
+              "简化桌面装饰，保留桌体结构"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿长轴对称补全另一侧桌腿"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的远端桌腿"
+            ],
+            "patternCompletion": "延续木材纹理，保持自然连贯",
+            "preserve": [
+              "原木质感，矮桌造型，横撑结构"
+            ],
+            "remove": [
+              "桌面托盘、灯具、平板等杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_sofa_003",
+          "label": "sofa",
+          "name": "米白布艺沙发",
+          "confidence": 0.92,
+          "bbox": [
+            0,
+            851,
+            455,
+            1916
+          ],
+          "tagPosition": [
+            0.2106,
+            0.7206
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000001_obj_sofa_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000001_obj_sofa_003_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.95,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "低矮长条形，圆润软包座靠，左侧可见",
+            "materials": [
+              "布艺"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "现代简约奶油风",
+            "texturePattern": "细腻哑光布艺纹理",
+            "visibleComponents": [
+              "座垫",
+              "靠垫",
+              "针织盖毯"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "整理盖毯，对齐靠枕，抚平座面"
+            ],
+            "complexityReduction": [
+              "减少盖毯褶皱，简化零散靠枕"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见座靠模块对称补全右侧"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的右侧沙发部分"
+            ],
+            "patternCompletion": "延续整体布艺纹理，无空白断层",
+            "preserve": [
+              "圆润软包造型，米白布艺质感"
+            ],
+            "remove": [
+              "多余零散装饰靠枕"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "2f0739bc3867c386"
+    },
+    {
+      "frameId": "6_000002",
+      "time": 2.767202,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000002767ms.jpg",
+      "objects": [
+        {
+          "id": "obj_vase_001",
+          "label": "vase",
+          "name": "拉丝纹理花瓶",
+          "confidence": 0.98,
+          "bbox": [
+            244,
+            1021,
+            613,
+            1734
+          ],
+          "tagPosition": [
+            0.3968,
+            0.7174
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000002_obj_vase_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000002_obj_vase_001_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "橄榄形瓶身，窄口窄底，中部鼓胀",
+            "materials": [
+              "陶瓷"
+            ],
+            "colors": [
+              "深棕"
+            ],
+            "style": "侘寂风",
+            "texturePattern": "竖向细密拉丝纹理",
+            "visibleComponents": [
+              "瓶身",
+              "瓶口"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除遮挡的手部",
+              "移除内部花茎"
+            ],
+            "complexityReduction": [
+              "简化拉丝纹理密度"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿中心轴对称完成瓶身轮廓"
+            },
+            "occlusionCompletion": [
+              "补全被手遮挡的瓶底部分"
+            ],
+            "patternCompletion": "延续竖向拉丝纹理至全瓶身",
+            "preserve": [
+              "竖向拉丝纹理",
+              "橄榄形瓶身比例"
+            ],
+            "remove": [
+              "手部",
+              "内部花茎"
+            ]
+          }
+        },
+        {
+          "id": "obj_plant_002",
+          "label": "plant",
+          "name": "橙色非洲菊",
+          "confidence": 0.96,
+          "bbox": [
+            19,
+            530,
+            769,
+            1043
+          ],
+          "tagPosition": [
+            0.3648,
+            0.4096
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000002_obj_plant_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000002_obj_plant_002_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.35,
+            "depthM": 0.3,
+            "heightM": 0.45,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长直花茎，顶生放射状舌状花",
+            "materials": [
+              "植物纤维"
+            ],
+            "colors": [
+              "橙红",
+              "浅黄"
+            ],
+            "style": "自然花艺",
+            "texturePattern": "花瓣层叠放射排列",
+            "visibleComponents": [
+              "花头",
+              "花茎"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理花茎保持直立"
+            ],
+            "complexityReduction": [
+              "简化花瓣细碎层次"
+            ],
+            "symmetry": {
+              "type": "radial",
+              "completionRule": "花头沿中心放射对称"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的花头背面"
+            ],
+            "patternCompletion": "延续花瓣放射排列规律",
+            "preserve": [
+              "橙黄花色",
+              "放射状花型"
+            ],
+            "remove": []
+          }
+        },
+        {
+          "id": "obj_dining_table_003",
+          "label": "dining_table",
+          "name": "白色餐桌",
+          "confidence": 0.92,
+          "bbox": [
+            0,
+            1490,
+            1078,
+            1918
+          ],
+          "tagPosition": [
+            0.4991,
+            0.8875
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000002_obj_dining_table_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000002_obj_dining_table_003_mask.png",
+          "deduplicatedObjectId": "candidate_dining_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_dining_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.8,
+            "heightM": 0.8,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "平整长方形桌面，边缘简洁",
+            "materials": [
+              "人造石"
+            ],
+            "colors": [
+              "米白"
+            ],
+            "style": "现代简约",
+            "texturePattern": "光滑无纹理",
+            "visibleComponents": [
+              "桌面"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "移除桌面花瓶摆件"
+            ],
+            "complexityReduction": [
+              "保持桌面平整无多余结构"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿桌面中线对称补全桌腿"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的桌腿结构"
+            ],
+            "patternCompletion": "保持纯色光滑表面",
+            "preserve": [
+              "白色光滑桌面"
+            ],
+            "remove": [
+              "桌面花瓶摆件"
+            ]
+          }
+        },
+        {
+          "id": "obj_pendant_light_004",
+          "label": "pendant_light",
+          "name": "圆盘吊灯",
+          "confidence": 0.9,
+          "bbox": [
+            607,
+            0,
+            963,
+            616
+          ],
+          "tagPosition": [
+            0.7269,
+            0.1604
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000002_obj_pendant_light_004_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000002_obj_pendant_light_004_mask.png",
+          "deduplicatedObjectId": "candidate_pendant_light_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_pendant_light_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.5,
+            "depthM": 0.5,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "细吊线，圆形发光盘，下挂小柱灯",
+            "materials": [
+              "金属",
+              "亚克力"
+            ],
+            "colors": [
+              "白",
+              "深棕"
+            ],
+            "style": "现代简约",
+            "texturePattern": "光滑无纹理",
+            "visibleComponents": [
+              "吊线",
+              "灯盘",
+              "装饰球"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "拉直吊线保持居中"
+            ],
+            "complexityReduction": [
+              "简化灯体内部结构"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿中心轴对称完成灯体"
+            },
+            "occlusionCompletion": [
+              "补全顶部悬挂结构"
+            ],
+            "patternCompletion": "保持灯盘均匀发光面",
+            "preserve": [
+              "圆盘造型",
+              "下挂小灯设计"
+            ],
+            "remove": []
+          }
+        }
+      ],
+      "perceptualHash": "7e779bd9a3c0e3a3"
+    },
+    {
+      "frameId": "6_000003",
+      "time": 4.075483,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000004075ms.jpg",
+      "objects": [
+        {
+          "id": "obj_desk_001",
+          "label": "desk",
+          "name": "实木书桌",
+          "confidence": 0.98,
+          "bbox": [
+            281,
+            1158,
+            1078,
+            1916
+          ],
+          "tagPosition": [
+            0.6292,
+            0.8005
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000003_obj_desk_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000003_obj_desk_001_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.7,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形厚桌面，搭配粗壮实木桌腿",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "浅原木色"
+            ],
+            "style": "简约日式原木风",
+            "texturePattern": "清晰自然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "前侧桌腿",
+              "横向支撑梁"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除桌面零散小物件，保留核心结构"
+            ],
+            "complexityReduction": [
+              "简化木材纹理细节，保留大面平整感"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按前侧桌腿样式补全后侧对称桌腿"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的后侧桌腿与支撑结构"
+            ],
+            "patternCompletion": "延续均匀自然的木材纹理",
+            "preserve": [
+              "厚实木桌面，原木质感"
+            ],
+            "remove": [
+              "桌面花瓶、纸巾盒、键盘等杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_vase_002",
+          "label": "vase",
+          "name": "浮雕陶瓷水罐花瓶",
+          "confidence": 0.96,
+          "bbox": [
+            362,
+            1010,
+            544,
+            1196
+          ],
+          "tagPosition": [
+            0.4194,
+            0.5745
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000003_obj_vase_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000003_obj_vase_002_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "上宽下窄罐型，带单侧弯曲把手",
+            "materials": [
+              "陶瓷"
+            ],
+            "colors": [
+              "米白色",
+              "棕黄色"
+            ],
+            "style": "复古田园风",
+            "texturePattern": "瓶身有立体花朵浮雕，横向凹凸纹路",
+            "visibleComponents": [
+              "罐身",
+              "单侧把手",
+              "瓶口"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "移除内部花茎，保持瓶口整洁"
+            ],
+            "complexityReduction": [
+              "简化浮雕细节层次，保留大轮廓"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按可见侧纹路补全背面浮雕与纹理"
+            },
+            "occlusionCompletion": [
+              "补全被花茎遮挡的瓶口内侧"
+            ],
+            "patternCompletion": "延续横向纹路与花朵浮雕规律",
+            "preserve": [
+              "花朵浮雕，单侧木质感把手"
+            ],
+            "remove": [
+              "内部粉色花朵与花茎"
+            ]
+          }
+        },
+        {
+          "id": "obj_curtain_003",
+          "label": "curtain",
+          "name": "米白纱质窗帘",
+          "confidence": 0.94,
+          "bbox": [
+            0,
+            0,
+            432,
+            1171
+          ],
+          "tagPosition": [
+            0.2,
+            0.3049
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000003_obj_curtain_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000003_obj_curtain_003_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.02,
+            "heightM": 1.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长款垂坠帘身，自然垂落褶皱",
+            "materials": [
+              "半透纱质面料"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "温柔日系风",
+            "texturePattern": "细腻纱织纹理，微透光泽",
+            "visibleComponents": [
+              "帘身主体",
+              "侧边垂边"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "整理褶皱为均匀垂坠形态"
+            ],
+            "complexityReduction": [
+              "减少细碎褶皱，保留大面垂感"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "按单侧帘身延伸完整帘幅"
+            },
+            "occlusionCompletion": [
+              "补全被手遮挡的帘身部分"
+            ],
+            "patternCompletion": "延续均匀纱织纹理",
+            "preserve": [
+              "半透纱质质感，米白色调"
+            ],
+            "remove": [
+              "拉扯窗帘的手部"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "ab9a969f53256a47"
+    },
+    {
+      "frameId": "6_000004",
+      "time": 5.713743,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000005714ms.jpg",
+      "objects": [
+        {
+          "id": "obj_desk_001",
+          "label": "desk",
+          "name": "实木书桌",
+          "confidence": 0.98,
+          "bbox": [
+            0,
+            1179,
+            1065,
+            1885
+          ],
+          "tagPosition": [
+            0.4931,
+            0.7979
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000004_obj_desk_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000004_obj_desk_001_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.7,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形桌面，X形交叉支撑腿，厚实木边",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "浅木色"
+            ],
+            "style": "简约日式",
+            "texturePattern": "清晰天然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "X形桌腿",
+              "底部横撑"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除桌面电子设备和小物件",
+              "整理桌下外露线缆"
+            ],
+            "complexityReduction": [
+              "简化桌面小物件细节",
+              "减少桌下遮挡结构"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿桌面中线对称补齐桌腿和横撑"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的后侧桌腿结构"
+            ],
+            "patternCompletion": "延续天然木纹均匀分布",
+            "preserve": [
+              "浅木色实木质感",
+              "X形支撑结构"
+            ],
+            "remove": [
+              "桌面电子设备",
+              "桌下主机"
+            ]
+          }
+        },
+        {
+          "id": "obj_table_lamp_002",
+          "label": "table_lamp",
+          "name": "陶瓷底座台灯",
+          "confidence": 0.97,
+          "bbox": [
+            568,
+            987,
+            753,
+            1210
+          ],
+          "tagPosition": [
+            0.6116,
+            0.5721
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000004_obj_table_lamp_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000004_obj_table_lamp_002_mask.png",
+          "deduplicatedObjectId": "candidate_table_lamp_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_table_lamp_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.38,
+            "depthM": 0.38,
+            "heightM": 0.65,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "圆润陶瓷底座，锥形带孔灯罩",
+            "materials": [
+              "陶瓷",
+              "布艺"
+            ],
+            "colors": [
+              "米棕色",
+              "米白色"
+            ],
+            "style": "复古温馨",
+            "texturePattern": "灯罩表面圆形镂空图案",
+            "visibleComponents": [
+              "底座",
+              "灯罩",
+              "顶部金属饰件"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "摆正灯罩位置",
+              "擦拭底座表面"
+            ],
+            "complexityReduction": [
+              "简化灯罩镂空细节密度",
+              "减少底座曲面复杂度"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿中心竖轴对称完成整体造型"
+            },
+            "occlusionCompletion": [
+              "补齐被光线遮挡的灯罩后侧结构"
+            ],
+            "patternCompletion": "圆形镂空图案沿灯罩周向均匀延续",
+            "preserve": [
+              "陶瓷圆润底座",
+              "锥形镂空灯罩"
+            ],
+            "remove": [
+              "周围漫射光线效果"
+            ]
+          }
+        },
+        {
+          "id": "obj_chair_003",
+          "label": "chair",
+          "name": "绿色软包椅",
+          "confidence": 0.96,
+          "bbox": [
+            356,
+            1480,
+            1078,
+            1918
+          ],
+          "tagPosition": [
+            0.6639,
+            0.8849
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000004_obj_chair_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000004_obj_chair_003_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.65,
+            "depthM": 0.68,
+            "heightM": 0.95,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "带扶手软座椅，木质扶手支架",
+            "materials": [
+              "织物",
+              "实木",
+              "金属"
+            ],
+            "colors": [
+              "橄榄绿",
+              "浅木色"
+            ],
+            "style": "简约休闲",
+            "texturePattern": "织物细密编织纹理",
+            "visibleComponents": [
+              "座垫",
+              "扶手",
+              "靠背局部"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "摆正座垫位置",
+              "清理椅面杂物"
+            ],
+            "complexityReduction": [
+              "简化织物褶皱细节",
+              "减少金属连接件复杂度"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿座椅中线对称补齐另一侧扶手和椅腿"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的椅腿和靠背完整形态"
+            ],
+            "patternCompletion": "延续编织纹理均匀覆盖软包面",
+            "preserve": [
+              "橄榄绿软包",
+              "木质扶手造型"
+            ],
+            "remove": [
+              "前景遮挡的桌面部分"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "e1eccae8e71699ee"
+    },
+    {
+      "frameId": "6_000005",
+      "time": 7.174711,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000007175ms.jpg",
+      "objects": [
+        {
+          "id": "obj_vase_001",
+          "label": "vase",
+          "name": "红色花纹瓷花瓶",
+          "confidence": 0.98,
+          "bbox": [
+            257,
+            1240,
+            413,
+            1501
+          ],
+          "tagPosition": [
+            0.3102,
+            0.7138
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000005_obj_vase_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000005_obj_vase_001_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "鼓腹收颈，窄圈足，整体饱满圆润",
+            "materials": [
+              "陶瓷"
+            ],
+            "colors": [
+              "红色",
+              "白色"
+            ],
+            "style": "中式复古",
+            "texturePattern": "红色底配白色卷草缠枝纹",
+            "visibleComponents": [
+              "瓶身",
+              "瓶口",
+              "圈足"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除遮挡的手部和花茎"
+            ],
+            "complexityReduction": [
+              "简化缠枝纹细节为大面纹样"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "按中心轴对称补全背面纹样"
+            },
+            "occlusionCompletion": [
+              "补全被手遮挡的瓶口部分"
+            ],
+            "patternCompletion": "延续卷草纹环绕瓶身一周",
+            "preserve": [
+              "红底白纹的中式复古外观"
+            ],
+            "remove": [
+              "插入的鲜花、遮挡的手"
+            ]
+          }
+        },
+        {
+          "id": "obj_curtain_002",
+          "label": "curtain",
+          "name": "碎花半透窗帘",
+          "confidence": 0.95,
+          "bbox": [
+            136,
+            284,
+            832,
+            1256
+          ],
+          "tagPosition": [
+            0.4481,
+            0.401
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000005_obj_curtain_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000005_obj_curtain_002_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.02,
+            "heightM": 1.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "竖向悬挂的长方形半透帘",
+            "materials": [
+              "纱质面料"
+            ],
+            "colors": [
+              "米白色",
+              "浅绿色"
+            ],
+            "style": "清新田园",
+            "texturePattern": "浅绿小碎花分散印花",
+            "visibleComponents": [
+              "帘身",
+              "顶部挂环"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理帘身褶皱为均匀垂褶"
+            ],
+            "complexityReduction": [
+              "减少细碎褶皱为大面垂感"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "保持整幅窗帘的均匀垂感"
+            },
+            "occlusionCompletion": [
+              "补全被编织篮遮挡的帘身部分"
+            ],
+            "patternCompletion": "均匀延续小碎花图案",
+            "preserve": [
+              "米白底浅绿碎花的半透质感"
+            ],
+            "remove": [
+              "前方悬挂的编织篮、绿植"
+            ]
+          }
+        },
+        {
+          "id": "obj_vase_003",
+          "label": "vase",
+          "name": "棕色纹理花瓶",
+          "confidence": 0.92,
+          "bbox": [
+            934,
+            1196,
+            1058,
+            1436
+          ],
+          "tagPosition": [
+            0.9222,
+            0.6854
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000005_obj_vase_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000005_obj_vase_003_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "橄榄形，收窄瓶口，平底",
+            "materials": [
+              "陶瓷"
+            ],
+            "colors": [
+              "棕色"
+            ],
+            "style": "简约自然",
+            "texturePattern": "竖向拉丝木纹质感纹理",
+            "visibleComponents": [
+              "瓶身",
+              "瓶口"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除瓶内的粉色花束"
+            ],
+            "complexityReduction": [
+              "简化竖向纹理为均匀浅纹"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "按中心轴对称补全背面"
+            },
+            "occlusionCompletion": [
+              "补全被花遮挡的瓶口"
+            ],
+            "patternCompletion": "延续竖向纹理环绕瓶身",
+            "preserve": [
+              "棕色木纹质感的橄榄造型"
+            ],
+            "remove": [
+              "粉色鲜花、花茎"
+            ]
+          }
+        },
+        {
+          "id": "obj_plant_004",
+          "label": "plant",
+          "name": "垂挂观叶绿植",
+          "confidence": 0.9,
+          "bbox": [
+            718,
+            472,
+            861,
+            860
+          ],
+          "tagPosition": [
+            0.731,
+            0.3469
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000005_obj_plant_004_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000005_obj_plant_004_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.35,
+            "depthM": 0.3,
+            "heightM": 0.45,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "竖向垂坠的长条状绿植",
+            "materials": [
+              "仿真植物叶片"
+            ],
+            "colors": [
+              "浅绿色",
+              "白色"
+            ],
+            "style": "自然清新",
+            "texturePattern": "叶片带清晰叶脉纹理",
+            "visibleComponents": [
+              "叶片、白色小花"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "complexityReduction": [
+              "减少叶片数量为成组大叶片"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "保持自然垂坠的生长形态"
+            },
+            "occlusionCompletion": [
+              "补全被编织袋遮挡的茎叶"
+            ],
+            "patternCompletion": "延续叶脉纹理分布在叶片上",
+            "preserve": [
+              "浅绿叶片配白花的垂挂形态"
+            ],
+            "remove": [
+              "旁边的编织挂袋"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "0116362c2c5b4130"
+    },
+    {
+      "frameId": "6_000006",
+      "time": 8.844166,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000008844ms.jpg",
+      "objects": [
+        {
+          "id": "obj_table_lamp_001",
+          "label": "table_lamp",
+          "name": "玻璃底座台灯",
+          "confidence": 0.96,
+          "bbox": [
+            659,
+            98,
+            1078,
+            1302
+          ],
+          "tagPosition": [
+            0.8042,
+            0.3646
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000006_obj_table_lamp_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000006_obj_table_lamp_001_mask.png",
+          "deduplicatedObjectId": "candidate_table_lamp_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_table_lamp_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.38,
+            "depthM": 0.38,
+            "heightM": 0.65,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "鼓形玻璃底座，锥形布艺灯罩",
+            "materials": [
+              "透明玻璃",
+              "亚麻布艺",
+              "镀铬金属"
+            ],
+            "colors": [
+              "米白色",
+              "银色",
+              "透明"
+            ],
+            "style": "清新田园风",
+            "texturePattern": "玻璃带花卉蝴蝶印花，灯罩亚麻织纹",
+            "visibleComponents": [
+              "布艺灯罩",
+              "印花玻璃灯体",
+              "金属底座与灯杆"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "摆正灯罩位置",
+              "擦拭玻璃表面"
+            ],
+            "complexityReduction": [
+              "简化玻璃上的花卉印花细节",
+              "减少灯罩织纹复杂度"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿中心轴对称完成灯体结构"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的灯杆背面结构"
+            ],
+            "patternCompletion": "延续玻璃上的花卉蝴蝶印花图案",
+            "preserve": [
+              "玻璃印花装饰",
+              "亚麻锥形灯罩"
+            ],
+            "remove": [
+              "无多余遮挡杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_cabinet_002",
+          "label": "cabinet",
+          "name": "黑色斗柜",
+          "confidence": 0.92,
+          "bbox": [
+            244,
+            1106,
+            1078,
+            1916
+          ],
+          "tagPosition": [
+            0.612,
+            0.787
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000006_obj_cabinet_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000006_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.7,
+            "depthM": 0.45,
+            "heightM": 0.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "方正长方体，带抽屉，蜻蜓造型拉手",
+            "materials": [
+              "哑光木质板材",
+              "金属"
+            ],
+            "colors": [
+              "深黑色",
+              "金色"
+            ],
+            "style": "新中式简约",
+            "texturePattern": "光滑哑光漆面，无明显纹理",
+            "visibleComponents": [
+              "抽屉面板",
+              "蜻蜓造型金属拉手",
+              "柜顶台面"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除台面的布料、花瓶等杂物",
+              "对齐抽屉面板缝隙"
+            ],
+            "complexityReduction": [
+              "简化蜻蜓拉手的细节纹理",
+              "保留柜体简洁大面"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按可见抽屉样式对称补充其余抽屉"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的柜体下部和侧面"
+            ],
+            "patternCompletion": "保持柜体纯色哑光质感无额外图案",
+            "preserve": [
+              "蜻蜓造型金属拉手",
+              "黑色哑光柜体外观"
+            ],
+            "remove": [
+              "台面上的花瓶、布料、灯具等杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_vase_003",
+          "label": "vase",
+          "name": "粉边玻璃花瓶",
+          "confidence": 0.88,
+          "bbox": [
+            728,
+            787,
+            914,
+            1167
+          ],
+          "tagPosition": [
+            0.7602,
+            0.5089
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000006_obj_vase_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000006_obj_vase_003_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "圆润瓶身，波浪形花口边",
+            "materials": [
+              "玉色玻璃"
+            ],
+            "colors": [
+              "淡粉色",
+              "淡黄绿色"
+            ],
+            "style": "柔美复古风",
+            "texturePattern": "光滑玻璃质感，半通透",
+            "visibleComponents": [
+              "波浪瓶口",
+              "鼓形瓶身",
+              "小平底"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除瓶内的花茎",
+              "摆正花瓶位置"
+            ],
+            "complexityReduction": [
+              "简化瓶口波浪边的细碎起伏",
+              "保留瓶身简洁曲面"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿中心轴对称完成瓶身结构"
+            },
+            "occlusionCompletion": [
+              "补充被花茎遮挡的瓶口内侧"
+            ],
+            "patternCompletion": "保持玻璃纯色通透质感无额外图案",
+            "preserve": [
+              "波浪形粉边瓶口",
+              "渐变玉色玻璃质感"
+            ],
+            "remove": [
+              "瓶内的花茎和花苞"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "6871726c3070e9e8"
+    },
+    {
+      "frameId": "6_000007",
+      "time": 10.101548,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000010102ms.jpg",
+      "objects": [
+        {
+          "id": "obj_table_lamp_001",
+          "label": "table_lamp",
+          "name": "玻璃底座台灯",
+          "confidence": 0.98,
+          "bbox": [
+            659,
+            96,
+            1078,
+            1302
+          ],
+          "tagPosition": [
+            0.8042,
+            0.3641
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000007_obj_table_lamp_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000007_obj_table_lamp_001_mask.png",
+          "deduplicatedObjectId": "candidate_table_lamp_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_table_lamp_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.38,
+            "depthM": 0.38,
+            "heightM": 0.65,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "锥形布艺灯罩，玻璃灯身配镀铬金属件",
+            "materials": [
+              "亚麻布艺",
+              "玻璃",
+              "镀铬金属"
+            ],
+            "colors": [
+              "米白色",
+              "透明",
+              "银色"
+            ],
+            "style": "清新田园风",
+            "texturePattern": "灯罩亚麻织纹，灯身有花卉蝴蝶印花",
+            "visibleComponents": [
+              "布艺灯罩",
+              "印花玻璃灯身",
+              "金属底座与灯杆"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "摆正灯罩与灯身，对齐中心轴",
+              "擦拭玻璃表面保持通透"
+            ],
+            "complexityReduction": [
+              "简化花卉印花细节，保留主要图案",
+              "减少金属件的反光层次"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿中心轴完成对称结构"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的灯身背面印花",
+              "补充底座底部完整轮廓"
+            ],
+            "patternCompletion": "延续可见的花卉蝴蝶印花图案",
+            "preserve": [
+              "米白锥形灯罩",
+              "带花卉印花的玻璃灯身"
+            ],
+            "remove": [
+              "无多余遮挡物"
+            ]
+          }
+        },
+        {
+          "id": "obj_cabinet_002",
+          "label": "cabinet",
+          "name": "黑色斗柜",
+          "confidence": 0.96,
+          "bbox": [
+            231,
+            948,
+            1078,
+            1916
+          ],
+          "tagPosition": [
+            0.606,
+            0.7458
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000007_obj_cabinet_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000007_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.7,
+            "depthM": 0.45,
+            "heightM": 0.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "方正长方体，带抽屉，蜻蜓造型拉手",
+            "materials": [
+              "哑光木质板材",
+              "金属"
+            ],
+            "colors": [
+              "深黑色",
+              "金色"
+            ],
+            "style": "现代简约带精致装饰",
+            "texturePattern": "光滑哑光表面，无明显纹理",
+            "visibleComponents": [
+              "抽屉面板",
+              "蜻蜓造型金属拉手"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除台面的布料、花瓶等杂物",
+              "对齐抽屉面板与拉手"
+            ],
+            "complexityReduction": [
+              "简化拉手细节，保留整体造型",
+              "减少抽屉数量为可见的2个"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按左右对称补充完整柜体结构"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的柜体侧面与底部",
+              "补充下方抽屉的完整造型"
+            ],
+            "patternCompletion": "保持柜体表面纯色无纹理",
+            "preserve": [
+              "蜻蜓造型拉手",
+              "黑色哑光柜体外观"
+            ],
+            "remove": [
+              "台面上的花瓶、布料、台灯等物品",
+              "左侧遮挡的人物"
+            ]
+          }
+        },
+        {
+          "id": "obj_vase_003",
+          "label": "vase",
+          "name": "粉花玻璃小水罐",
+          "confidence": 0.94,
+          "bbox": [
+            486,
+            818,
+            659,
+            1033
+          ],
+          "tagPosition": [
+            0.5301,
+            0.482
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000007_obj_vase_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000007_obj_vase_003_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "圆腹窄口，带蓝色把手与壶嘴，矮底座",
+            "materials": [
+              "磨砂玻璃",
+              "陶瓷"
+            ],
+            "colors": [
+              "淡紫色",
+              "蓝色",
+              "青绿色"
+            ],
+            "style": "复古可爱风",
+            "texturePattern": "玻璃半透明磨砂质感，表面光滑",
+            "visibleComponents": [
+              "罐身",
+              "蓝色把手",
+              "短壶嘴",
+              "青绿色底座"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除内部的花茎",
+              "摆正水罐位置"
+            ],
+            "complexityReduction": [
+              "简化把手弧度细节",
+              "省略表面细微纹理"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿正面中线补充对称的罐身结构"
+            },
+            "occlusionCompletion": [
+              "补充被花遮挡的罐口完整轮廓",
+              "补充罐身背面完整造型"
+            ],
+            "patternCompletion": "保持玻璃表面纯色磨砂质感",
+            "preserve": [
+              "蓝色把手与壶嘴",
+              "淡紫磨砂玻璃罐身"
+            ],
+            "remove": [
+              "内部的粉色花朵与花茎",
+              "下方的蕾丝布与红布"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "687172e8c860e9e0"
+    },
+    {
+      "frameId": "6_000008",
+      "time": 10.930164,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000010930ms.jpg",
+      "objects": [
+        {
+          "id": "obj_vase_001",
+          "label": "vase",
+          "name": "红底白花瓷瓶",
+          "confidence": 0.96,
+          "bbox": [
+            0,
+            899,
+            231,
+            1275
+          ],
+          "tagPosition": [
+            0.1069,
+            0.5661
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000008_obj_vase_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000008_obj_vase_001_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "鼓腹窄口，瓶身圆润饱满",
+            "materials": [
+              "陶瓷"
+            ],
+            "colors": [
+              "红色",
+              "白色"
+            ],
+            "style": "中式复古",
+            "texturePattern": "红底白色卷草花卉纹样",
+            "visibleComponents": [
+              "瓶口",
+              "瓶腹"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除瓶内插的花茎"
+            ],
+            "complexityReduction": [
+              "简化花卉纹样细节"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "按中轴线对称补全瓶身纹样"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的瓶底部分"
+            ],
+            "patternCompletion": "延续红底白花的卷草图案",
+            "preserve": [
+              "红底白花纹样，鼓腹造型"
+            ],
+            "remove": [
+              "内部的花茎花朵"
+            ]
+          }
+        },
+        {
+          "id": "obj_vase_002",
+          "label": "vase",
+          "name": "白纹双耳花壶",
+          "confidence": 0.93,
+          "bbox": [
+            467,
+            883,
+            704,
+            1171
+          ],
+          "tagPosition": [
+            0.5421,
+            0.5349
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000008_obj_vase_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000008_obj_vase_002_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "鼓腹收颈，带两个弯曲把手",
+            "materials": [
+              "陶瓷"
+            ],
+            "colors": [
+              "米白色",
+              "浅褐色"
+            ],
+            "style": "复古乡村",
+            "texturePattern": "做旧斑驳纹理",
+            "visibleComponents": [
+              "瓶口",
+              "双耳",
+              "瓶腹"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除瓶内插的花束"
+            ],
+            "complexityReduction": [
+              "简化斑驳纹理的细碎细节"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按中轴线对称补全双耳与瓶身"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的瓶底部分"
+            ],
+            "patternCompletion": "延续做旧斑驳的陶质纹理",
+            "preserve": [
+              "双耳造型，做旧白瓷质感"
+            ],
+            "remove": [
+              "内部的花茎花朵"
+            ]
+          }
+        },
+        {
+          "id": "obj_cabinet_003",
+          "label": "cabinet",
+          "name": "深色斗柜",
+          "confidence": 0.92,
+          "bbox": [
+            0,
+            1041,
+            1078,
+            1916
+          ],
+          "tagPosition": [
+            0.4991,
+            0.7701
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000008_obj_cabinet_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000008_obj_cabinet_003_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.7,
+            "depthM": 0.45,
+            "heightM": 0.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方体柜体，带多排抽屉，正面平整",
+            "materials": [
+              "木质"
+            ],
+            "colors": [
+              "深黑色"
+            ],
+            "style": "复古简约",
+            "texturePattern": "哑光木质纹理",
+            "visibleComponents": [
+              "抽屉面板",
+              "圆形拉手"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除台面所有摆放杂物"
+            ],
+            "complexityReduction": [
+              "简化拉手细节，统一抽屉样式"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按可见抽屉对称补全剩余部分"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的下部抽屉结构"
+            ],
+            "patternCompletion": "延续哑光深色木质纹理",
+            "preserve": [
+              "深色柜体外观，圆形拉手"
+            ],
+            "remove": [
+              "台面花瓶、烛台等摆件"
+            ]
+          }
+        },
+        {
+          "id": "obj_table_lamp_004",
+          "label": "table_lamp",
+          "name": "玻璃底座台灯",
+          "confidence": 0.9,
+          "bbox": [
+            784,
+            495,
+            1078,
+            1029
+          ],
+          "tagPosition": [
+            0.862,
+            0.3969
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000008_obj_table_lamp_004_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000008_obj_table_lamp_004_mask.png",
+          "deduplicatedObjectId": "candidate_table_lamp_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_table_lamp_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.38,
+            "depthM": 0.38,
+            "heightM": 0.65,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "宽灯罩，玻璃鼓形底座",
+            "materials": [
+              "玻璃",
+              "布艺"
+            ],
+            "colors": [
+              "米白色",
+              "透明"
+            ],
+            "style": "复古温馨",
+            "texturePattern": "灯罩哑光布艺质感",
+            "visibleComponents": [
+              "灯罩",
+              "玻璃灯座"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除前方遮挡的小花瓶"
+            ],
+            "complexityReduction": [
+              "简化灯座装饰细节"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "按中轴线对称补全灯体"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的灯座下部"
+            ],
+            "patternCompletion": "延续灯罩均匀布艺质感",
+            "preserve": [
+              "米白灯罩，玻璃底座造型"
+            ],
+            "remove": [
+              "前方遮挡的小摆件"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "03038111c5c73000"
+    },
+    {
+      "frameId": "6_000009",
+      "time": 12.587233,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000012587ms.jpg",
+      "objects": [
+        {
+          "id": "obj_cabinet_001",
+          "label": "cabinet",
+          "name": "黑色六斗柜",
+          "confidence": 0.98,
+          "bbox": [
+            73,
+            1048,
+            1004,
+            1528
+          ],
+          "tagPosition": [
+            0.4986,
+            0.6708
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000009_obj_cabinet_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000009_obj_cabinet_001_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.7,
+            "depthM": 0.45,
+            "heightM": 0.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "横向长方体，六抽屉分两列，细短支脚",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "黑色"
+            ],
+            "style": "新中式复古",
+            "texturePattern": "哑光木纹肌理",
+            "visibleComponents": [
+              "六只抽屉，异形装饰拉手，四条细腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除台面所有摆件，整理抽屉对齐"
+            ],
+            "complexityReduction": [
+              "简化异形拉手细节，统一抽屉面板"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "左右两列抽屉对称排布"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的后侧支脚"
+            ],
+            "patternCompletion": "延续哑光木纹覆盖整体柜体",
+            "preserve": [
+              "黑色哑光柜体，六抽屉结构，异形拉手"
+            ],
+            "remove": [
+              "台面花瓶、烛台、桌布等摆件"
+            ]
+          }
+        },
+        {
+          "id": "obj_painting_002",
+          "label": "painting",
+          "name": "秋草花卉屏风画",
+          "confidence": 0.96,
+          "bbox": [
+            279,
+            507,
+            782,
+            1010
+          ],
+          "tagPosition": [
+            0.4912,
+            0.3951
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000009_obj_painting_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000009_obj_painting_002_mask.png",
+          "deduplicatedObjectId": "candidate_painting_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_painting_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.6,
+            "depthM": 0.08,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "双拼竖长方形，两扇等大拼接",
+            "materials": [
+              "绢布",
+              "木质边框"
+            ],
+            "colors": [
+              "暖橘色",
+              "灰绿色",
+              "米白色"
+            ],
+            "style": "日式浮世绘风",
+            "texturePattern": "秋草花卉工笔纹样",
+            "visibleComponents": [
+              "左右两扇画芯，窄边框"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除前方遮挡的花瓶摆件"
+            ],
+            "complexityReduction": [
+              "简化花卉枝叶细碎细节"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "保持双扇独立画面构图"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的底部画芯纹样"
+            ],
+            "patternCompletion": "延续秋草花卉工笔风格补全画面",
+            "preserve": [
+              "暖橘底色，秋草花卉主题，双拼结构"
+            ],
+            "remove": [
+              "前方遮挡的花艺容器"
+            ]
+          }
+        },
+        {
+          "id": "obj_chair_003",
+          "label": "chair",
+          "name": "藤编靠背木椅",
+          "confidence": 0.94,
+          "bbox": [
+            946,
+            1221,
+            1078,
+            1916
+          ],
+          "tagPosition": [
+            0.937,
+            0.8169
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000009_obj_chair_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000009_obj_chair_003_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.65,
+            "depthM": 0.68,
+            "heightM": 0.95,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "仅露出靠背与部分椅腿，靠背方正",
+            "materials": [
+              "实木",
+              "藤编"
+            ],
+            "colors": [
+              "深棕色",
+              "米黄色"
+            ],
+            "style": "中古风",
+            "texturePattern": "藤编网格肌理，实木木纹",
+            "visibleComponents": [
+              "靠背外框，藤编芯板，椅腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "补全椅身结构，整理藤编面"
+            ],
+            "complexityReduction": [
+              "简化藤编细密网格为大格纹理"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿靠背中线对称补全椅身"
+            },
+            "occlusionCompletion": [
+              "补全座面、其余椅腿与扶手"
+            ],
+            "patternCompletion": "延续藤编网格纹理覆盖靠背芯",
+            "preserve": [
+              "实木框架，藤编靠背，深棕木色"
+            ],
+            "remove": [
+              "无多余遮挡物"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "07872149e894818f"
+    },
+    {
+      "frameId": "6_000010",
+      "time": 15.403475,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000015403ms.jpg",
+      "objects": [
+        {
+          "id": "obj_plant_001",
+          "label": "plant",
+          "name": "枫树盆栽",
+          "confidence": 0.98,
+          "bbox": [
+            1,
+            413,
+            734,
+            1238
+          ],
+          "tagPosition": [
+            0.3403,
+            0.4299
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000010_obj_plant_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000010_obj_plant_001_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.35,
+            "depthM": 0.3,
+            "heightM": 0.45,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "细弯主干，枝叶向两侧舒展",
+            "materials": [
+              "木质枝干",
+              "陶瓷花盆",
+              "金属底座"
+            ],
+            "colors": [
+              "绿色",
+              "米白褐纹",
+              "深棕"
+            ],
+            "style": "中式禅意盆栽",
+            "texturePattern": "花盆做旧斑驳纹理，叶片掌状分裂",
+            "visibleComponents": [
+              "枝叶",
+              "粗陶花盆",
+              "雕花底座"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理枝叶形态，保持自然舒展"
+            ],
+            "complexityReduction": [
+              "简化细碎叶片为簇状组"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "保持自然不对称生长形态"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的花盆底部"
+            ],
+            "patternCompletion": "延续花盆斑驳做旧纹理",
+            "preserve": [
+              "飘逸的枝叶形态",
+              "做旧陶盆质感"
+            ],
+            "remove": [
+              "喷壶",
+              "人手"
+            ]
+          }
+        },
+        {
+          "id": "obj_sofa_002",
+          "label": "sofa",
+          "name": "布艺沙发",
+          "confidence": 0.92,
+          "bbox": [
+            0,
+            1043,
+            741,
+            1916
+          ],
+          "tagPosition": [
+            0.3431,
+            0.7706
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000010_obj_sofa_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000010_obj_sofa_002_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.95,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "低矮长条形，厚软靠垫坐垫",
+            "materials": [
+              "布艺面料"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "简约日式",
+            "texturePattern": "细腻织物纹理",
+            "visibleComponents": [
+              "坐垫",
+              "靠背",
+              "扶手"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "整理靠垫，对齐坐垫位置"
+            ],
+            "complexityReduction": [
+              "简化织物褶皱为大面平缓曲面"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按可见段延伸完整长度"
+            },
+            "occlusionCompletion": [
+              "补全被花架遮挡的沙发部分"
+            ],
+            "patternCompletion": "延续统一米白布艺纹理",
+            "preserve": [
+              "低矮软包的整体形态"
+            ],
+            "remove": [
+              "花架遮挡部分"
+            ]
+          }
+        },
+        {
+          "id": "obj_curtain_003",
+          "label": "curtain",
+          "name": "纱帘布帘组合",
+          "confidence": 0.9,
+          "bbox": [
+            239,
+            380,
+            1078,
+            1152
+          ],
+          "tagPosition": [
+            0.6097,
+            0.399
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000010_obj_curtain_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000010_obj_curtain_003_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.02,
+            "heightM": 1.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "整面落地式，垂直悬挂",
+            "materials": [
+              "纱质",
+              "布艺"
+            ],
+            "colors": [
+              "米白色",
+              "浅米色"
+            ],
+            "style": "简约温馨",
+            "texturePattern": "纱帘半透，布帘细腻织纹",
+            "visibleComponents": [
+              "内层纱帘",
+              "外层布帘"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理帘身垂感，保持垂直平整"
+            ],
+            "complexityReduction": [
+              "简化细碎褶皱为规律垂褶"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见褶距延伸完整帘面"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的帘身部分"
+            ],
+            "patternCompletion": "延续均匀垂直褶皱纹理",
+            "preserve": [
+              "双层帘的层次质感"
+            ],
+            "remove": []
+          }
+        }
+      ],
+      "perceptualHash": "6856d3996c44d298"
+    },
+    {
+      "frameId": "6_000011",
+      "time": 16.640459,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000016640ms.jpg",
+      "objects": [
+        {
+          "id": "obj_cabinet_001",
+          "label": "cabinet",
+          "name": "原木色开放式置物柜",
+          "confidence": 0.94,
+          "bbox": [
+            598,
+            849,
+            777,
+            1352
+          ],
+          "tagPosition": [
+            0.6366,
+            0.5732
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000011_obj_cabinet_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000011_obj_cabinet_001_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.7,
+            "depthM": 0.45,
+            "heightM": 0.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "高窄长方体，侧面设多层开放式格架",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "浅棕木色"
+            ],
+            "style": "北欧简约",
+            "texturePattern": "自然顺直木材纹理",
+            "visibleComponents": [
+              "侧格板",
+              "柜体侧板",
+              "顶板"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "清空顶部及格架内的杂物"
+            ],
+            "complexityReduction": [
+              "简化格架为均匀分层的矩形结构"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "按可见柜体结构延伸完整背面"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的柜体正面结构"
+            ],
+            "patternCompletion": "木纹沿柜体竖直方向连续延伸",
+            "preserve": [
+              "浅棕原木质感",
+              "开放式侧格设计",
+              "高窄比例"
+            ],
+            "remove": [
+              "顶部相框、陶罐、干枝",
+              "格架内书籍摆件"
+            ]
+          }
+        },
+        {
+          "id": "obj_bookshelf_002",
+          "label": "bookshelf",
+          "name": "深色多层书架",
+          "confidence": 0.92,
+          "bbox": [
+            309,
+            822,
+            449,
+            1148
+          ],
+          "tagPosition": [
+            0.3509,
+            0.513
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000011_obj_bookshelf_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000011_obj_bookshelf_002_mask.png",
+          "deduplicatedObjectId": "candidate_bookshelf_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_bookshelf_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.6,
+            "depthM": 0.32,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "窄高立式，四层开放式搁板，底部带底座",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "深棕色"
+            ],
+            "style": "日式简约",
+            "texturePattern": "清晰天然木材纹理",
+            "visibleComponents": [
+              "搁板",
+              "侧边立柱",
+              "底座"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除所有书籍，清空搁板"
+            ],
+            "complexityReduction": [
+              "简化搁板为平整矩形板件"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿竖直中线对称完成整体结构"
+            },
+            "occlusionCompletion": [
+              "补全被花瓶遮挡的顶层搁板"
+            ],
+            "patternCompletion": "木纹沿各板件自然连续延伸",
+            "preserve": [
+              "四层开放式结构",
+              "深棕木色",
+              "简约立柱造型"
+            ],
+            "remove": [
+              "堆叠的书籍",
+              "顶层装饰花瓶"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "ec682c6969c9ce3f"
+    },
+    {
+      "frameId": "6_000012",
+      "time": 17.648141,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000017648ms.jpg",
+      "objects": [
+        {
+          "id": "obj_vase_001",
+          "label": "vase",
+          "name": "棕色纹理花瓶",
+          "confidence": 0.98,
+          "bbox": [
+            598,
+            1196,
+            732,
+            1467
+          ],
+          "tagPosition": [
+            0.6157,
+            0.6935
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000012_obj_vase_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000012_obj_vase_001_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "椭圆鼓腹，窄口窄底，配圆形底座",
+            "materials": [
+              "陶瓷"
+            ],
+            "colors": [
+              "棕褐色"
+            ],
+            "style": "日式侘寂风",
+            "texturePattern": "竖向细密凹凸条纹",
+            "visibleComponents": [
+              "瓶身",
+              "木质底座"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除瓶内花朵，保留空瓶形态"
+            ],
+            "complexityReduction": [
+              "简化条纹为均匀竖向肌理"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿中心轴旋转对称补全背面"
+            },
+            "occlusionCompletion": [
+              "补全被花遮挡的瓶口部分"
+            ],
+            "patternCompletion": "竖向条纹沿瓶身连续环绕延伸",
+            "preserve": [
+              "竖向纹理",
+              "鼓腹造型",
+              "棕褐色调"
+            ],
+            "remove": [
+              "瓶内橙色花朵"
+            ]
+          }
+        },
+        {
+          "id": "obj_cabinet_002",
+          "label": "cabinet",
+          "name": "白色玻璃门餐边柜",
+          "confidence": 0.96,
+          "bbox": [
+            210,
+            253,
+            607,
+            1052
+          ],
+          "tagPosition": [
+            0.3782,
+            0.3398
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000012_obj_cabinet_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000012_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.7,
+            "depthM": 0.45,
+            "heightM": 0.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "竖长方形柜体，上部玻璃门，下部开放格",
+            "materials": [
+              "密度板",
+              "玻璃"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "北欧简约风",
+            "texturePattern": "平整哑光漆面",
+            "visibleComponents": [
+              "玻璃柜门",
+              "内部层板",
+              "挂钩区"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除内部杯具和挂钩挂件"
+            ],
+            "complexityReduction": [
+              "简化内部层板为平整板面"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "左右对称补全柜体侧面"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的柜体侧边"
+            ],
+            "patternCompletion": "保持白色漆面均匀无纹理",
+            "preserve": [
+              "玻璃门结构",
+              "白色哑光外观",
+              "分层设计"
+            ],
+            "remove": [
+              "内部陈列餐具",
+              "挂钩上的挂件"
+            ]
+          }
+        },
+        {
+          "id": "obj_desk_003",
+          "label": "desk",
+          "name": "木质书桌",
+          "confidence": 0.92,
+          "bbox": [
+            717,
+            1240,
+            1078,
+            1448
+          ],
+          "tagPosition": [
+            0.831,
+            0.7
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000012_obj_desk_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000012_obj_desk_003_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.7,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形桌面，厚实木质感桌身",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "深棕色"
+            ],
+            "style": "复古工业风",
+            "texturePattern": "自然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "部分桌腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除桌面电脑、灯具等杂物"
+            ],
+            "complexityReduction": [
+              "简化桌腿为简约直柱形"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿桌面中线左右对称补全"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的桌腿和后侧"
+            ],
+            "patternCompletion": "木纹沿桌面长度方向连续延伸",
+            "preserve": [
+              "实木质感",
+              "深棕木色",
+              "长方形桌面"
+            ],
+            "remove": [
+              "电脑显示器",
+              "桌面小摆件",
+              "线缆"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "f96d6e6d4c6f3b1e"
+    },
+    {
+      "frameId": "6_000013",
+      "time": 20.848067,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000020848ms.jpg",
+      "objects": [
+        {
+          "id": "obj_vase_001",
+          "label": "vase",
+          "name": "木质纹理花瓶",
+          "confidence": 0.98,
+          "bbox": [
+            0,
+            987,
+            131,
+            1549
+          ],
+          "tagPosition": [
+            0.0606,
+            0.6604
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000013_obj_vase_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000013_obj_vase_001_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "粗陶瓶身，底部带圆形木质底座",
+            "materials": [
+              "木质纹理陶瓷",
+              "实木底座"
+            ],
+            "colors": [
+              "深棕色"
+            ],
+            "style": "自然质朴风格",
+            "texturePattern": "竖向粗糙木纹肌理",
+            "visibleComponents": [
+              "瓶身",
+              "木质底座",
+              "插入的花茎"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除遮挡的花朵，露出完整瓶口"
+            ],
+            "complexityReduction": [
+              "简化表面纹理为均匀木纹"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "按轴对称补全被遮挡的瓶身轮廓"
+            },
+            "occlusionCompletion": [
+              "补全被花遮挡的瓶口部分"
+            ],
+            "patternCompletion": "延续竖向木纹纹理至完整瓶身",
+            "preserve": [
+              "粗糙木纹肌理",
+              "木质底座"
+            ],
+            "remove": [
+              "插入的花朵和花茎"
+            ]
+          }
+        },
+        {
+          "id": "obj_desk_002",
+          "label": "desk",
+          "name": "木质书桌",
+          "confidence": 0.96,
+          "bbox": [
+            184,
+            1117,
+            1009,
+            1371
+          ],
+          "tagPosition": [
+            0.5523,
+            0.6479
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000013_obj_desk_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000013_obj_desk_002_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.7,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形桌面，实木桌腿",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "深棕色"
+            ],
+            "style": "简约北欧风格",
+            "texturePattern": "清晰天然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "前侧桌腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "清理桌面杂物，保留平整桌面"
+            ],
+            "complexityReduction": [
+              "简化桌面做平整化处理"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按左右对称补全后侧桌腿"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的后侧桌腿"
+            ],
+            "patternCompletion": "延续木纹沿桌面均匀分布纹理",
+            "preserve": [
+              "实木材质",
+              "深棕木色"
+            ],
+            "remove": [
+              "显示器",
+              "键盘",
+              "纸巾盒",
+              "小花瓶"
+            ]
+          }
+        },
+        {
+          "id": "obj_chair_003",
+          "label": "chair",
+          "name": "复古办公椅",
+          "confidence": 0.95,
+          "bbox": [
+            654,
+            1202,
+            1078,
+            1893
+          ],
+          "tagPosition": [
+            0.8019,
+            0.806
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000013_obj_chair_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000013_obj_chair_003_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.65,
+            "depthM": 0.68,
+            "heightM": 0.95,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "布艺坐垫靠背，金属椅腿，木质扶手",
+            "materials": [
+              "布艺",
+              "金属",
+              "实木"
+            ],
+            "colors": [
+              "橄榄绿",
+              "深棕",
+              "银色"
+            ],
+            "style": "复古工业风",
+            "texturePattern": "布艺织物纹理，金属亮面",
+            "visibleComponents": [
+              "坐垫",
+              "靠背",
+              "扶手",
+              "前侧椅腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除坐面的人，露出完整坐垫"
+            ],
+            "complexityReduction": [
+              "简化布艺表面做平整化处理"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按左右对称补全另一侧扶手和椅腿"
+            },
+            "occlusionCompletion": [
+              "补全被人遮挡的坐垫部分"
+            ],
+            "patternCompletion": "延续布艺纹理至完整坐垫靠背",
+            "preserve": [
+              "木质扶手",
+              "金属椅腿",
+              "橄榄绿布艺"
+            ],
+            "remove": [
+              "坐在椅子上的人"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "644872364e7f1fe7"
+    },
+    {
+      "frameId": "6_000014",
+      "time": 24.152796,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000024153ms.jpg",
+      "objects": [
+        {
+          "id": "obj_desk_001",
+          "label": "desk",
+          "name": "木质书桌",
+          "confidence": 0.96,
+          "bbox": [
+            309,
+            1177,
+            1078,
+            1916
+          ],
+          "tagPosition": [
+            0.6421,
+            0.8055
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000014_obj_desk_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000014_obj_desk_001_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.7,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形厚桌面，搭配粗壮实木支腿",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "浅木色"
+            ],
+            "style": "简约原木风",
+            "texturePattern": "清晰自然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "前侧支腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "移除桌面零散小物件"
+            ],
+            "complexityReduction": [
+              "简化支腿细节，保留整体轮廓"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按左右对称补全后侧支腿"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的桌腿与桌面后侧"
+            ],
+            "patternCompletion": "延续木材纹理至完整桌面",
+            "preserve": [
+              "原木质感与厚桌面设计"
+            ],
+            "remove": [
+              "桌面摆放的花瓶、纸巾盒等物品"
+            ]
+          }
+        },
+        {
+          "id": "obj_vase_002",
+          "label": "vase",
+          "name": "浮雕陶瓷水罐花瓶",
+          "confidence": 0.94,
+          "bbox": [
+            395,
+            1021,
+            585,
+            1219
+          ],
+          "tagPosition": [
+            0.4537,
+            0.5833
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000014_obj_vase_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000014_obj_vase_002_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "上窄下宽罐形，带弯曲把手与倾倒口",
+            "materials": [
+              "陶瓷"
+            ],
+            "colors": [
+              "米白色",
+              "棕褐色"
+            ],
+            "style": "复古田园风",
+            "texturePattern": "表面有花朵浮雕纹理",
+            "visibleComponents": [
+              "罐身",
+              "把手",
+              "倾倒口"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "移除内部花茎与下方杯垫"
+            ],
+            "complexityReduction": [
+              "简化浮雕细节层次"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按正面结构补全背面浮雕"
+            },
+            "occlusionCompletion": [
+              "补全被花遮挡的罐口内侧"
+            ],
+            "patternCompletion": "延续花朵浮雕环绕罐身",
+            "preserve": [
+              "花朵浮雕与棕褐色把手"
+            ],
+            "remove": [
+              "插入的粉色花朵与花茎"
+            ]
+          }
+        },
+        {
+          "id": "obj_curtain_003",
+          "label": "curtain",
+          "name": "植物印花窗帘",
+          "confidence": 0.93,
+          "bbox": [
+            0,
+            0,
+            1078,
+            1227
+          ],
+          "tagPosition": [
+            0.4991,
+            0.3195
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000014_obj_curtain_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000014_obj_curtain_003_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.02,
+            "heightM": 1.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "大面积垂坠帘布，左侧有侧边帘",
+            "materials": [
+              "棉麻织物"
+            ],
+            "colors": [
+              "米白色",
+              "暖黄色"
+            ],
+            "style": "清新田园风",
+            "texturePattern": "散布叶片、蝴蝶类植物印花",
+            "visibleComponents": [
+              "主帘身",
+              "左侧侧帘"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理垂坠褶皱使其均匀"
+            ],
+            "complexityReduction": [
+              "减少细碎褶皱，保留大面垂感"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "按印花分布规律补全遮挡区域"
+            },
+            "occlusionCompletion": [
+              "补全被书桌遮挡的帘布底部"
+            ],
+            "patternCompletion": "延续植物印花均匀分布",
+            "preserve": [
+              "浅底色与暖黄植物印花"
+            ],
+            "remove": [
+              "无多余遮挡杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_rug_004",
+          "label": "rug",
+          "name": "圆形编织地毯",
+          "confidence": 0.88,
+          "bbox": [
+            501,
+            1809,
+            1078,
+            1918
+          ],
+          "tagPosition": [
+            0.731,
+            0.9706
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000014_obj_rug_004_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000014_obj_rug_004_mask.png",
+          "deduplicatedObjectId": "candidate_rug_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_rug_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 1.3,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "弧形边缘，呈圆形局部可见",
+            "materials": [
+              "编织织物"
+            ],
+            "colors": [
+              "浅米色"
+            ],
+            "style": "简约北欧风",
+            "texturePattern": "横向条纹编织纹理",
+            "visibleComponents": [
+              "地毯边缘部分"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "展平边缘，整理为完整圆形"
+            ],
+            "complexityReduction": [
+              "简化细密编织纹理层次"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "按圆形对称补全整体轮廓"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的圆形其余部分"
+            ],
+            "patternCompletion": "延续横向条纹环绕圆形",
+            "preserve": [
+              "浅米色与横向编织纹理"
+            ],
+            "remove": [
+              "边缘放置的小物件"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "0f0f4f4726046303"
+    },
+    {
+      "frameId": "6_000015",
+      "time": 25.720532,
+      "frameImageUrl": "/outputs/videos/6/frames/frame_t000025721ms.jpg",
+      "objects": [
+        {
+          "id": "obj_coffee_table_001",
+          "label": "coffee_table",
+          "name": "实木矮茶几",
+          "confidence": 0.98,
+          "bbox": [
+            103,
+            1018,
+            994,
+            1757
+          ],
+          "tagPosition": [
+            0.5079,
+            0.7227
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000015_obj_coffee_table_001_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000015_obj_coffee_table_001_mask.png",
+          "deduplicatedObjectId": "candidate_coffee_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_coffee_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.6,
+            "depthM": 1.1,
+            "heightM": 0.4,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形厚桌面，粗直木腿带横撑",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "浅原木色"
+            ],
+            "style": "日式原木风",
+            "texturePattern": "清晰自然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "四条桌腿",
+              "横向连接杆"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除桌面托盘、花瓶、手机等杂物"
+            ],
+            "complexityReduction": [
+              "简化木纹细节，保留整体轮廓"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿桌面长轴中线对称补齐桌腿与横撑"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的后侧桌腿"
+            ],
+            "patternCompletion": "延续可见木纹纹理，保持均匀自然",
+            "preserve": [
+              "厚实木桌面、粗木腿结构"
+            ],
+            "remove": [
+              "桌面所有摆放物品"
+            ]
+          }
+        },
+        {
+          "id": "obj_armchair_002",
+          "label": "armchair",
+          "name": "奶油风单人沙发椅",
+          "confidence": 0.96,
+          "bbox": [
+            38,
+            528,
+            659,
+            1114
+          ],
+          "tagPosition": [
+            0.3227,
+            0.4276
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000015_obj_armchair_002_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000015_obj_armchair_002_mask.png",
+          "deduplicatedObjectId": "candidate_armchair_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_armchair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.95,
+            "depthM": 0.9,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "饱满方块绗缝靠背与坐垫，宽扶手",
+            "materials": [
+              "布艺"
+            ],
+            "colors": [
+              "暖黄色"
+            ],
+            "style": "奶油休闲风",
+            "texturePattern": "方格绗缝软包纹理",
+            "visibleComponents": [
+              "靠背",
+              "坐垫",
+              "扶手",
+              "顶部盖毯"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "整理盖毯，对齐软包模块"
+            ],
+            "complexityReduction": [
+              "简化绗缝凹陷深度，减少褶皱"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿座椅中线对称补齐扶手与软包块"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的椅腿与另一侧扶手"
+            ],
+            "patternCompletion": "延续方格绗缝图案，保持均匀排布",
+            "preserve": [
+              "方块绗缝软包、暖黄布艺质感"
+            ],
+            "remove": [
+              "侧边搭放的毛毯"
+            ]
+          }
+        },
+        {
+          "id": "obj_vase_003",
+          "label": "vase",
+          "name": "玻璃花瓶",
+          "confidence": 0.92,
+          "bbox": [
+            648,
+            874,
+            761,
+            1066
+          ],
+          "tagPosition": [
+            0.6523,
+            0.5052
+          ],
+          "cropUrl": "/outputs/videos/6/objects/6_000015_obj_vase_003_crop.jpg",
+          "maskUrl": "/outputs/videos/6/objects/6_000015_obj_vase_003_mask.png",
+          "deduplicatedObjectId": "candidate_vase_001",
+          "deduplicatedCropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.28,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "矮胖圆肚玻璃造型，瓶口收窄",
+            "materials": [
+              "透明玻璃"
+            ],
+            "colors": [
+              "透明"
+            ],
+            "style": "简约清新风",
+            "texturePattern": "光滑玻璃表面，瓶身系棕色绳结",
+            "visibleComponents": [
+              "瓶身",
+              "瓶口",
+              "装饰绳结"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除内部花茎与花朵，整理绳结"
+            ],
+            "complexityReduction": [
+              "简化绳结细节，保留光滑瓶身"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿瓶身中心竖轴对称完成轮廓"
+            },
+            "occlusionCompletion": [
+              "补齐被花茎遮挡的瓶身内壁"
+            ],
+            "patternCompletion": "保持玻璃通透质感，无额外纹理",
+            "preserve": [
+              "圆肚玻璃造型、棕色绳结装饰"
+            ],
+            "remove": [
+              "内部粉色花朵与花茎"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "1705e5c131f5d4b0"
+    }
+  ],
+  "deduplicatedObjects": [
+    {
+      "id": "candidate_armchair_001",
+      "label": "armchair",
+      "name": "奶油风单人沙发椅",
+      "representativeFrameId": "6_000015",
+      "representativeObjectId": "obj_armchair_002",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_armchair_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_armchair_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000015_obj_armchair_002_mask.png",
+      "bbox": [
+        38,
+        528,
+        659,
+        1114
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 0.95,
+        "depthM": 0.9,
+        "heightM": 1.0,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_coffee_table_001",
+      "label": "coffee table",
+      "name": "实木矮茶几",
+      "representativeFrameId": "6_000015",
+      "representativeObjectId": "obj_coffee_table_001",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_coffee_table_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_coffee_table_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000015_obj_coffee_table_001_mask.png",
+      "bbox": [
+        103,
+        1018,
+        994,
+        1757
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 0.6,
+        "depthM": 1.1,
+        "heightM": 0.4,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_sofa_001",
+      "label": "sofa",
+      "name": "布艺沙发",
+      "representativeFrameId": "6_000010",
+      "representativeObjectId": "obj_sofa_002",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_sofa_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_sofa_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000010_obj_sofa_002_mask.png",
+      "bbox": [
+        0,
+        1043,
+        741,
+        1916
+      ],
+      "confidence": 0.92,
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 1.9,
+        "depthM": 0.95,
+        "heightM": 0.85,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_vase_001",
+      "label": "vase",
+      "name": "拉丝纹理花瓶",
+      "representativeFrameId": "6_000002",
+      "representativeObjectId": "obj_vase_001",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_vase_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000002_obj_vase_001_mask.png",
+      "bbox": [
+        244,
+        1021,
+        613,
+        1734
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 12,
+      "estimatedDimensions": {
+        "widthM": 0.16,
+        "depthM": 0.16,
+        "heightM": 0.28,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_plant_001",
+      "label": "plant",
+      "name": "橙色非洲菊",
+      "representativeFrameId": "6_000002",
+      "representativeObjectId": "obj_plant_002",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_plant_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_plant_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000002_obj_plant_002_mask.png",
+      "bbox": [
+        19,
+        530,
+        769,
+        1043
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 0.35,
+        "depthM": 0.3,
+        "heightM": 0.45,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_dining_table_001",
+      "label": "dining table",
+      "name": "白色餐桌",
+      "representativeFrameId": "6_000002",
+      "representativeObjectId": "obj_dining_table_003",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_dining_table_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_dining_table_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000002_obj_dining_table_003_mask.png",
+      "bbox": [
+        0,
+        1490,
+        1078,
+        1918
+      ],
+      "confidence": 0.92,
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 1.3,
+        "depthM": 0.8,
+        "heightM": 0.8,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_pendant_light_001",
+      "label": "pendant light",
+      "name": "圆盘吊灯",
+      "representativeFrameId": "6_000002",
+      "representativeObjectId": "obj_pendant_light_004",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_pendant_light_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_pendant_light_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000002_obj_pendant_light_004_mask.png",
+      "bbox": [
+        607,
+        0,
+        963,
+        616
+      ],
+      "confidence": 0.9,
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.5,
+        "depthM": 0.5,
+        "heightM": 1.0,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_desk_001",
+      "label": "desk",
+      "name": "实木书桌",
+      "representativeFrameId": "6_000003",
+      "representativeObjectId": "obj_desk_001",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_desk_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_desk_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000003_obj_desk_001_mask.png",
+      "bbox": [
+        281,
+        1158,
+        1078,
+        1916
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 5,
+      "estimatedDimensions": {
+        "widthM": 1.3,
+        "depthM": 0.7,
+        "heightM": 0.78,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_curtain_001",
+      "label": "curtain",
+      "name": "碎花半透窗帘",
+      "representativeFrameId": "6_000005",
+      "representativeObjectId": "obj_curtain_002",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_curtain_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_curtain_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000005_obj_curtain_002_mask.png",
+      "bbox": [
+        136,
+        284,
+        832,
+        1256
+      ],
+      "confidence": 0.95,
+      "duplicateCount": 4,
+      "estimatedDimensions": {
+        "widthM": 1.1,
+        "depthM": 0.02,
+        "heightM": 1.6,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_table_lamp_001",
+      "label": "table lamp",
+      "name": "玻璃底座台灯",
+      "representativeFrameId": "6_000007",
+      "representativeObjectId": "obj_table_lamp_001",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_table_lamp_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_table_lamp_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000007_obj_table_lamp_001_mask.png",
+      "bbox": [
+        659,
+        96,
+        1078,
+        1302
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 4,
+      "estimatedDimensions": {
+        "widthM": 0.38,
+        "depthM": 0.38,
+        "heightM": 0.65,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_chair_001",
+      "label": "chair",
+      "name": "复古办公椅",
+      "representativeFrameId": "6_000013",
+      "representativeObjectId": "obj_chair_003",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_chair_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_chair_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000013_obj_chair_003_mask.png",
+      "bbox": [
+        654,
+        1202,
+        1078,
+        1893
+      ],
+      "confidence": 0.95,
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 0.65,
+        "depthM": 0.68,
+        "heightM": 0.95,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_cabinet_001",
+      "label": "cabinet",
+      "name": "黑色斗柜",
+      "representativeFrameId": "6_000007",
+      "representativeObjectId": "obj_cabinet_002",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_cabinet_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_cabinet_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000007_obj_cabinet_002_mask.png",
+      "bbox": [
+        231,
+        948,
+        1078,
+        1916
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 6,
+      "estimatedDimensions": {
+        "widthM": 0.7,
+        "depthM": 0.45,
+        "heightM": 0.6,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_painting_001",
+      "label": "painting",
+      "name": "秋草花卉屏风画",
+      "representativeFrameId": "6_000009",
+      "representativeObjectId": "obj_painting_002",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_painting_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_painting_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000009_obj_painting_002_mask.png",
+      "bbox": [
+        279,
+        507,
+        782,
+        1010
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 1.6,
+        "depthM": 0.08,
+        "heightM": 1.7,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_bookshelf_001",
+      "label": "bookshelf",
+      "name": "深色多层书架",
+      "representativeFrameId": "6_000011",
+      "representativeObjectId": "obj_bookshelf_002",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_bookshelf_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_bookshelf_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000011_obj_bookshelf_002_mask.png",
+      "bbox": [
+        309,
+        822,
+        449,
+        1148
+      ],
+      "confidence": 0.92,
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.6,
+        "depthM": 0.32,
+        "heightM": 1.7,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_rug_001",
+      "label": "rug",
+      "name": "圆形编织地毯",
+      "representativeFrameId": "6_000014",
+      "representativeObjectId": "obj_rug_004",
+      "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_rug_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/6/deduplicated/candidate_rug_001/crop.jpg",
+      "maskUrl": "/outputs/videos/6/objects/6_000014_obj_rug_004_mask.png",
+      "bbox": [
+        501,
+        1809,
+        1078,
+        1918
+      ],
+      "confidence": 0.88,
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 1.3,
+        "depthM": 1.3,
+        "heightM": 0.02,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    }
+  ],
+  "dedupeWarning": null
+}

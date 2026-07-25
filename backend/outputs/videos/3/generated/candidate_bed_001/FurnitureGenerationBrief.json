@@ -1,0 +1,93 @@
+{
+  "objectId": "candidate_bed_001",
+  "category": "bed",
+  "observed": {
+    "geometry": "低矮整板地台床体，配宽床头板，圆角床沿",
+    "materials": [
+      "实木",
+      "棉麻织物"
+    ],
+    "colors": [
+      "原木棕",
+      "米白",
+      "橄榄绿"
+    ],
+    "style": "中古风日式地台床",
+    "texturePattern": "木材直纹，床品细竖纹",
+    "visibleComponents": [
+      "地台床架",
+      "床头板",
+      "床品四件套"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "整理床品，对齐枕头，抚平被子褶皱",
+      "移除床上零散书本和小物件"
+    ],
+    "complexityReduction": [
+      "减少床品细碎褶皱，保留大面自然起伏",
+      "简化床头装饰小物件"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的床尾地台结构"
+    ],
+    "patternCompletion": "延续木材直纹和床品竖纹"
+  },
+  "symmetryPrior": {
+    "type": "bilateral",
+    "completionRule": "沿床长轴中线对称布置枕头和床品"
+  },
+  "textureFeatures": {
+    "materials": [
+      "实木",
+      "棉麻织物"
+    ],
+    "colors": [
+      "原木棕",
+      "米白",
+      "橄榄绿"
+    ],
+    "texturePattern": "木材直纹，床品细竖纹"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "整理床品，对齐枕头，抚平被子褶皱",
+      "移除床上零散书本和小物件"
+    ],
+    "complexityReduction": [
+      "减少床品细碎褶皱，保留大面自然起伏",
+      "简化床头装饰小物件"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的床尾地台结构"
+    ],
+    "preserve": [
+      "原木地台结构",
+      "宽床头板",
+      "床底灯带设计"
+    ],
+    "remove": [
+      "床上零散物品",
+      "床头小装饰摆件"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 1.6,
+      "depthM": 2.0,
+      "heightM": 0.85,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated bed as a regular household product. Visible geometry and style: 低矮整板地台床体，配宽床头板，圆角床沿; 中古风日式地台床. Use materials ['实木', '棉麻织物'] and colors ['原木棕', '米白', '橄榄绿']. Preserve ['原木地台结构', '宽床头板', '床底灯带设计']. Regularize temporary disorder with ['整理床品，对齐枕头，抚平被子褶皱', '移除床上零散书本和小物件']. Simplify modeling complexity with ['减少床品细碎褶皱，保留大面自然起伏', '简化床头装饰小物件']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'bilateral', 'completionRule': '沿床长轴中线对称布置枕头和床品'} and ['补全被遮挡的床尾地台结构']. Texture rule: 木材直纹，床品细竖纹; 延续木材直纹和床品竖纹. Target plausible real-world dimensions are approximately 1.60 m wide, 2.00 m deep and 0.85 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['床上零散物品', '床头小装饰摆件'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.98,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

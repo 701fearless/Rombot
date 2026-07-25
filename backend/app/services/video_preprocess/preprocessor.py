@@ -9,6 +9,7 @@ from app.services.video_preprocess.ark_grounding_pipeline import ArkGroundingPip
 from app.services.video_preprocess.doubao_grounding_sam_pipeline import DoubaoGroundingSamPipeline
 from app.services.video_preprocess.analysis_store import video_output_dir, write_analysis
 from app.services.video_preprocess.clip_deduplicator import ClipFurnitureDeduplicator
+from app.services.video_preprocess.dimension_estimator import ArkFurnitureDimensionEstimator
 from app.services.video_preprocess.extractor import extract_frames, load_existing_frames
 from app.services.video_preprocess.frame_similarity import difference_hash_path
 from app.storage.local_store import file_to_data_url, path_to_output_url
@@ -21,12 +22,14 @@ class VideoPreprocessor:
         doubao_grounding_sam_pipeline: DoubaoGroundingSamPipeline | None = None,
         ark_grounding_pipeline: ArkGroundingPipeline | None = None,
         furniture_deduplicator: ClipFurnitureDeduplicator | None = None,
+        dimension_estimator: ArkFurnitureDimensionEstimator | None = None,
         furniture_dedupe_enabled: bool = True,
     ) -> None:
         self.grounded_sam2_provider = grounded_sam2_provider
         self.doubao_grounding_sam_pipeline = doubao_grounding_sam_pipeline
         self.ark_grounding_pipeline = ark_grounding_pipeline
         self.furniture_deduplicator = furniture_deduplicator
+        self.dimension_estimator = dimension_estimator
         self.furniture_dedupe_enabled = furniture_dedupe_enabled
 
     async def preprocess(self, request: VideoPreprocessRequest) -> VideoAnalysis:
@@ -68,6 +71,8 @@ class VideoPreprocessor:
                 output_dir,
                 self.furniture_dedupe_enabled,
             )
+        if self.dimension_estimator is not None and deduplicated_objects:
+            await self.dimension_estimator.enrich_candidates(frames, deduplicated_objects)
 
         analysis = VideoAnalysis(
             videoId=request.videoId,

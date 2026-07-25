@@ -1,0 +1,25 @@
+{
+  "videoId": "3",
+  "candidateId": "candidate_bookshelf_002",
+  "label": "bookshelf",
+  "name": "组合书架",
+  "sourceCropUrl": "/outputs/videos/3/deduplicated/candidate_bookshelf_002/crop.jpg",
+  "referenceFile": "reference_oblique_3quarter.png",
+  "referenceView": "45-degree front-left oblique",
+  "referenceSize": [
+    2048,
+    2048
+  ],
+  "estimatedDimensions": {
+    "widthM": 2.2,
+    "depthM": 0.4,
+    "heightM": 1.9,
+    "unit": "m",
+    "source": "ark_category_prior",
+    "isMeasured": false,
+    "selectionRule": "range_min_plus_0.10m_capped_at_max"
+  },
+  "arkImageModel": "doubao-seedream-5-0-lite-260128",
+  "arkImageSize": "2048x2048",
+  "generatedAt": "2026-07-25T05:58:24.821856+00:00"
+}

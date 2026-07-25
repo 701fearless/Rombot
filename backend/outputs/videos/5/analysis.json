@@ -1,0 +1,3125 @@
+{
+  "videoId": "5",
+  "status": "succeeded",
+  "sampleIntervalSec": 0.873852,
+  "frames": [
+    {
+      "frameId": "5_000001",
+      "time": 0.752212,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000000752ms.jpg",
+      "objects": [
+        {
+          "id": "obj_dining_table_001",
+          "label": "dining_table",
+          "name": "实木餐桌",
+          "confidence": 0.96,
+          "bbox": [
+            266,
+            583,
+            587,
+            920
+          ],
+          "tagPosition": [
+            0.5924,
+            0.7828
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000001_obj_dining_table_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000001_obj_dining_table_001_mask.png",
+          "deduplicatedObjectId": "candidate_dining_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.7,
+            "depthM": 0.85,
+            "heightM": 0.8,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形厚桌面，粗直腿，底部有横向连接杆",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "原木棕"
+            ],
+            "style": "简约日式",
+            "texturePattern": "清晰自然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "桌腿",
+              "底部横撑"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "移除桌面杂物，保持桌面平整"
+            ],
+            "complexityReduction": [
+              "简化木材纹理细节，保留整体轮廓"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿桌面长轴中线对称补齐桌腿结构"
+            },
+            "occlusionCompletion": [
+              "补齐被椅子遮挡的桌腿部分"
+            ],
+            "patternCompletion": "延续均匀的木材纹理",
+            "preserve": [
+              "实木质感，厚桌面造型"
+            ],
+            "remove": [
+              "周围遮挡的椅子局部"
+            ]
+          }
+        },
+        {
+          "id": "obj_chair_002",
+          "label": "chair",
+          "name": "实木餐椅",
+          "confidence": 0.94,
+          "bbox": [
+            398,
+            621,
+            582,
+            886
+          ],
+          "tagPosition": [
+            0.6806,
+            0.7849
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000001_obj_chair_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000001_obj_chair_002_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.52,
+            "depthM": 0.55,
+            "heightM": 0.88,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "弧形靠背，方形软包座面，实木椅腿",
+            "materials": [
+              "实木",
+              "布艺"
+            ],
+            "colors": [
+              "原木棕",
+              "米白"
+            ],
+            "style": "简约日式",
+            "texturePattern": "木材纹理，布艺编织纹理",
+            "visibleComponents": [
+              "靠背",
+              "座垫",
+              "椅腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "摆正座垫，整理椅身结构"
+            ],
+            "complexityReduction": [
+              "简化布艺纹理，减少椅身细节"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿座面中线对称补齐椅腿和靠背"
+            },
+            "occlusionCompletion": [
+              "补齐被餐桌遮挡的椅腿部分"
+            ],
+            "patternCompletion": "延续座面布艺的均匀纹理",
+            "preserve": [
+              "弧形靠背造型，软包座面"
+            ],
+            "remove": [
+              "桌面遮挡的多余部分"
+            ]
+          }
+        },
+        {
+          "id": "obj_sofa_003",
+          "label": "sofa",
+          "name": "模块化地台沙发",
+          "confidence": 0.92,
+          "bbox": [
+            7,
+            547,
+            265,
+            627
+          ],
+          "tagPosition": [
+            0.1889,
+            0.6115
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000001_obj_sofa_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000001_obj_sofa_003_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.3,
+            "depthM": 1.7,
+            "heightM": 0.75,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "低矮模块化，多块软垫组合，带扶手块",
+            "materials": [
+              "布艺"
+            ],
+            "colors": [
+              "浅灰绿"
+            ],
+            "style": "简约北欧",
+            "texturePattern": "布艺编织纹理",
+            "visibleComponents": [
+              "坐垫模块",
+              "扶手模块",
+              "靠背模块"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐各软垫模块，整理边缘"
+            ],
+            "complexityReduction": [
+              "合并重复软垫模块，简化纹理"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见模块尺寸重复补齐完整组合"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的模块侧面"
+            ],
+            "patternCompletion": "延续统一的布艺纹理",
+            "preserve": [
+              "低矮模块化造型，浅灰绿色调"
+            ],
+            "remove": [
+              "周围地垫等无关物品"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "cbc383b6337c3cbc"
+    },
+    {
+      "frameId": "5_000002",
+      "time": 7.917622,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000007918ms.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001",
+          "label": "sofa",
+          "name": "白色模块沙发",
+          "confidence": 0.96,
+          "bbox": [
+            0,
+            534,
+            326,
+            836
+          ],
+          "tagPosition": [
+            0.2264,
+            0.7135
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000002_obj_sofa_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000002_obj_sofa_001_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.3,
+            "depthM": 1.7,
+            "heightM": 0.75,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "低矮长条形模块化，多段饱满软包座位",
+            "materials": [
+              "布艺"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "细腻平整布艺纹理",
+            "visibleComponents": [
+              "软包座位",
+              "靠垫",
+              "扶手"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐所有模块与靠垫",
+              "整理软包表面褶皱"
+            ],
+            "complexityReduction": [
+              "减少多余软包褶皱",
+              "简化模块拼接细节"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见座位模块重复延伸完整长度"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的后方座位模块"
+            ],
+            "patternCompletion": "延续均匀布艺纹理无断点",
+            "preserve": [
+              "模块化软包造型",
+              "米白布艺材质"
+            ],
+            "remove": []
+          }
+        },
+        {
+          "id": "obj_rug_002",
+          "label": "rug",
+          "name": "音符图案圆形地毯",
+          "confidence": 0.94,
+          "bbox": [
+            305,
+            631,
+            465,
+            693
+          ],
+          "tagPosition": [
+            0.5347,
+            0.6896
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000002_obj_rug_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000002_obj_rug_002_mask.png",
+          "deduplicatedObjectId": "candidate_rug_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_rug_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.0,
+            "depthM": 1.0,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "正圆形，边缘有装饰图案带",
+            "materials": [
+              "短绒织物"
+            ],
+            "colors": [
+              "白色",
+              "黑色"
+            ],
+            "style": "现代童趣",
+            "texturePattern": "外圈环绕黑色音符与高音谱号",
+            "visibleComponents": [
+              "纯色中心区",
+              "音符装饰边"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除遮挡的人物脚部",
+              "展平地毯边缘"
+            ],
+            "complexityReduction": [
+              "简化音符细节线条",
+              "统一短绒纹理"
+            ],
+            "symmetry": {
+              "type": "radial",
+              "completionRule": "按可见图案环绕补全完整圆周"
+            },
+            "occlusionCompletion": [
+              "补全被脚遮挡的音符图案"
+            ],
+            "patternCompletion": "延续环绕式音符图案至完整圆周",
+            "preserve": [
+              "圆形造型",
+              "黑白音符装饰图案"
+            ],
+            "remove": [
+              "遮挡的人物脚部"
+            ]
+          }
+        },
+        {
+          "id": "obj_sofa_003",
+          "label": "sofa",
+          "name": "灰色落地模块沙发",
+          "confidence": 0.92,
+          "bbox": [
+            271,
+            559,
+            665,
+            691
+          ],
+          "tagPosition": [
+            0.65,
+            0.651
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000002_obj_sofa_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000002_obj_sofa_003_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.3,
+            "depthM": 1.7,
+            "heightM": 0.75,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "低矮落地式，L形模块化坐垫组合",
+            "materials": [
+              "布艺"
+            ],
+            "colors": [
+              "浅灰色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "平整哑光布艺纹理",
+            "visibleComponents": [
+              "坐垫模块",
+              "靠背模块",
+              "扶手模块"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐所有坐垫模块",
+              "抚平表面褶皱"
+            ],
+            "complexityReduction": [
+              "简化模块拼接缝隙",
+              "减少面料细碎褶皱"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见坐垫尺寸重复补充完整组合"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的转角模块"
+            ],
+            "patternCompletion": "延续统一布艺纹理无偏差",
+            "preserve": [
+              "落地低矮造型",
+              "浅灰布艺材质"
+            ],
+            "remove": []
+          }
+        }
+      ],
+      "perceptualHash": "5f7ca81d3135c701"
+    },
+    {
+      "frameId": "5_000003",
+      "time": 11.57787,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000011578ms.jpg",
+      "objects": [
+        {
+          "id": "obj_plant_001",
+          "label": "plant",
+          "name": "蕨类绿植",
+          "confidence": 0.98,
+          "bbox": [
+            0,
+            69,
+            315,
+            622
+          ],
+          "tagPosition": [
+            0.2188,
+            0.3599
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000003_obj_plant_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000003_obj_plant_001_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.2,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "高大丛生，羽状叶片向外舒展，高支架支撑",
+            "materials": [
+              "鲜活植物叶片",
+              "金属支架",
+              "塑料底座"
+            ],
+            "colors": [
+              "鲜绿色",
+              "黑色"
+            ],
+            "style": "现代简约室内绿植",
+            "texturePattern": "叶片有细密羽状纹理",
+            "visibleComponents": [
+              "羽状复叶",
+              "黑色落地支架",
+              "圆形底座"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理下垂的气根，梳理叶片"
+            ],
+            "complexityReduction": [
+              "简化细碎叶片为大的叶簇组"
+            ],
+            "symmetry": {
+              "type": "radial",
+              "completionRule": "以底座中心为轴均匀分布叶簇"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的支架立柱"
+            ],
+            "patternCompletion": "延续羽状叶片的排列规律",
+            "preserve": [
+              "羽状复叶形态",
+              "黑色高脚支架"
+            ],
+            "remove": [
+              "散落的气根"
+            ]
+          }
+        },
+        {
+          "id": "obj_rug_002",
+          "label": "rug",
+          "name": "儿童游戏地毯",
+          "confidence": 0.92,
+          "bbox": [
+            613,
+            420,
+            719,
+            596
+          ],
+          "tagPosition": [
+            0.925,
+            0.5292
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000003_obj_rug_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000003_obj_rug_002_mask.png",
+          "deduplicatedObjectId": "candidate_rug_002",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_rug_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 1.7,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形，边缘平直，平铺地面",
+            "materials": [
+              "短绒织物"
+            ],
+            "colors": [
+              "绿色",
+              "蓝色",
+              "白色"
+            ],
+            "style": "童趣卡通风格",
+            "texturePattern": "印有动物和地图卡通图案",
+            "visibleComponents": [
+              "绿色毯面",
+              "卡通印花"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "展平毯面，对齐边缘"
+            ],
+            "complexityReduction": [
+              "简化卡通图案细节为色块"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "保持印花布局不变"
+            },
+            "occlusionCompletion": [
+              "补全被裁切的右侧图案"
+            ],
+            "patternCompletion": "延续卡通图案的设计风格",
+            "preserve": [
+              "绿色基底",
+              "童趣卡通印花"
+            ],
+            "remove": []
+          }
+        },
+        {
+          "id": "obj_cabinet_003",
+          "label": "cabinet",
+          "name": "城堡造型儿童柜",
+          "confidence": 0.9,
+          "bbox": [
+            572,
+            54,
+            719,
+            428
+          ],
+          "tagPosition": [
+            0.8965,
+            0.251
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000003_obj_cabinet_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000003_obj_cabinet_003_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.6,
+            "depthM": 0.4,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "立式，顶部城堡垛口造型，带拱形门洞",
+            "materials": [
+              "木质板材"
+            ],
+            "colors": [
+              "浅木色",
+              "米白色",
+              "棕黄色"
+            ],
+            "style": "童趣城堡风格",
+            "texturePattern": "表面有细腻木纹理",
+            "visibleComponents": [
+              "城堡顶饰",
+              "拱形门洞",
+              "内部搁板"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "清理内部零散玩具"
+            ],
+            "complexityReduction": [
+              "简化内部搁板细节"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿正面中线对称完成造型"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的侧面结构"
+            ],
+            "patternCompletion": "延续木纹理的均匀分布",
+            "preserve": [
+              "城堡垛口顶部",
+              "拱形门洞设计"
+            ],
+            "remove": [
+              "内部的玩具杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_curtain_004",
+          "label": "curtain",
+          "name": "蓝色纱帘",
+          "confidence": 0.88,
+          "bbox": [
+            0,
+            0,
+            112,
+            303
+          ],
+          "tagPosition": [
+            0.0778,
+            0.1578
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000003_obj_curtain_004_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000003_obj_curtain_004_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.1,
+            "depthM": 0.1,
+            "heightM": 2.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "竖向垂挂，半透明长条形",
+            "materials": [
+              "半透明纱质面料"
+            ],
+            "colors": [
+              "浅蓝色"
+            ],
+            "style": "简约清新",
+            "texturePattern": "纱面有细腻竖纹肌理",
+            "visibleComponents": [
+              "垂坠帘身"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理垂褶，使帘身平整"
+            ],
+            "complexityReduction": [
+              "简化细碎褶皱为均匀竖褶"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "重复均匀的竖向褶裥"
+            },
+            "occlusionCompletion": [
+              "补全被植物遮挡的帘身"
+            ],
+            "patternCompletion": "延续竖纹肌理的均匀分布",
+            "preserve": [
+              "半透浅蓝色质感",
+              "竖向垂坠形态"
+            ],
+            "remove": []
+          }
+        }
+      ],
+      "perceptualHash": "cdcfca86d2d89031"
+    },
+    {
+      "frameId": "5_000004",
+      "time": 16.606505,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000016607ms.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001",
+          "label": "sofa",
+          "name": "模块组合沙发",
+          "confidence": 0.96,
+          "bbox": [
+            176,
+            509,
+            717,
+            739
+          ],
+          "tagPosition": [
+            0.6201,
+            0.65
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000004_obj_sofa_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000004_obj_sofa_001_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.3,
+            "depthM": 1.7,
+            "heightM": 0.75,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "低重心模块化组合，含贵妃位与独立脚凳",
+            "materials": [
+              "布艺"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "现代简约侘寂风",
+            "texturePattern": "细腻哑光布艺纹理",
+            "visibleComponents": [
+              "方形软包座垫",
+              "靠枕",
+              "扶手模块"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐所有模块边缘",
+              "整理靠枕位置"
+            ],
+            "complexityReduction": [
+              "简化布艺表面细微褶皱",
+              "合并重复模块结构"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见方形模块尺寸重复延伸完整组合"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的沙发底部支撑结构"
+            ],
+            "patternCompletion": "延续均匀布艺纹理，无空白断档",
+            "preserve": [
+              "模块化组合形态",
+              "米白布艺质感",
+              "低重心造型"
+            ],
+            "remove": [
+              "周围人物遮挡"
+            ]
+          }
+        },
+        {
+          "id": "obj_plant_002",
+          "label": "plant",
+          "name": "大型绿植",
+          "confidence": 0.92,
+          "bbox": [
+            189,
+            449,
+            290,
+            562
+          ],
+          "tagPosition": [
+            0.3326,
+            0.5266
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000004_obj_plant_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000004_obj_plant_002_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.2,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "丛生舒展叶片，整体呈蓬松团状",
+            "materials": [
+              "植物叶片"
+            ],
+            "colors": [
+              "深绿色"
+            ],
+            "style": "自然家居绿植",
+            "texturePattern": "羽状复叶纹理",
+            "visibleComponents": [
+              "茂密叶片",
+              "植株主体"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理舒展叶片形态",
+              "摆正植株位置"
+            ],
+            "complexityReduction": [
+              "简化细碎叶片数量",
+              "合并叶片团块结构"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "按自然生长形态补全植株"
+            },
+            "occlusionCompletion": [
+              "补全被沙发遮挡的花盆部分"
+            ],
+            "patternCompletion": "延续叶片绿色纹理，保持自然分布",
+            "preserve": [
+              "蓬松丛生形态",
+              "深绿色羽状叶片"
+            ],
+            "remove": []
+          }
+        }
+      ],
+      "perceptualHash": "9f7007c72773eae1"
+    },
+    {
+      "frameId": "5_000005",
+      "time": 19.5773,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000019577ms.jpg",
+      "objects": [
+        {
+          "id": "obj_dining_table_001",
+          "label": "dining_table",
+          "name": "实木餐桌",
+          "confidence": 0.98,
+          "bbox": [
+            344,
+            559,
+            719,
+            851
+          ],
+          "tagPosition": [
+            0.7382,
+            0.7344
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000005_obj_dining_table_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000005_obj_dining_table_001_mask.png",
+          "deduplicatedObjectId": "candidate_dining_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.7,
+            "depthM": 0.85,
+            "heightM": 0.8,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长条形厚桌面，配粗壮实木直腿",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "原木浅棕色"
+            ],
+            "style": "日式原木风",
+            "texturePattern": "清晰自然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "桌腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "移除桌面所有摆放物品"
+            ],
+            "complexityReuction": [
+              "简化木纹细节为整体纹理"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿长轴中线对称补齐桌腿"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的桌腿结构"
+            ],
+            "patternCompletion": "延续均匀木材纹理",
+            "preserve": [
+              "厚实木桌面",
+              "原木质感"
+            ],
+            "remove": [
+              "桌面零散小物件"
+            ]
+          }
+        },
+        {
+          "id": "obj_cabinet_002",
+          "label": "cabinet",
+          "name": "嵌入式餐边柜",
+          "confidence": 0.96,
+          "bbox": [
+            131,
+            280,
+            638,
+            724
+          ],
+          "tagPosition": [
+            0.534,
+            0.5229
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000005_obj_cabinet_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000005_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_002",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.1,
+            "depthM": 0.45,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "整体方正，中部内凹开放格",
+            "materials": [
+              "哑光板材"
+            ],
+            "colors": [
+              "白色",
+              "脏粉色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "平整哑光无纹理",
+            "visibleComponents": [
+              "封闭柜门",
+              "开放置物格",
+              "抽屉"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "清空开放格内所有杂物",
+              "对齐所有柜门抽屉"
+            ],
+            "complexityReduction": [
+              "简化开放格内部结构"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿中线对称分布柜门模块"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的侧边柜门"
+            ],
+            "patternCompletion": "保持白色柜门纯色哑光",
+            "preserve": [
+              "中部内凹开放格设计",
+              "白+粉配色"
+            ],
+            "remove": [
+              "格内摆件、管线、小电器"
+            ]
+          }
+        },
+        {
+          "id": "obj_plant_003",
+          "label": "plant",
+          "name": "大型蕨类绿植",
+          "confidence": 0.94,
+          "bbox": [
+            12,
+            474,
+            144,
+            680
+          ],
+          "tagPosition": [
+            0.1083,
+            0.601
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000005_obj_plant_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000005_obj_plant_003_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.2,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "丛生羽状叶片，整体饱满蓬松",
+            "materials": [
+              "植物叶片"
+            ],
+            "colors": [
+              "深绿色"
+            ],
+            "style": "自然绿植",
+            "texturePattern": "羽状复叶纹理",
+            "visibleComponents": [
+              "叶片",
+              "花盆支架"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理舒展叶片"
+            ],
+            "complexityReduction": [
+              "简化细碎叶片为大簇叶片组"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿中心茎干放射状分布叶片"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的下部花盆"
+            ],
+            "patternCompletion": "延续羽状叶片排列规律",
+            "preserve": [
+              "羽状复叶形态",
+              "深绿色调"
+            ],
+            "remove": [
+              "周边地面杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_chair_004",
+          "label": "chair",
+          "name": "实木餐椅",
+          "confidence": 0.92,
+          "bbox": [
+            523,
+            570,
+            719,
+            797
+          ],
+          "tagPosition": [
+            0.8625,
+            0.712
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000005_obj_chair_004_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000005_obj_chair_004_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.52,
+            "depthM": 0.55,
+            "heightM": 0.88,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "弧形靠背，直木腿，座面平整",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "原木浅棕色"
+            ],
+            "style": "日式简约",
+            "texturePattern": "自然木材纹理",
+            "visibleComponents": [
+              "靠背",
+              "座面",
+              "椅腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "摆正椅子位置"
+            ],
+            "complexityReduction": [
+              "简化木纹细节"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿座面中线对称补齐椅腿"
+            },
+            "occlusionCompletion": [
+              "补齐被桌面遮挡的椅腿"
+            ],
+            "patternCompletion": "延续均匀木材纹理",
+            "preserve": [
+              "弧形靠背",
+              "原木质感"
+            ],
+            "remove": []
+          }
+        }
+      ],
+      "perceptualHash": "c0f707b1b1393e07"
+    },
+    {
+      "frameId": "5_000006",
+      "time": 23.201391,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000023201ms.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001",
+          "label": "sofa",
+          "name": "沙发",
+          "confidence": 0.95,
+          "bbox": [
+            409,
+            568,
+            719,
+            787
+          ],
+          "tagPosition": [
+            0.7833,
+            0.7057
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000006_obj_sofa_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000006_obj_sofa_001_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.3,
+            "depthM": 1.7,
+            "heightM": 0.75,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "模块化低靠背沙发，宽大软包座靠，方正轮廓",
+            "materials": [
+              "布艺"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "细腻布艺织纹",
+            "visibleComponents": [
+              "扶手",
+              "靠垫",
+              "坐垫"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除沙发上的儿童和玩具",
+              "整理对齐靠垫"
+            ],
+            "complexityReduction": [
+              "简化坐垫软包褶皱，用平整大面表现"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见模块重复延伸完整沙发长度"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的右侧沙发模块"
+            ],
+            "patternCompletion": "延续整体布艺织纹，保持纹理均匀",
+            "preserve": [
+              "模块化方正软包造型",
+              "米白布艺材质"
+            ],
+            "remove": [
+              "儿童",
+              "玩具",
+              "扶手处零散小物件"
+            ]
+          }
+        },
+        {
+          "id": "obj_wardrobe_002",
+          "label": "wardrobe",
+          "name": "衣柜",
+          "confidence": 0.88,
+          "bbox": [
+            134,
+            351,
+            384,
+            714
+          ],
+          "tagPosition": [
+            0.3597,
+            0.5547
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000006_obj_wardrobe_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000006_obj_wardrobe_002_mask.png",
+          "deduplicatedObjectId": "candidate_wardrobe_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_wardrobe_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.1,
+            "depthM": 0.65,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "顶天立地三门衣柜，平板门，方正造型",
+            "materials": [
+              "木质"
+            ],
+            "colors": [
+              "浅木色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "细腻直纹木纹理",
+            "visibleComponents": [
+              "柜门",
+              "金属门把手",
+              "侧边控制面板"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐柜门，保持门板平整"
+            ],
+            "complexityReduction": [
+              "简化木纹理细节，保留整体质感"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "以中间柜门为轴，对称补全整体结构"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的柜体侧边结构"
+            ],
+            "patternCompletion": "延续直纹木纹理，保持纹理方向一致",
+            "preserve": [
+              "平板三门造型",
+              "浅木色材质",
+              "金属把手"
+            ],
+            "remove": [
+              "无多余杂物"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "00000046c6804ce4"
+    },
+    {
+      "frameId": "5_000007",
+      "time": 27.617069,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000027617ms.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001",
+          "label": "sofa",
+          "name": "模块组合沙发",
+          "confidence": 0.96,
+          "bbox": [
+            0,
+            572,
+            543,
+            816
+          ],
+          "tagPosition": [
+            0.3771,
+            0.7229
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000007_obj_sofa_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000007_obj_sofa_001_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.3,
+            "depthM": 1.7,
+            "heightM": 0.75,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "低重心模块化L型，厚软包座靠，方正块体",
+            "materials": [
+              "布艺面料"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "现代简约侘寂风",
+            "texturePattern": "细腻哑光织物质感",
+            "visibleComponents": [
+              "方形软包坐垫",
+              "大靠垫",
+              "侧边扶手模块"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "移除沙发上的小孩和小玩具",
+              "对齐摆正所有靠垫",
+              "抚平面料褶皱"
+            ],
+            "complexityReduction": [
+              "简化零散小靠垫，保留大软包块体",
+              "减少面料细碎褶皱，用大曲面表现"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见方形模块的尺寸比例延伸补齐完整组合"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的沙发模块，保持统一软包造型"
+            ],
+            "patternCompletion": "延续整体哑光布艺纹理，无额外图案",
+            "preserve": [
+              "低重心模块化方正软包造型",
+              "米白色布艺材质"
+            ],
+            "remove": [
+              "小孩",
+              "零散小玩具"
+            ]
+          }
+        },
+        {
+          "id": "obj_plant_002",
+          "label": "plant",
+          "name": "蕨类绿植",
+          "confidence": 0.94,
+          "bbox": [
+            451,
+            485,
+            719,
+            958
+          ],
+          "tagPosition": [
+            0.8125,
+            0.7516
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000007_obj_plant_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000007_obj_plant_002_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.2,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "丛生羽状叶片，株型饱满舒展",
+            "materials": [
+              "植物叶片"
+            ],
+            "colors": [
+              "深绿色"
+            ],
+            "style": "自然绿植",
+            "texturePattern": "羽状复叶纹理，叶片边缘有齿状",
+            "visibleComponents": [
+              "羽状叶片",
+              "茎干"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理舒展叶片，去除枯黄残叶"
+            ],
+            "complexityReduction": [
+              "合并密集细碎叶片为大的叶簇组",
+              "简化叶片数量，保留整体轮廓"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "按自然丛生形态补齐被遮挡部分，保持自然感"
+            },
+            "occlusionCompletion": [
+              "补齐花盆及底部被遮挡的植株部分"
+            ],
+            "patternCompletion": "延续羽状复叶的纹理规律，保持自然错落",
+            "preserve": [
+              "羽状复叶的形态特征",
+              "深绿色丛生株型"
+            ],
+            "remove": []
+          }
+        },
+        {
+          "id": "obj_rug_003",
+          "label": "rug",
+          "name": "圆形装饰地毯",
+          "confidence": 0.9,
+          "bbox": [
+            356,
+            712,
+            508,
+            804
+          ],
+          "tagPosition": [
+            0.6,
+            0.7896
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000007_obj_rug_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000007_obj_rug_003_mask.png",
+          "deduplicatedObjectId": "candidate_rug_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_rug_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.0,
+            "depthM": 1.0,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "圆形薄款，平铺于地面",
+            "materials": [
+              "布艺地毯面料"
+            ],
+            "colors": [
+              "白色",
+              "黑色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "表面印有黑色音符五线谱图案",
+            "visibleComponents": [
+              "圆形毯面",
+              "印花图案"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "展平毯面，整理边缘"
+            ],
+            "complexityReduction": [
+              "简化音符图案细节，保留核心纹样",
+              "用平整表面替代细微纹理起伏"
+            ],
+            "symmetry": {
+              "type": "radial",
+              "completionRule": "按圆形对称补齐被遮挡的毯面部分"
+            },
+            "occlusionCompletion": [
+              "补齐被植物遮挡的右侧毯面及图案"
+            ],
+            "patternCompletion": "延续五线谱音符的图案规律，完整铺满对应区域",
+            "preserve": [
+              "圆形造型",
+              "黑白音符印花设计"
+            ],
+            "remove": [
+              "遮挡的植物叶片"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "0f031bc9cf9f0686"
+    },
+    {
+      "frameId": "5_000008",
+      "time": 32.967922,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000032968ms.jpg",
+      "objects": [
+        {
+          "id": "obj_wardrobe_001",
+          "label": "wardrobe",
+          "name": "白色整体衣柜",
+          "confidence": 0.98,
+          "bbox": [
+            163,
+            0,
+            700,
+            852
+          ],
+          "tagPosition": [
+            0.5993,
+            0.4437
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000008_obj_wardrobe_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000008_obj_wardrobe_001_mask.png",
+          "deduplicatedObjectId": "candidate_wardrobe_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_wardrobe_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.1,
+            "depthM": 0.65,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "顶天立地长方体，多柜门加底部抽屉组合",
+            "materials": [
+              "哑光板材",
+              "金属拉手"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "简约日式",
+            "texturePattern": "平整哑光表面，无明显纹理",
+            "visibleComponents": [
+              "对开门柜门",
+              "抽屉",
+              "金属小拉手"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐所有柜门和抽屉缝隙"
+            ],
+            "complexityReduction": [
+              "统一拉手样式，简化柜门分割线"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见柜门模块重复延伸完整柜体"
+            },
+            "occlusionCompletion": [
+              "补全被小孩遮挡的柜门部分"
+            ],
+            "patternCompletion": "保持哑光纯色表面无额外纹理",
+            "preserve": [
+              "米白色哑光外观，小型金属拉手"
+            ],
+            "remove": [
+              "旁边的小孩"
+            ]
+          }
+        },
+        {
+          "id": "obj_dining_table_002",
+          "label": "dining_table",
+          "name": "木质餐桌",
+          "confidence": 0.9,
+          "bbox": [
+            55,
+            502,
+            131,
+            649
+          ],
+          "tagPosition": [
+            0.1292,
+            0.5995
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000008_obj_dining_table_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000008_obj_dining_table_002_mask.png",
+          "deduplicatedObjectId": "candidate_dining_table_002",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.8,
+            "heightM": 0.8,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形桌面，厚实木桌腿",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "原木棕色"
+            ],
+            "style": "日式原木风",
+            "texturePattern": "清晰自然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "桌腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "清理桌面所有杂物"
+            ],
+            "complexityReduction": [
+              "简化木材纹理细节"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按可见桌腿对称补全所有桌腿"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的桌腿部分"
+            ],
+            "patternCompletion": "延续自然木纹纹理",
+            "preserve": [
+              "原木材质和厚桌腿设计"
+            ],
+            "remove": [
+              "桌面摆放的零散物品"
+            ]
+          }
+        },
+        {
+          "id": "obj_cabinet_003",
+          "label": "cabinet",
+          "name": "厨房餐边柜",
+          "confidence": 0.88,
+          "bbox": [
+            0,
+            310,
+            131,
+            596
+          ],
+          "tagPosition": [
+            0.091,
+            0.4719
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000008_obj_cabinet_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000008_obj_cabinet_003_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.6,
+            "depthM": 0.4,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "上下吊柜加地柜组合，中间开放格",
+            "materials": [
+              "哑光板材"
+            ],
+            "colors": [
+              "米白色",
+              "浅粉色"
+            ],
+            "style": "简约北欧",
+            "texturePattern": "平整哑光表面",
+            "visibleComponents": [
+              "吊柜柜门",
+              "开放置物格",
+              "地柜柜门"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "清空开放格内的杂物"
+            ],
+            "complexityReduction": [
+              "简化柜门分割，减少开放格层数"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见柜门模块重复排列"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的柜体侧边"
+            ],
+            "patternCompletion": "保持纯色哑光表面",
+            "preserve": [
+              "上下柜加中间开放格的结构"
+            ],
+            "remove": [
+              "开放格内的零散摆件"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "9f979d12969fde5d"
+    },
+    {
+      "frameId": "5_000009",
+      "time": 39.229932,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000039230ms.jpg",
+      "objects": [
+        {
+          "id": "obj_dining_table_001",
+          "label": "dining_table",
+          "name": "实木餐桌",
+          "confidence": 0.98,
+          "bbox": [
+            0,
+            637,
+            700,
+            958
+          ],
+          "tagPosition": [
+            0.4861,
+            0.8307
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000009_obj_dining_table_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000009_obj_dining_table_001_mask.png",
+          "deduplicatedObjectId": "candidate_dining_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.7,
+            "depthM": 0.85,
+            "heightM": 0.8,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形厚桌面，直木腿，高度适配餐椅",
+            "materials": [
+              "实木"
+            ],
+            "colors": [
+              "浅原木色"
+            ],
+            "style": "日式简约",
+            "texturePattern": "清晰自然木材纹理",
+            "visibleComponents": [
+              "桌面",
+              "桌腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "移除桌面遮挡的字幕",
+              "移除周围餐椅的局部遮挡"
+            ],
+            "complexityReduction": [
+              "简化木材纹理细节为统一木纹面",
+              "减少桌腿造型复杂度"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿桌面长轴中线对称补齐桌腿"
+            },
+            "occlusionCompletion": [
+              "补齐被餐椅遮挡的桌腿和桌面边缘"
+            ],
+            "patternCompletion": "延续可见的木材纹理，保持纹理走向一致",
+            "preserve": [
+              "浅原木实木质感",
+              "长方形厚桌面的简约造型"
+            ],
+            "remove": [
+              "叠加的字幕文字",
+              "周围遮挡的餐椅"
+            ]
+          }
+        },
+        {
+          "id": "obj_chair_002",
+          "label": "chair",
+          "name": "实木餐椅",
+          "confidence": 0.96,
+          "bbox": [
+            7,
+            689,
+            275,
+            958
+          ],
+          "tagPosition": [
+            0.1958,
+            0.8578
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000009_obj_chair_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000009_obj_chair_002_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.52,
+            "depthM": 0.55,
+            "heightM": 0.88,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "弧形靠背，直木腿，带编织座面",
+            "materials": [
+              "实木",
+              "编织绳"
+            ],
+            "colors": [
+              "浅原木色",
+              "米白色"
+            ],
+            "style": "日式简约",
+            "texturePattern": "木材纹理，编织网格纹理",
+            "visibleComponents": [
+              "靠背",
+              "座面",
+              "前腿"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "移除遮挡的字幕",
+              "摆正餐椅位置"
+            ],
+            "complexityReduction": [
+              "简化编织座面的细密纹理",
+              "简化木材纹理细节"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "沿座面中线对称补齐椅腿和靠背"
+            },
+            "occlusionCompletion": [
+              "补齐被桌面遮挡的靠背上部和后腿"
+            ],
+            "patternCompletion": "延续编织网格纹理，保持均匀网格",
+            "preserve": [
+              "弧形实木靠背",
+              "编织座面的设计"
+            ],
+            "remove": [
+              "叠加的字幕文字",
+              "桌面的遮挡部分"
+            ]
+          }
+        },
+        {
+          "id": "obj_sofa_003",
+          "label": "sofa",
+          "name": "模块组合沙发",
+          "confidence": 0.94,
+          "bbox": [
+            41,
+            520,
+            334,
+            649
+          ],
+          "tagPosition": [
+            0.2604,
+            0.6089
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000009_obj_sofa_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000009_obj_sofa_003_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.3,
+            "depthM": 1.7,
+            "heightM": 0.75,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "模块化方正造型，厚坐垫厚靠背",
+            "materials": [
+              "布艺"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "细腻布艺织纹",
+            "visibleComponents": [
+              "坐垫",
+              "靠背垫",
+              "扶手"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐靠垫位置",
+              "整理坐垫保持平整"
+            ],
+            "complexityReduction": [
+              "减少布艺褶皱，用平整大面表现",
+              "简化模块拼接细节"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见模块样式重复补齐组合"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的沙发远端模块"
+            ],
+            "patternCompletion": "延续统一的布艺织纹，保持质感一致",
+            "preserve": [
+              "模块化方正造型",
+              "米白色布艺质感"
+            ],
+            "remove": [
+              "多余零散靠枕"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "39f979cbca2e1835"
+    },
+    {
+      "frameId": "5_000010",
+      "time": 40.866615,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000040867ms.jpg",
+      "objects": [
+        {
+          "id": "obj_cabinet_001",
+          "label": "cabinet",
+          "name": "隐形门一体收纳柜",
+          "confidence": 0.92,
+          "bbox": [
+            284,
+            0,
+            671,
+            819
+          ],
+          "tagPosition": [
+            0.6632,
+            0.4266
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000010_obj_cabinet_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000010_obj_cabinet_001_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.6,
+            "depthM": 0.4,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "通顶高柜，内嵌平开门，整体方正薄款",
+            "materials": [
+              "木饰面"
+            ],
+            "colors": [
+              "暖棕色"
+            ],
+            "style": "现代极简",
+            "texturePattern": "细腻平直木纹理",
+            "visibleComponents": [
+              "平开门、长条形金属门把手、侧边面板"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐柜门缝隙，保持表面平整无杂物"
+            ],
+            "complexityReduction": [
+              "简化门侧边电子设备细节，保留柜体大面"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见竖向分缝延续等宽柜门模块"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的柜体侧边与顶部收边"
+            ],
+            "patternCompletion": "延续均匀细腻的木纹理，无断纹",
+            "preserve": [
+              "无把手隐形设计、暖棕木色、通顶结构"
+            ],
+            "remove": [
+              "门侧小型电子设备"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "c2cad2d6c6a2cec0"
+    },
+    {
+      "frameId": "5_000011",
+      "time": 46.805058,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000046805ms.jpg",
+      "objects": [
+        {
+          "id": "obj_cabinet_001",
+          "label": "cabinet",
+          "name": "厨房地柜",
+          "confidence": 0.96,
+          "bbox": [
+            0,
+            568,
+            393,
+            959
+          ],
+          "tagPosition": [
+            0.2729,
+            0.7953
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000011_obj_cabinet_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000011_obj_cabinet_001_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_002",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.1,
+            "depthM": 0.45,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长条矮柜，嵌入水槽与洗碗机，平板柜门",
+            "materials": [
+              "烤漆面板",
+              "石英石台面"
+            ],
+            "colors": [
+              "暖橘粉色",
+              "米白色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "光滑无纹理",
+            "visibleComponents": [
+              "平板柜门",
+              "石英石台面",
+              "嵌入式水槽"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除台面上的清洁刷与小电器",
+              "对齐柜门缝隙"
+            ],
+            "complexityReduction": [
+              "简化嵌入式五金细节",
+              "统一柜门造型"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见柜门宽度重复延伸完整柜体"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的柜门与柜体侧面"
+            ],
+            "patternCompletion": "保持纯色光滑表面无额外纹理",
+            "preserve": [
+              "暖橘粉柜门与米白台面配色",
+              "嵌入式水槽结构"
+            ],
+            "remove": [
+              "台面临时摆放的杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_cabinet_002",
+          "label": "cabinet",
+          "name": "厨房吊柜",
+          "confidence": 0.94,
+          "bbox": [
+            0,
+            0,
+            359,
+            397
+          ],
+          "tagPosition": [
+            0.2493,
+            0.2068
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000011_obj_cabinet_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000011_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.6,
+            "depthM": 0.4,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长条悬挂式吊柜，平板无把手柜门",
+            "materials": [
+              "烤漆面板"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "光滑哑光无纹理",
+            "visibleComponents": [
+              "平板柜门",
+              "底部封边"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐柜门缝隙保持平整"
+            ],
+            "complexityReduction": [
+              "简化内部结构只做外壳",
+              "取消隐藏把手细节"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见柜门宽度重复延伸完整吊柜"
+            },
+            "occlusionCompletion": [
+              "补全被裁切的左侧柜体"
+            ],
+            "patternCompletion": "保持纯色光滑表面无额外纹理",
+            "preserve": [
+              "米白色平板柜门造型",
+              "悬挂式结构"
+            ],
+            "remove": [
+              "无多余杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_plant_003",
+          "label": "plant",
+          "name": "龟背竹盆栽",
+          "confidence": 0.92,
+          "bbox": [
+            572,
+            439,
+            667,
+            564
+          ],
+          "tagPosition": [
+            0.8604,
+            0.5224
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000011_obj_plant_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000011_obj_plant_003_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.2,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "直立茎干，大叶片带孔洞开裂",
+            "materials": [
+              "植物叶片",
+              "玻璃容器"
+            ],
+            "colors": [
+              "深绿色",
+              "透明"
+            ],
+            "style": "自然绿植",
+            "texturePattern": "叶片带自然叶脉纹理",
+            "visibleComponents": [
+              "叶片",
+              "茎干",
+              "玻璃花瓶"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理叶片朝向更舒展"
+            ],
+            "complexityReduction": [
+              "减少细碎叶脉细节",
+              "简化茎干数量"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "保持自然生长形态不强制对称"
+            },
+            "occlusionCompletion": [
+              "补全被遮挡的下部茎干"
+            ],
+            "patternCompletion": "延续叶片孔洞与叶脉自然分布",
+            "preserve": [
+              "龟背竹叶片开裂特征",
+              "水培玻璃容器"
+            ],
+            "remove": [
+              "无多余杂物"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "083b1b2daac91999"
+    },
+    {
+      "frameId": "5_000012",
+      "time": 50.880038,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000050880ms.jpg",
+      "objects": [
+        {
+          "id": "obj_wardrobe_001",
+          "label": "wardrobe",
+          "name": "隐形门衣柜",
+          "confidence": 0.98,
+          "bbox": [
+            0,
+            0,
+            622,
+            958
+          ],
+          "tagPosition": [
+            0.4319,
+            0.499
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000012_obj_wardrobe_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000012_obj_wardrobe_001_mask.png",
+          "deduplicatedObjectId": "candidate_wardrobe_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_wardrobe_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.1,
+            "depthM": 0.65,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "整面墙式高柜，多扇竖向窄门，无外露顶底封边",
+            "materials": [
+              "木纹饰面板"
+            ],
+            "colors": [
+              "浅原木色"
+            ],
+            "style": "极简隐形门一体化设计",
+            "texturePattern": "细腻平直木纹理",
+            "visibleComponents": [
+              "长条形金属门把手",
+              "同色柜门面板"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "对齐所有柜门缝隙保持均匀",
+              "统一门把手高度位置"
+            ],
+            "complexityReduction": [
+              "简化木纹理为均匀浅色调",
+              "省略墙面小开关细节"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见等宽柜门模块向两侧延伸"
+            },
+            "occlusionCompletion": [
+              "补充被裁切的左侧柜门保持同规格"
+            ],
+            "patternCompletion": "延续均匀木纹理无断档",
+            "preserve": [
+              "同色隐形门设计",
+              "长条形金属把手"
+            ],
+            "remove": [
+              "墙面开关面板"
+            ]
+          }
+        },
+        {
+          "id": "obj_sofa_002",
+          "label": "sofa",
+          "name": "单人沙发",
+          "confidence": 0.9,
+          "bbox": [
+            654,
+            598,
+            719,
+            780
+          ],
+          "tagPosition": [
+            0.9535,
+            0.7177
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000012_obj_sofa_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000012_obj_sofa_002_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.3,
+            "depthM": 1.7,
+            "heightM": 0.75,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "方正低矮单人座，直边靠背与座面",
+            "materials": [
+              "布艺软包"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "极简现代",
+            "texturePattern": "平整布艺肌理",
+            "visibleComponents": [
+              "座面",
+              "靠背侧边"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理软包表面保持平整"
+            ],
+            "complexityReduction": [
+              "简化为规整方块造型",
+              "省略细微布艺纹理"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "按可见左侧对称补全右侧结构"
+            },
+            "occlusionCompletion": [
+              "补全被裁切的沙发右侧与底部支撑"
+            ],
+            "patternCompletion": "延续纯色布艺纹理",
+            "preserve": [
+              "方正低矮造型",
+              "米白布艺质感"
+            ],
+            "remove": []
+          }
+        }
+      ],
+      "perceptualHash": "c730060080802120"
+    },
+    {
+      "frameId": "5_000013",
+      "time": 53.782561,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000053783ms.jpg",
+      "objects": [
+        {
+          "id": "obj_sofa_001",
+          "label": "sofa",
+          "name": "模块组合沙发",
+          "confidence": 0.96,
+          "bbox": [
+            131,
+            579,
+            502,
+            832
+          ],
+          "tagPosition": [
+            0.4396,
+            0.7349
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000013_obj_sofa_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000013_obj_sofa_001_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.3,
+            "depthM": 1.7,
+            "heightM": 0.75,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "低重心方块模块组合，长条形多座位，厚软包",
+            "materials": [
+              "布艺"
+            ],
+            "colors": [
+              "米白色"
+            ],
+            "style": "现代简约侘寂风",
+            "texturePattern": "细腻哑光布艺纹理",
+            "visibleComponents": [
+              "方形扶手模块",
+              "多个座位模块",
+              "靠垫"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "occluded",
+            "cleanupActions": [
+              "移除沙发上的小孩，摆正靠垫"
+            ],
+            "complexityReduction": [
+              "简化多余零散靠垫，保留规整模块结构"
+            ],
+            "symmetry": {
+              "type": "repeated_modules",
+              "completionRule": "按可见方形模块重复延伸补齐完整长度"
+            },
+            "occlusionCompletion": [
+              "补齐被遮挡的座位模块，保持统一造型"
+            ],
+            "patternCompletion": "延续整体哑光布艺纹理无断点",
+            "preserve": [
+              "方块模块化造型，米白布艺质感"
+            ],
+            "remove": [
+              "沙发上的小孩"
+            ]
+          }
+        },
+        {
+          "id": "obj_curtain_002",
+          "label": "curtain",
+          "name": "透光纱帘",
+          "confidence": 0.93,
+          "bbox": [
+            382,
+            409,
+            658,
+            609
+          ],
+          "tagPosition": [
+            0.7222,
+            0.5302
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000013_obj_curtain_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000013_obj_curtain_002_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 3.1,
+            "depthM": 0.1,
+            "heightM": 2.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "整面落地式，垂直均匀褶皱，幅面宽大",
+            "materials": [
+              "半透明纱质"
+            ],
+            "colors": [
+              "浅蓝色"
+            ],
+            "style": "现代简约",
+            "texturePattern": "竖向垂坠褶皱纹理",
+            "visibleComponents": [
+              "帘身",
+              "顶部帘头"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理褶皱使其均匀垂顺"
+            ],
+            "complexityReduction": [
+              "简化细碎褶皱，保留大的竖向垂褶"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "左右褶皱样式对称统一"
+            },
+            "occlusionCompletion": [
+              "被遮挡部分延续纱帘材质与褶皱规律"
+            ],
+            "patternCompletion": "延续竖向垂褶纹理，保持均匀分布",
+            "preserve": [
+              "半透浅蓝色质感，竖向垂坠褶皱"
+            ],
+            "remove": []
+          }
+        },
+        {
+          "id": "obj_rug_003",
+          "label": "rug",
+          "name": "圆形音符地毯",
+          "confidence": 0.9,
+          "bbox": [
+            493,
+            670,
+            680,
+            736
+          ],
+          "tagPosition": [
+            0.8146,
+            0.7323
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000013_obj_rug_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000013_obj_rug_003_mask.png",
+          "deduplicatedObjectId": "candidate_rug_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_rug_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.0,
+            "depthM": 1.0,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "正圆形，薄款平铺",
+            "materials": [
+              "短绒织物"
+            ],
+            "colors": [
+              "米白色",
+              "黑色"
+            ],
+            "style": "现代童趣风",
+            "texturePattern": "表面印有多组黑色音符图案",
+            "visibleComponents": [
+              "圆形毯面",
+              "音符印花"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "展平毯面，对齐边缘"
+            ],
+            "complexityReduction": [
+              "简化音符细节，保留核心图案"
+            ],
+            "symmetry": {
+              "type": "radial",
+              "completionRule": "图案沿圆心环形均匀分布"
+            },
+            "occlusionCompletion": [
+              "被遮挡部分延续音符图案规律"
+            ],
+            "patternCompletion": "延续环形音符印花，保持排列节奏",
+            "preserve": [
+              "圆形造型，音符印花图案"
+            ],
+            "remove": []
+          }
+        }
+      ],
+      "perceptualHash": "b15f3c2366265961"
+    },
+    {
+      "frameId": "5_000014",
+      "time": 59.603894,
+      "frameImageUrl": "/outputs/videos/5/frames/frame_t000059604ms.jpg",
+      "objects": [
+        {
+          "id": "obj_plant_001",
+          "label": "plant",
+          "name": "大型蕨类绿植",
+          "confidence": 0.98,
+          "bbox": [
+            14,
+            280,
+            299,
+            715
+          ],
+          "tagPosition": [
+            0.2174,
+            0.5182
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000014_obj_plant_001_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000014_obj_plant_001_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.2,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "高大丛生，羽状叶片向外舒展，整体呈蓬松伞状",
+            "materials": [
+              "鲜活植物叶片",
+              "金属支架",
+              "方形花盆"
+            ],
+            "colors": [
+              "深绿色",
+              "黑色",
+              "白色"
+            ],
+            "style": "自然清新家居绿植",
+            "texturePattern": "叶片有细密羽状纹理",
+            "visibleComponents": [
+              "羽状复叶",
+              "黑色金属花架",
+              "白色方形花盆"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "整理舒展叶片，去除杂乱黄叶"
+            ],
+            "complexityReduction": [
+              "简化细碎叶片为大的羽状叶组"
+            ],
+            "symmetry": {
+              "type": "axial",
+              "completionRule": "沿花架中心轴对称补充叶片"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的花盆完整轮廓"
+            ],
+            "patternCompletion": "延续羽状叶片的重复排列纹理",
+            "preserve": [
+              "羽状复叶形态",
+              "黑色金属花架"
+            ],
+            "remove": [
+              "叶片上的微小杂物"
+            ]
+          }
+        },
+        {
+          "id": "obj_cabinet_002",
+          "label": "cabinet",
+          "name": "儿童鞋架收纳柜",
+          "confidence": 0.92,
+          "bbox": [
+            544,
+            355,
+            688,
+            535
+          ],
+          "tagPosition": [
+            0.8556,
+            0.4635
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000014_obj_cabinet_002_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000014_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.6,
+            "depthM": 0.4,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "双列多层开放式结构，整体方正低矮",
+            "materials": [
+              "木质板材"
+            ],
+            "colors": [
+              "浅木色",
+              "白色"
+            ],
+            "style": "童趣简约儿童收纳柜",
+            "texturePattern": "表面有细腻木纹",
+            "visibleComponents": [
+              "多层置物格",
+              "侧边封闭柜体"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "messy",
+            "cleanupActions": [
+              "清空鞋架上的鞋子，整理层板"
+            ],
+            "complexityReduction": [
+              "简化层板细节，保留整体框架"
+            ],
+            "symmetry": {
+              "type": "bilateral",
+              "completionRule": "左右两列层板对称排布"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的底部柜体结构"
+            ],
+            "patternCompletion": "延续木纹纹理覆盖完整柜体",
+            "preserve": [
+              "双列多层开放式结构",
+              "浅木色外观"
+            ],
+            "remove": [
+              "摆放的鞋子"
+            ]
+          }
+        },
+        {
+          "id": "obj_rug_003",
+          "label": "rug",
+          "name": "儿童游戏地垫",
+          "confidence": 0.9,
+          "bbox": [
+            443,
+            483,
+            666,
+            583
+          ],
+          "tagPosition": [
+            0.7701,
+            0.5552
+          ],
+          "cropUrl": "/outputs/videos/5/objects/5_000014_obj_rug_003_crop.jpg",
+          "maskUrl": "/outputs/videos/5/objects/5_000014_obj_rug_003_mask.png",
+          "deduplicatedObjectId": "candidate_rug_002",
+          "deduplicatedCropUrl": "/outputs/videos/5/deduplicated/candidate_rug_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 1.7,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
+          "visualFeatures": {
+            "geometry": "长方形平铺，边缘规整",
+            "materials": [
+              "短绒织物"
+            ],
+            "colors": [
+              "绿色",
+              "白色",
+              "多色印花"
+            ],
+            "style": "童趣卡通游戏地毯",
+            "texturePattern": "表面有卡通道路图案印花",
+            "visibleComponents": [
+              "毯面",
+              "包边"
+            ]
+          },
+          "generationHints": {
+            "clutterState": "clean",
+            "cleanupActions": [
+              "铺平地毯，整理卷边"
+            ],
+            "complexityReduction": [
+              "简化卡通图案为大色块图形"
+            ],
+            "symmetry": {
+              "type": "none",
+              "completionRule": "保持现有图案布局"
+            },
+            "occlusionCompletion": [
+              "补充被遮挡的毯面完整图案"
+            ],
+            "patternCompletion": "延续卡通道路的连续印花图案",
+            "preserve": [
+              "绿色基底",
+              "卡通游戏图案"
+            ],
+            "remove": [
+              "毯面微小杂物"
+            ]
+          }
+        }
+      ],
+      "perceptualHash": "ccc9cbc2cac2d0f1"
+    }
+  ],
+  "deduplicatedObjects": [
+    {
+      "id": "candidate_dining_table_001",
+      "label": "dining table",
+      "name": "实木餐桌",
+      "representativeFrameId": "5_000001",
+      "representativeObjectId": "obj_dining_table_001",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_001/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000001_obj_dining_table_001_mask.png",
+      "bbox": [
+        266,
+        583,
+        587,
+        920
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 1.7,
+        "depthM": 0.85,
+        "heightM": 0.8,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_chair_001",
+      "label": "chair",
+      "name": "实木餐椅",
+      "representativeFrameId": "5_000009",
+      "representativeObjectId": "obj_chair_002",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_chair_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_chair_001/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000009_obj_chair_002_mask.png",
+      "bbox": [
+        7,
+        689,
+        275,
+        958
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 0.52,
+        "depthM": 0.55,
+        "heightM": 0.88,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_sofa_001",
+      "label": "sofa",
+      "name": "模块组合沙发",
+      "representativeFrameId": "5_000004",
+      "representativeObjectId": "obj_sofa_001",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000004_obj_sofa_001_mask.png",
+      "bbox": [
+        176,
+        509,
+        717,
+        739
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 9,
+      "estimatedDimensions": {
+        "widthM": 3.3,
+        "depthM": 1.7,
+        "heightM": 0.75,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_rug_001",
+      "label": "rug",
+      "name": "圆形装饰地毯",
+      "representativeFrameId": "5_000007",
+      "representativeObjectId": "obj_rug_003",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_rug_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_rug_001/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000007_obj_rug_003_mask.png",
+      "bbox": [
+        356,
+        712,
+        508,
+        804
+      ],
+      "confidence": 0.9,
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 1.0,
+        "depthM": 1.0,
+        "heightM": 0.02,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_plant_001",
+      "label": "plant",
+      "name": "大型蕨类绿植",
+      "representativeFrameId": "5_000014",
+      "representativeObjectId": "obj_plant_001",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_plant_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_plant_001/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000014_obj_plant_001_mask.png",
+      "bbox": [
+        14,
+        280,
+        299,
+        715
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 6,
+      "estimatedDimensions": {
+        "widthM": 0.9,
+        "depthM": 0.8,
+        "heightM": 1.2,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_rug_002",
+      "label": "rug",
+      "name": "儿童游戏地垫",
+      "representativeFrameId": "5_000014",
+      "representativeObjectId": "obj_rug_003",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_rug_002/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_rug_002/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000014_obj_rug_003_mask.png",
+      "bbox": [
+        443,
+        483,
+        666,
+        583
+      ],
+      "confidence": 0.9,
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 1.1,
+        "depthM": 1.7,
+        "heightM": 0.02,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_cabinet_001",
+      "label": "cabinet",
+      "name": "隐形门一体收纳柜",
+      "representativeFrameId": "5_000010",
+      "representativeObjectId": "obj_cabinet_001",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_001/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000010_obj_cabinet_001_mask.png",
+      "bbox": [
+        284,
+        0,
+        671,
+        819
+      ],
+      "confidence": 0.92,
+      "duplicateCount": 5,
+      "estimatedDimensions": {
+        "widthM": 1.6,
+        "depthM": 0.4,
+        "heightM": 2.3,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_curtain_001",
+      "label": "curtain",
+      "name": "透光纱帘",
+      "representativeFrameId": "5_000013",
+      "representativeObjectId": "obj_curtain_002",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_curtain_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_curtain_001/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000013_obj_curtain_002_mask.png",
+      "bbox": [
+        382,
+        409,
+        658,
+        609
+      ],
+      "confidence": 0.93,
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 3.1,
+        "depthM": 0.1,
+        "heightM": 2.5,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_cabinet_002",
+      "label": "cabinet",
+      "name": "嵌入式餐边柜",
+      "representativeFrameId": "5_000005",
+      "representativeObjectId": "obj_cabinet_002",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_002/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_cabinet_002/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000005_obj_cabinet_002_mask.png",
+      "bbox": [
+        131,
+        280,
+        638,
+        724
+      ],
+      "confidence": 0.96,
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 2.1,
+        "depthM": 0.45,
+        "heightM": 2.3,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_wardrobe_001",
+      "label": "wardrobe",
+      "name": "隐形门衣柜",
+      "representativeFrameId": "5_000012",
+      "representativeObjectId": "obj_wardrobe_001",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_wardrobe_001/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_wardrobe_001/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000012_obj_wardrobe_001_mask.png",
+      "bbox": [
+        0,
+        0,
+        622,
+        958
+      ],
+      "confidence": 0.98,
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 3.1,
+        "depthM": 0.65,
+        "heightM": 2.3,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    },
+    {
+      "id": "candidate_dining_table_002",
+      "label": "dining table",
+      "name": "木质餐桌",
+      "representativeFrameId": "5_000008",
+      "representativeObjectId": "obj_dining_table_002",
+      "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_002/annotated.jpg",
+      "cropUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_002/crop.jpg",
+      "maskUrl": "/outputs/videos/5/objects/5_000008_obj_dining_table_002_mask.png",
+      "bbox": [
+        55,
+        502,
+        131,
+        649
+      ],
+      "confidence": 0.9,
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 1.3,
+        "depthM": 0.8,
+        "heightM": 0.8,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
+    }
+  ],
+  "dedupeWarning": null
+}

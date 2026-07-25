@@ -1,0 +1,18 @@
+{
+  "id": "candidate_dining_table_002",
+  "label": "dining table",
+  "name": "木质餐桌",
+  "representativeFrameId": "5_000008",
+  "representativeObjectId": "obj_dining_table_002",
+  "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_002/annotated.jpg",
+  "cropUrl": "/outputs/videos/5/deduplicated/candidate_dining_table_002/crop.jpg",
+  "maskUrl": "/outputs/videos/5/objects/5_000008_obj_dining_table_002_mask.png",
+  "bbox": [
+    55,
+    502,
+    131,
+    649
+  ],
+  "confidence": 0.9,
+  "duplicateCount": 1
+}

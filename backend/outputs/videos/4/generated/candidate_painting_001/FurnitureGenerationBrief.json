@@ -1,0 +1,85 @@
+{
+  "objectId": "candidate_painting_001",
+  "category": "painting",
+  "observed": {
+    "geometry": "横版长方形，细木框加白边衬纸",
+    "materials": [
+      "木质画框",
+      "油画布"
+    ],
+    "colors": [
+      "棕色",
+      "米白色",
+      "暖橘色"
+    ],
+    "style": "复古风景油画风",
+    "texturePattern": "油画笔触肌理",
+    "visibleComponents": [
+      "木质外框",
+      "白色衬边",
+      "风景画面"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "摆正画框位置"
+    ],
+    "complexityReduction": [
+      "简化画面细碎笔触"
+    ],
+    "occlusionCompletion": [
+      "补全完整画框结构"
+    ],
+    "patternCompletion": "延续风景画面的柔和色调笔触"
+  },
+  "symmetryPrior": {
+    "type": "bilateral",
+    "completionRule": "保持画框四边对称均匀"
+  },
+  "textureFeatures": {
+    "materials": [
+      "木质画框",
+      "油画布"
+    ],
+    "colors": [
+      "棕色",
+      "米白色",
+      "暖橘色"
+    ],
+    "texturePattern": "油画笔触肌理"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "摆正画框位置"
+    ],
+    "complexityReduction": [
+      "简化画面细碎笔触"
+    ],
+    "occlusionCompletion": [
+      "补全完整画框结构"
+    ],
+    "preserve": [
+      "细木框加白边的样式",
+      "暖调风景画面"
+    ],
+    "remove": [],
+    "physicalDimensionsMeters": {
+      "widthM": 0.7,
+      "depthM": 0.06,
+      "heightM": 0.6,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated painting as a regular household product. Visible geometry and style: 横版长方形，细木框加白边衬纸; 复古风景油画风. Use materials ['木质画框', '油画布'] and colors ['棕色', '米白色', '暖橘色']. Preserve ['细木框加白边的样式', '暖调风景画面']. Regularize temporary disorder with ['摆正画框位置']. Simplify modeling complexity with ['简化画面细碎笔触']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'bilateral', 'completionRule': '保持画框四边对称均匀'} and ['补全完整画框结构']. Texture rule: 油画笔触肌理; 延续风景画面的柔和色调笔触. Target plausible real-world dimensions are approximately 0.70 m wide, 0.06 m deep and 0.60 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, [], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.94,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

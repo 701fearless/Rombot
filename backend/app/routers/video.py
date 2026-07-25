@@ -25,6 +25,7 @@ from app.services.video_preprocess.ark_grounding_pipeline import ArkGroundingPip
 from app.services.video_preprocess.doubao_grounding_sam_pipeline import DoubaoGroundingSamPipeline
 from app.services.video_preprocess.analysis_store import analysis_url, nearest_frame, read_analysis, video_output_dir
 from app.services.video_preprocess.clip_deduplicator import ClipFurnitureDeduplicator
+from app.services.video_preprocess.dimension_estimator import ArkFurnitureDimensionEstimator
 from app.services.video_preprocess.preprocessor import VideoPreprocessor
 from app.services.vision_semantics.doubao_provider import DoubaoVisionProvider
 from app.storage.local_store import path_to_output_url, save_data_url
@@ -283,6 +284,15 @@ async def preprocess_video(request: VideoPreprocessRequest) -> VideoPreprocessRe
                 batch_size=settings.furniture_dedupe_batch_size,
                 model_name=settings.furniture_dedupe_model,
                 device=settings.furniture_dedupe_device,
+            ),
+            dimension_estimator=(
+                ArkFurnitureDimensionEstimator(
+                    api_key=settings.ark_api_key,
+                    base_url=settings.ark_base_url,
+                    model=settings.ark_vision_model,
+                )
+                if request.mode == "ark_grounding" and settings.ark_api_key
+                else None
             ),
             furniture_dedupe_enabled=settings.furniture_dedupe_enabled,
         ).preprocess(request)

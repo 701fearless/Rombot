@@ -56,6 +56,7 @@ class MockModel3DProvider(Model3DProvider):
                 bbox=detected_object.bbox,
                 cropUrl=f"/outputs/{task_id}/crop.png",
                 maskUrl=f"/outputs/{task_id}/mask.png",
+                estimatedDimensions=detected_object.estimatedDimensions,
                 glbUrl=GLB_BY_LABEL.get(label, "/sample_data/models/sofa.glb"),
             ),
             analysis=ANALYSIS_BY_LABEL.get(

@@ -1,0 +1,94 @@
+{
+  "objectId": "candidate_chair_001",
+  "category": "chair",
+  "observed": {
+    "geometry": "弧形靠背，藤编座面与靠背，实木椅腿",
+    "materials": [
+      "实木",
+      "藤编"
+    ],
+    "colors": [
+      "原木色",
+      "绿色",
+      "米黄色"
+    ],
+    "style": "复古休闲风",
+    "texturePattern": "藤编部分为方格编织纹，绿点均匀分布",
+    "visibleComponents": [
+      "弧形靠背",
+      "藤编座面",
+      "实木椅腿"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "整理藤编面的编织平整度",
+      "擦拭椅腿灰尘"
+    ],
+    "complexityReduction": [
+      "简化藤编纹理的细节层次",
+      "统一椅腿的圆柱造型"
+    ],
+    "occlusionCompletion": [
+      "补全被边几遮挡的前侧椅腿",
+      "补全座面遮挡区域"
+    ],
+    "patternCompletion": "延续绿点方格藤编的重复规律，填补遮挡区域"
+  },
+  "symmetryPrior": {
+    "type": "bilateral",
+    "completionRule": "沿靠背竖直中线对称补全左右结构"
+  },
+  "textureFeatures": {
+    "materials": [
+      "实木",
+      "藤编"
+    ],
+    "colors": [
+      "原木色",
+      "绿色",
+      "米黄色"
+    ],
+    "texturePattern": "藤编部分为方格编织纹，绿点均匀分布"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "整理藤编面的编织平整度",
+      "擦拭椅腿灰尘"
+    ],
+    "complexityReduction": [
+      "简化藤编纹理的细节层次",
+      "统一椅腿的圆柱造型"
+    ],
+    "occlusionCompletion": [
+      "补全被边几遮挡的前侧椅腿",
+      "补全座面遮挡区域"
+    ],
+    "preserve": [
+      "弧形实木靠背边框",
+      "绿点方格藤编结构",
+      "实木椅腿造型"
+    ],
+    "remove": [
+      "悬挂的细线装饰"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 0.5,
+      "depthM": 0.55,
+      "heightM": 0.9,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated chair as a regular household product. Visible geometry and style: 弧形靠背，藤编座面与靠背，实木椅腿; 复古休闲风. Use materials ['实木', '藤编'] and colors ['原木色', '绿色', '米黄色']. Preserve ['弧形实木靠背边框', '绿点方格藤编结构', '实木椅腿造型']. Regularize temporary disorder with ['整理藤编面的编织平整度', '擦拭椅腿灰尘']. Simplify modeling complexity with ['简化藤编纹理的细节层次', '统一椅腿的圆柱造型']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'bilateral', 'completionRule': '沿靠背竖直中线对称补全左右结构'} and ['补全被边几遮挡的前侧椅腿', '补全座面遮挡区域']. Texture rule: 藤编部分为方格编织纹，绿点均匀分布; 延续绿点方格藤编的重复规律，填补遮挡区域. Target plausible real-world dimensions are approximately 0.50 m wide, 0.55 m deep and 0.90 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['悬挂的细线装饰'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.94,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

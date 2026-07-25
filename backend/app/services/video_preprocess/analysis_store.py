@@ -41,6 +41,7 @@ def nearest_frame(
     video_id: str,
     timestamp: float,
     pause_frame_image: str | None = None,
+    pause_frame_hash: str | None = None,
 ) -> VideoAnalysisFrame | None:
     analysis = read_analysis(video_id)
     if not analysis or not analysis.frames:
@@ -55,11 +56,11 @@ def nearest_frame(
     candidates = [frame for frame in (previous, following) if frame is not None]
     if len(candidates) == 1:
         return candidates[0]
-    if not pause_frame_image:
+    if not pause_frame_image and not pause_frame_hash:
         return min(candidates, key=lambda frame: (abs(frame.time - timestamp), frame.time > timestamp))
 
     try:
-        pause_hash = difference_hash_data_url(pause_frame_image)
+        pause_hash = pause_frame_hash.lower() if pause_frame_hash else difference_hash_data_url(pause_frame_image or "")
         scored: list[tuple[int, float, bool, VideoAnalysisFrame]] = []
         for frame in candidates:
             frame_hash = frame.perceptualHash
@@ -87,8 +88,9 @@ def detect_response_for_time(
     video_id: str,
     timestamp: float,
     pause_frame_image: str | None = None,
+    pause_frame_hash: str | None = None,
 ) -> DetectResponse | None:
-    frame = nearest_frame(video_id, timestamp, pause_frame_image)
+    frame = nearest_frame(video_id, timestamp, pause_frame_image, pause_frame_hash)
     if not frame:
         return None
     return DetectResponse(frameId=frame.frameId, objects=frame.objects, frameImageUrl=frame.frameImageUrl)

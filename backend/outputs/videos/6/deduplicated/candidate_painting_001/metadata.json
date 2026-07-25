@@ -1,0 +1,18 @@
+{
+  "id": "candidate_painting_001",
+  "label": "painting",
+  "name": "秋草花卉屏风画",
+  "representativeFrameId": "6_000009",
+  "representativeObjectId": "obj_painting_002",
+  "annotatedImageUrl": "/outputs/videos/6/deduplicated/candidate_painting_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/6/deduplicated/candidate_painting_001/crop.jpg",
+  "maskUrl": "/outputs/videos/6/objects/6_000009_obj_painting_002_mask.png",
+  "bbox": [
+    279,
+    507,
+    782,
+    1010
+  ],
+  "confidence": 0.96,
+  "duplicateCount": 1
+}

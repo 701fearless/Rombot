@@ -1,0 +1,19 @@
+{
+  "id": "candidate_coffee_table_001",
+  "label": "coffee table",
+  "name": "圆形实木茶几",
+  "representativeFrameId": "7_000004",
+  "representativeObjectId": "obj_coffee_table_002",
+  "annotatedImageUrl": "/outputs/videos/7/deduplicated/candidate_coffee_table_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/7/deduplicated/candidate_coffee_table_001/crop.jpg",
+  "maskUrl": "/outputs/videos/7/objects/7_000004_obj_coffee_table_002_mask.png",
+  "bbox": [
+    289,
+    1394,
+    826,
+    1851
+  ],
+  "confidence": 0.96,
+  "duplicateCount": 2,
+  "estimatedDimensions": null
+}

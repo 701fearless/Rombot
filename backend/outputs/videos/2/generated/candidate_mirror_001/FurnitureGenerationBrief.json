@@ -1,0 +1,78 @@
+{
+  "objectId": "candidate_mirror_001",
+  "category": "mirror",
+  "observed": {
+    "geometry": "竖长方形，薄边无框，平整镜面",
+    "materials": [
+      "玻璃"
+    ],
+    "colors": [
+      "银白"
+    ],
+    "style": "极简现代",
+    "texturePattern": "光滑高反光镜面",
+    "visibleComponents": [
+      "完整镜面",
+      "细窄侧边"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "保持镜面洁净无污渍"
+    ],
+    "complexityReduction": [
+      "省略复杂边框，保留薄边结构"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的背面安装结构"
+    ],
+    "patternCompletion": "保持镜面均匀反光无杂纹"
+  },
+  "symmetryPrior": {
+    "type": "bilateral",
+    "completionRule": "沿竖直中线对称补全背面结构"
+  },
+  "textureFeatures": {
+    "materials": [
+      "玻璃"
+    ],
+    "colors": [
+      "银白"
+    ],
+    "texturePattern": "光滑高反光镜面"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "保持镜面洁净无污渍"
+    ],
+    "complexityReduction": [
+      "省略复杂边框，保留薄边结构"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的背面安装结构"
+    ],
+    "preserve": [
+      "无框薄边设计",
+      "竖长方形比例"
+    ],
+    "remove": [],
+    "physicalDimensionsMeters": {
+      "widthM": 0.6,
+      "depthM": 0.08,
+      "heightM": 1.0,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated mirror as a regular household product. Visible geometry and style: 竖长方形，薄边无框，平整镜面; 极简现代. Use materials ['玻璃'] and colors ['银白']. Preserve ['无框薄边设计', '竖长方形比例']. Regularize temporary disorder with ['保持镜面洁净无污渍']. Simplify modeling complexity with ['省略复杂边框，保留薄边结构']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'bilateral', 'completionRule': '沿竖直中线对称补全背面结构'} and ['补全被遮挡的背面安装结构']. Texture rule: 光滑高反光镜面; 保持镜面均匀反光无杂纹. Target plausible real-world dimensions are approximately 0.60 m wide, 0.08 m deep and 1.00 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, [], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.98,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

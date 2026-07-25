@@ -41,8 +41,13 @@
     .drop-content strong { color: var(--ink); font-size: 14px; }
     .drop-content svg { color: var(--green); }
     .source-preview { width: 100%; max-height: 250px; object-fit: contain; background: var(--black); display: none; }
-    .video-shell { display: none; background: var(--black); border: 1px solid #252b28; }
-    .video-shell video { width: 100%; max-height: 260px; display: block; }
+    .video-shell { display: none; position: relative; background: var(--black); border: 1px solid #252b28; overflow: hidden; }
+    .video-shell video { width: 100%; max-height: 260px; display: block; object-fit: contain; }
+    .video-tag-layer { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+    .video-tag { position: absolute; transform: translate(-50%, -50%); pointer-events: auto; border: 1px solid rgba(255,255,255,.88); border-radius: 999px; background: rgba(16,20,18,.84); color: white; padding: 6px 9px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 3px 14px rgba(0,0,0,.36); font-size: 11px; white-space: nowrap; }
+    .video-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #ff6657; box-shadow: 0 0 0 3px rgba(255,102,87,.2); }
+    .video-tag:hover, .video-tag.active { border-color: #64efbb; background: rgba(16,83,66,.95); }
+    .video-tag.active::before { background: #64efbb; box-shadow: 0 0 0 3px rgba(100,239,187,.22); }
     .fields { display: grid; gap: 10px; margin-top: 12px; }
     .field { display: grid; gap: 5px; }
     .field label { color: var(--muted); font-size: 12px; }
@@ -90,6 +95,10 @@
     .object-name { font-size: 13px; font-weight: 700; }
     .object-meta { color: var(--muted); font-size: 11px; margin-top: 2px; }
     .confidence { color: var(--green); font-size: 12px; font-weight: 700; }
+    .object-detail { border: 1px solid var(--green); background: #f4faf6; padding: 9px; display: grid; grid-template-columns: 84px 1fr; gap: 10px; margin-bottom: 8px; }
+    .object-detail img { width: 84px; height: 84px; object-fit: contain; background: white; border: 1px solid var(--line); }
+    .object-detail strong { display: block; font-size: 13px; margin-bottom: 4px; }
+    .object-detail small { display: block; color: var(--muted); font-size: 11px; line-height: 1.55; word-break: break-word; }
     pre { margin: 10px 0 0; min-height: 120px; max-height: 280px; overflow: auto; white-space: pre-wrap; word-break: break-word; border: 1px solid var(--line); background: #f7f8f5; padding: 10px; font: 11px/1.5 "Cascadia Mono", Consolas, monospace; }
     .refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 8px; }
     .ref { margin: 0; border: 1px solid var(--line); padding: 7px; display: grid; gap: 5px; }
@@ -131,7 +140,10 @@
           <input id="videoFile" type="file" accept="video/*" />
           <span class="drop-content" id="videoHint"><i data-lucide="file-video"></i><strong>选择视频</strong><small>MP4 / MOV / MKV / AVI / WEBM</small></span>
         </label>
-        <div id="videoShell" class="video-shell"><video id="videoPreview" controls playsinline preload="metadata"></video></div>
+        <div id="videoShell" class="video-shell">
+          <video id="videoPreview" controls playsinline preload="metadata"></video>
+          <div id="videoTagLayer" class="video-tag-layer" aria-live="polite"></div>
+        </div>
         <div class="fields">
           <div class="field"><label for="videoId">视频 ID</label><input id="videoId" value="video_pause_demo" /></div>
           <div class="field"><label for="detectionMode">检测模式</label><select id="detectionMode"><option value="ark_grounding">Ark Grounding</option><option value="mock">Mock</option></select></div>
@@ -198,6 +210,7 @@
     const videoFile = $("videoFile");
     const videoPreview = $("videoPreview");
     const videoShell = $("videoShell");
+    const videoTagLayer = $("videoTagLayer");
     const videoHint = $("videoHint");
     const videoIdInput = $("videoId");
     const detectionMode = $("detectionMode");
@@ -226,7 +239,8 @@
     let currentDetection = null;
     let selectedObject = null;
     let pauseFrameDataUrl = null;
-    let matching = false;
+    let matchRequestSerial = 0;
+    let matchAbortController = null;
     let activeTimer = null;
 
     const steps = {
@@ -272,8 +286,13 @@
       };
     }
 
-    async function postJson(url, body) {
-      const response = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    async function postJson(url, body, options = {}) {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        signal: options.signal
+      });
       const text = await response.text();
       let data;
       try { data = JSON.parse(text); } catch { data = { raw: text }; }
@@ -318,6 +337,7 @@
       if (!file) return;
       selectedVideoFile = file;
       preparedVideoId = null;
+      invalidatePauseMatch();
       if (videoObjectUrl) URL.revokeObjectURL(videoObjectUrl);
       videoObjectUrl = URL.createObjectURL(file);
       videoPreview.src = videoObjectUrl;
@@ -389,34 +409,52 @@
     videoPreview.addEventListener("pause", () => {
       if (preparedVideoId && !videoPreview.ended && videoPreview.readyState >= 2) matchPausedVideo();
     });
+    videoPreview.addEventListener("play", invalidatePauseMatch);
+    videoPreview.addEventListener("seeking", invalidatePauseMatch);
+    videoPreview.addEventListener("emptied", invalidatePauseMatch);
+    addEventListener("resize", updateVideoTagPositions);
 
     async function matchPausedVideo() {
-      if (matching) return;
-      matching = true;
+      const requestSerial = ++matchRequestSerial;
+      if (matchAbortController) matchAbortController.abort();
+      matchAbortController = new AbortController();
+      clearVideoTags();
+      const pausedAt = videoPreview.currentTime;
+      let stopMatchTimer = null;
       try {
         pauseFrameDataUrl = captureVideoFrame(videoPreview, pauseCanvas);
+        const frameHash = computeVideoDHash(videoPreview);
         pauseEmpty.style.display = "none";
-        pauseLabel.textContent = `暂停画面 · ${formatTime(videoPreview.currentTime)}`;
+        pauseLabel.textContent = `暂停画面 · ${formatTime(pausedAt)}`;
         setStep("match", "running", "正在比较前后抽帧");
-        const stop = startTimer("match");
+        stopMatchTimer = startTimer("match");
         const detection = await postJson("/api/feed/detect", {
           videoId: preparedVideoId,
-          time: videoPreview.currentTime,
-          frameImage: pauseFrameDataUrl
-        });
-        stop();
-        await presentDetection(detection, pauseFrameDataUrl, `暂停 ${formatTime(videoPreview.currentTime)}`);
+          time: pausedAt,
+          frameHash
+        }, { signal: matchAbortController.signal });
+        stopMatchTimer();
+        stopMatchTimer = null;
+        if (
+          requestSerial !== matchRequestSerial
+          || !videoPreview.paused
+          || Math.abs(videoPreview.currentTime - pausedAt) > 0.05
+        ) return;
+        await presentDetection(detection, pauseFrameDataUrl, `暂停 ${formatTime(pausedAt)}`, false);
+        renderVideoTags();
         setStep("match", "done", `${detection.frameId} · ${detection.objects.length} 个对象`);
       } catch (error) {
+        if (error.name === "AbortError") return;
         showError(error, "match");
       } finally {
-        matching = false;
+        if (stopMatchTimer) stopMatchTimer();
+        if (requestSerial === matchRequestSerial) matchAbortController = null;
       }
     }
 
-    async function presentDetection(detection, sourceDataUrl, sourceText) {
+    async function presentDetection(detection, sourceDataUrl, sourceText, selectFirst = true) {
       currentDetection = detection;
-      selectedObject = detection.objects && detection.objects[0] || null;
+      selectedObject = selectFirst && detection.objects && detection.objects[0] || null;
       detectJson.textContent = JSON.stringify(detection, null, 2);
       matchBadge.textContent = detection.frameId;
       pauseLabel.textContent = sourceText;
@@ -433,17 +471,23 @@
     function renderObjects() {
       objects.innerHTML = "";
       const list = currentDetection && currentDetection.objects || [];
+      if (selectedObject) {
+        const detail = document.createElement("div");
+        detail.className = "object-detail";
+        const cropUrl = selectedObject.deduplicatedCropUrl || selectedObject.cropUrl;
+        const dims = selectedObject.estimatedDimensions;
+        const dimensionText = dims
+          ? `${Number(dims.widthM).toFixed(2)} × ${Number(dims.depthM).toFixed(2)} × ${Number(dims.heightM).toFixed(2)} m（宽×深×高，初始估算）`
+          : "尚未估算";
+        detail.innerHTML = `${cropUrl ? `<img src="${escapeHtml(cropUrl)}" alt="${escapeHtml(selectedObject.name || selectedObject.label)} 去重裁剪图">` : "<div></div>"}<div><strong>${escapeHtml(selectedObject.name || selectedObject.label)}</strong><small>类别：${escapeHtml(selectedObject.label)}</small><small>置信度：${Math.round(selectedObject.confidence * 100)}%</small><small>估算尺寸：${escapeHtml(dimensionText)}</small><small>bbox：${selectedObject.bbox.join(", ")}</small><small>候选：${escapeHtml(selectedObject.deduplicatedObjectId || "未关联，生成时回退当前帧 crop")}</small></div>`;
+        objects.appendChild(detail);
+      }
       for (const item of list) {
         const button = document.createElement("button");
         button.type = "button";
         button.className = `object-row${selectedObject && selectedObject.id === item.id ? " active" : ""}`;
         button.innerHTML = `<span><span class="object-name">${escapeHtml(item.name || item.label)}</span><span class="object-meta">${escapeHtml(item.label)} · bbox ${item.bbox.join(", ")}</span></span><span class="confidence">${Math.round(item.confidence * 100)}%</span>`;
-        button.addEventListener("click", async () => {
-          selectedObject = item;
-          renderObjects();
-          generateButton.disabled = false;
-          await drawAnnotated(matchedCanvas, currentDetection.frameImageUrl || imageDataUrl, list, item.id);
-        });
+        button.addEventListener("click", () => selectDetectedObject(item));
         objects.appendChild(button);
       }
       if (!list.length) objects.innerHTML = '<div class="empty-state">未检测到家具</div>';
@@ -477,6 +521,96 @@
       canvas.height = video.videoHeight;
       canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
       return canvas.toDataURL("image/jpeg", .9);
+    }
+
+    function computeVideoDHash(video) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 9;
+      canvas.height = 8;
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      context.drawImage(video, 0, 0, 9, 8);
+      const pixels = context.getImageData(0, 0, 9, 8).data;
+      const grayscale = [];
+      for (let index = 0; index < pixels.length; index += 4) {
+        grayscale.push(Math.round(.299 * pixels[index] + .587 * pixels[index + 1] + .114 * pixels[index + 2]));
+      }
+      let value = 0n;
+      for (let row = 0; row < 8; row += 1) {
+        for (let column = 0; column < 8; column += 1) {
+          const offset = row * 9 + column;
+          value = (value << 1n) | BigInt(grayscale[offset] > grayscale[offset + 1]);
+        }
+      }
+      return value.toString(16).padStart(16, "0");
+    }
+
+    function invalidatePauseMatch() {
+      matchRequestSerial += 1;
+      if (matchAbortController) matchAbortController.abort();
+      matchAbortController = null;
+      clearVideoTags();
+      if (mode === "video") {
+        currentDetection = null;
+        selectedObject = null;
+        generateButton.disabled = true;
+        renderObjects();
+      }
+    }
+
+    function clearVideoTags() {
+      videoTagLayer.innerHTML = "";
+    }
+
+    function renderVideoTags() {
+      clearVideoTags();
+      if (mode !== "video" || !videoPreview.paused || !currentDetection) return;
+      for (const item of currentDetection.objects || []) {
+        const tag = document.createElement("button");
+        tag.type = "button";
+        tag.className = `video-tag${selectedObject && selectedObject.id === item.id ? " active" : ""}`;
+        tag.dataset.objectId = item.id;
+        tag.dataset.x = String(item.tagPosition?.[0] ?? .5);
+        tag.dataset.y = String(item.tagPosition?.[1] ?? .5);
+        tag.setAttribute("aria-label", `选择${item.name || item.label}`);
+        tag.textContent = `${item.name || item.label} ${Math.round(item.confidence * 100)}%`;
+        tag.addEventListener("click", () => selectDetectedObject(item));
+        videoTagLayer.appendChild(tag);
+      }
+      updateVideoTagPositions();
+    }
+
+    function updateVideoTagPositions() {
+      if (!videoPreview.videoWidth || !videoPreview.videoHeight) return;
+      const boxWidth = videoPreview.clientWidth;
+      const boxHeight = videoPreview.clientHeight;
+      const sourceRatio = videoPreview.videoWidth / videoPreview.videoHeight;
+      const boxRatio = boxWidth / Math.max(boxHeight, 1);
+      let contentWidth = boxWidth;
+      let contentHeight = boxHeight;
+      let offsetX = videoPreview.offsetLeft;
+      let offsetY = videoPreview.offsetTop;
+      if (boxRatio > sourceRatio) {
+        contentWidth = boxHeight * sourceRatio;
+        offsetX += (boxWidth - contentWidth) / 2;
+      } else {
+        contentHeight = boxWidth / sourceRatio;
+        offsetY += (boxHeight - contentHeight) / 2;
+      }
+      videoTagLayer.querySelectorAll(".video-tag").forEach((tag) => {
+        const x = Math.min(1, Math.max(0, Number(tag.dataset.x)));
+        const y = Math.min(1, Math.max(0, Number(tag.dataset.y)));
+        tag.style.left = `${offsetX + x * contentWidth}px`;
+        tag.style.top = `${offsetY + y * contentHeight}px`;
+      });
+    }
+
+    async function selectDetectedObject(item) {
+      selectedObject = item;
+      renderObjects();
+      renderVideoTags();
+      generateButton.disabled = false;
+      const list = currentDetection && currentDetection.objects || [];
+      await drawAnnotated(matchedCanvas, currentDetection.frameImageUrl || imageDataUrl || pauseFrameDataUrl, list, item.id);
     }
 
     function drawDataUrl(canvas, url) {
@@ -528,7 +662,11 @@
     function renderReferences(selected) {
       refs.innerHTML = "";
       const generation = selected.generation || {};
-      const images = [...(generation.referenceImages || []), ...(generation.textureReferences || [])];
+      const images = [];
+      if (generation.sourceImageUrl) {
+        images.push({ type: "model_input_crop", url: generation.sourceImageUrl });
+      }
+      images.push(...(generation.referenceImages || []), ...(generation.textureReferences || []));
       for (const item of images) {
         if (!item.url) continue;
         const figure = document.createElement("figure");

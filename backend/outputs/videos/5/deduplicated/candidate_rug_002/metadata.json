@@ -1,0 +1,18 @@
+{
+  "id": "candidate_rug_002",
+  "label": "rug",
+  "name": "儿童游戏地垫",
+  "representativeFrameId": "5_000014",
+  "representativeObjectId": "obj_rug_003",
+  "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_rug_002/annotated.jpg",
+  "cropUrl": "/outputs/videos/5/deduplicated/candidate_rug_002/crop.jpg",
+  "maskUrl": "/outputs/videos/5/objects/5_000014_obj_rug_003_mask.png",
+  "bbox": [
+    443,
+    483,
+    666,
+    583
+  ],
+  "confidence": 0.9,
+  "duplicateCount": 2
+}

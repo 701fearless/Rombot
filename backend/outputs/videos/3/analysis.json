@@ -25,6 +25,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000001_obj_armchair_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000001_obj_armchair_001_mask.png",
+          "deduplicatedObjectId": "candidate_armchair_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_armchair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.85,
+            "heightM": 0.8,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "低矮宽大单人座，厚软靠背与座面，无扶手",
             "materials": [
@@ -83,6 +94,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000001_obj_rug_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000001_obj_rug_002_mask.png",
+          "deduplicatedObjectId": "candidate_rug_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_rug_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 1.1,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "圆形，边缘被家具部分遮挡",
             "materials": [
@@ -140,6 +162,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000001_obj_cabinet_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000001_obj_cabinet_003_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.45,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长方体矮柜，上层开放格下层双抽屉",
             "materials": [
@@ -208,6 +241,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000002_obj_chair_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000002_obj_chair_001_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.62,
+            "depthM": 0.6,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "弓形金属椅架，靠背与座面为平整方形",
             "materials": [
@@ -268,6 +312,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000002_obj_desk_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000002_obj_desk_002_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.5,
+            "depthM": 0.75,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "L型转角台面，下方带储物格与抽屉",
             "materials": [
@@ -327,6 +382,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000002_obj_cabinet_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000002_obj_cabinet_003_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.45,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "立式长方体，上层双抽屉下层开放格",
             "materials": [
@@ -394,6 +460,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000003_obj_cabinet_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000003_obj_cabinet_001_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.45,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "高窄立式，分上下多扇柜门，嵌入墙体凹位",
             "materials": [
@@ -450,6 +527,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000003_obj_desk_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000003_obj_desk_002_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.5,
+            "depthM": 0.75,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长方形桌面，下方带洞洞板储物区",
             "materials": [
@@ -508,6 +596,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000003_obj_bookshelf_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000003_obj_bookshelf_003_mask.png",
+          "deduplicatedObjectId": "candidate_bookshelf_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_bookshelf_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.35,
+            "depthM": 0.25,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "多层错落壁挂式，大小不一的木质搁板",
             "materials": [
@@ -574,6 +673,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000004_obj_cabinet_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000004_obj_cabinet_001_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.45,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "竖长嵌入式柜体，右侧单开门，内部分多层隔板",
             "materials": [
@@ -636,6 +746,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000004_obj_desk_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000004_obj_desk_002_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.5,
+            "depthM": 0.75,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长方形桌面，下方带洞洞板柜体",
             "materials": [
@@ -700,6 +821,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000004_obj_curtain_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000004_obj_curtain_003_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.05,
+            "heightM": 1.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "竖长垂坠形态，顶部有挂环",
             "materials": [
@@ -767,6 +899,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000005_obj_armchair_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000005_obj_armchair_001_mask.png",
+          "deduplicatedObjectId": "candidate_armchair_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_armchair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.85,
+            "heightM": 0.8,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "圆润弧形靠背，宽厚座面，整体饱满低矮",
             "materials": [
@@ -824,6 +967,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000005_obj_cabinet_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000005_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.45,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "高低错落柜体，上方吊柜下方地柜带洗手台",
             "materials": [
@@ -884,6 +1038,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000005_obj_cabinet_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000005_obj_cabinet_003_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.45,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "方正矮柜，单扇长虹玻璃门",
             "materials": [
@@ -951,6 +1116,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000006_obj_bed_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000006_obj_bed_001_mask.png",
+          "deduplicatedObjectId": "candidate_bed_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_bed_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.6,
+            "depthM": 2.0,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "低矮整板地台床体，配宽床头板，圆角床沿",
             "materials": [
@@ -1016,6 +1192,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000006_obj_pendant_light_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000006_obj_pendant_light_002_mask.png",
+          "deduplicatedObjectId": "candidate_pendant_light_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_pendant_light_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.55,
+            "depthM": 0.4,
+            "heightM": 0.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "双层不规则椭圆灯罩，细吊线悬挂",
             "materials": [
@@ -1077,6 +1264,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000006_obj_rug_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000006_obj_rug_003_mask.png",
+          "deduplicatedObjectId": "candidate_rug_002",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_rug_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.7,
+            "depthM": 1.7,
+            "heightM": 0.05,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长条形不规则边缘地毯，局部带彩色块",
             "materials": [
@@ -1145,6 +1343,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000007_obj_curtain_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000007_obj_curtain_001_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.05,
+            "heightM": 1.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "横向百叶褶皱，整面覆盖窗户",
             "materials": [
@@ -1199,6 +1408,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000007_obj_plant_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000007_obj_plant_002_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长茎舒展，掌状裂叶，黑圆花盆",
             "materials": [
@@ -1256,6 +1476,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000007_obj_plant_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000007_obj_plant_003_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "藤蔓垂挂，叶片茂密，棕陶花盆",
             "materials": [
@@ -1322,6 +1553,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000008_obj_sofa_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000008_obj_sofa_001_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.1,
+            "depthM": 1.0,
+            "heightM": 0.95,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "三人位方正造型，低矮扶手，细金属支脚",
             "materials": [
@@ -1385,6 +1627,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000008_obj_rug_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000008_obj_rug_002_mask.png",
+          "deduplicatedObjectId": "candidate_rug_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_rug_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 1.1,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长方形平铺，覆盖沙发前地面",
             "materials": [
@@ -1443,6 +1696,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000008_obj_cabinet_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000008_obj_cabinet_003_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.45,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "窄高立柜，上层玻璃门下层抽屉",
             "materials": [
@@ -1512,6 +1776,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000009_obj_bookshelf_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000009_obj_bookshelf_001_mask.png",
+          "deduplicatedObjectId": "candidate_bookshelf_002",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_bookshelf_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.2,
+            "depthM": 0.4,
+            "heightM": 1.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "三组并排落地柜体，多层层板，左侧带玻璃门和封闭柜门",
             "materials": [
@@ -1578,6 +1853,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000009_obj_chandelier_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000009_obj_chandelier_002_mask.png",
+          "deduplicatedObjectId": "candidate_chandelier_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_chandelier_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.8,
+            "depthM": 0.8,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "中心金属杆连接六组弯曲灯臂，球形灯罩",
             "materials": [
@@ -1639,6 +1925,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000009_obj_chair_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000009_obj_chair_003_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.62,
+            "depthM": 0.6,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "圆形座面，弧形靠背，四条圆柱腿",
             "materials": [
@@ -1704,6 +2001,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000010_obj_chair_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000010_obj_chair_001_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.62,
+            "depthM": 0.6,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "圆座面，弧形靠背，四条直圆柱腿",
             "materials": [
@@ -1762,6 +2070,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000010_obj_bookshelf_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000010_obj_bookshelf_002_mask.png",
+          "deduplicatedObjectId": "candidate_bookshelf_002",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_bookshelf_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.2,
+            "depthM": 0.4,
+            "heightM": 1.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "三组柜体组合，多格开放式层架",
             "materials": [
@@ -1821,6 +2140,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000010_obj_desk_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000010_obj_desk_003_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.5,
+            "depthM": 0.75,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长方形桌面，单立柱支撑底座",
             "materials": [
@@ -1880,6 +2210,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000010_obj_chandelier_004_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000010_obj_chandelier_004_mask.png",
+          "deduplicatedObjectId": "candidate_chandelier_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_chandelier_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.8,
+            "depthM": 0.8,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "中心吊杆，六组弯曲灯臂向外伸展",
             "materials": [
@@ -1948,6 +2289,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000011_obj_mirror_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000011_obj_mirror_001_mask.png",
+          "deduplicatedObjectId": "candidate_mirror_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_mirror_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.5,
+            "depthM": 0.35,
+            "heightM": 1.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "拱形顶部，长条形镜面，带滚轮支架",
             "materials": [
@@ -2008,6 +2360,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000011_obj_plant_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000011_obj_plant_002_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "直立茎干，大叶片向外舒展",
             "materials": [
@@ -2067,6 +2430,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000011_obj_cabinet_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000011_obj_cabinet_003_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.45,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "窄高长方体，三层翻斗抽屉",
             "materials": [
@@ -2132,6 +2506,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000012_obj_cabinet_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000012_obj_cabinet_001_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.45,
+            "heightM": 1.7,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "高柜造型，上层玻璃柜中层洞洞板下层柜门抽屉",
             "materials": [
@@ -2200,6 +2585,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000012_obj_plant_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000012_obj_plant_002_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "丛生叶片，心形带白纹，植株舒展",
             "materials": [
@@ -2259,6 +2655,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000012_obj_painting_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000012_obj_painting_003_mask.png",
+          "deduplicatedObjectId": "candidate_painting_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_painting_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.5,
+            "depthM": 0.05,
+            "heightM": 0.65,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "竖版长方形，深色细边框",
             "materials": [
@@ -2328,6 +2735,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000013_obj_bed_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000013_obj_bed_001_mask.png",
+          "deduplicatedObjectId": "candidate_bed_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_bed_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.6,
+            "depthM": 2.0,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "低矮长方床体，配厚被褥和两个枕头",
             "materials": [
@@ -2391,6 +2809,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000013_obj_curtain_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000013_obj_curtain_002_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.3,
+            "depthM": 0.05,
+            "heightM": 1.6,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "两幅长帘悬挂于窗户两侧，垂坠感强",
             "materials": [
@@ -2449,6 +2878,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000013_obj_desk_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000013_obj_desk_003_mask.png",
+          "deduplicatedObjectId": "candidate_desk_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_desk_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.5,
+            "depthM": 0.75,
+            "heightM": 0.78,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "窄长矩形台面，金属立杆支撑",
             "materials": [
@@ -2516,6 +2956,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000014_obj_floor_lamp_001_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000014_obj_floor_lamp_001_mask.png",
+          "deduplicatedObjectId": "candidate_floor_lamp_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_floor_lamp_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.45,
+            "depthM": 0.45,
+            "heightM": 1.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "半球形灯罩，细长直灯杆",
             "materials": [
@@ -2574,6 +3025,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000014_obj_armchair_002_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000014_obj_armchair_002_mask.png",
+          "deduplicatedObjectId": "candidate_armchair_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_armchair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.85,
+            "heightM": 0.8,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "方正矮款，靠背与座面一体方格软包",
             "materials": [
@@ -2632,6 +3094,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000014_obj_bed_003_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000014_obj_bed_003_mask.png",
+          "deduplicatedObjectId": "candidate_bed_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_bed_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.6,
+            "depthM": 2.0,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "仅可见床面，铺有带褶皱的被褥",
             "materials": [
@@ -2688,6 +3161,17 @@
           ],
           "cropUrl": "/outputs/videos/3/objects/3_000014_obj_plant_004_crop.jpg",
           "maskUrl": "/outputs/videos/3/objects/3_000014_obj_plant_004_mask.png",
+          "deduplicatedObjectId": "candidate_plant_001",
+          "deduplicatedCropUrl": "/outputs/videos/3/deduplicated/candidate_plant_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.9,
+            "depthM": 0.8,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "心形叶片，舒展枝条，圆柱形花盆",
             "materials": [
@@ -2751,7 +3235,16 @@
         1809
       ],
       "confidence": 0.96,
-      "duplicateCount": 3
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 0.9,
+        "depthM": 0.85,
+        "heightM": 0.8,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_rug_001",
@@ -2769,7 +3262,16 @@
         1916
       ],
       "confidence": 0.94,
-      "duplicateCount": 2
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 1.1,
+        "depthM": 1.1,
+        "heightM": 0.02,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_cabinet_001",
@@ -2787,7 +3289,16 @@
         1789
       ],
       "confidence": 0.98,
-      "duplicateCount": 9
+      "duplicateCount": 9,
+      "estimatedDimensions": {
+        "widthM": 1.3,
+        "depthM": 0.45,
+        "heightM": 1.7,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_chair_001",
@@ -2805,7 +3316,16 @@
         1916
       ],
       "confidence": 0.96,
-      "duplicateCount": 3
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 0.62,
+        "depthM": 0.6,
+        "heightM": 0.85,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_desk_001",
@@ -2823,7 +3343,16 @@
         1912
       ],
       "confidence": 0.94,
-      "duplicateCount": 5
+      "duplicateCount": 5,
+      "estimatedDimensions": {
+        "widthM": 1.5,
+        "depthM": 0.75,
+        "heightM": 0.78,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_bookshelf_001",
@@ -2841,7 +3370,16 @@
         1140
       ],
       "confidence": 0.85,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.35,
+        "depthM": 0.25,
+        "heightM": 1.0,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_curtain_001",
@@ -2859,7 +3397,16 @@
         1536
       ],
       "confidence": 0.94,
-      "duplicateCount": 3
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 1.3,
+        "depthM": 0.05,
+        "heightM": 1.6,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_bed_001",
@@ -2877,7 +3424,16 @@
         1820
       ],
       "confidence": 0.98,
-      "duplicateCount": 3
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 1.6,
+        "depthM": 2.0,
+        "heightM": 0.85,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_pendant_light_001",
@@ -2895,7 +3451,16 @@
         465
       ],
       "confidence": 0.96,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.55,
+        "depthM": 0.4,
+        "heightM": 0.9,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_rug_002",
@@ -2913,7 +3478,16 @@
         1918
       ],
       "confidence": 0.94,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.7,
+        "depthM": 1.7,
+        "heightM": 0.05,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_plant_001",
@@ -2931,7 +3505,16 @@
         1878
       ],
       "confidence": 0.92,
-      "duplicateCount": 5
+      "duplicateCount": 5,
+      "estimatedDimensions": {
+        "widthM": 0.9,
+        "depthM": 0.8,
+        "heightM": 1.0,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_sofa_001",
@@ -2949,7 +3532,16 @@
         1559
       ],
       "confidence": 0.96,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 2.1,
+        "depthM": 1.0,
+        "heightM": 0.95,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_bookshelf_002",
@@ -2967,7 +3559,16 @@
         1501
       ],
       "confidence": 0.98,
-      "duplicateCount": 2
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 2.2,
+        "depthM": 0.4,
+        "heightM": 1.9,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_chandelier_001",
@@ -2985,7 +3586,16 @@
         551
       ],
       "confidence": 0.93,
-      "duplicateCount": 2
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 0.8,
+        "depthM": 0.8,
+        "heightM": 0.85,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_mirror_001",
@@ -3003,7 +3613,16 @@
         1820
       ],
       "confidence": 0.96,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.5,
+        "depthM": 0.35,
+        "heightM": 1.6,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_painting_001",
@@ -3021,7 +3640,16 @@
         480
       ],
       "confidence": 0.95,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.5,
+        "depthM": 0.05,
+        "heightM": 0.65,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_floor_lamp_001",
@@ -3039,7 +3667,16 @@
         925
       ],
       "confidence": 0.97,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.45,
+        "depthM": 0.45,
+        "heightM": 1.5,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     }
   ],
   "dedupeWarning": null

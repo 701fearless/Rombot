@@ -1,6 +1,16 @@
 from pydantic import BaseModel, Field
 
 
+class EstimatedDimensions(BaseModel):
+    widthM: float = Field(gt=0, le=20)
+    depthM: float = Field(gt=0, le=20)
+    heightM: float = Field(gt=0, le=20)
+    unit: str = "m"
+    source: str = "ark_category_prior"
+    isMeasured: bool = False
+    selectionRule: str = "range_min_plus_0.10m_capped_at_max"
+
+
 class DetectedObject(BaseModel):
     id: str
     label: str
@@ -10,6 +20,9 @@ class DetectedObject(BaseModel):
     tagPosition: list[float] = Field(min_length=2, max_length=2)
     cropUrl: str | None = None
     maskUrl: str | None = None
+    deduplicatedObjectId: str | None = None
+    deduplicatedCropUrl: str | None = None
+    estimatedDimensions: EstimatedDimensions | None = None
     visualFeatures: dict = Field(default_factory=dict)
     generationHints: dict = Field(default_factory=dict)
 
@@ -18,6 +31,7 @@ class DetectRequest(BaseModel):
     videoId: str
     time: float = Field(ge=0)
     frameImage: str | None = None
+    frameHash: str | None = Field(default=None, pattern=r"^[0-9a-fA-F]{16}$")
 
 
 class DetectResponse(BaseModel):
@@ -49,6 +63,7 @@ class SelectedAsset(BaseModel):
     bbox: list[int] = Field(min_length=4, max_length=4)
     cropUrl: str | None = None
     maskUrl: str | None = None
+    estimatedDimensions: EstimatedDimensions | None = None
     glbUrl: str
 
 
@@ -79,6 +94,7 @@ class FurnitureGenerationBrief(BaseModel):
 
 class FurnitureGenerationTrace(BaseModel):
     briefUrl: str | None = None
+    sourceImageUrl: str | None = None
     referenceImages: list[GenerationArtifact] = Field(default_factory=list)
     textureReferences: list[GenerationArtifact] = Field(default_factory=list)
     provider: str
@@ -139,6 +155,7 @@ class DeduplicatedObject(BaseModel):
     bbox: list[int] = Field(min_length=4, max_length=4)
     confidence: float = Field(ge=0, le=1)
     duplicateCount: int = Field(ge=1)
+    estimatedDimensions: EstimatedDimensions | None = None
 
 
 class VideoAnalysis(BaseModel):

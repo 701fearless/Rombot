@@ -1,0 +1,81 @@
+{
+  "objectId": "candidate_sofa_001",
+  "category": "sofa",
+  "observed": {
+    "geometry": "宽大多座沙发，厚软扶手靠背，低矮座面",
+    "materials": [
+      "毛绒织物"
+    ],
+    "colors": [
+      "米白色"
+    ],
+    "style": "侘寂风休闲沙发",
+    "texturePattern": "短绒颗粒质感",
+    "visibleComponents": [
+      "座垫",
+      "靠背垫",
+      "扶手垫",
+      "装饰腰枕"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "整理对齐靠枕，移除多余零散抱枕"
+    ],
+    "complexityReduction": [
+      "简化多余抱枕，保留整体软包轮廓"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的右侧沙发部分"
+    ],
+    "patternCompletion": "延续整体短绒质感，保持均匀纹理"
+  },
+  "symmetryPrior": {
+    "type": "bilateral",
+    "completionRule": "按可见左侧结构对称补全右侧"
+  },
+  "textureFeatures": {
+    "materials": [
+      "毛绒织物"
+    ],
+    "colors": [
+      "米白色"
+    ],
+    "texturePattern": "短绒颗粒质感"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "整理对齐靠枕，移除多余零散抱枕"
+    ],
+    "complexityReduction": [
+      "简化多余抱枕，保留整体软包轮廓"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的右侧沙发部分"
+    ],
+    "preserve": [
+      "米白毛绒面料，软蓬休闲造型"
+    ],
+    "remove": [
+      "装饰腰枕，零散小抱枕"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 1.9,
+      "depthM": 1.0,
+      "heightM": 0.85,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated sofa as a regular household product. Visible geometry and style: 宽大多座沙发，厚软扶手靠背，低矮座面; 侘寂风休闲沙发. Use materials ['毛绒织物'] and colors ['米白色']. Preserve ['米白毛绒面料，软蓬休闲造型']. Regularize temporary disorder with ['整理对齐靠枕，移除多余零散抱枕']. Simplify modeling complexity with ['简化多余抱枕，保留整体软包轮廓']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'bilateral', 'completionRule': '按可见左侧结构对称补全右侧'} and ['补全被遮挡的右侧沙发部分']. Texture rule: 短绒颗粒质感; 延续整体短绒质感，保持均匀纹理. Target plausible real-world dimensions are approximately 1.90 m wide, 1.00 m deep and 0.85 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['装饰腰枕，零散小抱枕'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.95,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

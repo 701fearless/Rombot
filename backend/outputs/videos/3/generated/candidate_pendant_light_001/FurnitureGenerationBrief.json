@@ -1,0 +1,86 @@
+{
+  "objectId": "candidate_pendant_light_001",
+  "category": "pendant_light",
+  "observed": {
+    "geometry": "双层不规则椭圆灯罩，细吊线悬挂",
+    "materials": [
+      "布艺",
+      "金属"
+    ],
+    "colors": [
+      "米黄",
+      "黑色"
+    ],
+    "style": "侘寂风布艺吊灯",
+    "texturePattern": "布艺柔光肌理，黑边描边",
+    "visibleComponents": [
+      "吊线",
+      "上层灯罩",
+      "下层灯罩"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "整理灯罩形态，保持边缘流畅"
+    ],
+    "complexityReduction": [
+      "简化灯罩曲面细节，保留整体轮廓"
+    ],
+    "occlusionCompletion": [
+      "补全被光线遮挡的灯罩内侧结构"
+    ],
+    "patternCompletion": "延续黑边描边和布艺肌理"
+  },
+  "symmetryPrior": {
+    "type": "axial",
+    "completionRule": "沿吊线中心轴对称完成灯罩造型"
+  },
+  "textureFeatures": {
+    "materials": [
+      "布艺",
+      "金属"
+    ],
+    "colors": [
+      "米黄",
+      "黑色"
+    ],
+    "texturePattern": "布艺柔光肌理，黑边描边"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "整理灯罩形态，保持边缘流畅"
+    ],
+    "complexityReduction": [
+      "简化灯罩曲面细节，保留整体轮廓"
+    ],
+    "occlusionCompletion": [
+      "补全被光线遮挡的灯罩内侧结构"
+    ],
+    "preserve": [
+      "双层飞碟造型",
+      "黑边米黄灯罩",
+      "细吊线"
+    ],
+    "remove": [
+      "内部发光灯泡的高亮眩光"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 0.55,
+      "depthM": 0.4,
+      "heightM": 0.9,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated pendant_light as a regular household product. Visible geometry and style: 双层不规则椭圆灯罩，细吊线悬挂; 侘寂风布艺吊灯. Use materials ['布艺', '金属'] and colors ['米黄', '黑色']. Preserve ['双层飞碟造型', '黑边米黄灯罩', '细吊线']. Regularize temporary disorder with ['整理灯罩形态，保持边缘流畅']. Simplify modeling complexity with ['简化灯罩曲面细节，保留整体轮廓']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'axial', 'completionRule': '沿吊线中心轴对称完成灯罩造型'} and ['补全被光线遮挡的灯罩内侧结构']. Texture rule: 布艺柔光肌理，黑边描边; 延续黑边描边和布艺肌理. Target plausible real-world dimensions are approximately 0.55 m wide, 0.40 m deep and 0.90 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['内部发光灯泡的高亮眩光'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.96,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

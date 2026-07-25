@@ -1,0 +1,91 @@
+{
+  "objectId": "candidate_chandelier_001",
+  "category": "chandelier",
+  "observed": {
+    "geometry": "Ornate multi-arm chandelier with hanging crystal drops",
+    "materials": [
+      "metal",
+      "crystal",
+      "glass"
+    ],
+    "colors": [
+      "black",
+      "clear",
+      "white"
+    ],
+    "style": "Classic ornate crystal chandelier",
+    "texturePattern": "Smooth metal, faceted crystal drops",
+    "visibleComponents": [
+      "central body",
+      "curved arms",
+      "hanging crystals",
+      "ceiling mount"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "Remove ceiling light glow overlay"
+    ],
+    "complexityReduction": [
+      "Simplify small crystal pendants to uniform drops"
+    ],
+    "occlusionCompletion": [
+      "Complete hidden rear arms by symmetry"
+    ],
+    "patternCompletion": "Continue crystal drop pattern evenly on all arms"
+  },
+  "symmetryPrior": {
+    "type": "radial",
+    "completionRule": "Repeat arm and crystal pattern around center"
+  },
+  "textureFeatures": {
+    "materials": [
+      "metal",
+      "crystal",
+      "glass"
+    ],
+    "colors": [
+      "black",
+      "clear",
+      "white"
+    ],
+    "texturePattern": "Smooth metal, faceted crystal drops"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "Remove ceiling light glow overlay"
+    ],
+    "complexityReduction": [
+      "Simplify small crystal pendants to uniform drops"
+    ],
+    "occlusionCompletion": [
+      "Complete hidden rear arms by symmetry"
+    ],
+    "preserve": [
+      "ornate metal frame",
+      "hanging crystal elements",
+      "multi-arm shape"
+    ],
+    "remove": [
+      "ceiling light bloom effect"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 0.8,
+      "depthM": 0.8,
+      "heightM": 1.0,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated chandelier as a regular household product. Visible geometry and style: Ornate multi-arm chandelier with hanging crystal drops; Classic ornate crystal chandelier. Use materials ['metal', 'crystal', 'glass'] and colors ['black', 'clear', 'white']. Preserve ['ornate metal frame', 'hanging crystal elements', 'multi-arm shape']. Regularize temporary disorder with ['Remove ceiling light glow overlay']. Simplify modeling complexity with ['Simplify small crystal pendants to uniform drops']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'radial', 'completionRule': 'Repeat arm and crystal pattern around center'} and ['Complete hidden rear arms by symmetry']. Texture rule: Smooth metal, faceted crystal drops; Continue crystal drop pattern evenly on all arms. Target plausible real-world dimensions are approximately 0.80 m wide, 0.80 m deep and 1.00 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['ceiling light bloom effect'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.98,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

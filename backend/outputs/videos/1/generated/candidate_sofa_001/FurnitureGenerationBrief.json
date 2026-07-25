@@ -1,0 +1,80 @@
+{
+  "objectId": "candidate_sofa_001",
+  "category": "sofa",
+  "observed": {
+    "geometry": "L型转角结构，低矮宽厚座靠，短脚支撑",
+    "materials": [
+      "绒面布艺"
+    ],
+    "colors": [
+      "深灰色"
+    ],
+    "style": "现代简约",
+    "texturePattern": "细腻绒面肌理，无明显印花",
+    "visibleComponents": [
+      "贵妃榻",
+      "主沙发座",
+      "靠垫抱枕"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "对齐所有抱枕靠垫，整理座面平整度"
+    ],
+    "complexityReduction": [
+      "减少抱枕数量，简化绒面细碎纹理"
+    ],
+    "occlusionCompletion": [
+      "补充被遮挡的沙发底部支脚"
+    ],
+    "patternCompletion": "延续整体绒面材质，保持均匀质感"
+  },
+  "symmetryPrior": {
+    "type": "none",
+    "completionRule": "按L型转角结构延伸完整座靠模块"
+  },
+  "textureFeatures": {
+    "materials": [
+      "绒面布艺"
+    ],
+    "colors": [
+      "深灰色"
+    ],
+    "texturePattern": "细腻绒面肌理，无明显印花"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "对齐所有抱枕靠垫，整理座面平整度"
+    ],
+    "complexityReduction": [
+      "减少抱枕数量，简化绒面细碎纹理"
+    ],
+    "occlusionCompletion": [
+      "补充被遮挡的沙发底部支脚"
+    ],
+    "preserve": [
+      "L型转角结构，深灰绒面外观"
+    ],
+    "remove": [
+      "多余零散抱枕"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 2.9,
+      "depthM": 1.8,
+      "heightM": 0.85,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated sofa as a regular household product. Visible geometry and style: L型转角结构，低矮宽厚座靠，短脚支撑; 现代简约. Use materials ['绒面布艺'] and colors ['深灰色']. Preserve ['L型转角结构，深灰绒面外观']. Regularize temporary disorder with ['对齐所有抱枕靠垫，整理座面平整度']. Simplify modeling complexity with ['减少抱枕数量，简化绒面细碎纹理']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'none', 'completionRule': '按L型转角结构延伸完整座靠模块'} and ['补充被遮挡的沙发底部支脚']. Texture rule: 细腻绒面肌理，无明显印花; 延续整体绒面材质，保持均匀质感. Target plausible real-world dimensions are approximately 2.90 m wide, 1.80 m deep and 0.85 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['多余零散抱枕'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.96,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

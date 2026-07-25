@@ -1,0 +1,25 @@
+{
+  "videoId": "2",
+  "candidateId": "candidate_dining_table_001",
+  "label": "dining table",
+  "name": "岛台餐桌",
+  "sourceCropUrl": "/outputs/videos/2/deduplicated/candidate_dining_table_001/crop.jpg",
+  "referenceFile": "reference_oblique_3quarter.png",
+  "referenceView": "45-degree front-left oblique",
+  "referenceSize": [
+    2048,
+    2048
+  ],
+  "estimatedDimensions": {
+    "widthM": 1.9,
+    "depthM": 0.9,
+    "heightM": 0.95,
+    "unit": "m",
+    "source": "ark_category_prior",
+    "isMeasured": false,
+    "selectionRule": "range_min_plus_0.10m_capped_at_max"
+  },
+  "arkImageModel": "doubao-seedream-5-0-lite-260128",
+  "arkImageSize": "2048x2048",
+  "generatedAt": "2026-07-25T05:54:26.595950+00:00"
+}

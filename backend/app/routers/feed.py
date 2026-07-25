@@ -192,7 +192,12 @@ def save_frame_image(frame_id: str, frame_image: str | None) -> Path | None:
 
 @router.post("/detect", response_model=DetectResponse)
 async def detect(request: DetectRequest) -> DetectResponse:
-    preprocessed_response = detect_response_for_time(request.videoId, request.time, request.frameImage)
+    preprocessed_response = detect_response_for_time(
+        request.videoId,
+        request.time,
+        request.frameImage,
+        request.frameHash,
+    )
     if preprocessed_response:
         return preprocessed_response
 
@@ -265,19 +270,30 @@ async def select_object(request: SelectObjectRequest) -> SelectObjectResponse:
             segmentation_mask_url = segmentation.maskUrl
             segmentation_crop_image = segmentation.cropImage
 
+    generation_source_url = (
+        detected_object.deduplicatedCropUrl
+        or request.imageUrl
+        or request.cropImage
+        or segmentation_crop_image
+        or segmentation_crop_url
+    )
     model_provider = get_model3d_provider()
     try:
         response = await model_provider.generate_asset(
             frame_id=request.frameId,
             detected_object=detected_object,
-            image_url=request.imageUrl or request.cropImage or segmentation_crop_image or segmentation_crop_url,
+            image_url=generation_source_url,
         )
     except httpx.HTTPStatusError as exc:
         detail = exc.response.text[:1200] if exc.response is not None else str(exc)
         status = exc.response.status_code if exc.response is not None else "unknown"
         raise HTTPException(status_code=502, detail=f"3D provider HTTP {status}: {detail}") from exc
-    response.object.cropUrl = segmentation_crop_url
+    except ValueError as exc:
+        raise HTTPException(status_code=502, detail=f"3D generation input/output validation failed: {exc}") from exc
+    response.object.cropUrl = generation_source_url
     response.object.maskUrl = segmentation_mask_url
+    if response.generation is not None:
+        response.generation.sourceImageUrl = generation_source_url
     return response
 
 

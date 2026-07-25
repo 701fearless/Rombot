@@ -1,0 +1,89 @@
+{
+  "objectId": "candidate_rug_002",
+  "category": "rug",
+  "observed": {
+    "geometry": "大面积长方形，边缘平直，铺设于地面",
+    "materials": [
+      "短绒织物"
+    ],
+    "colors": [
+      "米白色",
+      "黑色"
+    ],
+    "style": "现代简约风",
+    "texturePattern": "米白底分布不规则黑色小斑点",
+    "visibleComponents": [
+      "毯面主体",
+      "左侧边缘"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "移除毯面上的书本杂物",
+      "抚平毯面褶皱"
+    ],
+    "complexityReduction": [
+      "简化斑点密度与数量",
+      "减少绒面纹理细节"
+    ],
+    "occlusionCompletion": [
+      "补全被家具遮挡的毯面区域",
+      "延续斑点图案"
+    ],
+    "patternCompletion": "延续不规则黑色小斑点，保持分布密度均匀"
+  },
+  "symmetryPrior": {
+    "type": "none",
+    "completionRule": "保持斑点随机分布的整体视觉效果"
+  },
+  "textureFeatures": {
+    "materials": [
+      "短绒织物"
+    ],
+    "colors": [
+      "米白色",
+      "黑色"
+    ],
+    "texturePattern": "米白底分布不规则黑色小斑点"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "移除毯面上的书本杂物",
+      "抚平毯面褶皱"
+    ],
+    "complexityReduction": [
+      "简化斑点密度与数量",
+      "减少绒面纹理细节"
+    ],
+    "occlusionCompletion": [
+      "补全被家具遮挡的毯面区域",
+      "延续斑点图案"
+    ],
+    "preserve": [
+      "米白底黑斑点配色",
+      "短绒质感",
+      "整体尺寸比例"
+    ],
+    "remove": [
+      "上面的书本、茶几遮挡部分的杂物"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 2.1,
+      "depthM": 2.6,
+      "heightM": 0.02,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated rug as a regular household product. Visible geometry and style: 大面积长方形，边缘平直，铺设于地面; 现代简约风. Use materials ['短绒织物'] and colors ['米白色', '黑色']. Preserve ['米白底黑斑点配色', '短绒质感', '整体尺寸比例']. Regularize temporary disorder with ['移除毯面上的书本杂物', '抚平毯面褶皱']. Simplify modeling complexity with ['简化斑点密度与数量', '减少绒面纹理细节']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'none', 'completionRule': '保持斑点随机分布的整体视觉效果'} and ['补全被家具遮挡的毯面区域', '延续斑点图案']. Texture rule: 米白底分布不规则黑色小斑点; 延续不规则黑色小斑点，保持分布密度均匀. Target plausible real-world dimensions are approximately 2.10 m wide, 2.60 m deep and 0.02 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['上面的书本、茶几遮挡部分的杂物'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.92,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

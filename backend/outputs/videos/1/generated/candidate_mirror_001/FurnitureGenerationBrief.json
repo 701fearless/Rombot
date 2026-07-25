@@ -1,0 +1,89 @@
+{
+  "objectId": "candidate_mirror_001",
+  "category": "mirror",
+  "observed": {
+    "geometry": "椭圆镜面，带支架，整体修长",
+    "materials": [
+      "实木",
+      "镜面玻璃"
+    ],
+    "colors": [
+      "暖木色",
+      "银灰色"
+    ],
+    "style": "复古美式",
+    "texturePattern": "光滑实木边框纹理",
+    "visibleComponents": [
+      "椭圆镜面",
+      "实木边框",
+      "三脚支架"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "擦拭镜面保持洁净",
+      "摆正支架位置"
+    ],
+    "complexityReduction": [
+      "简化支架雕花细节",
+      "去除镜面反射杂景"
+    ],
+    "occlusionCompletion": [
+      "补全支架被遮挡的支脚"
+    ],
+    "patternCompletion": "延续实木边框纹理至整圈"
+  },
+  "symmetryPrior": {
+    "type": "bilateral",
+    "completionRule": "沿镜面竖中线对称补全边框和支架"
+  },
+  "textureFeatures": {
+    "materials": [
+      "实木",
+      "镜面玻璃"
+    ],
+    "colors": [
+      "暖木色",
+      "银灰色"
+    ],
+    "texturePattern": "光滑实木边框纹理"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "擦拭镜面保持洁净",
+      "摆正支架位置"
+    ],
+    "complexityReduction": [
+      "简化支架雕花细节",
+      "去除镜面反射杂景"
+    ],
+    "occlusionCompletion": [
+      "补全支架被遮挡的支脚"
+    ],
+    "preserve": [
+      "椭圆镜面造型",
+      "暖木色实木边框支架"
+    ],
+    "remove": [
+      "镜面内的环境反射影像"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 0.55,
+      "depthM": 0.35,
+      "heightM": 1.6,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated mirror as a regular household product. Visible geometry and style: 椭圆镜面，带支架，整体修长; 复古美式. Use materials ['实木', '镜面玻璃'] and colors ['暖木色', '银灰色']. Preserve ['椭圆镜面造型', '暖木色实木边框支架']. Regularize temporary disorder with ['擦拭镜面保持洁净', '摆正支架位置']. Simplify modeling complexity with ['简化支架雕花细节', '去除镜面反射杂景']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'bilateral', 'completionRule': '沿镜面竖中线对称补全边框和支架'} and ['补全支架被遮挡的支脚']. Texture rule: 光滑实木边框纹理; 延续实木边框纹理至整圈. Target plausible real-world dimensions are approximately 0.55 m wide, 0.35 m deep and 1.60 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['镜面内的环境反射影像'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.93,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

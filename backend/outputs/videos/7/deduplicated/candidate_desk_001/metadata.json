@@ -1,0 +1,19 @@
+{
+  "id": "candidate_desk_001",
+  "label": "desk",
+  "name": "书桌",
+  "representativeFrameId": "7_000008",
+  "representativeObjectId": "obj_desk_002",
+  "annotatedImageUrl": "/outputs/videos/7/deduplicated/candidate_desk_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/7/deduplicated/candidate_desk_001/crop.jpg",
+  "maskUrl": "/outputs/videos/7/objects/7_000008_obj_desk_002_mask.png",
+  "bbox": [
+    166,
+    1275,
+    1078,
+    1916
+  ],
+  "confidence": 0.96,
+  "duplicateCount": 3,
+  "estimatedDimensions": null
+}

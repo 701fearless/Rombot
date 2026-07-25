@@ -87,6 +87,10 @@ class VideoDeduplicationTest(unittest.TestCase):
             self.assertEqual(len(candidates), 1)
             self.assertEqual(candidates[0].duplicateCount, 2)
             self.assertTrue((root / "deduplicated" / candidates[0].id / "annotated.jpg").exists())
+            for frame in frames:
+                detected = frame.objects[0]
+                self.assertEqual(detected.deduplicatedObjectId, candidates[0].id)
+                self.assertEqual(detected.deduplicatedCropUrl, candidates[0].cropUrl)
 
     def test_different_visuals_or_labels_are_not_merged(self) -> None:
         with self._test_directory() as root:

@@ -69,6 +69,57 @@ class PauseFrameMatchingTest(unittest.TestCase):
             self.assertIsNotNone(selected)
             self.assertEqual(selected.frameId, "following")
 
+    def test_pause_hash_selects_more_similar_following_frame_without_image_upload(self) -> None:
+        with self._test_directory() as root:
+            previous_path = root / "previous.jpg"
+            following_path = root / "following.jpg"
+            self._pattern(previous_path)
+            self._pattern(following_path, reverse=True)
+            following_hash = difference_hash_path(following_path)
+            analysis = VideoAnalysis(
+                videoId="video",
+                status="succeeded",
+                sampleIntervalSec=10,
+                frames=[
+                    VideoAnalysisFrame(
+                        frameId="previous",
+                        time=10,
+                        frameImageUrl="/outputs/previous.jpg",
+                        objects=[],
+                        perceptualHash=difference_hash_path(previous_path),
+                    ),
+                    VideoAnalysisFrame(
+                        frameId="following",
+                        time=20,
+                        frameImageUrl="/outputs/following.jpg",
+                        objects=[],
+                        perceptualHash=following_hash,
+                    ),
+                ],
+            )
+
+            with patch("app.services.video_preprocess.analysis_store.read_analysis", return_value=analysis):
+                selected = nearest_frame("video", 14, pause_frame_hash=following_hash)
+
+            self.assertIsNotNone(selected)
+            self.assertEqual(selected.frameId, "following")
+
+    def test_invalid_hash_falls_back_to_nearest_time(self) -> None:
+        analysis = VideoAnalysis(
+            videoId="video",
+            status="succeeded",
+            sampleIntervalSec=10,
+            frames=[
+                VideoAnalysisFrame(frameId="previous", time=10, frameImageUrl="/outputs/previous.jpg", objects=[]),
+                VideoAnalysisFrame(frameId="following", time=20, frameImageUrl="/outputs/following.jpg", objects=[]),
+            ],
+        )
+        with patch("app.services.video_preprocess.analysis_store.read_analysis", return_value=analysis):
+            selected = nearest_frame("video", 12, pause_frame_hash="not-a-hash")
+
+        self.assertIsNotNone(selected)
+        self.assertEqual(selected.frameId, "previous")
+
     def test_equal_similarity_and_time_prefers_previous_frame(self) -> None:
         with self._test_directory() as root:
             image_path = root / "same.jpg"

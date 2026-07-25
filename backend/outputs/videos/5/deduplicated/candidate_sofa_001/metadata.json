@@ -1,0 +1,18 @@
+{
+  "id": "candidate_sofa_001",
+  "label": "sofa",
+  "name": "模块组合沙发",
+  "representativeFrameId": "5_000004",
+  "representativeObjectId": "obj_sofa_001",
+  "annotatedImageUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/5/deduplicated/candidate_sofa_001/crop.jpg",
+  "maskUrl": "/outputs/videos/5/objects/5_000004_obj_sofa_001_mask.png",
+  "bbox": [
+    176,
+    509,
+    717,
+    739
+  ],
+  "confidence": 0.96,
+  "duplicateCount": 9
+}

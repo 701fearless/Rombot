@@ -1,0 +1,85 @@
+{
+  "objectId": "candidate_pendant_light_001",
+  "category": "pendant_light",
+  "observed": {
+    "geometry": "长条形轨道配球形编织灯罩，吊线细长",
+    "materials": [
+      "金属轨道",
+      "编织灯罩",
+      "金属吊线"
+    ],
+    "colors": [
+      "黑色",
+      "米黄色"
+    ],
+    "style": "日式简约",
+    "texturePattern": "灯罩有竖向编织纹理",
+    "visibleComponents": [
+      "轨道",
+      "吊线",
+      "球形灯罩"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "保持轨道和灯罩整洁无杂物"
+    ],
+    "complexityReduction": [
+      "简化编织纹理为规则竖向条纹"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的灯罩下半部分"
+    ],
+    "patternCompletion": "延续竖向编织纹理至完整灯罩"
+  },
+  "symmetryPrior": {
+    "type": "axial",
+    "completionRule": "灯罩沿中心吊线轴对称"
+  },
+  "textureFeatures": {
+    "materials": [
+      "金属轨道",
+      "编织灯罩",
+      "金属吊线"
+    ],
+    "colors": [
+      "黑色",
+      "米黄色"
+    ],
+    "texturePattern": "灯罩有竖向编织纹理"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "保持轨道和灯罩整洁无杂物"
+    ],
+    "complexityReduction": [
+      "简化编织纹理为规则竖向条纹"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的灯罩下半部分"
+    ],
+    "preserve": [
+      "轨道可移动结构",
+      "编织球形灯罩"
+    ],
+    "remove": [],
+    "physicalDimensionsMeters": {
+      "widthM": 1.0,
+      "depthM": 0.45,
+      "heightM": 1.3,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated pendant_light as a regular household product. Visible geometry and style: 长条形轨道配球形编织灯罩，吊线细长; 日式简约. Use materials ['金属轨道', '编织灯罩', '金属吊线'] and colors ['黑色', '米黄色']. Preserve ['轨道可移动结构', '编织球形灯罩']. Regularize temporary disorder with ['保持轨道和灯罩整洁无杂物']. Simplify modeling complexity with ['简化编织纹理为规则竖向条纹']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'axial', 'completionRule': '灯罩沿中心吊线轴对称'} and ['补全被遮挡的灯罩下半部分']. Texture rule: 灯罩有竖向编织纹理; 延续竖向编织纹理至完整灯罩. Target plausible real-world dimensions are approximately 1.00 m wide, 0.45 m deep and 1.30 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, [], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.98,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

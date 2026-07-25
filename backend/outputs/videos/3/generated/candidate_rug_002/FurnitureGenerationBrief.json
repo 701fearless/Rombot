@@ -1,0 +1,85 @@
+{
+  "objectId": "candidate_rug_002",
+  "category": "rug",
+  "observed": {
+    "geometry": "长条形不规则边缘地毯，局部带彩色块",
+    "materials": [
+      "毛绒织物"
+    ],
+    "colors": [
+      "黑色",
+      "白色",
+      "黄蓝绿撞色"
+    ],
+    "style": "复古棋盘格毛绒地毯",
+    "texturePattern": "黑白棋盘格，局部彩色点缀",
+    "visibleComponents": [
+      "长毛绒毯面",
+      "彩色装饰块"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "铺平毯面，整理卷曲边缘"
+    ],
+    "complexityReduction": [
+      "简化毛绒细碎纹理，保留整体格纹"
+    ],
+    "occlusionCompletion": [
+      "补全画面外的毯身部分"
+    ],
+    "patternCompletion": "延续黑白棋盘格规律，保留彩色块位置"
+  },
+  "symmetryPrior": {
+    "type": "repeated_modules",
+    "completionRule": "按棋盘格单元重复延伸毯面图案"
+  },
+  "textureFeatures": {
+    "materials": [
+      "毛绒织物"
+    ],
+    "colors": [
+      "黑色",
+      "白色",
+      "黄蓝绿撞色"
+    ],
+    "texturePattern": "黑白棋盘格，局部彩色点缀"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "铺平毯面，整理卷曲边缘"
+    ],
+    "complexityReduction": [
+      "简化毛绒细碎纹理，保留整体格纹"
+    ],
+    "occlusionCompletion": [
+      "补全画面外的毯身部分"
+    ],
+    "preserve": [
+      "黑白棋盘格图案",
+      "毛绒质感",
+      "撞色装饰块"
+    ],
+    "remove": [
+      "边缘轻微褶皱"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 0.7,
+      "depthM": 1.7,
+      "heightM": 0.05,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated rug as a regular household product. Visible geometry and style: 长条形不规则边缘地毯，局部带彩色块; 复古棋盘格毛绒地毯. Use materials ['毛绒织物'] and colors ['黑色', '白色', '黄蓝绿撞色']. Preserve ['黑白棋盘格图案', '毛绒质感', '撞色装饰块']. Regularize temporary disorder with ['铺平毯面，整理卷曲边缘']. Simplify modeling complexity with ['简化毛绒细碎纹理，保留整体格纹']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'repeated_modules', 'completionRule': '按棋盘格单元重复延伸毯面图案'} and ['补全画面外的毯身部分']. Texture rule: 黑白棋盘格，局部彩色点缀; 延续黑白棋盘格规律，保留彩色块位置. Target plausible real-world dimensions are approximately 0.70 m wide, 1.70 m deep and 0.05 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['边缘轻微褶皱'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.94,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

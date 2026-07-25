@@ -86,7 +86,11 @@ class FeatureMeshyModel3DProvider(Model3DProvider):
         reference_refs = await self._create_reference_views(brief, work_dir, source_image)
 
         image_inputs = [source_image]
-        image_inputs.extend(file_to_data_url(Path(ref.path)) for ref in reference_refs if ref.path)
+        for ref in reference_refs:
+            if ref.path and Path(ref.path).exists():
+                image_inputs.append(file_to_data_url(Path(ref.path)))
+            elif ref.url:
+                image_inputs.append(ref.url)
         image_inputs = image_inputs[:4]
 
         task_id = await self._create_3d_task(image_inputs=image_inputs, brief=brief)
@@ -105,12 +109,13 @@ class FeatureMeshyModel3DProvider(Model3DProvider):
 
         generation = FurnitureGenerationTrace(
             briefUrl=path_to_output_url(brief_path),
+            sourceImageUrl=image_url,
             referenceImages=reference_refs,
             textureReferences=texture_refs,
             provider=self.provider_name,
             notes=[
                 "Furniture geometry is fully generated from feature brief and reference images.",
-                "Scanned OBB should remain the source of truth for scale, placement, and collision.",
+                "estimatedDimensions provides the initial metric import scale; the user may adjust it later.",
                 f"3D task metadata: {path_to_output_url(task_path)}",
                 f"3D result metadata: {path_to_output_url(result_path)}",
                 f"Remote GLB source: {remote_glb_url}" if remote_glb_url else "No remote GLB URL found; using fallback.",
@@ -127,11 +132,12 @@ class FeatureMeshyModel3DProvider(Model3DProvider):
                 bbox=detected_object.bbox,
                 cropUrl=image_url,
                 maskUrl=path_to_output_url(frame_output_dir(frame_id) / f"{detected_object.id}_mask.png"),
+                estimatedDimensions=detected_object.estimatedDimensions,
                 glbUrl=glb_url,
             ),
             analysis=ObjectAnalysis(
                 summary="已按“特征捕捉 -> 联想补全 -> 完整 3D 生成”链路创建家具资产。",
-                placementAdvice="精细模型用于视觉替换；尺寸、位置、朝向和碰撞边界仍建议使用扫描 OBB 或用户输入尺寸。",
+                placementAdvice="导入空间时先按 estimatedDimensions 设置宽、深、高；用户后续可按观感继续缩放。",
             ),
             generation=generation,
         )

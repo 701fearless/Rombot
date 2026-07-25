@@ -25,6 +25,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000001_obj_chair_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000001_obj_chair_001_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.52,
+            "depthM": 0.58,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Curved solid wood backrest, partial seat visible",
             "materials": [
@@ -82,6 +93,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000001_obj_coffee_table_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000001_obj_coffee_table_002_mask.png",
+          "deduplicatedObjectId": "candidate_coffee_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_coffee_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.6,
+            "heightM": 0.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Rectangular transparent top, curved lower glass shelf",
             "materials": [
@@ -141,6 +163,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000001_obj_wardrobe_003_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000001_obj_wardrobe_003_mask.png",
+          "deduplicatedObjectId": "candidate_wardrobe_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_wardrobe_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.65,
+            "heightM": 2.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Tall rectangular double-door cabinet, floor to near ceiling",
             "materials": [
@@ -198,6 +231,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000001_obj_rug_004_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000001_obj_rug_004_mask.png",
+          "deduplicatedObjectId": "candidate_rug_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_rug_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.1,
+            "depthM": 2.7,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Rectangular flat floor covering, partial view",
             "materials": [
@@ -261,6 +305,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000002_obj_sofa_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000002_obj_sofa_001_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.95,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "低矮无腿落地式，整体呈流畅弧形，靠背与座面一体凹陷",
             "materials": [
@@ -322,6 +377,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000002_obj_coffee_table_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000002_obj_coffee_table_002_mask.png",
+          "deduplicatedObjectId": "candidate_coffee_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_coffee_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.6,
+            "heightM": 0.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长方形透明台面，细金属支脚，底部带金属支撑结构",
             "materials": [
@@ -386,6 +452,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000002_obj_rug_003_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000002_obj_rug_003_mask.png",
+          "deduplicatedObjectId": "candidate_rug_002",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_rug_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.1,
+            "depthM": 2.6,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "大面积长方形，边缘平直，铺设于地面",
             "materials": [
@@ -456,6 +533,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000003_obj_cabinet_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000003_obj_cabinet_001_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.65,
+            "heightM": 0.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长条形低柜，嵌入洗碗机，台面平整",
             "materials": [
@@ -518,6 +606,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000003_obj_cabinet_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000003_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.65,
+            "heightM": 0.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长条形低柜，双层抽屉设计，台面平整",
             "materials": [
@@ -576,6 +675,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000003_obj_cabinet_003_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000003_obj_cabinet_003_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.65,
+            "heightM": 0.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长条形吊柜，底部嵌入抽油烟机",
             "materials": [
@@ -632,6 +742,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000003_obj_cabinet_004_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000003_obj_cabinet_004_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.65,
+            "heightM": 0.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "壁挂式置物搁板，单层平板设计",
             "materials": [
@@ -695,6 +816,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000004_obj_cabinet_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000004_obj_cabinet_001_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.65,
+            "heightM": 0.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长条形矮柜，嵌入洗碗机，平板柜门",
             "materials": [
@@ -763,6 +895,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000004_obj_cabinet_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000004_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.65,
+            "heightM": 0.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长条形挂墙柜，平板无拉手柜门",
             "materials": [
@@ -821,6 +964,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000004_obj_table_lamp_003_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000004_obj_table_lamp_003_mask.png",
+          "deduplicatedObjectId": "candidate_table_lamp_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_table_lamp_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.32,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "圆柱底座加球形灯头，造型小巧",
             "materials": [
@@ -892,6 +1046,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000005_obj_chair_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000005_obj_chair_001_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.52,
+            "depthM": 0.58,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "X型金属支架，网面坐靠，折叠结构",
             "materials": [
@@ -949,6 +1114,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000005_obj_sofa_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000005_obj_sofa_002_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.95,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "低平模块化，饱满绗缝软包，宽大坐面",
             "materials": [
@@ -1004,6 +1180,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000005_obj_coffee_table_003_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000005_obj_coffee_table_003_mask.png",
+          "deduplicatedObjectId": "candidate_coffee_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_coffee_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.6,
+            "heightM": 0.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "透明玻璃台面，细金属支腿，低矮造型",
             "materials": [
@@ -1069,6 +1256,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000006_obj_mirror_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000006_obj_mirror_001_mask.png",
+          "deduplicatedObjectId": "candidate_mirror_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_mirror_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.6,
+            "depthM": 0.08,
+            "heightM": 1.0,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "竖长方形，薄边无框，平整镜面",
             "materials": [
@@ -1124,6 +1322,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000006_obj_table_lamp_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000006_obj_table_lamp_002_mask.png",
+          "deduplicatedObjectId": "candidate_table_lamp_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_table_lamp_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.16,
+            "depthM": 0.16,
+            "heightM": 0.32,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长方体造型，壁挂安装，向外突出",
             "materials": [
@@ -1189,6 +1398,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000007_obj_chair_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000007_obj_chair_001_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.52,
+            "depthM": 0.58,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Curved back with cutout, round seat, curved legs",
             "materials": [
@@ -1247,6 +1467,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000007_obj_coffee_table_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000007_obj_coffee_table_002_mask.png",
+          "deduplicatedObjectId": "candidate_coffee_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_coffee_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.6,
+            "heightM": 0.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Rectangular glass top, curved metal base, four thin legs",
             "materials": [
@@ -1307,6 +1538,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000007_obj_chair_003_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000007_obj_chair_003_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.52,
+            "depthM": 0.58,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Rectangular seat and back, X-shaped cross brace",
             "materials": [
@@ -1375,6 +1617,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000008_obj_pendant_light_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000008_obj_pendant_light_001_mask.png",
+          "deduplicatedObjectId": "candidate_pendant_light_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_pendant_light_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.0,
+            "depthM": 0.18,
+            "heightM": 1.1,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "细长线性灯体，细吊线悬挂",
             "materials": [
@@ -1432,6 +1685,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000008_obj_chair_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000008_obj_chair_002_mask.png",
+          "deduplicatedObjectId": "candidate_chair_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_chair_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.52,
+            "depthM": 0.58,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "纤细金属框架，方形网布靠背与座面",
             "materials": [
@@ -1489,6 +1753,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000008_obj_dining_table_003_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000008_obj_dining_table_003_mask.png",
+          "deduplicatedObjectId": "candidate_dining_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_dining_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.9,
+            "heightM": 0.95,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长条形台面，厚重石材基座",
             "materials": [
@@ -1555,6 +1830,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000009_obj_sofa_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000009_obj_sofa_001_mask.png",
+          "deduplicatedObjectId": "candidate_sofa_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_sofa_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.95,
+            "heightM": 0.85,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "低矮宽幅，靠背顶部有自然翻折软边",
             "materials": [
@@ -1608,6 +1894,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000009_obj_coffee_table_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000009_obj_coffee_table_002_mask.png",
+          "deduplicatedObjectId": "candidate_coffee_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_coffee_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.6,
+            "heightM": 0.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长方形玻璃台面，弧形金属底座",
             "materials": [
@@ -1667,6 +1964,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000009_obj_rug_003_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000009_obj_rug_003_mask.png",
+          "deduplicatedObjectId": "candidate_rug_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_rug_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.1,
+            "depthM": 2.7,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "长方形，铺于沙发与茶几下方",
             "materials": [
@@ -1728,6 +2036,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000010_obj_rug_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000010_obj_rug_001_mask.png",
+          "deduplicatedObjectId": "candidate_rug_002",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_rug_002/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.1,
+            "depthM": 2.6,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Large rectangular floor rug, flat layout",
             "materials": [
@@ -1783,6 +2102,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000010_obj_coffee_table_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000010_obj_coffee_table_002_mask.png",
+          "deduplicatedObjectId": "candidate_coffee_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_coffee_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.6,
+            "heightM": 0.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Rectangular glass top, thin metal legs, curved base",
             "materials": [
@@ -1850,6 +2180,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000011_obj_curtain_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000011_obj_curtain_001_mask.png",
+          "deduplicatedObjectId": "candidate_curtain_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_curtain_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 0.7,
+            "depthM": 0.05,
+            "heightM": 1.3,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "竖向整面百叶帘，覆盖整扇窗户",
             "materials": [
@@ -1905,6 +2246,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000011_obj_cabinet_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000011_obj_cabinet_002_mask.png",
+          "deduplicatedObjectId": "candidate_cabinet_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_cabinet_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.9,
+            "depthM": 0.65,
+            "heightM": 0.9,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "竖向窄长矩形，内嵌墙体，带一层隔板",
             "materials": [
@@ -1972,6 +2324,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000012_obj_coffee_table_001_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000012_obj_coffee_table_001_mask.png",
+          "deduplicatedObjectId": "candidate_coffee_table_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_coffee_table_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 1.1,
+            "depthM": 0.6,
+            "heightM": 0.5,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Rectangular glass top, metal support legs, low profile",
             "materials": [
@@ -2030,6 +2393,17 @@
           ],
           "cropUrl": "/outputs/videos/2/objects/2_000012_obj_rug_002_crop.jpg",
           "maskUrl": "/outputs/videos/2/objects/2_000012_obj_rug_002_mask.png",
+          "deduplicatedObjectId": "candidate_rug_001",
+          "deduplicatedCropUrl": "/outputs/videos/2/deduplicated/candidate_rug_001/crop.jpg",
+          "estimatedDimensions": {
+            "widthM": 2.1,
+            "depthM": 2.7,
+            "heightM": 0.02,
+            "unit": "m",
+            "source": "ark_category_prior",
+            "isMeasured": false,
+            "selectionRule": "range_min_plus_0.10m_capped_at_max"
+          },
           "visualFeatures": {
             "geometry": "Rectangular flat rug, partially visible under table",
             "materials": [
@@ -2089,7 +2463,16 @@
         1528
       ],
       "confidence": 0.94,
-      "duplicateCount": 5
+      "duplicateCount": 5,
+      "estimatedDimensions": {
+        "widthM": 0.52,
+        "depthM": 0.58,
+        "heightM": 0.85,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_coffee_table_001",
@@ -2107,7 +2490,16 @@
         1763
       ],
       "confidence": 0.94,
-      "duplicateCount": 7
+      "duplicateCount": 7,
+      "estimatedDimensions": {
+        "widthM": 1.1,
+        "depthM": 0.6,
+        "heightM": 0.5,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_wardrobe_001",
@@ -2125,7 +2517,16 @@
         1133
       ],
       "confidence": 0.88,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 1.1,
+        "depthM": 0.65,
+        "heightM": 2.3,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_rug_001",
@@ -2143,7 +2544,16 @@
         1916
       ],
       "confidence": 0.9,
-      "duplicateCount": 3
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 2.1,
+        "depthM": 2.7,
+        "heightM": 0.02,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_sofa_001",
@@ -2161,7 +2571,16 @@
         1918
       ],
       "confidence": 0.96,
-      "duplicateCount": 3
+      "duplicateCount": 3,
+      "estimatedDimensions": {
+        "widthM": 1.9,
+        "depthM": 0.95,
+        "heightM": 0.85,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_rug_002",
@@ -2179,7 +2598,16 @@
         1918
       ],
       "confidence": 0.92,
-      "duplicateCount": 2
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 2.1,
+        "depthM": 2.6,
+        "heightM": 0.02,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_cabinet_001",
@@ -2197,7 +2625,16 @@
         1918
       ],
       "confidence": 0.96,
-      "duplicateCount": 7
+      "duplicateCount": 7,
+      "estimatedDimensions": {
+        "widthM": 1.9,
+        "depthM": 0.65,
+        "heightM": 0.9,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_table_lamp_001",
@@ -2215,7 +2652,16 @@
         1068
       ],
       "confidence": 0.92,
-      "duplicateCount": 2
+      "duplicateCount": 2,
+      "estimatedDimensions": {
+        "widthM": 0.16,
+        "depthM": 0.16,
+        "heightM": 0.32,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_mirror_001",
@@ -2233,7 +2679,16 @@
         908
       ],
       "confidence": 0.98,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.6,
+        "depthM": 0.08,
+        "heightM": 1.0,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_pendant_light_001",
@@ -2251,7 +2706,16 @@
         419
       ],
       "confidence": 0.94,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 1.0,
+        "depthM": 0.18,
+        "heightM": 1.1,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_dining_table_001",
@@ -2269,7 +2733,16 @@
         1918
       ],
       "confidence": 0.9,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 1.9,
+        "depthM": 0.9,
+        "heightM": 0.95,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     },
     {
       "id": "candidate_curtain_001",
@@ -2287,7 +2760,16 @@
         1394
       ],
       "confidence": 0.92,
-      "duplicateCount": 1
+      "duplicateCount": 1,
+      "estimatedDimensions": {
+        "widthM": 0.7,
+        "depthM": 0.05,
+        "heightM": 1.3,
+        "unit": "m",
+        "source": "ark_category_prior",
+        "isMeasured": false,
+        "selectionRule": "range_min_plus_0.10m_capped_at_max"
+      }
     }
   ],
   "dedupeWarning": null

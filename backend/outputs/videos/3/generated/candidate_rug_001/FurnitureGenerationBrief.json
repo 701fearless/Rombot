@@ -1,0 +1,81 @@
+{
+  "objectId": "candidate_rug_001",
+  "category": "rug",
+  "observed": {
+    "geometry": "圆形，边缘被家具部分遮挡",
+    "materials": [
+      "编织纤维"
+    ],
+    "colors": [
+      "浅米色",
+      "米白色"
+    ],
+    "style": "北欧简约风",
+    "texturePattern": "白色抽象曲线连续纹样",
+    "visibleComponents": [
+      "毯面主体"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "铺平毯面，整理边缘形态"
+    ],
+    "complexityReduction": [
+      "简化纹样细节，保留大轮廓图案"
+    ],
+    "occlusionCompletion": [
+      "补全椅子下方被遮挡的毯面"
+    ],
+    "patternCompletion": "按可见曲线规律延续纹样至完整圆形"
+  },
+  "symmetryPrior": {
+    "type": "none",
+    "completionRule": "延续可见曲线纹样补全遮挡区域"
+  },
+  "textureFeatures": {
+    "materials": [
+      "编织纤维"
+    ],
+    "colors": [
+      "浅米色",
+      "米白色"
+    ],
+    "texturePattern": "白色抽象曲线连续纹样"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "铺平毯面，整理边缘形态"
+    ],
+    "complexityReduction": [
+      "简化纹样细节，保留大轮廓图案"
+    ],
+    "occlusionCompletion": [
+      "补全椅子下方被遮挡的毯面"
+    ],
+    "preserve": [
+      "圆形造型",
+      "抽象曲线纹样"
+    ],
+    "remove": [
+      "椅子遮挡造成的阴影"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 1.1,
+      "depthM": 1.1,
+      "heightM": 0.02,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated rug as a regular household product. Visible geometry and style: 圆形，边缘被家具部分遮挡; 北欧简约风. Use materials ['编织纤维'] and colors ['浅米色', '米白色']. Preserve ['圆形造型', '抽象曲线纹样']. Regularize temporary disorder with ['铺平毯面，整理边缘形态']. Simplify modeling complexity with ['简化纹样细节，保留大轮廓图案']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'none', 'completionRule': '延续可见曲线纹样补全遮挡区域'} and ['补全椅子下方被遮挡的毯面']. Texture rule: 白色抽象曲线连续纹样; 按可见曲线规律延续纹样至完整圆形. Target plausible real-world dimensions are approximately 1.10 m wide, 1.10 m deep and 0.02 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['椅子遮挡造成的阴影'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.94,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

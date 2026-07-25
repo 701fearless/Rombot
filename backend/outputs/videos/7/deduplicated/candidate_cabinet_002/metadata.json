@@ -1,0 +1,19 @@
+{
+  "id": "candidate_cabinet_002",
+  "label": "cabinet",
+  "name": "储物柜",
+  "representativeFrameId": "7_000005",
+  "representativeObjectId": "obj_cabinet_003",
+  "annotatedImageUrl": "/outputs/videos/7/deduplicated/candidate_cabinet_002/annotated.jpg",
+  "cropUrl": "/outputs/videos/7/deduplicated/candidate_cabinet_002/crop.jpg",
+  "maskUrl": "/outputs/videos/7/objects/7_000005_obj_cabinet_003_mask.png",
+  "bbox": [
+    721,
+    1052,
+    847,
+    1809
+  ],
+  "confidence": 0.94,
+  "duplicateCount": 1,
+  "estimatedDimensions": null
+}

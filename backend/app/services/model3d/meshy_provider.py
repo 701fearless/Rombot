@@ -41,11 +41,12 @@ class MeshyModel3DProvider(Model3DProvider):
                 bbox=detected_object.bbox,
                 cropUrl=image_url,
                 maskUrl=path_to_output_url(frame_output_dir(frame_id) / f"{detected_object.id}_mask.png"),
+                estimatedDimensions=detected_object.estimatedDimensions,
                 glbUrl=glb_url,
             ),
             analysis=ObjectAnalysis(
                 summary=f"{detected_object.name}已进入 3D 资产生成流程。",
-                placementAdvice="生成后建议根据真实尺寸缩放，再放入 scene.json 的目标位置。",
+                placementAdvice="生成后先按 estimatedDimensions 设置宽、深、高，再放入 scene.json；用户可继续缩放。",
             ),
         )
 

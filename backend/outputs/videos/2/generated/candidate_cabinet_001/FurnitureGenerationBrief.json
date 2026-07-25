@@ -1,0 +1,98 @@
+{
+  "objectId": "candidate_cabinet_001",
+  "category": "cabinet",
+  "observed": {
+    "geometry": "长条形矮柜，嵌入洗碗机，平板柜门",
+    "materials": [
+      "木纹饰面板",
+      "人造石台面",
+      "金属洗碗机面板"
+    ],
+    "colors": [
+      "浅原木色",
+      "米白色",
+      "银灰色"
+    ],
+    "style": "现代简约日式",
+    "texturePattern": "细腻直向木纹",
+    "visibleComponents": [
+      "柜门",
+      "抽屉",
+      "嵌入式洗碗机",
+      "台面"
+    ]
+  },
+  "inferred": {
+    "cleanupActions": [
+      "移除台面上的餐具和小物件",
+      "对齐柜门和抽屉缝隙"
+    ],
+    "complexityReduction": [
+      "简化木纹为均匀直纹",
+      "省略台面上的零散物品"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的左侧柜门",
+      "补全下方被截断的抽屉"
+    ],
+    "patternCompletion": "延续直向木纹，保持纹理均匀"
+  },
+  "symmetryPrior": {
+    "type": "repeated_modules",
+    "completionRule": "按可见柜门宽度重复延伸完整柜体"
+  },
+  "textureFeatures": {
+    "materials": [
+      "木纹饰面板",
+      "人造石台面",
+      "金属洗碗机面板"
+    ],
+    "colors": [
+      "浅原木色",
+      "米白色",
+      "银灰色"
+    ],
+    "texturePattern": "细腻直向木纹"
+  },
+  "constraints": {
+    "subjectIsolation": "one isolated main object only",
+    "regularization": [
+      "移除台面上的餐具和小物件",
+      "对齐柜门和抽屉缝隙"
+    ],
+    "complexityReduction": [
+      "简化木纹为均匀直纹",
+      "省略台面上的零散物品"
+    ],
+    "occlusionCompletion": [
+      "补全被遮挡的左侧柜门",
+      "补全下方被截断的抽屉"
+    ],
+    "preserve": [
+      "浅原木色平板柜门",
+      "嵌入式洗碗机布局",
+      "米白台面"
+    ],
+    "remove": [
+      "台面上的碗碟、纸巾架",
+      "水槽内的杂物"
+    ],
+    "physicalDimensionsMeters": {
+      "widthM": 1.9,
+      "depthM": 0.65,
+      "heightM": 0.9,
+      "unit": "m",
+      "source": "ark_category_prior",
+      "isMeasured": false,
+      "selectionRule": "range_min_plus_0.10m_capped_at_max"
+    }
+  },
+  "prompt": "Create one complete, realistic, isolated cabinet as a regular household product. Visible geometry and style: 长条形矮柜，嵌入洗碗机，平板柜门; 现代简约日式. Use materials ['木纹饰面板', '人造石台面', '金属洗碗机面板'] and colors ['浅原木色', '米白色', '银灰色']. Preserve ['浅原木色平板柜门', '嵌入式洗碗机布局', '米白台面']. Regularize temporary disorder with ['移除台面上的餐具和小物件', '对齐柜门和抽屉缝隙']. Simplify modeling complexity with ['简化木纹为均匀直纹', '省略台面上的零散物品']: use clean broad surfaces, shallow orderly folds, separated non-intersecting parts, and avoid tangled fabric or dense tiny wrinkles. Complete occluded, back, side and underside regions using {'type': 'repeated_modules', 'completionRule': '按可见柜门宽度重复延伸完整柜体'} and ['补全被遮挡的左侧柜门', '补全下方被截断的抽屉']. Texture rule: 细腻直向木纹; 延续直向木纹，保持纹理均匀. Target plausible real-world dimensions are approximately 1.90 m wide, 0.65 m deep and 0.90 m high. Preserve the corresponding width-to-depth-to-height proportions. These are category-prior estimates rather than pixel measurements. Use conservative category structure, repeated modules, continuous closed geometry, and one 45-degree product view on a plain light background. Keep only the main object.",
+  "negativePrompt": "people, hands, body parts, phone UI, captions, watermarks, room background, floor, walls, unrelated furniture, temporary clutter, ['台面上的碗碟、纸巾架', '水槽内的杂物'], blank texture gaps, random ornaments, extra parts, bizarre shapes, asymmetry unsupported by evidence, distorted geometry",
+  "confidence": {
+    "step1Detection": 0.96,
+    "visibleEvidence": "high",
+    "inferredHiddenParts": "medium",
+    "dimensionEstimate": "category-prior initial size"
+  }
+}

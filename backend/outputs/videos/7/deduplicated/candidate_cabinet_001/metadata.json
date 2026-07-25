@@ -1,0 +1,19 @@
+{
+  "id": "candidate_cabinet_001",
+  "label": "cabinet",
+  "name": "厨房地柜",
+  "representativeFrameId": "7_000001",
+  "representativeObjectId": "obj_cabinet_001",
+  "annotatedImageUrl": "/outputs/videos/7/deduplicated/candidate_cabinet_001/annotated.jpg",
+  "cropUrl": "/outputs/videos/7/deduplicated/candidate_cabinet_001/crop.jpg",
+  "maskUrl": "/outputs/videos/7/objects/7_000001_obj_cabinet_001_mask.png",
+  "bbox": [
+    38,
+    1179,
+    1012,
+    1916
+  ],
+  "confidence": 0.92,
+  "duplicateCount": 5,
+  "estimatedDimensions": null
+}
