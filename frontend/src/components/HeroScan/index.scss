@@ -1,0 +1,276 @@
+// HeroScan 样式：检测框 / 扫描线 / 呼吸 / 迷你匹配卡
+// 检测框出现用 keyframes（描边生长感），常态呼吸用另一组 keyframes 相位错开
+.hero-scan {
+  width: 100%;
+
+  &__stage {
+    position: relative;
+    width: 100%;
+    // 竖构图（约 2:3），电影感竖向居中
+    aspect-ratio: 2 / 3;
+    max-height: 70vh;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    background: var(--color-bg-secondary);
+    box-shadow: var(--shadow-emboss);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  // 底图缺失/失败兜底：主色深调底（保证白色检测框/文案可读）+ 提示，禁白屏
+  &__img-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    box-shadow: var(--shadow-emboss-inset);
+  }
+
+  &__img-fallback-text {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-subtitle);
+    color: var(--emboss-light);
+    letter-spacing: var(--letter-spacing-hero);
+  }
+
+  // 入场扫描线：1px 亮线自上而下扫过
+  &__scanline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: var(--emboss-light);
+    box-shadow: 0 0 6px var(--emboss-light);
+    animation: hero-scanline 1.4s linear both;
+    pointer-events: none;
+  }
+
+  // ---------- 检测框 ----------
+  &__box {
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 253, 246, 0.85); // --emboss-light 派生白描边
+    opacity: 0;
+    // 入场：描边生长（scale 从中心展开 + 淡入，近似 stroke draw）
+    // 各框延迟由内联 animationDelay 控制（扫描线按 y 映射 + stagger）
+    animation: hero-box-in 0.3s ease-out both, hero-box-breathe 3s ease-in-out infinite;
+    transition: opacity 0.3s ease-out;
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+
+    &.is-active {
+      opacity: 1 !important;
+      animation: none;
+      border-color: var(--emboss-light);
+      z-index: 3;
+    }
+
+    &.is-dimmed {
+      opacity: 0.25 !important;
+      animation: none;
+    }
+  }
+
+  // 四角刻度标记（取景框感）
+  &__corner {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-color: var(--emboss-light);
+    border-style: solid;
+    border-width: 0;
+
+    &--tl {
+      top: -1px;
+      left: -1px;
+      border-top-width: 2px;
+      border-left-width: 2px;
+    }
+    &--tr {
+      top: -1px;
+      right: -1px;
+      border-top-width: 2px;
+      border-right-width: 2px;
+    }
+    &--bl {
+      bottom: -1px;
+      left: -1px;
+      border-bottom-width: 2px;
+      border-left-width: 2px;
+    }
+    &--br {
+      bottom: -1px;
+      right: -1px;
+      border-bottom-width: 2px;
+      border-right-width: 2px;
+    }
+  }
+
+  // 等宽字体标签（置信度风格）
+  &__tag {
+    position: absolute;
+    top: -22px;
+    left: 0;
+    padding: 2px var(--space-xs);
+    background: rgba(51, 46, 40, 0.55); // --color-text-primary 派生半透明
+    border-radius: var(--radius-btn);
+    opacity: 0;
+    animation: hero-tag-in 0.25s ease-out both;
+    white-space: nowrap;
+  }
+
+  &__tag-text {
+    font-family: 'Courier New', monospace; // 等宽数字，监控感
+    font-size: var(--font-size-caption);
+    color: var(--emboss-light);
+    letter-spacing: var(--letter-spacing-normal);
+  }
+
+  // 激活展开的迷你匹配卡（liquid-glass 浮层）
+  &__card {
+    position: absolute;
+    top: calc(100% + var(--space-s));
+    left: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-s) var(--space-m);
+    border-radius: var(--radius-btn);
+    background: rgba(245, 236, 210, 0.92); // --color-bg-primary（WINTER WHITE）派生
+    box-shadow: var(--shadow-emboss);
+    min-width: 140px;
+  }
+
+  &__card-label {
+    font-family: 'Courier New', monospace;
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+  }
+
+  &__card-score {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-title);
+    color: var(--color-text-primary);
+  }
+
+  &__card-btn {
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-m);
+    background: var(--color-accent);
+    border-radius: var(--radius-btn);
+  }
+
+  &__card-btn-text {
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary); // 黄底深蓝字，对比度 ≥ 4.5:1
+  }
+
+  // ---------- 文案层 ----------
+  &__copy {
+    position: absolute;
+    left: var(--space-l);
+    right: var(--space-l);
+    bottom: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-m);
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+
+    &.is-dimmed {
+      opacity: 0.3;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-hero);
+    color: var(--emboss-light);
+    letter-spacing: var(--letter-spacing-hero);
+    text-align: center;
+    text-shadow: 0 1px 8px rgba(51, 46, 40, 0.4);
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-subtitle);
+    color: var(--emboss-light);
+    text-align: center;
+    text-shadow: 0 1px 6px rgba(51, 46, 40, 0.4);
+  }
+
+  &__cta {
+    pointer-events: auto;
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-xl);
+    background: var(--color-accent);
+    border-radius: var(--radius-btn);
+    box-shadow: var(--shadow-emboss);
+  }
+
+  &__cta-text {
+    font-size: var(--font-size-subtitle);
+    color: var(--color-text-primary);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+}
+
+// 扫描线扫过
+@keyframes hero-scanline {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+// 检测框入场：从中心展开的描边生长近似
+@keyframes hero-box-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// 常态呼吸（相位由各框 animation-delay 自然错开）
+@keyframes hero-box-breathe {
+  0%,
+  100% {
+    border-color: rgba(255, 253, 246, 0.95);
+  }
+  50% {
+    border-color: rgba(255, 253, 246, 0.55);
+  }
+}
+
+// 标签打字机式跟上（入场）
+@keyframes hero-tag-in {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,21 @@
+// Reveal：进入视口 fade-rise（P1-3）
+// 初始隐藏 + 下移，is-shown 时归位；transitionDelay 由组件按 stagger 注入
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+
+  &.is-shown {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 尊重系统「减弱动效」偏好
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

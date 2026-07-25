@@ -1,0 +1,11 @@
+.emboss-card {
+  padding: var(--space-m);
+  box-sizing: border-box;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+  // 触摸按压反馈（P0-1）：按下时整卡凹陷
+  &:active {
+    transform: scale(0.97);
+    box-shadow: var(--shadow-emboss-inset);
+  }
+}

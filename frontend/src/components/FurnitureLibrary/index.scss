@@ -1,0 +1,114 @@
+.furniture-library {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+
+  &__head {
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.is-clickable {
+      cursor: pointer;
+      transition: opacity 0.16s ease;
+
+      &:active {
+        opacity: 0.62;
+      }
+    }
+  }
+
+  &__title {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-subtitle);
+    color: var(--color-text-primary);
+  }
+
+  &__meta {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+  }
+
+  &__rail {
+    display: flex;
+    gap: var(--space-s);
+    white-space: nowrap;
+  }
+
+  &__card {
+    width: 104px;
+    min-height: 134px;
+    flex-shrink: 0;
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    vertical-align: top;
+    transition: transform 0.16s ease, opacity 0.16s ease;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &.is-selected {
+      opacity: 0.92;
+    }
+  }
+
+  &__cover {
+    position: relative;
+    width: 104px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+
+  &__card.is-selected &__cover {
+    outline: 2px solid var(--color-success);
+    outline-offset: -2px;
+  }
+
+  &__add-body {
+    width: 104px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px dashed var(--color-primary-light);
+    border-radius: var(--radius-card);
+    background: var(--color-bg-secondary);
+    box-shadow: var(--shadow-emboss-inset);
+  }
+
+  &__add-plus {
+    font-family: var(--font-family-ui);
+    font-size: 28px;
+    line-height: 1;
+    color: var(--color-primary);
+  }
+
+  &__selected {
+    position: absolute;
+    right: var(--space-xs);
+    bottom: var(--space-xs);
+    min-height: 26px;
+    padding: 0 var(--space-s);
+    display: flex;
+    align-items: center;
+    border-radius: 999px;
+    background: var(--color-success);
+  }
+
+  &__selected-text {
+    font-size: 11px;
+    color: var(--color-on-dark);
+  }
+
+  &__name {
+    width: 100%;
+    overflow: hidden;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-caption);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

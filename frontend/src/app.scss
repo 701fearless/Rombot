@@ -1,0 +1,324 @@
+// ============================================================
+// Global reset, tokens, effects and mobile frame.
+// ============================================================
+
+@import './styles/tokens.scss';
+@import './styles/effects.scss';
+@import './styles/add-sheet.scss';
+
+page,
+view,
+text,
+image,
+button,
+input,
+textarea,
+scroll-view {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+page {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-ui);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea {
+  font-family: var(--font-family-ui);
+}
+
+html,
+body,
+#app,
+.taro_router,
+page,
+scroll-view {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html,
+body,
+#app,
+.taro_router {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.taro_page {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--color-bg-primary);
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#app::-webkit-scrollbar,
+.taro_router::-webkit-scrollbar,
+page::-webkit-scrollbar,
+scroll-view::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+// Desktop preview is a real iPhone 16 Pro Max ratio canvas (440 x 956).
+// A shorter desktop viewport scales the frame proportionally.
+@media (min-width: 600px) {
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
+  }
+
+  body {
+    --phone-frame-width: min(440px, 100vw);
+    --phone-frame-height: min(860px, 100vh);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #d8d2c8;
+  }
+
+  #app {
+    position: relative;
+    width: var(--phone-frame-width);
+    height: var(--phone-frame-height);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 34px;
+    background: var(--color-bg-primary);
+    box-shadow: 0 28px 80px rgba(39, 43, 40, 0.2);
+  }
+
+  .taro_router {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+    background: var(--color-bg-primary);
+    box-shadow: none;
+  }
+
+  .discover,
+  .myhome,
+  .direction,
+  .remodel,
+  .detail,
+  .scene,
+  .place,
+  .recognize,
+  .suggest,
+  .recommend,
+  .complete {
+    min-height: var(--phone-frame-height);
+  }
+
+  .direction,
+  .remodel {
+    height: var(--phone-frame-height);
+  }
+
+  .taro_router::-webkit-scrollbar {
+    display: none;
+  }
+
+  .splash-scan,
+  .add-sheet,
+  .console-modal {
+    inset: auto !important;
+    top: calc((100vh - var(--phone-frame-height)) / 2);
+    left: calc((100vw - var(--phone-frame-width)) / 2);
+    width: var(--phone-frame-width);
+    height: var(--phone-frame-height);
+    transform: none;
+  }
+
+  .place__console-capsule {
+    right: calc((100vw - var(--phone-frame-width)) / 2 + var(--space-m));
+    bottom: calc(100vh - var(--phone-frame-height) + var(--space-l));
+  }
+}
+
+// Shared typography roles. Page-level styles may control color and spacing,
+// while hierarchy, font family and size stay consistent throughout the app.
+.app-header__title,
+.section-title__title,
+.place__title,
+.recommend__title,
+.console-modal__title,
+.myhome__library-subpage-title {
+  font-family: var(--font-family-serif) !important;
+  font-size: var(--type-page-title) !important;
+}
+
+.detail__title,
+.scene__title,
+.suggest__title,
+.complete__title {
+  font-family: var(--font-family-serif) !important;
+  font-size: var(--type-display) !important;
+}
+
+.direction__community-title,
+.direction__scenes-title,
+.detail__section-title,
+.scene__section-title,
+.remodel__name,
+.remodel__asset-title {
+  font-family: var(--font-family-serif) !important;
+  font-size: var(--type-section-title) !important;
+}
+
+.furniture-library__title,
+.cover-shelf__row-title,
+.add-sheet__option-title,
+.direction__step-title,
+.recognize__card-title,
+.recognize__entry-title,
+.recognize__picker-title,
+.recommend__card-title,
+.suggest__card-title,
+.complete__item-title,
+.myhome__home-name,
+.myhome__physics-title,
+.param-panel__title,
+.review-card__title {
+  font-family: var(--font-family-serif) !important;
+  font-size: var(--type-card-title) !important;
+}
+
+.detail__desc,
+.scene__desc,
+.recognize__entry-desc,
+.recommend__card-desc,
+.review-card__text,
+.cover-shelf__empty-text {
+  font-family: var(--font-family-ui) !important;
+  font-size: var(--type-body) !important;
+}
+
+.direction__btn-text,
+.direction__edit-cta-text,
+.direction-actions__label,
+.detail__cta-text,
+.scene__cta-text,
+.recognize__back-text,
+.recognize__cta-text,
+.recommend__btn-text,
+.suggest__card-cta-text,
+.complete__confirm-text,
+.review-card__button-text,
+.hero-scan__cta-text,
+.myhome__cta-ai-text,
+.myhome__edit-exit-text,
+.myhome__library-subpage-back-text,
+.top-actions__text,
+.add-sheet__cancel-text {
+  font-family: var(--font-family-ui) !important;
+  font-size: var(--type-label) !important;
+}
+
+.section-title__subtitle,
+.place__subtitle,
+.recommend__subtitle,
+.suggest__subtitle,
+.complete__subtitle,
+.remodel__role,
+.remodel__motto,
+.remodel__asset-subtitle,
+.myhome__home-bar-meta,
+.myhome__home-meta,
+.myhome__hint,
+.myhome__library-subpage-meta,
+.furniture-library__meta,
+.furniture-library__name,
+.myhome__library-grid-name,
+.app-tabbar__label,
+.direction__community-sub,
+.direction__meta,
+.detail__swatch-name,
+.recognize__card-meta,
+.complete__item-meta,
+.add-sheet__option-desc {
+  font-family: var(--font-family-ui) !important;
+  font-size: var(--type-caption) !important;
+}
+
+.app-header__subtitle,
+.remodel__stat-label,
+.furniture-library__selected-text,
+.direction__community-meta,
+.direction-actions__index,
+.review-card__score-unit,
+.place__sticker-name,
+.place__sticker-badge-text,
+.myhome__physics-meta {
+  font-family: var(--font-family-ui) !important;
+  font-size: var(--type-micro) !important;
+}
+
+taro-tabbar,
+.taro-tabbar {
+  display: none !important;
+}
+
+.discover,
+.myhome,
+.direction,
+.remodel,
+.detail,
+.scene,
+.place,
+.recognize,
+.suggest,
+.recommend,
+.complete {
+  height: calc(
+    100dvh - var(--app-header-h) - var(--app-tabbar-h) - env(safe-area-inset-bottom)
+  ) !important;
+  min-height: 0 !important;
+  margin-top: var(--app-header-h);
+  padding-top: 8px !important;
+  padding-bottom: 0 !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+@media (min-width: 600px) {
+  .discover,
+  .myhome,
+  .direction,
+  .remodel,
+  .detail,
+  .scene,
+  .place,
+  .recognize,
+  .suggest,
+  .recommend,
+  .complete {
+    height: calc(
+      var(--phone-frame-height) - var(--app-header-h) - var(--app-tabbar-h)
+    ) !important;
+  }
+}

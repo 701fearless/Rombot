@@ -1,0 +1,88 @@
+.recommend {
+  min-height: 100vh;
+  padding: calc(var(--app-header-h) + 8px) var(--space-m)
+    calc(var(--app-tabbar-h) + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &__title {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-title);
+    color: var(--color-text-primary);
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-body);
+    color: var(--color-text-secondary);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  &__card {
+    padding: var(--space-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  &__card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &__card-title {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-subtitle);
+    color: var(--color-text-primary);
+  }
+
+  &__card-desc {
+    font-size: var(--font-size-body);
+    color: var(--color-text-secondary);
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--space-s);
+  }
+
+  &__btn {
+    flex: 1;
+    min-height: var(--touch-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-btn);
+    box-shadow: var(--shadow-emboss);
+  }
+
+  &__btn--primary {
+    background: var(--color-accent);
+  }
+
+  &__btn--ghost {
+    background: var(--color-bg-primary);
+  }
+
+  &__btn-text {
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+  }
+
+  &__btn--primary &__btn-text {
+    color: var(--color-text-primary);
+  }
+}
