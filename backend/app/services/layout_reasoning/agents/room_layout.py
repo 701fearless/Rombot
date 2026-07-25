@@ -253,6 +253,14 @@ async def run_room_layout(
             advices=advices,
             summary=summary or feedback,
         )
+    else:
+        task_json = build_room_task_json(scene, bundles)
+        summary, advices, _ = _mock_room_layout(task_json, geo_moves)
+        layout = LayoutModule(
+            moves=geo_moves,
+            advices=advices,
+            summary=summary or feedback,
+        )
 
     return RoomLayoutResponse(
         mode="room",

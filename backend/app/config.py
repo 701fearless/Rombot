@@ -31,6 +31,7 @@ class Settings:
     ark_api_key: str | None
     ark_base_url: str
     ark_vision_model: str
+    ark_text_model: str
     ark_image_model: str
     ark_image_size: str
     enable_ark_reference_image: bool
@@ -39,6 +40,8 @@ class Settings:
     openai_vision_model: str
     openai_image_model: str
     openai_image_size: str
+    spatial_agent_provider: str
+    spatial_agent_provider: str
     hunyuan_api_key: str | None
     hunyuan_base_url: str
     hunyuan_model: str
@@ -105,6 +108,7 @@ class Settings:
         self.ark_api_key = os.getenv("ARK_API_KEY")
         self.ark_base_url = os.getenv("ARK_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3").rstrip("/")
         self.ark_vision_model = os.getenv("ARK_VISION_MODEL", "doubao-seed-2-1-pro-260628")
+        self.ark_text_model = os.getenv("ARK_TEXT_MODEL", self.ark_vision_model)
         self.ark_image_model = os.getenv("ARK_IMAGE_MODEL", "doubao-seedream-5-0-lite-260128")
         self.ark_image_size = os.getenv("ARK_IMAGE_SIZE", "2048x2048")
         self.enable_ark_reference_image = os.getenv("ENABLE_ARK_REFERENCE_IMAGE", "false").lower() == "true"
@@ -113,6 +117,8 @@ class Settings:
         self.openai_vision_model = os.getenv("OPENAI_VISION_MODEL", "gpt-5.1")
         self.openai_image_model = os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-1")
         self.openai_image_size = os.getenv("OPENAI_IMAGE_SIZE", "1024x1024")
+        # ark | mock; falls back to mock automatically when ARK_API_KEY is missing.
+        self.spatial_agent_provider = os.getenv("SPATIAL_AGENT_PROVIDER", "ark").lower()
         self.hunyuan_api_key = os.getenv("HUNYUAN_API_KEY")
         self.hunyuan_base_url = os.getenv("HUNYUAN_BASE_URL", "https://tokenhub.tencentmaas.com").rstrip("/")
         self.hunyuan_model = os.getenv("HUNYUAN_MODEL", "hy-3d-express")

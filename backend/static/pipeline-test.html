@@ -104,21 +104,44 @@
     .ref { margin: 0; border: 1px solid var(--line); padding: 7px; display: grid; gap: 5px; }
     .ref img { width: 100%; aspect-ratio: 1; object-fit: contain; background: var(--surface-alt); }
     .ref figcaption { color: var(--muted); font-size: 11px; }
+<<<<<<< HEAD
+    .workflow { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); background: #e9ece7; }
+    .workflow-pane { min-width: 0; padding: 15px; border-right: 1px solid var(--line); }
+    .workflow-pane:last-child { border-right: 0; }
+    .workflow-note { margin: 0 0 12px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .inline-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .product-matches, .check-results { display: grid; gap: 7px; margin-top: 10px; }
+    .flow-result { border: 1px solid var(--line); background: var(--surface); padding: 9px 10px; }
+    .flow-result strong { display: block; font-size: 13px; }
+    .flow-result small { display: block; color: var(--muted); line-height: 1.5; margin-top: 3px; }
+    .flow-result.pass { border-left: 4px solid var(--green); }
+    .flow-result.warn { border-left: 4px solid var(--amber); }
+    .flow-result.fail { border-left: 4px solid var(--red); }
+    .mock-flag { color: var(--amber); font-weight: 700; }
+=======
+    .products { display: grid; gap: 8px; margin-top: 8px; }
+    .product-card { border: 1px solid var(--line); background: var(--surface-alt); padding: 8px; display: grid; grid-template-columns: 72px 1fr; gap: 10px; text-decoration: none; color: inherit; }
+    .product-card:hover { border-color: var(--green); }
+    .product-card img { width: 72px; height: 72px; object-fit: contain; background: #fff; }
+    .product-title { font-size: 12px; font-weight: 700; line-height: 1.35; }
+    .product-meta { color: var(--muted); font-size: 11px; margin-top: 4px; }
+    .product-empty { color: var(--muted); font-size: 12px; padding: 8px 0; }
+>>>>>>> origin/cutting
     @media (max-width: 980px) {
       .app { grid-template-columns: 1fr; }
       .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
       .workspace { grid-template-rows: auto minmax(520px, 70vh) auto; }
-      .comparison, .results { grid-template-columns: 1fr; }
+      .comparison, .results, .workflow { grid-template-columns: 1fr; }
       .media-pane { border-right: 0; border-bottom: 1px solid #333a36; }
-      .result-pane { border-right: 0; border-bottom: 1px solid var(--line); }
+      .result-pane, .workflow-pane { border-right: 0; border-bottom: 1px solid var(--line); }
     }
   </style>
 </head>
 <body>
   <main class="app">
     <aside class="sidebar">
-      <h1>家具识别与生成测试台</h1>
-      <div class="eyebrow">检测 · 暂停匹配 · Image-to-3D</div>
+      <h1>家具全链路测试台</h1>
+      <div class="eyebrow">识别 · 3D · 商品候选 · 空间检查</div>
       <a href="/static/frame-selector.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--green);font-size:12px;text-decoration:none;margin-bottom:14px"><i data-lucide="list-video"></i>打开手动筛帧</a>
 
       <div class="segmented" role="tablist" aria-label="输入类型">
@@ -148,16 +171,31 @@
           <div class="field"><label for="videoId">视频 ID</label><input id="videoId" value="video_pause_demo" /></div>
           <div class="field"><label for="detectionMode">检测模式</label><select id="detectionMode"><option value="ark_grounding">Ark Grounding</option><option value="mock">Mock</option></select></div>
         </div>
-        <div class="actions"><button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="list-video"></i>识别已有抽帧</button></div>
+<<<<<<< HEAD
+        <div class="actions"><button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="database"></i>加载已有分析</button></div>
       </section>
 
-      <div class="actions"><button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>生成所选模型</button></div>
+      <div class="actions"><button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>加载 / 生成所选模型</button></div>
+=======
+        <div class="actions">
+          <button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="list-video"></i>识别已有抽帧</button>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button id="searchIkeaButton" class="btn secondary" type="button" disabled><i data-lucide="shopping-bag"></i>搜宜家相似商品</button>
+        <button id="loadMatchesButton" class="btn secondary" type="button"><i data-lucide="database"></i>加载视频商品缓存</button>
+        <button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>生成所选模型</button>
+      </div>
+>>>>>>> origin/cutting
 
       <section class="steps" aria-label="处理进度">
         <div class="step" id="step-source"><span class="step-dot"></span><div><div class="step-title">输入就绪</div><div class="step-note">等待文件</div></div><span class="elapsed"></span></div>
         <div class="step" id="step-preprocess"><span class="step-dot"></span><div><div class="step-title">视频预处理</div><div class="step-note">等待视频</div></div><span class="elapsed"></span></div>
         <div class="step" id="step-match"><span class="step-dot"></span><div><div class="step-title">暂停匹配与打标</div><div class="step-note">等待识别</div></div><span class="elapsed"></span></div>
         <div class="step" id="step-model"><span class="step-dot"></span><div><div class="step-title">模型生成</div><div class="step-note">等待选择家具</div></div><span class="elapsed"></span></div>
+        <div class="step" id="step-product"><span class="step-dot"></span><div><div class="step-title">商品候选</div><div class="step-note">等待所选家具</div></div><span class="elapsed"></span></div>
+        <div class="step" id="step-layout"><span class="step-dot"></span><div><div class="step-title">空间布局检查</div><div class="step-note">等待所选家具</div></div><span class="elapsed"></span></div>
       </section>
     </aside>
 
@@ -185,7 +223,30 @@
         <div class="result-pane">
           <div class="pane-head"><h2>生成结果</h2><span id="modelBadge" class="badge">尚未生成</span></div>
           <div id="refs" class="refs"></div>
+          <div class="pane-head" style="margin-top:12px"><h2>宜家相似商品</h2><span id="productBadge" class="badge">未加载</span></div>
+          <div id="products" class="products"><div class="product-empty">选中物体或点击「加载宜家商品缓存」</div></div>
           <pre id="selectedJson">尚未运行</pre>
+        </div>
+      </section>
+      <section class="workflow" aria-label="后续能力联调">
+        <div class="workflow-pane">
+          <div class="pane-head"><h2>商品候选</h2><span id="productBadge" class="badge">Mock 数据</span></div>
+          <p class="workflow-note"><span class="mock-flag">MOCK</span> 当前按家具类别返回固定 Top 3，用于验证识别到商品推荐的交互；不运行 CLIP，也不表示真实同款。</p>
+          <button id="productSearchButton" class="btn secondary" type="button" disabled><i data-lucide="shopping-bag"></i>查找相似商品</button>
+          <div id="productMatches" class="product-matches"><div class="empty-state">先选择一个识别对象</div></div>
+          <pre id="productJson">尚未运行</pre>
+        </div>
+        <div class="workflow-pane">
+          <div class="pane-head"><h2>摆放可行性</h2><span id="layoutBadge" class="badge">Mock 房间</span></div>
+          <p class="workflow-note"><span class="mock-flag">MOCK SCENE</span> 使用 4.2 × 3.6 m 演示房间；越界、碰撞、门窗净空和活动空间由真实几何规则计算，不调用 AI。</p>
+          <div class="inline-fields">
+            <div class="field"><label for="placementX">位置 X（m）</label><input id="placementX" type="number" min="0" max="4.2" step="0.05" value="0.60" /></div>
+            <div class="field"><label for="placementZ">位置 Z（m）</label><input id="placementZ" type="number" min="0" max="3.6" step="0.05" value="0.50" /></div>
+            <div class="field"><label for="placementYaw">旋转（°）</label><input id="placementYaw" type="number" step="5" value="0" /></div>
+          </div>
+          <div class="actions"><button id="placementCheckButton" class="btn secondary" type="button" disabled><i data-lucide="scan-line"></i>检查当前位置</button></div>
+          <div id="checkResults" class="check-results"><div class="empty-state">先选择一个识别对象</div></div>
+          <pre id="layoutJson">尚未运行</pre>
         </div>
       </section>
     </section>
@@ -227,9 +288,24 @@
     const detectJson = $("detectJson");
     const selectedJson = $("selectedJson");
     const refs = $("refs");
+    const productsEl = $("products");
+    const productBadge = $("productBadge");
+    const loadMatchesButton = $("loadMatchesButton");
+    const searchIkeaButton = $("searchIkeaButton");
     const matchBadge = $("matchBadge");
     const modelBadge = $("modelBadge");
     const viewerStatus = $("viewerStatus");
+    const productSearchButton = $("productSearchButton");
+    const productMatches = $("productMatches");
+    const productJson = $("productJson");
+    const productBadge = $("productBadge");
+    const placementCheckButton = $("placementCheckButton");
+    const placementX = $("placementX");
+    const placementZ = $("placementZ");
+    const placementYaw = $("placementYaw");
+    const checkResults = $("checkResults");
+    const layoutJson = $("layoutJson");
+    const layoutBadge = $("layoutBadge");
 
     let mode = "image";
     let imageDataUrl = null;
@@ -238,16 +314,22 @@
     let preparedVideoId = null;
     let currentDetection = null;
     let selectedObject = null;
+    let selectedAsset = null;
     let pauseFrameDataUrl = null;
     let matchRequestSerial = 0;
     let matchAbortController = null;
     let activeTimer = null;
+    let productMatchesCache = null;
+    let productMatchesVideoId = null;
+    let liveProductResults = null;
 
     const steps = {
       source: $("step-source"),
       preprocess: $("step-preprocess"),
       match: $("step-match"),
-      model: $("step-model")
+      model: $("step-model"),
+      product: $("step-product"),
+      layout: $("step-layout")
     };
 
     function refreshIcons() { if (window.lucide) window.lucide.createIcons({ attrs: { width: 17, height: 17, "stroke-width": 1.8 } }); }
@@ -300,6 +382,15 @@
       return data;
     }
 
+    async function getJson(url, options = {}) {
+      const response = await fetch(url, { signal: options.signal });
+      const text = await response.text();
+      let data;
+      try { data = JSON.parse(text); } catch { data = { raw: text }; }
+      if (!response.ok) throw new Error(errorMessage(data, text, response.statusText));
+      return data;
+    }
+
     function errorMessage(data, text, fallback) {
       if (typeof data?.detail === "string") return data.detail;
       if (Array.isArray(data?.detail)) {
@@ -307,6 +398,20 @@
       }
       if (data?.detail) return JSON.stringify(data.detail);
       return text || fallback || "请求失败";
+    }
+
+    function resetExtensionResults() {
+      selectedAsset = null;
+      productMatches.innerHTML = '<div class="empty-state">选择家具后运行 Mock 商品检索</div>';
+      productJson.textContent = "尚未运行";
+      productBadge.textContent = "Mock 数据";
+      checkResults.innerHTML = '<div class="empty-state">选择家具后检查演示位置</div>';
+      layoutJson.textContent = "尚未运行";
+      layoutBadge.textContent = "Mock 房间";
+      productSearchButton.disabled = !selectedObject;
+      placementCheckButton.disabled = !selectedObject;
+      setStep("product", "", selectedObject ? "可运行 Mock 商品检索" : "等待所选家具");
+      setStep("layout", "", selectedObject ? "可检查 Mock 房间位置" : "等待所选家具");
     }
 
     function fileAsDataUrl(file) {
@@ -387,16 +492,27 @@
       const videoId = sanitizeVideoId(videoIdInput.value) || `video_${Date.now()}`;
       videoIdInput.value = videoId;
       try {
-        setStep("preprocess", "running", "读取已有抽帧、检测与去重中");
+        setStep("preprocess", "running", "优先读取 analysis.json 缓存");
         const stop = startTimer("preprocess");
-        const result = await postJson("/api/video/preprocess", {
-          videoId,
-          mode: detectionMode.value,
-          reuseExistingFrames: true
-        });
+        let result;
+        try {
+          const analysis = await getJson(`/api/video/analysis/${encodeURIComponent(videoId)}`);
+          result = {
+            frameCount: (analysis.frames || []).length,
+            deduplicatedObjectCount: (analysis.deduplicatedObjects || []).length,
+            cacheHit: true
+          };
+        } catch {
+          result = await postJson("/api/video/preprocess", {
+            videoId,
+            mode: detectionMode.value,
+            reuseExistingFrames: true
+          });
+          result.cacheHit = false;
+        }
         stop();
         preparedVideoId = videoId;
-        setStep("preprocess", "done", `${result.frameCount} 帧 · ${result.deduplicatedObjectCount} 个候选`);
+        setStep("preprocess", "done", `${result.cacheHit ? "缓存" : "新分析"} · ${result.frameCount} 帧 · ${result.deduplicatedObjectCount} 个候选`);
         setStep("match", "", "播放视频并暂停");
         matchBadge.textContent = "等待暂停";
       } catch (error) {
@@ -465,8 +581,212 @@
       matchedLabel.textContent = `匹配帧 · ${detection.frameId}`;
       renderObjects();
       generateButton.disabled = !selectedObject;
+<<<<<<< HEAD
+      generateButton.innerHTML = selectedObject?.prebuiltGlbUrl
+        ? '<i data-lucide="database"></i>加载缓存模型'
+        : '<i data-lucide="box"></i>生成所选模型';
+      resetExtensionResults();
+      refreshIcons();
+=======
+      searchIkeaButton.disabled = !selectedObject;
+>>>>>>> origin/cutting
       switchView("comparisonView");
+      await showProductsForSelection(selectedObject);
     }
+
+    function activeVideoId() {
+      return preparedVideoId || sanitizeVideoId(videoIdInput.value) || null;
+    }
+
+    async function ensureProductMatches(force = false) {
+      const videoId = activeVideoId();
+      if (!videoId) {
+        productBadge.textContent = "无 videoId";
+        return null;
+      }
+      if (!force && productMatchesCache && productMatchesVideoId === videoId) {
+        return productMatchesCache;
+      }
+      try {
+        const response = await fetch(`/api/video/${encodeURIComponent(videoId)}/product-matches`);
+        if (!response.ok) {
+          const detail = await response.text();
+          throw new Error(detail || response.statusText);
+        }
+        productMatchesCache = await response.json();
+        productMatchesVideoId = videoId;
+        const count = Object.keys(productMatchesCache.matches || {}).length;
+        productBadge.textContent = `${videoId} · ${count} 候选`;
+        return productMatchesCache;
+      } catch (error) {
+        productMatchesCache = null;
+        productMatchesVideoId = null;
+        productBadge.textContent = "无缓存";
+        productsEl.innerHTML = `<div class="product-empty">尚未生成商品缓存（videoId=${escapeHtml(videoId)}）。请先跑 batch_match_products.py。<br><small>${escapeHtml(error.message || error)}</small></div>`;
+        return null;
+      }
+    }
+
+    function resolveCandidateMatch(item) {
+      const matches = productMatchesCache && productMatchesCache.matches || {};
+      if (!item || !Object.keys(matches).length) return null;
+      const direct = item.deduplicatedObjectId || item.candidateId;
+      if (direct && matches[direct]) return { id: direct, ...matches[direct] };
+      const byId = `candidate_${item.label}_001`;
+      if (item.label && matches[byId]) return { id: byId, ...matches[byId] };
+      const labelHits = Object.entries(matches).filter(([, value]) => value.label === item.label);
+      if (labelHits.length) {
+        const [id, value] = labelHits[0];
+        return { id, ...value };
+      }
+      return null;
+    }
+
+    function renderProductList(list, badgeText) {
+      if (!list || !list.length) {
+        productsEl.innerHTML = '<div class="product-empty">无匹配商品</div>';
+        return;
+      }
+      productBadge.textContent = badgeText || `Top${list.length}`;
+      productsEl.innerHTML = list.map((product) => {
+        const image = product.imageUrl || (product.localImage ? `/product_index/${product.localImage}` : "");
+        const price = product.price != null ? `${product.currency || ""} ${product.price}` : "n/a";
+        const href = product.productUrl || "#";
+        return `<a class="product-card" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">
+          <img src="${escapeHtml(image)}" alt="" loading="lazy" />
+          <span>
+            <span class="product-title">#${product.rank} ${escapeHtml(product.title || product.productId)}</span>
+            <span class="product-meta">score ${Number(product.score || 0).toFixed(3)} · ${escapeHtml(price)}</span>
+            <span class="product-meta">${escapeHtml(product.category2 || "")} / ${escapeHtml(product.category3 || "")}</span>
+          </span>
+        </a>`;
+      }).join("");
+    }
+
+    function renderProductsForObject(item) {
+      if (liveProductResults && liveProductResults.objectId === (item && item.id)) {
+        renderProductList(liveProductResults.results, `实时 · Top${(liveProductResults.results || []).length}`);
+        return;
+      }
+      if (!productMatchesCache) {
+        productsEl.innerHTML = '<div class="product-empty">图片模式请点「搜宜家相似商品」；视频模式也可「加载视频商品缓存」</div>';
+        return;
+      }
+      const hit = resolveCandidateMatch(item);
+      if (!hit) {
+        const keys = Object.keys(productMatchesCache.matches || {});
+        productsEl.innerHTML = `<div class="product-empty">当前物体无对应候选。缓存含 ${keys.length} 个：${escapeHtml(keys.slice(0, 8).join(", "))}${keys.length > 8 ? "…" : ""}</div>`;
+        return;
+      }
+      renderProductList(hit.products || [], `${hit.id} · Top${(hit.products || []).length}`);
+    }
+
+    async function searchIkeaForObject(item) {
+      if (!item) return null;
+      productBadge.textContent = "检索中…";
+      productsEl.innerHTML = '<div class="product-empty">正在用 crop 检索宜家索引（首次约数十秒）…</div>';
+      const body = { topK: 3 };
+      if (item.cropUrl) {
+        body.cropUrl = item.cropUrl;
+      } else if ((imageDataUrl || pauseFrameDataUrl) && item.bbox) {
+        body.image = imageDataUrl || pauseFrameDataUrl;
+        body.bbox = item.bbox;
+      } else {
+        throw new Error("当前物体没有 cropUrl，也无法从画面裁剪");
+      }
+      const response = await fetch("/api/video/clip-search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+      if (!response.ok) {
+        const detail = await response.text();
+        throw new Error(detail || response.statusText);
+      }
+      const payload = await response.json();
+      liveProductResults = { objectId: item.id, results: payload.results || [] };
+      renderProductList(liveProductResults.results, `实时 · ${item.name || item.label}`);
+      return liveProductResults;
+    }
+
+    async function showProductsForSelection(item) {
+      if (!item) {
+        productsEl.innerHTML = '<div class="product-empty">选中物体后点「搜宜家相似商品」</div>';
+        return;
+      }
+      // Image mode: live CLIP on crop. Video mode: prefer offline cache, else live.
+      if (mode === "image") {
+        try {
+          await searchIkeaForObject(item);
+        } catch (error) {
+          productBadge.textContent = "检索失败";
+          productsEl.innerHTML = `<div class="product-empty">${escapeHtml(error.message || error)}</div>`;
+        }
+        return;
+      }
+      await ensureProductMatches();
+      if (productMatchesCache) {
+        renderProductsForObject(item);
+        return;
+      }
+      try {
+        await searchIkeaForObject(item);
+      } catch (error) {
+        productBadge.textContent = "无缓存";
+        productsEl.innerHTML = `<div class="product-empty">${escapeHtml(error.message || error)}</div>`;
+      }
+    }
+
+    searchIkeaButton.addEventListener("click", async () => {
+      if (!selectedObject) return;
+      searchIkeaButton.disabled = true;
+      try {
+        await searchIkeaForObject(selectedObject);
+      } catch (error) {
+        productBadge.textContent = "检索失败";
+        productsEl.innerHTML = `<div class="product-empty">${escapeHtml(error.message || error)}</div>`;
+      } finally {
+        searchIkeaButton.disabled = !selectedObject;
+        refreshIcons();
+      }
+    });
+
+    loadMatchesButton.addEventListener("click", async () => {
+      loadMatchesButton.disabled = true;
+      liveProductResults = null;
+      try {
+        const cache = await ensureProductMatches(true);
+        if (!cache) return;
+        if (selectedObject) {
+          renderProductsForObject(selectedObject);
+          return;
+        }
+        const entries = Object.entries(cache.matches || {});
+        if (!entries.length) {
+          productsEl.innerHTML = '<div class="product-empty">缓存为空</div>';
+          return;
+        }
+        productsEl.innerHTML = entries.map(([id, value]) => {
+          const top = (value.products || [])[0];
+          const title = top ? top.title : "无结果";
+          return `<button type="button" class="object-row" data-candidate="${escapeHtml(id)}">
+            <span><span class="object-name">${escapeHtml(value.name || id)}</span>
+            <span class="object-meta">${escapeHtml(id)} · ${escapeHtml(title)}</span></span>
+            <span class="confidence">${(value.products || []).length}</span>
+          </button>`;
+        }).join("");
+        productsEl.querySelectorAll("[data-candidate]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const id = button.getAttribute("data-candidate");
+            const value = cache.matches[id];
+            renderProductsForObject({ deduplicatedObjectId: id, label: value.label, name: value.name });
+          });
+        });
+      } finally {
+        loadMatchesButton.disabled = false;
+        refreshIcons();
+      }
+    });
 
     function renderObjects() {
       objects.innerHTML = "";
@@ -487,7 +807,19 @@
         button.type = "button";
         button.className = `object-row${selectedObject && selectedObject.id === item.id ? " active" : ""}`;
         button.innerHTML = `<span><span class="object-name">${escapeHtml(item.name || item.label)}</span><span class="object-meta">${escapeHtml(item.label)} · bbox ${item.bbox.join(", ")}</span></span><span class="confidence">${Math.round(item.confidence * 100)}%</span>`;
+<<<<<<< HEAD
         button.addEventListener("click", () => selectDetectedObject(item));
+=======
+        button.addEventListener("click", async () => {
+          selectedObject = item;
+          liveProductResults = null;
+          renderObjects();
+          generateButton.disabled = false;
+          searchIkeaButton.disabled = false;
+          await drawAnnotated(matchedCanvas, currentDetection.frameImageUrl || imageDataUrl, list, item.id);
+          await showProductsForSelection(item);
+        });
+>>>>>>> origin/cutting
         objects.appendChild(button);
       }
       if (!list.length) objects.innerHTML = '<div class="empty-state">未检测到家具</div>';
@@ -497,13 +829,33 @@
       if (!currentDetection || !selectedObject) return;
       generateButton.disabled = true;
       try {
-        setStep("model", "running", `正在生成 ${selectedObject.name || selectedObject.label}`);
+        const useCache = Boolean(selectedObject.prebuiltGlbUrl);
+        setStep("model", "running", `${useCache ? "正在加载缓存" : "正在生成"} ${selectedObject.name || selectedObject.label}`);
         switchView("modelView");
         const stop = startTimer("model");
-        const body = { frameId: currentDetection.frameId, objectId: selectedObject.id };
-        if (mode === "image") body.frameImage = imageDataUrl;
-        const selected = await postJson("/api/feed/select-object", body);
+        let selected;
+        if (useCache) {
+          const query = new URLSearchParams({ frameId: currentDetection.frameId, objectId: selectedObject.id });
+          const asset = await getJson(`/api/feed/prebuilt-asset?${query}`);
+          selected = {
+            status: "cached",
+            object: {
+              id: asset.objectId,
+              label: asset.label,
+              name: asset.name,
+              estimatedDimensions: asset.estimatedDimensions,
+              glbUrl: asset.glbUrl
+            },
+            analysis: { summary: "读取比赛预生成 GLB", placementAdvice: "继续运行下方摆放检查" },
+            generation: null
+          };
+        } else {
+          const body = { frameId: currentDetection.frameId, objectId: selectedObject.id };
+          if (mode === "image") body.frameImage = imageDataUrl;
+          selected = await postJson("/api/feed/select-object", body);
+        }
         stop();
+        selectedAsset = selected.object;
         selectedJson.textContent = JSON.stringify(selected, null, 2);
         renderReferences(selected);
         modelBadge.textContent = selected.status || "完成";
@@ -515,6 +867,103 @@
         generateButton.disabled = false;
       }
     });
+
+    productSearchButton.addEventListener("click", async () => {
+      if (!selectedObject) return;
+      productSearchButton.disabled = true;
+      try {
+        setStep("product", "running", "正在读取 Mock 商品目录");
+        const result = await postJson("/api/product/mock-search", {
+          objectId: selectedObject.id,
+          label: selectedObject.label,
+          name: selectedObject.name,
+          estimatedDimensions: selectedObject.estimatedDimensions || null
+        });
+        productJson.textContent = JSON.stringify(result, null, 2);
+        productBadge.textContent = result.isMock ? "Mock Top 3" : result.source;
+        productMatches.innerHTML = "";
+        for (const match of result.matches || []) {
+          const item = document.createElement("div");
+          item.className = "flow-result";
+          item.innerHTML = `<strong>${escapeHtml(match.name)} · ¥${Number(match.priceCny).toLocaleString("zh-CN")}</strong><small>${escapeHtml(match.sizeText)} · 相似度 ${Math.round(match.score * 100)}%</small><small>${escapeHtml(match.reason)}</small>`;
+          productMatches.appendChild(item);
+        }
+        setStep("product", "done", `${result.matches.length} 个 Mock 候选`);
+      } catch (error) {
+        setStep("product", "failed", String(error.message || error));
+        productJson.textContent = String(error.message || error);
+      } finally {
+        productSearchButton.disabled = false;
+      }
+    });
+
+    placementCheckButton.addEventListener("click", async () => {
+      if (!selectedObject) return;
+      placementCheckButton.disabled = true;
+      try {
+        setStep("layout", "running", "正在执行几何规则");
+        const dimensions = selectedObject.estimatedDimensions || fallbackDimensions(selectedObject.label);
+        const result = await postJson("/api/room/placement-check", {
+          sceneId: "demo_living_room",
+          candidate: {
+            id: selectedObject.id,
+            label: selectedObject.label,
+            name: selectedObject.name || selectedObject.label,
+            position: [numberInput(placementX, 0.6), 0, numberInput(placementZ, 0.5)],
+            rotation: [0, THREE.MathUtils.degToRad(numberInput(placementYaw, 0)), 0],
+            size: [dimensions.widthM, dimensions.heightM, dimensions.depthM]
+          },
+          enableAgents: false
+        });
+        layoutJson.textContent = JSON.stringify(result, null, 2);
+        layoutBadge.textContent = `${statusText(result.overallStatus)} · Mock 房间`;
+        checkResults.innerHTML = "";
+        for (const check of result.checks || []) {
+          const item = document.createElement("div");
+          item.className = `flow-result ${check.status}`;
+          item.innerHTML = `<strong>${escapeHtml(check.name)} · ${escapeHtml(statusText(check.status))}</strong><small>${escapeHtml(check.message)}</small>${check.suggestion ? `<small>${escapeHtml(check.suggestion)}</small>` : ""}`;
+          checkResults.appendChild(item);
+        }
+        const move = result.layout?.moves?.[0];
+        if (move) {
+          const suggestion = document.createElement("div");
+          suggestion.className = "flow-result warn";
+          suggestion.innerHTML = `<strong>确定性移动建议</strong><small>${escapeHtml(move.reason)}</small><small>${move.fromPosition.map(formatMeter).join(", ")} → ${move.toPosition.map(formatMeter).join(", ")}</small>`;
+          checkResults.appendChild(suggestion);
+        }
+        setStep("layout", "done", `${statusText(result.overallStatus)} · ${(result.checks || []).length} 项规则`);
+      } catch (error) {
+        setStep("layout", "failed", String(error.message || error));
+        layoutJson.textContent = String(error.message || error);
+      } finally {
+        placementCheckButton.disabled = false;
+      }
+    });
+
+    function fallbackDimensions(label) {
+      const dimensions = {
+        sofa: { widthM: 2.0, depthM: 0.9, heightM: 0.85 },
+        coffee_table: { widthM: 1.0, depthM: 0.55, heightM: 0.42 },
+        chair: { widthM: 0.55, depthM: 0.58, heightM: 0.85 },
+        bed: { widthM: 1.8, depthM: 2.1, heightM: 0.9 },
+        wardrobe: { widthM: 1.2, depthM: 0.6, heightM: 2.1 },
+        cabinet: { widthM: 1.2, depthM: 0.42, heightM: 0.85 },
+        dining_table: { widthM: 1.6, depthM: 0.85, heightM: 0.75 },
+        desk: { widthM: 1.2, depthM: 0.6, heightM: 0.75 }
+      };
+      return dimensions[label] || { widthM: 0.8, depthM: 0.6, heightM: 0.8 };
+    }
+
+    function numberInput(input, fallback) {
+      const value = Number(input.value);
+      return Number.isFinite(value) ? value : fallback;
+    }
+
+    function statusText(status) {
+      return { pass: "通过", warn: "警告", fail: "不通过" }[status] || status || "未知";
+    }
+
+    function formatMeter(value) { return `${Number(value).toFixed(2)}m`; }
 
     function captureVideoFrame(video, canvas) {
       canvas.width = video.videoWidth;
@@ -554,6 +1003,7 @@
         selectedObject = null;
         generateButton.disabled = true;
         renderObjects();
+        resetExtensionResults();
       }
     }
 
@@ -609,6 +1059,11 @@
       renderObjects();
       renderVideoTags();
       generateButton.disabled = false;
+      generateButton.innerHTML = item.prebuiltGlbUrl
+        ? '<i data-lucide="database"></i>加载缓存模型'
+        : '<i data-lucide="box"></i>生成所选模型';
+      resetExtensionResults();
+      refreshIcons();
       const list = currentDetection && currentDetection.objects || [];
       await drawAnnotated(matchedCanvas, currentDetection.frameImageUrl || imageDataUrl || pauseFrameDataUrl, list, item.id);
     }

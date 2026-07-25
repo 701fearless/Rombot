@@ -1,4 +1,6 @@
-from fastapi import APIRouter, HTTPException
+import json
+
+from fastapi import APIRouter, File, Form, HTTPException, Path as PathParam, UploadFile
 
 from app.schemas import (
     LayoutModule,
@@ -10,6 +12,7 @@ from app.schemas import (
     ScenarioAdviceRequest,
     ScenarioAdviceResponse,
     SceneResponse,
+    SceneSnapshot,
     SpatialCheckRequest,
     SpatialCheckResponse,
 )
@@ -19,9 +22,57 @@ from app.services.layout_reasoning.agents.room_layout import run_room_layout
 from app.services.layout_reasoning.agents.scenario_agent import run_scenario_advice
 from app.services.layout_reasoning.propose_moves import propose_moves_from_geometry
 from app.services.room_scan.mock_scene import build_mock_scene
+from app.services.scene_snapshot import load_snapshot, reset_snapshot, save_runtime_whitebox, save_snapshot
 
 
 router = APIRouter()
+
+
+@router.get("/snapshots/{scene_id}", response_model=SceneSnapshot)
+async def get_scene_snapshot(
+    scene_id: str = PathParam(pattern=r"^[A-Za-z0-9_-]+$"),
+) -> SceneSnapshot:
+    try:
+        return load_snapshot(scene_id)
+    except (FileNotFoundError, ValueError) as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@router.put("/snapshots/{scene_id}", response_model=SceneSnapshot)
+async def put_scene_snapshot(
+    snapshot: SceneSnapshot,
+    scene_id: str = PathParam(pattern=r"^[A-Za-z0-9_-]+$"),
+) -> SceneSnapshot:
+    try:
+        return save_snapshot(scene_id, snapshot)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@router.post("/snapshots/{scene_id}/reset", response_model=SceneSnapshot)
+async def restore_scene_snapshot(
+    scene_id: str = PathParam(pattern=r"^[A-Za-z0-9_-]+$"),
+) -> SceneSnapshot:
+    try:
+        return reset_snapshot(scene_id)
+    except (FileNotFoundError, ValueError) as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@router.put("/snapshots/{scene_id}/whitebox", response_model=SceneSnapshot)
+async def put_scene_whitebox(
+    scene_id: str = PathParam(pattern=r"^[A-Za-z0-9_-]+$"),
+    file: UploadFile = File(...),
+    snapshot: str = Form(...),
+) -> SceneSnapshot:
+    try:
+        parsed = SceneSnapshot.model_validate(json.loads(snapshot))
+        payload = await file.read()
+        return save_runtime_whitebox(scene_id, parsed, payload)
+    except json.JSONDecodeError as exc:
+        raise HTTPException(status_code=400, detail="snapshot must be valid JSON") from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 def _resolve_scene(scene: SceneResponse | None, scene_id: str | None) -> SceneResponse:
@@ -40,17 +91,11 @@ async def _run_placement_check(request: PlacementCheckRequest) -> PlacementCheck
     scene = _resolve_scene(request.scene, request.sceneId)
     if scene.room.width <= 0 or scene.room.depth <= 0:
         raise HTTPException(status_code=400, detail="房间尺寸无效")
-    if any(v <= 0 for v in request.candidate.size):
+    if any(value <= 0 for value in request.candidate.size):
         raise HTTPException(status_code=400, detail="家具尺寸无效")
 
     result = run_spatial_check(request.candidate, scene)
-    options = get_scenario_options()
-    geometry_moves = propose_moves_from_geometry(
-        request.candidate,
-        scene,
-        result.checks,
-    )
-
+    geometry_moves = propose_moves_from_geometry(request.candidate, scene, result.checks)
     if request.enableAgents:
         layout = await run_layout_module(
             candidate=request.candidate,
@@ -70,25 +115,26 @@ async def _run_placement_check(request: PlacementCheckRequest) -> PlacementCheck
         checks=result.checks,
         feedback=result.feedback,
         layout=layout,
-        scenarioOptions=options,
+        scenarioOptions=get_scenario_options(),
         agentReport=None,
     )
 
 
 @router.post("/placement-check", response_model=PlacementCheckResponse)
 async def placement_check(request: PlacementCheckRequest) -> PlacementCheckResponse:
-    """单家具摆放：几何四检 + 可选 Agent 文案。enableAgents=false 时仍返回几何 moves。"""
+    """Check one furniture placement and return deterministic moves without agents."""
     return await _run_placement_check(request)
 
 
 @router.post("/spatial-check", response_model=SpatialCheckResponse, deprecated=True)
 async def spatial_check(request: SpatialCheckRequest) -> SpatialCheckResponse:
-    """兼容旧接口，等价于 /placement-check。"""
+    """Compatibility alias for /placement-check."""
     return await _run_placement_check(request)
 
 
 @router.post("/room-layout", response_model=RoomLayoutResponse)
 async def room_layout(request: RoomLayoutRequest) -> RoomLayoutResponse:
+    """Analyze every furniture item and return whole-room layout moves."""
     scene = _resolve_scene(request.scene, request.sceneId)
     if scene.room.width <= 0 or scene.room.depth <= 0:
         raise HTTPException(status_code=400, detail="房间尺寸无效")
@@ -102,7 +148,7 @@ async def scenario_advice(request: ScenarioAdviceRequest) -> ScenarioAdviceRespo
     scene = _resolve_scene(request.scene, request.sceneId)
     if scene.room.width <= 0 or scene.room.depth <= 0:
         raise HTTPException(status_code=400, detail="房间尺寸无效")
-    if request.candidate is not None and any(v <= 0 for v in request.candidate.size):
+    if request.candidate is not None and any(value <= 0 for value in request.candidate.size):
         raise HTTPException(status_code=400, detail="家具尺寸无效")
 
     try:

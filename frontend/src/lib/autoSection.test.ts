@@ -24,7 +24,7 @@ function hits(wallId: string, count: number, distance = 3): SectionRayHit[] {
 
 async function loadCompetitionWhitebox(): Promise<THREE.Group> {
   const bytes = readFileSync(
-    path.resolve(process.cwd(), "../backend/sample_data/floorplans/whitebox.glb"),
+    path.resolve(process.cwd(), "../backend/sample_data/floorplans/preprocessed/room6/whitebox.glb"),
   )
   const arrayBuffer = bytes.buffer.slice(
     bytes.byteOffset,

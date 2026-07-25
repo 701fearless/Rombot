@@ -1,0 +1,14 @@
+# Optional deps for offline CLIP + FAISS product retrieval (not required by main API).
+# Use Python 3.9–3.12 (torch/open_clip may not support 3.14 yet).
+#
+#   py -3.9 -m venv .venv-retrieval
+#   .\.venv-retrieval\Scripts\python.exe -m pip install -U pip
+#   .\.venv-retrieval\Scripts\python.exe -m pip install -r requirements-product-retrieval.txt
+
+torch>=2.1,<2.7
+torchvision>=0.16,<0.22
+open-clip-torch>=2.24,<3
+numpy>=1.24,<2.1
+Pillow>=10,<12
+faiss-cpu>=1.7.4,<1.9
+httpx>=0.27,<0.29

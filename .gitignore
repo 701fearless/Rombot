@@ -5,9 +5,14 @@ backend/.env
 .venv_local/
 backend/.venv/
 backend/.venv_local/
+backend/.venv-retrieval/
 
 # Local standalone experiment (exclude from this branch)
 room_scan_standalone/
+
+# Local video assets / large demo media
+vedios/
+backend/data/product_index/
 
 # Heavy generated assets
 *.glb
@@ -27,6 +32,7 @@ backend/outputs/tripo_speed_tests/
 backend/outputs/floorplans/
 backend/outputs/server_*.log
 backend/outputs/server_*.err.log
+backend/server.*.log
 backend/outputs/videos/**/hunyuan_task.json
 backend/outputs/videos/**/hunyuan_result.json
 backend/outputs/videos/**/hunyuan_batch_report.json
@@ -64,3 +70,5 @@ frontend/*.tsbuildinfo
 
 # Competition cache: only the top-level, already generated video-2 furniture models.
 !backend/outputs/videos/2/generated/*/generated_model.glb
+
+backend/outputs/

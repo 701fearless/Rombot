@@ -1,108 +1,125 @@
+import json
 import os
+import re
 import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 
-from fastapi import APIRouter, File, HTTPException, UploadFile
-from pydantic import BaseModel
+from fastapi import APIRouter, File, HTTPException, Path as PathParam, UploadFile
+from pydantic import BaseModel, Field
+
+from app.storage.local_store import OUTPUTS_ROOT, path_to_output_url
+
 
 router = APIRouter()
-
-# 上传文件存储目录
-UPLOAD_DIR = Path("outputs") / "uploaded_furniture"
-os.makedirs(UPLOAD_DIR, exist_ok=True)
-
-
-class FurnitureUploadResponse(BaseModel):
-    id: str
-    name: str
-    glbUrl: str
-    sizeBytes: int
-    message: str
+UPLOAD_DIR = OUTPUTS_ROOT / "uploaded_furniture"
+MANIFEST_PATH = UPLOAD_DIR / "manifest.json"
+MAX_UPLOAD_BYTES = 50 * 1024 * 1024
+GLB_MAGIC = b"glTF"
 
 
 class FurnitureItem(BaseModel):
     id: str
     name: str
     glbUrl: str
+    sizeBytes: int = Field(ge=1)
+    uploadedAt: str
 
 
-# 内存存储（生产环境应使用数据库）
-uploaded_furniture: list[FurnitureItem] = []
+class FurnitureUploadResponse(FurnitureItem):
+    message: str
+
+
+def _safe_stem(filename: str) -> str:
+    stem = Path(filename).stem.strip()
+    cleaned = re.sub(r"[^A-Za-z0-9._\-\u4e00-\u9fff]+", "_", stem).strip("._")
+    return cleaned[:80] or "furniture"
+
+
+def _load_items() -> list[FurnitureItem]:
+    if not MANIFEST_PATH.exists():
+        return []
+    try:
+        payload = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        return [FurnitureItem.model_validate(item) for item in payload]
+    except (json.JSONDecodeError, OSError, ValueError):
+        return []
+
+
+def _save_items(items: list[FurnitureItem]) -> None:
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+    temporary = MANIFEST_PATH.with_suffix(".json.tmp")
+    temporary.write_text(
+        json.dumps([item.model_dump() for item in items], ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    os.replace(temporary, MANIFEST_PATH)
+
+
+def _item_path(item: FurnitureItem) -> Path:
+    filename = Path(item.glbUrl).name
+    candidate = (UPLOAD_DIR / filename).resolve()
+    try:
+        candidate.relative_to(UPLOAD_DIR.resolve())
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail="家具文件路径无效") from exc
+    return candidate
 
 
 @router.post("/upload", response_model=FurnitureUploadResponse)
-async def upload_furniture_glb(file: UploadFile = File(...)):
-    """上传家具 GLB 模型文件"""
-    # 验证文件类型
+async def upload_furniture_glb(file: UploadFile = File(...)) -> FurnitureUploadResponse:
     if not file.filename:
         raise HTTPException(status_code=400, detail="文件名不能为空")
-    
-    filename = file.filename.lower()
-    if not (filename.endswith(".glb") or filename.endswith(".gltf")):
-        raise HTTPException(status_code=400, detail="只支持 .glb 或 .gltf 格式的文件")
-    
-    # 限制文件大小 (最大 50MB)
-    content = await file.read()
-    if len(content) > 50 * 1024 * 1024:
-        raise HTTPException(status_code=400, detail="文件大小不能超过 50MB")
-    
-    # 生成唯一ID和存储路径
+    if Path(file.filename).suffix.lower() != ".glb":
+        raise HTTPException(status_code=400, detail="当前仅支持完整的 .glb 家具模型")
+
+    content = await file.read(MAX_UPLOAD_BYTES + 1)
+    if not content:
+        raise HTTPException(status_code=400, detail="家具模型不能为空")
+    if len(content) > MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail="家具模型不能超过 50 MB")
+    if content[:4] != GLB_MAGIC:
+        raise HTTPException(status_code=400, detail="文件不是有效的 GLB 模型")
+
     furniture_id = f"furniture_{uuid.uuid4().hex[:12]}"
-    safe_name = file.filename.replace(" ", "_").replace("/", "_")
-    stored_name = f"{furniture_id}_{safe_name}"
+    stored_name = f"{furniture_id}_{_safe_stem(file.filename)}.glb"
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     storage_path = UPLOAD_DIR / stored_name
-    
-    # 写入文件
-    with open(storage_path, "wb") as f:
-        f.write(content)
-    
-    # 构建访问URL
-    glb_url = f"/outputs/uploaded_furniture/{stored_name}"
-    
-    # 创建家具记录
+    storage_path.write_bytes(content)
+
     item = FurnitureItem(
         id=furniture_id,
-        name=file.filename.rsplit(".", 1)[0],
-        glbUrl=glb_url,
-    )
-    uploaded_furniture.append(item)
-    
-    return FurnitureUploadResponse(
-        id=item.id,
-        name=item.name,
-        glbUrl=glb_url,
+        name=Path(file.filename).stem[:120] or "上传家具",
+        glbUrl=path_to_output_url(storage_path),
         sizeBytes=len(content),
-        message="上传成功",
+        uploadedAt=datetime.now(timezone.utc).isoformat(),
     )
+    items = [existing for existing in _load_items() if existing.id != item.id]
+    items.append(item)
+    try:
+        _save_items(items)
+    except OSError as exc:
+        storage_path.unlink(missing_ok=True)
+        raise HTTPException(status_code=500, detail="家具清单保存失败") from exc
+
+    return FurnitureUploadResponse(**item.model_dump(), message="上传成功")
 
 
 @router.get("/list", response_model=list[FurnitureItem])
-async def list_uploaded_furniture():
-    """获取已上传的家具列表"""
-    return uploaded_furniture
+async def list_uploaded_furniture() -> list[FurnitureItem]:
+    items = [item for item in _load_items() if _item_path(item).is_file()]
+    return sorted(items, key=lambda item: item.uploadedAt, reverse=True)
 
 
 @router.delete("/{furniture_id}")
-async def delete_furniture(furniture_id: str):
-    """删除已上传的家具"""
-    global uploaded_furniture
-    
-    item = None
-    for i, f in enumerate(uploaded_furniture):
-        if f.id == furniture_id:
-            item = f
-            break
-    
-    if not item:
+async def delete_furniture(
+    furniture_id: str = PathParam(pattern=r"^furniture_[a-f0-9]{12}$"),
+) -> dict[str, str]:
+    items = _load_items()
+    item = next((candidate for candidate in items if candidate.id == furniture_id), None)
+    if item is None:
         raise HTTPException(status_code=404, detail="家具不存在")
-    
-    # 删除物理文件
-    filename = item.glbUrl.split("/")[-1]
-    file_path = UPLOAD_DIR / filename
-    if file_path.exists():
-        file_path.unlink()
-    
-    # 从列表移除
-    uploaded_furniture = [f for f in uploaded_furniture if f.id != furniture_id]
-    
+
+    _item_path(item).unlink(missing_ok=True)
+    _save_items([candidate for candidate in items if candidate.id != furniture_id])
     return {"message": "删除成功", "id": furniture_id}

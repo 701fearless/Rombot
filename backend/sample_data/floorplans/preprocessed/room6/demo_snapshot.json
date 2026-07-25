@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0",
+  "snapshotId": "room6_demo",
+  "revision": 0,
+  "sceneId": "room6",
+  "unit": "meter",
+  "coordinateSystem": "threejs-xz-ground-y-up",
+  "room": {
+    "name": "Living room",
+    "whiteboxGlbUrl": "/sample_data/floorplans/preprocessed/room6/whitebox.glb",
+    "floorPolygon": [[0.0, 0.0], [6.0, 0.0], [6.0, 4.2], [0.0, 4.2]],
+    "walls": [
+      {"id": "wall_south", "start": [0.0, 0.0], "end": [6.0, 0.0], "height": 3.0},
+      {"id": "wall_east", "start": [6.0, 0.0], "end": [6.0, 4.2], "height": 3.0},
+      {"id": "wall_north", "start": [6.0, 4.2], "end": [0.0, 4.2], "height": 3.0},
+      {"id": "wall_west", "start": [0.0, 4.2], "end": [0.0, 0.0], "height": 3.0}
+    ],
+    "openings": [
+      {"id": "door_entry", "type": "door", "wallId": "wall_south", "offset": 1.2, "width": 0.9, "height": 2.1},
+      {"id": "window_living", "type": "window", "wallId": "wall_north", "offset": 2.0, "width": 1.6, "height": 1.2}
+    ]
+  },
+  "objects": [
+    {
+      "instanceId": "existing_sofa",
+      "source": {"type": "preset"},
+      "semantic": {
+        "label": "sofa",
+        "name": "Warm gray sofa",
+        "category": "sofa",
+        "colors": ["warm gray"],
+        "materials": ["fabric"],
+        "styles": ["modern"],
+        "functions": ["seating", "conversation"]
+      },
+      "geometry": {"size": [2.1, 0.82, 0.9]},
+      "transform": {"position": [1.35, 0.41, 3.55], "rotation": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 1.0]},
+      "placement": {"isExisting": true, "locked": false, "zone": "living_area"}
+    },
+    {
+      "instanceId": "existing_coffee_table",
+      "source": {"type": "preset"},
+      "semantic": {
+        "label": "coffee_table",
+        "name": "Oak coffee table",
+        "category": "coffee_table",
+        "colors": ["oak"],
+        "materials": ["wood"],
+        "styles": ["natural"],
+        "functions": ["surface", "storage"]
+      },
+      "geometry": {"size": [1.1, 0.42, 0.6]},
+      "transform": {"position": [1.55, 0.21, 2.25], "rotation": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 1.0]},
+      "placement": {"isExisting": true, "locked": false, "zone": "living_area"}
+    }
+  ],
+  "userContext": {
+    "familyMembers": [],
+    "hasChildren": false,
+    "hasElderly": false,
+    "pets": [],
+    "dailyHabits": [],
+    "storageHabits": null,
+    "fengShuiPreference": false,
+    "preferPrivacy": true,
+    "preferComfort": true
+  },
+  "updatedAt": "2026-07-25T00:00:00+00:00"
+}
