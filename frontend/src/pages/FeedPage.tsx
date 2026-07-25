@@ -11,6 +11,33 @@ import type { FeedVideo } from '@/types/feed'
 import type { DetectResponse, DetectedObject } from '@/types/scene'
 
 interface Size { width: number; height: number }
+interface FeedTagLayout { object: DetectedObject; left: number; top: number; direction: 'left' | 'right' }
+
+function layoutFeedTags(objects: DetectedObject[], sourceSize: Size, containerSize: Size): FeedTagLayout[] {
+  const placed: FeedTagLayout[] = []
+  for (const object of objects) {
+    const point = containTagPosition(object.tagPosition, sourceSize, containerSize)
+    let left = Math.min(Math.max(point.x, 24), Math.max(24, containerSize.width - 78))
+    let top = Math.min(Math.max(point.y, 82), Math.max(82, containerSize.height - 142))
+    const nearby = placed.filter((item) => Math.abs(item.left - left) < 210 && Math.abs(item.top - top) < 54)
+    let direction: FeedTagLayout['direction'] = left > containerSize.width * .58 ? 'left' : 'right'
+    if (nearby.length) direction = nearby[nearby.length - 1].direction === 'left' ? 'right' : 'left'
+    if (direction === 'left' && left < 190) direction = 'right'
+    if (direction === 'right' && left > containerSize.width - 250) direction = 'left'
+    const crowdedAnchors = placed.filter((item) => Math.abs(item.left - left) < 80 && Math.abs(item.top - top) < 28)
+    if (crowdedAnchors.length) {
+      const anchorOffset = 14 + Math.min(crowdedAnchors.length, 3) * 7
+      left = Math.min(Math.max(left + (direction === 'left' ? -anchorOffset : anchorOffset), 24), Math.max(24, containerSize.width - 78))
+      top = Math.min(Math.max(top + (crowdedAnchors.length % 2 ? -20 : 20), 82), Math.max(82, containerSize.height - 142))
+    }
+    for (let attempt = 0; attempt < 4 && placed.some((item) => item.direction === direction && Math.abs(item.left - left) < 210 && Math.abs(item.top - top) < 46); attempt += 1) {
+      const offset = 58 * (Math.floor(attempt / 2) + 1) * (attempt % 2 ? -1 : 1)
+      top = Math.min(Math.max(point.y + offset, 82), Math.max(82, containerSize.height - 142))
+    }
+    placed.push({ object, left, top, direction })
+  }
+  return placed
+}
 
 function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean; index: number }) {
   const navigate = useNavigate(); const toast = useToast(); const activeSceneId = useSceneStore((s) => s.activeSceneId); const setPendingAsset = useSceneStore((s) => s.setPendingAsset)
@@ -33,20 +60,16 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
     try { const prebuilt = await getPrebuiltAsset(detection.frameId, object.id); setPendingAsset({ videoId: video.id, time: pausedAt, frameId: detection.frameId, detected: object, prebuilt }); navigate(`/space?${new URLSearchParams({ sceneId: activeSceneId, frameId: detection.frameId, objectId: object.id })}`) }
     catch (reason) { toast.show(reason instanceof Error ? reason.message : '家具暂时不可用') }
   }
+  const tagLayouts = paused && detection ? layoutFeedTags(detection.objects, sourceSize, containerSize) : []
   return <article ref={rootRef} className='feed-card' data-feed-index={index}>
     <video ref={videoRef} className='feed-card__video' src={video.videoUrl} poster={video.coverUrl} muted={muted} playsInline loop preload={active ? 'auto' : 'metadata'} onLoadedMetadata={(event) => setSourceSize({ width: event.currentTarget.videoWidth, height: event.currentTarget.videoHeight })} onCanPlay={(event) => { if (active && event.currentTarget.paused) void event.currentTarget.play().catch(() => undefined) }} onPause={() => { setPaused(true); if (active) void recognize() }} onPlay={() => { setPaused(false); cancelRecognition() }} onSeeking={cancelRecognition} />
     <button className='feed-card__tap' type='button' aria-label={paused ? '继续播放' : '暂停识别'} onClick={() => { const element = videoRef.current; if (!element) return; if (element.paused) void element.play(); else element.pause() }} />
     <div className='feed-card__shade' />
-    <header className='feed-card__header'><strong>QQ HOUSE</strong><div><span>关注</span><b>推荐</b></div><small>{activeSceneId.toUpperCase()}</small></header>
+    <header className='feed-card__header'><strong>QQ HOUSE</strong><div><span>关注</span><b>推荐</b></div></header>
     {paused && status === 'idle' && <div className='feed-card__pause'><Pause /></div>}
     {status === 'loading' && <div className='feed-status'><LoaderCircle className='spin' />正在匹配家具</div>}
     {(status === 'empty' || status === 'error') && <button className='feed-status is-action' type='button' onClick={() => void recognize()}>{status === 'error' && <AlertCircle />}{message || '当前画面没有可用家具'} · 重试</button>}
-    {paused && detection?.objects.map((object) => {
-      const point = containTagPosition(object.tagPosition, sourceSize, containerSize)
-      const left = Math.min(Math.max(point.x, 16), Math.max(16, containerSize.width - 132))
-      const top = Math.min(Math.max(point.y, 76), Math.max(76, containerSize.height - 150))
-      return <button key={object.id} className={`feed-tag ${object.prebuiltGlbUrl ? '' : 'is-disabled'}`} type='button' disabled={!object.prebuiltGlbUrl} style={{ left, top }} onClick={() => void chooseObject(object)}><span className='feed-tag__dot' /><span>{object.name}</span><small>{object.prebuiltGlbUrl ? '放进户型' : '模型未缓存'}</small></button>
-    })}
+    {tagLayouts.map(({ object, left, top, direction }) => <button key={object.id} className={`feed-tag is-${direction} ${object.prebuiltGlbUrl ? '' : 'is-disabled'}`} type='button' disabled={!object.prebuiltGlbUrl} style={{ left, top }} onClick={() => void chooseObject(object)}><span className='feed-tag__dot' /><span className='feed-tag__line' /><span className='feed-tag__bar'><strong>{object.name}</strong><small>放进户型</small></span></button>)}
     <aside className='feed-social' aria-label='视频操作'>
       <button type='button' className='feed-avatar' aria-label={`查看 ${video.author} 的主页`}><span>{video.author.slice(0, 1)}</span><Plus /></button>
       <button type='button' className={liked ? 'is-liked' : ''} aria-label='点赞' onClick={() => setLiked((value) => !value)}><Heart fill={liked ? 'currentColor' : 'none'} /><small>{liked ? '12.9w' : '12.8w'}</small></button>
@@ -56,7 +79,6 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
       <button type='button' className='feed-record' aria-label={muted ? '打开声音' : '静音'} onClick={() => setMuted((value) => !value)}>{muted ? <VolumeX /> : <Volume2 />}<Music2 /></button>
     </aside>
     <footer className='feed-card__copy'><strong>@{video.author}</strong><h1>{video.title}</h1><p>暂停视频，点击家具 Tag 放进 room6</p><div>{video.furnitureHints.map((hint) => <span key={hint}>#{hint}</span>)}</div></footer>
-    <span className='feed-card__counter'>{index + 1}/{feedVideos.length}</span>
   </article>
 }
 
