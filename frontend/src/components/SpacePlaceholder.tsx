@@ -805,7 +805,7 @@ export function SpacePlaceholder() {
                             className="template-icon" 
                             style={{ backgroundColor: `${template.color}20`, color: template.color }}
                           >
-                            {template.icon}
+                            <template.Icon size={20} />
                           </div>
                           <span className="template-name">{template.name}</span>
                           <span className="template-size">
