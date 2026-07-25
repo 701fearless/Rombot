@@ -1,4 +1,4 @@
-import type { DetectResponse, PrebuiltAsset, RoomLayoutAdvice, SceneSnapshot, UploadedFurniture } from '@/types/scene'
+import type { DetectResponse, GeneratedFurniture, PrebuiltAsset, RoomLayoutAdvice, SceneSnapshot, UploadedFurniture } from '@/types/scene'
 
 async function errorOf(response: Response, fallback: string) {
   try { const body = await response.json() as { detail?: string }; return new Error(body.detail || fallback) } catch { return new Error(fallback) }
@@ -20,6 +20,7 @@ export function getSceneSnapshot(sceneId: string) { return json<SceneSnapshot>(`
 export function putSceneSnapshot(snapshot: SceneSnapshot) { return json<SceneSnapshot>(`/api/room/snapshots/${encodeURIComponent(snapshot.sceneId)}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(snapshot) }) }
 export function resetSceneSnapshot(sceneId: string) { return json<SceneSnapshot>(`/api/room/snapshots/${encodeURIComponent(sceneId)}/reset`, { method: 'POST' }) }
 export function listUploadedFurniture() { return json<UploadedFurniture[]>('/api/furniture/list') }
+export function listGeneratedFurniture() { return json<GeneratedFurniture[]>('/api/furniture/generated') }
 export function uploadFurniture(file: File) { const body = new FormData(); body.append('file', file); return json<UploadedFurniture & { message: string }>('/api/furniture/upload', { method: 'POST', body }) }
 export async function deleteUploadedFurniture(id: string) { const response = await fetch(`/api/furniture/${encodeURIComponent(id)}`, { method: 'DELETE' }); if (!response.ok) throw await errorOf(response, '删除家具失败') }
 export function requestRoomLayout(scene: Record<string, unknown>) { return json<RoomLayoutAdvice>('/api/room/room-layout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ scene, enableAgents: false }) }) }

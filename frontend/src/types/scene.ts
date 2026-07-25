@@ -4,7 +4,7 @@ export interface EstimatedDimensions { widthM: number; depthM: number; heightM: 
 export interface DetectedObject { id: string; label: string; name: string; confidence: number; bbox: [number, number, number, number]; tagPosition: [number, number]; cropUrl?: string | null; prebuiltGlbUrl?: string | null; estimatedDimensions?: EstimatedDimensions | null; visualFeatures?: Record<string, unknown> }
 export interface DetectResponse { frameId: string; frameImageUrl?: string | null; objects: DetectedObject[] }
 export interface PrebuiltAsset { frameId: string; objectId: string; label: string; name: string; deduplicatedObjectId: string; glbUrl: string; estimatedDimensions?: EstimatedDimensions | null }
-export interface SnapshotSource { type: 'feed' | 'preset' | 'upload'; videoId?: string; time?: number; frameId?: string; objectId?: string }
+export interface SnapshotSource { type: 'feed' | 'preset' | 'upload' | 'library'; videoId?: string; time?: number; frameId?: string; objectId?: string }
 export interface SnapshotObject {
   instanceId: string
   source: SnapshotSource
@@ -24,3 +24,17 @@ export interface FurnitureMove { objectId: string; name: string; fromPosition: V
 export interface LayoutAdviceItem { id: string; priority: '高' | '中' | '低'; title: string; problem: string; suggestion: string; relatedObjectIds: string[] }
 export interface RoomLayoutAdvice { mode: 'room'; overallStatus: 'pass' | 'fail' | 'warn'; objectChecks: unknown[]; feedback: string; layout: { moves: FurnitureMove[]; advices: LayoutAdviceItem[]; summary: string }; scenarioOptions: unknown[] }
 export interface UploadedFurniture { id: string; name: string; glbUrl: string; sizeBytes: number; uploadedAt: string }
+export interface GeneratedFurniture {
+  id: string
+  videoId: string
+  candidateId: string
+  representativeFrameId: string
+  representativeObjectId: string
+  label: string
+  category: string
+  name: string
+  previewUrl: string
+  glbUrl: string
+  sizeBytes: number
+  estimatedDimensions?: EstimatedDimensions | null
+}

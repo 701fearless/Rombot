@@ -10,8 +10,11 @@ const tabs = [
 
 export function AppShell() {
   return <div className='app-shell'>
+    <header className='app-header'>
+      <NavLink to='/' className='app-header__brand' aria-label='QQ House 首页'>QQ House</NavLink>
+      <span className='app-header__status'>ROOM6</span>
+    </header>
     <aside className='app-nav' aria-label='主导航'>
-      <NavLink to='/' className='app-nav__brand' aria-label='QQ House 首页'>Q</NavLink>
       <div className='app-nav__items'>{tabs.map(({ to, label, Icon, end }) =>
         <NavLink key={to} to={to} end={end} className={({ isActive }) => `app-nav__item ${isActive ? 'is-active' : ''}`}>
           <Icon aria-hidden='true' /><span>{label}</span>

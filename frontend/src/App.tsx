@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { AppShell } from '@/components/AppShell'
 import { FeedPage } from '@/pages/FeedPage'
+import { InspirationPage } from '@/pages/InspirationPage'
 import { SceneEditorPage } from '@/pages/SceneEditorPage'
 import {
   CompletePage,
@@ -29,8 +30,8 @@ function LegacyRedirect() {
 export default function App() {
   return (
     <Routes>
-      <Route index element={<FeedPage />} />
       <Route element={<AppShell />}>
+        <Route index element={<InspirationPage />} />
         <Route path='home' element={<HomePage />} />
         <Route path='discover' element={<DiscoverPage />} />
         <Route path='me' element={<MePage />} />
@@ -43,7 +44,7 @@ export default function App() {
       <Route path='recommend' element={<RecommendPage />} />
       <Route path='complete' element={<CompletePage />} />
       <Route path='dashboard' element={<DashboardPage />} />
-      <Route path='feed' element={<Navigate replace to='/' />} />
+      <Route path='feed' element={<FeedPage />} />
       <Route path='pages/*' element={<LegacyRedirect />} />
       <Route path='*' element={<Navigate replace to='/' />} />
     </Routes>
