@@ -1,0 +1,35 @@
+{
+  "productId": "00601054",
+  "sku": "00601054",
+  "title": "TJENA magazine file",
+  "productName": "TJENA magazine file",
+  "description": "TJENA magazine file, white black/dotted A practical magazine holder for loose papers and bills that you want to keep track of. The graphic pattern is created by Ingela Håkansson-Lamm, a designer from the group called 10 Swedish Designers.",
+  "features": [
+    "Coordinates with other products in the TJENA series.",
+    "Product is possible to recycle or use for energy recovery, if available in your community."
+  ],
+  "materialAndCare": "Paperboard (min. 100% recycled), Chlorine free bleached paper",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 5.99,
+  "currency": "USD",
+  "category": "Paper & media organizers",
+  "subcategory": "Magazine files",
+  "category1": "Storage containers, organizers & baskets",
+  "category2": "Paper & media organizers",
+  "category3": "Magazine files",
+  "category4": "TJENAMagazine file",
+  "categoryTree": [
+    "Storage containers, organizers & baskets",
+    "Paper & media organizers",
+    "Magazine files",
+    "TJENAMagazine file"
+  ],
+  "localImage": "images/00601054.jpg",
+  "imageUrl": "/product_index/images/00601054.jpg",
+  "detailUrl": "/static/shop.html#/p/00601054",
+  "rank": 1,
+  "score": 0.8312
+}

@@ -43,6 +43,60 @@ def _strip_brand_text(text: str | None) -> str:
     return cleaned
 
 
+def _as_feature_list(value: Any) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        items = [str(item).strip() for item in value if str(item).strip()]
+    else:
+        text = str(value).strip()
+        if not text:
+            return []
+        items = [part.strip() for part in re.split(r"[;\n]+", text) if part.strip()]
+    cleaned: list[str] = []
+    seen: set[str] = set()
+    for item in items:
+        item = _strip_brand_text(item)
+        key = item.lower()
+        if not item or key in seen:
+            continue
+        seen.add(key)
+        cleaned.append(item)
+    return cleaned
+
+
+def _format_size_m(size_m: Any) -> str | None:
+    if not size_m:
+        return None
+    if isinstance(size_m, (list, tuple)) and len(size_m) >= 2:
+        labels = ("宽", "高", "深")
+        parts = []
+        for index, value in enumerate(size_m[:3]):
+            try:
+                parts.append(f"{labels[index]} {float(value):.2f} m")
+            except (TypeError, ValueError):
+                continue
+        return " × ".join(parts) if parts else None
+    if isinstance(size_m, dict):
+        mapping = [
+            ("width", "宽"),
+            ("height", "高"),
+            ("depth", "深"),
+            ("w", "宽"),
+            ("h", "高"),
+            ("d", "深"),
+        ]
+        parts = []
+        for key, label in mapping:
+            if key in size_m and size_m[key] is not None:
+                try:
+                    parts.append(f"{label} {float(size_m[key]):.2f} m")
+                except (TypeError, ValueError):
+                    continue
+        return " × ".join(parts) if parts else None
+    return _strip_brand_text(str(size_m)) or None
+
+
 def to_shop_product(
     item: dict[str, Any],
     *,
@@ -64,20 +118,58 @@ def to_shop_product(
     description = _strip_brand_text(item.get("description"))
     category = _strip_brand_text(item.get("category2") or item.get("category1"))
     subcategory = _strip_brand_text(item.get("category3") or item.get("category4"))
+    category_tree = [
+        _strip_brand_text(part)
+        for part in (item.get("categoryTree") or [])
+        if _strip_brand_text(part)
+    ]
+    if not category_tree:
+        category_tree = [
+            part
+            for part in [
+                _strip_brand_text(item.get("category1")),
+                category,
+                subcategory,
+                _strip_brand_text(item.get("category4")),
+            ]
+            if part
+        ]
+
+    features = _as_feature_list(item.get("features"))
+    material = _strip_brand_text(item.get("materialAndCare"))
+    measurements_raw = item.get("measurements")
+    measurements_text = None
+    if isinstance(measurements_raw, dict):
+        measurements_text = "；".join(
+            f"{_strip_brand_text(k)}: {_strip_brand_text(v)}"
+            for k, v in measurements_raw.items()
+            if _strip_brand_text(str(v))
+        ) or None
+    elif measurements_raw:
+        measurements_text = _strip_brand_text(str(measurements_raw)) or None
+    size_text = _format_size_m(item.get("size_m"))
 
     row: dict[str, Any] = {
         "productId": product_id,
         "sku": product_id,
         "title": title or product_id,
+        "productName": title or product_id,
         "description": description,
-        "features": item.get("features") or [],
-        "materialAndCare": _strip_brand_text(item.get("materialAndCare")),
-        "measurements": item.get("measurements"),
+        "features": features,
+        "materialAndCare": material,
+        "measurements": measurements_raw,
+        "measurementsText": measurements_text,
         "size_m": item.get("size_m"),
+        "sizeText": size_text,
         "price": item.get("price"),
         "currency": item.get("currency") or "USD",
         "category": category,
         "subcategory": subcategory,
+        "category1": _strip_brand_text(item.get("category1")),
+        "category2": category,
+        "category3": subcategory,
+        "category4": _strip_brand_text(item.get("category4")),
+        "categoryTree": category_tree,
         "localImage": local_image,
         "imageUrl": image_url,
         "detailUrl": f"/static/shop.html#/p/{product_id}",
@@ -140,18 +232,33 @@ def load_catalog_by_id() -> dict[str, dict[str, Any]]:
 
 def get_shop_product(product_id: str) -> dict[str, Any] | None:
     ensure_shop_dirs()
-    cached = PRODUCTS_DIR / f"{public_product_id(product_id)}.json"
-    if cached.exists():
-        try:
-            return json.loads(cached.read_text(encoding="utf-8-sig"))
-        except json.JSONDecodeError:
-            pass
     catalog = load_catalog_by_id()
-    row = catalog.get(product_id) or catalog.get(public_product_id(product_id))
-    if not row:
+    pid = public_product_id(product_id)
+    row = catalog.get(product_id) or catalog.get(pid) or catalog.get(f"ikea_{pid}")
+
+    cached_path = PRODUCTS_DIR / f"{pid}.json"
+    cached: dict[str, Any] | None = None
+    if cached_path.exists():
+        try:
+            cached = json.loads(cached_path.read_text(encoding="utf-8-sig"))
+        except json.JSONDecodeError:
+            cached = None
+
+    if row is None and cached is None:
         return None
-    product = to_shop_product(row)
-    cached.write_text(json.dumps(product, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # Prefer full catalog fields; keep ranking metadata from cache if present.
+    base = dict(row or {})
+    if cached:
+        for key in ("rank", "score", "rawScore", "labelBoost", "imageUrl", "localImage"):
+            if cached.get(key) is not None and key not in base:
+                base[key] = cached[key]
+            elif key in ("rank", "score", "rawScore", "labelBoost") and cached.get(key) is not None:
+                base[key] = cached[key]
+        if not base.get("productId"):
+            base["productId"] = cached.get("productId") or pid
+    product = to_shop_product(base, rank=base.get("rank"), score=base.get("score"))
+    cached_path.write_text(json.dumps(product, ensure_ascii=False, indent=2), encoding="utf-8")
     return product
 
 

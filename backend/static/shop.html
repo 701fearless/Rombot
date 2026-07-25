@@ -77,10 +77,40 @@
     .price { margin-top: 10px; color: var(--accent); font-weight: 700; }
     .detail {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
+      grid-template-columns: 1.05fr 1.2fr;
       gap: 0;
     }
     .detail .body { padding: 28px; }
+    .detail .section { margin-top: 18px; }
+    .detail .section h3 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .detail .section p, .detail .section li {
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+    .detail .section ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: 6px;
+    }
+    .crumb { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 8px 12px;
+      margin-top: 8px;
+    }
+    .spec-grid dt { color: var(--muted); }
+    .spec-grid dd { margin: 0; }
     .actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
     .actions .primary {
       background: var(--accent);
@@ -215,19 +245,50 @@
         return;
       }
       const product = await response.json();
+      const tree = (product.categoryTree || []).filter(Boolean);
+      const features = Array.isArray(product.features) ? product.features : [];
+      const featureHtml = features.length
+        ? `<ul>${features.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+        : `<p class="meta">暂无卖点说明</p>`;
+      const sizeText = product.sizeText || product.measurementsText || "";
       app.innerHTML = `
         <article class="detail">
           <img src="${escapeHtml(product.imageUrl || "")}" alt="" />
           <div class="body">
-            <div class="meta">SKU ${escapeHtml(product.sku || product.productId)}</div>
+            <div class="crumb">${escapeHtml(tree.join(" / ") || [product.category, product.subcategory].filter(Boolean).join(" / ") || "精选商品")}</div>
+            <div class="meta" style="margin-top:8px">SKU ${escapeHtml(product.sku || product.productId)}</div>
             <h2 class="title" style="font-size:1.8rem;margin:8px 0 0">${escapeHtml(product.title)}</h2>
             <div class="price" style="font-size:1.3rem">${escapeHtml(priceText(product))}</div>
-            <p class="meta" style="margin-top:16px;line-height:1.6">${escapeHtml(product.description || "暂无描述")}</p>
-            <p class="meta">${escapeHtml([product.category, product.subcategory].filter(Boolean).join(" / "))}</p>
+
+            <div class="section">
+              <h3>商品介绍</h3>
+              <p>${escapeHtml(product.description || "暂无描述")}</p>
+            </div>
+
+            <div class="section">
+              <h3>产品卖点</h3>
+              ${featureHtml}
+            </div>
+
+            <div class="section">
+              <h3>材质与保养</h3>
+              <p>${escapeHtml(product.materialAndCare || "暂无材质信息")}</p>
+            </div>
+
+            <div class="section">
+              <h3>规格尺寸</h3>
+              <dl class="spec-grid">
+                <dt>分类</dt><dd>${escapeHtml([product.category, product.subcategory].filter(Boolean).join(" / ") || "—")}</dd>
+                <dt>尺寸</dt><dd>${escapeHtml(sizeText || "—")}</dd>
+                <dt>货币</dt><dd>${escapeHtml(product.currency || "USD")}</dd>
+                <dt>编号</dt><dd>${escapeHtml(product.productId)}</dd>
+              </dl>
+            </div>
+
             <div class="actions">
               <button class="primary" id="addCart">加入购物车</button>
               <a href="#/cart">查看购物车</a>
-              <a href="/static/image-search.html">继续图搜</a>
+              <a href="/static/image-search.html">继续搜同款</a>
             </div>
           </div>
         </article>`;

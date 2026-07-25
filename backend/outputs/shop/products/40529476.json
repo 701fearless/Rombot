@@ -1,0 +1,35 @@
+{
+  "productId": "40529476",
+  "sku": "40529476",
+  "title": "PINNTORP chair",
+  "productName": "PINNTORP chair",
+  "description": "PINNTORP chair, red stained Less is more! Inspired by Swedish furniture tradition, this wooden chair with minimalist, slightly angled backrest and generous seat offers good comfort with a traditional feel for hours of sitting pleasure.",
+  "features": [
+    "Recommended for indoor use only."
+  ],
+  "materialAndCare": "Solid pine, Stain, Clear acrylic lacquer",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 55.0,
+  "currency": "USD",
+  "category": "Dining furniture",
+  "subcategory": "Dining chairs",
+  "category1": "Tables & chairs",
+  "category2": "Dining furniture",
+  "category3": "Dining chairs",
+  "category4": "Dining chairs",
+  "categoryTree": [
+    "Tables & chairs",
+    "Dining furniture",
+    "Dining chairs",
+    "Dining chairs",
+    "PINNTORPChair"
+  ],
+  "localImage": "images/40529476.jpg",
+  "imageUrl": "/product_index/images/40529476.jpg",
+  "detailUrl": "/static/shop.html#/p/40529476",
+  "rank": 7,
+  "score": 0.7258
+}

@@ -1,0 +1,38 @@
+{
+  "productId": "00442748",
+  "sku": "00442748",
+  "title": "NATTJASMIN fitted sheet",
+  "productName": "NATTJASMIN fitted sheet",
+  "description": "NATTJASMIN fitted sheet, light beige, Full/Double Like a dream – a silky-soft sheet with a beautiful luster. Sateen-woven from the finest yarn made of lyocell and sustainably grown cotton. Natural materials that feel good against your skin",
+  "features": [
+    "Thread count: 122 threads/cm² or 310 threads/inch².",
+    "Thread count indicates the number of threads per square cm or square inch of fabric. The higher the thread count the more densely woven the fabric.",
+    "This product is suitable for use in smaller hotels, inns and B&Bs as the design and material are optimized for frequent use and washing.",
+    "This product is flammability tested and complies with standard EN ISO 12952-1."
+  ],
+  "materialAndCare": "60 % cotton, 40 % lyocell",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 24.99,
+  "currency": "USD",
+  "category": "Bedding & bedding sets",
+  "subcategory": "Bed linens & bed linen sets",
+  "category1": "Home textiles",
+  "category2": "Bedding & bedding sets",
+  "category3": "Bed linens & bed linen sets",
+  "category4": "Bed sheets",
+  "categoryTree": [
+    "Home textiles",
+    "Bedding & bedding sets",
+    "Bed linens & bed linen sets",
+    "Bed sheets",
+    "NATTJASMINFitted sheet"
+  ],
+  "localImage": "images/00442748.jpg",
+  "imageUrl": "/product_index/images/00442748.jpg",
+  "detailUrl": "/static/shop.html#/p/00442748",
+  "rank": 2,
+  "score": 0.8245
+}

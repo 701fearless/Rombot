@@ -1,0 +1,36 @@
+{
+  "productId": "00293772",
+  "sku": "00293772",
+  "title": "MÖCKELBY Table",
+  "productName": "MÖCKELBY Table",
+  "description": "MÖCKELBY Table, oak. The plank look, created with a top layer of oak, enhances the crafted, farmhouse expression. Every table is unique with varying grain patterns and natural color shifts.",
+  "features": [
+    "Seats 6.",
+    "Recommended for indoor use only."
+  ],
+  "materialAndCare": "Table top: Particleboard, Oak veneer, Clear acrylic lacquer, Oak veneer, Clear acrylic lacquer; Leg/ Underframe: Particleboard, Solid oak, Thick oak veneer, Clear acrylic lacquer; Cross rail: Particleboard, Solid oak, Oak veneer, Clear acrylic lacquer",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 999.0,
+  "currency": "USD",
+  "category": "Dining furniture",
+  "subcategory": "Dining tables",
+  "category1": "Tables & chairs",
+  "category2": "Dining furniture",
+  "category3": "Dining tables",
+  "category4": "Up to 8 seats",
+  "categoryTree": [
+    "Tables & chairs",
+    "Dining furniture",
+    "Dining tables",
+    "Up to 8 seats",
+    "MÖCKELBYTable"
+  ],
+  "localImage": "images/00293772.jpg",
+  "imageUrl": "/product_index/images/00293772.jpg",
+  "detailUrl": "/static/shop.html#/p/00293772",
+  "rank": 1,
+  "score": 0.772
+}

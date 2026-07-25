@@ -1,0 +1,37 @@
+{
+  "productId": "40521767",
+  "sku": "40521767",
+  "title": "JAKOBSBYN pendant lamp shade",
+  "productName": "JAKOBSBYN pendant lamp shade",
+  "description": "JAKOBSBYN pendant lamp shade, silver color, 12\" This modern lampshade with a mirror finish spreads a soft light that creates a nice atmosphere. Combine it with a matching cord set and hang it over a coffee table or in a dark corner of the room.",
+  "features": [
+    "Cord set is sold separately.",
+    "Light bulb sold separately.",
+    "You position the lampshade to hang straight by adjusting the cord set/cord."
+  ],
+  "materialAndCare": "Glassware: Glass; Surface coating: Metallized",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 39.99,
+  "currency": "USD",
+  "category": "Lamps & light fixtures",
+  "subcategory": "Lamp parts & heads",
+  "category1": "Lighting",
+  "category2": "Lamps & light fixtures",
+  "category3": "Lamp parts & heads",
+  "category4": "Lamp shades",
+  "categoryTree": [
+    "Lighting",
+    "Lamps & light fixtures",
+    "Lamp parts & heads",
+    "Lamp shades",
+    "JAKOBSBYNPendant lamp shade"
+  ],
+  "localImage": "images/40521767.jpg",
+  "imageUrl": "/product_index/images/40521767.jpg",
+  "detailUrl": "/static/shop.html#/p/40521767",
+  "rank": 2,
+  "score": 0.7426
+}
