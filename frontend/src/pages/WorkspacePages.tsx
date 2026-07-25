@@ -1,24 +1,24 @@
 import {
   ArrowLeft,
+  Bookmark,
+  Box,
   Check,
   ChevronDown,
   ChevronRight,
   Clipboard,
-  FileImage,
   ImagePlus,
-  Layers3,
-  Link2,
   Move3D,
   Play,
-  ScanLine,
   Search,
   Share2,
   Sparkles,
   UserRound,
   Users,
 } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import douyinEntryImage from '@/assets/reference/douyin-entry.png'
+import heroRoomImage from '@/assets/reference/hero-room.jpg'
 import spaceImage from '@/assets/reference/space-3d-living.png'
 import babyScene from '@/assets/reference/scenes/scene-baby.png'
 import fengshuiScene from '@/assets/reference/scenes/scene-fengshui.png'
@@ -28,8 +28,11 @@ import chairImage from '@/assets/reference/furniture/chair-01.jpg'
 import lampImage from '@/assets/reference/furniture/lamp-01.jpg'
 import sofaImage from '@/assets/reference/furniture/sofa-02.jpg'
 import tableImage from '@/assets/reference/furniture/table-02.jpg'
+import { ModelPreview3D } from '@/components/ModelPreview3D'
 import { useToast } from '@/components/ToastProvider'
+import { listGeneratedFurniture } from '@/services/backend'
 import { useSceneStore } from '@/store'
+import type { GeneratedFurniture } from '@/types/scene'
 
 function PageHeader({ title }: { title: string }) {
   const navigate = useNavigate()
@@ -56,6 +59,7 @@ const furniture = [
 
 export function HomePage() {
   const toast = useToast()
+  const library = useSceneStore((state) => state.furnitureLibrary)
   return <div className='surface-page home-page'>
     <section className='page-intro'>
       <div><span className='eyebrow'>MY HOME</span><h1>我的家</h1><p>所有识别、试摆和空间建议，都沉淀在这里。</p></div>
@@ -80,9 +84,9 @@ export function HomePage() {
     </Link>
 
     <div className='section-heading'><div><h2>家具库</h2><p>点击家具进入空间试摆</p></div><Link to='/recognize'>添加家具 <ChevronRight /></Link></div>
-    <div className='furniture-rail'>
-      {furniture.map((item) => <Link key={item.name} to='/space?sceneId=room6' className='furniture-tile'><img src={item.image} alt={item.name} /><strong>{item.name}</strong><small>{item.category}</small></Link>)}
-    </div>
+    {library.length ? <div className='furniture-rail'>
+      {library.map((item) => <Link key={item.id} to={`/product/${encodeURIComponent(item.id)}`} className='furniture-tile'><img src={item.previewUrl} alt={`${item.name} 生成参考图`} loading='lazy' /><strong>{item.name}</strong><small>{item.category}</small></Link>)}
+    </div> : <Link className='library-empty' to='/'><Bookmark /><span><strong>家具库还是空的</strong><small>从灵感页收藏喜欢的模型</small></span><ChevronRight /></Link>}
     <Link className='accent-cta' to='/suggest'><Sparkles />查看 AI 空间建议</Link>
   </div>
 }
@@ -119,7 +123,6 @@ export function DiscoverPage() {
 
 export function MePage() {
   const toast = useToast()
-  const active = useSceneStore((s) => s.activeSceneId)
   const setActive = useSceneStore((s) => s.setActiveSceneId)
   const input = useRef<HTMLInputElement>(null)
   const acceptFile = () => {
@@ -132,21 +135,84 @@ export function MePage() {
       <div><h1>空间体验官</h1><p>把喜欢的家，一件件变成现实。</p></div>
       <strong>12<small>空间资产</small></strong>
     </section>
-    <div className='section-heading'><div><h2>开始建模</h2><p>选择一种方式创建空间或家具</p></div></div>
+    <Link className='profile-asset-heading' to='/home'>
+      <strong>添加个人资产</strong>
+      <span>房间、户型与心动单品都会收进这里</span>
+      <ChevronRight />
+    </Link>
     <input ref={input} hidden type='file' accept='image/*,video/*' onChange={acceptFile} />
-    <div className='entry-grid'>
-      <button className='entry-card entry-card--dark' type='button' onClick={() => input.current?.click()}><ScanLine /><span><strong>立即扫描</strong><small>相机采集空间</small></span><ChevronRight /></button>
-      <button className='entry-card' type='button' onClick={() => input.current?.click()}><FileImage /><span><strong>上传平面图</strong><small>创建空屋模型</small></span><ChevronRight /></button>
-      <Link className='entry-card' to='/home'><Layers3 /><span><strong>选择模板空间</strong><small>从 room6 开始</small></span><ChevronRight /></Link>
-      <Link className='entry-card entry-card--accent' to='/recognize'><Link2 /><span><strong>链接识别家具</strong><small>导入喜欢的单品</small></span><ChevronRight /></Link>
+    <div className='profile-entry-hero'>
+      <button className='profile-entry profile-entry--scan' type='button' onClick={() => input.current?.click()}>
+        <img src={heroRoomImage} alt='复古房间扫描入口' />
+        <span className='profile-entry__veil' />
+        <span className='profile-entry__copy'><strong>拍一下房间，先把真实的家装进来。</strong><small>扫描我的房间</small></span>
+      </button>
+      <div className='profile-entry__row'>
+        <button className='profile-entry profile-entry--floorplan' type='button' onClick={() => input.current?.click()}>
+          <span className='profile-entry__copy'><strong>已有户型图，从平面图直接建空间。</strong><small>上传平面图</small></span>
+        </button>
+        <Link className='profile-entry profile-entry--template' to='/home'>
+          <span className='profile-entry__copy'><strong>先用相似模板，也能马上试摆。</strong><small>使用模板空间</small></span>
+        </Link>
+      </div>
+      <Link className='profile-entry profile-entry--recognize' to='/recognize'>
+        <img src={douyinEntryImage} alt='家居链接识别入口' />
+        <span className='profile-entry__veil' />
+        <span className='profile-entry__copy'><strong>刷到心动家具？一张截图就能放进家。</strong><small>识别心动家具</small></span>
+      </Link>
     </div>
-    <section className='asset-summary'><div><span className='eyebrow'>CURRENT SPACE</span><h2>{active}</h2><p>6.0 × 4.2m · 可编辑快照</p></div><Link to='/space?sceneId=room6'>打开 <ChevronRight /></Link></section>
   </div>
 }
 
 export function ProductPage() {
   const { id } = useParams()
-  return <div className='flow-page'><PageHeader title='单品详情' /><main className='detail-layout'><div className='detail-visual'><img src={chairImage} alt='识别家具' /></div><div><span className='eyebrow'>PRODUCT · {id}</span><h1>亚麻休闲椅</h1><p>柔和包裹感与低靠背比例适合客厅阅读角。这里继续承接现有商品、材质和尺寸信息接口。</p><div className='detail-specs'><span>亚麻</span><span>暖灰</span><span>78 × 74cm</span></div><Link className='primary-link' to='/space?sceneId=room6'><Move3D />放入 room6</Link></div></main></div>
+  const toast = useToast()
+  const library = useSceneStore((state) => state.furnitureLibrary)
+  const addFurniture = useSceneStore((state) => state.addFurnitureToLibrary)
+  const [item, setItem] = useState<GeneratedFurniture | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    let live = true
+    listGeneratedFurniture()
+      .then((catalog) => {
+        if (live) setItem(catalog.find((candidate) => candidate.id === id) ?? null)
+      })
+      .finally(() => live && setLoading(false))
+    return () => { live = false }
+  }, [id])
+
+  const saveToLibrary = () => {
+    if (!item) return
+    addFurniture(item)
+    toast.show('已加入家具库')
+  }
+
+  if (loading) return <div className='flow-page'><PageHeader title='单品详情' /><main className='product-loading'><span className='spin' /><p>正在加载模型资料</p></main></div>
+  if (!item) return <div className='flow-page'><PageHeader title='单品详情' /><main className='product-loading'><Box /><h1>模型不存在</h1><Link className='secondary-link' to='/'>返回灵感</Link></main></div>
+
+  const dimensions = item.estimatedDimensions
+  const saved = library.some((candidate) => candidate.id === item.id)
+  return <div className='flow-page product-page'>
+    <PageHeader title='单品详情' />
+    <main className='product-detail'>
+      <section className='product-viewer'>
+        <ModelPreview3D glbUrl={item.glbUrl} name={item.name} />
+      </section>
+      <section className='product-copy'>
+        <span className='eyebrow'>{item.category.toUpperCase()} · VIDEO {item.videoId}</span>
+        <h1>{item.name}</h1>
+        <p>由家具生成链路创建的真实 GLB 模型，封面使用同一任务生成的三分之四参考图。</p>
+        <div className='detail-specs'>
+          <span>{item.category}</span>
+          <span>{(item.sizeBytes / 1024 / 1024).toFixed(1)} MB</span>
+          {dimensions && <span>{dimensions.widthM.toFixed(2)} × {dimensions.depthM.toFixed(2)} × {dimensions.heightM.toFixed(2)}m</span>}
+        </div>
+        <button className={`primary-button product-place ${saved ? 'is-saved' : ''}`} type='button' onClick={saveToLibrary} disabled={saved}>{saved ? <Check /> : <Bookmark />}{saved ? '已加入家具库' : '收藏到家具库'}</button>
+        {saved && <Link className='secondary-link product-library-link' to='/home'>查看家具库 <ChevronRight /></Link>}
+      </section>
+    </main>
+  </div>
 }
 
 export function ScenePage() {

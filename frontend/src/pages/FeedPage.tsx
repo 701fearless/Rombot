@@ -1,11 +1,11 @@
 import { AlertCircle, Bookmark, Heart, Home, Inbox, LoaderCircle, MessageCircle, Music2, Pause, Plus, Share2, UserRound, UsersRound, Volume2, VolumeX } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useToast } from '@/components/ToastProvider'
 import { feedVideos } from '@/data/feedVideos'
 import { computeVideoDHash } from '@/lib/dhash'
 import { containTagPosition } from '@/lib/geometry'
-import { detectPausedFrame, getPrebuiltAsset } from '@/services/backend'
+import { detectPausedFrame, getPrebuiltAsset, listGeneratedFurniture } from '@/services/backend'
 import { useSceneStore } from '@/store'
 import type { FeedVideo } from '@/types/feed'
 import type { DetectResponse, DetectedObject } from '@/types/scene'
@@ -13,9 +13,9 @@ import type { DetectResponse, DetectedObject } from '@/types/scene'
 interface Size { width: number; height: number }
 
 function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean; index: number }) {
-  const navigate = useNavigate(); const toast = useToast(); const activeSceneId = useSceneStore((s) => s.activeSceneId); const setPendingAsset = useSceneStore((s) => s.setPendingAsset)
+  const toast = useToast(); const activeSceneId = useSceneStore((s) => s.activeSceneId); const addFurniture = useSceneStore((s) => s.addFurnitureToLibrary)
   const rootRef = useRef<HTMLElement>(null); const videoRef = useRef<HTMLVideoElement>(null); const abortRef = useRef<AbortController | null>(null); const serialRef = useRef(0)
-  const [paused, setPaused] = useState(true); const [muted, setMuted] = useState(true); const [liked, setLiked] = useState(false); const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'empty' | 'error'>('idle'); const [message, setMessage] = useState(''); const [detection, setDetection] = useState<DetectResponse | null>(null); const [pausedAt, setPausedAt] = useState(0); const [containerSize, setContainerSize] = useState<Size>({ width: 0, height: 0 }); const [sourceSize, setSourceSize] = useState<Size>({ width: 0, height: 0 })
+  const [paused, setPaused] = useState(true); const [muted, setMuted] = useState(true); const [liked, setLiked] = useState(false); const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'empty' | 'error'>('idle'); const [message, setMessage] = useState(''); const [detection, setDetection] = useState<DetectResponse | null>(null); const [containerSize, setContainerSize] = useState<Size>({ width: 0, height: 0 }); const [sourceSize, setSourceSize] = useState<Size>({ width: 0, height: 0 })
   const cancelRecognition = useCallback(() => { serialRef.current += 1; abortRef.current?.abort(); abortRef.current = null; setDetection(null); setStatus('idle') }, [])
   useEffect(() => { const root = rootRef.current; if (!root) return; const resize = () => setContainerSize({ width: root.clientWidth, height: root.clientHeight }); resize(); const observer = new ResizeObserver(resize); observer.observe(root); return () => observer.disconnect() }, [])
   useEffect(() => { const element = videoRef.current; if (!element) return; if (active) void element.play().catch(() => setPaused(true)); else { element.pause(); cancelRecognition() } }, [active, cancelRecognition])
@@ -23,14 +23,14 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
   const recognize = useCallback(async () => {
     const element = videoRef.current; if (!element || !active || element.readyState < 2) return
     const time = element.currentTime; const serial = ++serialRef.current; abortRef.current?.abort(); const controller = new AbortController(); abortRef.current = controller
-    setPausedAt(time); setDetection(null); setStatus('loading'); setMessage('')
+    setDetection(null); setStatus('loading'); setMessage('')
     let hash: string | undefined; try { hash = computeVideoDHash(element) } catch { hash = undefined }
     try { const result = await detectPausedFrame(video.id, time, hash, controller.signal); if (serial !== serialRef.current || !element.paused) return; setDetection(result); setStatus(result.objects.length ? 'success' : 'empty') }
     catch (reason) { if (controller.signal.aborted || serial !== serialRef.current) return; setMessage(reason instanceof Error ? reason.message : '识别暂时不可用'); setStatus('error') }
   }, [active, video.id])
   const chooseObject = async (object: DetectedObject) => {
     if (!object.prebuiltGlbUrl || !detection) return
-    try { const prebuilt = await getPrebuiltAsset(detection.frameId, object.id); setPendingAsset({ videoId: video.id, time: pausedAt, frameId: detection.frameId, detected: object, prebuilt }); navigate(`/space?${new URLSearchParams({ sceneId: activeSceneId, frameId: detection.frameId, objectId: object.id })}`) }
+    try { const [prebuilt, catalog] = await Promise.all([getPrebuiltAsset(detection.frameId, object.id), listGeneratedFurniture()]); const item = catalog.find((candidate) => candidate.videoId === video.id && candidate.candidateId === prebuilt.deduplicatedObjectId); if (!item) throw new Error('模型目录中没有找到对应家具'); addFurniture(item); toast.show(`${item.name} 已加入家具库`) }
     catch (reason) { toast.show(reason instanceof Error ? reason.message : '家具暂时不可用') }
   }
   return <article ref={rootRef} className='feed-card' data-feed-index={index}>
@@ -45,7 +45,7 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
       const point = containTagPosition(object.tagPosition, sourceSize, containerSize)
       const left = Math.min(Math.max(point.x, 16), Math.max(16, containerSize.width - 132))
       const top = Math.min(Math.max(point.y, 76), Math.max(76, containerSize.height - 150))
-      return <button key={object.id} className={`feed-tag ${object.prebuiltGlbUrl ? '' : 'is-disabled'}`} type='button' disabled={!object.prebuiltGlbUrl} style={{ left, top }} onClick={() => void chooseObject(object)}><span className='feed-tag__dot' /><span>{object.name}</span><small>{object.prebuiltGlbUrl ? '放进户型' : '模型未缓存'}</small></button>
+      return <button key={object.id} className={`feed-tag ${object.prebuiltGlbUrl ? '' : 'is-disabled'}`} type='button' disabled={!object.prebuiltGlbUrl} style={{ left, top }} onClick={() => void chooseObject(object)}><span className='feed-tag__dot' /><span>{object.name}</span><small>{object.prebuiltGlbUrl ? '收藏到家具库' : '模型未缓存'}</small></button>
     })}
     <aside className='feed-social' aria-label='视频操作'>
       <button type='button' className='feed-avatar' aria-label={`查看 ${video.author} 的主页`}><span>{video.author.slice(0, 1)}</span><Plus /></button>
@@ -55,7 +55,7 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
       <button type='button' aria-label='分享'><Share2 /><small>分享</small></button>
       <button type='button' className='feed-record' aria-label={muted ? '打开声音' : '静音'} onClick={() => setMuted((value) => !value)}>{muted ? <VolumeX /> : <Volume2 />}<Music2 /></button>
     </aside>
-    <footer className='feed-card__copy'><strong>@{video.author}</strong><h1>{video.title}</h1><p>暂停视频，点击家具 Tag 放进 room6</p><div>{video.furnitureHints.map((hint) => <span key={hint}>#{hint}</span>)}</div></footer>
+    <footer className='feed-card__copy'><strong>@{video.author}</strong><h1>{video.title}</h1><p>暂停视频，收藏喜欢的家具模型</p><div>{video.furnitureHints.map((hint) => <span key={hint}>#{hint}</span>)}</div></footer>
     <span className='feed-card__counter'>{index + 1}/{feedVideos.length}</span>
   </article>
 }
