@@ -1,6 +1,6 @@
 import { AlertCircle, Bookmark, Heart, Home, Inbox, LoaderCircle, MessageCircle, Music2, Pause, Plus, Share2, UserRound, UsersRound, Volume2, VolumeX } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useToast } from '@/components/ToastProvider'
 import { feedVideos } from '@/data/feedVideos'
 import { computeVideoDHash } from '@/lib/dhash'
@@ -62,11 +62,11 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
 
 function FeedDock() {
   return <nav className='feed-dock' aria-label='Feed 底栏'>
-    <button type='button' className='is-active' aria-label='首页'><Home /><span>首页</span></button>
-    <button type='button' aria-label='朋友'><UsersRound /><span>朋友</span></button>
-    <button type='button' className='feed-dock__create' aria-label='发布'><Plus /></button>
-    <button type='button' aria-label='消息'><Inbox /><span>消息</span></button>
-    <button type='button' aria-label='我'><UserRound /><span>我</span></button>
+    <NavLink to='/' className='is-active' aria-label='灵感'><Home /><span>灵感</span></NavLink>
+    <NavLink to='/home' aria-label='我的家'><UsersRound /><span>我的家</span></NavLink>
+    <NavLink to='/recognize' className='feed-dock__create' aria-label='识别家具'><Plus /></NavLink>
+    <NavLink to='/discover' aria-label='发现'><Inbox /><span>发现</span></NavLink>
+    <NavLink to='/me' aria-label='我的'><UserRound /><span>我的</span></NavLink>
   </nav>
 }
 

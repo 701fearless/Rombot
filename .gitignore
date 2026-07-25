@@ -58,6 +58,10 @@ frontend/playwright-report/
 frontend/test-results/
 frontend/*.tsbuildinfo
 
+# Curated UI reference assets are part of the frontend source.
+!frontend/src/assets/reference/
+!frontend/src/assets/reference/**
+
 # Curated floorplan fixtures are source data, not runtime outputs.
 !backend/sample_data/floorplans/
 !backend/sample_data/floorplans/*.jpg
