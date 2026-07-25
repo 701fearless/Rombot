@@ -3,7 +3,6 @@ import {
   ArrowLeft,
   BedDouble,
   Box,
-  Chair as Armchair,
   Clock3,
   Download,
   FileJson,
@@ -17,6 +16,7 @@ import {
   Upload,
   X,
 } from "lucide-react"
+import { Armchair } from "lucide-react"
 import React, { type ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 import {
