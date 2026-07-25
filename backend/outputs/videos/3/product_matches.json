@@ -1,0 +1,1059 @@
+{
+  "videoId": "3",
+  "source": "ikea_clip",
+  "topK": 3,
+  "generatedAt": "2026-07-25T04:13:57.288636+00:00",
+  "candidateCount": 17,
+  "matches": {
+    "candidate_armchair_001": {
+      "label": "armchair",
+      "name": "黑色单人皮沙发椅",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_armchair_001/crop.jpg",
+      "confidence": 0.96,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7668,
+          "productId": "ikea_50451783",
+          "title": "ALFTA Double-sided tape",
+          "price": 199.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.02,
+            0.08,
+            0.08
+          ],
+          "localImage": "images/50451783.jpg",
+          "imageUrl": "/product_index/images/50451783.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/alfta-double-sided-tape-50451783/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7576,
+          "productId": "ikea_20609879",
+          "title": "NYPONBUSKE Mirror, grey-beige",
+          "price": 3490.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.65,
+            0.65,
+            0.035
+          ],
+          "localImage": "images/20609879.jpg",
+          "imageUrl": "/product_index/images/20609879.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-grey-beige-20609879/"
+        },
+        {
+          "rank": 3,
+          "score": 0.755,
+          "productId": "ikea_90326768",
+          "title": "BJÖRKSTA Frame, aluminium-colour",
+          "price": 2146.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Wall Art and Wall Painting",
+          "size_m": [
+            1.4,
+            1.0,
+            0.4
+          ],
+          "localImage": "images/90326768.jpg",
+          "imageUrl": "/product_index/images/90326768.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/bjoerksta-frame-aluminium-colour-90326768/"
+        }
+      ]
+    },
+    "candidate_bed_001": {
+      "label": "bed",
+      "name": "地台床",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_bed_001/crop.jpg",
+      "confidence": 0.98,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.6716,
+          "productId": "ikea_50451783",
+          "title": "ALFTA Double-sided tape",
+          "price": 199.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.02,
+            0.08,
+            0.08
+          ],
+          "localImage": "images/50451783.jpg",
+          "imageUrl": "/product_index/images/50451783.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/alfta-double-sided-tape-50451783/"
+        },
+        {
+          "rank": 2,
+          "score": 0.6695,
+          "productId": "ikea_40446344",
+          "title": "MÅLERÅS Picture ledge, bamboo",
+          "price": 1090.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.07,
+            0.13
+          ],
+          "localImage": "images/40446344.jpg",
+          "imageUrl": "/product_index/images/40446344.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/maleras-picture-ledge-bamboo-40446344/"
+        },
+        {
+          "rank": 3,
+          "score": 0.6695,
+          "productId": "ikea_20511359",
+          "title": "MÅLERÅS Picture ledge, bamboo",
+          "price": 739.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.07,
+            0.13
+          ],
+          "localImage": "images/20511359.jpg",
+          "imageUrl": "/product_index/images/20511359.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/maleras-picture-ledge-bamboo-20511359/"
+        }
+      ]
+    },
+    "candidate_bookshelf_001": {
+      "label": "bookshelf",
+      "name": "墙面木质置物架",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_bookshelf_001/crop.jpg",
+      "confidence": 0.85,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7493,
+          "productId": "ikea_90326768",
+          "title": "BJÖRKSTA Frame, aluminium-colour",
+          "price": 2146.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Wall Art and Wall Painting",
+          "size_m": [
+            1.4,
+            1.0,
+            0.4
+          ],
+          "localImage": "images/90326768.jpg",
+          "imageUrl": "/product_index/images/90326768.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/bjoerksta-frame-aluminium-colour-90326768/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7401,
+          "productId": "ikea_40446344",
+          "title": "MÅLERÅS Picture ledge, bamboo",
+          "price": 1090.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.07,
+            0.13
+          ],
+          "localImage": "images/40446344.jpg",
+          "imageUrl": "/product_index/images/40446344.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/maleras-picture-ledge-bamboo-40446344/"
+        },
+        {
+          "rank": 3,
+          "score": 0.7401,
+          "productId": "ikea_20511359",
+          "title": "MÅLERÅS Picture ledge, bamboo",
+          "price": 739.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.07,
+            0.13
+          ],
+          "localImage": "images/20511359.jpg",
+          "imageUrl": "/product_index/images/20511359.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/maleras-picture-ledge-bamboo-20511359/"
+        }
+      ]
+    },
+    "candidate_bookshelf_002": {
+      "label": "bookshelf",
+      "name": "组合书架",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_bookshelf_002/crop.jpg",
+      "confidence": 0.98,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7301,
+          "productId": "ikea_50451783",
+          "title": "ALFTA Double-sided tape",
+          "price": 199.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.02,
+            0.08,
+            0.08
+          ],
+          "localImage": "images/50451783.jpg",
+          "imageUrl": "/product_index/images/50451783.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/alfta-double-sided-tape-50451783/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7124,
+          "productId": "ikea_20256622",
+          "title": "VÄXBO Collage frame for 8 photos, white",
+          "price": 999.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Collage photo frames",
+          "size_m": [
+            0.55,
+            0.58,
+            0.02
+          ],
+          "localImage": "images/20256622.jpg",
+          "imageUrl": "/product_index/images/20256622.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/vaexbo-collage-frame-for-8-photos-white-20256622/"
+        },
+        {
+          "rank": 3,
+          "score": 0.7071,
+          "productId": "ikea_10591592",
+          "title": "DVÄRGSYREN Mirror, oak veneer",
+          "price": 3990.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.4,
+            0.5,
+            0.08
+          ],
+          "localImage": "images/10591592.jpg",
+          "imageUrl": "/product_index/images/10591592.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/dvaergsyren-mirror-oak-veneer-10591592/"
+        }
+      ]
+    },
+    "candidate_cabinet_001": {
+      "label": "cabinet",
+      "name": "餐边柜",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_cabinet_001/crop.jpg",
+      "confidence": 0.98,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7379,
+          "productId": "ikea_20485586",
+          "title": "NISSEDAL Mirror, walnut effect",
+          "price": 5490.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Large mirrors",
+          "size_m": [
+            0.4,
+            1.5,
+            0.4
+          ],
+          "localImage": "images/20485586.jpg",
+          "imageUrl": "/product_index/images/20485586.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nissedal-mirror-walnut-effect-20485586/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7353,
+          "productId": "ikea_30587443",
+          "title": "VÅRSYREN Lantern for tealight, brown-orange",
+          "price": 149.0,
+          "currency": "INR",
+          "category2": "Candle holders & candles",
+          "category3": "Lanterns",
+          "size_m": [
+            0.09,
+            0.12,
+            0.4
+          ],
+          "localImage": "images/30587443.jpg",
+          "imageUrl": "/product_index/images/30587443.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/varsyren-lantern-for-tealight-brown-orange-30587443/"
+        },
+        {
+          "rank": 3,
+          "score": 0.7333,
+          "productId": "ikea_90609885",
+          "title": "NYPONBUSKE Mirror, grey-beige",
+          "price": 4990.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.4,
+            1.35,
+            0.035
+          ],
+          "localImage": "images/90609885.jpg",
+          "imageUrl": "/product_index/images/90609885.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-grey-beige-90609885/"
+        }
+      ]
+    },
+    "candidate_chair_001": {
+      "label": "chair",
+      "name": "藤编办公椅",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_chair_001/crop.jpg",
+      "confidence": 0.96,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7309,
+          "productId": "ikea_90586940",
+          "title": "MOSSLANDA Picture ledge, oak effect",
+          "price": 699.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.55,
+            0.12
+          ],
+          "localImage": "images/90586940.jpg",
+          "imageUrl": "/product_index/images/90586940.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/mosslanda-picture-ledge-oak-effect-90586940/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7209,
+          "productId": "ikea_40446344",
+          "title": "MÅLERÅS Picture ledge, bamboo",
+          "price": 1090.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.07,
+            0.13
+          ],
+          "localImage": "images/40446344.jpg",
+          "imageUrl": "/product_index/images/40446344.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/maleras-picture-ledge-bamboo-40446344/"
+        },
+        {
+          "rank": 3,
+          "score": 0.7209,
+          "productId": "ikea_20511359",
+          "title": "MÅLERÅS Picture ledge, bamboo",
+          "price": 739.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.07,
+            0.13
+          ],
+          "localImage": "images/20511359.jpg",
+          "imageUrl": "/product_index/images/20511359.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/maleras-picture-ledge-bamboo-20511359/"
+        }
+      ]
+    },
+    "candidate_chandelier_001": {
+      "label": "chandelier",
+      "name": "多头吊灯",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_chandelier_001/crop.jpg",
+      "confidence": 0.93,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7454,
+          "productId": "ikea_30348546",
+          "title": "PÄRLBAND Tealight holder, gold-colour",
+          "price": 699.0,
+          "currency": "INR",
+          "category2": "Candle holders & candles",
+          "category3": "Candle holders",
+          "size_m": [
+            0.09,
+            0.1,
+            0.4
+          ],
+          "localImage": "images/30348546.jpg",
+          "imageUrl": "/product_index/images/30348546.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/paerlband-tealight-holder-gold-colour-30348546/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7389,
+          "productId": "ikea_10471033",
+          "title": "LASSBYN Table mirror, gold-colour",
+          "price": 899.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Vanity mirrors",
+          "size_m": [
+            0.17,
+            0.4,
+            0.4
+          ],
+          "localImage": "images/10471033.jpg",
+          "imageUrl": "/product_index/images/10471033.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/lassbyn-table-mirror-gold-colour-10471033/"
+        },
+        {
+          "rank": 3,
+          "score": 0.7378,
+          "productId": "ikea_80454313",
+          "title": "LOMMARYD Mirror",
+          "price": 5990.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Decorative mirrors",
+          "size_m": [
+            0.66,
+            0.8,
+            0.4
+          ],
+          "localImage": "images/80454313.jpg",
+          "imageUrl": "/product_index/images/80454313.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/lommaryd-mirror-80454313/"
+        }
+      ]
+    },
+    "candidate_curtain_001": {
+      "label": "curtain",
+      "name": "百叶窗帘",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_curtain_001/crop.jpg",
+      "confidence": 0.94,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7584,
+          "productId": "ikea_20609879",
+          "title": "NYPONBUSKE Mirror, grey-beige",
+          "price": 3490.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.65,
+            0.65,
+            0.035
+          ],
+          "localImage": "images/20609879.jpg",
+          "imageUrl": "/product_index/images/20609879.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-grey-beige-20609879/"
+        },
+        {
+          "rank": 2,
+          "score": 0.757,
+          "productId": "ikea_50451783",
+          "title": "ALFTA Double-sided tape",
+          "price": 199.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.02,
+            0.08,
+            0.08
+          ],
+          "localImage": "images/50451783.jpg",
+          "imageUrl": "/product_index/images/50451783.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/alfta-double-sided-tape-50451783/"
+        },
+        {
+          "rank": 3,
+          "score": 0.7369,
+          "productId": "ikea_40437453",
+          "title": "SVANSELE Mirror, gold-colour",
+          "price": 6990.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Decorative mirrors",
+          "size_m": [
+            0.78,
+            0.78,
+            0.4
+          ],
+          "localImage": "images/40437453.jpg",
+          "imageUrl": "/product_index/images/40437453.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/svansele-mirror-gold-colour-40437453/"
+        }
+      ]
+    },
+    "candidate_desk_001": {
+      "label": "desk",
+      "name": "木质书桌",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_desk_001/crop.jpg",
+      "confidence": 0.94,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7388,
+          "productId": "ikea_50451783",
+          "title": "ALFTA Double-sided tape",
+          "price": 199.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.02,
+            0.08,
+            0.08
+          ],
+          "localImage": "images/50451783.jpg",
+          "imageUrl": "/product_index/images/50451783.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/alfta-double-sided-tape-50451783/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7162,
+          "productId": "ikea_20609879",
+          "title": "NYPONBUSKE Mirror, grey-beige",
+          "price": 3490.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.65,
+            0.65,
+            0.035
+          ],
+          "localImage": "images/20609879.jpg",
+          "imageUrl": "/product_index/images/20609879.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-grey-beige-20609879/"
+        },
+        {
+          "rank": 3,
+          "score": 0.7152,
+          "productId": "ikea_10591592",
+          "title": "DVÄRGSYREN Mirror, oak veneer",
+          "price": 3990.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.4,
+            0.5,
+            0.08
+          ],
+          "localImage": "images/10591592.jpg",
+          "imageUrl": "/product_index/images/10591592.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/dvaergsyren-mirror-oak-veneer-10591592/"
+        }
+      ]
+    },
+    "candidate_floor_lamp_001": {
+      "label": "floor lamp",
+      "name": "酒红色蘑菇头落地灯",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_floor_lamp_001/crop.jpg",
+      "confidence": 0.97,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.8197,
+          "productId": "ikea_50451783",
+          "title": "ALFTA Double-sided tape",
+          "price": 199.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.02,
+            0.08,
+            0.08
+          ],
+          "localImage": "images/50451783.jpg",
+          "imageUrl": "/product_index/images/50451783.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/alfta-double-sided-tape-50451783/"
+        },
+        {
+          "rank": 2,
+          "score": 0.8136,
+          "productId": "ikea_00609875",
+          "title": "NYPONBUSKE Mirror, black",
+          "price": 4490.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.4,
+            1.35,
+            0.035
+          ],
+          "localImage": "images/00609875.jpg",
+          "imageUrl": "/product_index/images/00609875.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-black-00609875/"
+        },
+        {
+          "rank": 3,
+          "score": 0.8133,
+          "productId": "ikea_20609879",
+          "title": "NYPONBUSKE Mirror, grey-beige",
+          "price": 3490.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.65,
+            0.65,
+            0.035
+          ],
+          "localImage": "images/20609879.jpg",
+          "imageUrl": "/product_index/images/20609879.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-grey-beige-20609879/"
+        }
+      ]
+    },
+    "candidate_mirror_001": {
+      "label": "mirror",
+      "name": "拱形落地镜",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_mirror_001/crop.jpg",
+      "confidence": 0.96,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7471,
+          "productId": "ikea_90326768",
+          "title": "BJÖRKSTA Frame, aluminium-colour",
+          "price": 2146.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Wall Art and Wall Painting",
+          "size_m": [
+            1.4,
+            1.0,
+            0.4
+          ],
+          "localImage": "images/90326768.jpg",
+          "imageUrl": "/product_index/images/90326768.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/bjoerksta-frame-aluminium-colour-90326768/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7416,
+          "productId": "ikea_00609875",
+          "title": "NYPONBUSKE Mirror, black",
+          "price": 4490.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.4,
+            1.35,
+            0.035
+          ],
+          "localImage": "images/00609875.jpg",
+          "imageUrl": "/product_index/images/00609875.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-black-00609875/"
+        },
+        {
+          "rank": 3,
+          "score": 0.7391,
+          "productId": "ikea_20314311",
+          "title": "LOMVIKEN Frame, black",
+          "price": 1790.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.61,
+            0.91,
+            0.02
+          ],
+          "localImage": "images/20314311.jpg",
+          "imageUrl": "/product_index/images/20314311.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/lomviken-frame-black-20314311/"
+        }
+      ]
+    },
+    "candidate_painting_001": {
+      "label": "painting",
+      "name": "装饰画",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_painting_001/crop.jpg",
+      "confidence": 0.95,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.6826,
+          "productId": "ikea_00609875",
+          "title": "NYPONBUSKE Mirror, black",
+          "price": 4490.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.4,
+            1.35,
+            0.035
+          ],
+          "localImage": "images/00609875.jpg",
+          "imageUrl": "/product_index/images/00609875.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-black-00609875/"
+        },
+        {
+          "rank": 2,
+          "score": 0.6826,
+          "productId": "ikea_30607304",
+          "title": "BLODBJÖRK Vase, yellow",
+          "price": 489.0,
+          "currency": "INR",
+          "category2": "Vases & bowls",
+          "category3": "Vases",
+          "size_m": [
+            0.095,
+            0.16,
+            0.4
+          ],
+          "localImage": "images/30607304.jpg",
+          "imageUrl": "/product_index/images/30607304.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/blodbjoerk-vase-yellow-30607304/"
+        },
+        {
+          "rank": 3,
+          "score": 0.6796,
+          "productId": "ikea_60590811",
+          "title": "STOCKHOLM 2025 Mirror, oak veneer",
+          "price": 12990.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.9,
+            0.9,
+            0.4
+          ],
+          "localImage": "images/60590811.jpg",
+          "imageUrl": "/product_index/images/60590811.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/stockholm-2025-mirror-oak-veneer-60590811/"
+        }
+      ]
+    },
+    "candidate_pendant_light_001": {
+      "label": "pendant light",
+      "name": "飞碟吊灯",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_pendant_light_001/crop.jpg",
+      "confidence": 0.96,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7982,
+          "productId": "ikea_50620173",
+          "title": "HOVET Mirror, gold-colour",
+          "price": 11990.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Large mirrors",
+          "size_m": [
+            0.78,
+            1.96,
+            0.4
+          ],
+          "localImage": "images/50620173.jpg",
+          "imageUrl": "/product_index/images/50620173.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/hovet-mirror-gold-colour-50620173/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7941,
+          "productId": "ikea_00609875",
+          "title": "NYPONBUSKE Mirror, black",
+          "price": 4490.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.4,
+            1.35,
+            0.035
+          ],
+          "localImage": "images/00609875.jpg",
+          "imageUrl": "/product_index/images/00609875.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-black-00609875/"
+        },
+        {
+          "rank": 3,
+          "score": 0.794,
+          "productId": "ikea_80454313",
+          "title": "LOMMARYD Mirror",
+          "price": 5990.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Decorative mirrors",
+          "size_m": [
+            0.66,
+            0.8,
+            0.4
+          ],
+          "localImage": "images/80454313.jpg",
+          "imageUrl": "/product_index/images/80454313.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/lommaryd-mirror-80454313/"
+        }
+      ]
+    },
+    "candidate_plant_001": {
+      "label": "plant",
+      "name": "落地绿植",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_plant_001/crop.jpg",
+      "confidence": 0.92,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.6536,
+          "productId": "ikea_40446344",
+          "title": "MÅLERÅS Picture ledge, bamboo",
+          "price": 1090.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.07,
+            0.13
+          ],
+          "localImage": "images/40446344.jpg",
+          "imageUrl": "/product_index/images/40446344.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/maleras-picture-ledge-bamboo-40446344/"
+        },
+        {
+          "rank": 2,
+          "score": 0.6536,
+          "productId": "ikea_20511359",
+          "title": "MÅLERÅS Picture ledge, bamboo",
+          "price": 739.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.07,
+            0.13
+          ],
+          "localImage": "images/20511359.jpg",
+          "imageUrl": "/product_index/images/20511359.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/maleras-picture-ledge-bamboo-20511359/"
+        },
+        {
+          "rank": 3,
+          "score": 0.6526,
+          "productId": "ikea_90586940",
+          "title": "MOSSLANDA Picture ledge, oak effect",
+          "price": 699.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture ledges",
+          "size_m": [
+            0.4,
+            0.55,
+            0.12
+          ],
+          "localImage": "images/90586940.jpg",
+          "imageUrl": "/product_index/images/90586940.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/mosslanda-picture-ledge-oak-effect-90586940/"
+        }
+      ]
+    },
+    "candidate_rug_001": {
+      "label": "rug",
+      "name": "米色花纹圆形地毯",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_rug_001/crop.jpg",
+      "confidence": 0.94,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.6501,
+          "productId": "ikea_90326768",
+          "title": "BJÖRKSTA Frame, aluminium-colour",
+          "price": 2146.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Wall Art and Wall Painting",
+          "size_m": [
+            1.4,
+            1.0,
+            0.4
+          ],
+          "localImage": "images/90326768.jpg",
+          "imageUrl": "/product_index/images/90326768.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/bjoerksta-frame-aluminium-colour-90326768/"
+        },
+        {
+          "rank": 2,
+          "score": 0.6441,
+          "productId": "ikea_20314311",
+          "title": "LOMVIKEN Frame, black",
+          "price": 1790.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.61,
+            0.91,
+            0.02
+          ],
+          "localImage": "images/20314311.jpg",
+          "imageUrl": "/product_index/images/20314311.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/lomviken-frame-black-20314311/"
+        },
+        {
+          "rank": 3,
+          "score": 0.6376,
+          "productId": "ikea_40387127",
+          "title": "KNOPPÄNG Frame, black",
+          "price": 199.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.13,
+            0.18,
+            0.02
+          ],
+          "localImage": "images/40387127.jpg",
+          "imageUrl": "/product_index/images/40387127.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/knoppaeng-frame-black-40387127/"
+        }
+      ]
+    },
+    "candidate_rug_002": {
+      "label": "rug",
+      "name": "棋盘格地毯",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_rug_002/crop.jpg",
+      "confidence": 0.94,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7384,
+          "productId": "ikea_90603020",
+          "title": "VINTERFINT Gift wrap roll, double sided multicolour/red",
+          "price": 149.0,
+          "currency": "INR",
+          "category2": "Stationery, wrapping paper, gift bags & accessories",
+          "category3": "VINTERFINTGift wrap roll",
+          "size_m": null,
+          "localImage": "images/90603020.jpg",
+          "imageUrl": "/product_index/images/90603020.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/vinterfint-gift-wrap-roll-double-sided-multicolour-red-90603020/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7074,
+          "productId": "ikea_20256622",
+          "title": "VÄXBO Collage frame for 8 photos, white",
+          "price": 999.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Collage photo frames",
+          "size_m": [
+            0.55,
+            0.58,
+            0.02
+          ],
+          "localImage": "images/20256622.jpg",
+          "imageUrl": "/product_index/images/20256622.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/vaexbo-collage-frame-for-8-photos-white-20256622/"
+        },
+        {
+          "rank": 3,
+          "score": 0.6962,
+          "productId": "ikea_50553710",
+          "title": "RÖDALM Frame for 9 pictures, black",
+          "price": 1390.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Collage photo frames",
+          "size_m": [
+            0.46,
+            0.61,
+            0.03
+          ],
+          "localImage": "images/50553710.jpg",
+          "imageUrl": "/product_index/images/50553710.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/roedalm-frame-for-9-pictures-black-50553710/"
+        }
+      ]
+    },
+    "candidate_sofa_001": {
+      "label": "sofa",
+      "name": "三人位皮沙发",
+      "cropUrl": "/outputs/videos/3/deduplicated/candidate_sofa_001/crop.jpg",
+      "confidence": 0.96,
+      "products": [
+        {
+          "rank": 1,
+          "score": 0.7099,
+          "productId": "ikea_50451783",
+          "title": "ALFTA Double-sided tape",
+          "price": 199.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Picture & Photo Frames",
+          "size_m": [
+            0.02,
+            0.08,
+            0.08
+          ],
+          "localImage": "images/50451783.jpg",
+          "imageUrl": "/product_index/images/50451783.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/alfta-double-sided-tape-50451783/"
+        },
+        {
+          "rank": 2,
+          "score": 0.7063,
+          "productId": "ikea_90326768",
+          "title": "BJÖRKSTA Frame, aluminium-colour",
+          "price": 2146.0,
+          "currency": "INR",
+          "category2": "Wall decor",
+          "category3": "Wall Art and Wall Painting",
+          "size_m": [
+            1.4,
+            1.0,
+            0.4
+          ],
+          "localImage": "images/90326768.jpg",
+          "imageUrl": "/product_index/images/90326768.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/bjoerksta-frame-aluminium-colour-90326768/"
+        },
+        {
+          "rank": 3,
+          "score": 0.7032,
+          "productId": "ikea_60590811",
+          "title": "STOCKHOLM 2025 Mirror, oak veneer",
+          "price": 12990.0,
+          "currency": "INR",
+          "category2": "Mirrors",
+          "category3": "Wall mirrors",
+          "size_m": [
+            0.9,
+            0.9,
+            0.4
+          ],
+          "localImage": "images/60590811.jpg",
+          "imageUrl": "/product_index/images/60590811.jpg",
+          "productUrl": "https://www.ikea.com/in/en/p/stockholm-2025-mirror-oak-veneer-60590811/"
+        }
+      ]
+    }
+  }
+}

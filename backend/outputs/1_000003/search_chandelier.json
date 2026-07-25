@@ -1,0 +1,90 @@
+﻿{
+  "query": "D:\\妗岄潰\\Roombot\\Rombot\\backend\\outputs\\1_000003\\obj_chandelier_001_002_crop.jpg",
+  "results": [
+    {
+      "rank": 1,
+      "score": 0.8261,
+      "productId": "ikea_20609879",
+      "title": "NYPONBUSKE Mirror, grey-beige",
+      "price": 3490.0,
+      "currency": "INR",
+      "category2": "Mirrors",
+      "category3": "Wall mirrors",
+      "size_m": [
+        0.65,
+        0.65,
+        0.035
+      ],
+      "localImage": "images/20609879.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-grey-beige-20609879/"
+    },
+    {
+      "rank": 2,
+      "score": 0.8208,
+      "productId": "ikea_40609883",
+      "title": "NYPONBUSKE Mirror, black",
+      "price": 3490.0,
+      "currency": "INR",
+      "category2": "Mirrors",
+      "category3": "Wall mirrors",
+      "size_m": [
+        0.65,
+        0.65,
+        0.035
+      ],
+      "localImage": "images/40609883.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-black-40609883/"
+    },
+    {
+      "rank": 3,
+      "score": 0.8203,
+      "productId": "ikea_60590811",
+      "title": "STOCKHOLM 2025 Mirror, oak veneer",
+      "price": 12990.0,
+      "currency": "INR",
+      "category2": "Mirrors",
+      "category3": "Wall mirrors",
+      "size_m": [
+        0.9,
+        0.9,
+        0.4
+      ],
+      "localImage": "images/60590811.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/stockholm-2025-mirror-oak-veneer-60590811/"
+    },
+    {
+      "rank": 4,
+      "score": 0.8196,
+      "productId": "ikea_20256622",
+      "title": "V脛XBO Collage frame for 8 photos, white",
+      "price": 999.0,
+      "currency": "INR",
+      "category2": "Wall decor",
+      "category3": "Collage photo frames",
+      "size_m": [
+        0.55,
+        0.58,
+        0.02
+      ],
+      "localImage": "images/20256622.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/vaexbo-collage-frame-for-8-photos-white-20256622/"
+    },
+    {
+      "rank": 5,
+      "score": 0.8128,
+      "productId": "ikea_40458619",
+      "title": "LINDBYN Mirror, black",
+      "price": 4990.0,
+      "currency": "INR",
+      "category2": "Mirrors",
+      "category3": "Round mirrors",
+      "size_m": [
+        0.8,
+        0.4,
+        0.4
+      ],
+      "localImage": "images/40458619.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/lindbyn-mirror-black-40458619/"
+    }
+  ]
+}

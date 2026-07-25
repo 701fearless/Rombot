@@ -5,9 +5,14 @@ backend/.env
 .venv_local/
 backend/.venv/
 backend/.venv_local/
+backend/.venv-retrieval/
 
 # Local standalone experiment (exclude from this branch)
 room_scan_standalone/
+
+# Local video assets / large demo media
+vedios/
+backend/data/product_index/
 
 # Heavy generated assets
 *.glb

@@ -95,6 +95,13 @@
     .ref { margin: 0; border: 1px solid var(--line); padding: 7px; display: grid; gap: 5px; }
     .ref img { width: 100%; aspect-ratio: 1; object-fit: contain; background: var(--surface-alt); }
     .ref figcaption { color: var(--muted); font-size: 11px; }
+    .products { display: grid; gap: 8px; margin-top: 8px; }
+    .product-card { border: 1px solid var(--line); background: var(--surface-alt); padding: 8px; display: grid; grid-template-columns: 72px 1fr; gap: 10px; text-decoration: none; color: inherit; }
+    .product-card:hover { border-color: var(--green); }
+    .product-card img { width: 72px; height: 72px; object-fit: contain; background: #fff; }
+    .product-title { font-size: 12px; font-weight: 700; line-height: 1.35; }
+    .product-meta { color: var(--muted); font-size: 11px; margin-top: 4px; }
+    .product-empty { color: var(--muted); font-size: 12px; padding: 8px 0; }
     @media (max-width: 980px) {
       .app { grid-template-columns: 1fr; }
       .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -136,10 +143,16 @@
           <div class="field"><label for="videoId">视频 ID</label><input id="videoId" value="video_pause_demo" /></div>
           <div class="field"><label for="detectionMode">检测模式</label><select id="detectionMode"><option value="ark_grounding">Ark Grounding</option><option value="mock">Mock</option></select></div>
         </div>
-        <div class="actions"><button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="list-video"></i>识别已有抽帧</button></div>
+        <div class="actions">
+          <button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="list-video"></i>识别已有抽帧</button>
+        </div>
       </section>
 
-      <div class="actions"><button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>生成所选模型</button></div>
+      <div class="actions">
+        <button id="searchIkeaButton" class="btn secondary" type="button" disabled><i data-lucide="shopping-bag"></i>搜宜家相似商品</button>
+        <button id="loadMatchesButton" class="btn secondary" type="button"><i data-lucide="database"></i>加载视频商品缓存</button>
+        <button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>生成所选模型</button>
+      </div>
 
       <section class="steps" aria-label="处理进度">
         <div class="step" id="step-source"><span class="step-dot"></span><div><div class="step-title">输入就绪</div><div class="step-note">等待文件</div></div><span class="elapsed"></span></div>
@@ -173,6 +186,8 @@
         <div class="result-pane">
           <div class="pane-head"><h2>生成结果</h2><span id="modelBadge" class="badge">尚未生成</span></div>
           <div id="refs" class="refs"></div>
+          <div class="pane-head" style="margin-top:12px"><h2>宜家相似商品</h2><span id="productBadge" class="badge">未加载</span></div>
+          <div id="products" class="products"><div class="product-empty">选中物体或点击「加载宜家商品缓存」</div></div>
           <pre id="selectedJson">尚未运行</pre>
         </div>
       </section>
@@ -214,6 +229,10 @@
     const detectJson = $("detectJson");
     const selectedJson = $("selectedJson");
     const refs = $("refs");
+    const productsEl = $("products");
+    const productBadge = $("productBadge");
+    const loadMatchesButton = $("loadMatchesButton");
+    const searchIkeaButton = $("searchIkeaButton");
     const matchBadge = $("matchBadge");
     const modelBadge = $("modelBadge");
     const viewerStatus = $("viewerStatus");
@@ -228,6 +247,9 @@
     let pauseFrameDataUrl = null;
     let matching = false;
     let activeTimer = null;
+    let productMatchesCache = null;
+    let productMatchesVideoId = null;
+    let liveProductResults = null;
 
     const steps = {
       source: $("step-source"),
@@ -427,8 +449,204 @@
       matchedLabel.textContent = `匹配帧 · ${detection.frameId}`;
       renderObjects();
       generateButton.disabled = !selectedObject;
+      searchIkeaButton.disabled = !selectedObject;
       switchView("comparisonView");
+      await showProductsForSelection(selectedObject);
     }
+
+    function activeVideoId() {
+      return preparedVideoId || sanitizeVideoId(videoIdInput.value) || null;
+    }
+
+    async function ensureProductMatches(force = false) {
+      const videoId = activeVideoId();
+      if (!videoId) {
+        productBadge.textContent = "无 videoId";
+        return null;
+      }
+      if (!force && productMatchesCache && productMatchesVideoId === videoId) {
+        return productMatchesCache;
+      }
+      try {
+        const response = await fetch(`/api/video/${encodeURIComponent(videoId)}/product-matches`);
+        if (!response.ok) {
+          const detail = await response.text();
+          throw new Error(detail || response.statusText);
+        }
+        productMatchesCache = await response.json();
+        productMatchesVideoId = videoId;
+        const count = Object.keys(productMatchesCache.matches || {}).length;
+        productBadge.textContent = `${videoId} · ${count} 候选`;
+        return productMatchesCache;
+      } catch (error) {
+        productMatchesCache = null;
+        productMatchesVideoId = null;
+        productBadge.textContent = "无缓存";
+        productsEl.innerHTML = `<div class="product-empty">尚未生成商品缓存（videoId=${escapeHtml(videoId)}）。请先跑 batch_match_products.py。<br><small>${escapeHtml(error.message || error)}</small></div>`;
+        return null;
+      }
+    }
+
+    function resolveCandidateMatch(item) {
+      const matches = productMatchesCache && productMatchesCache.matches || {};
+      if (!item || !Object.keys(matches).length) return null;
+      const direct = item.deduplicatedObjectId || item.candidateId;
+      if (direct && matches[direct]) return { id: direct, ...matches[direct] };
+      const byId = `candidate_${item.label}_001`;
+      if (item.label && matches[byId]) return { id: byId, ...matches[byId] };
+      const labelHits = Object.entries(matches).filter(([, value]) => value.label === item.label);
+      if (labelHits.length) {
+        const [id, value] = labelHits[0];
+        return { id, ...value };
+      }
+      return null;
+    }
+
+    function renderProductList(list, badgeText) {
+      if (!list || !list.length) {
+        productsEl.innerHTML = '<div class="product-empty">无匹配商品</div>';
+        return;
+      }
+      productBadge.textContent = badgeText || `Top${list.length}`;
+      productsEl.innerHTML = list.map((product) => {
+        const image = product.imageUrl || (product.localImage ? `/product_index/${product.localImage}` : "");
+        const price = product.price != null ? `${product.currency || ""} ${product.price}` : "n/a";
+        const href = product.productUrl || "#";
+        return `<a class="product-card" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">
+          <img src="${escapeHtml(image)}" alt="" loading="lazy" />
+          <span>
+            <span class="product-title">#${product.rank} ${escapeHtml(product.title || product.productId)}</span>
+            <span class="product-meta">score ${Number(product.score || 0).toFixed(3)} · ${escapeHtml(price)}</span>
+            <span class="product-meta">${escapeHtml(product.category2 || "")} / ${escapeHtml(product.category3 || "")}</span>
+          </span>
+        </a>`;
+      }).join("");
+    }
+
+    function renderProductsForObject(item) {
+      if (liveProductResults && liveProductResults.objectId === (item && item.id)) {
+        renderProductList(liveProductResults.results, `实时 · Top${(liveProductResults.results || []).length}`);
+        return;
+      }
+      if (!productMatchesCache) {
+        productsEl.innerHTML = '<div class="product-empty">图片模式请点「搜宜家相似商品」；视频模式也可「加载视频商品缓存」</div>';
+        return;
+      }
+      const hit = resolveCandidateMatch(item);
+      if (!hit) {
+        const keys = Object.keys(productMatchesCache.matches || {});
+        productsEl.innerHTML = `<div class="product-empty">当前物体无对应候选。缓存含 ${keys.length} 个：${escapeHtml(keys.slice(0, 8).join(", "))}${keys.length > 8 ? "…" : ""}</div>`;
+        return;
+      }
+      renderProductList(hit.products || [], `${hit.id} · Top${(hit.products || []).length}`);
+    }
+
+    async function searchIkeaForObject(item) {
+      if (!item) return null;
+      productBadge.textContent = "检索中…";
+      productsEl.innerHTML = '<div class="product-empty">正在用 crop 检索宜家索引（首次约数十秒）…</div>';
+      const body = { topK: 3 };
+      if (item.cropUrl) {
+        body.cropUrl = item.cropUrl;
+      } else if ((imageDataUrl || pauseFrameDataUrl) && item.bbox) {
+        body.image = imageDataUrl || pauseFrameDataUrl;
+        body.bbox = item.bbox;
+      } else {
+        throw new Error("当前物体没有 cropUrl，也无法从画面裁剪");
+      }
+      const response = await fetch("/api/video/clip-search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+      if (!response.ok) {
+        const detail = await response.text();
+        throw new Error(detail || response.statusText);
+      }
+      const payload = await response.json();
+      liveProductResults = { objectId: item.id, results: payload.results || [] };
+      renderProductList(liveProductResults.results, `实时 · ${item.name || item.label}`);
+      return liveProductResults;
+    }
+
+    async function showProductsForSelection(item) {
+      if (!item) {
+        productsEl.innerHTML = '<div class="product-empty">选中物体后点「搜宜家相似商品」</div>';
+        return;
+      }
+      // Image mode: live CLIP on crop. Video mode: prefer offline cache, else live.
+      if (mode === "image") {
+        try {
+          await searchIkeaForObject(item);
+        } catch (error) {
+          productBadge.textContent = "检索失败";
+          productsEl.innerHTML = `<div class="product-empty">${escapeHtml(error.message || error)}</div>`;
+        }
+        return;
+      }
+      await ensureProductMatches();
+      if (productMatchesCache) {
+        renderProductsForObject(item);
+        return;
+      }
+      try {
+        await searchIkeaForObject(item);
+      } catch (error) {
+        productBadge.textContent = "无缓存";
+        productsEl.innerHTML = `<div class="product-empty">${escapeHtml(error.message || error)}</div>`;
+      }
+    }
+
+    searchIkeaButton.addEventListener("click", async () => {
+      if (!selectedObject) return;
+      searchIkeaButton.disabled = true;
+      try {
+        await searchIkeaForObject(selectedObject);
+      } catch (error) {
+        productBadge.textContent = "检索失败";
+        productsEl.innerHTML = `<div class="product-empty">${escapeHtml(error.message || error)}</div>`;
+      } finally {
+        searchIkeaButton.disabled = !selectedObject;
+        refreshIcons();
+      }
+    });
+
+    loadMatchesButton.addEventListener("click", async () => {
+      loadMatchesButton.disabled = true;
+      liveProductResults = null;
+      try {
+        const cache = await ensureProductMatches(true);
+        if (!cache) return;
+        if (selectedObject) {
+          renderProductsForObject(selectedObject);
+          return;
+        }
+        const entries = Object.entries(cache.matches || {});
+        if (!entries.length) {
+          productsEl.innerHTML = '<div class="product-empty">缓存为空</div>';
+          return;
+        }
+        productsEl.innerHTML = entries.map(([id, value]) => {
+          const top = (value.products || [])[0];
+          const title = top ? top.title : "无结果";
+          return `<button type="button" class="object-row" data-candidate="${escapeHtml(id)}">
+            <span><span class="object-name">${escapeHtml(value.name || id)}</span>
+            <span class="object-meta">${escapeHtml(id)} · ${escapeHtml(title)}</span></span>
+            <span class="confidence">${(value.products || []).length}</span>
+          </button>`;
+        }).join("");
+        productsEl.querySelectorAll("[data-candidate]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const id = button.getAttribute("data-candidate");
+            const value = cache.matches[id];
+            renderProductsForObject({ deduplicatedObjectId: id, label: value.label, name: value.name });
+          });
+        });
+      } finally {
+        loadMatchesButton.disabled = false;
+        refreshIcons();
+      }
+    });
 
     function renderObjects() {
       objects.innerHTML = "";
@@ -440,9 +658,12 @@
         button.innerHTML = `<span><span class="object-name">${escapeHtml(item.name || item.label)}</span><span class="object-meta">${escapeHtml(item.label)} · bbox ${item.bbox.join(", ")}</span></span><span class="confidence">${Math.round(item.confidence * 100)}%</span>`;
         button.addEventListener("click", async () => {
           selectedObject = item;
+          liveProductResults = null;
           renderObjects();
           generateButton.disabled = false;
+          searchIkeaButton.disabled = false;
           await drawAnnotated(matchedCanvas, currentDetection.frameImageUrl || imageDataUrl, list, item.id);
+          await showProductsForSelection(item);
         });
         objects.appendChild(button);
       }

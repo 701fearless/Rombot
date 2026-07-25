@@ -1,0 +1,90 @@
+﻿{
+  "query": "D:\\妗岄潰\\Roombot\\Rombot\\backend\\outputs\\1_000003\\obj_coffee_table_001_003_crop.jpg",
+  "results": [
+    {
+      "rank": 1,
+      "score": 0.8517,
+      "productId": "ikea_20609879",
+      "title": "NYPONBUSKE Mirror, grey-beige",
+      "price": 3490.0,
+      "currency": "INR",
+      "category2": "Mirrors",
+      "category3": "Wall mirrors",
+      "size_m": [
+        0.65,
+        0.65,
+        0.035
+      ],
+      "localImage": "images/20609879.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-grey-beige-20609879/"
+    },
+    {
+      "rank": 2,
+      "score": 0.8391,
+      "productId": "ikea_90326768",
+      "title": "BJ脰RKSTA Frame, aluminium-colour",
+      "price": 2146.0,
+      "currency": "INR",
+      "category2": "Wall decor",
+      "category3": "Wall Art and Wall Painting",
+      "size_m": [
+        1.4,
+        1.0,
+        0.4
+      ],
+      "localImage": "images/90326768.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/bjoerksta-frame-aluminium-colour-90326768/"
+    },
+    {
+      "rank": 3,
+      "score": 0.8378,
+      "productId": "ikea_40609883",
+      "title": "NYPONBUSKE Mirror, black",
+      "price": 3490.0,
+      "currency": "INR",
+      "category2": "Mirrors",
+      "category3": "Wall mirrors",
+      "size_m": [
+        0.65,
+        0.65,
+        0.035
+      ],
+      "localImage": "images/40609883.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/nyponbuske-mirror-black-40609883/"
+    },
+    {
+      "rank": 4,
+      "score": 0.8281,
+      "productId": "ikea_20314311",
+      "title": "LOMVIKEN Frame, black",
+      "price": 1790.0,
+      "currency": "INR",
+      "category2": "Wall decor",
+      "category3": "Picture & Photo Frames",
+      "size_m": [
+        0.61,
+        0.91,
+        0.02
+      ],
+      "localImage": "images/20314311.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/lomviken-frame-black-20314311/"
+    },
+    {
+      "rank": 5,
+      "score": 0.817,
+      "productId": "ikea_90297426",
+      "title": "FISKBO Frame, black",
+      "price": 199.0,
+      "currency": "INR",
+      "category2": "Wall decor",
+      "category3": "Picture & Photo Frames",
+      "size_m": [
+        0.21,
+        0.3,
+        0.01
+      ],
+      "localImage": "images/90297426.jpg",
+      "productUrl": "https://www.ikea.com/in/en/p/fiskbo-frame-black-90297426/"
+    }
+  ]
+}
