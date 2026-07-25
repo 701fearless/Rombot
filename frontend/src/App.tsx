@@ -29,8 +29,8 @@ function LegacyRedirect() {
 export default function App() {
   return (
     <Routes>
+      <Route index element={<FeedPage />} />
       <Route element={<AppShell />}>
-        <Route index element={<FeedPage />} />
         <Route path='home' element={<HomePage />} />
         <Route path='discover' element={<DiscoverPage />} />
         <Route path='me' element={<MePage />} />
