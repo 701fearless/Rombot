@@ -6,7 +6,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config import get_settings
-from app.routers import debug, feed, floorplan, health, room, video
+from app.routers import debug, feed, floorplan, health, room, shop, video
 
 
 settings = get_settings()
@@ -25,11 +25,18 @@ app.include_router(health.router)
 app.include_router(feed.router, prefix="/api/feed", tags=["feed"])
 app.include_router(room.router, prefix="/api/room", tags=["room"])
 app.include_router(video.router, prefix="/api/video", tags=["video"])
+app.include_router(shop.router, prefix="/api/shop", tags=["shop"])
 app.include_router(debug.router, prefix="/api/debug", tags=["debug"])
 app.include_router(floorplan.router, prefix="/api/floorplan", tags=["floorplan"])
 
 app.mount("/sample_data", StaticFiles(directory="sample_data"), name="sample_data")
 app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
+_product_index = Path("data/product_index")
+if _product_index.exists():
+    app.mount("/product_index", StaticFiles(directory=_product_index), name="product_index")
+_vedios_dir = Path(__file__).resolve().parents[2] / "vedios"
+if _vedios_dir.exists():
+    app.mount("/vedios", StaticFiles(directory=_vedios_dir), name="vedios")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roombot 搜同款</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a221c;
+      --muted: #5c6b62;
+      --line: #d5ddd7;
+      --paper: #f3f1eb;
+      --panel: #fffdf8;
+      --accent: #0f6b4c;
+      --accent-soft: #d9efe4;
+      --shadow: 0 18px 50px rgba(26, 34, 28, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #e7f3ec 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #efe6d6 0%, transparent 50%),
+        var(--paper);
+    }
+    .page { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 36px 0 64px; }
+    .brand {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 0.95; margin: 0; letter-spacing: -0.02em;
+    }
+    .lead { margin: 12px 0 0; max-width: 46rem; color: var(--muted); line-height: 1.55; }
+    .shell {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.05fr);
+      gap: 22px; align-items: start;
+    }
+    .card {
+      background: var(--panel); border: 1px solid var(--line);
+      box-shadow: var(--shadow); border-radius: 4px;
+    }
+    .drop {
+      position: relative; min-height: 280px; display: grid; place-items: center;
+      padding: 18px; cursor: pointer; overflow: hidden;
+    }
+    .drop input { display: none; }
+    .drop-idle { text-align: center; color: var(--muted); display: grid; gap: 8px; }
+    .drop-idle strong { color: var(--ink); }
+    .drop.has-image .drop-idle { display: none; }
+    .preview { display: none; width: 100%; max-height: 280px; object-fit: contain; background: #111814; }
+    .drop.has-image .preview { display: block; }
+    .pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      padding: 12px 16px; border-top: 1px solid var(--line);
+    }
+    .pair figure { margin: 0; }
+    .pair img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #111814; display: block; }
+    .pair figcaption { color: var(--muted); font-size: 0.82rem; margin-top: 6px; line-height: 1.35; }
+    .controls {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      padding: 14px 16px; border-top: 1px solid var(--line);
+    }
+    .hint-box {
+      padding: 12px 16px; border-top: 1px solid var(--line);
+      background: #f7faf7; color: var(--muted); font-size: 0.9rem; line-height: 1.45;
+    }
+    .hint-box strong { color: var(--ink); }
+    label.inline { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.92rem; }
+    input[type="number"] {
+      width: 64px; border: 1px solid var(--line); background: #fff; padding: 8px 10px; font: inherit;
+    }
+    button {
+      font: inherit; border: 0; cursor: pointer; padding: 11px 16px;
+      background: var(--accent); color: #fff; font-weight: 700;
+    }
+    button:disabled { opacity: 0.45; cursor: wait; }
+    button.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+    .results { padding: 16px; min-height: 420px; }
+    .results-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 12px; margin-bottom: 14px;
+    }
+    .results-head h2 {
+      margin: 0; font-family: "Instrument Serif", Georgia, serif;
+      font-size: 1.7rem; font-weight: 400;
+    }
+    .status { color: var(--muted); font-size: 0.9rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+    .item {
+      display: grid; gap: 8px; text-decoration: none; color: inherit;
+      border: 1px solid var(--line); background: #fff; padding: 10px;
+    }
+    .item:hover { border-color: var(--accent); }
+    .item img { width: 100%; aspect-ratio: 1; object-fit: contain; background: var(--accent-soft); }
+    .rank { font-size: 0.78rem; color: var(--accent); font-weight: 700; }
+    .title { font-size: 0.92rem; font-weight: 700; line-height: 1.35; min-height: 2.5em; }
+    .meta { color: var(--muted); font-size: 0.82rem; line-height: 1.4; }
+    .empty {
+      min-height: 320px; display: grid; place-items: center; color: var(--muted);
+      text-align: center; padding: 24px; border: 1px dashed var(--line);
+    }
+    .error {
+      margin: 0 16px 16px; padding: 10px 12px; background: #f8e8e5; color: #8a2f24;
+      font-size: 0.9rem; white-space: pre-wrap; word-break: break-word;
+    }
+    @media (max-width: 860px) {
+      .shell, .pair { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1 class="brand">Roombot 搜同款</h1>
+    <p class="lead">
+      上传检测图即可：自动从<strong>文件名开头数字</strong>（如 <code>1_...</code> → 文件夹 <code>1</code>）定位
+      <code>generated</code>，匹配 reference 后直接搜同款。无需填写文件夹，也不使用 JSON。
+      <a href="/static/shop.html">购物页</a>
+    </p>
+
+    <section class="shell">
+      <div class="card">
+        <label class="drop" id="drop">
+          <input id="file" type="file" accept="image/*" />
+          <span class="drop-idle">
+            <strong>拖入或选择图片</strong>
+            <span>文件名需以视频编号开头，例如 1_000022_obj_sofa_001_crop.jpg</span>
+          </span>
+          <img id="preview" class="preview" alt="上传图" />
+        </label>
+
+        <div class="pair" id="pair" hidden>
+          <figure>
+            <img id="uploadPreview" alt="上传图" />
+            <figcaption id="uploadCaption">上传图</figcaption>
+          </figure>
+          <figure>
+            <img id="referencePreview" alt="reference" />
+            <figcaption id="referenceCaption">匹配到的 reference</figcaption>
+          </figure>
+        </div>
+
+        <div class="controls">
+          <label class="inline">Top-K <input id="topK" type="number" min="1" max="20" value="8" /></label>
+          <button id="clearBtn" class="ghost" type="button">清空</button>
+        </div>
+        <div id="hintBox" class="hint-box">上传后会自动识别文件夹并搜同款。</div>
+        <div id="error" class="error" hidden></div>
+      </div>
+
+      <div class="card results">
+        <div class="results-head">
+          <h2>相似商品</h2>
+          <div id="status" class="status">等待上传</div>
+        </div>
+        <div id="grid" class="grid"></div>
+        <div id="empty" class="empty">结果会出现在这里</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const drop = document.getElementById("drop");
+    const fileInput = document.getElementById("file");
+    const topKInput = document.getElementById("topK");
+    const clearBtn = document.getElementById("clearBtn");
+    const preview = document.getElementById("preview");
+    const pair = document.getElementById("pair");
+    const uploadPreview = document.getElementById("uploadPreview");
+    const referencePreview = document.getElementById("referencePreview");
+    const uploadCaption = document.getElementById("uploadCaption");
+    const referenceCaption = document.getElementById("referenceCaption");
+    const hintBox = document.getElementById("hintBox");
+    const statusEl = document.getElementById("status");
+    const grid = document.getElementById("grid");
+    const empty = document.getElementById("empty");
+    const errorEl = document.getElementById("error");
+
+    let busy = false;
+    let imageName = null;
+
+    function escapeHtml(value) {
+      const div = document.createElement("div");
+      div.textContent = String(value ?? "");
+      return div.innerHTML;
+    }
+
+    function setError(message) {
+      if (!message) {
+        errorEl.hidden = true;
+        errorEl.textContent = "";
+        return;
+      }
+      errorEl.hidden = false;
+      errorEl.textContent = message;
+    }
+
+    function parseVideoId(name) {
+      const match = String(name || "").match(/^(\d+)(?:[_-]|$)/);
+      return match ? match[1] : null;
+    }
+
+    function clearAll() {
+      busy = false;
+      imageName = null;
+      fileInput.value = "";
+      preview.removeAttribute("src");
+      uploadPreview.removeAttribute("src");
+      referencePreview.removeAttribute("src");
+      drop.classList.remove("has-image");
+      pair.hidden = true;
+      grid.innerHTML = "";
+      empty.hidden = false;
+      statusEl.textContent = "等待上传";
+      hintBox.textContent = "上传后会自动识别文件夹并搜同款。";
+      setError("");
+    }
+
+    function renderResults(results, meta) {
+      if (!results.length) {
+        empty.hidden = false;
+        empty.textContent = "没有找到相似商品";
+        grid.innerHTML = "";
+        return;
+      }
+      empty.hidden = true;
+      grid.innerHTML = results.map((item) => {
+        const image = item.imageUrl || (item.localImage ? `/product_index/${item.localImage}` : "");
+        const price = item.price != null ? `${item.currency || ""} ${item.price}` : "n/a";
+        const href = item.detailUrl || `/static/shop.html#/p/${encodeURIComponent(item.productId || "")}`;
+        const cat = item.category || item.category2 || "";
+        const sub = item.subcategory || item.category3 || "";
+        return `<a class="item" href="${escapeHtml(href)}">
+          <img src="${escapeHtml(image)}" alt="" loading="lazy" />
+          <div class="rank">#${item.rank} · ${Number(item.score || 0).toFixed(3)}</div>
+          <div class="title">${escapeHtml(item.title || item.productId)}</div>
+          <div class="meta">${escapeHtml(price)}<br>${escapeHtml(cat)} / ${escapeHtml(sub)}</div>
+        </a>`;
+      }).join("");
+      statusEl.textContent = meta;
+    }
+
+    async function runPipeline(file) {
+      if (!file || busy) return;
+      const name = file.name;
+      const videoId = parseVideoId(name);
+      if (!videoId) {
+        setError("文件名需以视频编号开头，例如 1_000022_obj_sofa_001_crop.jpg");
+        return;
+      }
+
+      busy = true;
+      imageName = name;
+      setError("");
+      grid.innerHTML = "";
+      empty.hidden = true;
+      empty.textContent = "识别中…";
+
+      const dataUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      preview.src = dataUrl;
+      uploadPreview.src = dataUrl;
+      drop.classList.add("has-image");
+      pair.hidden = false;
+      referencePreview.removeAttribute("src");
+      uploadCaption.textContent = `上传图 · ${name} · 文件夹 ${videoId}`;
+      referenceCaption.textContent = "匹配 reference 中…";
+      hintBox.innerHTML = `<strong>自动识别</strong> · 文件名开头 <code>${escapeHtml(videoId)}</code> → <code>videos/${escapeHtml(videoId)}/generated/</code>`;
+      statusEl.textContent = "匹配 reference…";
+
+      const started = performance.now();
+      try {
+        const resolveResp = await fetch("/api/shop/resolve-reference", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ imageName: name })
+        });
+        const resolveText = await resolveResp.text();
+        if (!resolveResp.ok) throw new Error(resolveText || resolveResp.statusText);
+        const resolved = JSON.parse(resolveText);
+
+        referencePreview.src = resolved.referenceUrl;
+        referenceCaption.textContent = `reference · ${resolved.matchedFolder} · score ${resolved.matchScore}`;
+        hintBox.innerHTML = `<strong>已匹配</strong> · <code>${escapeHtml(resolved.parentFolder)}/generated/${escapeHtml(resolved.matchedFolder)}</code>
+          → 正在搜同款…`;
+        statusEl.textContent = "搜同款中…";
+
+        const topK = Math.min(20, Math.max(1, Number(topKInput.value) || 8));
+        const searchResp = await fetch("/api/video/clip-search", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            cropUrl: resolved.referenceUrl,
+            topK,
+            textOnly: false,
+            textWeight: 0,
+            persist: true,
+            imageName: name
+          })
+        });
+        const searchText = await searchResp.text();
+        if (!searchResp.ok) throw new Error(searchText || searchResp.statusText);
+        const payload = JSON.parse(searchText);
+        const elapsed = ((performance.now() - started) / 1000).toFixed(1);
+        hintBox.innerHTML = `<strong>完成</strong> · 用 <code>${escapeHtml(resolved.matchedFolder)}</code> 的 reference 检索`;
+        renderResults(payload.results || [], `搜同款 ${(payload.results || []).length} 条 · ${elapsed}s · ${resolved.matchedFolder}`);
+      } catch (error) {
+        empty.hidden = false;
+        empty.textContent = "识别失败";
+        statusEl.textContent = "失败";
+        setError(String(error.message || error));
+      } finally {
+        busy = false;
+      }
+    }
+
+    drop.addEventListener("dragover", (event) => event.preventDefault());
+    drop.addEventListener("drop", (event) => {
+      event.preventDefault();
+      const file = event.dataTransfer.files?.[0];
+      if (file) runPipeline(file);
+    });
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files?.[0];
+      if (file) runPipeline(file);
+    });
+    clearBtn.addEventListener("click", clearAll);
+  </script>
+</body>
+</html>

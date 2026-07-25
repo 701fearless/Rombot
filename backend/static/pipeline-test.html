@@ -41,13 +41,8 @@
     .drop-content strong { color: var(--ink); font-size: 14px; }
     .drop-content svg { color: var(--green); }
     .source-preview { width: 100%; max-height: 250px; object-fit: contain; background: var(--black); display: none; }
-    .video-shell { display: none; position: relative; background: var(--black); border: 1px solid #252b28; overflow: hidden; }
-    .video-shell video { width: 100%; max-height: 260px; display: block; object-fit: contain; }
-    .video-tag-layer { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
-    .video-tag { position: absolute; transform: translate(-50%, -50%); pointer-events: auto; border: 1px solid rgba(255,255,255,.88); border-radius: 999px; background: rgba(16,20,18,.84); color: white; padding: 6px 9px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 3px 14px rgba(0,0,0,.36); font-size: 11px; white-space: nowrap; }
-    .video-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #ff6657; box-shadow: 0 0 0 3px rgba(255,102,87,.2); }
-    .video-tag:hover, .video-tag.active { border-color: #64efbb; background: rgba(16,83,66,.95); }
-    .video-tag.active::before { background: #64efbb; box-shadow: 0 0 0 3px rgba(100,239,187,.22); }
+    .video-shell { display: none; background: var(--black); border: 1px solid #252b28; }
+    .video-shell video { width: 100%; max-height: 260px; display: block; }
     .fields { display: grid; gap: 10px; margin-top: 12px; }
     .field { display: grid; gap: 5px; }
     .field label { color: var(--muted); font-size: 12px; }
@@ -95,15 +90,18 @@
     .object-name { font-size: 13px; font-weight: 700; }
     .object-meta { color: var(--muted); font-size: 11px; margin-top: 2px; }
     .confidence { color: var(--green); font-size: 12px; font-weight: 700; }
-    .object-detail { border: 1px solid var(--green); background: #f4faf6; padding: 9px; display: grid; grid-template-columns: 84px 1fr; gap: 10px; margin-bottom: 8px; }
-    .object-detail img { width: 84px; height: 84px; object-fit: contain; background: white; border: 1px solid var(--line); }
-    .object-detail strong { display: block; font-size: 13px; margin-bottom: 4px; }
-    .object-detail small { display: block; color: var(--muted); font-size: 11px; line-height: 1.55; word-break: break-word; }
     pre { margin: 10px 0 0; min-height: 120px; max-height: 280px; overflow: auto; white-space: pre-wrap; word-break: break-word; border: 1px solid var(--line); background: #f7f8f5; padding: 10px; font: 11px/1.5 "Cascadia Mono", Consolas, monospace; }
     .refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 8px; }
     .ref { margin: 0; border: 1px solid var(--line); padding: 7px; display: grid; gap: 5px; }
     .ref img { width: 100%; aspect-ratio: 1; object-fit: contain; background: var(--surface-alt); }
     .ref figcaption { color: var(--muted); font-size: 11px; }
+    .products { display: grid; gap: 8px; margin-top: 8px; }
+    .product-card { border: 1px solid var(--line); background: var(--surface-alt); padding: 8px; display: grid; grid-template-columns: 72px 1fr; gap: 10px; text-decoration: none; color: inherit; }
+    .product-card:hover { border-color: var(--green); }
+    .product-card img { width: 72px; height: 72px; object-fit: contain; background: #fff; }
+    .product-title { font-size: 12px; font-weight: 700; line-height: 1.35; }
+    .product-meta { color: var(--muted); font-size: 11px; margin-top: 4px; }
+    .product-empty { color: var(--muted); font-size: 12px; padding: 8px 0; }
     @media (max-width: 980px) {
       .app { grid-template-columns: 1fr; }
       .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -140,18 +138,22 @@
           <input id="videoFile" type="file" accept="video/*" />
           <span class="drop-content" id="videoHint"><i data-lucide="file-video"></i><strong>选择视频</strong><small>MP4 / MOV / MKV / AVI / WEBM</small></span>
         </label>
-        <div id="videoShell" class="video-shell">
-          <video id="videoPreview" controls playsinline preload="metadata"></video>
-          <div id="videoTagLayer" class="video-tag-layer" aria-live="polite"></div>
-        </div>
+        <div id="videoShell" class="video-shell"><video id="videoPreview" controls playsinline preload="metadata"></video></div>
         <div class="fields">
           <div class="field"><label for="videoId">视频 ID</label><input id="videoId" value="video_pause_demo" /></div>
           <div class="field"><label for="detectionMode">检测模式</label><select id="detectionMode"><option value="ark_grounding">Ark Grounding</option><option value="mock">Mock</option></select></div>
         </div>
-        <div class="actions"><button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="list-video"></i>识别已有抽帧</button></div>
+        <div class="actions">
+          <button id="prepareVideoButton" class="btn primary" type="button" disabled><i data-lucide="list-video"></i>识别已有抽帧</button>
+        </div>
       </section>
 
-      <div class="actions"><button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>生成所选模型</button></div>
+      <div class="actions">
+        <button id="searchIkeaButton" class="btn secondary" type="button" disabled><i data-lucide="shopping-bag"></i>搜相似商品</button>
+        <button id="loadMatchesButton" class="btn secondary" type="button"><i data-lucide="database"></i>加载本地商品缓存</button>
+        <a class="btn secondary" href="/static/shop.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none">购物页</a>
+        <button id="generateButton" class="btn secondary" type="button" disabled><i data-lucide="box"></i>生成所选模型</button>
+      </div>
 
       <section class="steps" aria-label="处理进度">
         <div class="step" id="step-source"><span class="step-dot"></span><div><div class="step-title">输入就绪</div><div class="step-note">等待文件</div></div><span class="elapsed"></span></div>
@@ -185,6 +187,8 @@
         <div class="result-pane">
           <div class="pane-head"><h2>生成结果</h2><span id="modelBadge" class="badge">尚未生成</span></div>
           <div id="refs" class="refs"></div>
+          <div class="pane-head" style="margin-top:12px"><h2>相似商品</h2><span id="productBadge" class="badge">未加载</span></div>
+          <div id="products" class="products"><div class="product-empty">选中物体或点击「加载本地商品缓存」</div></div>
           <pre id="selectedJson">尚未运行</pre>
         </div>
       </section>
@@ -210,7 +214,6 @@
     const videoFile = $("videoFile");
     const videoPreview = $("videoPreview");
     const videoShell = $("videoShell");
-    const videoTagLayer = $("videoTagLayer");
     const videoHint = $("videoHint");
     const videoIdInput = $("videoId");
     const detectionMode = $("detectionMode");
@@ -227,6 +230,10 @@
     const detectJson = $("detectJson");
     const selectedJson = $("selectedJson");
     const refs = $("refs");
+    const productsEl = $("products");
+    const productBadge = $("productBadge");
+    const loadMatchesButton = $("loadMatchesButton");
+    const searchIkeaButton = $("searchIkeaButton");
     const matchBadge = $("matchBadge");
     const modelBadge = $("modelBadge");
     const viewerStatus = $("viewerStatus");
@@ -239,9 +246,11 @@
     let currentDetection = null;
     let selectedObject = null;
     let pauseFrameDataUrl = null;
-    let matchRequestSerial = 0;
-    let matchAbortController = null;
+    let matching = false;
     let activeTimer = null;
+    let productMatchesCache = null;
+    let productMatchesVideoId = null;
+    let liveProductResults = null;
 
     const steps = {
       source: $("step-source"),
@@ -286,13 +295,8 @@
       };
     }
 
-    async function postJson(url, body, options = {}) {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-        signal: options.signal
-      });
+    async function postJson(url, body) {
+      const response = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       const text = await response.text();
       let data;
       try { data = JSON.parse(text); } catch { data = { raw: text }; }
@@ -337,7 +341,6 @@
       if (!file) return;
       selectedVideoFile = file;
       preparedVideoId = null;
-      invalidatePauseMatch();
       if (videoObjectUrl) URL.revokeObjectURL(videoObjectUrl);
       videoObjectUrl = URL.createObjectURL(file);
       videoPreview.src = videoObjectUrl;
@@ -409,52 +412,34 @@
     videoPreview.addEventListener("pause", () => {
       if (preparedVideoId && !videoPreview.ended && videoPreview.readyState >= 2) matchPausedVideo();
     });
-    videoPreview.addEventListener("play", invalidatePauseMatch);
-    videoPreview.addEventListener("seeking", invalidatePauseMatch);
-    videoPreview.addEventListener("emptied", invalidatePauseMatch);
-    addEventListener("resize", updateVideoTagPositions);
 
     async function matchPausedVideo() {
-      const requestSerial = ++matchRequestSerial;
-      if (matchAbortController) matchAbortController.abort();
-      matchAbortController = new AbortController();
-      clearVideoTags();
-      const pausedAt = videoPreview.currentTime;
-      let stopMatchTimer = null;
+      if (matching) return;
+      matching = true;
       try {
         pauseFrameDataUrl = captureVideoFrame(videoPreview, pauseCanvas);
-        const frameHash = computeVideoDHash(videoPreview);
         pauseEmpty.style.display = "none";
-        pauseLabel.textContent = `暂停画面 · ${formatTime(pausedAt)}`;
+        pauseLabel.textContent = `暂停画面 · ${formatTime(videoPreview.currentTime)}`;
         setStep("match", "running", "正在比较前后抽帧");
-        stopMatchTimer = startTimer("match");
+        const stop = startTimer("match");
         const detection = await postJson("/api/feed/detect", {
           videoId: preparedVideoId,
-          time: pausedAt,
-          frameHash
-        }, { signal: matchAbortController.signal });
-        stopMatchTimer();
-        stopMatchTimer = null;
-        if (
-          requestSerial !== matchRequestSerial
-          || !videoPreview.paused
-          || Math.abs(videoPreview.currentTime - pausedAt) > 0.05
-        ) return;
-        await presentDetection(detection, pauseFrameDataUrl, `暂停 ${formatTime(pausedAt)}`, false);
-        renderVideoTags();
+          time: videoPreview.currentTime,
+          frameImage: pauseFrameDataUrl
+        });
+        stop();
+        await presentDetection(detection, pauseFrameDataUrl, `暂停 ${formatTime(videoPreview.currentTime)}`);
         setStep("match", "done", `${detection.frameId} · ${detection.objects.length} 个对象`);
       } catch (error) {
-        if (error.name === "AbortError") return;
         showError(error, "match");
       } finally {
-        if (stopMatchTimer) stopMatchTimer();
-        if (requestSerial === matchRequestSerial) matchAbortController = null;
+        matching = false;
       }
     }
 
-    async function presentDetection(detection, sourceDataUrl, sourceText, selectFirst = true) {
+    async function presentDetection(detection, sourceDataUrl, sourceText) {
       currentDetection = detection;
-      selectedObject = selectFirst && detection.objects && detection.objects[0] || null;
+      selectedObject = detection.objects && detection.objects[0] || null;
       detectJson.textContent = JSON.stringify(detection, null, 2);
       matchBadge.textContent = detection.frameId;
       pauseLabel.textContent = sourceText;
@@ -465,29 +450,224 @@
       matchedLabel.textContent = `匹配帧 · ${detection.frameId}`;
       renderObjects();
       generateButton.disabled = !selectedObject;
+      searchIkeaButton.disabled = !selectedObject;
       switchView("comparisonView");
+      await showProductsForSelection(selectedObject);
     }
+
+    function activeVideoId() {
+      return preparedVideoId || sanitizeVideoId(videoIdInput.value) || null;
+    }
+
+    async function ensureProductMatches(force = false) {
+      const videoId = activeVideoId();
+      if (!videoId) {
+        productBadge.textContent = "无 videoId";
+        return null;
+      }
+      if (!force && productMatchesCache && productMatchesVideoId === videoId) {
+        return productMatchesCache;
+      }
+      try {
+        const response = await fetch(`/api/video/${encodeURIComponent(videoId)}/product-matches`);
+        if (!response.ok) {
+          const detail = await response.text();
+          throw new Error(detail || response.statusText);
+        }
+        productMatchesCache = await response.json();
+        productMatchesVideoId = videoId;
+        const count = Object.keys(productMatchesCache.matches || {}).length;
+        productBadge.textContent = `${videoId} · ${count} 候选`;
+        return productMatchesCache;
+      } catch (error) {
+        productMatchesCache = null;
+        productMatchesVideoId = null;
+        productBadge.textContent = "无缓存";
+        productsEl.innerHTML = `<div class="product-empty">尚未生成商品缓存（videoId=${escapeHtml(videoId)}）。请先跑 batch_match_products.py。<br><small>${escapeHtml(error.message || error)}</small></div>`;
+        return null;
+      }
+    }
+
+    function resolveCandidateMatch(item) {
+      const matches = productMatchesCache && productMatchesCache.matches || {};
+      if (!item || !Object.keys(matches).length) return null;
+      const direct = item.deduplicatedObjectId || item.candidateId;
+      if (direct && matches[direct]) return { id: direct, ...matches[direct] };
+      const byId = `candidate_${item.label}_001`;
+      if (item.label && matches[byId]) return { id: byId, ...matches[byId] };
+      const labelHits = Object.entries(matches).filter(([, value]) => value.label === item.label);
+      if (labelHits.length) {
+        const [id, value] = labelHits[0];
+        return { id, ...value };
+      }
+      return null;
+    }
+
+    function renderProductList(list, badgeText) {
+      if (!list || !list.length) {
+        productsEl.innerHTML = '<div class="product-empty">无匹配商品</div>';
+        return;
+      }
+      productBadge.textContent = badgeText || `Top${list.length}`;
+      productsEl.innerHTML = list.map((product) => {
+        const image = product.imageUrl || (product.localImage ? `/product_index/${product.localImage}` : "");
+        const price = product.price != null ? `${product.currency || ""} ${product.price}` : "n/a";
+        const href = product.detailUrl || `/static/shop.html#/p/${encodeURIComponent(product.productId || "")}`;
+        const cat = product.category || product.category2 || "";
+        const sub = product.subcategory || product.category3 || "";
+        return `<a class="product-card" href="${escapeHtml(href)}">
+          <img src="${escapeHtml(image)}" alt="" loading="lazy" />
+          <span>
+            <span class="product-title">#${product.rank} ${escapeHtml(product.title || product.productId)}</span>
+            <span class="product-meta">score ${Number(product.score || 0).toFixed(3)} · ${escapeHtml(price)}</span>
+            <span class="product-meta">${escapeHtml(cat)} / ${escapeHtml(sub)}</span>
+          </span>
+        </a>`;
+      }).join("");
+    }
+
+    function renderProductsForObject(item) {
+      if (liveProductResults && liveProductResults.objectId === (item && item.id)) {
+        renderProductList(liveProductResults.results, `实时 · Top${(liveProductResults.results || []).length}`);
+        return;
+      }
+      if (!productMatchesCache) {
+        productsEl.innerHTML = '<div class="product-empty">图片模式请点「搜相似商品」；也可「加载本地商品缓存」</div>';
+        return;
+      }
+      const hit = resolveCandidateMatch(item);
+      if (!hit) {
+        const keys = Object.keys(productMatchesCache.matches || {});
+        productsEl.innerHTML = `<div class="product-empty">当前物体无对应候选。缓存含 ${keys.length} 个：${escapeHtml(keys.slice(0, 8).join(", "))}${keys.length > 8 ? "…" : ""}</div>`;
+        return;
+      }
+      renderProductList(hit.products || [], `${hit.id} · Top${(hit.products || []).length}`);
+    }
+
+    async function searchIkeaForObject(item) {
+      if (!item) return null;
+      productBadge.textContent = "检索中…";
+      productsEl.innerHTML = '<div class="product-empty">正在检索本地商品索引（首次约数十秒，结果会保存）…</div>';
+      const body = { topK: 3 };
+      if (item.cropUrl) {
+        body.cropUrl = item.cropUrl;
+      } else if ((imageDataUrl || pauseFrameDataUrl) && item.bbox) {
+        body.image = imageDataUrl || pauseFrameDataUrl;
+        body.bbox = item.bbox;
+      } else {
+        throw new Error("当前物体没有 cropUrl，也无法从画面裁剪");
+      }
+      const response = await fetch("/api/video/clip-search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+      if (!response.ok) {
+        const detail = await response.text();
+        throw new Error(detail || response.statusText);
+      }
+      const payload = await response.json();
+      liveProductResults = { objectId: item.id, results: payload.results || [] };
+      renderProductList(liveProductResults.results, `实时 · ${item.name || item.label}`);
+      return liveProductResults;
+    }
+
+    async function showProductsForSelection(item) {
+      if (!item) {
+        productsEl.innerHTML = '<div class="product-empty">选中物体后点「搜相似商品」</div>';
+        return;
+      }
+      // Image mode: live CLIP on crop. Video mode: prefer offline cache, else live.
+      if (mode === "image") {
+        try {
+          await searchIkeaForObject(item);
+        } catch (error) {
+          productBadge.textContent = "检索失败";
+          productsEl.innerHTML = `<div class="product-empty">${escapeHtml(error.message || error)}</div>`;
+        }
+        return;
+      }
+      await ensureProductMatches();
+      if (productMatchesCache) {
+        renderProductsForObject(item);
+        return;
+      }
+      try {
+        await searchIkeaForObject(item);
+      } catch (error) {
+        productBadge.textContent = "无缓存";
+        productsEl.innerHTML = `<div class="product-empty">${escapeHtml(error.message || error)}</div>`;
+      }
+    }
+
+    searchIkeaButton.addEventListener("click", async () => {
+      if (!selectedObject) return;
+      searchIkeaButton.disabled = true;
+      try {
+        await searchIkeaForObject(selectedObject);
+      } catch (error) {
+        productBadge.textContent = "检索失败";
+        productsEl.innerHTML = `<div class="product-empty">${escapeHtml(error.message || error)}</div>`;
+      } finally {
+        searchIkeaButton.disabled = !selectedObject;
+        refreshIcons();
+      }
+    });
+
+    loadMatchesButton.addEventListener("click", async () => {
+      loadMatchesButton.disabled = true;
+      liveProductResults = null;
+      try {
+        const cache = await ensureProductMatches(true);
+        if (!cache) return;
+        if (selectedObject) {
+          renderProductsForObject(selectedObject);
+          return;
+        }
+        const entries = Object.entries(cache.matches || {});
+        if (!entries.length) {
+          productsEl.innerHTML = '<div class="product-empty">缓存为空</div>';
+          return;
+        }
+        productsEl.innerHTML = entries.map(([id, value]) => {
+          const top = (value.products || [])[0];
+          const title = top ? top.title : "无结果";
+          return `<button type="button" class="object-row" data-candidate="${escapeHtml(id)}">
+            <span><span class="object-name">${escapeHtml(value.name || id)}</span>
+            <span class="object-meta">${escapeHtml(id)} · ${escapeHtml(title)}</span></span>
+            <span class="confidence">${(value.products || []).length}</span>
+          </button>`;
+        }).join("");
+        productsEl.querySelectorAll("[data-candidate]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const id = button.getAttribute("data-candidate");
+            const value = cache.matches[id];
+            renderProductsForObject({ deduplicatedObjectId: id, label: value.label, name: value.name });
+          });
+        });
+      } finally {
+        loadMatchesButton.disabled = false;
+        refreshIcons();
+      }
+    });
 
     function renderObjects() {
       objects.innerHTML = "";
       const list = currentDetection && currentDetection.objects || [];
-      if (selectedObject) {
-        const detail = document.createElement("div");
-        detail.className = "object-detail";
-        const cropUrl = selectedObject.deduplicatedCropUrl || selectedObject.cropUrl;
-        const dims = selectedObject.estimatedDimensions;
-        const dimensionText = dims
-          ? `${Number(dims.widthM).toFixed(2)} × ${Number(dims.depthM).toFixed(2)} × ${Number(dims.heightM).toFixed(2)} m（宽×深×高，初始估算）`
-          : "尚未估算";
-        detail.innerHTML = `${cropUrl ? `<img src="${escapeHtml(cropUrl)}" alt="${escapeHtml(selectedObject.name || selectedObject.label)} 去重裁剪图">` : "<div></div>"}<div><strong>${escapeHtml(selectedObject.name || selectedObject.label)}</strong><small>类别：${escapeHtml(selectedObject.label)}</small><small>置信度：${Math.round(selectedObject.confidence * 100)}%</small><small>估算尺寸：${escapeHtml(dimensionText)}</small><small>bbox：${selectedObject.bbox.join(", ")}</small><small>候选：${escapeHtml(selectedObject.deduplicatedObjectId || "未关联，生成时回退当前帧 crop")}</small></div>`;
-        objects.appendChild(detail);
-      }
       for (const item of list) {
         const button = document.createElement("button");
         button.type = "button";
         button.className = `object-row${selectedObject && selectedObject.id === item.id ? " active" : ""}`;
         button.innerHTML = `<span><span class="object-name">${escapeHtml(item.name || item.label)}</span><span class="object-meta">${escapeHtml(item.label)} · bbox ${item.bbox.join(", ")}</span></span><span class="confidence">${Math.round(item.confidence * 100)}%</span>`;
-        button.addEventListener("click", () => selectDetectedObject(item));
+        button.addEventListener("click", async () => {
+          selectedObject = item;
+          liveProductResults = null;
+          renderObjects();
+          generateButton.disabled = false;
+          searchIkeaButton.disabled = false;
+          await drawAnnotated(matchedCanvas, currentDetection.frameImageUrl || imageDataUrl, list, item.id);
+          await showProductsForSelection(item);
+        });
         objects.appendChild(button);
       }
       if (!list.length) objects.innerHTML = '<div class="empty-state">未检测到家具</div>';
@@ -521,96 +701,6 @@
       canvas.height = video.videoHeight;
       canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
       return canvas.toDataURL("image/jpeg", .9);
-    }
-
-    function computeVideoDHash(video) {
-      const canvas = document.createElement("canvas");
-      canvas.width = 9;
-      canvas.height = 8;
-      const context = canvas.getContext("2d", { willReadFrequently: true });
-      context.drawImage(video, 0, 0, 9, 8);
-      const pixels = context.getImageData(0, 0, 9, 8).data;
-      const grayscale = [];
-      for (let index = 0; index < pixels.length; index += 4) {
-        grayscale.push(Math.round(.299 * pixels[index] + .587 * pixels[index + 1] + .114 * pixels[index + 2]));
-      }
-      let value = 0n;
-      for (let row = 0; row < 8; row += 1) {
-        for (let column = 0; column < 8; column += 1) {
-          const offset = row * 9 + column;
-          value = (value << 1n) | BigInt(grayscale[offset] > grayscale[offset + 1]);
-        }
-      }
-      return value.toString(16).padStart(16, "0");
-    }
-
-    function invalidatePauseMatch() {
-      matchRequestSerial += 1;
-      if (matchAbortController) matchAbortController.abort();
-      matchAbortController = null;
-      clearVideoTags();
-      if (mode === "video") {
-        currentDetection = null;
-        selectedObject = null;
-        generateButton.disabled = true;
-        renderObjects();
-      }
-    }
-
-    function clearVideoTags() {
-      videoTagLayer.innerHTML = "";
-    }
-
-    function renderVideoTags() {
-      clearVideoTags();
-      if (mode !== "video" || !videoPreview.paused || !currentDetection) return;
-      for (const item of currentDetection.objects || []) {
-        const tag = document.createElement("button");
-        tag.type = "button";
-        tag.className = `video-tag${selectedObject && selectedObject.id === item.id ? " active" : ""}`;
-        tag.dataset.objectId = item.id;
-        tag.dataset.x = String(item.tagPosition?.[0] ?? .5);
-        tag.dataset.y = String(item.tagPosition?.[1] ?? .5);
-        tag.setAttribute("aria-label", `选择${item.name || item.label}`);
-        tag.textContent = `${item.name || item.label} ${Math.round(item.confidence * 100)}%`;
-        tag.addEventListener("click", () => selectDetectedObject(item));
-        videoTagLayer.appendChild(tag);
-      }
-      updateVideoTagPositions();
-    }
-
-    function updateVideoTagPositions() {
-      if (!videoPreview.videoWidth || !videoPreview.videoHeight) return;
-      const boxWidth = videoPreview.clientWidth;
-      const boxHeight = videoPreview.clientHeight;
-      const sourceRatio = videoPreview.videoWidth / videoPreview.videoHeight;
-      const boxRatio = boxWidth / Math.max(boxHeight, 1);
-      let contentWidth = boxWidth;
-      let contentHeight = boxHeight;
-      let offsetX = videoPreview.offsetLeft;
-      let offsetY = videoPreview.offsetTop;
-      if (boxRatio > sourceRatio) {
-        contentWidth = boxHeight * sourceRatio;
-        offsetX += (boxWidth - contentWidth) / 2;
-      } else {
-        contentHeight = boxWidth / sourceRatio;
-        offsetY += (boxHeight - contentHeight) / 2;
-      }
-      videoTagLayer.querySelectorAll(".video-tag").forEach((tag) => {
-        const x = Math.min(1, Math.max(0, Number(tag.dataset.x)));
-        const y = Math.min(1, Math.max(0, Number(tag.dataset.y)));
-        tag.style.left = `${offsetX + x * contentWidth}px`;
-        tag.style.top = `${offsetY + y * contentHeight}px`;
-      });
-    }
-
-    async function selectDetectedObject(item) {
-      selectedObject = item;
-      renderObjects();
-      renderVideoTags();
-      generateButton.disabled = false;
-      const list = currentDetection && currentDetection.objects || [];
-      await drawAnnotated(matchedCanvas, currentDetection.frameImageUrl || imageDataUrl || pauseFrameDataUrl, list, item.id);
     }
 
     function drawDataUrl(canvas, url) {
@@ -662,11 +752,7 @@
     function renderReferences(selected) {
       refs.innerHTML = "";
       const generation = selected.generation || {};
-      const images = [];
-      if (generation.sourceImageUrl) {
-        images.push({ type: "model_input_crop", url: generation.sourceImageUrl });
-      }
-      images.push(...(generation.referenceImages || []), ...(generation.textureReferences || []));
+      const images = [...(generation.referenceImages || []), ...(generation.textureReferences || [])];
       for (const item of images) {
         if (!item.url) continue;
         const figure = document.createElement("figure");
