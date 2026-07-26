@@ -374,9 +374,24 @@ h1, h2, h3 { font-family: "Songti SC", STSong, "Noto Serif SC", serif; font-weig
 .editor-library__empty p { margin: 0 0 8px; }
 .editor-library__empty a { min-height: 40px; display: inline-flex; align-items: center; color: var(--burgundy); font-size: 11px; }
 .advice-actions .primary-button, .editor-panel .primary-button, .danger-wide { width: 100%; }
+.scenario-tabs { margin: 8px 0 10px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.scenario-tabs button { min-width: 0; min-height: 58px; padding: 7px 3px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: var(--muted); font-size: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 7px; }
+.scenario-tabs button svg { width: 17px; height: 17px; }
+.scenario-tabs button.is-active { color: var(--primary); background: var(--secondary); border-color: var(--primary); }
+.scenario-fields { margin-bottom: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.scenario-fields:has(label:only-child) { grid-template-columns: 1fr; }
+.scenario-fields label { min-width: 0; color: var(--muted); font-size: 10px; }
+.scenario-fields select, .scenario-fields input { width: 100%; min-width: 0; height: 38px; margin-top: 4px; padding: 0 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+.advice-error { color: var(--burgundy); }
+.advice-error p { overflow-wrap: anywhere; }
 .danger-wide { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 7px; background: var(--surface); border: 1px solid var(--burgundy); border-radius: 8px; }
 .advice-panel article { margin-top: 7px; padding: 11px; background: var(--surface); border-left: 3px solid var(--accent); }
 .advice-panel article p { margin: 5px 0 0; }
+.advice-priority { margin-right: 7px; color: var(--burgundy); font-size: 10px; font-weight: 700; }
+.advice-panel .advice-action { color: var(--ink); }
+.missing-data { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 5px; }
+.missing-data strong { width: 100%; font-size: 11px; }
+.missing-data span { padding: 4px 6px; color: var(--muted); font-size: 9px; background: var(--surface); border: 1px solid var(--border); border-radius: 5px; }
 .editor-complete { min-height: 46px; margin-top: 14px; display: grid; place-items: center; color: var(--primary); background: var(--accent); border-radius: 8px; }
 .editor-loading { min-height: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; color: #fffdf9; background: var(--primary); }
 

@@ -13,6 +13,8 @@ from app.schemas import (
     ScenarioAdviceResponse,
     SceneResponse,
     SceneSnapshot,
+    SkillAdviceRequest,
+    SkillAdviceResponse,
     SpatialCheckRequest,
     SpatialCheckResponse,
 )
@@ -23,6 +25,8 @@ from app.services.layout_reasoning.agents.scenario_agent import run_scenario_adv
 from app.services.layout_reasoning.propose_moves import propose_moves_from_geometry
 from app.services.room_scan.mock_scene import build_mock_scene
 from app.services.scene_snapshot import load_snapshot, reset_snapshot, save_runtime_whitebox, save_snapshot
+from app.services.skill_advice import generate_skill_advice, scenario_options
+from app.services.user_floorplan import load_user_floorplan, save_advice_result, save_user_floorplan
 
 
 router = APIRouter()
@@ -44,9 +48,43 @@ async def put_scene_snapshot(
     scene_id: str = PathParam(pattern=r"^[A-Za-z0-9_-]+$"),
 ) -> SceneSnapshot:
     try:
-        return save_snapshot(scene_id, snapshot)
+        saved = save_snapshot(scene_id, snapshot)
+        save_user_floorplan(saved)
+        return saved
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@router.get("/advice-options")
+async def get_skill_advice_options() -> list[dict[str, str]]:
+    return scenario_options()
+
+
+@router.post("/snapshots/{scene_id}/skill-advice", response_model=SkillAdviceResponse)
+async def create_skill_advice(
+    request: SkillAdviceRequest,
+    scene_id: str = PathParam(pattern=r"^[A-Za-z0-9_-]+$"),
+) -> SkillAdviceResponse:
+    try:
+        snapshot = load_snapshot(scene_id)
+        save_user_floorplan(
+            snapshot,
+            user_requirements={"scenarioId": request.scenarioId, "profile": request.profile},
+        )
+        floorplan = load_user_floorplan(scene_id)
+        result = await generate_skill_advice(
+            floorplan=floorplan,
+            scenario_id=request.scenarioId,
+            profile=request.profile,
+        )
+        save_advice_result(scene_id, result)
+        return SkillAdviceResponse.model_validate(result)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    except (ValueError, json.JSONDecodeError) as exc:
+        raise HTTPException(status_code=502, detail=f"Skill advice generation failed: {exc}") from exc
 
 
 @router.post("/snapshots/{scene_id}/reset", response_model=SceneSnapshot)

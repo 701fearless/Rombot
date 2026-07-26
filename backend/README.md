@@ -347,6 +347,23 @@ npm run build:h5
 | `docs/spatial_modular_scenario_cases.md` | 空间布局和场景建议案例 |
 | `docs/spatial_agent_case_results.md` | 空间 Agent 案例结果 |
 | `.env.example` | 所有环境变量模板 |
+| `docs/skill_advice_input_gaps.md` | 用户户型建议链路、现有输入与缺失字段 |
+
+## 15. 用户户型 Skill 建议
+
+空间编辑器保存后，后端会基于 `sample_data/floorplans/<sceneId>_export.json`
+写入 `user/demo-user/floorplans/<sceneId>_custom.json`，保留原字段并同步当前
+`SceneSnapshot`、家具和用户需求。运行时 JSON 已加入 `.gitignore`。
+
+```http
+GET  /api/room/advice-options
+POST /api/room/snapshots/{sceneId}/skill-advice
+```
+
+建议场景为儿童友好、宠物友好、风水与动线，对应读取
+`sample_data/skills` 下的三套 `SKILL.md` 和必要参考资料。语言模型使用
+DeepSeek OpenAI 兼容接口，默认 `deepseek-v4-pro`；在 `.env` 中配置
+`DEEPSEEK_API_KEY` 后启用，未配置时接口明确返回 503，不回退为 Mock AI。
 
 遇到文档冲突时，以本文“当前边界”和实际代码/测试为准；不要根据续篇中尚未合并的 IKEA、
 CLIP、FAISS 或虚拟环境说明改变当前运行方式。

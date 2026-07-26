@@ -8,6 +8,7 @@ from fastapi.testclient import TestClient
 
 from app.main import app
 from app.services import scene_snapshot
+from app.services import user_floorplan
 
 
 class SceneSnapshotApiTest(unittest.TestCase):
@@ -17,10 +18,13 @@ class SceneSnapshotApiTest(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory(dir=test_root)
         self.output_patch = patch.object(scene_snapshot, "OUTPUTS_ROOT", Path(self.temporary.name))
         self.output_patch.start()
+        self.user_data_patch = patch.object(user_floorplan, "USER_DATA_ROOT", Path(self.temporary.name) / "user")
+        self.user_data_patch.start()
         self.client = TestClient(app)
 
     def tearDown(self) -> None:
         self.output_patch.stop()
+        self.user_data_patch.stop()
         self.temporary.cleanup()
 
     def test_room6_snapshot_round_trip(self) -> None:
