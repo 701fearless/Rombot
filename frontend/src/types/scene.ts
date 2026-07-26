@@ -23,6 +23,12 @@ export interface PendingFeedAsset { videoId: string; time: number; frameId: stri
 export interface FurnitureMove { objectId: string; name: string; fromPosition: Vector3; toPosition: Vector3; fromRotation?: Vector3 | null; toRotation?: Vector3 | null; reason: string; source: 'mock' | 'geometry' | 'layout_agent' }
 export interface LayoutAdviceItem { id: string; priority: '高' | '中' | '低'; title: string; problem: string; suggestion: string; relatedObjectIds: string[] }
 export interface RoomLayoutAdvice { mode: 'room'; overallStatus: 'pass' | 'fail' | 'warn'; objectChecks: unknown[]; feedback: string; layout: { moves: FurnitureMove[]; advices: LayoutAdviceItem[]; summary: string }; scenarioOptions: unknown[] }
+export type SkillAdviceScenario = 'children' | 'pets' | 'fengshui'
+export interface SkillAdviceSuggestion { id: string; priority: string; title: string; reason: string; action: string; relatedObjectIds: string[] }
+export interface SkillAdviceResponse {
+  scenarioId: SkillAdviceScenario; scenarioName: string; skillName: string; provider: string; model: string
+  summary: string; suggestions: SkillAdviceSuggestion[]; missingFields: string[]; followUpQuestions: string[]; generatedAt: string
+}
 export interface UploadedFurniture { id: string; name: string; glbUrl: string; sizeBytes: number; uploadedAt: string }
 export interface GeneratedFurniture {
   id: string

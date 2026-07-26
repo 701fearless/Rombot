@@ -41,7 +41,10 @@ class Settings:
     openai_image_model: str
     openai_image_size: str
     spatial_agent_provider: str
-    spatial_agent_provider: str
+    deepseek_api_key: str | None
+    deepseek_base_url: str
+    deepseek_model: str
+    skill_advice_timeout_sec: float
     hunyuan_api_key: str | None
     hunyuan_base_url: str
     hunyuan_model: str
@@ -119,6 +122,10 @@ class Settings:
         self.openai_image_size = os.getenv("OPENAI_IMAGE_SIZE", "1024x1024")
         # ark | mock; falls back to mock automatically when ARK_API_KEY is missing.
         self.spatial_agent_provider = os.getenv("SPATIAL_AGENT_PROVIDER", "ark").lower()
+        self.deepseek_api_key = os.getenv("DEEPSEEK_API_KEY")
+        self.deepseek_base_url = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com").rstrip("/")
+        self.deepseek_model = os.getenv("DEEPSEEK_MODEL", "deepseek-v4-pro")
+        self.skill_advice_timeout_sec = max(10.0, float(os.getenv("SKILL_ADVICE_TIMEOUT_SEC", "90")))
         self.hunyuan_api_key = os.getenv("HUNYUAN_API_KEY")
         self.hunyuan_base_url = os.getenv("HUNYUAN_BASE_URL", "https://tokenhub.tencentmaas.com").rstrip("/")
         self.hunyuan_model = os.getenv("HUNYUAN_MODEL", "hy-3d-express")

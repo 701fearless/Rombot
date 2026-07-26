@@ -29,7 +29,7 @@ class SpatialLLMClient:
 
     @property
     def is_live(self) -> bool:
-        return self.provider == "ark" and bool(self.api_key) and bool(self.base_url) and bool(self.model)
+        return self.provider in {"ark", "deepseek", "openai"} and bool(self.api_key) and bool(self.base_url) and bool(self.model)
 
     async def complete_json(self, *, system: str, user: str) -> dict[str, Any]:
         if not self.is_live:

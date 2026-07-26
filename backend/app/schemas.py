@@ -1,5 +1,5 @@
 import math
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -656,3 +656,30 @@ class SceneSnapshot(BaseModel):
     objects: list[SnapshotObject] = Field(default_factory=list)
     userContext: UserProfile = Field(default_factory=UserProfile)
     updatedAt: str
+
+
+class SkillAdviceRequest(BaseModel):
+    scenarioId: Literal["children", "pets", "fengshui"]
+    profile: dict[str, Any] = Field(default_factory=dict)
+
+
+class SkillAdviceSuggestion(BaseModel):
+    id: str
+    priority: str
+    title: str
+    reason: str
+    action: str
+    relatedObjectIds: list[str] = Field(default_factory=list)
+
+
+class SkillAdviceResponse(BaseModel):
+    scenarioId: str
+    scenarioName: str
+    skillName: str
+    provider: str
+    model: str
+    summary: str
+    suggestions: list[SkillAdviceSuggestion] = Field(default_factory=list)
+    missingFields: list[str] = Field(default_factory=list)
+    followUpQuestions: list[str] = Field(default_factory=list)
+    generatedAt: str

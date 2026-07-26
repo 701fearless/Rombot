@@ -76,6 +76,7 @@ frontend/*.tsbuildinfo
 !backend/outputs/videos/2/generated/*/generated_model.glb
 
 backend/outputs/
+backend/user/**/*.json
 
 node_modules/
 **/node_modules/
