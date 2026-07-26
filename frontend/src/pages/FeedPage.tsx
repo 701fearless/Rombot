@@ -11,30 +11,49 @@ import type { FeedVideo } from '@/types/feed'
 import type { DetectResponse, DetectedObject } from '@/types/scene'
 
 interface Size { width: number; height: number }
-interface FeedTagLayout { object: DetectedObject; left: number; top: number; direction: 'left' | 'right' }
+interface FeedTagLayout { object: DetectedObject; left: number; top: number; direction: 'left' | 'right'; extent: number }
 
 function layoutFeedTags(objects: DetectedObject[], sourceSize: Size, containerSize: Size): FeedTagLayout[] {
   const placed: FeedTagLayout[] = []
+  const safeEdge = 14
   for (const object of objects) {
+    const nameWidth = [...object.name].reduce((width, character) => width + (character.charCodeAt(0) > 255 ? 12 : 7), 0)
+    const tagExtent = Math.min(211, nameWidth + 99)
     const point = containTagPosition(object.tagPosition, sourceSize, containerSize)
-    let left = Math.min(Math.max(point.x, 24), Math.max(24, containerSize.width - 78))
+    let left = Math.min(Math.max(point.x, safeEdge), Math.max(safeEdge, containerSize.width - safeEdge))
     let top = Math.min(Math.max(point.y, 82), Math.max(82, containerSize.height - 142))
     const nearby = placed.filter((item) => Math.abs(item.left - left) < 210 && Math.abs(item.top - top) < 54)
     let direction: FeedTagLayout['direction'] = left > containerSize.width * .58 ? 'left' : 'right'
     if (nearby.length) direction = nearby[nearby.length - 1].direction === 'left' ? 'right' : 'left'
-    if (direction === 'left' && left < 190) direction = 'right'
-    if (direction === 'right' && left > containerSize.width - 250) direction = 'left'
+    const roomOnLeft = left - safeEdge
+    const roomOnRight = containerSize.width - safeEdge - left
+    if (direction === 'left' && roomOnLeft < tagExtent && roomOnRight > roomOnLeft) direction = 'right'
+    if (direction === 'right' && roomOnRight < tagExtent && roomOnLeft > roomOnRight) direction = 'left'
     const crowdedAnchors = placed.filter((item) => Math.abs(item.left - left) < 80 && Math.abs(item.top - top) < 28)
     if (crowdedAnchors.length) {
       const anchorOffset = 14 + Math.min(crowdedAnchors.length, 3) * 7
-      left = Math.min(Math.max(left + (direction === 'left' ? -anchorOffset : anchorOffset), 24), Math.max(24, containerSize.width - 78))
+      left = Math.min(Math.max(left + (direction === 'left' ? -anchorOffset : anchorOffset), safeEdge), Math.max(safeEdge, containerSize.width - safeEdge))
       top = Math.min(Math.max(top + (crowdedAnchors.length % 2 ? -20 : 20), 82), Math.max(82, containerSize.height - 142))
     }
-    for (let attempt = 0; attempt < 4 && placed.some((item) => item.direction === direction && Math.abs(item.left - left) < 210 && Math.abs(item.top - top) < 46); attempt += 1) {
-      const offset = 58 * (Math.floor(attempt / 2) + 1) * (attempt % 2 ? -1 : 1)
-      top = Math.min(Math.max(point.y + offset, 82), Math.max(82, containerSize.height - 142))
-    }
-    placed.push({ object, left, top, direction })
+    left = direction === 'left'
+      ? Math.min(Math.max(left, safeEdge + tagExtent), containerSize.width - safeEdge)
+      : Math.max(Math.min(left, containerSize.width - safeEdge - tagExtent), safeEdge)
+    const horizontalRange = (tagLeft: number, tagDirection: FeedTagLayout['direction'], extent: number) => tagDirection === 'left'
+      ? [tagLeft - extent, tagLeft]
+      : [tagLeft, tagLeft + extent]
+    const [rangeStart, rangeEnd] = horizontalRange(left, direction, tagExtent)
+    const minTop = 82; const maxTop = Math.max(minTop, containerSize.height - 142)
+    const overlapsAt = (candidateTop: number) => placed.some((item) => {
+      const [itemStart, itemEnd] = horizontalRange(item.left, item.direction, item.extent)
+      const overlapsHorizontally = rangeStart < itemEnd + 10 && rangeEnd > itemStart - 10
+      return overlapsHorizontally && Math.abs(item.top - candidateTop) < 48
+    })
+    const baseTop = top
+    const candidates = [0, 54, -54, 108, -108, 162, -162]
+      .map((offset) => Math.min(Math.max(baseTop + offset, minTop), maxTop))
+      .filter((candidate, index, values) => values.indexOf(candidate) === index)
+    top = candidates.find((candidate) => !overlapsAt(candidate)) ?? candidates[candidates.length - 1] ?? top
+    placed.push({ object, left, top, direction, extent: tagExtent })
   }
   return placed
 }
@@ -78,7 +97,7 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
       <button type='button' aria-label='分享'><Share2 /><small>分享</small></button>
       <button type='button' className='feed-record' aria-label={muted ? '打开声音' : '静音'} onClick={() => setMuted((value) => !value)}>{muted ? <VolumeX /> : <Volume2 />}<Music2 /></button>
     </aside>
-    <footer className='feed-card__copy'><strong>@{video.author}</strong><h1>{video.title}</h1><p>暂停视频，点击家具 Tag 放进 room6</p><div>{video.furnitureHints.map((hint) => <span key={hint}>#{hint}</span>)}</div></footer>
+    <footer className='feed-card__copy'><strong>@{video.author}</strong><h1>{video.title}</h1><p>暂停视频，点击家具 Tag 放进{activeSceneId}</p><div>{video.furnitureHints.map((hint) => <span key={hint}>#{hint}</span>)}</div></footer>
   </article>
 }
 
@@ -93,7 +112,24 @@ function FeedDock() {
 }
 
 export function FeedPage() {
-  const rootRef = useRef<HTMLDivElement>(null); const [activeIndex, setActiveIndex] = useState(0)
+  const rootRef = useRef<HTMLDivElement>(null); const cycleSize = feedVideos.length; const middleCycle = 2; const [activeIndex, setActiveIndex] = useState(cycleSize * middleCycle)
+  const loopVideos = Array.from({ length: 5 }, (_, cycle) => feedVideos.map((video) => ({ video, cycle }))).flat()
+  useEffect(() => {
+    const root = rootRef.current; if (!root || !cycleSize) return
+    let frame = requestAnimationFrame(() => { root.scrollTop = root.clientHeight * cycleSize * middleCycle })
+    const recenter = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        const pageHeight = root.clientHeight; if (!pageHeight) return
+        const index = Math.round(root.scrollTop / pageHeight)
+        const shift = pageHeight * cycleSize * 2
+        if (index < cycleSize) root.scrollTop += shift
+        else if (index >= cycleSize * 4) root.scrollTop -= shift
+      })
+    }
+    root.addEventListener('scroll', recenter, { passive: true })
+    return () => { cancelAnimationFrame(frame); root.removeEventListener('scroll', recenter) }
+  }, [cycleSize])
   useEffect(() => { const root = rootRef.current; if (!root) return; const observer = new IntersectionObserver((entries) => { const current = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]; const index = Number((current?.target as HTMLElement | undefined)?.dataset.feedIndex); if (current?.intersectionRatio && current.intersectionRatio > .62 && Number.isInteger(index)) setActiveIndex(index) }, { root, threshold: [.62, .82] }); root.querySelectorAll('.feed-card').forEach((item) => observer.observe(item)); return () => observer.disconnect() }, [])
-  return <div className='feed-experience'><div ref={rootRef} className='feed-page'>{feedVideos.map((video, index) => <FeedCard key={video.id} video={video} active={index === activeIndex} index={index} />)}</div><FeedDock /></div>
+  return <div className='feed-experience'><div ref={rootRef} className='feed-page'>{loopVideos.map(({ video, cycle }, index) => <FeedCard key={`${cycle}-${video.id}`} video={video} active={index === activeIndex} index={index} />)}</div><FeedDock /></div>
 }

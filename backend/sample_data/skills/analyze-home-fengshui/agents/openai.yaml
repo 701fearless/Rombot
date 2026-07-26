@@ -1,0 +1,4 @@
+interface:
+  display_name: "住宅风水轻量布局分析"
+  short_description: "户型风水分析、安全 JSON 回写以及家具数据库选品推荐"
+  default_prompt: "Use $analyze-home-fengshui to analyze this home JSON, recommend 1-2 products from the furniture catalog, and return physically validated JSON updates."

@@ -57,21 +57,22 @@ function overlaps(left: THREE.Box3, right: THREE.Box3, tolerance = .015) {
     && left.min.z < right.max.z - tolerance && left.max.z > right.min.z + tolerance
 }
 
-function crossesWall(start: THREE.Vector3, end: THREE.Vector3, halfSize: THREE.Vector3, wall: THREE.Box3, tolerance = .015) {
-  const expanded = wall.clone().expandByVector(new THREE.Vector3(
-    Math.max(0, halfSize.x - tolerance),
-    Math.max(0, halfSize.y - tolerance),
-    Math.max(0, halfSize.z - tolerance),
-  ))
-  if (expanded.containsPoint(start)) return expanded.containsPoint(end)
-  const direction = end.clone().sub(start); const distance = direction.length(); if (distance < 1e-6) return false
-  const hit = new THREE.Ray(start, direction.normalize()).intersectBox(expanded, new THREE.Vector3())
-  return !!hit && hit.distanceTo(start) <= distance
-}
-
 export function SceneEditor3D({ snapshot, selectedId, onSelect, onObjectTransform }: Props) {
-  const hostRef = useRef<HTMLDivElement>(null); const onSelectRef = useRef(onSelect); const objectRef = useRef(onObjectTransform); const selectedRef = useRef(selectedId); const cameraViewRef = useRef<{ sceneId: string; position: Vector3; target: Vector3 } | null>(null)
+  const hostRef = useRef<HTMLDivElement>(null); const onSelectRef = useRef(onSelect); const objectRef = useRef(onObjectTransform); const selectedRef = useRef(selectedId); const snapshotRef = useRef(snapshot); const objectRootsRef = useRef(new Map<string, THREE.Group>()); const cameraViewRef = useRef<{ sceneId: string; position: Vector3; target: Vector3 } | null>(null)
+  const structureKey = snapshot.objects.map((item) => `${item.instanceId}:${item.geometry.glbUrl ?? ''}:${item.geometry.size.join(',')}`).join('|')
+  const roomKey = `${snapshot.sceneId}:${snapshot.room.whiteboxGlbUrl}:${snapshot.room.floorPolygon.flat().join(',')}`
   useEffect(() => { onSelectRef.current = onSelect; objectRef.current = onObjectTransform; selectedRef.current = selectedId }, [onSelect, onObjectTransform, selectedId])
+  useEffect(() => {
+    snapshotRef.current = snapshot
+    snapshot.objects.forEach((item) => {
+      const root = objectRootsRef.current.get(item.instanceId)
+      if (!root) return
+      root.position.fromArray(item.transform.position)
+      root.rotation.fromArray(item.transform.rotation)
+      root.scale.fromArray(item.transform.scale)
+      root.updateMatrixWorld(true)
+    })
+  }, [snapshot])
   useEffect(() => {
     const host = hostRef.current; if (!host) return
     let disposed = false; let animation = 0; const scene = new THREE.Scene(); scene.background = new THREE.Color(0xe9eae6); scene.fog = new THREE.Fog(0xe9eae6, 16, 32)
@@ -84,7 +85,9 @@ export function SceneEditor3D({ snapshot, selectedId, onSelect, onObjectTransfor
     const grid = new THREE.GridHelper(Math.max(width, depth), 20, 0x899087, 0xb8bcb3); grid.position.set(center.x, .004, center.z); const gridMaterials = Array.isArray(grid.material) ? grid.material : [grid.material]; gridMaterials.forEach((item) => { item.transparent = true; item.opacity = .56 }); scene.add(grid)
     const whiteboxUrl = snapshot.room.whiteboxGlbUrl; let referenceSection: ReturnType<typeof createWallSectionIndex> | null = null; let wallCollisionBoxes: Array<{ wallId: string; bounds: THREE.Box3 }> = []; let fixtureCollisionBoxes: THREE.Box3[] = []
     if (whiteboxUrl) new GLTFLoader().load(whiteboxUrl, ({ scene: model }) => { if (disposed) return; model.name = 'floorplan_whitebox'; model.traverse((child) => { if (!(child instanceof THREE.Mesh)) return; const sources = Array.isArray(child.material) ? child.material : [child.material]; const materials = sources.map((source) => { const clone = source.clone(); clone.userData.sectionBaseOpacity = clone.opacity; clone.userData.sectionBaseTransparent = clone.transparent; clone.userData.sectionBaseDepthWrite = clone.depthWrite; return clone }); child.material = Array.isArray(child.material) ? materials : materials[0]; child.castShadow = true; child.receiveShadow = true }); scene.add(model); model.updateMatrixWorld(true); referenceSection = createWallSectionIndex(model); wallCollisionBoxes = referenceSection.wallMeshes.flatMap((mesh) => { const wallId = referenceSection?.meshToWallId.get(mesh); return wallId ? [{ wallId, bounds: new THREE.Box3().setFromObject(mesh) }] : [] }); fixtureCollisionBoxes = [...new Set([...referenceSection.groups.values()].flatMap((group) => group.fixtureMeshes))].map((mesh) => new THREE.Box3().setFromObject(mesh)) }, undefined, () => undefined)
+    let whiteboxAligned = false
     const objectRoots = new Map<string, THREE.Group>(); const loader = new GLTFLoader()
+    objectRootsRef.current = objectRoots
     snapshot.objects.forEach((item) => {
       const wrapper = new THREE.Group(); wrapper.userData = { kind: 'furniture', id: item.instanceId }; wrapper.name = item.instanceId; wrapper.position.fromArray(item.transform.position); wrapper.rotation.fromArray(item.transform.rotation); wrapper.scale.fromArray(item.transform.scale); scene.add(wrapper); objectRoots.set(item.instanceId, wrapper)
       if (item.geometry.glbUrl) loader.load(item.geometry.glbUrl, ({ scene: model }) => { if (disposed) return; try { normalizeModel(model, item.geometry.size); wrapper.add(model) } catch { wrapper.add(fallbackObject(item)) } }, undefined, () => { if (!disposed) wrapper.add(fallbackObject(item)) })
@@ -95,15 +98,17 @@ export function SceneEditor3D({ snapshot, selectedId, onSelect, onObjectTransfor
     const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2(); let dragging: { id: string; offset: THREE.Vector3; moved: boolean; result: PlacementResult } | null = null
     const pointerNdc = (event: PointerEvent) => { const rect = renderer.domElement.getBoundingClientRect(); pointer.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1) }
     const rootData = (object: THREE.Object3D | null): { kind?: string; id?: string } => { let current = object; while (current) { if (current.userData.kind) return current.userData as { kind?: string; id?: string }; current = current.parent } return {} }
-    const onDown = (event: PointerEvent) => { pointerNdc(event); raycaster.setFromCamera(pointer, camera); const hit = raycaster.intersectObjects([...objectRoots.values()], true)[0]; if (!hit) { onSelectRef.current(''); return } const data = rootData(hit.object); if (!data.id) return; onSelectRef.current(data.id); const root = objectRoots.get(data.id); const item = snapshot.objects.find((entry) => entry.instanceId === data.id); if (!root || !item) return; dragging = { id: data.id, offset: root.position.clone().sub(hit.point), moved: false, result: { position: [...item.transform.position], rotation: [...item.transform.rotation], surface: item.placement.surface ?? 'floor', supportObjectId: item.placement.supportObjectId ?? null, wallId: null } }; controls.enabled = false; renderer.domElement.setPointerCapture(event.pointerId)
+    const onDown = (event: PointerEvent) => { pointerNdc(event); raycaster.setFromCamera(pointer, camera); const hit = raycaster.intersectObjects([...objectRoots.values()], true)[0]; if (!hit) { onSelectRef.current(''); return } const data = rootData(hit.object); if (!data.id) return; onSelectRef.current(data.id); const root = objectRoots.get(data.id); const item = snapshotRef.current.objects.find((entry) => entry.instanceId === data.id); if (!root || !item) return; dragging = { id: data.id, offset: root.position.clone().sub(hit.point), moved: false, result: { position: [...item.transform.position], rotation: [...item.transform.rotation], surface: item.placement.surface ?? 'floor', supportObjectId: item.placement.supportObjectId ?? null, wallId: null } }; controls.enabled = false; renderer.domElement.setPointerCapture(event.pointerId)
     }
     const onMove = (event: PointerEvent) => { if (!dragging) return; pointerNdc(event); raycaster.setFromCamera(pointer, camera)
-      const root = objectRoots.get(dragging.id); if (!root) return; const item = snapshot.objects.find((entry) => entry.instanceId === dragging?.id); if (!item) return
+      const root = objectRoots.get(dragging.id); if (!root) return; const currentSnapshot = snapshotRef.current; const item = currentSnapshot.objects.find((entry) => entry.instanceId === dragging?.id); if (!item) return
       const surfaces: Array<{ kind: SurfaceKind; hit: THREE.Intersection<THREE.Object3D>; supportObjectId: string | null; wallId: string | null }> = []
       const floorHit = raycaster.intersectObject(floor, false)[0]; if (floorHit) surfaces.push({ kind: 'floor', hit: floorHit, supportObjectId: null, wallId: null })
       objectRoots.forEach((supportRoot, supportId) => { if (supportId === dragging?.id) return; const supportHit = raycaster.intersectObject(supportRoot, true).find((hit) => (worldNormal(hit)?.y ?? 0) > .55); if (supportHit) surfaces.push({ kind: 'object', hit: supportHit, supportObjectId: supportId, wallId: null }) })
       const section = referenceSection; if (section) { const wallHit = raycaster.intersectObjects(section.wallMeshes, false).find((hit) => { const normal = worldNormal(hit); const wallId = section.meshToWallId.get(hit.object); return !!normal && Math.abs(normal.y) < .6 && wallId !== sectioned }); const wallId = wallHit ? section.meshToWallId.get(wallHit.object) : null; if (wallHit && wallId) surfaces.push({ kind: 'wall', hit: wallHit, supportObjectId: null, wallId }) }
-      surfaces.sort((left, right) => left.hit.distance - right.hit.distance)
+      const prefersWall = item.placement.surface === 'wall'
+      const surfacePriority = (kind: SurfaceKind) => kind === 'object' ? 0 : kind === (prefersWall ? 'wall' : 'floor') ? 1 : 2
+      surfaces.sort((left, right) => surfacePriority(left.kind) - surfacePriority(right.kind) || left.hit.distance - right.hit.distance)
       let accepted: PlacementResult | null = null
       for (const surface of surfaces) {
         const rotation: Vector3 = [...item.transform.rotation]; let position: Vector3
@@ -116,7 +121,7 @@ export function SceneEditor3D({ snapshot, selectedId, onSelect, onObjectTransfor
           const centerY = minY <= maxY ? Math.max(minY, Math.min(maxY, surface.hit.point.y)) : (wallBounds.min.y + wallBounds.max.y) / 2
           position = [surface.hit.point.x + normal.x * (halfDepth + .01), centerY, surface.hit.point.z + normal.z * (halfDepth + .01)]
         } else if (surface.kind === 'object' && surface.supportObjectId) {
-          const support = snapshot.objects.find((entry) => entry.instanceId === surface.supportObjectId); if (!support) continue
+          const support = currentSnapshot.objects.find((entry) => entry.instanceId === surface.supportObjectId); if (!support) continue
           const supportBounds = objectBounds(support); const candidateSize = objectBounds(item, [0, 0, 0], rotation).getSize(new THREE.Vector3()); const halfX = candidateSize.x / 2; const halfZ = candidateSize.z / 2
           if (candidateSize.x > supportBounds.max.x - supportBounds.min.x + .01 || candidateSize.z > supportBounds.max.z - supportBounds.min.z + .01) continue
           const targetX = surface.hit.point.x + dragging.offset.x; const targetZ = surface.hit.point.z + dragging.offset.z
@@ -125,13 +130,8 @@ export function SceneEditor3D({ snapshot, selectedId, onSelect, onObjectTransfor
           const candidateSize = objectBounds(item, [0, 0, 0], rotation).getSize(new THREE.Vector3()); const halfX = candidateSize.x / 2; const halfZ = candidateSize.z / 2
           position = [Math.round(Math.max(b.minX + halfX, Math.min(b.maxX - halfX, surface.hit.point.x + dragging.offset.x)) * 10) / 10, halfHeight, Math.round(Math.max(b.minZ + halfZ, Math.min(b.maxZ - halfZ, surface.hit.point.z + dragging.offset.z)) * 10) / 10]
         }
-        const candidateBounds = objectBounds(item, position, rotation); const collidesWithObject = snapshot.objects.some((other) => other.instanceId !== item.instanceId && other.instanceId !== surface.supportObjectId && overlaps(candidateBounds, objectBounds(other)))
-        const candidateSize = candidateBounds.getSize(new THREE.Vector3()); const halfSize = candidateSize.multiplyScalar(.5); const start = root.position.clone(); const end = new THREE.Vector3().fromArray(position)
-        const overlapsWall = wallCollisionBoxes.some((wall) => overlaps(candidateBounds, wall.bounds, .01))
-        const crossesOtherWall = wallCollisionBoxes.some((wall) => wall.wallId !== surface.wallId && crossesWall(start, end, halfSize, wall.bounds))
-        const overlapsFixture = fixtureCollisionBoxes.some((fixture) => overlaps(candidateBounds, fixture, .01))
-        const crossesFixture = fixtureCollisionBoxes.some((fixture) => crossesWall(start, end, halfSize, fixture))
-        if (!collidesWithObject && !overlapsWall && !crossesOtherWall && !overlapsFixture && !crossesFixture) { accepted = { position, rotation, surface: surface.kind, supportObjectId: surface.supportObjectId, wallId: surface.wallId }; break }
+        const candidateBounds = objectBounds(item, position, rotation); const collidesWithObject = currentSnapshot.objects.some((other) => other.instanceId !== item.instanceId && other.instanceId !== surface.supportObjectId && overlaps(candidateBounds, objectBounds(other)))
+        if (!collidesWithObject) { accepted = { position, rotation, surface: surface.kind, supportObjectId: surface.supportObjectId, wallId: surface.wallId }; break }
       }
       if (!accepted) return
       if (accepted.position.some((value, index) => Math.abs(value - root.position.toArray()[index]) > 1e-6) || Math.abs(accepted.rotation[1] - root.rotation.y) > 1e-6) dragging.moved = true
@@ -140,8 +140,25 @@ export function SceneEditor3D({ snapshot, selectedId, onSelect, onObjectTransfor
     const onUp = (event: PointerEvent) => { if (!dragging) return; rememberCamera(); if (dragging.moved) objectRef.current(dragging.id, { position: dragging.result.position, rotation: dragging.result.rotation }, { surface: dragging.result.surface, supportObjectId: dragging.result.supportObjectId }); dragging = null; controls.enabled = true; if (renderer.domElement.hasPointerCapture(event.pointerId)) renderer.domElement.releasePointerCapture(event.pointerId) }
     renderer.domElement.addEventListener('pointerdown', onDown); renderer.domElement.addEventListener('pointermove', onMove); renderer.domElement.addEventListener('pointerup', onUp); renderer.domElement.addEventListener('pointercancel', onUp)
     const resize = () => { const widthPx = host.clientWidth; const heightPx = host.clientHeight; renderer.setSize(widthPx, heightPx, false); camera.aspect = widthPx / Math.max(heightPx, 1); camera.updateProjectionMatrix() }; const observer = new ResizeObserver(resize); observer.observe(host); resize()
-    const animate = () => { animation = requestAnimationFrame(animate); controls.update(); const activeId = selectedRef.current; const selected = objectRoots.get(activeId); if (selected) { outline.box.setFromObject(selected); outline.visible = true } else outline.visible = false
+    const animate = () => { animation = requestAnimationFrame(animate); controls.update(); const activeId = selectedRef.current; const selected = objectRoots.get(activeId); if (selected) { outline.box.setFromObject(selected); outline.visible = true; const intersectsStructure = wallCollisionBoxes.some((wall) => overlaps(outline.box, wall.bounds, .01)) || fixtureCollisionBoxes.some((fixture) => overlaps(outline.box, fixture, .01)); (outline.material as THREE.LineBasicMaterial).color.setHex(intersectsStructure ? 0xd64040 : 0xd9ed63) } else outline.visible = false
       const section = referenceSection
+      if (section && !whiteboxAligned) {
+        const model = scene.getObjectByName('floorplan_whitebox')
+        if (model) {
+          const modelBounds = new THREE.Box3().setFromObject(model)
+          const modelCenter = modelBounds.getCenter(new THREE.Vector3())
+          model.position.x += center.x - modelCenter.x
+          model.position.z += center.z - modelCenter.z
+          model.position.y -= modelBounds.min.y
+          model.updateMatrixWorld(true)
+          wallCollisionBoxes = section.wallMeshes.flatMap((mesh) => {
+            const wallId = section.meshToWallId.get(mesh)
+            return wallId ? [{ wallId, bounds: new THREE.Box3().setFromObject(mesh) }] : []
+          })
+          fixtureCollisionBoxes = [...new Set([...section.groups.values()].flatMap((group) => group.fixtureMeshes))].map((mesh) => new THREE.Box3().setFromObject(mesh))
+          whiteboxAligned = true
+        }
+      }
       if (section) {
         const hits = AUTO_SECTION_RAY_SAMPLES.flatMap((sample) => { raycaster.setFromCamera(sample, camera); const hit = raycaster.intersectObjects(section.wallMeshes, false)[0]; const wallId = hit ? section.meshToWallId.get(hit.object) : undefined; return wallId && hit ? [{ wallId, distance: hit.distance }] : [] })
         camera.getWorldDirection(view)
@@ -162,7 +179,7 @@ export function SceneEditor3D({ snapshot, selectedId, onSelect, onObjectTransfor
       } else { sectioned = null; sectionFade = 0 }
       renderer.render(scene, camera) }
     animate()
-    return () => { disposed = true; rememberCamera(); cancelAnimationFrame(animation); observer.disconnect(); renderer.domElement.removeEventListener('pointerdown', onDown); renderer.domElement.removeEventListener('pointermove', onMove); renderer.domElement.removeEventListener('pointerup', onUp); renderer.domElement.removeEventListener('pointercancel', onUp); controls.removeEventListener('change', rememberCamera); controls.dispose(); renderer.dispose(); scene.traverse((object) => { if (object instanceof THREE.Mesh) { object.geometry.dispose(); const mats = Array.isArray(object.material) ? object.material : [object.material]; mats.forEach((m) => m.dispose()) } }); renderer.domElement.remove() }
-  }, [snapshot])
+    return () => { disposed = true; if (objectRootsRef.current === objectRoots) objectRootsRef.current = new Map(); rememberCamera(); cancelAnimationFrame(animation); observer.disconnect(); renderer.domElement.removeEventListener('pointerdown', onDown); renderer.domElement.removeEventListener('pointermove', onMove); renderer.domElement.removeEventListener('pointerup', onUp); renderer.domElement.removeEventListener('pointercancel', onUp); controls.removeEventListener('change', rememberCamera); controls.dispose(); renderer.dispose(); scene.traverse((object) => { if (object instanceof THREE.Mesh) { object.geometry.dispose(); const mats = Array.isArray(object.material) ? object.material : [object.material]; mats.forEach((m) => m.dispose()) } }); renderer.domElement.remove() }
+  }, [roomKey, structureKey])
   return <div className='scene-editor-canvas' ref={hostRef} data-testid='scene-canvas' />
 }

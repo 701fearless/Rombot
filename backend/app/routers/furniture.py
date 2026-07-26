@@ -84,7 +84,7 @@ def _load_generated_items() -> list[GeneratedFurnitureItem]:
             glb_path = video_dir / "glb" / f"{candidate_id}.glb"
             if not glb_path.is_file():
                 glb_path = video_dir / "generated" / candidate_id / "generated_model.glb"
-            preview_path = video_dir / "deduplicated" / candidate_id / "crop.jpg"
+            preview_path = video_dir / "generated" / candidate_id / "reference_oblique_3quarter.png"
             if not glb_path.is_file() or not preview_path.is_file():
                 continue
             label = str(candidate.get("label") or "furniture")

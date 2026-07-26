@@ -22,7 +22,7 @@ interface SceneState {
 }
 
 export const useSceneStore = create<SceneState>()(persist((set) => ({
-  activeSceneId: 'room6', snapshot: null, pendingAsset: null, furnitureLibrary: [], selectedInstanceId: '', saveMode: 'server',
+  activeSceneId: 'room1', snapshot: null, pendingAsset: null, furnitureLibrary: [], selectedInstanceId: '', saveMode: 'server',
   setActiveSceneId: (activeSceneId) => set({ activeSceneId }),
   setSnapshot: (snapshot) => set({ snapshot }),
   setPendingAsset: (pendingAsset) => set({ pendingAsset }),
@@ -42,4 +42,13 @@ export const useSceneStore = create<SceneState>()(persist((set) => ({
     return { snapshot: { ...state.snapshot, updatedAt: new Date().toISOString(), objects: exists ? state.snapshot.objects.map((item) => item.instanceId === object.instanceId ? object : item) : [...state.snapshot.objects, object] } }
   }),
   updateObject: (id, transform) => set((state) => state.snapshot ? ({ snapshot: { ...state.snapshot, updatedAt: new Date().toISOString(), objects: state.snapshot.objects.map((item) => item.instanceId === id ? { ...item, transform } : item) } }) : state),
-}), { name: 'store_scene_snapshot_v2', storage: createJSONStorage(() => browserStorage) }))
+}), {
+  name: 'store_scene_snapshot_v2',
+  version: 3,
+  storage: createJSONStorage(() => browserStorage),
+  migrate: (persisted) => {
+    const state = persisted as Partial<SceneState>
+    const snapshot = state.snapshot?.sceneId === 'room1' || state.snapshot?.sceneId === 'room2' ? state.snapshot : null
+    return { ...state, activeSceneId: state.activeSceneId === 'room2' ? 'room2' : 'room1', snapshot }
+  },
+}))

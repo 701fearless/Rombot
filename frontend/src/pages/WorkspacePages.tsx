@@ -60,6 +60,7 @@ const furniture = [
 export function HomePage() {
   const toast = useToast()
   const library = useSceneStore((state) => state.furnitureLibrary)
+  const activeSceneId = useSceneStore((state) => state.activeSceneId)
   return <div className='surface-page home-page'>
     <section className='page-intro'>
       <div><span className='eyebrow'>MY HOME</span><h1>我的家</h1><p>所有识别、试摆和空间建议，都沉淀在这里。</p></div>
@@ -69,15 +70,15 @@ export function HomePage() {
       </div>
     </section>
 
-    <button className='home-switch' type='button' onClick={() => toast.show('当前演示户型：room6')}>
-      <span><strong>法式复古之家</strong><small>样板 · 1 间房</small></span>
-      <span>切换 <ChevronDown /></span>
+    <button className='home-switch' type='button' onClick={() => toast.show(`当前演示户型：${activeSceneId}`)}>
+      <span><strong>{activeSceneId} 全屋空间</strong><small>默认扫描结果 · 家具已匹配</small></span>
+      <span>当前 <ChevronDown /></span>
     </button>
 
     <div className='room-pills'><button className='is-active' type='button'>客厅</button><button type='button' disabled>卧室</button><button type='button' disabled>书房</button></div>
 
-    <Link className='home-canvas' to='/space?sceneId=room6'>
-      <img src={spaceImage} alt='room6 客厅空间预览' />
+    <Link className='home-canvas' to={`/space?sceneId=${activeSceneId}`}>
+      <img src={spaceImage} alt={`${activeSceneId} 全屋空间预览`} />
       <span className='home-canvas__badge'>3D 空间</span>
       <span className='home-canvas__cta'><Move3D />进入摆放</span>
       <span className='home-canvas__meta'>6.0 × 4.2m · {useSceneStore.getState().snapshot?.objects.length ?? 0} 件家具</span>
@@ -111,7 +112,7 @@ export function DiscoverPage() {
       <div className='direction-actions'>
         <Link to={`/scene/${active.id}`}><Sparkles />看建议</Link>
         <Link to='/recommend'><Search />推单品</Link>
-        <Link className='is-primary' to={`/space?sceneId=room6&direction=${active.id}`}><Move3D />直接改</Link>
+        <Link className='is-primary' to={`/space?direction=${active.id}`}><Move3D />直接改</Link>
       </div>
     </section>
     <div className='section-heading'><div><h2>场景改造</h2><p>结合具体需求，整套思路给你</p></div></div>
@@ -123,11 +124,12 @@ export function DiscoverPage() {
 
 export function MePage() {
   const toast = useToast()
+  const navigate = useNavigate()
+  const activeSceneId = useSceneStore((s) => s.activeSceneId)
   const setActive = useSceneStore((s) => s.setActiveSceneId)
-  const input = useRef<HTMLInputElement>(null)
-  const acceptFile = () => {
-    setActive('room6')
-    toast.show('扫描素材已接收，演示模式已匹配 room6')
+  const openSelectedRoom = () => {
+    toast.show(`扫描建模完成，正在打开 ${activeSceneId}`)
+    navigate(`/space?sceneId=${activeSceneId}`)
   }
   return <div className='surface-page profile-page'>
     <section className='profile-card'>
@@ -140,18 +142,20 @@ export function MePage() {
       <span>房间、户型与心动单品都会收进这里</span>
       <ChevronRight />
     </Link>
-    <input ref={input} hidden type='file' accept='image/*,video/*' onChange={acceptFile} />
+    <div className='room-pills' aria-label='默认户型'>
+      {(['room1', 'room2'] as const).map((room) => <button className={activeSceneId === room ? 'is-active' : ''} type='button' key={room} onClick={() => { setActive(room); toast.show(`默认户型已切换为 ${room}`) }}>{room}</button>)}
+    </div>
     <div className='profile-entry-hero'>
-      <button className='profile-entry profile-entry--scan' type='button' onClick={() => input.current?.click()}>
+      <button className='profile-entry profile-entry--scan' type='button' onClick={openSelectedRoom}>
         <img src={heroRoomImage} alt='复古房间扫描入口' />
         <span className='profile-entry__veil' />
         <span className='profile-entry__copy'><strong>拍一下房间，先把真实的家装进来。</strong><small>扫描我的房间</small></span>
       </button>
       <div className='profile-entry__row'>
-        <button className='profile-entry profile-entry--floorplan' type='button' onClick={() => input.current?.click()}>
+        <button className='profile-entry profile-entry--floorplan' type='button' onClick={openSelectedRoom}>
           <span className='profile-entry__copy'><strong>已有户型图，从平面图直接建空间。</strong><small>上传平面图</small></span>
         </button>
-        <Link className='profile-entry profile-entry--template' to='/home'>
+        <Link className='profile-entry profile-entry--template' to={`/space?sceneId=${activeSceneId}`}>
           <span className='profile-entry__copy'><strong>先用相似模板，也能马上试摆。</strong><small>使用模板空间</small></span>
         </Link>
       </div>
@@ -218,14 +222,15 @@ export function ProductPage() {
 export function ScenePage() {
   const { id } = useParams()
   const scene = scenes.find((item) => item.id === id) ?? scenes[0]
-  return <div className='flow-page'><PageHeader title='场景详情' /><main className='detail-layout scene-detail'><div className='detail-visual'><img src={scene.image} alt={scene.name} /></div><div><span className='eyebrow'>SCENE DIRECTION · {scene.tag}</span><h1>{scene.name}</h1><p>{scene.copy}</p><div className='advice-list'><span><Check />释放主要通道，保留连续活动区</span><span><Check />家具边缘保持舒适通过距离</span><span><Check />用材质和照明降低空间噪声</span></div><Link className='primary-link' to={`/space?sceneId=room6&direction=${scene.id}`}><Sparkles />按此方向试改</Link></div></main></div>
+  return <div className='flow-page'><PageHeader title='场景详情' /><main className='detail-layout scene-detail'><div className='detail-visual'><img src={scene.image} alt={scene.name} /></div><div><span className='eyebrow'>SCENE DIRECTION · {scene.tag}</span><h1>{scene.name}</h1><p>{scene.copy}</p><div className='advice-list'><span><Check />释放主要通道，保留连续活动区</span><span><Check />家具边缘保持舒适通过距离</span><span><Check />用材质和照明降低空间噪声</span></div><Link className='primary-link' to={`/space?direction=${scene.id}`}><Sparkles />按此方向试改</Link></div></main></div>
 }
 
 export function RecognizePage() {
   const input = useRef<HTMLInputElement>(null)
   const navigate = useNavigate()
+  const activeSceneId = useSceneStore((state) => state.activeSceneId)
   const [selected, setSelected] = useState(false)
-  return <div className='flow-page'><PageHeader title='识别家具' /><main className='recognize-flow'><header><span className='eyebrow'>ADD FURNITURE</span><h1>把喜欢的家具<br />变成你的资产</h1><p>上传截图，或从 Feed 暂停识别。</p></header><input ref={input} hidden type='file' accept='image/*' onChange={() => setSelected(true)} />{!selected ? <div className='recognize-options'><button type='button' onClick={() => input.current?.click()}><ImagePlus /><span><strong>上传截图识别</strong><small>相册中的家具，AI 帮你找出来</small></span><ChevronRight /></button><button type='button' onClick={() => navigate('/')}><Play /><span><strong>从 Feed 暂停识别</strong><small>点击画面中的家具标签</small></span><ChevronRight /></button></div> : <section className='recognize-result'><img src={chairImage} alt='识别出的亚麻休闲椅' /><span className='recognize-result__check'><Check /></span><div><span className='eyebrow'>识别完成 · 92%</span><h2>亚麻休闲椅</h2><p>椅 · 暖灰色 · 已存入我的家</p></div><button type='button' className='secondary-button' onClick={() => input.current?.click()}>重新选择</button><button type='button' className='primary-button' onClick={() => navigate('/space?sceneId=room6')}><Move3D />放进 room6</button></section>}</main></div>
+  return <div className='flow-page'><PageHeader title='识别家具' /><main className='recognize-flow'><header><span className='eyebrow'>ADD FURNITURE</span><h1>把喜欢的家具<br />变成你的资产</h1><p>上传截图，或从 Feed 暂停识别。</p></header><input ref={input} hidden type='file' accept='image/*' onChange={() => setSelected(true)} />{!selected ? <div className='recognize-options'><button type='button' onClick={() => input.current?.click()}><ImagePlus /><span><strong>上传截图识别</strong><small>相册中的家具，AI 帮你找出来</small></span><ChevronRight /></button><button type='button' onClick={() => navigate('/')}><Play /><span><strong>从 Feed 暂停识别</strong><small>点击画面中的家具标签</small></span><ChevronRight /></button></div> : <section className='recognize-result'><img src={chairImage} alt='识别出的亚麻休闲椅' /><span className='recognize-result__check'><Check /></span><div><span className='eyebrow'>识别完成 · 92%</span><h2>亚麻休闲椅</h2><p>椅 · 暖灰色 · 已存入我的家</p></div><button type='button' className='secondary-button' onClick={() => input.current?.click()}>重新选择</button><button type='button' className='primary-button' onClick={() => navigate(`/space?sceneId=${activeSceneId}`)}><Move3D />放进 {activeSceneId}</button></section>}</main></div>
 }
 
 export function SuggestPage() {

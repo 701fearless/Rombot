@@ -1,0 +1,4 @@
+interface:
+  display_name: "住宅适宠化安全分析"
+  short_description: "分物种住宅安全、清洁便利、防家具损伤以及目录商品推荐"
+  default_prompt: "Use $adapt-home-for-pets to assess this home JSON for pet safety and convenience, recommend 1-2 catalog products, and return validated JSON updates."

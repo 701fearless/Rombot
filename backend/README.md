@@ -44,9 +44,9 @@ FastAPI
   → GET /api/feed/prebuilt-asset
   → 携带 sceneId=room6 + frameId + objectId 进入 flow/place
   → GET /api/room/snapshots/room6
-  → 2D 户型中按真实尺寸加入、拖动、旋转、缩放家具
+  → 3D 户型中按真实尺寸加入、拖动、旋转、缩放家具
   → PUT 完整 SceneSnapshot JSON
-  → 生成结构化 Mock 布局建议
+  → 生成结构化布局建议
   → 一键应用目标坐标并再次保存
 ```
 
