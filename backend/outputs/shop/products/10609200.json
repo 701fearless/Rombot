@@ -1,0 +1,32 @@
+{
+  "productId": "10609200",
+  "sku": "10609200",
+  "title": "VÅGSJÖN hand towel, orange-red, 16x28\"",
+  "productName": "VÅGSJÖN hand towel, orange-red, 16x28\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 3.99,
+  "currency": "USD",
+  "category": "Bathroom textiles",
+  "subcategory": "Towels",
+  "category1": "",
+  "category2": "Bathroom textiles",
+  "category3": "Towels",
+  "category4": "",
+  "categoryTree": [
+    "Bathroom textiles",
+    "Towels"
+  ],
+  "localImage": "mock-products/10609200.jpg",
+  "imageUrl": "/static/mock-products/10609200.jpg",
+  "detailUrl": "/static/shop.html#/p/10609200",
+  "rank": 4,
+  "score": 0.7988,
+  "rawScore": 0.7488,
+  "labelBoost": 0.05
+}

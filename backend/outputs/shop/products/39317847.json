@@ -1,0 +1,32 @@
+{
+  "productId": "39317847",
+  "sku": "39317847",
+  "title": "MORABO armchair, Grann/Bomstad gray-green/wood",
+  "productName": "MORABO armchair, Grann/Bomstad gray-green/wood",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 599.0,
+  "currency": "USD",
+  "category": "Armchairs & accent chairs",
+  "subcategory": "Leather armchairs",
+  "category1": "",
+  "category2": "Armchairs & accent chairs",
+  "category3": "Leather armchairs",
+  "category4": "",
+  "categoryTree": [
+    "Armchairs & accent chairs",
+    "Leather armchairs"
+  ],
+  "localImage": "mock-products/39317847.jpg",
+  "imageUrl": "/static/mock-products/39317847.jpg",
+  "detailUrl": "/static/shop.html#/p/39317847",
+  "rank": 4,
+  "score": 0.991,
+  "rawScore": 0.841,
+  "labelBoost": 0.15
+}

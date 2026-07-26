@@ -1,17 +1,11 @@
 {
   "productId": "00469120",
   "sku": "00469120",
-  "title": "VINDKAST pendant lamp",
-  "productName": "VINDKAST pendant lamp",
-  "description": "VINDKAST pendant lamp, white, 20\" Like a white fluffy cloud of recycled polyester, the sewn shade of this pendant lamp creates a nice atmosphere with its soft glow. Perfect for hanging in the bedroom or over the coffee table. Gives a soft mood light.",
-  "features": [
-    "Light bulb sold separately. recommends LED bulb E26 globe opal white.",
-    "Use an opal light bulb if you have an ordinary lamp shade or lamp and want an even, diffused distribution of light.",
-    "If you choose a smart light bulb for your lamp, you can change the color and dim the light.",
-    "To be hung on a ceiling hook and attached with screws.",
-    "Screws are not included."
-  ],
-  "materialAndCare": "Shade: 100 % polyester (100% recycled), 49-51 % Polyurethane; Shade ring: Steel, Powder coating; Zipper: 100 % polyester",
+  "title": "VINDKAST pendant lamp, white, 20\"",
+  "productName": "VINDKAST pendant lamp, white, 20\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -20,20 +14,19 @@
   "currency": "USD",
   "category": "Lamps & light fixtures",
   "subcategory": "Ceiling lights",
-  "category1": "Lighting",
+  "category1": "",
   "category2": "Lamps & light fixtures",
   "category3": "Ceiling lights",
-  "category4": "Pendant lighting",
+  "category4": "",
   "categoryTree": [
-    "Lighting",
     "Lamps & light fixtures",
-    "Ceiling lights",
-    "Pendant lighting",
-    "VINDKASTPendant lamp"
+    "Ceiling lights"
   ],
-  "localImage": "images/00469120.jpg",
-  "imageUrl": "/product_index/images/00469120.jpg",
+  "localImage": "mock-products/00469120.jpg",
+  "imageUrl": "/static/mock-products/00469120.jpg",
   "detailUrl": "/static/shop.html#/p/00469120",
-  "rank": 6,
-  "score": 0.4033
+  "rank": 3,
+  "score": 0.8354,
+  "rawScore": 0.7354,
+  "labelBoost": 0.1
 }

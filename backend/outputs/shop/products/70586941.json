@@ -1,15 +1,11 @@
 {
   "productId": "70586941",
   "sku": "70586941",
-  "title": "MOSSLANDA picture ledge",
-  "productName": "MOSSLANDA picture ledge",
-  "description": "MOSSLANDA picture ledge, oak effect, 451/4\" Of course the things you like you want on display. This display shelf is a perfect way to show paintings, photos and other favorite items. Use several and create a whole wall with art and memories.",
-  "features": [
-    "Screws and any other fasteners you might need to attach your solution securely to the wall (e.g. wall anchors) are not included.",
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.",
-    "Can be fixed with suitable screws/fittings from our TRIXIG series."
-  ],
-  "materialAndCare": "Fiberboard, Paper foil",
+  "title": "MOSSLANDA picture ledge, oak effect, 451/4\"",
+  "productName": "MOSSLANDA picture ledge, oak effect, 451/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -18,19 +14,19 @@
   "currency": "USD",
   "category": "Wall décor",
   "subcategory": "Display shelves & picture ledges",
-  "category1": "Home decor & accessories",
+  "category1": "",
   "category2": "Wall décor",
   "category3": "Display shelves & picture ledges",
-  "category4": "MOSSLANDAPicture ledge",
+  "category4": "",
   "categoryTree": [
-    "Home decor & accessories",
     "Wall décor",
-    "Display shelves & picture ledges",
-    "MOSSLANDAPicture ledge"
+    "Display shelves & picture ledges"
   ],
-  "localImage": "images/70586941.jpg",
-  "imageUrl": "/product_index/images/70586941.jpg",
+  "localImage": "mock-products/70586941.jpg",
+  "imageUrl": "/static/mock-products/70586941.jpg",
   "detailUrl": "/static/shop.html#/p/70586941",
-  "rank": 3,
-  "score": 0.7659
+  "rank": 2,
+  "score": 0.9134,
+  "rawScore": 0.8134,
+  "labelBoost": 0.1
 }

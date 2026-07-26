@@ -1,0 +1,32 @@
+{
+  "productId": "30428920",
+  "sku": "30428920",
+  "title": "EKET Cabinet with 2 drawers, dark gray, Width: 13 3/4\"",
+  "productName": "EKET Cabinet with 2 drawers, dark gray, Width: 13 3/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 70.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "EKET storage system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "EKET storage system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "EKET storage system"
+  ],
+  "localImage": "mock-products/30428920.jpg",
+  "imageUrl": "/static/mock-products/30428920.jpg",
+  "detailUrl": "/static/shop.html#/p/30428920",
+  "rank": 1,
+  "score": 0.9497,
+  "rawScore": 0.8497,
+  "labelBoost": 0.1
+}

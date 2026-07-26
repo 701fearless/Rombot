@@ -1,34 +1,13 @@
-{
-  "productId": "09316608",
-  "sku": "09316608",
-  "title": "MORABO sofa",
-  "productName": "MORABO sofa",
-  "description": "MORABO sofa, with chaise/Grann/Bomstad black/metal Warm and welcoming, neat and stylish. The supporting seat cushions, the cover’s soft finish and the tight fit gives this sofa a perfect balance between its comfort, functions and look. Removable armrests make it easy to add on a chaise lounge.",
-  "features": [
-    "The seat cushions, back cushions and inside, top, front of the armrests are covered with GRANN – a soft, smooth and strong grain leather with natural variations. Other surfaces have the coated fabric BOMSTAD."
-  ],
-  "materialAndCare": "Steel, Chrome plated; Back and seat frame: Plywood, Solid pine, Particleboard, Fiberboard; Armrest frame: Plywood, Solid pine, Polyurethane foam 1.5 lb/cu.ft., Particleboard, Fiberboard; Back cushion: Polyurethane foam 1.5 lb/cu.ft.; Seat cushion: High-resilience polyurethane foam (cold foam) 2.2 lb/cu.ft.; Smolder resistant lining: Polyester wadding; Coated fabric parts: 100 % polyurethane, 75 % polyester, 25 % cotton; Leather: Dyed through top-grain leather with a treated, embossed and pigmented surface; Back and seat frame: Plywood, Solid pine, Fiberboard; Back cushion: Polyurethane foam 1.5 lb/cu.ft.; Seat cushion: High-resilience polyurethane foam (cold foam) 2.2 lb/cu.ft.; Smolder resistant lining: Polyester wadding; Coated fabric parts: 100 % polyurethane, 75 % polyester, 25 % cotton; Leather: Dyed through top-grain leather with a treated, embossed and pigmented surface",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 1849.0,
-  "currency": "USD",
-  "category": "Sofas & sectionals",
-  "subcategory": "Sofas with chaise",
-  "category1": "Sofas & armchairs",
-  "category2": "Sofas & sectionals",
-  "category3": "Sofas with chaise",
-  "category4": "MORABOSofa",
-  "categoryTree": [
-    "Sofas & armchairs",
-    "Sofas & sectionals",
-    "Sofas with chaise",
-    "MORABOSofa"
-  ],
-  "localImage": "images/09316608.jpg",
-  "imageUrl": "/product_index/images/09316608.jpg",
-  "detailUrl": "/static/shop.html#/p/09316608",
-  "rank": 3,
-  "score": 0.9299
+﻿{
+    "productId":  "09316608",
+    "sku":  "09316608",
+    "title":  "MORABO sofa",
+    "productName":  "MORABO sofa",
+    "price":  1849,
+    "currency":  "USD",
+    "category":  "Sofas \u0026 sectionals",
+    "imageUrl":  "/static/mock-products/09316608.jpg",
+    "localImage":  "mock-products/09316608.jpg",
+    "detailUrl":  "/static/shop.html#/p/09316608",
+    "description":  "本地演示商品（品类对齐写死）"
 }

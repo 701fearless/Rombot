@@ -1,11 +1,11 @@
 {
   "productId": "99514897",
   "sku": "99514897",
-  "title": "HYLTARP loveseat",
-  "productName": "HYLTARP loveseat",
-  "description": "HYLTARP loveseat, Gransel gray HYLTARP is an inviting family sofa where everyone wants to spend lots of time. It’s very comfy, has all the essential features – and a classic, clean-lined look that is also pleasing on the eye. 10 year Limited warranty. Read about the terms in the warranty brochure.",
+  "title": "HYLTARP loveseat, Gransel gray",
+  "productName": "HYLTARP loveseat, Gransel gray",
+  "description": "",
   "features": [],
-  "materialAndCare": "Frame: Solid wood, Particleboard, Plywood, Polyurethane foam 1.2 lb/cu.ft., Fiberboard, Laminated veneer lumber; Pocket spring unit/ Metal parts: Steel; Leg: Polypropylene; Seat cushion: Felt liner, High-resilience polyurethane foam (cold foam) 2.2 lb/cu.ft., Polyurethane foam 2.0 lb/cu.ft.; Back cushion/ Lumbar cushion: 100 % polyester - hollow fiber (100% recycled); Back fabric: 100 % polyester (100% recycled); Smolder resistant lining/ Smolder resistant lining: Polyester wadding; Back fabric: 100 % polyester (100% recycled); Fabric: 43 % cotton, 27 % viscose/rayon, 18% polyester (min. 90% recycled), 12 % linen",
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -14,19 +14,19 @@
   "currency": "USD",
   "category": "Sofas & sectionals",
   "subcategory": "Loveseats",
-  "category1": "Sofas & armchairs",
+  "category1": "",
   "category2": "Sofas & sectionals",
   "category3": "Loveseats",
-  "category4": "HYLTARPLoveseat",
+  "category4": "",
   "categoryTree": [
-    "Sofas & armchairs",
     "Sofas & sectionals",
-    "Loveseats",
-    "HYLTARPLoveseat"
+    "Loveseats"
   ],
-  "localImage": "images/99514897.jpg",
-  "imageUrl": "/product_index/images/99514897.jpg",
+  "localImage": "mock-products/99514897.jpg",
+  "imageUrl": "/static/mock-products/99514897.jpg",
   "detailUrl": "/static/shop.html#/p/99514897",
-  "rank": 7,
-  "score": 0.7923
+  "rank": 2,
+  "score": 1.0237,
+  "rawScore": 0.8737,
+  "labelBoost": 0.15
 }

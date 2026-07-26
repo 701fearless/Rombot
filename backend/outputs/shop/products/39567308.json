@@ -1,15 +1,11 @@
 {
   "productId": "39567308",
   "sku": "39567308",
-  "title": "TONSTAD bed frame with storage",
-  "productName": "TONSTAD bed frame with storage",
-  "description": "TONSTAD bed frame with storage, brown stained oak veneer/Lyngör dark gray, Queen Classic design meets a graceful finish in the TONSTAD series. Spacious soft-closing drawers under the bed – and LYNGÖR mattress base gives extra height and helps your mattress keep its shape for longer.",
-  "features": [
-    "Comprises: 1 bed frame, 1 LYNGÖR mattress base, 1 LYNGÖR mattress base cover and 1 SKORVA midbeam.",
-    "Mattress and bedlinens are sold separately.",
-    "More information about each product in the set can be found on each product page on .us."
-  ],
-  "materialAndCare": "Center support beam: Galvanized steel; Top panel: Particle- and fiberboard with honeycomb paper filling (100% recycled paper), Oak veneer, Oak veneer, Clear acrylic lacquer, Oak veneer, Paper edging; Bottom panel/ Panel: Particle- and fiberboard with honeycomb paper filling (100% recycled paper), Oak veneer, Clear acrylic lacquer, Paper foil, Oak veneer, Paper edging; Spacer: Solid pine; Side panel: Particleboard, Fiberboard, Oak veneer, Clear acrylic lacquer, Paper foil, Oak veneer, Paper edging; Cover panel: Particleboard, Oak veneer, Clear acrylic lacquer, Paper foil, Oak veneer, Paper edging; Middle rail: Solid pine, Adhesive; Leg: Solid wood, Oak veneer, Clear acrylic lacquer; Drawer front: Particleboard, Oak veneer, Clear acrylic lacquer, Paper foil, Oak veneer; Drawer side/ Drawer back: Particleboard, Plastic foil; Drawer bottom: Fiberboard, Paper foil, Paper foil; Bed base frame: Solid pine, Adhesive; Hook and loop fastener: 100 % nylon; Bed slats: Solid pine; Ribbon: 100 % polyester; Midbeam: Laminated veneer lumber; Main parts/ Back fabric/ Top panel/ Side panel: 100 % polyester (100% recycled); Filling: Polyester/viscose (rayon) fiber wadding; Backing: 100 % polypropylene",
+  "title": "TONSTAD bed frame with storage, brown stained oak veneer/Lyngör dark gray, Queen",
+  "productName": "TONSTAD bed frame with storage, brown stained oak veneer/Lyngör dark gray, Queen",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -18,19 +14,19 @@
   "currency": "USD",
   "category": "Beds",
   "subcategory": "Bed frames with storage",
-  "category1": "Beds & mattresses",
+  "category1": "",
   "category2": "Beds",
   "category3": "Bed frames with storage",
-  "category4": "TONSTADBed frame with storage",
+  "category4": "",
   "categoryTree": [
-    "Beds & mattresses",
     "Beds",
-    "Bed frames with storage",
-    "TONSTADBed frame with storage"
+    "Bed frames with storage"
   ],
-  "localImage": "images/39567308.jpg",
-  "imageUrl": "/product_index/images/39567308.jpg",
+  "localImage": "mock-products/39567308.jpg",
+  "imageUrl": "/static/mock-products/39567308.jpg",
   "detailUrl": "/static/shop.html#/p/39567308",
-  "rank": 2,
-  "score": 0.9244
+  "rank": 3,
+  "score": 0.9459,
+  "rawScore": 0.8459,
+  "labelBoost": 0.1
 }

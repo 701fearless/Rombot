@@ -10,8 +10,10 @@ from app.services.shop_store import (
     get_shop_product,
     iter_vedios_images,
     list_search_results,
+    load_feed_clip_cache,
     load_library_matches,
     public_product_id,
+    save_feed_clip_cache,
 )
 
 router = APIRouter()
@@ -77,6 +79,50 @@ async def library_matches() -> dict:
 async def get_reference_root() -> dict:
     root = reference_videos_root()
     return {"videosRoot": str(root), "exists": root.exists()}
+
+
+@router.get("/feed-clip-cache")
+async def get_feed_clip_cache(
+    videoId: str = Query(min_length=1, max_length=120),
+    candidateId: str = Query(min_length=1, max_length=160),
+) -> dict:
+    """Return previously materialized reference-CLIP results (no product_index required)."""
+    payload = load_feed_clip_cache(videoId, candidateId)
+    if not payload:
+        raise HTTPException(status_code=404, detail="feed clip cache miss")
+    return {
+        "source": "feed_clip_cache",
+        "videoId": videoId,
+        "candidateId": candidateId,
+        "savedAt": payload.get("savedAt"),
+        "results": payload.get("results") or [],
+    }
+
+
+class SaveFeedClipCacheRequest(BaseModel):
+    videoId: str = Field(min_length=1, max_length=120)
+    candidateId: str = Field(min_length=1, max_length=160)
+    results: list[dict] = Field(default_factory=list)
+    query: dict | None = None
+
+
+@router.put("/feed-clip-cache")
+async def put_feed_clip_cache(request: SaveFeedClipCacheRequest) -> dict:
+    if not request.results:
+        raise HTTPException(status_code=400, detail="results required")
+    payload = save_feed_clip_cache(
+        video_id=request.videoId,
+        candidate_id=request.candidateId,
+        results=request.results,
+        query=request.query,
+    )
+    return {
+        "ok": True,
+        "videoId": request.videoId,
+        "candidateId": request.candidateId,
+        "count": len(payload.get("results") or []),
+        "results": payload.get("results") or [],
+    }
 
 
 @router.post("/resolve-reference")

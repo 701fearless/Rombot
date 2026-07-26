@@ -1,0 +1,32 @@
+{
+  "productId": "39560830",
+  "sku": "39560830",
+  "title": "PAX / GRIMO wardrobe with sliding doors, white/clear glass white, 59x26x791/4\"",
+  "productName": "PAX / GRIMO wardrobe with sliding doors, white/clear glass white, 59x26x791/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 890.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "PAX system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "PAX system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "PAX system"
+  ],
+  "localImage": "mock-products/39560830.jpg",
+  "imageUrl": "/static/mock-products/39560830.jpg",
+  "detailUrl": "/static/shop.html#/p/39560830",
+  "rank": 3,
+  "score": 0.9131,
+  "rawScore": 0.8631,
+  "labelBoost": 0.05
+}

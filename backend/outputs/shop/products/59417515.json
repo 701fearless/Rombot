@@ -1,11 +1,11 @@
 {
   "productId": "59417515",
   "sku": "59417515",
-  "title": "LAGKAPTEN / TILLSLAG desk",
-  "productName": "LAGKAPTEN / TILLSLAG desk",
-  "description": "LAGKAPTEN / TILLSLAG desk, black-brown/white, 551/8x235/8\" Mix and match your choice of table top and legs – or choose this ready-made combination. Strong and light-weight, made with a technique that uses less raw materials, reducing the impact on the environment.",
+  "title": "LAGKAPTEN / TILLSLAG desk, black-brown/white, 551/8x235/8\"",
+  "productName": "LAGKAPTEN / TILLSLAG desk, black-brown/white, 551/8x235/8\"",
+  "description": "",
   "features": [],
-  "materialAndCare": "Fiberboard, Printed and embossed acrylic paint, Plastic edging, Honeycomb structure paper filling (min. 70% recycled), Particleboard, Fiberboard; Steel, Epoxy/polyester powder coating; Main parts: Steel, Epoxy/polyester powder coating; Foot: Polypropylene",
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -14,21 +14,19 @@
   "currency": "USD",
   "category": "Desks & computer desks",
   "subcategory": "Table & desk systems",
-  "category1": "Desk & desk chairs",
+  "category1": "",
   "category2": "Desks & computer desks",
   "category3": "Table & desk systems",
-  "category4": "Table bar system",
+  "category4": "",
   "categoryTree": [
-    "Desk & desk chairs",
     "Desks & computer desks",
-    "Table & desk systems",
-    "Table bar system",
-    "Combinations",
-    "LAGKAPTEN / TILLSLAGDesk"
+    "Table & desk systems"
   ],
-  "localImage": "images/59417515.jpg",
-  "imageUrl": "/product_index/images/59417515.jpg",
+  "localImage": "mock-products/59417515.jpg",
+  "imageUrl": "/static/mock-products/59417515.jpg",
   "detailUrl": "/static/shop.html#/p/59417515",
-  "rank": 4,
-  "score": 0.8905
+  "rank": 2,
+  "score": 0.9468,
+  "rawScore": 0.8468,
+  "labelBoost": 0.1
 }

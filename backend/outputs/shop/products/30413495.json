@@ -1,16 +1,11 @@
 {
   "productId": "30413495",
   "sku": "30413495",
-  "title": "HEMNES Coffee table",
-  "productName": "HEMNES Coffee table",
-  "description": "HEMNES Coffee table, white stain, light brown, 35 3/8x35 3/8\". Natural beauty in solid pine. A durable and renewable material that maintains its genuine character with each passing year.",
-  "features": [
-    "Max load on table top: 44 lbs.",
-    "Please check with your local authorities to make sure that the product complies with any specific requirements for business use.",
-    "Product is possible to recycle or use for energy recovery, if available in your community.",
-    "Coordinates with other furniture in the HEMNES series."
-  ],
-  "materialAndCare": "Table top: Solid pine, Clear acrylic lacquer, Stain, Clear acrylic lacquer; Leg: Solid pine, Clear acrylic lacquer, Stain; Top rail: Solid pine, Stain, Clear acrylic lacquer, Clear acrylic lacquer; Others: Solid pine, Stain, Clear acrylic lacquer, Stain, Clear acrylic lacquer",
+  "title": "HEMNES Coffee table, white stain, light brown, 35 3/8x35 3/8\"",
+  "productName": "HEMNES Coffee table, white stain, light brown, 35 3/8x35 3/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -19,19 +14,19 @@
   "currency": "USD",
   "category": "Accent tables",
   "subcategory": "Coffee tables",
-  "category1": "Tables & chairs",
+  "category1": "",
   "category2": "Accent tables",
   "category3": "Coffee tables",
-  "category4": "HEMNESCoffee table",
+  "category4": "",
   "categoryTree": [
-    "Tables & chairs",
     "Accent tables",
-    "Coffee tables",
-    "HEMNESCoffee table"
+    "Coffee tables"
   ],
-  "localImage": "images/30413495.jpg",
-  "imageUrl": "/product_index/images/30413495.jpg",
+  "localImage": "mock-products/30413495.jpg",
+  "imageUrl": "/static/mock-products/30413495.jpg",
   "detailUrl": "/static/shop.html#/p/30413495",
-  "rank": 3,
-  "score": 0.3502
+  "rank": 1,
+  "score": 0.9702,
+  "rawScore": 0.8702,
+  "labelBoost": 0.1
 }

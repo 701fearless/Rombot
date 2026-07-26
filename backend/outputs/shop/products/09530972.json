@@ -1,39 +1,13 @@
-{
-  "productId": "09530972",
-  "sku": "09530972",
-  "title": "KAPPELAND / HEMMA pendant lamp",
-  "productName": "KAPPELAND / HEMMA pendant lamp",
-  "description": "KAPPELAND / HEMMA pendant lamp, rattan/white Designer Mikael Axelsson has created this lamp shade in rattan. With its airy herringbone pattern, it spreads a decorative light that gives the room a warm and welcoming feel. Handmade and unique. Each handmade natural fiber shade is unique.",
-  "features": [
-    "Light bulb sold separately. recommends LED bulb E26 globe clear.",
-    "Use a clear light bulb if you have a lamp shade or lamp with a perforated or cut-out pattern or other airy, open design and want the pattern to cast effects on the wall and ceiling.",
-    "Use an opal light bulb if you have an ordinary lamp shade or lamp and want an even, diffused distribution of light.",
-    "Each product is a unique, handmade work of art with natural variations in color and shape.",
-    "Special waste handling may be required. Please contact your local authorities for more information."
-  ],
-  "materialAndCare": "Polypropylene; Frame: Steel, Powder coating; Body: Rattan, Clear acrylic lacquer",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 59.99,
-  "currency": "USD",
-  "category": "Lamps & light fixtures",
-  "subcategory": "Ceiling lights",
-  "category1": "Lighting",
-  "category2": "Lamps & light fixtures",
-  "category3": "Ceiling lights",
-  "category4": "Pendant lighting",
-  "categoryTree": [
-    "Lighting",
-    "Lamps & light fixtures",
-    "Ceiling lights",
-    "Pendant lighting",
-    "KAPPELAND / HEMMAPendant lamp"
-  ],
-  "localImage": "images/09530972.jpg",
-  "imageUrl": "/product_index/images/09530972.jpg",
-  "detailUrl": "/static/shop.html#/p/09530972",
-  "rank": 8,
-  "score": 0.8284
+﻿{
+    "productId":  "09530972",
+    "sku":  "09530972",
+    "title":  "KAPPELAND / HEMMA pendant lamp, rattan/white",
+    "productName":  "KAPPELAND / HEMMA pendant lamp, rattan/white",
+    "price":  59.99,
+    "currency":  "USD",
+    "category":  "Lamps \u0026 light fixtures",
+    "imageUrl":  "/static/mock-products/09530972.jpg",
+    "localImage":  "mock-products/09530972.jpg",
+    "detailUrl":  "/static/shop.html#/p/09530972",
+    "description":  "本地演示商品（品类对齐写死）"
 }

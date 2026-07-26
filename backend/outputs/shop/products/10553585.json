@@ -1,17 +1,11 @@
 {
   "productId": "10553585",
   "sku": "10553585",
-  "title": "SANNAHED frame",
-  "productName": "SANNAHED frame",
-  "description": "SANNAHED frame, birch effect, 9 ¾x9 ¾\" Decorate with pictures you love. SANNAHED creates nice shadows and you can place the motif in the front or back of the deep frame. The plastic front protection is safe – and does justice to the motif. The mat enhances the picture and makes framing easy.",
-  "features": [
-    "This frame fits with a picture that has dimensions 5⅛x5⅛\" if you use it with the mat, and it fits with a picture that has dimensions 9⅞x9⅞\" if you choose to use the frame without the mat.",
-    "Mat included.",
-    "The mat will not turn yellow since it is acid-free.",
-    "Screws for wall mounting not included. recommends using ALFTA adhesive hook. Sold separately.",
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home."
-  ],
-  "materialAndCare": "Mat: Paper; Frame/ Inside frame: Fiberboard, Paper foil; Front protection: Polystyrene",
+  "title": "SANNAHED frame, birch effect, 9 ¾x9 ¾\"",
+  "productName": "SANNAHED frame, birch effect, 9 ¾x9 ¾\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -20,19 +14,19 @@
   "currency": "USD",
   "category": "Wall décor",
   "subcategory": "Picture & photo frames",
-  "category1": "Home decor & accessories",
+  "category1": "",
   "category2": "Wall décor",
   "category3": "Picture & photo frames",
-  "category4": "SANNAHEDFrame",
+  "category4": "",
   "categoryTree": [
-    "Home decor & accessories",
     "Wall décor",
-    "Picture & photo frames",
-    "SANNAHEDFrame"
+    "Picture & photo frames"
   ],
-  "localImage": "images/10553585.jpg",
-  "imageUrl": "/product_index/images/10553585.jpg",
+  "localImage": "mock-products/10553585.jpg",
+  "imageUrl": "/static/mock-products/10553585.jpg",
   "detailUrl": "/static/shop.html#/p/10553585",
-  "rank": 3,
-  "score": 0.6626
+  "rank": 1,
+  "score": 0.8685,
+  "rawScore": 0.7185,
+  "labelBoost": 0.15
 }

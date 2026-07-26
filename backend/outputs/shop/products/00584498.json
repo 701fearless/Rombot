@@ -1,34 +1,13 @@
-{
-  "productId": "00584498",
-  "sku": "00584498",
-  "title": "KLIPPAN cover for loveseat",
-  "productName": "KLIPPAN cover for loveseat",
-  "description": "KLIPPAN cover for loveseat, Långban bright red KLIPPAN was introduced in 1980 and grew in popularity over the years. With its clean-lined look, kid-friendly corners and washable covers, it has now been a top seller for almost half a century!",
-  "features": [
-    "This product is an extra cover. Sofa is sold separately."
-  ],
-  "materialAndCare": "Quilting: 100% polyester (min. 70% recycled); Lining: 100 % polypropylene; Elastic band: 100 % polyester, 100 % rubber; Base fabric: 100 % polyester (100% recycled)",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 139.0,
-  "currency": "USD",
-  "category": "Sofa & armchairs covers",
-  "subcategory": "KLIPPAN covers",
-  "category1": "Sofas & armchairs",
-  "category2": "Sofa & armchairs covers",
-  "category3": "KLIPPAN covers",
-  "category4": "KLIPPANCover for loveseat",
-  "categoryTree": [
-    "Sofas & armchairs",
-    "Sofa & armchairs covers",
-    "KLIPPAN covers",
-    "KLIPPANCover for loveseat"
-  ],
-  "localImage": "images/00584498.jpg",
-  "imageUrl": "/product_index/images/00584498.jpg",
-  "detailUrl": "/static/shop.html#/p/00584498",
-  "rank": 2,
-  "score": 0.8492
+﻿{
+    "productId":  "00584498",
+    "sku":  "00584498",
+    "title":  "KLIPPAN cover for loveseat",
+    "productName":  "KLIPPAN cover for loveseat",
+    "price":  139,
+    "currency":  "USD",
+    "category":  "Sofa \u0026 armchairs covers",
+    "imageUrl":  "/static/mock-products/00584498.jpg",
+    "localImage":  "mock-products/00584498.jpg",
+    "detailUrl":  "/static/shop.html#/p/00584498",
+    "description":  "本地演示商品（品类对齐写死）"
 }

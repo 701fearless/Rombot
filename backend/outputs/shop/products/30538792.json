@@ -1,0 +1,32 @@
+{
+  "productId": "30538792",
+  "sku": "30538792",
+  "title": "JÄTTESTA coffee table, white/light bamboo, 311/2x311/2\"",
+  "productName": "JÄTTESTA coffee table, white/light bamboo, 311/2x311/2\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 169.99,
+  "currency": "USD",
+  "category": "Accent tables",
+  "subcategory": "Coffee tables",
+  "category1": "",
+  "category2": "Accent tables",
+  "category3": "Coffee tables",
+  "category4": "",
+  "categoryTree": [
+    "Accent tables",
+    "Coffee tables"
+  ],
+  "localImage": "mock-products/30538792.jpg",
+  "imageUrl": "/static/mock-products/30538792.jpg",
+  "detailUrl": "/static/shop.html#/p/30538792",
+  "rank": 3,
+  "score": 0.9333,
+  "rawScore": 0.8333,
+  "labelBoost": 0.1
+}

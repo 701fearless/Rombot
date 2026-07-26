@@ -25,7 +25,13 @@ from app.services.detection.ark_grounding_provider import ArkGroundingProvider
 from app.services.detection.grounded_sam2_provider import GroundedSAM2DetectionProvider
 from app.services.detection.grounding_dino_provider import GroundingDinoProvider
 from app.services.segmentation.sam_box_provider import SamBoxProvider
-from app.services.shop_store import append_search_result, resolve_media_path, whitened_results
+from app.services.shop_store import (
+    append_search_result,
+    infer_video_id_from_media_url,
+    resolve_media_path,
+    save_feed_clip_cache,
+    whitened_results,
+)
 from app.services.video_preprocess.ark_grounding_pipeline import ArkGroundingPipeline
 from app.services.video_preprocess.doubao_grounding_sam_pipeline import DoubaoGroundingSamPipeline
 from app.services.video_preprocess.analysis_store import analysis_url, nearest_frame, read_analysis, video_output_dir
@@ -585,19 +591,31 @@ async def clip_search_products(request: ClipSearchRequest) -> dict:
             "results": results,
         }
         if request.persist:
-            append_search_result(
-                {
-                    "query": {
-                        "cropUrl": request.cropUrl,
-                        "imageName": request.imageName,
-                        "label": response.get("label"),
-                        "queryText": response.get("queryText"),
-                        "topK": request.topK,
-                        "textOnly": text_only,
-                    },
-                    "results": results,
-                }
-            )
+            query_meta = {
+                "cropUrl": request.cropUrl,
+                "imageName": request.imageName,
+                "label": response.get("label"),
+                "queryText": response.get("queryText"),
+                "topK": request.topK,
+                "textOnly": text_only,
+            }
+            append_search_result({"query": query_meta, "results": results})
+            video_id = infer_video_id_from_media_url(request.cropUrl)
+            candidate_id = (request.imageName or "").strip()
+            if video_id and candidate_id and results:
+                try:
+                    cached = save_feed_clip_cache(
+                        video_id=video_id,
+                        candidate_id=candidate_id,
+                        results=results,
+                        query=query_meta,
+                    )
+                    # Return localized image URLs so clients do not need product_index.
+                    response["results"] = cached.get("results") or results
+                    response["cached"] = True
+                    response["cacheKey"] = {"videoId": video_id, "candidateId": candidate_id}
+                except Exception:  # noqa: BLE001
+                    pass
         return response
     finally:
         if temp_path is not None:

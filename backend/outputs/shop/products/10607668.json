@@ -1,0 +1,32 @@
+{
+  "productId": "10607668",
+  "sku": "10607668",
+  "title": "STOENSE rug, low pile, beige, 5'7\"x7'10\"",
+  "productName": "STOENSE rug, low pile, beige, 5'7\"x7'10\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 99.99,
+  "currency": "USD",
+  "category": "Rugs",
+  "subcategory": "Medium, large and extra-large rugs",
+  "category1": "",
+  "category2": "Rugs",
+  "category3": "Medium, large and extra-large rugs",
+  "category4": "",
+  "categoryTree": [
+    "Rugs",
+    "Medium, large and extra-large rugs"
+  ],
+  "localImage": "mock-products/10607668.jpg",
+  "imageUrl": "/static/mock-products/10607668.jpg",
+  "detailUrl": "/static/shop.html#/p/10607668",
+  "rank": 4,
+  "score": 0.8653,
+  "rawScore": 0.8153,
+  "labelBoost": 0.05
+}

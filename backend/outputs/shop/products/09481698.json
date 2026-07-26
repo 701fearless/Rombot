@@ -1,15 +1,11 @@
 {
   "productId": "09481698",
   "sku": "09481698",
-  "title": "KALLAX / LINNMON workstation",
-  "productName": "KALLAX / LINNMON workstation",
-  "description": "KALLAX / LINNMON workstation, white, 715/8x543/4x715/8\" Use INLÄGG fittings to attach a table top and legs to a KALLAX shelf unit. Or choose this ready-made combination with a simple desk and a lot of storage. Hide or display your things by combining open and closed storage.",
-  "features": [
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.",
-    "Two people are needed to assemble this furniture.",
-    "May be completed with KALLAX insert, sold separately."
-  ],
-  "materialAndCare": "Particle- and fiberboard with honeycomb paper filling (100% recycled paper), Printed and embossed acrylic paint, Paper foil, Plastic edging; Top: Fiberboard, Acrylic paint; Frame: Particleboard, Plastic edging; Filling material: Honeycomb structure paper filling (min. 70% recycled); Bottom: Fiberboard; Steel, Epoxy/polyester powder coating; Metal part: Steel, Epoxy/polyester powder coating; Part 2: Reinforced polyamide; Part 3: Acetal plastic; Part 05: Polyamide; Plastic part: Polypropylene",
+  "title": "KALLAX / LINNMON workstation, white, 715/8x543/4x715/8\"",
+  "productName": "KALLAX / LINNMON workstation, white, 715/8x543/4x715/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -18,19 +14,19 @@
   "currency": "USD",
   "category": "Shelving furniture",
   "subcategory": "Storage shelves & shelving units",
-  "category1": "Storage & organization",
+  "category1": "",
   "category2": "Shelving furniture",
   "category3": "Storage shelves & shelving units",
-  "category4": "KALLAX / LINNMONWorkstation",
+  "category4": "",
   "categoryTree": [
-    "Storage & organization",
     "Shelving furniture",
-    "Storage shelves & shelving units",
-    "KALLAX / LINNMONWorkstation"
+    "Storage shelves & shelving units"
   ],
-  "localImage": "images/09481698.jpg",
-  "imageUrl": "/product_index/images/09481698.jpg",
+  "localImage": "mock-products/09481698.jpg",
+  "imageUrl": "/static/mock-products/09481698.jpg",
   "detailUrl": "/static/shop.html#/p/09481698",
-  "rank": 1,
-  "score": 0.7445
+  "rank": 4,
+  "score": 0.9574,
+  "rawScore": 0.8574,
+  "labelBoost": 0.1
 }

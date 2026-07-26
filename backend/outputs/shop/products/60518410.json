@@ -1,14 +1,11 @@
 {
   "productId": "60518410",
   "sku": "60518410",
-  "title": "TVÄRHAND table lamp",
-  "productName": "TVÄRHAND table lamp",
-  "description": "TVÄRHAND table lamp, black/bamboo In simplicity lives beauty. A fitting expression for this table lamp in curved metal with a bamboo base as a nice contrast. Add a decorative light bulb that you like to make it complete.",
-  "features": [
-    "Light bulb sold separately. recommends LUNNOM LED bulb E26 globe clear glass.",
-    "Special waste handling may be required. Please contact your local authorities for more information."
-  ],
-  "materialAndCare": "Base: Bamboo, Clear polyurethane/acrylic lacquer; Tube/ Lampholder cup: Steel, Epoxy/polyester powder coating",
+  "title": "TVÄRHAND table lamp, black/bamboo",
+  "productName": "TVÄRHAND table lamp, black/bamboo",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -17,19 +14,19 @@
   "currency": "USD",
   "category": "Lamps & light fixtures",
   "subcategory": "Table lamps",
-  "category1": "Lighting",
+  "category1": "",
   "category2": "Lamps & light fixtures",
   "category3": "Table lamps",
-  "category4": "TVÄRHANDTable lamp",
+  "category4": "",
   "categoryTree": [
-    "Lighting",
     "Lamps & light fixtures",
-    "Table lamps",
-    "TVÄRHANDTable lamp"
+    "Table lamps"
   ],
-  "localImage": "images/60518410.jpg",
-  "imageUrl": "/product_index/images/60518410.jpg",
+  "localImage": "mock-products/60518410.jpg",
+  "imageUrl": "/static/mock-products/60518410.jpg",
   "detailUrl": "/static/shop.html#/p/60518410",
-  "rank": 1,
-  "score": 0.7213
+  "rank": 3,
+  "score": 0.9181,
+  "rawScore": 0.7681,
+  "labelBoost": 0.15
 }

@@ -1,13 +1,11 @@
 {
   "productId": "19484267",
   "sku": "19484267",
-  "title": "POÄNG armchair and ottoman",
-  "productName": "POÄNG armchair and ottoman",
-  "description": "POÄNG armchair and ottoman, birch veneer/Hillared beige 10-year limited warranty. Read about the terms in the limited warranty brochure. A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room. The high back provides good support for your neck.",
-  "features": [
-    "Possible to separate for recycling or energy recovery if available in your community."
-  ],
-  "materialAndCare": "Supporting fabric: 100 % polypropylene; Back crossbar/ Seat crossbar/ Rail/ Backrest frame/ Seat frame/ Armrest frame: Layer-glued wood veneer, Birch veneer, Clear lacquer; Layer-glued wood veneer, Birch veneer, Clear lacquer; Fabric: 55 % cotton, 25 % polyester (100% recycled), 12 % viscose/rayon, 8 % linen; Wadding: 100% polyester (min. 80% recycled); Comfort filling: Polyurethane foam., Polyurethane foam 2.2 lb/cu.ft.; Lining, underside: 100 % polypropylene; Fabric: 55 % cotton, 25 % polyester (100% recycled), 12 % viscose/rayon, 8 % linen; Wadding: 100% polyester (min. 80% recycled); Comfort filling: Polyurethane foam 2.2 lb/cu.ft.; Lining, underside: 100 % polypropylene",
+  "title": "POÄNG armchair and ottoman, birch veneer/Hillared beige",
+  "productName": "POÄNG armchair and ottoman, birch veneer/Hillared beige",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -16,19 +14,19 @@
   "currency": "USD",
   "category": "Armchairs & accent chairs",
   "subcategory": "Fabric armchairs",
-  "category1": "Sofas & armchairs",
+  "category1": "",
   "category2": "Armchairs & accent chairs",
   "category3": "Fabric armchairs",
-  "category4": "POÄNGArmchair and ottoman",
+  "category4": "",
   "categoryTree": [
-    "Sofas & armchairs",
     "Armchairs & accent chairs",
-    "Fabric armchairs",
-    "POÄNGArmchair and ottoman"
+    "Fabric armchairs"
   ],
-  "localImage": "images/19484267.jpg",
-  "imageUrl": "/product_index/images/19484267.jpg",
+  "localImage": "mock-products/19484267.jpg",
+  "imageUrl": "/static/mock-products/19484267.jpg",
   "detailUrl": "/static/shop.html#/p/19484267",
-  "rank": 4,
-  "score": 0.8987
+  "rank": 2,
+  "score": 0.9447,
+  "rawScore": 0.8447,
+  "labelBoost": 0.1
 }

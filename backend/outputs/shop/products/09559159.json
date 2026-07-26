@@ -1,41 +1,13 @@
-{
-  "productId": "09559159",
-  "sku": "09559159",
-  "title": "PAX / FORSAND wardrobe combination",
-  "productName": "PAX / FORSAND wardrobe combination",
-  "description": "PAX / FORSAND wardrobe combination, white/white, 291/2x235/8x931/8\" This is a tiny wardrobe with smart solutions. A divider gives you space for long garments on the side, maximizing the space left with trays and drawers.",
-  "features": [
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.",
-    "Two people are needed to assemble this furniture.",
-    "The frame can be assembled in an upright position if your ceiling height is a minimum of 93¼\". Follow the assembly instructions in the package.",
-    "Interior accessories that help you organize inside your wardrobe are sold separately.",
-    "Knobs and handles are sold separately.",
-    "Hinges are needed for this product. They are included in the price but are picked up separately.",
-    "The clothes rail holds about 30 shirts on hangers."
-  ],
-  "materialAndCare": "Fiberboard, Particleboard, Paper foil; Board on frame: Particleboard, Fiberboard, Plastic edging, Paper foil; Filling material: Honeycomb structure paper filling (100% recycled); Board on frame: Particleboard, Fiberboard, Plastic edging, Acrylic paint; Filling material: Honeycomb structure paper filling (100% recycled); Main parts: Steel, Nickel plated; Plastic parts: Acetal plastic; Steel, Epoxy/polyester powder coating; Partition: Particle- and fiberboard with honeycomb paper filling (100% recycled paper), Paper foil, Plastic edging, Plastic edging; Bottom panel: Particleboard, Paper foil; Top panel: Particleboard, Paper foil, Plastic edging, Plastic edging; Drawer front: Particleboard, Paper foil, Plastic edging, Plastic edging; Drawer side/ Drawer back: Particleboard, Paper foil; Drawer bottom: Fiberboard, Acrylic paint; Particleboard, Paper foil; Drawer front/ Drawer side: Fiberboard, Paper foil, Plastic edging; Drawer back/ Drawer bottom: Fiberboard, Paper foil",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 560.0,
-  "currency": "USD",
-  "category": "Storage solution systems",
-  "subcategory": "PAX system",
-  "category1": "Storage & organization",
-  "category2": "Storage solution systems",
-  "category3": "PAX system",
-  "category4": "PAX wardrobes with doors",
-  "categoryTree": [
-    "Storage & organization",
-    "Storage solution systems",
-    "PAX system",
-    "PAX wardrobes with doors",
-    "PAX / FORSANDWardrobe combination"
-  ],
-  "localImage": "images/09559159.jpg",
-  "imageUrl": "/product_index/images/09559159.jpg",
-  "detailUrl": "/static/shop.html#/p/09559159",
-  "rank": 5,
-  "score": 0.6345
+﻿{
+    "currency":  "USD",
+    "sku":  "09559159",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/09559159.jpg",
+    "price":  560,
+    "imageUrl":  "/static/mock-products/09559159.jpg",
+    "category":  "Storage solution systems",
+    "productId":  "09559159",
+    "detailUrl":  "/static/shop.html#/p/09559159",
+    "title":  "PAX / FORSAND wardrobe combination",
+    "productName":  "PAX / FORSAND wardrobe combination"
 }

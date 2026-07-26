@@ -1,17 +1,11 @@
 {
   "productId": "79491000",
   "sku": "79491000",
-  "title": "BERGSHULT / KROKSHULT wall shelf",
-  "productName": "BERGSHULT / KROKSHULT wall shelf",
-  "description": "BERGSHULT / KROKSHULT wall shelf, walnut effect/anthracite, 311/2x113/4\" With this wall shelf, you can use your empty walls to display your things. Use it in the bedroom, as a sideboard in the living room, a display shelf by the dining table – or whatever you decide.",
-  "features": [
-    "The shelf carries a max. of 22 lbs when properly mounted on the wall.",
-    "Max. load refers to the max. weight before the shelf is risking to slant. Distribute the weight evenly on the shelf to avoid the risk of slanting.",
-    "Screws are not included.",
-    "If you are uncertain about what type of mounting devices to use, please contact your local hardware store.",
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home."
-  ],
-  "materialAndCare": "Particleboard, Paper foil, Plastic edging, Plastic edging; Steel, Steel, Epoxy/polyester powder coating",
+  "title": "BERGSHULT / KROKSHULT wall shelf, walnut effect/anthracite, 311/2x113/4\"",
+  "productName": "BERGSHULT / KROKSHULT wall shelf, walnut effect/anthracite, 311/2x113/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -20,20 +14,19 @@
   "currency": "USD",
   "category": "Shelving furniture",
   "subcategory": "Wall shelves",
-  "category1": "Storage & organization",
+  "category1": "",
   "category2": "Shelving furniture",
   "category3": "Wall shelves",
-  "category4": "Complete wall shelves",
+  "category4": "",
   "categoryTree": [
-    "Storage & organization",
     "Shelving furniture",
-    "Wall shelves",
-    "Complete wall shelves",
-    "BERGSHULT / KROKSHULTWall shelf"
+    "Wall shelves"
   ],
-  "localImage": "images/79491000.jpg",
-  "imageUrl": "/product_index/images/79491000.jpg",
+  "localImage": "mock-products/79491000.jpg",
+  "imageUrl": "/static/mock-products/79491000.jpg",
   "detailUrl": "/static/shop.html#/p/79491000",
-  "rank": 7,
-  "score": 0.8871
+  "rank": 4,
+  "score": 0.9195,
+  "rawScore": 0.8195,
+  "labelBoost": 0.1
 }

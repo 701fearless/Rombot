@@ -1,36 +1,13 @@
-{
-  "productId": "60578017",
-  "sku": "60578017",
-  "title": "RINGKLOCKA rug",
-  "productName": "RINGKLOCKA rug",
-  "description": "RINGKLOCKA rug, low pile, green/off-white, 7'10\"x9'10\" A satellite view of Earth or a map of the archipelago? The green and off-white abstract pattern is made with a mix of high and low piles creating a tactile expression that sparks your imagination.",
-  "features": [
-    "To ensure you are satisfied with the size of the rug once you get it home, we recommend that you measure the intended floor space for your rug before you buy it.",
-    "You will need 2 STOPP FILT rug underlay with anti-slip (5'5\"x7'9\") for this rug. Trim if necessary.",
-    "This rug fits with a 2-3 seat sofa, but can also fit other size sofas depending on how you place it."
-  ],
-  "materialAndCare": "Use surface: 81 % polypropylene, 19% polyester (min. 90% recycled); Backing: Synthetic rubber",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 299.99,
-  "currency": "USD",
-  "category": "Rugs",
-  "subcategory": "Medium, large and extra-large rugs",
-  "category1": "Flooring, rugs & mats",
-  "category2": "Rugs",
-  "category3": "Medium, large and extra-large rugs",
-  "category4": "RINGKLOCKARug, low pile",
-  "categoryTree": [
-    "Flooring, rugs & mats",
-    "Rugs",
-    "Medium, large and extra-large rugs",
-    "RINGKLOCKARug, low pile"
-  ],
-  "localImage": "images/60578017.jpg",
-  "imageUrl": "/product_index/images/60578017.jpg",
-  "detailUrl": "/static/shop.html#/p/60578017",
-  "rank": 3,
-  "score": 0.6801
+﻿{
+    "currency":  "USD",
+    "sku":  "60578017",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/60578017.jpg",
+    "price":  299.99,
+    "imageUrl":  "/static/mock-products/60578017.jpg",
+    "category":  "Rugs",
+    "productId":  "60578017",
+    "detailUrl":  "/static/shop.html#/p/60578017",
+    "title":  "RINGKLOCKA rug",
+    "productName":  "RINGKLOCKA rug"
 }

@@ -1,16 +1,11 @@
 {
   "productId": "20381503",
   "sku": "20381503",
-  "title": "SILVERHÖJDEN Frame",
-  "productName": "SILVERHÖJDEN Frame",
-  "description": "SILVERHÖJDEN Frame, gold, 12x16\". Decorate with pictures you love. This frame has a matt metal-like finish and comes in many sizes, perfect for a picture wall.",
-  "features": [
-    "This frame fits with a picture that has dimensions 8¼x11¾\" if you use it with the mat, and it fits with a picture that has dimensions 12¼x16⅛\" if you choose to use the frame without the mat.",
-    "Mat included.",
-    "The mat will not turn yellow since it is acid-free.",
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home."
-  ],
-  "materialAndCare": "Mat: Paper; Frame: Fiberboard, Paper foil; Front protection: Polystyrene",
+  "title": "SILVERHÖJDEN Frame, gold, 12x16\"",
+  "productName": "SILVERHÖJDEN Frame, gold, 12x16\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -19,19 +14,19 @@
   "currency": "USD",
   "category": "Wall décor",
   "subcategory": "Picture & photo frames",
-  "category1": "Home decor & accessories",
+  "category1": "",
   "category2": "Wall décor",
   "category3": "Picture & photo frames",
-  "category4": "SILVERHÖJDENFrame",
+  "category4": "",
   "categoryTree": [
-    "Home decor & accessories",
     "Wall décor",
-    "Picture & photo frames",
-    "SILVERHÖJDENFrame"
+    "Picture & photo frames"
   ],
-  "localImage": "images/20381503.jpg",
-  "imageUrl": "/product_index/images/20381503.jpg",
+  "localImage": "mock-products/20381503.jpg",
+  "imageUrl": "/static/mock-products/20381503.jpg",
   "detailUrl": "/static/shop.html#/p/20381503",
   "rank": 2,
-  "score": 0.6805
+  "score": 0.902,
+  "rawScore": 0.752,
+  "labelBoost": 0.15
 }

@@ -1,14 +1,11 @@
 {
   "productId": "09483391",
   "sku": "09483391",
-  "title": "BILLY bookcase comb w extension units",
-  "productName": "BILLY bookcase comb w extension units",
-  "description": "BILLY bookcase comb w extension units, dark brown oak effect, 471/4x11x931/4\" BILLY bookcase is a beloved icon that, thanks to its versatility, can be used in many ways. This solution with extension units utilises your vertical storage space and adds a stylish look to the room.",
-  "features": [
-    "Keep in mind that you need enough space between the top of the furniture and the ceiling to be able to anchor the product to the wall.",
-    "Product is possible to recycle or use for energy recovery, if available in your community."
-  ],
-  "materialAndCare": "Main parts/ Side panel: Particleboard, Paper foil, Plastic edging; Plinth front: Particleboard, Paper foil; Back: Fiberboard, Paint, Paper foil; Top panel: Particleboard, Paper foil, Plastic edging, Plastic edging, Paper foil; Side panel: Particleboard, Paper foil, Plastic edging, Plastic edging, Paper foil, Paper edging; Back: Particleboard, Paper foil, Acrylic paint",
+  "title": "BILLY bookcase comb w extension units, dark brown oak effect, 471/4x11x931/4\"",
+  "productName": "BILLY bookcase comb w extension units, dark brown oak effect, 471/4x11x931/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -17,19 +14,19 @@
   "currency": "USD",
   "category": "Shelving furniture",
   "subcategory": "Bookshelves & bookcases",
-  "category1": "Storage & organization",
+  "category1": "",
   "category2": "Shelving furniture",
   "category3": "Bookshelves & bookcases",
-  "category4": "BILLYBookcase comb w extension units",
+  "category4": "",
   "categoryTree": [
-    "Storage & organization",
     "Shelving furniture",
-    "Bookshelves & bookcases",
-    "BILLYBookcase comb w extension units"
+    "Bookshelves & bookcases"
   ],
-  "localImage": "images/09483391.jpg",
-  "imageUrl": "/product_index/images/09483391.jpg",
+  "localImage": "mock-products/09483391.jpg",
+  "imageUrl": "/static/mock-products/09483391.jpg",
   "detailUrl": "/static/shop.html#/p/09483391",
-  "rank": 6,
-  "score": 0.925
+  "rank": 4,
+  "score": 0.958,
+  "rawScore": 0.858,
+  "labelBoost": 0.1
 }

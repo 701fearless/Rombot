@@ -3,15 +3,9 @@
   "sku": "10461944",
   "title": "FÖRNUFTIG filter for particle removal",
   "productName": "FÖRNUFTIG filter for particle removal",
-  "description": "FÖRNUFTIG filter for particle removal FÖRNUFTIG filter is good for particle removal absorbs airborne particles such as dust, pollen and cigarette smoke. The filter is easy to install and remove to replace with a new filter.",
-  "features": [
-    "Only to be used with FÖRNUFTIG air purifier.",
-    "Can be used alone or together with FÖRNUFTIG filter for gas cleaning.",
-    "The particle filter is optimized to filter away approximately 99.5% of smaller airborne particles such as PM2.5 particles, dust, and pollen.",
-    "PM2.5 are small inhalable particles, that measure 0.1-2.5 micrometers.",
-    "The particle filter is tested according to EN 1822-1 and ISO 29463-3 which corresponds to class EPA12."
-  ],
-  "materialAndCare": "Base: Non-woven polypropylene; Frame: PET plastic",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -20,18 +14,19 @@
   "currency": "USD",
   "category": "Air purifiers & filters",
   "subcategory": "FÖRNUFTIGFilter for particle removal",
-  "category1": "Home electronics",
+  "category1": "",
   "category2": "Air purifiers & filters",
   "category3": "FÖRNUFTIGFilter for particle removal",
   "category4": "",
   "categoryTree": [
-    "Home electronics",
     "Air purifiers & filters",
     "FÖRNUFTIGFilter for particle removal"
   ],
-  "localImage": "images/10461944.jpg",
-  "imageUrl": "/product_index/images/10461944.jpg",
+  "localImage": "mock-products/10461944.jpg",
+  "imageUrl": "/static/mock-products/10461944.jpg",
   "detailUrl": "/static/shop.html#/p/10461944",
-  "rank": 2,
-  "score": 0.9208
+  "rank": 4,
+  "score": 0.8436,
+  "rawScore": 0.8436,
+  "labelBoost": 0.0
 }

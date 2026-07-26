@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "50555281",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/50555281.jpg",
+    "price":  99.99,
+    "imageUrl":  "/static/mock-products/50555281.jpg",
+    "category":  "Rugs",
+    "productId":  "50555281",
+    "detailUrl":  "/static/shop.html#/p/50555281",
+    "title":  "TELEGRAFLINJE rug",
+    "productName":  "TELEGRAFLINJE rug"
+}

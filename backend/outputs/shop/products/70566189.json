@@ -1,0 +1,32 @@
+{
+  "productId": "70566189",
+  "sku": "70566189",
+  "title": "LOMMARP TV unit, black, 625/8x173/4x317/8\"",
+  "productName": "LOMMARP TV unit, black, 625/8x173/4x317/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 399.99,
+  "currency": "USD",
+  "category": "TV & media furniture",
+  "subcategory": "TV stands & benches",
+  "category1": "",
+  "category2": "TV & media furniture",
+  "category3": "TV stands & benches",
+  "category4": "",
+  "categoryTree": [
+    "TV & media furniture",
+    "TV stands & benches"
+  ],
+  "localImage": "mock-products/70566189.jpg",
+  "imageUrl": "/static/mock-products/70566189.jpg",
+  "detailUrl": "/static/shop.html#/p/70566189",
+  "rank": 2,
+  "score": 1.0117,
+  "rawScore": 0.8617,
+  "labelBoost": 0.15
+}

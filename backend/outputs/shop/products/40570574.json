@@ -1,0 +1,32 @@
+{
+  "productId": "40570574",
+  "sku": "40570574",
+  "title": "SOLVINDEN LED table lamp, battery operated/outdoor white, 77/8\"",
+  "productName": "SOLVINDEN LED table lamp, battery operated/outdoor white, 77/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 17.99,
+  "currency": "USD",
+  "category": "Outdoor lighting",
+  "subcategory": "Outdoor table lamps",
+  "category1": "",
+  "category2": "Outdoor lighting",
+  "category3": "Outdoor table lamps",
+  "category4": "",
+  "categoryTree": [
+    "Outdoor lighting",
+    "Outdoor table lamps"
+  ],
+  "localImage": "mock-products/40570574.jpg",
+  "imageUrl": "/static/mock-products/40570574.jpg",
+  "detailUrl": "/static/shop.html#/p/40570574",
+  "rank": 4,
+  "score": 0.8349,
+  "rawScore": 0.7349,
+  "labelBoost": 0.1
+}

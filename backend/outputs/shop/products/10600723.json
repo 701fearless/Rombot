@@ -1,0 +1,32 @@
+{
+  "productId": "10600723",
+  "sku": "10600723",
+  "title": "GLADELIG bowl, blue, 4 ½\"",
+  "productName": "GLADELIG bowl, blue, 4 ½\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 3.99,
+  "currency": "USD",
+  "category": "Dinnerware",
+  "subcategory": "Bowls",
+  "category1": "",
+  "category2": "Dinnerware",
+  "category3": "Bowls",
+  "category4": "",
+  "categoryTree": [
+    "Dinnerware",
+    "Bowls"
+  ],
+  "localImage": "mock-products/10600723.jpg",
+  "imageUrl": "/static/mock-products/10600723.jpg",
+  "detailUrl": "/static/shop.html#/p/10600723",
+  "rank": 3,
+  "score": 0.8296,
+  "rawScore": 0.7796,
+  "labelBoost": 0.05
+}

@@ -12,6 +12,7 @@ room_scan_standalone/
 
 # Local video assets / large demo media
 vedios/
+# Full IKEA / CLIP image database — DO NOT commit
 backend/data/product_index/
 
 # Heavy generated assets
@@ -57,6 +58,8 @@ frontend/coverage/
 frontend/playwright-report/
 frontend/test-results/
 frontend/*.tsbuildinfo
+frontend/.vite/
+frontend/*.log
 
 # Curated floorplan fixtures are source data, not runtime outputs.
 !backend/sample_data/floorplans/
@@ -72,3 +75,29 @@ frontend/*.tsbuildinfo
 !backend/outputs/videos/2/generated/*/generated_model.glb
 
 backend/outputs/
+
+# Feed 搜同款本地缓存（预热结果）— 提交；不含完整 product_index
+!backend/outputs/shop/
+!backend/outputs/shop/feed_clip_cache/
+!backend/outputs/shop/feed_clip_cache/**/
+!backend/outputs/shop/feed_clip_cache/**/*.json
+!backend/outputs/shop/products/
+!backend/outputs/shop/products/**/
+!backend/outputs/shop/products/**/*.json
+backend/outputs/shop/search_results.jsonl
+backend/outputs/shop/*.log
+backend/outputs/shop/**/*.log
+
+# Materialized product thumbs for offline Feed demo
+!backend/static/mock-products/
+!backend/static/mock-products/**
+!backend/static/mock-products/**/*.jpg
+!backend/static/mock-products/**/*.jpeg
+!backend/static/mock-products/**/*.png
+!backend/static/mock-products/**/*.webp
+!frontend/public/mock-products/
+!frontend/public/mock-products/**
+!frontend/public/mock-products/**/*.jpg
+!frontend/public/mock-products/**/*.jpeg
+!frontend/public/mock-products/**/*.png
+!frontend/public/mock-products/**/*.webp

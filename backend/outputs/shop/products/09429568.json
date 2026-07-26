@@ -1,11 +1,11 @@
 {
   "productId": "09429568",
   "sku": "09429568",
-  "title": "TROTTEN desk",
-  "productName": "TROTTEN desk",
-  "description": "TROTTEN desk, beige/anthracite, 471/4x271/2\" Small desk that fits in every space – at your office or at home. The A shape of the legs is a smart design feature that allows you to use all the space under the desk for your office chair and storage.",
+  "title": "TROTTEN desk, beige/anthracite, 471/4x271/2\"",
+  "productName": "TROTTEN desk, beige/anthracite, 471/4x271/2\"",
+  "description": "",
   "features": [],
-  "materialAndCare": "Particleboard, Melamine foil, Plastic edging; Leg/ Midbeam/ Bracket: Steel, Epoxy/polyester powder coating; Plastic parts: Polypropylene",
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -14,21 +14,19 @@
   "currency": "USD",
   "category": "Desks & computer desks",
   "subcategory": "Table & desk systems",
-  "category1": "Desk & desk chairs",
+  "category1": "",
   "category2": "Desks & computer desks",
   "category3": "Table & desk systems",
-  "category4": "TROTTEN system",
+  "category4": "",
   "categoryTree": [
-    "Desk & desk chairs",
     "Desks & computer desks",
-    "Table & desk systems",
-    "TROTTEN system",
-    "TROTTEN office desks & tables",
-    "TROTTENDesk"
+    "Table & desk systems"
   ],
-  "localImage": "images/09429568.jpg",
-  "imageUrl": "/product_index/images/09429568.jpg",
+  "localImage": "mock-products/09429568.jpg",
+  "imageUrl": "/static/mock-products/09429568.jpg",
   "detailUrl": "/static/shop.html#/p/09429568",
-  "rank": 2,
-  "score": 0.9171
+  "rank": 3,
+  "score": 0.9435,
+  "rawScore": 0.8435,
+  "labelBoost": 0.1
 }

@@ -1,19 +1,11 @@
 {
   "productId": "00534168",
   "sku": "00534168",
-  "title": "BERGSHULT shelf",
-  "productName": "BERGSHULT shelf",
-  "description": "BERGSHULT shelf, walnut effect, 311/2x77/8\" This walnut-patterned shelf helps you create a storage solution with a few, simple steps – and change the style anytime. The edge on one side is beveled while the other is smooth, just turn it and see!",
-  "features": [
-    "Complete with 2 brackets, placed at least 27½\" apart. Sold separately.",
-    "Brackets are sold separately.",
-    "The shelf carries a max. of 22 lbs when properly mounted on the wall.",
-    "Max. load refers to the max. weight before the shelf is risking to slant. Distribute the weight evenly on the shelf to avoid the risk of slanting.",
-    "Screws are not included.",
-    "If you are uncertain about what type of mounting devices to use, please contact your local hardware store.",
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home."
-  ],
-  "materialAndCare": "Particleboard, Paper foil, Plastic edging, Plastic edging",
+  "title": "BERGSHULT shelf, walnut effect, 311/2x77/8\"",
+  "productName": "BERGSHULT shelf, walnut effect, 311/2x77/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -22,20 +14,19 @@
   "currency": "USD",
   "category": "Shelving furniture",
   "subcategory": "Wall shelves",
-  "category1": "Storage & organization",
+  "category1": "",
   "category2": "Shelving furniture",
   "category3": "Wall shelves",
-  "category4": "Shelves",
+  "category4": "",
   "categoryTree": [
-    "Storage & organization",
     "Shelving furniture",
-    "Wall shelves",
-    "Shelves",
-    "BERGSHULTShelf"
+    "Wall shelves"
   ],
-  "localImage": "images/00534168.jpg",
-  "imageUrl": "/product_index/images/00534168.jpg",
+  "localImage": "mock-products/00534168.jpg",
+  "imageUrl": "/static/mock-products/00534168.jpg",
   "detailUrl": "/static/shop.html#/p/00534168",
-  "rank": 2,
-  "score": 0.8928
+  "rank": 1,
+  "score": 0.9139,
+  "rawScore": 0.8139,
+  "labelBoost": 0.1
 }

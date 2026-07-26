@@ -1,41 +1,13 @@
-{
-  "productId": "09439384",
-  "sku": "09439384",
-  "title": "SEKTION wall cabinet with glass door",
-  "productName": "SEKTION wall cabinet with glass door",
-  "description": "SEKTION wall cabinet with glass door, white/Vedhamn oak, 18x15x40\" SEKTION kitchen system gives you endless possibilities to design your dream kitchen. Paired with robust VEDHAMN glass doors in oak, your kitchen gets a natural, warm look that makes you feel right at home.",
-  "features": [
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.",
-    "Suspension rail sold separately.",
-    "To be finished with legs and plinth, sold separately.",
-    "The hinge is adjustable in height, depth and width.",
-    "Requires a knob or a handle",
-    "To be completed with SEKTION suspension rail for mounting the cabinet to the wall."
-  ],
-  "materialAndCare": "Frame: Solid oak, Tinted clear acrylic lacquer; Glass: Tempered glass; Frame: Particleboard, Melamine foil, Plastic edging; Back: Fiberboard, Acrylic paint; Tempered glass, Tempered glass; Steel, Nickel plated",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 360.0,
-  "currency": "USD",
-  "category": "Kitchen systems",
-  "subcategory": "SEKTION kitchen",
-  "category1": "Kitchen, appliances & supplies",
-  "category2": "Kitchen systems",
-  "category3": "SEKTION kitchen",
-  "category4": "SEKTION kitchen cabinets",
-  "categoryTree": [
-    "Kitchen, appliances & supplies",
-    "Kitchen systems",
-    "SEKTION kitchen",
-    "SEKTION kitchen cabinets",
-    "Wall cabinets",
-    "SEKTIONWall cabinet with glass door"
-  ],
-  "localImage": "images/09439384.jpg",
-  "imageUrl": "/product_index/images/09439384.jpg",
-  "detailUrl": "/static/shop.html#/p/09439384",
-  "rank": 4,
-  "score": 0.7424
+﻿{
+    "currency":  "USD",
+    "sku":  "09439384",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/09439384.jpg",
+    "price":  360,
+    "imageUrl":  "/static/mock-products/09439384.jpg",
+    "category":  "Kitchen systems",
+    "productId":  "09439384",
+    "detailUrl":  "/static/shop.html#/p/09439384",
+    "title":  "SEKTION wall cabinet with glass door",
+    "productName":  "SEKTION wall cabinet with glass door"
 }

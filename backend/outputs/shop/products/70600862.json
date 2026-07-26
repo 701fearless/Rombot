@@ -1,13 +1,11 @@
 {
   "productId": "70600862",
   "sku": "70600862",
-  "title": "FEJKA artificial potted plant",
-  "productName": "FEJKA artificial potted plant",
-  "description": "FEJKA artificial potted plant, indoor/outdoor Winterbourn, 7 ½\" FEJKA artificial plants don’t require a green thumb to spruce up at home. Great for places with little light or where you may forget to water. And the plastic is made with a minimum of 50% recycled plastic!",
-  "features": [
-    "Suitable for indoor and outdoor use."
-  ],
-  "materialAndCare": "Leaf: EVA plastic, Polyethylene plastic (min. 50% recycled); Stem: Steel, Polyethylene plastic (min. 50% recycled), Paint; Inner plant pot: Polypropylene plastic (min. 70% recycled), Non-potable water, Polyethylene",
+  "title": "FEJKA artificial potted plant, indoor/outdoor Winterbourn, 7 ½\"",
+  "productName": "FEJKA artificial potted plant, indoor/outdoor Winterbourn, 7 ½\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -16,20 +14,19 @@
   "currency": "USD",
   "category": "Plants and flowers",
   "subcategory": "Artificial plants & flowers",
-  "category1": "Plants & planters",
+  "category1": "",
   "category2": "Plants and flowers",
   "category3": "Artificial plants & flowers",
-  "category4": "Artificial indoor trees & faux floor plants",
+  "category4": "",
   "categoryTree": [
-    "Plants & planters",
     "Plants and flowers",
-    "Artificial plants & flowers",
-    "Artificial indoor trees & faux floor plants",
-    "FEJKAArtificial potted plant"
+    "Artificial plants & flowers"
   ],
-  "localImage": "images/70600862.jpg",
-  "imageUrl": "/product_index/images/70600862.jpg",
+  "localImage": "mock-products/70600862.jpg",
+  "imageUrl": "/static/mock-products/70600862.jpg",
   "detailUrl": "/static/shop.html#/p/70600862",
-  "rank": 1,
-  "score": 0.8769
+  "rank": 4,
+  "score": 0.8988,
+  "rawScore": 0.7988,
+  "labelBoost": 0.1
 }

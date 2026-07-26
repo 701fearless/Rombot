@@ -1,0 +1,32 @@
+{
+  "productId": "79534641",
+  "sku": "79534641",
+  "title": "HAVSTA shelving unit with base, gray-beige, 317/8x145/8x523/4\"",
+  "productName": "HAVSTA shelving unit with base, gray-beige, 317/8x145/8x523/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 270.0,
+  "currency": "USD",
+  "category": "Shelving furniture",
+  "subcategory": "Storage shelves & shelving units",
+  "category1": "",
+  "category2": "Shelving furniture",
+  "category3": "Storage shelves & shelving units",
+  "category4": "",
+  "categoryTree": [
+    "Shelving furniture",
+    "Storage shelves & shelving units"
+  ],
+  "localImage": "mock-products/79534641.jpg",
+  "imageUrl": "/static/mock-products/79534641.jpg",
+  "detailUrl": "/static/shop.html#/p/79534641",
+  "rank": 1,
+  "score": 0.9477,
+  "rawScore": 0.8477,
+  "labelBoost": 0.1
+}

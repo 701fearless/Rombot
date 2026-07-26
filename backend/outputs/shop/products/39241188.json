@@ -1,37 +1,13 @@
-{
-  "productId": "39241188",
-  "sku": "39241188",
-  "title": "SONGESAND bed frame with 4 storage boxes",
-  "productName": "SONGESAND bed frame with 4 storage boxes",
-  "description": "SONGESAND bed frame with 4 storage boxes, brown/Lönset, Full/Double A sturdy bed frame with soft, profile edges and high legs. A classic shape that will last for many years. Also, there are spacious storage boxes under the bed where you can store bedding or clothes.",
-  "features": [
-    "LÖNSET slatted bed base is included in the price, but is packaged separately.",
-    "SKORVA midbeam is included in the price but packaged separately. It is required for the stability of the bed frame and to keep the mattress in place.",
-    "Mattress and bedlinens are sold separately.",
-    "Coordinates with other furniture in the SONGESAND series."
-  ],
-  "materialAndCare": "Leg/ Top rail: Fiberboard, Paper foil, Plastic edging; Bed end filling/ Rail/ Bedside: Particleboard, Paper foil, Plastic edging; Drawer front/ Drawer back/ Drawer sides/ Partition/ Rail: Particleboard, Paper foil, Plastic edging; Drawer bottom: Fiberboard, Paint, Paper foil; Galvanized steel; Bed base slats: Layer-glued wood veneer, Paper foil, Adhesive resin as coating; Ribbon: 100 % polypropylene; Slat holders: Thermoplastic elastomer; Bed base: Beech plywood, Birch plywood",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 529.0,
-  "currency": "USD",
-  "category": "Beds",
-  "subcategory": "Bed frames with storage",
-  "category1": "Beds & mattresses",
-  "category2": "Beds",
-  "category3": "Bed frames with storage",
-  "category4": "SONGESANDBed frame with 4 storage boxes",
-  "categoryTree": [
-    "Beds & mattresses",
-    "Beds",
-    "Bed frames with storage",
-    "SONGESANDBed frame with 4 storage boxes"
-  ],
-  "localImage": "images/39241188.jpg",
-  "imageUrl": "/product_index/images/39241188.jpg",
-  "detailUrl": "/static/shop.html#/p/39241188",
-  "rank": 3,
-  "score": 0.9239
+﻿{
+    "productId":  "39241188",
+    "sku":  "39241188",
+    "title":  "SONGESAND bed frame with 4 storage boxes",
+    "productName":  "SONGESAND bed frame with 4 storage boxes",
+    "price":  529,
+    "currency":  "USD",
+    "category":  "Beds",
+    "imageUrl":  "/static/mock-products/39241188.jpg",
+    "localImage":  "mock-products/39241188.jpg",
+    "detailUrl":  "/static/shop.html#/p/39241188",
+    "description":  "本地演示商品（品类对齐写死）"
 }

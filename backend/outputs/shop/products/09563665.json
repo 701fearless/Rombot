@@ -1,36 +1,13 @@
-{
-  "productId": "09563665",
-  "sku": "09563665",
-  "title": "LAGKAPTEN / SPÄND desk",
-  "productName": "LAGKAPTEN / SPÄND desk",
-  "description": "LAGKAPTEN / SPÄND desk, white/anthracite, 551/8x235/8\" Mix and match the table top with legs that you like – or choose this ready-made combination. The symmetrical square pattern of the table top enhances your decor, without overwhelming it. The plywood-patterned edge band adds to the quality feel.",
-  "features": [
-    "2 touch-and-close fastenings are included."
-  ],
-  "materialAndCare": "Fiberboard, Acrylic paint, Printed acrylic paint, Plastic edging, Honeycomb structure paper filling (min. 70% recycled), Particleboard, Fiberboard; Leg/ Top rail/ Supporting rail/ Tray/ Bracket: Steel, Epoxy/polyester powder coating; Mesh: 100 % polyester (100% recycled); Foot: Polypropylene; End cap: Polyamide; Leg/ Rail/ Mounting plate: Steel, Epoxy/polyester powder coating; Foot: Polypropylene; Hook and loop fastener: Polyamide",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 83.99,
-  "currency": "USD",
-  "category": "Desks & computer desks",
-  "subcategory": "Table & desk systems",
-  "category1": "Desk & desk chairs",
-  "category2": "Desks & computer desks",
-  "category3": "Table & desk systems",
-  "category4": "Table bar system",
-  "categoryTree": [
-    "Desk & desk chairs",
-    "Desks & computer desks",
-    "Table & desk systems",
-    "Table bar system",
-    "Combinations",
-    "LAGKAPTEN / SPÄNDDesk"
-  ],
-  "localImage": "images/09563665.jpg",
-  "imageUrl": "/product_index/images/09563665.jpg",
-  "detailUrl": "/static/shop.html#/p/09563665",
-  "rank": 3,
-  "score": 0.6482
+﻿{
+    "productId":  "09563665",
+    "sku":  "09563665",
+    "title":  "LAGKAPTEN / SPANN desk",
+    "productName":  "LAGKAPTEN / SPANN desk",
+    "price":  83.99,
+    "currency":  "USD",
+    "category":  "Desks \u0026 computer desks",
+    "imageUrl":  "/static/mock-products/09563665.jpg",
+    "localImage":  "mock-products/09563665.jpg",
+    "detailUrl":  "/static/shop.html#/p/09563665",
+    "description":  "本地演示商品（品类对齐写死）"
 }

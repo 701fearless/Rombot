@@ -1,0 +1,32 @@
+{
+  "productId": "00579736",
+  "sku": "00579736",
+  "title": "GULVIAL washcloth, pale gray-green, 12x12\"",
+  "productName": "GULVIAL washcloth, pale gray-green, 12x12\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 3.99,
+  "currency": "USD",
+  "category": "Bathroom textiles",
+  "subcategory": "Towels",
+  "category1": "",
+  "category2": "Bathroom textiles",
+  "category3": "Towels",
+  "category4": "",
+  "categoryTree": [
+    "Bathroom textiles",
+    "Towels"
+  ],
+  "localImage": "mock-products/00579736.jpg",
+  "imageUrl": "/static/mock-products/00579736.jpg",
+  "detailUrl": "/static/shop.html#/p/00579736",
+  "rank": 3,
+  "score": 0.8542,
+  "rawScore": 0.8042,
+  "labelBoost": 0.05
+}

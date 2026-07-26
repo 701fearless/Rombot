@@ -1,13 +1,11 @@
 {
   "productId": "59443265",
   "sku": "59443265",
-  "title": "VISKAFORS loveseat",
-  "productName": "VISKAFORS loveseat",
-  "description": "VISKAFORS loveseat, Lejde gray/green/brown VISKAFORS is a sofa that becomes a statement piece in the room. The classic design has generous, inviting shapes – and when you sink into the deep soft seat, the sofa gives you an embracing feel.",
-  "features": [
-    "Stationary cover."
-  ],
-  "materialAndCare": "Clip: Polypropylene; Fabric: 71 % cotton, 21 % polyester (100% recycled), 8 % viscose/rayon; Frame: Solid wood, Laminated veneer lumber, Plywood, Particleboard, Fiberboard, Polyurethane foam 1.5 lb/cu.ft., Polyurethane foam 1.5 lb/cu.ft., Polyurethane foam 2.0 lb/cu.ft., High-resilience polyurethane foam (cold foam) 2.2 lb/cu.ft.; Solid birch, Tinted lacquer",
+  "title": "VISKAFORS loveseat, Lejde gray/green/brown",
+  "productName": "VISKAFORS loveseat, Lejde gray/green/brown",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -16,19 +14,19 @@
   "currency": "USD",
   "category": "Sofas & sectionals",
   "subcategory": "Loveseats",
-  "category1": "Sofas & armchairs",
+  "category1": "",
   "category2": "Sofas & sectionals",
   "category3": "Loveseats",
-  "category4": "VISKAFORSLoveseat",
+  "category4": "",
   "categoryTree": [
-    "Sofas & armchairs",
     "Sofas & sectionals",
-    "Loveseats",
-    "VISKAFORSLoveseat"
+    "Loveseats"
   ],
-  "localImage": "images/59443265.jpg",
-  "imageUrl": "/product_index/images/59443265.jpg",
+  "localImage": "mock-products/59443265.jpg",
+  "imageUrl": "/static/mock-products/59443265.jpg",
   "detailUrl": "/static/shop.html#/p/59443265",
-  "rank": 8,
-  "score": 0.858
+  "rank": 4,
+  "score": 1.0217,
+  "rawScore": 0.8717,
+  "labelBoost": 0.15
 }

@@ -1,0 +1,32 @@
+{
+  "productId": "30578146",
+  "sku": "30578146",
+  "title": "GÅNGSTIG kitchen mat, flatwoven green/off-white, 2'4\"x5'3\"",
+  "productName": "GÅNGSTIG kitchen mat, flatwoven green/off-white, 2'4\"x5'3\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 19.99,
+  "currency": "USD",
+  "category": "Rugs",
+  "subcategory": "Runners & small rugs",
+  "category1": "",
+  "category2": "Rugs",
+  "category3": "Runners & small rugs",
+  "category4": "",
+  "categoryTree": [
+    "Rugs",
+    "Runners & small rugs"
+  ],
+  "localImage": "mock-products/30578146.jpg",
+  "imageUrl": "/static/mock-products/30578146.jpg",
+  "detailUrl": "/static/shop.html#/p/30578146",
+  "rank": 3,
+  "score": 0.7951,
+  "rawScore": 0.6951,
+  "labelBoost": 0.1
+}

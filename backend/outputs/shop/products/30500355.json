@@ -1,13 +1,11 @@
 {
   "productId": "30500355",
   "sku": "30500355",
-  "title": "BORGEBY coffee table",
-  "productName": "BORGEBY coffee table",
-  "description": "BORGEBY coffee table, black, 271/2\" Let your eyes rest on BORGEBY table. The stylish and airy shape creates a visual calm in the room – and the practical storage under the table top makes it easy to keep all your small things organized.",
-  "features": [
-    "Max load on table top: 44 lbs."
-  ],
-  "materialAndCare": "Panel/ Block: Plywood, Birch veneer, Stain, Clear acrylic lacquer; Side/ Leg: Layer-glued wood veneer, Birch veneer, Stain, Clear acrylic lacquer",
+  "title": "BORGEBY coffee table, black, 271/2\"",
+  "productName": "BORGEBY coffee table, black, 271/2\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -16,19 +14,19 @@
   "currency": "USD",
   "category": "Accent tables",
   "subcategory": "Coffee tables",
-  "category1": "Tables & chairs",
+  "category1": "",
   "category2": "Accent tables",
   "category3": "Coffee tables",
-  "category4": "BORGEBYCoffee table",
+  "category4": "",
   "categoryTree": [
-    "Tables & chairs",
     "Accent tables",
-    "Coffee tables",
-    "BORGEBYCoffee table"
+    "Coffee tables"
   ],
-  "localImage": "images/30500355.jpg",
-  "imageUrl": "/product_index/images/30500355.jpg",
+  "localImage": "mock-products/30500355.jpg",
+  "imageUrl": "/static/mock-products/30500355.jpg",
   "detailUrl": "/static/shop.html#/p/30500355",
-  "rank": 2,
-  "score": 0.3524
+  "rank": 3,
+  "score": 0.9257,
+  "rawScore": 0.8257,
+  "labelBoost": 0.1
 }

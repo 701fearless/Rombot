@@ -1,11 +1,11 @@
 {
   "productId": "90586558",
   "sku": "90586558",
-  "title": "STOCKHOLM 2025 side table",
-  "productName": "STOCKHOLM 2025 side table",
-  "description": "STOCKHOLM 2025 side table, oak veneer dark brown, 215/8\" A tribute to modern Scandinavian design. This round side table has a natural yet elegant expression, with every detail crafted with care. The grain on the table top enhances the surface texture.",
+  "title": "STOCKHOLM 2025 side table, oak veneer dark brown, 215/8\"",
+  "productName": "STOCKHOLM 2025 side table, oak veneer dark brown, 215/8\"",
+  "description": "",
   "features": [],
-  "materialAndCare": "Table top: Particleboard, Oak veneer, Tinted lacquer, Paper foil, Oak veneer; Leg: Solid oak, Tinted lacquer",
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -14,19 +14,19 @@
   "currency": "USD",
   "category": "Accent tables",
   "subcategory": "End tables & side tables",
-  "category1": "Tables & chairs",
+  "category1": "",
   "category2": "Accent tables",
   "category3": "End tables & side tables",
-  "category4": "STOCKHOLM 2025Side table",
+  "category4": "",
   "categoryTree": [
-    "Tables & chairs",
     "Accent tables",
-    "End tables & side tables",
-    "STOCKHOLM 2025Side table"
+    "End tables & side tables"
   ],
-  "localImage": "images/90586558.jpg",
-  "imageUrl": "/product_index/images/90586558.jpg",
+  "localImage": "mock-products/90586558.jpg",
+  "imageUrl": "/static/mock-products/90586558.jpg",
   "detailUrl": "/static/shop.html#/p/90586558",
   "rank": 4,
-  "score": 0.3475
+  "score": 0.9304,
+  "rawScore": 0.8304,
+  "labelBoost": 0.1
 }

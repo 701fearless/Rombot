@@ -1,15 +1,11 @@
 {
   "productId": "89567952",
   "sku": "89567952",
-  "title": "BESTÅ TV bench",
-  "productName": "BESTÅ TV bench",
-  "description": "BESTÅ TV bench, dark gray/Lappviken/Stubbarp dark gray, 707/8x161/2x187/8\" It’s not only the TV that’s smart! BESTÅ TV units combine contemporary good looks with practical function. You get lots of storage space and relief from cables that tend to get messy and gather dust.",
-  "features": [
-    "We recommend a TV bench to be a bit wider than the TV placed on it. This TV bench suits a TV up to 72 inches. You can choose a larger TV if it’s not heavier than the specified max load for the bench’s top.",
-    "The top panel of the TV bench is intended for a TV with a maximum weight of 66 lbs.",
-    "If you choose the soft closing function for your BESTÅ, we recommend complementing the fronts with knobs/handles to make the drawers/cabinets more convenient to open."
-  ],
-  "materialAndCare": "Top panel/ Bottom panel/ Side panel/ Partition: Particle- and fiberboard with honeycomb paper filling (100% recycled paper), Paper foil, Paper foil, Plastic edging, Plastic edging, Plastic edging; Back panel: Fiberboard, Paper foil, Plastic foil; Particleboard, Fiberboard, Paper foil, Plastic edging, Plastic edging, Plastic edging, Paper foil; Drawer back/ Drawer side: Particleboard, Plastic foil; Drawer bottom: Particleboard, Plastic foil, Paper foil; Galvanized steel; Particleboard, Paper foil, Plastic edging; Glass panel: Tempered glass; Front: Fiberboard, Paper foil, Plastic edging; Solid wood, Bamboo, Acrylic paint; Steel, Powder coating; Metal part: Steel, Nickel plated; Plastic parts: Acetal plastic; Tempered glass",
+  "title": "BESTÅ TV bench, dark gray/Lappviken/Stubbarp dark gray, 707/8x161/2x187/8\"",
+  "productName": "BESTÅ TV bench, dark gray/Lappviken/Stubbarp dark gray, 707/8x161/2x187/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -23,9 +19,11 @@
   "category3": "",
   "category4": "",
   "categoryTree": [],
-  "localImage": "images/89567952.jpg",
-  "imageUrl": "/product_index/images/89567952.jpg",
+  "localImage": "mock-products/89567952.jpg",
+  "imageUrl": "/static/mock-products/89567952.jpg",
   "detailUrl": "/static/shop.html#/p/89567952",
-  "rank": 2,
-  "score": 0.9624
+  "rank": 3,
+  "score": 0.9914,
+  "rawScore": 0.8914,
+  "labelBoost": 0.1
 }

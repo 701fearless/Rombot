@@ -34,7 +34,7 @@ export default {
       proxy: [
         {
           context: ['/api', '/sample_data', '/outputs'],
-          target: 'http://127.0.0.1:8000',
+          target: 'http://127.0.0.1:8010',
           changeOrigin: true,
         },
       ],

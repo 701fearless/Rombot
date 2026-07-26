@@ -1,16 +1,11 @@
 {
   "productId": "19440462",
   "sku": "19440462",
-  "title": "BESTÅ storage combination with drawers",
-  "productName": "BESTÅ storage combination with drawers",
-  "description": "BESTÅ storage combination with drawers, Sindvik black/Lappviken/Stubbarp black-brown, 707/8x161/2x297/8\" Go ahead and put things aside for a while! A sideboard combination gives you plenty of space to store things and a surface to create an attractive display - or to unload serving dishes while you eat.",
-  "features": [
-    "Interior accessories that help you organize inside your BESTÅ are sold separately.",
-    "Knobs and handles are sold separately.",
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.",
-    "The push-open function requires a space between the frame and the drawer front to allow the drawer to be pushed to open. The small gap is necessary to allow this function and is not a product deviation."
-  ],
-  "materialAndCare": "Top panel/ Bottom panel/ Side panel: Particle- and fiberboard with honeycomb paper filling (100% recycled paper), Paper foil, Plastic edging; Back panel: Fiberboard, Paper foil, Plastic foil; Tempered glass; Drawer back/ Drawer side: Particleboard, Plastic foil; Drawer bottom: Particleboard, Plastic foil, Paper foil; Galvanized steel; Metal part: Steel, Nickel plated; Plastic parts: Acetal plastic; Particleboard, Paper foil, Plastic edging; Glass panel: Tempered glass; Front: Fiberboard, Paper foil, Plastic edging; Solid wood, Bamboo, Acrylic paint; Particleboard, Clear lacquer, Paper foil, Oak veneer, Tinted lacquer",
+  "title": "BESTÅ storage combination with drawers, Sindvik black/Lappviken/Stubbarp black-brown, 707/8x161/2x297/8\"",
+  "productName": "BESTÅ storage combination with drawers, Sindvik black/Lappviken/Stubbarp black-brown, 707/8x161/2x297/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -19,20 +14,19 @@
   "currency": "USD",
   "category": "Storage solution systems",
   "subcategory": "BESTÅ storage system",
-  "category1": "Storage & organization",
+  "category1": "",
   "category2": "Storage solution systems",
   "category3": "BESTÅ storage system",
-  "category4": "BESTÅ sideboards",
+  "category4": "",
   "categoryTree": [
-    "Storage & organization",
     "Storage solution systems",
-    "BESTÅ storage system",
-    "BESTÅ sideboards",
-    "BESTÅStorage combination with drawers"
+    "BESTÅ storage system"
   ],
-  "localImage": "images/19440462.jpg",
-  "imageUrl": "/product_index/images/19440462.jpg",
+  "localImage": "mock-products/19440462.jpg",
+  "imageUrl": "/static/mock-products/19440462.jpg",
   "detailUrl": "/static/shop.html#/p/19440462",
-  "rank": 8,
-  "score": 0.948
+  "rank": 2,
+  "score": 0.939,
+  "rawScore": 0.839,
+  "labelBoost": 0.1
 }

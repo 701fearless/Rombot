@@ -1,17 +1,11 @@
 {
   "productId": "10594034",
   "sku": "10594034",
-  "title": "TONSTAD chair",
-  "productName": "TONSTAD chair",
-  "description": "TONSTAD chair, oak effect/Fridtuna light beige Wooden ladder-back chair with padded seat brings elegance and comfort to the table. Washable covers simplify upkeep. Pairs perfectly with TONSTAD tables and storage for a cohesive look.",
-  "features": [
-    "Removable, washable cover",
-    "Recommended for indoor use only.",
-    "A bit screwdriver is required to assemble this chair, sold separately as a part of TRIXIG 15-piece toolset.",
-    "To prevent surface scratches, complete with TRIXIG stick-on floor protectors, sold separately.",
-    "Combines with other products in the TONSTAD series."
-  ],
-  "materialAndCare": "Fabric: 78 % cotton, 22% polyester (min. 90% recycled); Smolder resistant lining: Polyester wadding; Frame: Solid wood, Adhesive, Printed acrylic paint, Clear acrylic lacquer; Seat: Fiberboard, Polyurethane foam 2.2 lb/cu.ft., Clear lacquer; Fabric cover: 78 % cotton, 22 %polyester; Thread: 100 %polyester",
+  "title": "TONSTAD chair, oak effect/Fridtuna light beige",
+  "productName": "TONSTAD chair, oak effect/Fridtuna light beige",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -20,20 +14,19 @@
   "currency": "USD",
   "category": "Dining furniture",
   "subcategory": "Dining chairs",
-  "category1": "Tables & chairs",
+  "category1": "",
   "category2": "Dining furniture",
   "category3": "Dining chairs",
-  "category4": "Dining chairs",
+  "category4": "",
   "categoryTree": [
-    "Tables & chairs",
     "Dining furniture",
-    "Dining chairs",
-    "Dining chairs",
-    "TONSTADChair"
+    "Dining chairs"
   ],
-  "localImage": "images/10594034.jpg",
-  "imageUrl": "/product_index/images/10594034.jpg",
+  "localImage": "mock-products/10594034.jpg",
+  "imageUrl": "/static/mock-products/10594034.jpg",
   "detailUrl": "/static/shop.html#/p/10594034",
-  "rank": 8,
-  "score": 0.893
+  "rank": 2,
+  "score": 0.9727,
+  "rawScore": 0.8727,
+  "labelBoost": 0.1
 }

@@ -1,7 +1,20 @@
 export type Vector3 = [number, number, number]
 
 export interface EstimatedDimensions { widthM: number; depthM: number; heightM: number; unit: string; source: string; isMeasured: boolean }
-export interface DetectedObject { id: string; label: string; name: string; confidence: number; bbox: [number, number, number, number]; tagPosition: [number, number]; cropUrl?: string | null; prebuiltGlbUrl?: string | null; estimatedDimensions?: EstimatedDimensions | null; visualFeatures?: Record<string, unknown> }
+export interface DetectedObject {
+  id: string
+  label: string
+  name: string
+  confidence: number
+  bbox: [number, number, number, number]
+  tagPosition: [number, number]
+  cropUrl?: string | null
+  deduplicatedObjectId?: string | null
+  deduplicatedCropUrl?: string | null
+  prebuiltGlbUrl?: string | null
+  estimatedDimensions?: EstimatedDimensions | null
+  visualFeatures?: Record<string, unknown>
+}
 export interface DetectResponse { frameId: string; frameImageUrl?: string | null; objects: DetectedObject[] }
 export interface PrebuiltAsset { frameId: string; objectId: string; label: string; name: string; deduplicatedObjectId: string; glbUrl: string; estimatedDimensions?: EstimatedDimensions | null }
 export interface SnapshotSource { type: 'feed' | 'preset' | 'upload'; videoId?: string; time?: number; frameId?: string; objectId?: string }

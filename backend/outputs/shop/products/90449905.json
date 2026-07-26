@@ -1,0 +1,32 @@
+{
+  "productId": "90449905",
+  "sku": "90449905",
+  "title": "LACK coffee table, white, 35x22x18\"",
+  "productName": "LACK coffee table, white, 35x22x18\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 29.99,
+  "currency": "USD",
+  "category": "Accent tables",
+  "subcategory": "Coffee tables",
+  "category1": "",
+  "category2": "Accent tables",
+  "category3": "Coffee tables",
+  "category4": "",
+  "categoryTree": [
+    "Accent tables",
+    "Coffee tables"
+  ],
+  "localImage": "mock-products/90449905.jpg",
+  "imageUrl": "/static/mock-products/90449905.jpg",
+  "detailUrl": "/static/shop.html#/p/90449905",
+  "rank": 2,
+  "score": 0.938,
+  "rawScore": 0.838,
+  "labelBoost": 0.1
+}

@@ -1,37 +1,13 @@
-{
-  "productId": "00323514",
-  "sku": "00323514",
-  "title": "RITVA curtains with tie-backs",
-  "productName": "RITVA curtains with tie-backs",
-  "description": "RITVA curtains with tie-backs, 1 pair, white/with heading tape, 57x65\" The curtains lower the general light level and provide privacy by preventing people outside from seeing directly into the room. The curtains can be used on a curtain rod or a curtain track.",
-  "features": [
-    "Curtains, 1 pair included",
-    "The curtains are sold in pairs. The sizes stated refer to each single curtain. For the total width, double the width of a single curtain.",
-    "16 gliders and hooks are usually recommended for each curtain with a width of 57⅛\". You can increase or decrease the number depending on whether you want narrower or fuller folds in the pleats."
-  ],
-  "materialAndCare": "100 % cotton",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 24.99,
-  "currency": "USD",
-  "category": "Window treatments & coverings",
-  "subcategory": "Curtains & drapes",
-  "category1": "Home textiles",
-  "category2": "Window treatments & coverings",
-  "category3": "Curtains & drapes",
-  "category4": "Light filtering curtains",
-  "categoryTree": [
-    "Home textiles",
-    "Window treatments & coverings",
-    "Curtains & drapes",
-    "Light filtering curtains",
-    "RITVACurtains with tie-backs, 1 pair"
-  ],
-  "localImage": "images/00323514.jpg",
-  "imageUrl": "/product_index/images/00323514.jpg",
-  "detailUrl": "/static/shop.html#/p/00323514",
-  "rank": 7,
-  "score": 0.8181
+﻿{
+    "productId":  "00323514",
+    "sku":  "00323514",
+    "title":  "RITVA curtains with tie-backs",
+    "productName":  "RITVA curtains with tie-backs",
+    "price":  24.99,
+    "currency":  "USD",
+    "category":  "Window treatments \u0026 coverings",
+    "imageUrl":  "/static/mock-products/00323514.jpg",
+    "localImage":  "mock-products/00323514.jpg",
+    "detailUrl":  "/static/shop.html#/p/00323514",
+    "description":  "本地演示商品（品类对齐写死）"
 }

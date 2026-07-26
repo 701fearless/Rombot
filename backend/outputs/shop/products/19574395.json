@@ -1,37 +1,13 @@
-{
-  "productId": "19574395",
-  "sku": "19574395",
-  "title": "MALM bed frame",
-  "productName": "MALM bed frame",
-  "description": "MALM bed frame, oak veneer/Luröy, Full A clean design that’s just as beautiful on all sides – place the bed on its own or with the headboard against a wall. If you need space for extra bedding, add MALM bed storage boxes on casters.",
-  "features": [
-    "SKORVA midbeam is included in the price but packaged separately. It is required for the stability of the bed frame and to keep the mattress in place.",
-    "LURÖY slatted bed base is included in the price, but is packaged separately.",
-    "Add 2 or 4 MALM bed boxes to create lots of extra storage space.",
-    "Mattress and bedlinens are sold separately."
-  ],
-  "materialAndCare": "Head/footboard: Particleboard, Fiberboard, Honeycomb structure paper filling (min. 70% recycled), Oak veneer, Stain, Clear acrylic lacquer, Printed and embossed acrylic paint, Plastic edging; Bedside: Particleboard, Fiberboard, Oak veneer, Stain, Clear acrylic lacquer, Printed and embossed acrylic paint, Paper, Plastic edging; Galvanized steel; Bed slats: Layer-glued wood veneer, Adhesive resin as coating; Ribbon: 100 %polyester",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 269.0,
-  "currency": "USD",
-  "category": "Beds",
-  "subcategory": "Bed frames",
-  "category1": "Beds & mattresses",
-  "category2": "Beds",
-  "category3": "Bed frames",
-  "category4": "MALMBed frame",
-  "categoryTree": [
-    "Beds & mattresses",
-    "Beds",
-    "Bed frames",
-    "MALMBed frame"
-  ],
-  "localImage": "images/19574395.jpg",
-  "imageUrl": "/product_index/images/19574395.jpg",
-  "detailUrl": "/static/shop.html#/p/19574395",
-  "rank": 5,
-  "score": 0.9233
+﻿{
+    "productId":  "19574395",
+    "sku":  "19574395",
+    "title":  "MALM bed frame",
+    "productName":  "MALM bed frame",
+    "price":  269,
+    "currency":  "USD",
+    "category":  "Beds",
+    "imageUrl":  "/static/mock-products/19574395.jpg",
+    "localImage":  "mock-products/19574395.jpg",
+    "detailUrl":  "/static/shop.html#/p/19574395",
+    "description":  "本地演示商品（品类对齐写死）"
 }

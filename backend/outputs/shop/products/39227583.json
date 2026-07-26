@@ -1,0 +1,32 @@
+{
+  "productId": "39227583",
+  "sku": "39227583",
+  "title": "HEMNES bed frame with 4 storage boxes, dark gray stained, Queen",
+  "productName": "HEMNES bed frame with 4 storage boxes, dark gray stained, Queen",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 529.0,
+  "currency": "USD",
+  "category": "Beds",
+  "subcategory": "Bed frames with storage",
+  "category1": "",
+  "category2": "Beds",
+  "category3": "Bed frames with storage",
+  "category4": "",
+  "categoryTree": [
+    "Beds",
+    "Bed frames with storage"
+  ],
+  "localImage": "mock-products/39227583.jpg",
+  "imageUrl": "/static/mock-products/39227583.jpg",
+  "detailUrl": "/static/shop.html#/p/39227583",
+  "rank": 3,
+  "score": 0.9124,
+  "rawScore": 0.8124,
+  "labelBoost": 0.1
+}

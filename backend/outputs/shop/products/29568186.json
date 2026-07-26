@@ -1,38 +1,13 @@
-{
-  "productId": "29568186",
-  "sku": "29568186",
-  "title": "LISABO / ÄLVSTA table and 4 chairs",
-  "productName": "LISABO / ÄLVSTA table and 4 chairs",
-  "description": "LISABO / ÄLVSTA table and 4 chairs, ash veneer/rattan white, 413/8\" A natural gathering point for meals, activities and chit-chat. Thanks to the sturdy construction and gracefully aging wooden surface, this set will be a place where memories are created over many years.",
-  "features": [
-    "Recommended for indoor use only.",
-    "Bamboo is a natural fiber that might change color over time.",
-    "Each product is a unique, handmade work of art with natural variations in color and shape.",
-    "Follow the assembly instructions included with SEFAST leg frame."
-  ],
-  "materialAndCare": "Leg base: Solid birch, Tinted clear acrylic lacquer; Top panel: Ash veneer, Fiberboard, Birch veneer, Solid birch, Tinted clear acrylic lacquer, Fiberboard, Birch plywood; Seat frame: Steel, Epoxy/polyester powder coating; Body: Rattan, Clear acrylic lacquer; Steel, Epoxy/polyester powder coating",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 679.99,
-  "currency": "USD",
-  "category": "Dining furniture",
-  "subcategory": "Dining sets",
-  "category1": "Tables & chairs",
-  "category2": "Dining furniture",
-  "category3": "Dining sets",
-  "category4": "Dining sets up to 4 seats",
-  "categoryTree": [
-    "Tables & chairs",
-    "Dining furniture",
-    "Dining sets",
-    "Dining sets up to 4 seats",
-    "LISABO / ÄLVSTATable and 4 chairs"
-  ],
-  "localImage": "images/29568186.jpg",
-  "imageUrl": "/product_index/images/29568186.jpg",
-  "detailUrl": "/static/shop.html#/p/29568186",
-  "rank": 5,
-  "score": 0.7765
+﻿{
+    "productId":  "29568186",
+    "sku":  "29568186",
+    "title":  "LISABO / ALVSTA table and 4 chairs",
+    "productName":  "LISABO / ALVSTA table and 4 chairs",
+    "price":  679.99,
+    "currency":  "USD",
+    "category":  "Dining furniture",
+    "imageUrl":  "/static/mock-products/29568186.jpg",
+    "localImage":  "mock-products/29568186.jpg",
+    "detailUrl":  "/static/shop.html#/p/29568186",
+    "description":  "本地演示商品（品类对齐写死）"
 }

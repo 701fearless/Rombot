@@ -1,0 +1,32 @@
+{
+  "productId": "69562639",
+  "sku": "69562639",
+  "title": "PAX / STORKLINTA wardrobe combination, gray-beige/oak effect, 59x235/8x791/4\"",
+  "productName": "PAX / STORKLINTA wardrobe combination, gray-beige/oak effect, 59x235/8x791/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 660.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "PAX system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "PAX system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "PAX system"
+  ],
+  "localImage": "mock-products/69562639.jpg",
+  "imageUrl": "/static/mock-products/69562639.jpg",
+  "detailUrl": "/static/shop.html#/p/69562639",
+  "rank": 3,
+  "score": 0.9082,
+  "rawScore": 0.8582,
+  "labelBoost": 0.05
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "60334703",
+  "sku": "60334703",
+  "title": "GRADVIS vase, pink, 8 ¼\"",
+  "productName": "GRADVIS vase, pink, 8 ¼\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 16.99,
+  "currency": "USD",
+  "category": "Vases & decorating bowls",
+  "subcategory": "Flower vases",
+  "category1": "",
+  "category2": "Vases & decorating bowls",
+  "category3": "Flower vases",
+  "category4": "",
+  "categoryTree": [
+    "Vases & decorating bowls",
+    "Flower vases"
+  ],
+  "localImage": "mock-products/60334703.jpg",
+  "imageUrl": "/static/mock-products/60334703.jpg",
+  "detailUrl": "/static/shop.html#/p/60334703",
+  "rank": 1,
+  "score": 0.9091,
+  "rawScore": 0.8091,
+  "labelBoost": 0.1
+}

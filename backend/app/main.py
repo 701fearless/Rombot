@@ -32,7 +32,12 @@ app.include_router(product.router, prefix="/api/product", tags=["product"])
 app.include_router(furniture.router, prefix="/api/furniture", tags=["furniture"])
 
 app.mount("/sample_data", StaticFiles(directory="sample_data"), name="sample_data")
-app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
+# follow_symlink: local outputs/videos/*/generated may be junctions to REFERENCE_VIDEOS_ROOT
+app.mount(
+    "/outputs",
+    StaticFiles(directory="outputs", follow_symlink=True),
+    name="outputs",
+)
 product_index_dir = Path("data/product_index")
 if product_index_dir.exists():
     app.mount("/product_index", StaticFiles(directory=product_index_dir), name="product_index")
@@ -52,6 +57,20 @@ if FRONTEND_DIST.exists():
 
     @app.get("/{full_path:path}", include_in_schema=False)
     async def serve_frontend(full_path: str) -> FileResponse:
+        if full_path.startswith((
+            "api/",
+            "outputs/",
+            "static/",
+            "product_index/",
+            "vedios/",
+            "sample_data/",
+            "health",
+            "docs",
+            "openapi.json",
+            "redoc",
+        )):
+            raise HTTPException(status_code=404, detail=f"Not found: /{full_path}")
+
         requested_path = (FRONTEND_DIST / full_path).resolve()
         if requested_path.is_file() and (
             requested_path == FRONTEND_ROOT or FRONTEND_ROOT in requested_path.parents

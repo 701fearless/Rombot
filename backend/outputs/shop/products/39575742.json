@@ -1,0 +1,32 @@
+{
+  "productId": "39575742",
+  "sku": "39575742",
+  "title": "TONSTAD storage combination with drawers, off-white/glass, 471/2x181/2x811/8\"",
+  "productName": "TONSTAD storage combination with drawers, off-white/glass, 471/2x181/2x811/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 629.99,
+  "currency": "USD",
+  "category": "Display & storage cabinets",
+  "subcategory": "Cabinets, hutches & cupboards",
+  "category1": "",
+  "category2": "Display & storage cabinets",
+  "category3": "Cabinets, hutches & cupboards",
+  "category4": "",
+  "categoryTree": [
+    "Display & storage cabinets",
+    "Cabinets, hutches & cupboards"
+  ],
+  "localImage": "mock-products/39575742.jpg",
+  "imageUrl": "/static/mock-products/39575742.jpg",
+  "detailUrl": "/static/shop.html#/p/39575742",
+  "rank": 3,
+  "score": 0.9469,
+  "rawScore": 0.8469,
+  "labelBoost": 0.1
+}

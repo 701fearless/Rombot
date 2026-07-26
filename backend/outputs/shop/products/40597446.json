@@ -1,0 +1,32 @@
+{
+  "productId": "40597446",
+  "sku": "40597446",
+  "title": "NATTJASMIN flat sheet, blue-green, Full/Double",
+  "productName": "NATTJASMIN flat sheet, blue-green, Full/Double",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 24.99,
+  "currency": "USD",
+  "category": "Bedding & bedding sets",
+  "subcategory": "Bed linens & bed linen sets",
+  "category1": "",
+  "category2": "Bedding & bedding sets",
+  "category3": "Bed linens & bed linen sets",
+  "category4": "",
+  "categoryTree": [
+    "Bedding & bedding sets",
+    "Bed linens & bed linen sets"
+  ],
+  "localImage": "mock-products/40597446.jpg",
+  "imageUrl": "/static/mock-products/40597446.jpg",
+  "detailUrl": "/static/shop.html#/p/40597446",
+  "rank": 3,
+  "score": 0.8067,
+  "rawScore": 0.8067,
+  "labelBoost": 0.0
+}

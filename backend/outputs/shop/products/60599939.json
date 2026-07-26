@@ -1,18 +1,11 @@
 {
   "productId": "60599939",
   "sku": "60599939",
-  "title": "TONSTAD table",
-  "productName": "TONSTAD table",
-  "description": "TONSTAD table, off-white, 59x311/2\" TONSTAD series blends classic design with a graceful matte off-white finish, giving each piece a solid sense of quality. This dining table for 4 is generously dimensioned for memorable moments.",
-  "features": [
-    "Recommended for indoor use only.",
-    "Seats 4.",
-    "To prevent surface scratches, complete with TRIXIG stick-on floor protectors, sold separately.",
-    "A bit screwdriver is required to assemble this table, sold separately as a part of TRIXIG 15-piece toolset.",
-    "Matches well with TONSTAD, GRÖNSTA, KRYLBO and TOSSBERG chairs, sold separately.",
-    "Combines with other products in the TONSTAD series."
-  ],
-  "materialAndCare": "Top panel: Particleboard, Acrylic paint, Melamine foil, Plastic edging; Side rail/ Leg: Solid wood, Adhesive, Acrylic paint",
+  "title": "TONSTAD table, off-white, 59x311/2\"",
+  "productName": "TONSTAD table, off-white, 59x311/2\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -21,20 +14,19 @@
   "currency": "USD",
   "category": "Dining furniture",
   "subcategory": "Dining tables",
-  "category1": "Tables & chairs",
+  "category1": "",
   "category2": "Dining furniture",
   "category3": "Dining tables",
-  "category4": "Up to 4 seats",
+  "category4": "",
   "categoryTree": [
-    "Tables & chairs",
     "Dining furniture",
-    "Dining tables",
-    "Up to 4 seats",
-    "TONSTADTable"
+    "Dining tables"
   ],
-  "localImage": "images/60599939.jpg",
-  "imageUrl": "/product_index/images/60599939.jpg",
+  "localImage": "mock-products/60599939.jpg",
+  "imageUrl": "/static/mock-products/60599939.jpg",
   "detailUrl": "/static/shop.html#/p/60599939",
-  "rank": 7,
-  "score": 0.8887
+  "rank": 1,
+  "score": 0.9706,
+  "rawScore": 0.8706,
+  "labelBoost": 0.1
 }

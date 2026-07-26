@@ -1,0 +1,32 @@
+{
+  "productId": "89440798",
+  "sku": "89440798",
+  "title": "BESTÅ wall-mounted cabinet combination, white/Selsviken high gloss, 471/4x161/2x251/4\"",
+  "productName": "BESTÅ wall-mounted cabinet combination, white/Selsviken high gloss, 471/4x161/2x251/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 255.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "BESTÅ storage system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "BESTÅ storage system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "BESTÅ storage system"
+  ],
+  "localImage": "mock-products/89440798.jpg",
+  "imageUrl": "/static/mock-products/89440798.jpg",
+  "detailUrl": "/static/shop.html#/p/89440798",
+  "rank": 4,
+  "score": 0.8814,
+  "rawScore": 0.8314,
+  "labelBoost": 0.05
+}

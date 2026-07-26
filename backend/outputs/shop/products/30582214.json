@@ -1,11 +1,11 @@
 {
   "productId": "30582214",
   "sku": "30582214",
-  "title": "POÄNG armchair cushion with low back",
-  "productName": "POÄNG armchair cushion with low back",
-  "description": "POÄNG armchair cushion with low back, Vissle red Japanese designer Noboru Nakamura is the man behind the successful POÄNG armchair, launched in 1977. In 2022 he removed the headrest – a new design as it now owns its place in the Nytillverkad collection.",
+  "title": "POÄNG armchair cushion with low back, Vissle red",
+  "productName": "POÄNG armchair cushion with low back, Vissle red",
+  "description": "",
   "features": [],
-  "materialAndCare": "Fabric: 100% polyester (min. 90% recycled); Wadding: 100% polyester (min. 80% recycled); Comfort filling: Polyurethane foam 2.0 lb/cu.ft.; Lining, underside: 100 % polypropylene",
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -14,19 +14,19 @@
   "currency": "USD",
   "category": "Sofa & armchairs covers",
   "subcategory": "POÄNG covers",
-  "category1": "Sofas & armchairs",
+  "category1": "",
   "category2": "Sofa & armchairs covers",
   "category3": "POÄNG covers",
-  "category4": "POÄNGArmchair cushion with low back",
+  "category4": "",
   "categoryTree": [
-    "Sofas & armchairs",
     "Sofa & armchairs covers",
-    "POÄNG covers",
-    "POÄNGArmchair cushion with low back"
+    "POÄNG covers"
   ],
-  "localImage": "images/30582214.jpg",
-  "imageUrl": "/product_index/images/30582214.jpg",
+  "localImage": "mock-products/30582214.jpg",
+  "imageUrl": "/static/mock-products/30582214.jpg",
   "detailUrl": "/static/shop.html#/p/30582214",
-  "rank": 5,
-  "score": 0.7802
+  "rank": 1,
+  "score": 0.9103,
+  "rawScore": 0.7603,
+  "labelBoost": 0.15
 }

@@ -1,0 +1,32 @@
+{
+  "productId": "09431707",
+  "sku": "09431707",
+  "title": "ENHET wall cabinet with doors, white/white frame, 30x123/4x15\"",
+  "productName": "ENHET wall cabinet with doors, white/white frame, 30x123/4x15\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 88.0,
+  "currency": "USD",
+  "category": "Kitchen systems",
+  "subcategory": "ENHET kitchen",
+  "category1": "",
+  "category2": "Kitchen systems",
+  "category3": "ENHET kitchen",
+  "category4": "",
+  "categoryTree": [
+    "Kitchen systems",
+    "ENHET kitchen"
+  ],
+  "localImage": "mock-products/09431707.jpg",
+  "imageUrl": "/static/mock-products/09431707.jpg",
+  "detailUrl": "/static/shop.html#/p/09431707",
+  "rank": 2,
+  "score": 0.8627,
+  "rawScore": 0.7127,
+  "labelBoost": 0.15
+}

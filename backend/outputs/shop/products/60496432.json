@@ -1,0 +1,32 @@
+{
+  "productId": "60496432",
+  "sku": "60496432",
+  "title": "LEN baby blanket, 28x35\"",
+  "productName": "LEN baby blanket, 28x35\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 6.99,
+  "currency": "USD",
+  "category": "Baby",
+  "subcategory": "Baby textiles",
+  "category1": "",
+  "category2": "Baby",
+  "category3": "Baby textiles",
+  "category4": "",
+  "categoryTree": [
+    "Baby",
+    "Baby textiles"
+  ],
+  "localImage": "mock-products/60496432.jpg",
+  "imageUrl": "/static/mock-products/60496432.jpg",
+  "detailUrl": "/static/shop.html#/p/60496432",
+  "rank": 4,
+  "score": 0.854,
+  "rawScore": 0.804,
+  "labelBoost": 0.05
+}

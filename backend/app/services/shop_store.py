@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -14,6 +15,10 @@ SHOP_ROOT = OUTPUTS_ROOT / "shop"
 SEARCH_LOG_PATH = SHOP_ROOT / "search_results.jsonl"
 LIBRARY_MATCHES_PATH = SHOP_ROOT / "vedios_library_matches.json"
 PRODUCTS_DIR = SHOP_ROOT / "products"
+FEED_CLIP_CACHE_DIR = SHOP_ROOT / "feed_clip_cache"
+STATIC_ROOT = BACKEND_ROOT / "static"
+MOCK_PRODUCTS_DIR = STATIC_ROOT / "mock-products"
+PRODUCT_INDEX_IMAGES = BACKEND_ROOT / "data" / "product_index" / "images"
 CATALOG_INDEXED = BACKEND_ROOT / "data" / "product_index" / "catalog_indexed.jsonl"
 CATALOG_PATH = BACKEND_ROOT / "data" / "product_index" / "catalog.jsonl"
 VEDIOS_ROOT = BACKEND_ROOT.parent / "vedios"
@@ -26,6 +31,8 @@ _catalog_by_id: dict[str, dict[str, Any]] | None = None
 def ensure_shop_dirs() -> None:
     SHOP_ROOT.mkdir(parents=True, exist_ok=True)
     PRODUCTS_DIR.mkdir(parents=True, exist_ok=True)
+    FEED_CLIP_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    MOCK_PRODUCTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def public_product_id(raw_id: str | None) -> str:
@@ -230,6 +237,105 @@ def load_catalog_by_id() -> dict[str, dict[str, Any]]:
     return mapping
 
 
+def _safe_cache_token(value: str) -> str:
+    text = re.sub(r"[^\w.\-]+", "_", str(value or "").strip())
+    return text[:160] or "unknown"
+
+
+def feed_clip_cache_path(video_id: str, candidate_id: str) -> Path:
+    return FEED_CLIP_CACHE_DIR / _safe_cache_token(video_id) / f"{_safe_cache_token(candidate_id)}.json"
+
+
+def materialize_product_image(product_id: str) -> str | None:
+    """Copy one product image into static/mock-products so Feed works without product_index."""
+    ensure_shop_dirs()
+    pid = public_product_id(product_id)
+    dest = MOCK_PRODUCTS_DIR / f"{pid}.jpg"
+    if dest.exists() and dest.stat().st_size > 0:
+        return f"/static/mock-products/{pid}.jpg"
+
+    for ext in (".jpg", ".jpeg", ".png", ".webp"):
+        src = PRODUCT_INDEX_IMAGES / f"{pid}{ext}"
+        if src.exists() and src.is_file():
+            shutil.copy2(src, dest)
+            return f"/static/mock-products/{pid}.jpg"
+
+    # Keep an already-local imageUrl if it points to mock-products.
+    return None
+
+
+def localize_results_for_offline(results: list[dict[str, Any]] | None) -> list[dict[str, Any]]:
+    """Whiten + snapshot products/images under outputs/shop + static/mock-products."""
+    ensure_shop_dirs()
+    localized: list[dict[str, Any]] = []
+    for item in whitened_results(results):
+        pid = public_product_id(item.get("productId"))
+        row = dict(item)
+        local_url = materialize_product_image(pid)
+        if local_url:
+            row["imageUrl"] = local_url
+            row["localImage"] = f"mock-products/{pid}.jpg"
+        elif str(row.get("imageUrl") or "").startswith("/static/mock-products/"):
+            pass
+        (PRODUCTS_DIR / f"{pid}.json").write_text(
+            json.dumps(row, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        localized.append(row)
+    return localized
+
+
+def load_feed_clip_cache(video_id: str, candidate_id: str) -> dict[str, Any] | None:
+    path = feed_clip_cache_path(video_id, candidate_id)
+    if not path.exists():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not isinstance(payload, dict):
+        return None
+    results = payload.get("results")
+    if not isinstance(results, list) or not results:
+        return None
+    return payload
+
+
+def save_feed_clip_cache(
+    *,
+    video_id: str,
+    candidate_id: str,
+    results: list[dict[str, Any]],
+    query: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    ensure_shop_dirs()
+    localized = localize_results_for_offline(results)
+    path = feed_clip_cache_path(video_id, candidate_id)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "savedAt": datetime.now(timezone.utc).isoformat(),
+        "videoId": video_id,
+        "candidateId": candidate_id,
+        "query": query or {},
+        "results": localized,
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return payload
+
+
+def infer_video_id_from_media_url(url: str | None) -> str | None:
+    text = str(url or "").replace("\\", "/")
+    for pattern in (
+        r"/outputs/shop/resolved/([^/]+)/",
+        r"/outputs/videos/([^/]+)/",
+        r"/vedios/([^/]+)/",
+    ):
+        match = re.search(pattern, text)
+        if match:
+            return match.group(1)
+    return None
+
+
 def get_shop_product(product_id: str) -> dict[str, Any] | None:
     ensure_shop_dirs()
     catalog = load_catalog_by_id()
@@ -247,32 +353,39 @@ def get_shop_product(product_id: str) -> dict[str, Any] | None:
     if row is None and cached is None:
         return None
 
+    # Offline-first: materialized shop snapshot is enough without full catalog.
+    cached_image = str((cached or {}).get("imageUrl") or "")
+    if cached and (row is None or cached_image.startswith("/static/mock-products/")):
+        product = to_shop_product(cached, rank=cached.get("rank"), score=cached.get("score"))
+        if cached_image:
+            product["imageUrl"] = cached_image
+        if cached.get("localImage"):
+            product["localImage"] = cached["localImage"]
+        cached_path.write_text(json.dumps(product, ensure_ascii=False, indent=2), encoding="utf-8")
+        return product
+
     # Prefer full catalog fields; keep ranking metadata from cache if present.
     base = dict(row or {})
     if cached:
         for key in ("rank", "score", "rawScore", "labelBoost", "imageUrl", "localImage"):
             if cached.get(key) is not None and key not in base:
                 base[key] = cached[key]
-            elif key in ("rank", "score", "rawScore", "labelBoost") and cached.get(key) is not None:
+            elif key in ("rank", "score", "rawScore", "labelBoost", "imageUrl", "localImage") and cached.get(key) is not None:
                 base[key] = cached[key]
         if not base.get("productId"):
             base["productId"] = cached.get("productId") or pid
     product = to_shop_product(base, rank=base.get("rank"), score=base.get("score"))
+    local_url = materialize_product_image(pid)
+    if local_url:
+        product["imageUrl"] = local_url
+        product["localImage"] = f"mock-products/{pid}.jpg"
     cached_path.write_text(json.dumps(product, ensure_ascii=False, indent=2), encoding="utf-8")
     return product
 
 
 def upsert_products(products: list[dict[str, Any]]) -> None:
     ensure_shop_dirs()
-    catalog = load_catalog_by_id()
-    for item in products:
-        pid = public_product_id(item.get("productId"))
-        raw = catalog.get(pid) or catalog.get(f"ikea_{pid}") or item
-        product = to_shop_product(raw, rank=item.get("rank"), score=item.get("score"))
-        (PRODUCTS_DIR / f"{pid}.json").write_text(
-            json.dumps(product, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+    localize_results_for_offline(products)
 
 
 def append_search_result(record: dict[str, Any]) -> Path:

@@ -1,0 +1,32 @@
+{
+  "productId": "59570263",
+  "sku": "59570263",
+  "title": "TONSTAD storage with sliding glass doors, oak veneer/clear glass, 321/8x185/8x787/8\"",
+  "productName": "TONSTAD storage with sliding glass doors, oak veneer/clear glass, 321/8x185/8x787/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 500.0,
+  "currency": "USD",
+  "category": "Display & storage cabinets",
+  "subcategory": "Display cabinets",
+  "category1": "",
+  "category2": "Display & storage cabinets",
+  "category3": "Display cabinets",
+  "category4": "",
+  "categoryTree": [
+    "Display & storage cabinets",
+    "Display cabinets"
+  ],
+  "localImage": "mock-products/59570263.jpg",
+  "imageUrl": "/static/mock-products/59570263.jpg",
+  "detailUrl": "/static/shop.html#/p/59570263",
+  "rank": 2,
+  "score": 0.9085,
+  "rawScore": 0.8585,
+  "labelBoost": 0.05
+}

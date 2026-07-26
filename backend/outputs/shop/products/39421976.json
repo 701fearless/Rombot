@@ -1,19 +1,11 @@
 {
   "productId": "39421976",
   "sku": "39421976",
-  "title": "BESTÅ wall cabinet with 2 doors",
-  "productName": "BESTÅ wall cabinet with 2 doors",
-  "description": "BESTÅ wall cabinet with 2 doors, white/Riksviken light bronze effect, 235/8x85/8x503/8\" Everything you need for storing and keeping things organized at home. This is one of many, many possible combinations. Choose a ready-made one already now or create your own with BESTÅ planning tool.",
-  "features": [
-    "Ensure that you have a minimum of 2\" between the top of the frame and the ceiling in order to mount the frame to the suspension rail.",
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.",
-    "The max load for a wall-hung frame depends on the wall material.",
-    "The maximum load for a wall-hung cabinet depends on the wall material.",
-    "If you choose the soft closing function for your BESTÅ, we recommend complementing the fronts with knobs/handles to make the drawers/cabinets more convenient to open.",
-    "2 adjustable shelves included.",
-    "BESTÅ suspension rails for wall mounting are included."
-  ],
-  "materialAndCare": "Top panel/ Bottom panel: Particle- and fiberboard with honeycomb paper filling (100% recycled paper), Paper foil, Paper foil, Plastic edging, Plastic edging, Plastic edging; Side panel: Particleboard, Paper foil, Paper foil, Plastic edging, Plastic edging, Plastic edging; Back panel: Fiberboard, Paper foil, Plastic foil; Particleboard, Paper foil, Plastic edging, Plastic edging, Paper foil; Particleboard, Plastic foil, Plastic edging; Metal part: Steel, Nickel plated; Plastic parts: Acetal plastic; Galvanized steel",
+  "title": "BESTÅ wall cabinet with 2 doors, white/Riksviken light bronze effect, 235/8x85/8x503/8\"",
+  "productName": "BESTÅ wall cabinet with 2 doors, white/Riksviken light bronze effect, 235/8x85/8x503/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -27,9 +19,11 @@
   "category3": "",
   "category4": "",
   "categoryTree": [],
-  "localImage": "images/39421976.jpg",
-  "imageUrl": "/product_index/images/39421976.jpg",
+  "localImage": "mock-products/39421976.jpg",
+  "imageUrl": "/static/mock-products/39421976.jpg",
   "detailUrl": "/static/shop.html#/p/39421976",
-  "rank": 7,
-  "score": 0.8956
+  "rank": 1,
+  "score": 0.9126,
+  "rawScore": 0.8626,
+  "labelBoost": 0.05
 }

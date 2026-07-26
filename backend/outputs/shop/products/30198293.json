@@ -1,0 +1,32 @@
+{
+  "productId": "30198293",
+  "sku": "30198293",
+  "title": "MORUM rug flatwoven, in/outdoor, dark gray, 6'7\"x9'10\"",
+  "productName": "MORUM rug flatwoven, in/outdoor, dark gray, 6'7\"x9'10\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 129.99,
+  "currency": "USD",
+  "category": "Outdoor rugs",
+  "subcategory": "MORUMRug flatwoven, in/outdoor",
+  "category1": "",
+  "category2": "Outdoor rugs",
+  "category3": "MORUMRug flatwoven, in/outdoor",
+  "category4": "",
+  "categoryTree": [
+    "Outdoor rugs",
+    "MORUMRug flatwoven, in/outdoor"
+  ],
+  "localImage": "mock-products/30198293.jpg",
+  "imageUrl": "/static/mock-products/30198293.jpg",
+  "detailUrl": "/static/shop.html#/p/30198293",
+  "rank": 2,
+  "score": 0.8125,
+  "rawScore": 0.7125,
+  "labelBoost": 0.1
+}

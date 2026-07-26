@@ -1,0 +1,32 @@
+{
+  "productId": "60579677",
+  "sku": "60579677",
+  "title": "GULVIAL hand towel, black, 16x28\"",
+  "productName": "GULVIAL hand towel, black, 16x28\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 7.99,
+  "currency": "USD",
+  "category": "Bathroom textiles",
+  "subcategory": "Towels",
+  "category1": "",
+  "category2": "Bathroom textiles",
+  "category3": "Towels",
+  "category4": "",
+  "categoryTree": [
+    "Bathroom textiles",
+    "Towels"
+  ],
+  "localImage": "mock-products/60579677.jpg",
+  "imageUrl": "/static/mock-products/60579677.jpg",
+  "detailUrl": "/static/shop.html#/p/60579677",
+  "rank": 4,
+  "score": 0.825,
+  "rawScore": 0.775,
+  "labelBoost": 0.05
+}

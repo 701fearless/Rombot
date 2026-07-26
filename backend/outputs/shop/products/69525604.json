@@ -1,0 +1,32 @@
+{
+  "productId": "69525604",
+  "sku": "69525604",
+  "title": "SKRUVBY storage combination, black-blue, 743/4x353/8\"",
+  "productName": "SKRUVBY storage combination, black-blue, 743/4x353/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 238.0,
+  "currency": "USD",
+  "category": "Display & storage cabinets",
+  "subcategory": "Cabinets, hutches & cupboards",
+  "category1": "",
+  "category2": "Display & storage cabinets",
+  "category3": "Cabinets, hutches & cupboards",
+  "category4": "",
+  "categoryTree": [
+    "Display & storage cabinets",
+    "Cabinets, hutches & cupboards"
+  ],
+  "localImage": "mock-products/69525604.jpg",
+  "imageUrl": "/static/mock-products/69525604.jpg",
+  "detailUrl": "/static/shop.html#/p/69525604",
+  "rank": 4,
+  "score": 0.9463,
+  "rawScore": 0.8463,
+  "labelBoost": 0.1
+}

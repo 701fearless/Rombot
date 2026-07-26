@@ -1,11 +1,11 @@
 {
   "productId": "49393181",
   "sku": "49393181",
-  "title": "BACKSÄLEN loveseat",
-  "productName": "BACKSÄLEN loveseat",
-  "description": "BACKSÄLEN loveseat, Katorp natural This sofa is easy on the eyes and body. The design is welcoming, the deep seat and the high back and armrests embrace you. It’s also super easy to remove the cover and wash it. The cover is easy to keep clean since it is removable and machine washable.",
+  "title": "BACKSÄLEN loveseat, Katorp natural",
+  "productName": "BACKSÄLEN loveseat, Katorp natural",
+  "description": "",
   "features": [],
-  "materialAndCare": "Smolder resistant lining/ Smolder resistant lining: Polyester wadding; Supporting fabric/ Seat suspension: 100 % polypropylene; Seat frame: Steel, Epoxy/polyester powder coating; Armrest: Steel, Plywood, Polyurethane foam 1.5 lb/cu.ft., Polyurethane foam 1.2 lb/cu.ft.; Seat cushion: High-resilience polyurethane foam (cold foam) 2.2 lb/cu.ft., Polyurethane foam 1.2 lb/cu.ft.; Smolder resistant lining: Polyester wadding, Polyester wadding; Lumbar cushion: 100 % polyester - hollow fiber (100% recycled); Back fabric: 100 % polyester (100% recycled); Fabric: 80 % cotton, 20 % linen",
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -14,19 +14,19 @@
   "currency": "USD",
   "category": "Sofas & sectionals",
   "subcategory": "Loveseats",
-  "category1": "Sofas & armchairs",
+  "category1": "",
   "category2": "Sofas & sectionals",
   "category3": "Loveseats",
-  "category4": "BACKSÄLENLoveseat",
+  "category4": "",
   "categoryTree": [
-    "Sofas & armchairs",
     "Sofas & sectionals",
-    "Loveseats",
-    "BACKSÄLENLoveseat"
+    "Loveseats"
   ],
-  "localImage": "images/49393181.jpg",
-  "imageUrl": "/product_index/images/49393181.jpg",
+  "localImage": "mock-products/49393181.jpg",
+  "imageUrl": "/static/mock-products/49393181.jpg",
   "detailUrl": "/static/shop.html#/p/49393181",
-  "rank": 2,
-  "score": 0.9493
+  "rank": 3,
+  "score": 1.0207,
+  "rawScore": 0.8707,
+  "labelBoost": 0.15
 }

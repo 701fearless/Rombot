@@ -1,16 +1,11 @@
 {
   "productId": "99568833",
   "sku": "99568833",
-  "title": "EKET wall-mounted cabinet combination",
-  "productName": "EKET wall-mounted cabinet combination",
-  "description": "EKET wall-mounted cabinet combination, walnut effect, 687/8x133/4x271/2\" Dress your wall with cubes! Create a classic storage solution with just a few EKET cabinets or combine as many as you like in a fun and unexpected way to fit your needs and make your space more personal.",
-  "features": [
-    "EKET suspension rails for wall mounting are included.",
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.",
-    "The maximum load for a wall-hung cabinet depends on the wall material.",
-    "Ensure that you have a minimum of 2\" between the top of the frame and the ceiling in order to mount the frame to the suspension rail."
-  ],
-  "materialAndCare": "Back panel: Fiberboard, Paper foil, Plastic foil; Panel: Particleboard, Honeycomb structure paper filling (100% recycled), Fiberboard, Paper foil, Plastic edging; Door panel: Particleboard, Paper foil, Plastic edging, Plastic edging; Back panel: Fiberboard, Paper foil; Panel: Particleboard, Honeycomb structure paper filling (100% recycled), Fiberboard, Paper foil, Plastic edging; Galvanized steel",
+  "title": "EKET wall-mounted cabinet combination, walnut effect, 687/8x133/4x271/2\"",
+  "productName": "EKET wall-mounted cabinet combination, walnut effect, 687/8x133/4x271/2\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -19,20 +14,19 @@
   "currency": "USD",
   "category": "Storage solution systems",
   "subcategory": "EKET storage system",
-  "category1": "Storage & organization",
+  "category1": "",
   "category2": "Storage solution systems",
   "category3": "EKET storage system",
-  "category4": "EKET pre-designed combinations",
+  "category4": "",
   "categoryTree": [
-    "Storage & organization",
     "Storage solution systems",
-    "EKET storage system",
-    "EKET pre-designed combinations",
-    "EKETWall-mounted cabinet combination"
+    "EKET storage system"
   ],
-  "localImage": "images/99568833.jpg",
-  "imageUrl": "/product_index/images/99568833.jpg",
+  "localImage": "mock-products/99568833.jpg",
+  "imageUrl": "/static/mock-products/99568833.jpg",
   "detailUrl": "/static/shop.html#/p/99568833",
-  "rank": 2,
-  "score": 0.9181
+  "rank": 1,
+  "score": 0.9118,
+  "rawScore": 0.8618,
+  "labelBoost": 0.05
 }

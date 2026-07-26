@@ -1,0 +1,32 @@
+{
+  "productId": "80492942",
+  "sku": "80492942",
+  "title": "TRANEBO dining table, black, 865/8x393/4x297/8\"",
+  "productName": "TRANEBO dining table, black, 865/8x393/4x297/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 899.0,
+  "currency": "USD",
+  "category": "Dining furniture",
+  "subcategory": "Dining tables",
+  "category1": "",
+  "category2": "Dining furniture",
+  "category3": "Dining tables",
+  "category4": "",
+  "categoryTree": [
+    "Dining furniture",
+    "Dining tables"
+  ],
+  "localImage": "mock-products/80492942.jpg",
+  "imageUrl": "/static/mock-products/80492942.jpg",
+  "detailUrl": "/static/shop.html#/p/80492942",
+  "rank": 2,
+  "score": 0.9237,
+  "rawScore": 0.8237,
+  "labelBoost": 0.1
+}

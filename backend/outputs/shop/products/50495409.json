@@ -1,37 +1,13 @@
-{
-  "productId": "50495409",
-  "sku": "50495409",
-  "title": "LYDERSHOLM rug flatwoven",
-  "productName": "LYDERSHOLM rug flatwoven",
-  "description": "LYDERSHOLM rug flatwoven, in/outdoor, medium brown, 6'7\"x9'10\" LYDERSHOLM rug upgrades your dining area with a natural, rustic expression. It’s durable and easy to clean making it a good choice for outdoor- and heavy-use areas. The color and weave create a natural look.",
-  "features": [
-    "You will need 2 STOPP FILT rug underlay with anti-slip (5'5\"x7'9\") for this rug. Trim if necessary.",
-    "This rug fits with a 2-3 seat sofa, but can also fit other size sofas depending on how you place it.",
-    "This rug fits under a 6-seat dining table, but can of course be used how and where you like in your home.",
-    "Suitable for indoor and outdoor use.",
-    "Rugs with structure or hard edges can cause marks on soft wooden floors even when used together with an anti-slip underlay."
-  ],
-  "materialAndCare": "Use surface: 100 % polypropylene; Backing: 100 % Synthetic rubber",
-  "measurements": null,
-  "measurementsText": null,
-  "size_m": null,
-  "sizeText": null,
-  "price": 149.99,
-  "currency": "USD",
-  "category": "Outdoor rugs",
-  "subcategory": "LYDERSHOLMRug flatwoven, in/outdoor",
-  "category1": "Outdoor",
-  "category2": "Outdoor rugs",
-  "category3": "LYDERSHOLMRug flatwoven, in/outdoor",
-  "category4": "",
-  "categoryTree": [
-    "Outdoor",
-    "Outdoor rugs",
-    "LYDERSHOLMRug flatwoven, in/outdoor"
-  ],
-  "localImage": "images/50495409.jpg",
-  "imageUrl": "/product_index/images/50495409.jpg",
-  "detailUrl": "/static/shop.html#/p/50495409",
-  "rank": 2,
-  "score": 0.8641
+﻿{
+    "currency":  "USD",
+    "sku":  "50495409",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/50495409.jpg",
+    "price":  149.99,
+    "imageUrl":  "/static/mock-products/50495409.jpg",
+    "category":  "Rugs",
+    "productId":  "50495409",
+    "detailUrl":  "/static/shop.html#/p/50495409",
+    "title":  "LYDERSHOLM rug flatwoven",
+    "productName":  "LYDERSHOLM rug flatwoven"
 }

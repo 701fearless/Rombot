@@ -1,16 +1,11 @@
 {
   "productId": "30387118",
   "sku": "30387118",
-  "title": "KNOPPÄNG Frame",
-  "productName": "KNOPPÄNG Frame",
-  "description": "KNOPPÄNG Frame, black, 12x16\". Decorate with pictures you love. This frame has a thin edge with a profile that has a traditional look and comes in many sizes.",
-  "features": [
-    "This frame fits with a picture that has dimensions 8x10\" if you use it with the mount, and it fits with a picture that has dimensions 12x16\" if you choose to use the frame without the mount.",
-    "Mat included.",
-    "The mat will not turn yellow since it is acid-free.",
-    "Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home."
-  ],
-  "materialAndCare": "Frame: Fiberboard, Paper foil; Front protection: Polystyrene; Mat: Paper",
+  "title": "KNOPPÄNG Frame, black, 12x16\"",
+  "productName": "KNOPPÄNG Frame, black, 12x16\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -19,19 +14,19 @@
   "currency": "USD",
   "category": "Wall décor",
   "subcategory": "Picture & photo frames",
-  "category1": "Home decor & accessories",
+  "category1": "",
   "category2": "Wall décor",
   "category3": "Picture & photo frames",
-  "category4": "KNOPPÄNGFrame",
+  "category4": "",
   "categoryTree": [
-    "Home decor & accessories",
     "Wall décor",
-    "Picture & photo frames",
-    "KNOPPÄNGFrame"
+    "Picture & photo frames"
   ],
-  "localImage": "images/30387118.jpg",
-  "imageUrl": "/product_index/images/30387118.jpg",
+  "localImage": "mock-products/30387118.jpg",
+  "imageUrl": "/static/mock-products/30387118.jpg",
   "detailUrl": "/static/shop.html#/p/30387118",
   "rank": 4,
-  "score": 0.6776
+  "score": 0.8927,
+  "rawScore": 0.7427,
+  "labelBoost": 0.15
 }

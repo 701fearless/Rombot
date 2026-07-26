@@ -1,0 +1,32 @@
+{
+  "productId": "19533461",
+  "sku": "19533461",
+  "title": "MITTZON conference table, oak veneer/black, 551/8x421/2x413/8\"",
+  "productName": "MITTZON conference table, oak veneer/black, 551/8x421/2x413/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 359.99,
+  "currency": "USD",
+  "category": "Desks & computer desks",
+  "subcategory": "Table & desk systems",
+  "category1": "",
+  "category2": "Desks & computer desks",
+  "category3": "Table & desk systems",
+  "category4": "",
+  "categoryTree": [
+    "Desks & computer desks",
+    "Table & desk systems"
+  ],
+  "localImage": "mock-products/19533461.jpg",
+  "imageUrl": "/static/mock-products/19533461.jpg",
+  "detailUrl": "/static/shop.html#/p/19533461",
+  "rank": 2,
+  "score": 0.9685,
+  "rawScore": 0.8685,
+  "labelBoost": 0.1
+}

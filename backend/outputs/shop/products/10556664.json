@@ -1,21 +1,11 @@
 {
   "productId": "10556664",
   "sku": "10556664",
-  "title": "HORNVALLMO pleated shade",
-  "productName": "HORNVALLMO pleated shade",
-  "description": "HORNVALLMO pleated shade, white/top-down bottom-up, 34x51 ¼\" This pleated blind can be mounted in any way for privacy and to filter the light coming in from outside. Pull from top to bottom or from bottom to top – or just cover a section in the middle of the window.",
-  "features": [
-    "Highly recommended to attach to surfaces made of glass.",
-    "For window frames or surfaces not recommended for the adhesive, mount the brackets with screws using a drill or screwdriver. The brackets are prepared with small holes for this purpose.",
-    "To reposition or reuse on another window, remove adhesive-mounted brackets with plastic hand scraper. Replace with new brackets available cost-free at stores or contact Customer Services for help.",
-    "For door windows or windows taller than 51⅛\", mount 2 pleated blinds to cover the whole surface.",
-    "The top rail of the 34\" wide blind can be cut max. 11.8\".",
-    "If you need to adapt the dimensions of the pleated blind to your window, cut the top/bottom rails and the rods with a metal saw. Cut the fabric with a safety knife.",
-    "The included tool makes it easier to get straight, accurate lines when adapting the size of your rail/rod/fabric. It also protects your fingers.",
-    "For a smooth, friction-free glide, apply a few drops of silicone spray lubricant to the lock mechanism in the brackets. Ensure the spray is suitable for plastic and metal.",
-    "Can also be used in bathrooms."
-  ],
-  "materialAndCare": "Fabric: 100 % polyester (100% recycled); Top rail/ Bottom rail: Aluminium (min. 70% recycled), Powder coating; Rod: Stainless steel, Powder coating; Lamella seat lock: Polyamide, ABS plastic, Reinforced polyamide; Handle: ABS plastic; Tool: Polypropylene",
+  "title": "HORNVALLMO pleated shade, white/top-down bottom-up, 34x51 ¼\"",
+  "productName": "HORNVALLMO pleated shade, white/top-down bottom-up, 34x51 ¼\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -24,20 +14,19 @@
   "currency": "USD",
   "category": "Window treatments & coverings",
   "subcategory": "Window blinds and shades",
-  "category1": "Home textiles",
+  "category1": "",
   "category2": "Window treatments & coverings",
   "category3": "Window blinds and shades",
-  "category4": "Cellular shades & honeycomb blinds",
+  "category4": "",
   "categoryTree": [
-    "Home textiles",
     "Window treatments & coverings",
-    "Window blinds and shades",
-    "Cellular shades & honeycomb blinds",
-    "HORNVALLMOPleated shade"
+    "Window blinds and shades"
   ],
-  "localImage": "images/10556664.jpg",
-  "imageUrl": "/product_index/images/10556664.jpg",
+  "localImage": "mock-products/10556664.jpg",
+  "imageUrl": "/static/mock-products/10556664.jpg",
   "detailUrl": "/static/shop.html#/p/10556664",
-  "rank": 1,
-  "score": 0.9212
+  "rank": 3,
+  "score": 0.8443,
+  "rawScore": 0.8443,
+  "labelBoost": 0.0
 }

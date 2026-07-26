@@ -47,6 +47,20 @@ def data_url_to_bytes(data_url: str) -> bytes:
 
 
 def path_to_output_url(path: Path) -> str:
+    """Map a file under outputs/ to a /outputs/... URL.
+
+    Prefer absolute() over resolve() so Windows directory junctions
+    (e.g. generated/ -> EXTERNAL_ROOT) still map to the logical outputs path.
+    """
+    abs_path = path if path.is_absolute() else (BACKEND_ROOT / path)
+    abs_path = abs_path.absolute()
+    outputs_abs = OUTPUTS_ROOT.absolute()
+    try:
+        relative = abs_path.relative_to(outputs_abs)
+        return "/outputs/" + "/".join(relative.parts)
+    except ValueError:
+        pass
+
     resolved = path.resolve()
     try:
         relative = resolved.relative_to(OUTPUTS_ROOT.resolve())

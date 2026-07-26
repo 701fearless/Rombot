@@ -1,16 +1,11 @@
 {
   "productId": "59487872",
   "sku": "59487872",
-  "title": "STRANDMON armchair and ottoman",
-  "productName": "STRANDMON armchair and ottoman",
-  "description": "STRANDMON armchair and ottoman, Grann/Bomstad dark brown STRANDMON has a timeless look with modern comfort for many cozy moments. The wing chair offers a soft embracing feel and the footstool is nice to rest your feet on – or use as extra seating for guests.",
-  "features": [
-    "Grain leather is treated with a light protective surface coating to retain its natural look with marks, wrinkles and color variations. Therefore it´s also less resistant to sunlight, dirt, liquids and scratches than leather with a thick surface treatment",
-    "The armchair and footstool come in separate packages.",
-    "The seat cushion, back rest and inside of the armrests are covered with GRANN – a soft, smooth and strong grain leather with natural variations. Other surfaces have the coated fabric BOMSTAD.",
-    "The top cushion is covered with GRANN – a soft, smooth and strong grain leather with natural variations. Other surfaces have the coated fabric BOMSTAD."
-  ],
-  "materialAndCare": "Leather: Dyed through top-grain leather with a treated, embossed and pigmented surface; Coated fabric parts: 100 % polyurethane, 75 % polyester, 25 % cotton; Frame: Plywood, Polyurethane foam 1.2 lb/cu.ft., Polyurethane foam 1.5 lb/cu.ft., Polyurethane foam 2.2 lb/cu.ft., Particleboard, Solid wood, Fiberboard; Seat cushion: Polyurethane foam 2.2 lb/cu.ft., Polyurethane foam, Polyurethane foam 1.2 lb/cu.ft.; Leg: Solid beech; Leather: Dyed through top-grain leather with a treated, embossed and pigmented surface; Coated fabric parts: 100 % polyurethane, 75 % polyester, 25 % cotton; Frame: 100% polyester (min. 70% recycled), Particleboard, Plywood, Polyurethane foam 1.5 lb/cu.ft.; Cushion: 100% polyester (min. 70% recycled), Polyurethane foam 1.5 lb/cu.ft., Polyurethane foam 2.0 lb/cu.ft.; Leg: Solid wood, Tinted lacquer",
+  "title": "STRANDMON armchair and ottoman, Grann/Bomstad dark brown",
+  "productName": "STRANDMON armchair and ottoman, Grann/Bomstad dark brown",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
   "measurements": null,
   "measurementsText": null,
   "size_m": null,
@@ -19,19 +14,19 @@
   "currency": "USD",
   "category": "Armchairs & accent chairs",
   "subcategory": "Leather armchairs",
-  "category1": "Sofas & armchairs",
+  "category1": "",
   "category2": "Armchairs & accent chairs",
   "category3": "Leather armchairs",
-  "category4": "STRANDMONArmchair and ottoman",
+  "category4": "",
   "categoryTree": [
-    "Sofas & armchairs",
     "Armchairs & accent chairs",
-    "Leather armchairs",
-    "STRANDMONArmchair and ottoman"
+    "Leather armchairs"
   ],
-  "localImage": "images/59487872.jpg",
-  "imageUrl": "/product_index/images/59487872.jpg",
+  "localImage": "mock-products/59487872.jpg",
+  "imageUrl": "/static/mock-products/59487872.jpg",
   "detailUrl": "/static/shop.html#/p/59487872",
-  "rank": 7,
-  "score": 0.9248
+  "rank": 2,
+  "score": 1.0005,
+  "rawScore": 0.8505,
+  "labelBoost": 0.15
 }

@@ -1,0 +1,32 @@
+{
+  "productId": "30561155",
+  "sku": "30561155",
+  "title": "STORKLINTA nightstand, white/with 1 drawer, 153/4x187/8x207/8\"",
+  "productName": "STORKLINTA nightstand, white/with 1 drawer, 153/4x187/8x207/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 49.99,
+  "currency": "USD",
+  "category": "Dressers & storage drawers",
+  "subcategory": "Nightstands",
+  "category1": "",
+  "category2": "Dressers & storage drawers",
+  "category3": "Nightstands",
+  "category4": "",
+  "categoryTree": [
+    "Dressers & storage drawers",
+    "Nightstands"
+  ],
+  "localImage": "mock-products/30561155.jpg",
+  "imageUrl": "/static/mock-products/30561155.jpg",
+  "detailUrl": "/static/shop.html#/p/30561155",
+  "rank": 1,
+  "score": 0.9249,
+  "rawScore": 0.8249,
+  "labelBoost": 0.1
+}
