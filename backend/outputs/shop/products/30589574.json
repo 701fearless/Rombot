@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "30589574",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/30589574.jpg",
+    "price":  499.99,
+    "imageUrl":  "/static/mock-products/30589574.jpg",
+    "category":  "Rugs",
+    "productId":  "30589574",
+    "detailUrl":  "/static/shop.html#/p/30589574",
+    "title":  "FLYGVAEG rug",
+    "productName":  "FLYGVAEG rug"
+}

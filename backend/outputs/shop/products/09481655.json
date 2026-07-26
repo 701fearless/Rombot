@@ -1,0 +1,32 @@
+{
+  "productId": "09481655",
+  "sku": "09481655",
+  "title": "KALLAX / LAGKAPTEN workstation, black/black-brown, 715/8x625/8x715/8\"",
+  "productName": "KALLAX / LAGKAPTEN workstation, black/black-brown, 715/8x625/8x715/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 249.98,
+  "currency": "USD",
+  "category": "Shelving furniture",
+  "subcategory": "Storage shelves & shelving units",
+  "category1": "",
+  "category2": "Shelving furniture",
+  "category3": "Storage shelves & shelving units",
+  "category4": "",
+  "categoryTree": [
+    "Shelving furniture",
+    "Storage shelves & shelving units"
+  ],
+  "localImage": "mock-products/09481655.jpg",
+  "imageUrl": "/static/mock-products/09481655.jpg",
+  "detailUrl": "/static/shop.html#/p/09481655",
+  "rank": 3,
+  "score": 0.9365,
+  "rawScore": 0.8365,
+  "labelBoost": 0.1
+}

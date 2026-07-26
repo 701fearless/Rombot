@@ -1,0 +1,32 @@
+{
+  "productId": "90590145",
+  "sku": "90590145",
+  "title": "TIOKRONA door mat, natural, 2'0\"x2'11\"",
+  "productName": "TIOKRONA door mat, natural, 2'0\"x2'11\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 12.99,
+  "currency": "USD",
+  "category": "Door mats",
+  "subcategory": "TIOKRONADoor mat",
+  "category1": "",
+  "category2": "Door mats",
+  "category3": "TIOKRONADoor mat",
+  "category4": "",
+  "categoryTree": [
+    "Door mats",
+    "TIOKRONADoor mat"
+  ],
+  "localImage": "mock-products/90590145.jpg",
+  "imageUrl": "/static/mock-products/90590145.jpg",
+  "detailUrl": "/static/shop.html#/p/90590145",
+  "rank": 3,
+  "score": 0.7753,
+  "rawScore": 0.7253,
+  "labelBoost": 0.05
+}

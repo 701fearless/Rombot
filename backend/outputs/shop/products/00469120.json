@@ -1,0 +1,32 @@
+{
+  "productId": "00469120",
+  "sku": "00469120",
+  "title": "VINDKAST pendant lamp, white, 20\"",
+  "productName": "VINDKAST pendant lamp, white, 20\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 49.99,
+  "currency": "USD",
+  "category": "Lamps & light fixtures",
+  "subcategory": "Ceiling lights",
+  "category1": "",
+  "category2": "Lamps & light fixtures",
+  "category3": "Ceiling lights",
+  "category4": "",
+  "categoryTree": [
+    "Lamps & light fixtures",
+    "Ceiling lights"
+  ],
+  "localImage": "mock-products/00469120.jpg",
+  "imageUrl": "/static/mock-products/00469120.jpg",
+  "detailUrl": "/static/shop.html#/p/00469120",
+  "rank": 3,
+  "score": 0.8354,
+  "rawScore": 0.7354,
+  "labelBoost": 0.1
+}

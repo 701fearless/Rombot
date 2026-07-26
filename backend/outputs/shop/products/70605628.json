@@ -1,0 +1,32 @@
+{
+  "productId": "70605628",
+  "sku": "70605628",
+  "title": "BACKMÅRA bath mat, black round, 22\"",
+  "productName": "BACKMÅRA bath mat, black round, 22\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 14.99,
+  "currency": "USD",
+  "category": "Bathroom textiles",
+  "subcategory": "Bath mats & rugs",
+  "category1": "",
+  "category2": "Bathroom textiles",
+  "category3": "Bath mats & rugs",
+  "category4": "",
+  "categoryTree": [
+    "Bathroom textiles",
+    "Bath mats & rugs"
+  ],
+  "localImage": "mock-products/70605628.jpg",
+  "imageUrl": "/static/mock-products/70605628.jpg",
+  "detailUrl": "/static/shop.html#/p/70605628",
+  "rank": 2,
+  "score": 0.9005,
+  "rawScore": 0.7505,
+  "labelBoost": 0.15
+}

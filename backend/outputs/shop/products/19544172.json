@@ -1,0 +1,32 @@
+{
+  "productId": "19544172",
+  "sku": "19544172",
+  "title": "MALM bed frame with mattress, white stained oak veneer/Valevåg firm, King",
+  "productName": "MALM bed frame with mattress, white stained oak veneer/Valevåg firm, King",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 798.0,
+  "currency": "USD",
+  "category": "Beds with mattresses included",
+  "subcategory": "MALMBed frame with mattress",
+  "category1": "",
+  "category2": "Beds with mattresses included",
+  "category3": "MALMBed frame with mattress",
+  "category4": "",
+  "categoryTree": [
+    "Beds with mattresses included",
+    "MALMBed frame with mattress"
+  ],
+  "localImage": "mock-products/19544172.jpg",
+  "imageUrl": "/static/mock-products/19544172.jpg",
+  "detailUrl": "/static/shop.html#/p/19544172",
+  "rank": 1,
+  "score": 0.9481,
+  "rawScore": 0.8481,
+  "labelBoost": 0.1
+}

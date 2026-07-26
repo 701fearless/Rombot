@@ -1,0 +1,32 @@
+{
+  "productId": "89571751",
+  "sku": "89571751",
+  "title": "BROR wall shelf combination, black, 341/2x113/4/173/4x353/8\"",
+  "productName": "BROR wall shelf combination, black, 341/2x113/4/173/4x353/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 80.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "BROR system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "BROR system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "BROR system"
+  ],
+  "localImage": "mock-products/89571751.jpg",
+  "imageUrl": "/static/mock-products/89571751.jpg",
+  "detailUrl": "/static/shop.html#/p/89571751",
+  "rank": 2,
+  "score": 0.954,
+  "rawScore": 0.854,
+  "labelBoost": 0.1
+}

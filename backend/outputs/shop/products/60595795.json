@@ -1,0 +1,32 @@
+{
+  "productId": "60595795",
+  "sku": "60595795",
+  "title": "HONUNGSPALM plant pot, indoor/outdoor/green, 7 ½\"",
+  "productName": "HONUNGSPALM plant pot, indoor/outdoor/green, 7 ½\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 19.99,
+  "currency": "USD",
+  "category": "Plant pots & stands",
+  "subcategory": "Indoor plant pots",
+  "category1": "",
+  "category2": "Plant pots & stands",
+  "category3": "Indoor plant pots",
+  "category4": "",
+  "categoryTree": [
+    "Plant pots & stands",
+    "Indoor plant pots"
+  ],
+  "localImage": "mock-products/60595795.jpg",
+  "imageUrl": "/static/mock-products/60595795.jpg",
+  "detailUrl": "/static/shop.html#/p/60595795",
+  "rank": 4,
+  "score": 0.8133,
+  "rawScore": 0.7633,
+  "labelBoost": 0.05
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "60595917",
+  "sku": "60595917",
+  "title": "HASSELBUKETT plant pot, indoor/outdoor/beige, 4 ¾\"",
+  "productName": "HASSELBUKETT plant pot, indoor/outdoor/beige, 4 ¾\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 7.99,
+  "currency": "USD",
+  "category": "Plant pots & stands",
+  "subcategory": "Indoor plant pots",
+  "category1": "",
+  "category2": "Plant pots & stands",
+  "category3": "Indoor plant pots",
+  "category4": "",
+  "categoryTree": [
+    "Plant pots & stands",
+    "Indoor plant pots"
+  ],
+  "localImage": "mock-products/60595917.jpg",
+  "imageUrl": "/static/mock-products/60595917.jpg",
+  "detailUrl": "/static/shop.html#/p/60595917",
+  "rank": 4,
+  "score": 0.8867,
+  "rawScore": 0.8367,
+  "labelBoost": 0.05
+}

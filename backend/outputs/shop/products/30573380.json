@@ -1,0 +1,32 @@
+{
+  "productId": "30573380",
+  "sku": "30573380",
+  "title": "KLIBBAL mirror, brown, 181/2x243/8\"",
+  "productName": "KLIBBAL mirror, brown, 181/2x243/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 29.99,
+  "currency": "USD",
+  "category": "Mirrors",
+  "subcategory": "Decorative mirrors",
+  "category1": "",
+  "category2": "Mirrors",
+  "category3": "Decorative mirrors",
+  "category4": "",
+  "categoryTree": [
+    "Mirrors",
+    "Decorative mirrors"
+  ],
+  "localImage": "mock-products/30573380.jpg",
+  "imageUrl": "/static/mock-products/30573380.jpg",
+  "detailUrl": "/static/shop.html#/p/30573380",
+  "rank": 2,
+  "score": 0.8269,
+  "rawScore": 0.7769,
+  "labelBoost": 0.05
+}

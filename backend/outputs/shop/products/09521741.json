@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "09521741",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/09521741.jpg",
+    "price":  140,
+    "imageUrl":  "/static/mock-products/09521741.jpg",
+    "category":  "Storage solution systems",
+    "productId":  "09521741",
+    "detailUrl":  "/static/shop.html#/p/09521741",
+    "title":  "EKET storage combination with feet",
+    "productName":  "EKET storage combination with feet"
+}

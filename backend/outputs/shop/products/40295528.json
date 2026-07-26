@@ -1,0 +1,32 @@
+{
+  "productId": "40295528",
+  "sku": "40295528",
+  "title": "BESTÅ Shelf, black-brown, 22x14 1/8\"",
+  "productName": "BESTÅ Shelf, black-brown, 22x14 1/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 15.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "BESTÅ storage system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "BESTÅ storage system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "BESTÅ storage system"
+  ],
+  "localImage": "mock-products/40295528.jpg",
+  "imageUrl": "/static/mock-products/40295528.jpg",
+  "detailUrl": "/static/shop.html#/p/40295528",
+  "rank": 1,
+  "score": 0.964,
+  "rawScore": 0.864,
+  "labelBoost": 0.1
+}

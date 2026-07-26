@@ -1,0 +1,32 @@
+{
+  "productId": "89570271",
+  "sku": "89570271",
+  "title": "TONSTAD storage combination, brown stained oak veneer, 471/2x185/8x787/8\"",
+  "productName": "TONSTAD storage combination, brown stained oak veneer, 471/2x185/8x787/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 600.0,
+  "currency": "USD",
+  "category": "Display & storage cabinets",
+  "subcategory": "Cabinets, hutches & cupboards",
+  "category1": "",
+  "category2": "Display & storage cabinets",
+  "category3": "Cabinets, hutches & cupboards",
+  "category4": "",
+  "categoryTree": [
+    "Display & storage cabinets",
+    "Cabinets, hutches & cupboards"
+  ],
+  "localImage": "mock-products/89570271.jpg",
+  "imageUrl": "/static/mock-products/89570271.jpg",
+  "detailUrl": "/static/shop.html#/p/89570271",
+  "rank": 2,
+  "score": 0.9576,
+  "rawScore": 0.8576,
+  "labelBoost": 0.1
+}

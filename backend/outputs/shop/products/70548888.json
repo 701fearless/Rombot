@@ -1,0 +1,32 @@
+{
+  "productId": "70548888",
+  "sku": "70548888",
+  "title": "RÖDALM frame, birch effect, 8x10\"",
+  "productName": "RÖDALM frame, birch effect, 8x10\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 9.99,
+  "currency": "USD",
+  "category": "Wall décor",
+  "subcategory": "Picture & photo frames",
+  "category1": "",
+  "category2": "Wall décor",
+  "category3": "Picture & photo frames",
+  "category4": "",
+  "categoryTree": [
+    "Wall décor",
+    "Picture & photo frames"
+  ],
+  "localImage": "mock-products/70548888.jpg",
+  "imageUrl": "/static/mock-products/70548888.jpg",
+  "detailUrl": "/static/shop.html#/p/70548888",
+  "rank": 3,
+  "score": 0.8522,
+  "rawScore": 0.7022,
+  "labelBoost": 0.15
+}

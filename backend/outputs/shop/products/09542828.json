@@ -1,0 +1,32 @@
+{
+  "productId": "09542828",
+  "sku": "09542828",
+  "title": "FINNALA sleeper sofa, Grann/Bomstad black",
+  "productName": "FINNALA sleeper sofa, Grann/Bomstad black",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 1999.0,
+  "currency": "USD",
+  "category": "Sleeper sofas & sofa beds",
+  "subcategory": "Loveseat sleepers",
+  "category1": "",
+  "category2": "Sleeper sofas & sofa beds",
+  "category3": "Loveseat sleepers",
+  "category4": "",
+  "categoryTree": [
+    "Sleeper sofas & sofa beds",
+    "Loveseat sleepers"
+  ],
+  "localImage": "mock-products/09542828.jpg",
+  "imageUrl": "/static/mock-products/09542828.jpg",
+  "detailUrl": "/static/shop.html#/p/09542828",
+  "rank": 1,
+  "score": 1.0425,
+  "rawScore": 0.8925,
+  "labelBoost": 0.15
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "80333284",
+  "sku": "80333284",
+  "title": "BROR shelf, black, 331/8x153/8\"",
+  "productName": "BROR shelf, black, 331/8x153/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 15.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "BROR system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "BROR system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "BROR system"
+  ],
+  "localImage": "mock-products/80333284.jpg",
+  "imageUrl": "/static/mock-products/80333284.jpg",
+  "detailUrl": "/static/shop.html#/p/80333284",
+  "rank": 4,
+  "score": 0.9486,
+  "rawScore": 0.8486,
+  "labelBoost": 0.1
+}

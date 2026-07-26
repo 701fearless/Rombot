@@ -1,0 +1,32 @@
+{
+  "productId": "89412719",
+  "sku": "89412719",
+  "title": "BESTÅ storage combination with drawers, white stained oak effect/Selsviken/Stubbarp high-gloss/white, 707/8x161/2x291/8\"",
+  "productName": "BESTÅ storage combination with drawers, white stained oak effect/Selsviken/Stubbarp high-gloss/white, 707/8x161/2x291/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 485.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "BESTÅ storage system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "BESTÅ storage system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "BESTÅ storage system"
+  ],
+  "localImage": "mock-products/89412719.jpg",
+  "imageUrl": "/static/mock-products/89412719.jpg",
+  "detailUrl": "/static/shop.html#/p/89412719",
+  "rank": 1,
+  "score": 0.9586,
+  "rawScore": 0.8586,
+  "labelBoost": 0.1
+}

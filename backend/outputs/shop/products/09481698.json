@@ -1,0 +1,32 @@
+{
+  "productId": "09481698",
+  "sku": "09481698",
+  "title": "KALLAX / LINNMON workstation, white, 715/8x543/4x715/8\"",
+  "productName": "KALLAX / LINNMON workstation, white, 715/8x543/4x715/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 243.98,
+  "currency": "USD",
+  "category": "Shelving furniture",
+  "subcategory": "Storage shelves & shelving units",
+  "category1": "",
+  "category2": "Shelving furniture",
+  "category3": "Storage shelves & shelving units",
+  "category4": "",
+  "categoryTree": [
+    "Shelving furniture",
+    "Storage shelves & shelving units"
+  ],
+  "localImage": "mock-products/09481698.jpg",
+  "imageUrl": "/static/mock-products/09481698.jpg",
+  "detailUrl": "/static/shop.html#/p/09481698",
+  "rank": 4,
+  "score": 0.9574,
+  "rawScore": 0.8574,
+  "labelBoost": 0.1
+}

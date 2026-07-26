@@ -1,0 +1,32 @@
+{
+  "productId": "99326014",
+  "sku": "99326014",
+  "title": "BERGSHULT / SANDSHULT wall shelf, brown-black/aspen, 471/4x113/4\"",
+  "productName": "BERGSHULT / SANDSHULT wall shelf, brown-black/aspen, 471/4x113/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 41.0,
+  "currency": "USD",
+  "category": "Shelving furniture",
+  "subcategory": "Wall shelves",
+  "category1": "",
+  "category2": "Shelving furniture",
+  "category3": "Wall shelves",
+  "category4": "",
+  "categoryTree": [
+    "Shelving furniture",
+    "Wall shelves"
+  ],
+  "localImage": "mock-products/99326014.jpg",
+  "imageUrl": "/static/mock-products/99326014.jpg",
+  "detailUrl": "/static/shop.html#/p/99326014",
+  "rank": 1,
+  "score": 0.9415,
+  "rawScore": 0.8415,
+  "labelBoost": 0.1
+}

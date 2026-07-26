@@ -1,0 +1,32 @@
+{
+  "productId": "39240650",
+  "sku": "39240650",
+  "title": "HEMNES bed frame, dark gray stained/Lönset, King",
+  "productName": "HEMNES bed frame, dark gray stained/Lönset, King",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 559.0,
+  "currency": "USD",
+  "category": "Beds",
+  "subcategory": "Bed frames",
+  "category1": "",
+  "category2": "Beds",
+  "category3": "Bed frames",
+  "category4": "",
+  "categoryTree": [
+    "Beds",
+    "Bed frames"
+  ],
+  "localImage": "mock-products/39240650.jpg",
+  "imageUrl": "/static/mock-products/39240650.jpg",
+  "detailUrl": "/static/shop.html#/p/39240650",
+  "rank": 1,
+  "score": 0.9203,
+  "rawScore": 0.8203,
+  "labelBoost": 0.1
+}

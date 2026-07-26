@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "29560779",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/29560779.jpg",
+    "price":  590,
+    "imageUrl":  "/static/mock-products/29560779.jpg",
+    "category":  "Storage solution systems",
+    "productId":  "29560779",
+    "detailUrl":  "/static/shop.html#/p/29560779",
+    "title":  "PAX / FORSAND / AHEIM wardrobe combination",
+    "productName":  "PAX / FORSAND / AHEIM wardrobe combination"
+}

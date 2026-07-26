@@ -1,0 +1,32 @@
+{
+  "productId": "30339735",
+  "sku": "30339735",
+  "title": "FJÄLLBO Laptop table, black, 39 3/8x14 1/8\"",
+  "productName": "FJÄLLBO Laptop table, black, 39 3/8x14 1/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 109.99,
+  "currency": "USD",
+  "category": "Desks & computer desks",
+  "subcategory": "Desks for home",
+  "category1": "",
+  "category2": "Desks & computer desks",
+  "category3": "Desks for home",
+  "category4": "",
+  "categoryTree": [
+    "Desks & computer desks",
+    "Desks for home"
+  ],
+  "localImage": "mock-products/30339735.jpg",
+  "imageUrl": "/static/mock-products/30339735.jpg",
+  "detailUrl": "/static/shop.html#/p/30339735",
+  "rank": 1,
+  "score": 0.9772,
+  "rawScore": 0.8272,
+  "labelBoost": 0.15
+}

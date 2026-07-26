@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "60578017",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/60578017.jpg",
+    "price":  299.99,
+    "imageUrl":  "/static/mock-products/60578017.jpg",
+    "category":  "Rugs",
+    "productId":  "60578017",
+    "detailUrl":  "/static/shop.html#/p/60578017",
+    "title":  "RINGKLOCKA rug",
+    "productName":  "RINGKLOCKA rug"
+}

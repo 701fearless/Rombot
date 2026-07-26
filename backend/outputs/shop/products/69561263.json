@@ -1,0 +1,32 @@
+{
+  "productId": "69561263",
+  "sku": "69561263",
+  "title": "PAX / AULI wardrobe with sliding doors, white/mirror glass, 59x26x791/4\"",
+  "productName": "PAX / AULI wardrobe with sliding doors, white/mirror glass, 59x26x791/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 720.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "PAX system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "PAX system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "PAX system"
+  ],
+  "localImage": "mock-products/69561263.jpg",
+  "imageUrl": "/static/mock-products/69561263.jpg",
+  "detailUrl": "/static/shop.html#/p/69561263",
+  "rank": 2,
+  "score": 0.8836,
+  "rawScore": 0.8336,
+  "labelBoost": 0.05
+}

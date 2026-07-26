@@ -1,0 +1,13 @@
+﻿{
+    "productId":  "09525838",
+    "sku":  "09525838",
+    "title":  "MITTZON desk",
+    "productName":  "MITTZON desk",
+    "price":  219.99,
+    "currency":  "USD",
+    "category":  "Desks \u0026 computer desks",
+    "imageUrl":  "/static/mock-products/09525838.jpg",
+    "localImage":  "mock-products/09525838.jpg",
+    "detailUrl":  "/static/shop.html#/p/09525838",
+    "description":  "本地演示商品（品类对齐写死）"
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "49575812",
+  "sku": "49575812",
+  "title": "TONSTAD bed frame, oak veneer/Lyngör white, Twin",
+  "productName": "TONSTAD bed frame, oak veneer/Lyngör white, Twin",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 549.0,
+  "currency": "USD",
+  "category": "Beds",
+  "subcategory": "Twin beds & single beds",
+  "category1": "",
+  "category2": "Beds",
+  "category3": "Twin beds & single beds",
+  "category4": "",
+  "categoryTree": [
+    "Beds",
+    "Twin beds & single beds"
+  ],
+  "localImage": "mock-products/49575812.jpg",
+  "imageUrl": "/static/mock-products/49575812.jpg",
+  "detailUrl": "/static/shop.html#/p/49575812",
+  "rank": 4,
+  "score": 0.942,
+  "rawScore": 0.842,
+  "labelBoost": 0.1
+}

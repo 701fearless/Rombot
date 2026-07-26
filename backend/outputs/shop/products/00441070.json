@@ -1,0 +1,32 @@
+{
+  "productId": "00441070",
+  "sku": "00441070",
+  "title": "GOTTORP Pendant lamp shade, bamboo, Height: 15\" Diameter: 22\"",
+  "productName": "GOTTORP Pendant lamp shade, bamboo, Height: 15\" Diameter: 22\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 44.99,
+  "currency": "USD",
+  "category": "Lamps & light fixtures",
+  "subcategory": "Lamp parts & heads",
+  "category1": "",
+  "category2": "Lamps & light fixtures",
+  "category3": "Lamp parts & heads",
+  "category4": "",
+  "categoryTree": [
+    "Lamps & light fixtures",
+    "Lamp parts & heads"
+  ],
+  "localImage": "mock-products/00441070.jpg",
+  "imageUrl": "/static/mock-products/00441070.jpg",
+  "detailUrl": "/static/shop.html#/p/00441070",
+  "rank": 4,
+  "score": 0.9462,
+  "rawScore": 0.7962,
+  "labelBoost": 0.15
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "90155040",
+  "sku": "90155040",
+  "title": "BÖJA table lamp, bamboo/handmade",
+  "productName": "BÖJA table lamp, bamboo/handmade",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 59.99,
+  "currency": "USD",
+  "category": "Lamps & light fixtures",
+  "subcategory": "Table lamps",
+  "category1": "",
+  "category2": "Lamps & light fixtures",
+  "category3": "Table lamps",
+  "category4": "",
+  "categoryTree": [
+    "Lamps & light fixtures",
+    "Table lamps"
+  ],
+  "localImage": "mock-products/90155040.jpg",
+  "imageUrl": "/static/mock-products/90155040.jpg",
+  "detailUrl": "/static/shop.html#/p/90155040",
+  "rank": 4,
+  "score": 0.8988,
+  "rawScore": 0.7488,
+  "labelBoost": 0.15
+}

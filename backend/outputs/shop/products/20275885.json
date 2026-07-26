@@ -1,0 +1,32 @@
+{
+  "productId": "20275885",
+  "sku": "20275885",
+  "title": "KALLAX Shelf unit, black-brown, 30 3/8x57 7/8\"",
+  "productName": "KALLAX Shelf unit, black-brown, 30 3/8x57 7/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 79.99,
+  "currency": "USD",
+  "category": "Shelving furniture",
+  "subcategory": "Storage shelves & shelving units",
+  "category1": "",
+  "category2": "Shelving furniture",
+  "category3": "Storage shelves & shelving units",
+  "category4": "",
+  "categoryTree": [
+    "Shelving furniture",
+    "Storage shelves & shelving units"
+  ],
+  "localImage": "mock-products/20275885.jpg",
+  "imageUrl": "/static/mock-products/20275885.jpg",
+  "detailUrl": "/static/shop.html#/p/20275885",
+  "rank": 2,
+  "score": 0.9564,
+  "rawScore": 0.8564,
+  "labelBoost": 0.1
+}

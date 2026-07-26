@@ -1,0 +1,32 @@
+{
+  "productId": "09496671",
+  "sku": "09496671",
+  "title": "TONSTAD bed frame with storage, oak veneer/Lönset, Queen",
+  "productName": "TONSTAD bed frame with storage, oak veneer/Lönset, Queen",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 662.0,
+  "currency": "USD",
+  "category": "Beds",
+  "subcategory": "Bed frames with storage",
+  "category1": "",
+  "category2": "Beds",
+  "category3": "Bed frames with storage",
+  "category4": "",
+  "categoryTree": [
+    "Beds",
+    "Bed frames with storage"
+  ],
+  "localImage": "mock-products/09496671.jpg",
+  "imageUrl": "/static/mock-products/09496671.jpg",
+  "detailUrl": "/static/shop.html#/p/09496671",
+  "rank": 2,
+  "score": 0.946,
+  "rawScore": 0.846,
+  "labelBoost": 0.1
+}

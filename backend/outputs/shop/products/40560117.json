@@ -1,0 +1,32 @@
+{
+  "productId": "40560117",
+  "sku": "40560117",
+  "title": "SMYCKA artificial flower, hydrangea/light pink, 25 ½\"",
+  "productName": "SMYCKA artificial flower, hydrangea/light pink, 25 ½\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 4.99,
+  "currency": "USD",
+  "category": "Plants and flowers",
+  "subcategory": "Artificial plants & flowers",
+  "category1": "",
+  "category2": "Plants and flowers",
+  "category3": "Artificial plants & flowers",
+  "category4": "",
+  "categoryTree": [
+    "Plants and flowers",
+    "Artificial plants & flowers"
+  ],
+  "localImage": "mock-products/40560117.jpg",
+  "imageUrl": "/static/mock-products/40560117.jpg",
+  "detailUrl": "/static/shop.html#/p/40560117",
+  "rank": 2,
+  "score": 0.8458,
+  "rawScore": 0.7458,
+  "labelBoost": 0.1
+}

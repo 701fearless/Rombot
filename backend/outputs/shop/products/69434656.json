@@ -1,0 +1,32 @@
+{
+  "productId": "69434656",
+  "sku": "69434656",
+  "title": "ENHET mirror cab/2 door, gray, 24x63/4x30\"",
+  "productName": "ENHET mirror cab/2 door, gray, 24x63/4x30\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 112.0,
+  "currency": "USD",
+  "category": "Bathroom systems",
+  "subcategory": "ENHET bathroom",
+  "category1": "",
+  "category2": "Bathroom systems",
+  "category3": "ENHET bathroom",
+  "category4": "",
+  "categoryTree": [
+    "Bathroom systems",
+    "ENHET bathroom"
+  ],
+  "localImage": "mock-products/69434656.jpg",
+  "imageUrl": "/static/mock-products/69434656.jpg",
+  "detailUrl": "/static/shop.html#/p/69434656",
+  "rank": 4,
+  "score": 0.8141,
+  "rawScore": 0.7641,
+  "labelBoost": 0.05
+}

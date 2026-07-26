@@ -1,0 +1,32 @@
+{
+  "productId": "70600862",
+  "sku": "70600862",
+  "title": "FEJKA artificial potted plant, indoor/outdoor Winterbourn, 7 ½\"",
+  "productName": "FEJKA artificial potted plant, indoor/outdoor Winterbourn, 7 ½\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 44.99,
+  "currency": "USD",
+  "category": "Plants and flowers",
+  "subcategory": "Artificial plants & flowers",
+  "category1": "",
+  "category2": "Plants and flowers",
+  "category3": "Artificial plants & flowers",
+  "category4": "",
+  "categoryTree": [
+    "Plants and flowers",
+    "Artificial plants & flowers"
+  ],
+  "localImage": "mock-products/70600862.jpg",
+  "imageUrl": "/static/mock-products/70600862.jpg",
+  "detailUrl": "/static/shop.html#/p/70600862",
+  "rank": 4,
+  "score": 0.8988,
+  "rawScore": 0.7988,
+  "labelBoost": 0.1
+}

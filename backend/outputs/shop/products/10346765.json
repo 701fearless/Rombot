@@ -1,0 +1,13 @@
+﻿{
+    "productId":  "10346765",
+    "sku":  "10346765",
+    "title":  "PERSILLADE plant pot",
+    "productName":  "PERSILLADE plant pot",
+    "price":  5.99,
+    "currency":  "USD",
+    "category":  "Plant pots \u0026 stands",
+    "imageUrl":  "/static/mock-products/10346765.jpg",
+    "localImage":  "mock-products/10346765.jpg",
+    "detailUrl":  "/static/shop.html#/p/10346765",
+    "description":  "本地演示商品（品类对齐写死）"
+}

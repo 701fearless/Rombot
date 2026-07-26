@@ -1,0 +1,32 @@
+{
+  "productId": "19484267",
+  "sku": "19484267",
+  "title": "POÄNG armchair and ottoman, birch veneer/Hillared beige",
+  "productName": "POÄNG armchair and ottoman, birch veneer/Hillared beige",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 369.0,
+  "currency": "USD",
+  "category": "Armchairs & accent chairs",
+  "subcategory": "Fabric armchairs",
+  "category1": "",
+  "category2": "Armchairs & accent chairs",
+  "category3": "Fabric armchairs",
+  "category4": "",
+  "categoryTree": [
+    "Armchairs & accent chairs",
+    "Fabric armchairs"
+  ],
+  "localImage": "mock-products/19484267.jpg",
+  "imageUrl": "/static/mock-products/19484267.jpg",
+  "detailUrl": "/static/shop.html#/p/19484267",
+  "rank": 2,
+  "score": 0.9447,
+  "rawScore": 0.8447,
+  "labelBoost": 0.1
+}

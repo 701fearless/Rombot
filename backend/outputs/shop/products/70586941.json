@@ -1,0 +1,32 @@
+{
+  "productId": "70586941",
+  "sku": "70586941",
+  "title": "MOSSLANDA picture ledge, oak effect, 451/4\"",
+  "productName": "MOSSLANDA picture ledge, oak effect, 451/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 19.99,
+  "currency": "USD",
+  "category": "Wall décor",
+  "subcategory": "Display shelves & picture ledges",
+  "category1": "",
+  "category2": "Wall décor",
+  "category3": "Display shelves & picture ledges",
+  "category4": "",
+  "categoryTree": [
+    "Wall décor",
+    "Display shelves & picture ledges"
+  ],
+  "localImage": "mock-products/70586941.jpg",
+  "imageUrl": "/static/mock-products/70586941.jpg",
+  "detailUrl": "/static/shop.html#/p/70586941",
+  "rank": 2,
+  "score": 0.9134,
+  "rawScore": 0.8134,
+  "labelBoost": 0.1
+}

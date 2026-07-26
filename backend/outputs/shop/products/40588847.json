@@ -1,0 +1,32 @@
+{
+  "productId": "40588847",
+  "sku": "40588847",
+  "title": "GÄVLE chair, Diseröd gray",
+  "productName": "GÄVLE chair, Diseröd gray",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 39.99,
+  "currency": "USD",
+  "category": "Armchairs & accent chairs",
+  "subcategory": "Lounge chairs",
+  "category1": "",
+  "category2": "Armchairs & accent chairs",
+  "category3": "Lounge chairs",
+  "category4": "",
+  "categoryTree": [
+    "Armchairs & accent chairs",
+    "Lounge chairs"
+  ],
+  "localImage": "mock-products/40588847.jpg",
+  "imageUrl": "/static/mock-products/40588847.jpg",
+  "detailUrl": "/static/shop.html#/p/40588847",
+  "rank": 4,
+  "score": 0.9297,
+  "rawScore": 0.8297,
+  "labelBoost": 0.1
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "10594034",
+  "sku": "10594034",
+  "title": "TONSTAD chair, oak effect/Fridtuna light beige",
+  "productName": "TONSTAD chair, oak effect/Fridtuna light beige",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 75.0,
+  "currency": "USD",
+  "category": "Dining furniture",
+  "subcategory": "Dining chairs",
+  "category1": "",
+  "category2": "Dining furniture",
+  "category3": "Dining chairs",
+  "category4": "",
+  "categoryTree": [
+    "Dining furniture",
+    "Dining chairs"
+  ],
+  "localImage": "mock-products/10594034.jpg",
+  "imageUrl": "/static/mock-products/10594034.jpg",
+  "detailUrl": "/static/shop.html#/p/10594034",
+  "rank": 2,
+  "score": 0.9727,
+  "rawScore": 0.8727,
+  "labelBoost": 0.1
+}

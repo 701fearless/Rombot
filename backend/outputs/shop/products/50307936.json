@@ -1,0 +1,32 @@
+{
+  "productId": "50307936",
+  "sku": "50307936",
+  "title": "BALKARP Sleeper sofa, Vissle gray",
+  "productName": "BALKARP Sleeper sofa, Vissle gray",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 299.0,
+  "currency": "USD",
+  "category": "Sleeper sofas & sofa beds",
+  "subcategory": "Loveseat sleepers",
+  "category1": "",
+  "category2": "Sleeper sofas & sofa beds",
+  "category3": "Loveseat sleepers",
+  "category4": "",
+  "categoryTree": [
+    "Sleeper sofas & sofa beds",
+    "Loveseat sleepers"
+  ],
+  "localImage": "mock-products/50307936.jpg",
+  "imageUrl": "/static/mock-products/50307936.jpg",
+  "detailUrl": "/static/shop.html#/p/50307936",
+  "rank": 4,
+  "score": 1.0053,
+  "rawScore": 0.8553,
+  "labelBoost": 0.15
+}

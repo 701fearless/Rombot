@@ -1,0 +1,32 @@
+{
+  "productId": "40548861",
+  "sku": "40548861",
+  "title": "RÖDALM frame, birch effect, 4x6\"",
+  "productName": "RÖDALM frame, birch effect, 4x6\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 6.99,
+  "currency": "USD",
+  "category": "Wall décor",
+  "subcategory": "Picture & photo frames",
+  "category1": "",
+  "category2": "Wall décor",
+  "category3": "Picture & photo frames",
+  "category4": "",
+  "categoryTree": [
+    "Wall décor",
+    "Picture & photo frames"
+  ],
+  "localImage": "mock-products/40548861.jpg",
+  "imageUrl": "/static/mock-products/40548861.jpg",
+  "detailUrl": "/static/shop.html#/p/40548861",
+  "rank": 3,
+  "score": 0.9114,
+  "rawScore": 0.7614,
+  "labelBoost": 0.15
+}

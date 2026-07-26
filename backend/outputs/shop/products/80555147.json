@@ -1,0 +1,32 @@
+{
+  "productId": "80555147",
+  "sku": "80555147",
+  "title": "ÅLSKEN countertop, bamboo/veneer, 25x211/2\"",
+  "productName": "ÅLSKEN countertop, bamboo/veneer, 25x211/2\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 60.0,
+  "currency": "USD",
+  "category": "Bathroom countertops",
+  "subcategory": "ÅLSKENCountertop",
+  "category1": "",
+  "category2": "Bathroom countertops",
+  "category3": "ÅLSKENCountertop",
+  "category4": "",
+  "categoryTree": [
+    "Bathroom countertops",
+    "ÅLSKENCountertop"
+  ],
+  "localImage": "mock-products/80555147.jpg",
+  "imageUrl": "/static/mock-products/80555147.jpg",
+  "detailUrl": "/static/shop.html#/p/80555147",
+  "rank": 2,
+  "score": 0.9037,
+  "rawScore": 0.8537,
+  "labelBoost": 0.05
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "30257466",
+  "sku": "30257466",
+  "title": "KOMPLEMENT Pull-out shoe shelf, white, 29 1/2x22 7/8\"",
+  "productName": "KOMPLEMENT Pull-out shoe shelf, white, 29 1/2x22 7/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 40.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "PAX system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "PAX system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "PAX system"
+  ],
+  "localImage": "mock-products/30257466.jpg",
+  "imageUrl": "/static/mock-products/30257466.jpg",
+  "detailUrl": "/static/shop.html#/p/30257466",
+  "rank": 3,
+  "score": 0.9032,
+  "rawScore": 0.8032,
+  "labelBoost": 0.1
+}

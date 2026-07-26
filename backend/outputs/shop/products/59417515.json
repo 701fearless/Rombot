@@ -1,0 +1,32 @@
+{
+  "productId": "59417515",
+  "sku": "59417515",
+  "title": "LAGKAPTEN / TILLSLAG desk, black-brown/white, 551/8x235/8\"",
+  "productName": "LAGKAPTEN / TILLSLAG desk, black-brown/white, 551/8x235/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 69.99,
+  "currency": "USD",
+  "category": "Desks & computer desks",
+  "subcategory": "Table & desk systems",
+  "category1": "",
+  "category2": "Desks & computer desks",
+  "category3": "Table & desk systems",
+  "category4": "",
+  "categoryTree": [
+    "Desks & computer desks",
+    "Table & desk systems"
+  ],
+  "localImage": "mock-products/59417515.jpg",
+  "imageUrl": "/static/mock-products/59417515.jpg",
+  "detailUrl": "/static/shop.html#/p/59417515",
+  "rank": 2,
+  "score": 0.9468,
+  "rawScore": 0.8468,
+  "labelBoost": 0.1
+}

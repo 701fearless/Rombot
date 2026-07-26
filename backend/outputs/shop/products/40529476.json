@@ -1,0 +1,32 @@
+{
+  "productId": "40529476",
+  "sku": "40529476",
+  "title": "PINNTORP chair, red stained",
+  "productName": "PINNTORP chair, red stained",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 55.0,
+  "currency": "USD",
+  "category": "Dining furniture",
+  "subcategory": "Dining chairs",
+  "category1": "",
+  "category2": "Dining furniture",
+  "category3": "Dining chairs",
+  "category4": "",
+  "categoryTree": [
+    "Dining furniture",
+    "Dining chairs"
+  ],
+  "localImage": "mock-products/40529476.jpg",
+  "imageUrl": "/static/mock-products/40529476.jpg",
+  "detailUrl": "/static/shop.html#/p/40529476",
+  "rank": 4,
+  "score": 0.9556,
+  "rawScore": 0.8556,
+  "labelBoost": 0.1
+}

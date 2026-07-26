@@ -1,0 +1,32 @@
+{
+  "productId": "60574590",
+  "sku": "60574590",
+  "title": "EKET cabinet with door, brown/walnut effect, 133/4x133/4x133/4\"",
+  "productName": "EKET cabinet with door, brown/walnut effect, 133/4x133/4x133/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 35.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "EKET storage system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "EKET storage system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "EKET storage system"
+  ],
+  "localImage": "mock-products/60574590.jpg",
+  "imageUrl": "/static/mock-products/60574590.jpg",
+  "detailUrl": "/static/shop.html#/p/60574590",
+  "rank": 1,
+  "score": 0.9745,
+  "rawScore": 0.8745,
+  "labelBoost": 0.1
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "50396758",
+  "sku": "50396758",
+  "title": "TIBAST Curtains, 1 pair, white, 57x98\"",
+  "productName": "TIBAST Curtains, 1 pair, white, 57x98\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 49.99,
+  "currency": "USD",
+  "category": "Window treatments & coverings",
+  "subcategory": "Curtains & drapes",
+  "category1": "",
+  "category2": "Window treatments & coverings",
+  "category3": "Curtains & drapes",
+  "category4": "",
+  "categoryTree": [
+    "Window treatments & coverings",
+    "Curtains & drapes"
+  ],
+  "localImage": "mock-products/50396758.jpg",
+  "imageUrl": "/static/mock-products/50396758.jpg",
+  "detailUrl": "/static/shop.html#/p/50396758",
+  "rank": 1,
+  "score": 0.8877,
+  "rawScore": 0.7877,
+  "labelBoost": 0.1
+}

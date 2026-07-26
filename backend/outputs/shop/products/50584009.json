@@ -1,0 +1,32 @@
+{
+  "productId": "50584009",
+  "sku": "50584009",
+  "title": "KLOTLÖNN plant pot with saucer, indoor/outdoor/gray/beige, 6\"",
+  "productName": "KLOTLÖNN plant pot with saucer, indoor/outdoor/gray/beige, 6\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 11.99,
+  "currency": "USD",
+  "category": "Plant pots & stands",
+  "subcategory": "Indoor plant pots",
+  "category1": "",
+  "category2": "Plant pots & stands",
+  "category3": "Indoor plant pots",
+  "category4": "",
+  "categoryTree": [
+    "Plant pots & stands",
+    "Indoor plant pots"
+  ],
+  "localImage": "mock-products/50584009.jpg",
+  "imageUrl": "/static/mock-products/50584009.jpg",
+  "detailUrl": "/static/shop.html#/p/50584009",
+  "rank": 1,
+  "score": 0.8961,
+  "rawScore": 0.8461,
+  "labelBoost": 0.05
+}

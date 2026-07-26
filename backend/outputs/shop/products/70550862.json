@@ -1,0 +1,32 @@
+{
+  "productId": "70550862",
+  "sku": "70550862",
+  "title": "POÄNG chair cushion, Gunnared light green",
+  "productName": "POÄNG chair cushion, Gunnared light green",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 144.0,
+  "currency": "USD",
+  "category": "Sofa & armchairs covers",
+  "subcategory": "POÄNG covers",
+  "category1": "",
+  "category2": "Sofa & armchairs covers",
+  "category3": "POÄNG covers",
+  "category4": "",
+  "categoryTree": [
+    "Sofa & armchairs covers",
+    "POÄNG covers"
+  ],
+  "localImage": "mock-products/70550862.jpg",
+  "imageUrl": "/static/mock-products/70550862.jpg",
+  "detailUrl": "/static/shop.html#/p/70550862",
+  "rank": 3,
+  "score": 0.9021,
+  "rawScore": 0.7521,
+  "labelBoost": 0.15
+}

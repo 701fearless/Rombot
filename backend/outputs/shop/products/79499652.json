@@ -1,0 +1,32 @@
+{
+  "productId": "79499652",
+  "sku": "79499652",
+  "title": "KIVIK 1-seat sleeper sofa, Gunnared light brown-pink",
+  "productName": "KIVIK 1-seat sleeper sofa, Gunnared light brown-pink",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 649.0,
+  "currency": "USD",
+  "category": "Sleeper sofas & sofa beds",
+  "subcategory": "Chair beds",
+  "category1": "",
+  "category2": "Sleeper sofas & sofa beds",
+  "category3": "Chair beds",
+  "category4": "",
+  "categoryTree": [
+    "Sleeper sofas & sofa beds",
+    "Chair beds"
+  ],
+  "localImage": "mock-products/79499652.jpg",
+  "imageUrl": "/static/mock-products/79499652.jpg",
+  "detailUrl": "/static/shop.html#/p/79499652",
+  "rank": 2,
+  "score": 0.9072,
+  "rawScore": 0.7572,
+  "labelBoost": 0.15
+}

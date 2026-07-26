@@ -1,0 +1,32 @@
+{
+  "productId": "70491575",
+  "sku": "70491575",
+  "title": "FEJKA artificial potted plant, indoor/outdoor Weeping fig, 8 ¼\"",
+  "productName": "FEJKA artificial potted plant, indoor/outdoor Weeping fig, 8 ¼\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 89.99,
+  "currency": "USD",
+  "category": "Plants and flowers",
+  "subcategory": "Artificial plants & flowers",
+  "category1": "",
+  "category2": "Plants and flowers",
+  "category3": "Artificial plants & flowers",
+  "category4": "",
+  "categoryTree": [
+    "Plants and flowers",
+    "Artificial plants & flowers"
+  ],
+  "localImage": "mock-products/70491575.jpg",
+  "imageUrl": "/static/mock-products/70491575.jpg",
+  "detailUrl": "/static/shop.html#/p/70491575",
+  "rank": 2,
+  "score": 0.9061,
+  "rawScore": 0.8061,
+  "labelBoost": 0.1
+}

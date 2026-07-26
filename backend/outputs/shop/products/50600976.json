@@ -1,0 +1,32 @@
+{
+  "productId": "50600976",
+  "sku": "50600976",
+  "title": "MÄVINN place mat, jute, 14 ½\"",
+  "productName": "MÄVINN place mat, jute, 14 ½\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 4.99,
+  "currency": "USD",
+  "category": "Table linens",
+  "subcategory": "Placemats, tablemats & coasters",
+  "category1": "",
+  "category2": "Table linens",
+  "category3": "Placemats, tablemats & coasters",
+  "category4": "",
+  "categoryTree": [
+    "Table linens",
+    "Placemats, tablemats & coasters"
+  ],
+  "localImage": "mock-products/50600976.jpg",
+  "imageUrl": "/static/mock-products/50600976.jpg",
+  "detailUrl": "/static/shop.html#/p/50600976",
+  "rank": 4,
+  "score": 0.8857,
+  "rawScore": 0.8357,
+  "labelBoost": 0.05
+}

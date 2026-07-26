@@ -1,0 +1,32 @@
+{
+  "productId": "10602703",
+  "sku": "10602703",
+  "title": "EKFÄNN mirror with built-in light, dimmable wall mounted/black",
+  "productName": "EKFÄNN mirror with built-in light, dimmable wall mounted/black",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 34.99,
+  "currency": "USD",
+  "category": "Mirrors",
+  "subcategory": "Magnifying & makeup mirrors",
+  "category1": "",
+  "category2": "Mirrors",
+  "category3": "Magnifying & makeup mirrors",
+  "category4": "",
+  "categoryTree": [
+    "Mirrors",
+    "Magnifying & makeup mirrors"
+  ],
+  "localImage": "mock-products/10602703.jpg",
+  "imageUrl": "/static/mock-products/10602703.jpg",
+  "detailUrl": "/static/shop.html#/p/10602703",
+  "rank": 3,
+  "score": 0.8149,
+  "rawScore": 0.7649,
+  "labelBoost": 0.05
+}

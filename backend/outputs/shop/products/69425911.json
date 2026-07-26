@@ -1,0 +1,32 @@
+{
+  "productId": "69425911",
+  "sku": "69425911",
+  "title": "BESTÅ wall-mounted cabinet combination, black-brown/Hanviken black-brown, 707/8x161/2x251/4\"",
+  "productName": "BESTÅ wall-mounted cabinet combination, black-brown/Hanviken black-brown, 707/8x161/2x251/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 345.0,
+  "currency": "USD",
+  "category": "Display & storage cabinets",
+  "subcategory": "Cabinets, hutches & cupboards",
+  "category1": "",
+  "category2": "Display & storage cabinets",
+  "category3": "Cabinets, hutches & cupboards",
+  "category4": "",
+  "categoryTree": [
+    "Display & storage cabinets",
+    "Cabinets, hutches & cupboards"
+  ],
+  "localImage": "mock-products/69425911.jpg",
+  "imageUrl": "/static/mock-products/69425911.jpg",
+  "detailUrl": "/static/shop.html#/p/69425911",
+  "rank": 4,
+  "score": 0.9297,
+  "rawScore": 0.8297,
+  "labelBoost": 0.1
+}

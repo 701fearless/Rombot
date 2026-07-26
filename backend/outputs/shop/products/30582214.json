@@ -1,0 +1,32 @@
+{
+  "productId": "30582214",
+  "sku": "30582214",
+  "title": "POÄNG armchair cushion with low back, Vissle red",
+  "productName": "POÄNG armchair cushion with low back, Vissle red",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 54.0,
+  "currency": "USD",
+  "category": "Sofa & armchairs covers",
+  "subcategory": "POÄNG covers",
+  "category1": "",
+  "category2": "Sofa & armchairs covers",
+  "category3": "POÄNG covers",
+  "category4": "",
+  "categoryTree": [
+    "Sofa & armchairs covers",
+    "POÄNG covers"
+  ],
+  "localImage": "mock-products/30582214.jpg",
+  "imageUrl": "/static/mock-products/30582214.jpg",
+  "detailUrl": "/static/shop.html#/p/30582214",
+  "rank": 1,
+  "score": 0.9103,
+  "rawScore": 0.7603,
+  "labelBoost": 0.15
+}

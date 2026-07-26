@@ -1,0 +1,32 @@
+{
+  "productId": "79491000",
+  "sku": "79491000",
+  "title": "BERGSHULT / KROKSHULT wall shelf, walnut effect/anthracite, 311/2x113/4\"",
+  "productName": "BERGSHULT / KROKSHULT wall shelf, walnut effect/anthracite, 311/2x113/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 29.0,
+  "currency": "USD",
+  "category": "Shelving furniture",
+  "subcategory": "Wall shelves",
+  "category1": "",
+  "category2": "Shelving furniture",
+  "category3": "Wall shelves",
+  "category4": "",
+  "categoryTree": [
+    "Shelving furniture",
+    "Wall shelves"
+  ],
+  "localImage": "mock-products/79491000.jpg",
+  "imageUrl": "/static/mock-products/79491000.jpg",
+  "detailUrl": "/static/shop.html#/p/79491000",
+  "rank": 4,
+  "score": 0.9195,
+  "rawScore": 0.8195,
+  "labelBoost": 0.1
+}

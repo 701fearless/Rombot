@@ -105,9 +105,40 @@ function serveIndexFallback(res) {
   })
 }
 
+const API_TARGET = process.env.API_TARGET || 'http://127.0.0.1:8010'
+const PROXY_PREFIXES = ['/api', '/sample_data', '/outputs', '/product_index', '/vedios', '/health']
+
+function shouldProxy(urlPath) {
+  return PROXY_PREFIXES.some((p) => urlPath === p || urlPath.startsWith(p + '/'))
+}
+
+function proxyToBackend(req, res) {
+  const target = new URL(API_TARGET)
+  const options = {
+    protocol: target.protocol,
+    hostname: target.hostname,
+    port: target.port || (target.protocol === 'https:' ? 443 : 80),
+    path: req.url,
+    method: req.method,
+    headers: { ...req.headers, host: target.host },
+  }
+  const upstream = http.request(options, (up) => {
+    res.writeHead(up.statusCode || 502, up.headers)
+    up.pipe(res)
+  })
+  upstream.on('error', (err) => {
+    send(res, 502, 'Proxy error: ' + err.message)
+  })
+  req.pipe(upstream)
+}
+
 const server = http.createServer((req, res) => {
   // 去掉 query / hash，解码中文/空格
   let urlPath = decodeURIComponent((req.url || '/').split('?')[0].split('#')[0])
+  if (shouldProxy(urlPath)) {
+    proxyToBackend(req, res)
+    return
+  }
   if (urlPath === '/') {
     serveIndexFallback(res)
     return
@@ -145,5 +176,6 @@ server.listen(PORT, '0.0.0.0', () => {
   console.log('  H5 预览服务器已启动 (零依赖静态服务)')
   console.log('  本地访问:  http://localhost:' + PORT + '/')
   console.log('  serve 目录: ' + ROOT)
+  console.log('  API 代理:   ' + API_TARGET + '  <- ' + PROXY_PREFIXES.join(', '))
   console.log('==================================================')
 })

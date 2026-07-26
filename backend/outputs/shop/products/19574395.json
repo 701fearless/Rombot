@@ -1,0 +1,13 @@
+﻿{
+    "productId":  "19574395",
+    "sku":  "19574395",
+    "title":  "MALM bed frame",
+    "productName":  "MALM bed frame",
+    "price":  269,
+    "currency":  "USD",
+    "category":  "Beds",
+    "imageUrl":  "/static/mock-products/19574395.jpg",
+    "localImage":  "mock-products/19574395.jpg",
+    "detailUrl":  "/static/shop.html#/p/19574395",
+    "description":  "本地演示商品（品类对齐写死）"
+}

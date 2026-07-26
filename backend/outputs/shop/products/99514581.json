@@ -1,0 +1,32 @@
+{
+  "productId": "99514581",
+  "sku": "99514581",
+  "title": "SÖDERHAMN armchair, Kelinge rust",
+  "productName": "SÖDERHAMN armchair, Kelinge rust",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 399.0,
+  "currency": "USD",
+  "category": "Armchairs & accent chairs",
+  "subcategory": "Fabric armchairs",
+  "category1": "",
+  "category2": "Armchairs & accent chairs",
+  "category3": "Fabric armchairs",
+  "category4": "",
+  "categoryTree": [
+    "Armchairs & accent chairs",
+    "Fabric armchairs"
+  ],
+  "localImage": "mock-products/99514581.jpg",
+  "imageUrl": "/static/mock-products/99514581.jpg",
+  "detailUrl": "/static/shop.html#/p/99514581",
+  "rank": 1,
+  "score": 1.0271,
+  "rawScore": 0.8271,
+  "labelBoost": 0.2
+}

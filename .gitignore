@@ -12,6 +12,7 @@ room_scan_standalone/
 
 # Local video assets / large demo media
 vedios/
+# Full IKEA / CLIP image database — DO NOT commit
 backend/data/product_index/
 
 # Heavy generated assets
@@ -57,6 +58,8 @@ frontend/coverage/
 frontend/playwright-report/
 frontend/test-results/
 frontend/*.tsbuildinfo
+frontend/.vite/
+frontend/*.log
 
 # Curated UI reference assets are part of the frontend source.
 !frontend/src/assets/reference/

@@ -1,0 +1,32 @@
+{
+  "productId": "49490295",
+  "sku": "49490295",
+  "title": "EKET wall-mounted storage combination, walnut effect, 271/2x97/8x687/8\"",
+  "productName": "EKET wall-mounted storage combination, walnut effect, 271/2x97/8x687/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 135.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "EKET storage system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "EKET storage system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "EKET storage system"
+  ],
+  "localImage": "mock-products/49490295.jpg",
+  "imageUrl": "/static/mock-products/49490295.jpg",
+  "detailUrl": "/static/shop.html#/p/49490295",
+  "rank": 4,
+  "score": 0.8723,
+  "rawScore": 0.8223,
+  "labelBoost": 0.05
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "20381503",
+  "sku": "20381503",
+  "title": "SILVERHÖJDEN Frame, gold, 12x16\"",
+  "productName": "SILVERHÖJDEN Frame, gold, 12x16\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 14.99,
+  "currency": "USD",
+  "category": "Wall décor",
+  "subcategory": "Picture & photo frames",
+  "category1": "",
+  "category2": "Wall décor",
+  "category3": "Picture & photo frames",
+  "category4": "",
+  "categoryTree": [
+    "Wall décor",
+    "Picture & photo frames"
+  ],
+  "localImage": "mock-products/20381503.jpg",
+  "imageUrl": "/static/mock-products/20381503.jpg",
+  "detailUrl": "/static/shop.html#/p/20381503",
+  "rank": 2,
+  "score": 0.902,
+  "rawScore": 0.752,
+  "labelBoost": 0.15
+}

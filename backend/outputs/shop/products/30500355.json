@@ -1,0 +1,32 @@
+{
+  "productId": "30500355",
+  "sku": "30500355",
+  "title": "BORGEBY coffee table, black, 271/2\"",
+  "productName": "BORGEBY coffee table, black, 271/2\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 169.99,
+  "currency": "USD",
+  "category": "Accent tables",
+  "subcategory": "Coffee tables",
+  "category1": "",
+  "category2": "Accent tables",
+  "category3": "Coffee tables",
+  "category4": "",
+  "categoryTree": [
+    "Accent tables",
+    "Coffee tables"
+  ],
+  "localImage": "mock-products/30500355.jpg",
+  "imageUrl": "/static/mock-products/30500355.jpg",
+  "detailUrl": "/static/shop.html#/p/30500355",
+  "rank": 3,
+  "score": 0.9257,
+  "rawScore": 0.8257,
+  "labelBoost": 0.1
+}

@@ -1,0 +1,35 @@
+{
+  "productId": "80349671",
+  "sku": "80349671",
+  "title": "TOBIAS chair",
+  "productName": "TOBIAS chair",
+  "description": "TOBIAS chair, clear/chrome plated A transparent chair that mirrors its surroundings. It picks up the colors of the room and appears to be floating. And because there’s flexibility in the seat, you may feel like you are floating too.",
+  "features": [
+    "Possible to separate for recycling or energy recovery if available in your community."
+  ],
+  "materialAndCare": "Leg frame: Steel, Chrome plated; Seat shell: Polycarbonate plastic; Foot: Polypropylene; Nut: Zinc, Chrome plated; Bumpers/ Washers: Synthetic rubber",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 85.0,
+  "currency": "USD",
+  "category": "Dining furniture",
+  "subcategory": "Dining chairs",
+  "category1": "Tables & chairs",
+  "category2": "Dining furniture",
+  "category3": "Dining chairs",
+  "category4": "Dining chairs",
+  "categoryTree": [
+    "Tables & chairs",
+    "Dining furniture",
+    "Dining chairs",
+    "Dining chairs",
+    "TOBIASChair"
+  ],
+  "localImage": "images/80349671.jpg",
+  "imageUrl": "/product_index/images/80349671.jpg",
+  "detailUrl": "/static/shop.html#/p/80349671",
+  "rank": 1,
+  "score": 0.9312
+}

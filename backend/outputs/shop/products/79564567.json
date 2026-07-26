@@ -1,0 +1,32 @@
+{
+  "productId": "79564567",
+  "sku": "79564567",
+  "title": "STJÄRNÖ bed frame, white/Lyngör white, Twin",
+  "productName": "STJÄRNÖ bed frame, white/Lyngör white, Twin",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 349.0,
+  "currency": "USD",
+  "category": "Beds",
+  "subcategory": "Twin beds & single beds",
+  "category1": "",
+  "category2": "Beds",
+  "category3": "Twin beds & single beds",
+  "category4": "",
+  "categoryTree": [
+    "Beds",
+    "Twin beds & single beds"
+  ],
+  "localImage": "mock-products/79564567.jpg",
+  "imageUrl": "/static/mock-products/79564567.jpg",
+  "detailUrl": "/static/shop.html#/p/79564567",
+  "rank": 4,
+  "score": 0.9091,
+  "rawScore": 0.8091,
+  "labelBoost": 0.1
+}

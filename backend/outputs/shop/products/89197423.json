@@ -1,0 +1,32 @@
+{
+  "productId": "89197423",
+  "sku": "89197423",
+  "title": "KALLAX shelf unit with doors, white stained oak effect, 301/8x575/8\"",
+  "productName": "KALLAX shelf unit with doors, white stained oak effect, 301/8x575/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 99.99,
+  "currency": "USD",
+  "category": "Shelving furniture",
+  "subcategory": "Storage shelves & shelving units",
+  "category1": "",
+  "category2": "Shelving furniture",
+  "category3": "Storage shelves & shelving units",
+  "category4": "",
+  "categoryTree": [
+    "Shelving furniture",
+    "Storage shelves & shelving units"
+  ],
+  "localImage": "mock-products/89197423.jpg",
+  "imageUrl": "/static/mock-products/89197423.jpg",
+  "detailUrl": "/static/shop.html#/p/89197423",
+  "rank": 3,
+  "score": 0.9382,
+  "rawScore": 0.8382,
+  "labelBoost": 0.1
+}

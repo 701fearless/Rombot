@@ -1,0 +1,32 @@
+{
+  "productId": "99568833",
+  "sku": "99568833",
+  "title": "EKET wall-mounted cabinet combination, walnut effect, 687/8x133/4x271/2\"",
+  "productName": "EKET wall-mounted cabinet combination, walnut effect, 687/8x133/4x271/2\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 254.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "EKET storage system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "EKET storage system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "EKET storage system"
+  ],
+  "localImage": "mock-products/99568833.jpg",
+  "imageUrl": "/static/mock-products/99568833.jpg",
+  "detailUrl": "/static/shop.html#/p/99568833",
+  "rank": 1,
+  "score": 0.9118,
+  "rawScore": 0.8618,
+  "labelBoost": 0.05
+}

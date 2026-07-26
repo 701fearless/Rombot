@@ -1,0 +1,32 @@
+{
+  "productId": "10504024",
+  "sku": "10504024",
+  "title": "LOHALS rug, flatwoven, natural, 7'7\"",
+  "productName": "LOHALS rug, flatwoven, natural, 7'7\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 129.99,
+  "currency": "USD",
+  "category": "Rugs",
+  "subcategory": "Round rugs",
+  "category1": "",
+  "category2": "Rugs",
+  "category3": "Round rugs",
+  "category4": "",
+  "categoryTree": [
+    "Rugs",
+    "Round rugs"
+  ],
+  "localImage": "mock-products/10504024.jpg",
+  "imageUrl": "/static/mock-products/10504024.jpg",
+  "detailUrl": "/static/shop.html#/p/10504024",
+  "rank": 3,
+  "score": 0.8922,
+  "rawScore": 0.8422,
+  "labelBoost": 0.05
+}

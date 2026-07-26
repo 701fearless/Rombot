@@ -1,0 +1,32 @@
+{
+  "productId": "60605073",
+  "sku": "60605073",
+  "title": "ÄRENDE rug, high pile, gray, 3'11\"x5'11\"",
+  "productName": "ÄRENDE rug, high pile, gray, 3'11\"x5'11\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 39.99,
+  "currency": "USD",
+  "category": "Rugs",
+  "subcategory": "Medium, large and extra-large rugs",
+  "category1": "",
+  "category2": "Rugs",
+  "category3": "Medium, large and extra-large rugs",
+  "category4": "",
+  "categoryTree": [
+    "Rugs",
+    "Medium, large and extra-large rugs"
+  ],
+  "localImage": "mock-products/60605073.jpg",
+  "imageUrl": "/static/mock-products/60605073.jpg",
+  "detailUrl": "/static/shop.html#/p/60605073",
+  "rank": 4,
+  "score": 0.7746,
+  "rawScore": 0.7246,
+  "labelBoost": 0.05
+}

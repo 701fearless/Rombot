@@ -1,0 +1,32 @@
+{
+  "productId": "19499688",
+  "sku": "19499688",
+  "title": "KIVIK loveseat, Tallmyra dark green",
+  "productName": "KIVIK loveseat, Tallmyra dark green",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 739.0,
+  "currency": "USD",
+  "category": "Sofas & sectionals",
+  "subcategory": "Loveseats",
+  "category1": "",
+  "category2": "Sofas & sectionals",
+  "category3": "Loveseats",
+  "category4": "",
+  "categoryTree": [
+    "Sofas & sectionals",
+    "Loveseats"
+  ],
+  "localImage": "mock-products/19499688.jpg",
+  "imageUrl": "/static/mock-products/19499688.jpg",
+  "detailUrl": "/static/shop.html#/p/19499688",
+  "rank": 4,
+  "score": 1.0165,
+  "rawScore": 0.8665,
+  "labelBoost": 0.15
+}

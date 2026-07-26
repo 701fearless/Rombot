@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "19568399",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/19568399.jpg",
+    "price":  1005,
+    "imageUrl":  "/static/mock-products/19568399.jpg",
+    "category":  "Storage solution systems",
+    "productId":  "19568399",
+    "detailUrl":  "/static/shop.html#/p/19568399",
+    "title":  "PAX / BERGSBO wardrobe combination",
+    "productName":  "PAX / BERGSBO wardrobe combination"
+}

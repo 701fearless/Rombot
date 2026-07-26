@@ -1,0 +1,32 @@
+{
+  "productId": "30568185",
+  "sku": "30568185",
+  "title": "FICUS LYRATA potted plant, fiddle-leaf fig/stem, 12\"",
+  "productName": "FICUS LYRATA potted plant, fiddle-leaf fig/stem, 12\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 49.99,
+  "currency": "USD",
+  "category": "Plants and flowers",
+  "subcategory": "Living plants for home",
+  "category1": "",
+  "category2": "Plants and flowers",
+  "category3": "Living plants for home",
+  "category4": "",
+  "categoryTree": [
+    "Plants and flowers",
+    "Living plants for home"
+  ],
+  "localImage": "mock-products/30568185.jpg",
+  "imageUrl": "/static/mock-products/30568185.jpg",
+  "detailUrl": "/static/shop.html#/p/30568185",
+  "rank": 4,
+  "score": 0.8833,
+  "rawScore": 0.7833,
+  "labelBoost": 0.1
+}

@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "50495409",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/50495409.jpg",
+    "price":  149.99,
+    "imageUrl":  "/static/mock-products/50495409.jpg",
+    "category":  "Rugs",
+    "productId":  "50495409",
+    "detailUrl":  "/static/shop.html#/p/50495409",
+    "title":  "LYDERSHOLM rug flatwoven",
+    "productName":  "LYDERSHOLM rug flatwoven"
+}

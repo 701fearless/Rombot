@@ -1,0 +1,32 @@
+{
+  "productId": "10553585",
+  "sku": "10553585",
+  "title": "SANNAHED frame, birch effect, 9 ¾x9 ¾\"",
+  "productName": "SANNAHED frame, birch effect, 9 ¾x9 ¾\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 12.99,
+  "currency": "USD",
+  "category": "Wall décor",
+  "subcategory": "Picture & photo frames",
+  "category1": "",
+  "category2": "Wall décor",
+  "category3": "Picture & photo frames",
+  "category4": "",
+  "categoryTree": [
+    "Wall décor",
+    "Picture & photo frames"
+  ],
+  "localImage": "mock-products/10553585.jpg",
+  "imageUrl": "/static/mock-products/10553585.jpg",
+  "detailUrl": "/static/shop.html#/p/10553585",
+  "rank": 1,
+  "score": 0.8685,
+  "rawScore": 0.7185,
+  "labelBoost": 0.15
+}

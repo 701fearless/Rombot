@@ -1,0 +1,32 @@
+{
+  "productId": "50597785",
+  "sku": "50597785",
+  "title": "TVÅMASTAD LED portable lamp, battery operated brass/opal glass",
+  "productName": "TVÅMASTAD LED portable lamp, battery operated brass/opal glass",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 29.99,
+  "currency": "USD",
+  "category": "Lamps & light fixtures",
+  "subcategory": "Rechargeable lamps",
+  "category1": "",
+  "category2": "Lamps & light fixtures",
+  "category3": "Rechargeable lamps",
+  "category4": "",
+  "categoryTree": [
+    "Lamps & light fixtures",
+    "Rechargeable lamps"
+  ],
+  "localImage": "mock-products/50597785.jpg",
+  "imageUrl": "/static/mock-products/50597785.jpg",
+  "detailUrl": "/static/shop.html#/p/50597785",
+  "rank": 2,
+  "score": 0.9388,
+  "rawScore": 0.7888,
+  "labelBoost": 0.15
+}

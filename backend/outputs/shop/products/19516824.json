@@ -1,0 +1,32 @@
+{
+  "productId": "19516824",
+  "sku": "19516824",
+  "title": "FAXÄLVEN mirror cabinet w built-in lighting, oak effect, 30x6x37\"",
+  "productName": "FAXÄLVEN mirror cabinet w built-in lighting, oak effect, 30x6x37\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 369.0,
+  "currency": "USD",
+  "category": "Bathroom mirrors",
+  "subcategory": "Medicine cabinets with mirror",
+  "category1": "",
+  "category2": "Bathroom mirrors",
+  "category3": "Medicine cabinets with mirror",
+  "category4": "",
+  "categoryTree": [
+    "Bathroom mirrors",
+    "Medicine cabinets with mirror"
+  ],
+  "localImage": "mock-products/19516824.jpg",
+  "imageUrl": "/static/mock-products/19516824.jpg",
+  "detailUrl": "/static/shop.html#/p/19516824",
+  "rank": 1,
+  "score": 0.8405,
+  "rawScore": 0.7905,
+  "labelBoost": 0.05
+}

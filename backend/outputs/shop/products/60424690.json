@@ -1,0 +1,32 @@
+{
+  "productId": "60424690",
+  "sku": "60424690",
+  "title": "NORDVIKEN bar stool with backrest, white, 243/8\"",
+  "productName": "NORDVIKEN bar stool with backrest, white, 243/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 105.0,
+  "currency": "USD",
+  "category": "Bar furniture",
+  "subcategory": "Bar stools & chairs",
+  "category1": "",
+  "category2": "Bar furniture",
+  "category3": "Bar stools & chairs",
+  "category4": "",
+  "categoryTree": [
+    "Bar furniture",
+    "Bar stools & chairs"
+  ],
+  "localImage": "mock-products/60424690.jpg",
+  "imageUrl": "/static/mock-products/60424690.jpg",
+  "detailUrl": "/static/shop.html#/p/60424690",
+  "rank": 1,
+  "score": 0.9589,
+  "rawScore": 0.8089,
+  "labelBoost": 0.15
+}

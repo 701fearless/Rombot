@@ -1,0 +1,32 @@
+{
+  "productId": "20539711",
+  "sku": "20539711",
+  "title": "VINDFLÄKT vase, black, 5\"",
+  "productName": "VINDFLÄKT vase, black, 5\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 6.99,
+  "currency": "USD",
+  "category": "Vases & decorating bowls",
+  "subcategory": "Flower vases",
+  "category1": "",
+  "category2": "Vases & decorating bowls",
+  "category3": "Flower vases",
+  "category4": "",
+  "categoryTree": [
+    "Vases & decorating bowls",
+    "Flower vases"
+  ],
+  "localImage": "mock-products/20539711.jpg",
+  "imageUrl": "/static/mock-products/20539711.jpg",
+  "detailUrl": "/static/shop.html#/p/20539711",
+  "rank": 2,
+  "score": 0.8357,
+  "rawScore": 0.7357,
+  "labelBoost": 0.1
+}

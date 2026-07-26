@@ -1,0 +1,32 @@
+{
+  "productId": "10566050",
+  "sku": "10566050",
+  "title": "HEMNES TV unit, black-brown/light brown, 581/4x181/2x221/2\"",
+  "productName": "HEMNES TV unit, black-brown/light brown, 581/4x181/2x221/2\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 249.99,
+  "currency": "USD",
+  "category": "TV & media furniture",
+  "subcategory": "TV stands & benches",
+  "category1": "",
+  "category2": "TV & media furniture",
+  "category3": "TV stands & benches",
+  "category4": "",
+  "categoryTree": [
+    "TV & media furniture",
+    "TV stands & benches"
+  ],
+  "localImage": "mock-products/10566050.jpg",
+  "imageUrl": "/static/mock-products/10566050.jpg",
+  "detailUrl": "/static/shop.html#/p/10566050",
+  "rank": 1,
+  "score": 1.0133,
+  "rawScore": 0.8633,
+  "labelBoost": 0.15
+}

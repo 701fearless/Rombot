@@ -38,3 +38,8 @@ export interface GeneratedFurniture {
   sizeBytes: number
   estimatedDimensions?: EstimatedDimensions | null
 }
+export interface PendingFeedAsset { videoId: string; time: number; frameId: string; detected: DetectedObject; prebuilt: PrebuiltAsset }
+export interface FurnitureMove { objectId: string; name: string; fromPosition: Vector3; toPosition: Vector3; fromRotation?: Vector3 | null; toRotation?: Vector3 | null; reason: string; source: 'mock' | 'geometry' | 'layout_agent' }
+export interface LayoutAdviceItem { id: string; priority: '高' | '中' | '低'; title: string; problem: string; suggestion: string; relatedObjectIds: string[] }
+export interface RoomLayoutAdvice { mode: 'room'; overallStatus: 'pass' | 'fail' | 'warn'; objectChecks: unknown[]; feedback: string; layout: { moves: FurnitureMove[]; advices: LayoutAdviceItem[]; summary: string }; scenarioOptions: unknown[] }
+export interface UploadedFurniture { id: string; name: string; glbUrl: string; sizeBytes: number; uploadedAt: string }

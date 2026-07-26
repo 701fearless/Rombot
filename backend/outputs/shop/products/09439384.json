@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "09439384",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/09439384.jpg",
+    "price":  360,
+    "imageUrl":  "/static/mock-products/09439384.jpg",
+    "category":  "Kitchen systems",
+    "productId":  "09439384",
+    "detailUrl":  "/static/shop.html#/p/09439384",
+    "title":  "SEKTION wall cabinet with glass door",
+    "productName":  "SEKTION wall cabinet with glass door"
+}

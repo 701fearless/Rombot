@@ -1,0 +1,35 @@
+{
+  "productId": "10255307",
+  "sku": "10255307",
+  "title": "FEJAN Chair",
+  "productName": "FEJAN Chair",
+  "description": "FEJAN Chair, outdoor, white foldable white. Perfect for your balcony or other small spaces as the chair is easy to fold up.",
+  "features": [
+    "Possible to separate for recycling or energy recovery if available in your community."
+  ],
+  "materialAndCare": "Frame: Galvanized steel, Polyester powder coating; Seat and back/ Feet: Polypropylene; Rivet: Steel; Washer: Polyamide",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 15.0,
+  "currency": "USD",
+  "category": "Outdoor patio furniture",
+  "subcategory": "Outdoor dining furniture",
+  "category1": "Outdoor",
+  "category2": "Outdoor patio furniture",
+  "category3": "Outdoor dining furniture",
+  "category4": "Outdoor dining chairs",
+  "categoryTree": [
+    "Outdoor",
+    "Outdoor patio furniture",
+    "Outdoor dining furniture",
+    "Outdoor dining chairs",
+    "FEJANChair, outdoor"
+  ],
+  "localImage": "images/10255307.jpg",
+  "imageUrl": "/product_index/images/10255307.jpg",
+  "detailUrl": "/static/shop.html#/p/10255307",
+  "rank": 3,
+  "score": 0.9343
+}

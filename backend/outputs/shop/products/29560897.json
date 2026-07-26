@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "29560897",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/29560897.jpg",
+    "price":  1805,
+    "imageUrl":  "/static/mock-products/29560897.jpg",
+    "category":  "Storage solution systems",
+    "productId":  "29560897",
+    "detailUrl":  "/static/shop.html#/p/29560897",
+    "title":  "PAX / TONSTAD wardrobe combination",
+    "productName":  "PAX / TONSTAD wardrobe combination"
+}

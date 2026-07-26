@@ -1,0 +1,32 @@
+{
+  "productId": "30413495",
+  "sku": "30413495",
+  "title": "HEMNES Coffee table, white stain, light brown, 35 3/8x35 3/8\"",
+  "productName": "HEMNES Coffee table, white stain, light brown, 35 3/8x35 3/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 249.99,
+  "currency": "USD",
+  "category": "Accent tables",
+  "subcategory": "Coffee tables",
+  "category1": "",
+  "category2": "Accent tables",
+  "category3": "Coffee tables",
+  "category4": "",
+  "categoryTree": [
+    "Accent tables",
+    "Coffee tables"
+  ],
+  "localImage": "mock-products/30413495.jpg",
+  "imageUrl": "/static/mock-products/30413495.jpg",
+  "detailUrl": "/static/shop.html#/p/30413495",
+  "rank": 1,
+  "score": 0.9702,
+  "rawScore": 0.8702,
+  "labelBoost": 0.1
+}

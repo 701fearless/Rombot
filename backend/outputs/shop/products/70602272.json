@@ -1,0 +1,34 @@
+{
+  "productId": "70602272",
+  "sku": "70602272",
+  "title": "BILD poster",
+  "productName": "BILD poster",
+  "description": "BILD poster, still life with fruit, 8x10\" Motif created by Pamela Schmieder and Amy Weiss. You can personalize your home with artwork that expresses your style.",
+  "features": [
+    "Fits in a 8x10\" frame without mat, or in a 12x16\" frame with 8x10\" mat."
+  ],
+  "materialAndCare": "Paper",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 3.99,
+  "currency": "USD",
+  "category": "Wall décor",
+  "subcategory": "Art posters and prints",
+  "category1": "Home decor & accessories",
+  "category2": "Wall décor",
+  "category3": "Art posters and prints",
+  "category4": "BILDPoster",
+  "categoryTree": [
+    "Home decor & accessories",
+    "Wall décor",
+    "Art posters and prints",
+    "BILDPoster"
+  ],
+  "localImage": "images/70602272.jpg",
+  "imageUrl": "/product_index/images/70602272.jpg",
+  "detailUrl": "/static/shop.html#/p/70602272",
+  "rank": 2,
+  "score": 0.7135
+}

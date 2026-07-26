@@ -1,0 +1,32 @@
+{
+  "productId": "00534168",
+  "sku": "00534168",
+  "title": "BERGSHULT shelf, walnut effect, 311/2x77/8\"",
+  "productName": "BERGSHULT shelf, walnut effect, 311/2x77/8\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 10.0,
+  "currency": "USD",
+  "category": "Shelving furniture",
+  "subcategory": "Wall shelves",
+  "category1": "",
+  "category2": "Shelving furniture",
+  "category3": "Wall shelves",
+  "category4": "",
+  "categoryTree": [
+    "Shelving furniture",
+    "Wall shelves"
+  ],
+  "localImage": "mock-products/00534168.jpg",
+  "imageUrl": "/static/mock-products/00534168.jpg",
+  "detailUrl": "/static/shop.html#/p/00534168",
+  "rank": 1,
+  "score": 0.9139,
+  "rawScore": 0.8139,
+  "labelBoost": 0.1
+}

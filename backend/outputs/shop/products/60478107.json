@@ -1,0 +1,32 @@
+{
+  "productId": "60478107",
+  "sku": "60478107",
+  "title": "PILSKOTT LED pendant lamp, smart black, 38\"",
+  "productName": "PILSKOTT LED pendant lamp, smart black, 38\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 169.99,
+  "currency": "USD",
+  "category": "Smart lighting",
+  "subcategory": "Smart lamps",
+  "category1": "",
+  "category2": "Smart lighting",
+  "category3": "Smart lamps",
+  "category4": "",
+  "categoryTree": [
+    "Smart lighting",
+    "Smart lamps"
+  ],
+  "localImage": "mock-products/60478107.jpg",
+  "imageUrl": "/static/mock-products/60478107.jpg",
+  "detailUrl": "/static/shop.html#/p/60478107",
+  "rank": 4,
+  "score": 0.9391,
+  "rawScore": 0.7891,
+  "labelBoost": 0.15
+}

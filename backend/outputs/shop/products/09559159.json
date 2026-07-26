@@ -1,0 +1,13 @@
+﻿{
+    "currency":  "USD",
+    "sku":  "09559159",
+    "description":  "本地演示商品（品类对齐）",
+    "localImage":  "mock-products/09559159.jpg",
+    "price":  560,
+    "imageUrl":  "/static/mock-products/09559159.jpg",
+    "category":  "Storage solution systems",
+    "productId":  "09559159",
+    "detailUrl":  "/static/shop.html#/p/09559159",
+    "title":  "PAX / FORSAND wardrobe combination",
+    "productName":  "PAX / FORSAND wardrobe combination"
+}

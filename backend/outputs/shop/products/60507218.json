@@ -1,0 +1,32 @@
+{
+  "productId": "60507218",
+  "sku": "60507218",
+  "title": "TOFTBYN mirror, black, 255/8x331/2\"",
+  "productName": "TOFTBYN mirror, black, 255/8x331/2\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 79.99,
+  "currency": "USD",
+  "category": "Mirrors",
+  "subcategory": "Wall mirrors",
+  "category1": "",
+  "category2": "Mirrors",
+  "category3": "Wall mirrors",
+  "category4": "",
+  "categoryTree": [
+    "Mirrors",
+    "Wall mirrors"
+  ],
+  "localImage": "mock-products/60507218.jpg",
+  "imageUrl": "/static/mock-products/60507218.jpg",
+  "detailUrl": "/static/shop.html#/p/60507218",
+  "rank": 4,
+  "score": 0.8801,
+  "rawScore": 0.8301,
+  "labelBoost": 0.05
+}

@@ -1,0 +1,32 @@
+{
+  "productId": "80550480",
+  "sku": "80550480",
+  "title": "SÖDERSJÖN bath mat, light beige, 16x24\"",
+  "productName": "SÖDERSJÖN bath mat, light beige, 16x24\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 9.99,
+  "currency": "USD",
+  "category": "Bathroom textiles",
+  "subcategory": "Bath mats & rugs",
+  "category1": "",
+  "category2": "Bathroom textiles",
+  "category3": "Bath mats & rugs",
+  "category4": "",
+  "categoryTree": [
+    "Bathroom textiles",
+    "Bath mats & rugs"
+  ],
+  "localImage": "mock-products/80550480.jpg",
+  "imageUrl": "/static/mock-products/80550480.jpg",
+  "detailUrl": "/static/shop.html#/p/80550480",
+  "rank": 1,
+  "score": 0.9759,
+  "rawScore": 0.8259,
+  "labelBoost": 0.15
+}

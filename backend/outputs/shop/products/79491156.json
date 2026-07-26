@@ -1,0 +1,32 @@
+{
+  "productId": "79491156",
+  "sku": "79491156",
+  "title": "BERGSHULT / RAMSHULT wall shelf, walnut effect/black, 471/4x113/4\"",
+  "productName": "BERGSHULT / RAMSHULT wall shelf, walnut effect/black, 471/4x113/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 35.0,
+  "currency": "USD",
+  "category": "Shelving furniture",
+  "subcategory": "Wall shelves",
+  "category1": "",
+  "category2": "Shelving furniture",
+  "category3": "Wall shelves",
+  "category4": "",
+  "categoryTree": [
+    "Shelving furniture",
+    "Wall shelves"
+  ],
+  "localImage": "mock-products/79491156.jpg",
+  "imageUrl": "/static/mock-products/79491156.jpg",
+  "detailUrl": "/static/shop.html#/p/79491156",
+  "rank": 4,
+  "score": 0.9623,
+  "rawScore": 0.8623,
+  "labelBoost": 0.1
+}

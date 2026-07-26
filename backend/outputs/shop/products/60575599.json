@@ -1,0 +1,32 @@
+{
+  "productId": "60575599",
+  "sku": "60575599",
+  "title": "BOAXEL shelf, anthracite, 235/8x153/4\"",
+  "productName": "BOAXEL shelf, anthracite, 235/8x153/4\"",
+  "description": "",
+  "features": [],
+  "materialAndCare": "",
+  "measurements": null,
+  "measurementsText": null,
+  "size_m": null,
+  "sizeText": null,
+  "price": 10.0,
+  "currency": "USD",
+  "category": "Storage solution systems",
+  "subcategory": "BOAXEL system",
+  "category1": "",
+  "category2": "Storage solution systems",
+  "category3": "BOAXEL system",
+  "category4": "",
+  "categoryTree": [
+    "Storage solution systems",
+    "BOAXEL system"
+  ],
+  "localImage": "mock-products/60575599.jpg",
+  "imageUrl": "/static/mock-products/60575599.jpg",
+  "detailUrl": "/static/shop.html#/p/60575599",
+  "rank": 3,
+  "score": 0.9532,
+  "rawScore": 0.8532,
+  "labelBoost": 0.1
+}
