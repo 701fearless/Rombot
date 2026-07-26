@@ -67,16 +67,8 @@ class ClipSearchRequest(BaseModel):
 
 
 def _retrieval_python() -> Path:
-    candidate = BACKEND_ROOT / ".venv-retrieval" / "Scripts" / "python.exe"
-    if candidate.exists():
-        return candidate
-    alt = BACKEND_ROOT / ".venv-retrieval" / "bin" / "python"
-    if alt.exists():
-        return alt
-    raise HTTPException(
-        status_code=503,
-        detail="Missing .venv-retrieval. Create it per docs/product_clip_offline.md",
-    )
+    # Retrieval dependencies live in the same Conda ml2025 environment as the API.
+    return Path(sys.executable).resolve()
 
 
 def _crop_from_data_url(image: str, bbox: list[int], output_path: Path) -> Path:

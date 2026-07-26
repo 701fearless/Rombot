@@ -60,7 +60,7 @@ export async function resolveShopReference(input: {
     body: JSON.stringify({ parentFolder: input.videoId, imageName: input.imageName }),
     signal: input.signal,
   })
-  if (response.status === 404 || response.status === 400) return null
+  if (response.status === 404 || response.status === 400 || response.status === 405) return null
   if (!response.ok) throw await errorOf(response, '匹配 reference 失败')
   const contentType = response.headers.get('content-type') || ''
   if (!contentType.includes('application/json')) return null

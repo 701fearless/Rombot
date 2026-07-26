@@ -28,6 +28,7 @@ import flowScene from '@/assets/reference/scenes/scene-flow.png'
 import petScene from '@/assets/reference/scenes/scene-pet.png'
 import chairImage from '@/assets/reference/furniture/chair-01.jpg'
 import { ConfirmDialog } from '@/components/ConfirmDialog'
+import { LibraryPreviewModal } from '@/pages/InspirationPage'
 import { FurnitureModelCarousel } from '@/components/FurnitureModelCarousel'
 import { useToast } from '@/components/ToastProvider'
 import { listGeneratedFurniture } from '@/services/backend'
@@ -65,6 +66,7 @@ export function HomePage() {
   const [pendingDelete, setPendingDelete] = useState<GeneratedFurniture | null>(null)
   const activeLayout = homeLayouts.find((layout) => layout.id === activeSceneId) ?? homeLayouts[0]
   return <div className='surface-page home-page'>
+    <LibraryPreviewModal />
     <section className='page-intro'>
       <div><span className='eyebrow'>MY HOME</span><h1>我的家</h1></div>
       <div className='page-actions'>
@@ -122,7 +124,6 @@ export function HomePage() {
         ><Trash2 /></button>
       </article>)}
     </div> : <Link className='library-empty' to='/'><Bookmark /><span><strong>家具库还是空的</strong><small>从灵感页收藏喜欢的模型</small></span><ChevronRight /></Link>}
-    <Link className='accent-cta' to='/suggest'><Sparkles />查看 AI 空间建议</Link>
     <ConfirmDialog
       open={Boolean(pendingDelete)}
       title={`删除“${pendingDelete?.name ?? ''}”？`}

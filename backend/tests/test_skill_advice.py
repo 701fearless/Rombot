@@ -10,7 +10,7 @@ from fastapi.testclient import TestClient
 
 from app.main import app
 from app.schemas import SceneSnapshot
-from app.services import skill_advice, user_floorplan
+from app.services import scene_snapshot, skill_advice, user_floorplan
 from app.services.scene_snapshot import load_snapshot
 
 
@@ -19,6 +19,7 @@ class SkillAdviceApiTest(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         root = Path(self.temporary.name)
         self.patches = [
+            patch.object(scene_snapshot, "OUTPUTS_ROOT", root / "runtime"),
             patch.object(user_floorplan, "USER_DATA_ROOT", root / "user"),
         ]
         for item in self.patches:
@@ -43,6 +44,33 @@ class SkillAdviceApiTest(unittest.TestCase):
         self.assertEqual(len(payload["deduplicatedObjects"]), len(snapshot.objects))
         self.assertEqual(payload["deduplicatedObjects"][0]["transform"]["position"][0], 1.75)
         self.assertEqual(payload["userSnapshot"]["revision"], 1)
+
+    def test_room2_snapshot_round_trip(self) -> None:
+        initial_response = self.client.get("/api/room/snapshots/room2")
+        self.assertEqual(initial_response.status_code, 200)
+        initial = initial_response.json()
+        self.assertEqual(initial["sceneId"], "room2")
+        self.assertEqual(initial["revision"], 0)
+        self.assertEqual(initial["room"]["whiteboxGlbUrl"], "/sample_data/floorplans/room2.glb")
+        self.assertEqual(len(initial["objects"]), 9)
+        self.assertTrue(all(item["geometry"]["glbUrl"] for item in initial["objects"]))
+
+        changed = json.loads(json.dumps(initial))
+        changed["objects"][0]["transform"]["position"][0] = 2.25
+        saved_response = self.client.put("/api/room/snapshots/room2", json=changed)
+        self.assertEqual(saved_response.status_code, 200)
+        saved = saved_response.json()
+        self.assertEqual(saved["revision"], 1)
+        self.assertEqual(saved["objects"][0]["transform"]["position"][0], 2.25)
+        self.assertEqual(self.client.get("/api/room/snapshots/room2").json(), saved)
+
+        user_payload = user_floorplan.load_user_floorplan("room2")
+        self.assertEqual(user_payload["sceneId"], "room2")
+        self.assertEqual(len(user_payload["deduplicatedObjects"]), 9)
+
+        restored = self.client.post("/api/room/snapshots/room2/reset").json()
+        self.assertEqual(restored["revision"], 0)
+        self.assertNotEqual(restored["objects"][0]["transform"]["position"][0], 2.25)
 
     def test_options_and_missing_key_response(self) -> None:
         options = self.client.get("/api/room/advice-options")

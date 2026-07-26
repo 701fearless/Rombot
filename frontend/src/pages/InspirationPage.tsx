@@ -23,7 +23,7 @@ function shuffledCatalog(items: GeneratedFurniture[]) {
   return shuffled
 }
 
-function LibraryPreviewModal() {
+export function LibraryPreviewModal() {
   const toast = useToast()
   const preview = useSceneStore((state) => state.furnitureLibraryPreview)
   const setPreview = useSceneStore((state) => state.setFurnitureLibraryPreview)

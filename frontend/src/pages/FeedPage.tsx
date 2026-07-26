@@ -158,7 +158,7 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
       },
       product: product ?? sheetProducts[0] ?? null,
     })
-    navigate('/')
+    navigate('/home')
   }
   const tagLayouts = paused && detection ? layoutFeedTags(detection.objects, sourceSize, containerSize) : []
   return <article ref={rootRef} className='feed-card' data-feed-index={index}>

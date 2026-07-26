@@ -67,6 +67,14 @@ class PrebuiltModelPathTests(unittest.TestCase):
             objects = response.json()["objects"]
             self.assertTrue(any(item.get("prebuiltGlbUrl") for item in objects), video_id)
 
+    def test_shop_reference_post_route_is_registered(self) -> None:
+        response = TestClient(app).post(
+            "/api/shop/resolve-reference",
+            json={"parentFolder": "missing", "imageName": "missing.jpg"},
+        )
+        self.assertNotEqual(response.status_code, 405)
+        self.assertIn(response.status_code, {200, 404})
+
 
 if __name__ == "__main__":
     unittest.main()
