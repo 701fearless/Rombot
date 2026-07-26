@@ -5,6 +5,7 @@ import {
   Check,
   ChevronDown,
   ChevronRight,
+  ChevronUp,
   Clipboard,
   ImagePlus,
   Move3D,
@@ -12,6 +13,7 @@ import {
   Search,
   Share2,
   Sparkles,
+  Trash2,
   UserRound,
   Users,
 } from 'lucide-react'
@@ -25,10 +27,8 @@ import fengshuiScene from '@/assets/reference/scenes/scene-fengshui.png'
 import flowScene from '@/assets/reference/scenes/scene-flow.png'
 import petScene from '@/assets/reference/scenes/scene-pet.png'
 import chairImage from '@/assets/reference/furniture/chair-01.jpg'
-import lampImage from '@/assets/reference/furniture/lamp-01.jpg'
-import sofaImage from '@/assets/reference/furniture/sofa-02.jpg'
-import tableImage from '@/assets/reference/furniture/table-02.jpg'
-import { ModelPreview3D } from '@/components/ModelPreview3D'
+import { ConfirmDialog } from '@/components/ConfirmDialog'
+import { FurnitureModelCarousel } from '@/components/FurnitureModelCarousel'
 import { useToast } from '@/components/ToastProvider'
 import { listGeneratedFurniture } from '@/services/backend'
 import { useSceneStore } from '@/store'
@@ -50,32 +50,58 @@ const scenes = [
   { id: 'fengshui', name: '安居风水', copy: '床位朝向、门窗关系与空间留白一并调整。', image: fengshuiScene, tag: '风水' },
 ]
 
-const furniture = [
-  { name: '亚麻休闲椅', category: '椅', image: chairImage },
-  { name: '低矮模块沙发', category: '沙发', image: sofaImage },
-  { name: '圆角原木边几', category: '桌', image: tableImage },
-  { name: '暖光落地灯', category: '灯', image: lampImage },
-]
+const homeLayouts = [
+  { id: 'room1', name: 'room1 全屋空间', description: '明亮客餐厅 · 家具已匹配' },
+  { id: 'room2', name: 'room2 全屋空间', description: '纵深复合户型 · 家具已匹配' },
+] as const
 
 export function HomePage() {
   const toast = useToast()
   const library = useSceneStore((state) => state.furnitureLibrary)
+  const removeFurniture = useSceneStore((state) => state.removeFurnitureFromLibrary)
   const activeSceneId = useSceneStore((state) => state.activeSceneId)
+  const setActiveSceneId = useSceneStore((state) => state.setActiveSceneId)
+  const [layoutPickerOpen, setLayoutPickerOpen] = useState(false)
+  const [pendingDelete, setPendingDelete] = useState<GeneratedFurniture | null>(null)
+  const activeLayout = homeLayouts.find((layout) => layout.id === activeSceneId) ?? homeLayouts[0]
   return <div className='surface-page home-page'>
     <section className='page-intro'>
-      <div><span className='eyebrow'>MY HOME</span><h1>我的家</h1><p>所有识别、试摆和空间建议，都沉淀在这里。</p></div>
+      <div><span className='eyebrow'>MY HOME</span><h1>我的家</h1></div>
       <div className='page-actions'>
         <button type='button' aria-label='邀请共建' onClick={() => toast.show('共建入口已准备好')}><Users /><span>共建</span></button>
         <button type='button' aria-label='分享方案' onClick={() => toast.show('分享入口已准备好')}><Share2 /><span>分享</span></button>
       </div>
     </section>
 
-    <button className='home-switch' type='button' onClick={() => toast.show(`当前演示户型：${activeSceneId}`)}>
-      <span><strong>{activeSceneId} 全屋空间</strong><small>默认扫描结果 · 家具已匹配</small></span>
-      <span>当前 <ChevronDown /></span>
-    </button>
-
-    <div className='room-pills'><button className='is-active' type='button'>客厅</button><button type='button' disabled>卧室</button><button type='button' disabled>书房</button></div>
+    <div className={`home-layout-picker ${layoutPickerOpen ? 'is-open' : ''}`}>
+      <button
+        className='home-switch'
+        type='button'
+        aria-expanded={layoutPickerOpen}
+        aria-controls='home-layout-options'
+        onClick={() => setLayoutPickerOpen((open) => !open)}
+      >
+        <span><strong>{activeLayout.name}</strong><small>{activeLayout.description}</small></span>
+        <span>选择户型 {layoutPickerOpen ? <ChevronUp /> : <ChevronDown />}</span>
+      </button>
+      {layoutPickerOpen && <div className='home-layout-options' id='home-layout-options' role='listbox' aria-label='选择户型'>
+        {homeLayouts.map((layout) => <button
+          className={layout.id === activeSceneId ? 'is-active' : ''}
+          type='button'
+          role='option'
+          aria-selected={layout.id === activeSceneId}
+          key={layout.id}
+          onClick={() => {
+            setActiveSceneId(layout.id)
+            setLayoutPickerOpen(false)
+            toast.show(`已切换到 ${layout.name}`)
+          }}
+        >
+          <span><strong>{layout.name}</strong><small>{layout.description}</small></span>
+          {layout.id === activeSceneId && <Check aria-hidden='true' />}
+        </button>)}
+      </div>}
+    </div>
 
     <Link className='home-canvas' to={`/space?sceneId=${activeSceneId}`}>
       <img src={spaceImage} alt={`${activeSceneId} 全屋空间预览`} />
@@ -86,9 +112,29 @@ export function HomePage() {
 
     <div className='section-heading'><div><h2>家具库</h2><p>点击家具进入空间试摆</p></div><Link to='/recognize'>添加家具 <ChevronRight /></Link></div>
     {library.length ? <div className='furniture-rail'>
-      {library.map((item) => <Link key={item.id} to={`/product/${encodeURIComponent(item.id)}`} className='furniture-tile'><img src={item.previewUrl} alt={`${item.name} 生成参考图`} loading='lazy' /><strong>{item.name}</strong><small>{item.category}</small></Link>)}
+      {library.map((item) => <article className='furniture-tile-shell' key={item.id}>
+        <Link to={`/product/${encodeURIComponent(item.id)}`} className='furniture-tile'><img src={item.previewUrl} alt={`${item.name} 生成参考图`} loading='lazy' /><strong>{item.name}</strong><small>{item.category}</small></Link>
+        <button
+          className='furniture-tile-delete'
+          type='button'
+          aria-label={`从家具库删除 ${item.name}`}
+          onClick={() => setPendingDelete(item)}
+        ><Trash2 /></button>
+      </article>)}
     </div> : <Link className='library-empty' to='/'><Bookmark /><span><strong>家具库还是空的</strong><small>从灵感页收藏喜欢的模型</small></span><ChevronRight /></Link>}
     <Link className='accent-cta' to='/suggest'><Sparkles />查看 AI 空间建议</Link>
+    <ConfirmDialog
+      open={Boolean(pendingDelete)}
+      title={`删除“${pendingDelete?.name ?? ''}”？`}
+      description='删除后它会从家具库移除，但已经放进空间的家具实例不会受到影响。'
+      onCancel={() => setPendingDelete(null)}
+      onConfirm={() => {
+        if (!pendingDelete) return
+        removeFurniture(pendingDelete.id)
+        toast.show(`${pendingDelete.name} 已从家具库删除`)
+        setPendingDelete(null)
+      }}
+    />
   </div>
 }
 
@@ -115,10 +161,6 @@ export function DiscoverPage() {
         <Link className='is-primary' to={`/space?direction=${active.id}`}><Move3D />直接改</Link>
       </div>
     </section>
-    <div className='section-heading'><div><h2>场景改造</h2><p>结合具体需求，整套思路给你</p></div></div>
-    <div className='scene-grid'>
-      {scenes.map((scene) => <Link to={`/scene/${scene.id}`} className='scene-card' key={scene.id}><img src={scene.image} alt={scene.name} /><div><span>{scene.tag}</span><h2>{scene.name}</h2><p>{scene.copy}</p></div></Link>)}
-    </div>
   </div>
 }
 
@@ -126,7 +168,6 @@ export function MePage() {
   const toast = useToast()
   const navigate = useNavigate()
   const activeSceneId = useSceneStore((s) => s.activeSceneId)
-  const setActive = useSceneStore((s) => s.setActiveSceneId)
   const openSelectedRoom = () => {
     toast.show(`扫描建模完成，正在打开 ${activeSceneId}`)
     navigate(`/space?sceneId=${activeSceneId}`)
@@ -142,9 +183,6 @@ export function MePage() {
       <span>房间、户型与心动单品都会收进这里</span>
       <ChevronRight />
     </Link>
-    <div className='room-pills' aria-label='默认户型'>
-      {(['room1', 'room2'] as const).map((room) => <button className={activeSceneId === room ? 'is-active' : ''} type='button' key={room} onClick={() => { setActive(room); toast.show(`默认户型已切换为 ${room}`) }}>{room}</button>)}
-    </div>
     <div className='profile-entry-hero'>
       <button className='profile-entry profile-entry--scan' type='button' onClick={openSelectedRoom}>
         <img src={heroRoomImage} alt='复古房间扫描入口' />
@@ -200,13 +238,10 @@ export function ProductPage() {
   return <div className='flow-page product-page'>
     <PageHeader title='单品详情' />
     <main className='product-detail'>
-      <section className='product-viewer'>
-        <ModelPreview3D glbUrl={item.glbUrl} name={item.name} />
-      </section>
+      <FurnitureModelCarousel item={item} />
       <section className='product-copy'>
         <span className='eyebrow'>{item.category.toUpperCase()} · VIDEO {item.videoId}</span>
         <h1>{item.name}</h1>
-        <p>由家具生成链路创建的真实 GLB 模型，封面使用同一任务生成的三分之四参考图。</p>
         <div className='detail-specs'>
           <span>{item.category}</span>
           <span>{(item.sizeBytes / 1024 / 1024).toFixed(1)} MB</span>
@@ -234,18 +269,21 @@ export function RecognizePage() {
 }
 
 export function SuggestPage() {
-  return <div className='flow-page'><PageHeader title='布局建议' /><main className='suggest-page'><header><span className='eyebrow'>AI SPACE ADVICE</span><h1>空间建议已整理</h1><p>主通道、尺寸适配和材质语义建议会继续由 3D 编辑器中的原有接口生成并应用。</p></header><div className='suggest-list'><article><span>01</span><div><h2>先留出连续通道</h2><p>沙发和边几之间保留舒适距离，减少进入客厅后的绕行。</p></div></article><article><span>02</span><div><h2>降低视觉重心</h2><p>把高柜靠墙组织，阅读灯靠近单椅形成独立功能角。</p></div></article><article><span>03</span><div><h2>统一材质语义</h2><p>保留原木与亚麻作为主材质，少量暖色金属作为强调。</p></div></article></div><Link className='accent-cta' to='/space?sceneId=room6'><Sparkles />回到空间应用建议</Link></main></div>
+  return <div className='flow-page'><PageHeader title='布局建议' /><main className='suggest-page'><header><span className='eyebrow'>AI SPACE ADVICE</span><h1>空间建议已整理</h1><p>主通道、尺寸适配和材质语义建议会继续由 3D 编辑器中的原有接口生成并应用。</p></header><div className='suggest-list'><article><span>01</span><div><h2>先留出连续通道</h2><p>沙发和边几之间保留舒适距离，减少进入客厅后的绕行。</p></div></article><article><span>02</span><div><h2>降低视觉重心</h2><p>把高柜靠墙组织，阅读灯靠近单椅形成独立功能角。</p></div></article><article><span>03</span><div><h2>统一材质语义</h2><p>保留原木与亚麻作为主材质，少量暖色金属作为强调。</p></div></article></div><Link className='accent-cta' to='/space'><Sparkles />回到空间</Link></main></div>
 }
 
 export function RecommendPage() {
-  return <div className='flow-page'><PageHeader title='搜同款' /><main className='recommend-page'><header><span className='eyebrow'>MATCHED FOR ROOM6</span><h1>相似家具</h1><p>商品检索接口保持原位，这里以旧版的双列资产卡呈现。</p></header><div className='recommend-grid'>{furniture.slice(0, 3).map((item) => <article key={item.name}><img src={item.image} alt={item.name} /><div><span>{item.category}</span><strong>{item.name}</strong><small>适配 room6 尺寸</small><button type='button'>查看详情 <ChevronRight /></button></div></article>)}</div><Link className='secondary-link' to='/space?sceneId=room6'>返回空间</Link></main></div>
+  const activeSceneId = useSceneStore((state) => state.activeSceneId)
+  return <div className='flow-page'><PageHeader title='搜同款' /><main className='recommend-page'><header><span className='eyebrow'>VISUAL SEARCH</span><h1>相似家具</h1><p>从 Feed 识别家具并选择一键室用后，将在灵感页查看模型并收藏到家具库。</p></header><div className='catalog-empty'><Move3D /><strong>前往灵感页查看建模家具</strong><p>这里不再展示写死的演示商品。</p></div><Link className='primary-link' to='/'>打开灵感页</Link><Link className='secondary-link' to={`/space?sceneId=${activeSceneId}`}>返回空间</Link></main></div>
 }
 
 export function CompletePage() {
-  return <div className='flow-page'><PageHeader title='方案完成' /><main className='complete-page'><span className='complete-mark'><Check /></span><span className='eyebrow'>SAVED TO MY HOME</span><h1>方案已保存</h1><p>家具坐标、尺寸、语义和墙体已写入 room6 SceneSnapshot。</p><div className='complete-preview'><img src={spaceImage} alt='已保存的 room6 空间' /><span><strong>法式复古客厅</strong><small>room6 · 实时快照</small></span></div><Link className='accent-cta' to='/home'>回到我的家</Link><Link className='secondary-link' to='/'>继续看灵感 Feed</Link></main></div>
+  const activeSceneId = useSceneStore((state) => state.activeSceneId)
+  return <div className='flow-page'><PageHeader title='方案完成' /><main className='complete-page'><span className='complete-mark'><Check /></span><span className='eyebrow'>SAVED TO MY HOME</span><h1>方案已保存</h1><p>家具坐标、尺寸、语义和墙体已写入 {activeSceneId} SceneSnapshot。</p><div className='complete-preview'><img src={spaceImage} alt={`已保存的 ${activeSceneId} 空间`} /><span><strong>法式复古客厅</strong><small>{activeSceneId} · 实时快照</small></span></div><Link className='accent-cta' to='/home'>回到我的家</Link><Link className='secondary-link' to='/'>继续看灵感 Feed</Link></main></div>
 }
 
 export function DashboardPage() {
   const toast = useToast()
-  return <div className='flow-page'><PageHeader title='开发看板' /><main className='dashboard'><h1>接口与演示入口</h1><div className='endpoint-list'>{['GET /api/room/snapshots/room6', 'PUT /api/room/snapshots/room6', 'PUT /api/room/snapshots/room6/whitebox', 'POST /api/room/room-layout', 'POST /api/feed/detect'].map((path) => <button type='button' key={path} onClick={() => navigator.clipboard?.writeText(path).then(() => toast.show('已复制接口')).catch(() => toast.show(path))}><Clipboard />{path}</button>)}</div><Link className='primary-link' to='/'><Play />开始演示</Link></main></div>
+  const activeSceneId = useSceneStore((state) => state.activeSceneId)
+  return <div className='flow-page'><PageHeader title='开发看板' /><main className='dashboard'><h1>接口与演示入口</h1><div className='endpoint-list'>{[`GET /api/room/snapshots/${activeSceneId}`, `PUT /api/room/snapshots/${activeSceneId}`, `PUT /api/room/snapshots/${activeSceneId}/whitebox`, 'POST /api/room/room-layout', 'POST /api/feed/detect'].map((path) => <button type='button' key={path} onClick={() => navigator.clipboard?.writeText(path).then(() => toast.show('已复制接口')).catch(() => toast.show(path))}><Clipboard />{path}</button>)}</div><Link className='primary-link' to='/'><Play />开始演示</Link></main></div>
 }

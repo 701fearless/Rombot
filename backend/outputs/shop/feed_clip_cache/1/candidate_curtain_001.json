@@ -35,8 +35,8 @@
         "Bedding & bedding sets",
         "Bed linens & bed linen sets"
       ],
-      "localImage": "images/80584550.jpg",
-      "imageUrl": "/product_index/images/80584550.jpg",
+      "localImage": "mock-products/80584550.jpg",
+      "imageUrl": "/static/mock-products/80584550.jpg",
       "detailUrl": "/static/shop.html#/p/80584550",
       "rank": 1,
       "score": 0.8573,
@@ -67,8 +67,8 @@
         "Window treatments & coverings",
         "Curtains & drapes"
       ],
-      "localImage": "images/80570237.jpg",
-      "imageUrl": "/product_index/images/80570237.jpg",
+      "localImage": "mock-products/80570237.jpg",
+      "imageUrl": "/static/mock-products/80570237.jpg",
       "detailUrl": "/static/shop.html#/p/80570237",
       "rank": 2,
       "score": 0.8445,
@@ -99,8 +99,8 @@
         "Window treatments & coverings",
         "Curtains & drapes"
       ],
-      "localImage": "images/30586014.jpg",
-      "imageUrl": "/product_index/images/30586014.jpg",
+      "localImage": "mock-products/30586014.jpg",
+      "imageUrl": "/static/mock-products/30586014.jpg",
       "detailUrl": "/static/shop.html#/p/30586014",
       "rank": 3,
       "score": 0.8432,
@@ -131,8 +131,8 @@
         "Bedding & bedding sets",
         "Bed linens & bed linen sets"
       ],
-      "localImage": "images/40589776.jpg",
-      "imageUrl": "/product_index/images/40589776.jpg",
+      "localImage": "mock-products/40589776.jpg",
+      "imageUrl": "/static/mock-products/40589776.jpg",
       "detailUrl": "/static/shop.html#/p/40589776",
       "rank": 4,
       "score": 0.8349,

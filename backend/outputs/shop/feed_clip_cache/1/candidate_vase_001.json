@@ -35,8 +35,8 @@
         "Kitchen systems",
         "SEKTION kitchen"
       ],
-      "localImage": "images/79462700.jpg",
-      "imageUrl": "/product_index/images/79462700.jpg",
+      "localImage": "mock-products/79462700.jpg",
+      "imageUrl": "/static/mock-products/79462700.jpg",
       "detailUrl": "/static/shop.html#/p/79462700",
       "rank": 1,
       "score": 0.8573,
@@ -67,8 +67,8 @@
         "Kitchen systems",
         "SEKTION kitchen"
       ],
-      "localImage": "images/89459518.jpg",
-      "imageUrl": "/product_index/images/89459518.jpg",
+      "localImage": "mock-products/89459518.jpg",
+      "imageUrl": "/static/mock-products/89459518.jpg",
       "detailUrl": "/static/shop.html#/p/89459518",
       "rank": 2,
       "score": 0.8501,
@@ -99,8 +99,8 @@
         "Kitchen systems",
         "SEKTION kitchen"
       ],
-      "localImage": "images/69557355.jpg",
-      "imageUrl": "/product_index/images/69557355.jpg",
+      "localImage": "mock-products/69557355.jpg",
+      "imageUrl": "/static/mock-products/69557355.jpg",
       "detailUrl": "/static/shop.html#/p/69557355",
       "rank": 3,
       "score": 0.8501,
@@ -131,8 +131,8 @@
         "Kitchen systems",
         "SEKTION kitchen"
       ],
-      "localImage": "images/29468907.jpg",
-      "imageUrl": "/product_index/images/29468907.jpg",
+      "localImage": "mock-products/29468907.jpg",
+      "imageUrl": "/static/mock-products/29468907.jpg",
       "detailUrl": "/static/shop.html#/p/29468907",
       "rank": 4,
       "score": 0.8498,

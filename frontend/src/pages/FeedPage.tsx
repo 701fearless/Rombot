@@ -1,17 +1,23 @@
 import { AlertCircle, Bookmark, Heart, Home, Inbox, LoaderCircle, MessageCircle, Music2, Pause, Plus, Share2, UserRound, UsersRound, Volume2, VolumeX } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ProductRecognizeSheet } from '@/components/ProductRecognizeSheet'
 import { useToast } from '@/components/ToastProvider'
 import { feedVideos } from '@/data/feedVideos'
 import { computeVideoDHash } from '@/lib/dhash'
 import { containTagPosition } from '@/lib/geometry'
-import { detectPausedFrame, getPrebuiltAsset } from '@/services/backend'
+import { detectPausedFrame, searchFeedProducts } from '@/services/backend'
 import { useSceneStore } from '@/store'
 import type { FeedVideo } from '@/types/feed'
 import type { DetectResponse, DetectedObject } from '@/types/scene'
+import type { ShopProduct } from '@/types/shop'
 
 interface Size { width: number; height: number }
 interface FeedTagLayout { object: DetectedObject; left: number; top: number; direction: 'left' | 'right'; extent: number }
+
+function canSearchProducts(object: DetectedObject) {
+  return Boolean(object.deduplicatedCropUrl || object.cropUrl || object.deduplicatedObjectId)
+}
 
 function layoutFeedTags(objects: DetectedObject[], sourceSize: Size, containerSize: Size): FeedTagLayout[] {
   const placed: FeedTagLayout[] = []
@@ -59,25 +65,100 @@ function layoutFeedTags(objects: DetectedObject[], sourceSize: Size, containerSi
 }
 
 function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean; index: number }) {
-  const navigate = useNavigate(); const toast = useToast(); const activeSceneId = useSceneStore((s) => s.activeSceneId); const setPendingAsset = useSceneStore((s) => s.setPendingAsset)
-  const rootRef = useRef<HTMLElement>(null); const videoRef = useRef<HTMLVideoElement>(null); const abortRef = useRef<AbortController | null>(null); const serialRef = useRef(0)
-  const [paused, setPaused] = useState(true); const [muted, setMuted] = useState(true); const [liked, setLiked] = useState(false); const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'empty' | 'error'>('idle'); const [message, setMessage] = useState(''); const [detection, setDetection] = useState<DetectResponse | null>(null); const [pausedAt, setPausedAt] = useState(0); const [containerSize, setContainerSize] = useState<Size>({ width: 0, height: 0 }); const [sourceSize, setSourceSize] = useState<Size>({ width: 0, height: 0 })
-  const cancelRecognition = useCallback(() => { serialRef.current += 1; abortRef.current?.abort(); abortRef.current = null; setDetection(null); setStatus('idle') }, [])
+  const navigate = useNavigate(); const toast = useToast(); const setFurnitureLibraryPreview = useSceneStore((s) => s.setFurnitureLibraryPreview)
+  const rootRef = useRef<HTMLElement>(null); const videoRef = useRef<HTMLVideoElement>(null); const abortRef = useRef<AbortController | null>(null); const searchAbortRef = useRef<AbortController | null>(null); const serialRef = useRef(0)
+  const [paused, setPaused] = useState(true); const [muted, setMuted] = useState(true); const [liked, setLiked] = useState(false); const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'empty' | 'error'>('idle'); const [message, setMessage] = useState(''); const [detection, setDetection] = useState<DetectResponse | null>(null); const [containerSize, setContainerSize] = useState<Size>({ width: 0, height: 0 }); const [sourceSize, setSourceSize] = useState<Size>({ width: 0, height: 0 })
+  const [sheetOpen, setSheetOpen] = useState(false); const [sheetLoading, setSheetLoading] = useState(false); const [sheetError, setSheetError] = useState(''); const [sheetProducts, setSheetProducts] = useState<ShopProduct[]>([]); const [selectedObject, setSelectedObject] = useState<DetectedObject | null>(null)
+  const cancelRecognition = useCallback(() => {
+    serialRef.current += 1
+    abortRef.current?.abort()
+    abortRef.current = null
+    searchAbortRef.current?.abort()
+    searchAbortRef.current = null
+    setDetection(null)
+    setStatus('idle')
+    setSheetOpen(false)
+    setSheetLoading(false)
+    setSheetError('')
+    setSheetProducts([])
+    setSelectedObject(null)
+  }, [])
   useEffect(() => { const root = rootRef.current; if (!root) return; const resize = () => setContainerSize({ width: root.clientWidth, height: root.clientHeight }); resize(); const observer = new ResizeObserver(resize); observer.observe(root); return () => observer.disconnect() }, [])
   useEffect(() => { const element = videoRef.current; if (!element) return; if (active) void element.play().catch(() => setPaused(true)); else { element.pause(); cancelRecognition() } }, [active, cancelRecognition])
-  useEffect(() => () => abortRef.current?.abort(), [])
+  useEffect(() => () => { abortRef.current?.abort(); searchAbortRef.current?.abort() }, [])
   const recognize = useCallback(async () => {
     const element = videoRef.current; if (!element || !active || element.readyState < 2) return
     const time = element.currentTime; const serial = ++serialRef.current; abortRef.current?.abort(); const controller = new AbortController(); abortRef.current = controller
-    setPausedAt(time); setDetection(null); setStatus('loading'); setMessage('')
+    setDetection(null); setStatus('loading'); setMessage('')
     let hash: string | undefined; try { hash = computeVideoDHash(element) } catch { hash = undefined }
     try { const result = await detectPausedFrame(video.id, time, hash, controller.signal); if (serial !== serialRef.current || !element.paused) return; setDetection(result); setStatus(result.objects.length ? 'success' : 'empty') }
     catch (reason) { if (controller.signal.aborted || serial !== serialRef.current) return; setMessage(reason instanceof Error ? reason.message : '识别暂时不可用'); setStatus('error') }
   }, [active, video.id])
+  const closeSheet = useCallback(() => {
+    searchAbortRef.current?.abort()
+    searchAbortRef.current = null
+    setSheetOpen(false)
+    setSheetLoading(false)
+    setSheetError('')
+    setSelectedObject(null)
+  }, [])
   const chooseObject = async (object: DetectedObject) => {
-    if (!object.prebuiltGlbUrl || !detection) return
-    try { const prebuilt = await getPrebuiltAsset(detection.frameId, object.id); setPendingAsset({ videoId: video.id, time: pausedAt, frameId: detection.frameId, detected: object, prebuilt }); navigate(`/space?${new URLSearchParams({ sceneId: activeSceneId, frameId: detection.frameId, objectId: object.id })}`) }
-    catch (reason) { toast.show(reason instanceof Error ? reason.message : '家具暂时不可用') }
+    if (!canSearchProducts(object)) {
+      toast.show('当前标签暂无可用商品图')
+      return
+    }
+    setSelectedObject(object)
+    setSheetOpen(true)
+    setSheetLoading(true)
+    setSheetError('')
+    setSheetProducts([])
+    searchAbortRef.current?.abort()
+    const controller = new AbortController()
+    searchAbortRef.current = controller
+    try {
+      const products = await searchFeedProducts({
+        videoId: video.id,
+        deduplicatedObjectId: object.deduplicatedObjectId,
+        cropUrl: object.deduplicatedCropUrl || object.cropUrl,
+        objectId: object.id,
+        label: object.label,
+        hint: object.name || object.label,
+        signal: controller.signal,
+      })
+      if (controller.signal.aborted) return
+      setSheetProducts(products)
+      if (!products.length) setSheetError('未找到相似商品')
+    } catch (reason) {
+      if (controller.signal.aborted) return
+      setSheetError(reason instanceof Error ? reason.message : '搜图识商品失败')
+    } finally {
+      if (!controller.signal.aborted) setSheetLoading(false)
+    }
+  }
+  const previewSelected = (product?: ShopProduct) => {
+    if (!selectedObject || !detection || !selectedObject.prebuiltGlbUrl) {
+      toast.show('家具模型暂时不可用')
+      return
+    }
+    const candidateId = selectedObject.deduplicatedObjectId || selectedObject.id
+    setFurnitureLibraryPreview({
+      item: {
+        id: `video-${video.id}-${candidateId}`,
+        videoId: video.id,
+        candidateId,
+        representativeFrameId: detection.frameId,
+        representativeObjectId: selectedObject.id,
+        label: selectedObject.label,
+        category: selectedObject.label,
+        name: selectedObject.name,
+        previewUrl: `/outputs/videos/${video.id}/generated/${candidateId}/reference_oblique_3quarter.png`,
+        glbUrl: selectedObject.prebuiltGlbUrl,
+        sizeBytes: 0,
+        estimatedDimensions: selectedObject.estimatedDimensions,
+      },
+      product: product ?? sheetProducts[0] ?? null,
+    })
+    navigate('/')
   }
   const tagLayouts = paused && detection ? layoutFeedTags(detection.objects, sourceSize, containerSize) : []
   return <article ref={rootRef} className='feed-card' data-feed-index={index}>
@@ -88,7 +169,10 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
     {paused && status === 'idle' && <div className='feed-card__pause'><Pause /></div>}
     {status === 'loading' && <div className='feed-status'><LoaderCircle className='spin' />正在匹配家具</div>}
     {(status === 'empty' || status === 'error') && <button className='feed-status is-action' type='button' onClick={() => void recognize()}>{status === 'error' && <AlertCircle />}{message || '当前画面没有可用家具'} · 重试</button>}
-    {tagLayouts.map(({ object, left, top, direction }) => <button key={object.id} className={`feed-tag is-${direction} ${object.prebuiltGlbUrl ? '' : 'is-disabled'}`} type='button' disabled={!object.prebuiltGlbUrl} style={{ left, top }} onClick={() => void chooseObject(object)}><span className='feed-tag__dot' /><span className='feed-tag__line' /><span className='feed-tag__bar'><strong>{object.name}</strong><small>放进户型</small></span></button>)}
+    {tagLayouts.map(({ object, left, top, direction }) => {
+      const searchable = canSearchProducts(object)
+      return <button key={object.id} className={`feed-tag is-${direction} ${searchable ? '' : 'is-disabled'}`} type='button' disabled={!searchable} style={{ left, top }} onClick={() => void chooseObject(object)}><span className='feed-tag__dot' /><span className='feed-tag__line' /><span className='feed-tag__bar'><strong>{object.name}</strong><small>{searchable ? '搜同款' : '暂无商品图'}</small></span></button>
+    })}
     <aside className='feed-social' aria-label='视频操作'>
       <button type='button' className='feed-avatar' aria-label={`查看 ${video.author} 的主页`}><span>{video.author.slice(0, 1)}</span><Plus /></button>
       <button type='button' className={liked ? 'is-liked' : ''} aria-label='点赞' onClick={() => setLiked((value) => !value)}><Heart fill={liked ? 'currentColor' : 'none'} /><small>{liked ? '12.9w' : '12.8w'}</small></button>
@@ -97,7 +181,17 @@ function FeedCard({ video, active, index }: { video: FeedVideo; active: boolean;
       <button type='button' aria-label='分享'><Share2 /><small>分享</small></button>
       <button type='button' className='feed-record' aria-label={muted ? '打开声音' : '静音'} onClick={() => setMuted((value) => !value)}>{muted ? <VolumeX /> : <Volume2 />}<Music2 /></button>
     </aside>
-    <footer className='feed-card__copy'><strong>@{video.author}</strong><h1>{video.title}</h1><p>暂停视频，点击家具 Tag 放进{activeSceneId}</p><div>{video.furnitureHints.map((hint) => <span key={hint}>#{hint}</span>)}</div></footer>
+    <footer className='feed-card__copy'><strong>@{video.author}</strong><h1>{video.title}</h1><p>暂停视频，点击家具 Tag 搜同款商品</p><div>{video.furnitureHints.map((hint) => <span key={hint}>#{hint}</span>)}</div></footer>
+    <ProductRecognizeSheet
+      open={sheetOpen}
+      loading={sheetLoading}
+      error={sheetError}
+      objectName={selectedObject?.name}
+      products={sheetProducts}
+      canPlace={Boolean(selectedObject?.prebuiltGlbUrl)}
+      onClose={closeSheet}
+      onPlace={previewSelected}
+    />
   </article>
 }
 

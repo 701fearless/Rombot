@@ -31,6 +31,12 @@ SCENARIOS = {
         "skill": "analyze-home-fengshui",
         "references": ["json-contract.md", "fengshui-rules.md", "geometry-and-safety.md"],
     },
+    "other": {
+        "name": "其他需求",
+        "description": "依据用户自由填写的目标，结合当前空间事实给出通用、可执行的建议。",
+        "skill": "general-home-advice",
+        "references": [],
+    },
 }
 
 
@@ -66,6 +72,8 @@ def missing_fields(floorplan: dict[str, Any], scenario_id: str, profile: dict[st
             missing.append("宠物抓咬、攀爬或逃逸等行为")
     elif scenario_id == "fengshui" and not profile.get("focus"):
         missing.append("本次最希望改善的区域或体验")
+    elif scenario_id == "other" and not profile.get("extraRequest"):
+        missing.append("其他需求的具体目标")
     return missing
 
 
@@ -100,6 +108,8 @@ async def generate_skill_advice(
     }
     system = _skill_prompt(scenario_id) + (
         "\n\n你正在为网页生成建议。严格遵守以上技能边界。只返回一个 JSON 对象，"
+        "当 selectedScenario 为“其他需求”时，userProfile.extraRequest 是本次分析的主要目标，"
+        "不要套用儿童、宠物或风水预设。"
         "不要 Markdown，不要声称未验证的事实，不要直接改写户型。输出结构示例：\n"
         + json.dumps(expected, ensure_ascii=False)
     )

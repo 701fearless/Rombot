@@ -1,0 +1,4 @@
+interface:
+  display_name: "住宅适儿化安全分析"
+  short_description: "分龄住宅安全、照护便利、JSON 回写与家具目录推荐"
+  default_prompt: "Use $adapt-home-for-children to assess this home JSON for child safety and convenience, recommend 1-2 catalog products, and return validated JSON updates."

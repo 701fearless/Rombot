@@ -1,0 +1,244 @@
+INFO:     127.0.0.1:52630 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53660 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53662 - "GET /api/shop/feed-clip-cache?videoId=1&candidateId=candidate_vase_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52489 - "GET /static/mock-products/69557355.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52490 - "GET /static/mock-products/29468907.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54697 - "GET /static/mock-products/79462700.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52488 - "GET /static/mock-products/89459518.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51606 - "GET /api/shop/feed-clip-cache?videoId=1&candidateId=candidate_pendant_light_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54433 - "GET /static/mock-products/60518410.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54435 - "GET /static/mock-products/59597210.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54434 - "GET /static/mock-products/09530972.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54432 - "GET /static/mock-products/39580734.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59494 - "GET /api/shop/feed-clip-cache?videoId=1&candidateId=candidate_dining_table_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62378 - "GET /static/mock-products/59553857.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62380 - "GET /static/mock-products/60461215.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62379 - "GET /static/mock-products/59516978.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62381 - "GET /static/mock-products/29442106.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62386 - "GET /api/shop/feed-clip-cache?videoId=1&candidateId=candidate_pendant_light_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49236 - "GET /api/shop/products/59516978 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54693 - "GET /api/feed/prebuilt-asset?frameId=1_000001&objectId=obj_dining_table_003 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64060 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51014 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58078 - "GET /sample_data/videos/6.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:58079 - "GET /sample_data/videos/5.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53271 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63465 - "GET /api/shop/feed-clip-cache?videoId=1&candidateId=candidate_curtain_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57706 - "GET /static/mock-products/80570237.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52589 - "GET /static/mock-products/30586014.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52591 - "GET /static/mock-products/80584550.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52590 - "GET /static/mock-products/40589776.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61458 - "GET /api/feed/prebuilt-asset?frameId=1_000001&objectId=obj_curtain_004 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50521 - "GET /outputs/videos/1/generated/candidate_floor_lamp_001/generated_model.glb HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:50520 - "GET /outputs/videos/1/generated/candidate_bed_001/generated_model.glb HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:64510 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58165 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62343 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51117 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59985 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59758 - "GET /outputs/videos/1/generated/candidate_plant_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59759 - "GET /outputs/videos/3/generated/candidate_plant_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:57088 - "GET /outputs/videos/5/generated/candidate_rug_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49186 - "GET /outputs/videos/5/generated/candidate_dining_table_002/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49185 - "GET /outputs/videos/1/generated/candidate_dining_table_002/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59646 - "GET /outputs/videos/1/generated/candidate_pendant_light_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59647 - "GET /outputs/videos/4/generated/candidate_rug_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63790 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52197 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62236 - "GET /outputs/videos/3/glb/candidate_chandelier_001.glb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59964 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59965 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55045 - "GET /outputs/videos/6/generated/candidate_pendant_light_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55044 - "GET /outputs/videos/5/generated/candidate_cabinet_002/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55118 - "GET /outputs/videos/2/generated/candidate_chair_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55119 - "GET /outputs/videos/3/generated/candidate_pendant_light_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:57754 - "GET /outputs/videos/1/generated/candidate_tv_stand_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:57753 - "GET /outputs/videos/4/generated/candidate_chandelier_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54096 - "GET /outputs/videos/4/generated/candidate_table_lamp_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54097 - "GET /outputs/videos/6/generated/candidate_dining_table_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59254 - "GET /sample_data/videos/2.mp4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59255 - "GET /sample_data/videos/3.mp4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59256 - "GET /sample_data/videos/4.mp4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59257 - "GET /sample_data/videos/5.mp4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59258 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /static/mock-products/40589776.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49673 - "GET /static/mock-products/30586014.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49670 - "GET /static/mock-products/80584550.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49672 - "GET /static/mock-products/80570237.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52136 - "GET /api/feed/prebuilt-asset?frameId=1_000001&objectId=obj_curtain_004 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55059 - "GET /outputs/videos/1/generated/candidate_curtain_001/generated_model.glb HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60595 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50891 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57867 - "GET /sample_data/videos/6.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57868 - "GET /sample_data/videos/6.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57874 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59432 - "GET /api/feed/prebuilt-asset?frameId=1_000001&objectId=obj_curtain_004 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59433 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59436 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53082 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53273 - "GET /outputs/videos/1/generated/candidate_mirror_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53275 - "GET /outputs/videos/4/generated/candidate_vase_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53274 - "GET /outputs/videos/3/generated/candidate_painting_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53278 - "GET /outputs/videos/4/generated/candidate_plant_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53276 - "GET /outputs/videos/5/generated/candidate_plant_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53277 - "GET /outputs/videos/1/generated/candidate_painting_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60759 - "GET /outputs/videos/2/generated/candidate_mirror_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59933 - "GET /outputs/videos/6/generated/candidate_painting_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59934 - "GET /outputs/videos/6/generated/candidate_vase_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59935 - "GET /outputs/videos/3/generated/candidate_mirror_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59853 - "GET /outputs/videos/4/generated/candidate_painting_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53507 - "GET /outputs/videos/1/generated/candidate_plant_002/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53506 - "GET /outputs/videos/1/generated/candidate_vase_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53505 - "GET /outputs/videos/6/generated/candidate_plant_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53146 - "GET /outputs/videos/1/generated/candidate_coffee_table_001/generated_model.glb HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:50905 - "GET /outputs/videos/3/glb/candidate_cabinet_001.glb HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:50906 - "GET /outputs/videos/3/generated/candidate_rug_002/generated_model.glb HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:58557 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58558 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53575 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56893 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56614 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53173 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57981 - "GET /outputs/videos/1/glb/candidate_curtain_001.glb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55241 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49905 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50089 - "GET /outputs/videos/4/generated/candidate_coffee_table_002/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:50090 - "GET /outputs/videos/1/generated/candidate_bed_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:50091 - "GET /outputs/videos/2/generated/candidate_pendant_light_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59959 - "GET /outputs/videos/3/generated/candidate_desk_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59960 - "GET /outputs/videos/6/generated/candidate_cabinet_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:64797 - "GET /outputs/videos/6/generated/candidate_bookshelf_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51711 - "GET /outputs/videos/6/generated/candidate_chair_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51710 - "GET /outputs/videos/5/generated/candidate_sofa_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51712 - "GET /outputs/videos/4/generated/candidate_floor_lamp_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51713 - "GET /outputs/videos/5/generated/candidate_cabinet_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60370 - "GET /outputs/videos/2/generated/candidate_rug_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56847 - "GET /outputs/videos/6/generated/candidate_armchair_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56848 - "GET /outputs/videos/4/generated/candidate_pendant_light_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53103 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63156 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51297 - "GET /outputs/videos/5/glb/candidate_plant_001.glb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65437 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65438 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50099 - "GET /outputs/videos/2/generated/candidate_curtain_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:61309 - "GET /outputs/videos/1/generated/candidate_floor_lamp_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56026 - "GET /outputs/videos/5/generated/candidate_wardrobe_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59634 - "GET /outputs/videos/1/generated/candidate_bookshelf_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:50302 - "GET /outputs/videos/1/generated/candidate_chandelier_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56696 - "GET /outputs/videos/1/generated/candidate_table_lamp_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56697 - "GET /outputs/videos/1/generated/candidate_cabinet_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54382 - "GET /outputs/videos/4/generated/candidate_sofa_002/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54383 - "GET /outputs/videos/1/generated/candidate_bookshelf_002/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52358 - "GET /outputs/videos/2/generated/candidate_dining_table_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49905 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49236 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49952 - "GET /outputs/videos/6/glb/candidate_plant_001.glb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61938 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61940 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61127 - "GET /outputs/videos/4/generated/candidate_bookshelf_002/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51104 - "GET /outputs/videos/3/generated/candidate_floor_lamp_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54160 - "GET /outputs/videos/3/generated/candidate_armchair_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53673 - "GET /outputs/videos/1/generated/candidate_wardrobe_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53674 - "GET /outputs/videos/6/generated/candidate_rug_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56839 - "GET /outputs/videos/1/generated/candidate_dining_table_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54050 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54051 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54052 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54491 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59969 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59970 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61825 - "PUT /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53391 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57213 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57113 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57601 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56035 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53259 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55473 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49983 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50521 - "GET /outputs/videos/6/generated/candidate_table_lamp_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63923 - "GET /outputs/videos/5/generated/candidate_chair_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:50659 - "GET /outputs/videos/6/generated/candidate_curtain_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55256 - "GET /outputs/videos/4/generated/candidate_curtain_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55257 - "GET /outputs/videos/3/generated/candidate_curtain_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52127 - "GET /outputs/videos/4/generated/candidate_sofa_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56513 - "GET /outputs/videos/4/generated/candidate_armchair_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56514 - "GET /outputs/videos/3/generated/candidate_chair_001/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63374 - "GET /outputs/videos/2/generated/candidate_rug_002/reference_oblique_3quarter.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:65028 - "GET /sample_data/videos/6.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:65029 - "GET /sample_data/videos/6.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:65182 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52366 - "GET /static/mock-products/79462700.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52367 - "GET /static/mock-products/89459518.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52368 - "GET /static/mock-products/69557355.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52369 - "GET /static/mock-products/29468907.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55148 - "GET /api/feed/prebuilt-asset?frameId=1_000001&objectId=obj_vase_002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49673 - "GET /outputs/videos/1/generated/candidate_vase_001/generated_model.glb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57143 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61056 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64332 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64333 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50414 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55980 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59868 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59869 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50151 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53607 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50685 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50686 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58947 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51353 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52597 - "PUT /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61791 - "POST /api/room/snapshots/room1/skill-advice HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63552 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63553 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53652 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53652 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53652 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57410 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55872 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59151 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61503 - "GET /sample_data/videos/6.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:49402 - "GET /sample_data/videos/1.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:49674 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60154 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62328 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58578 - "GET /api/shop/feed-clip-cache?videoId=2&candidateId=candidate_wardrobe_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61967 - "GET /static/mock-products/19506330.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61965 - "GET /static/mock-products/39421976.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61968 - "GET /static/mock-products/49506324.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61966 - "GET /static/mock-products/99469017.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52652 - "GET /api/feed/prebuilt-asset?frameId=2_000001&objectId=obj_wardrobe_003 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50101 - "GET /outputs/videos/2/generated/candidate_wardrobe_001/generated_model.glb HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:65447 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65380 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52927 - "GET /static/mock-products/80584550.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:64950 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50520 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58208 - "GET /sample_data/videos/1.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:58209 - "GET /sample_data/videos/1.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53938 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52923 - "GET /static/mock-products/59553857.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52922 - "GET /static/mock-products/59516978.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52924 - "GET /static/mock-products/60461215.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52926 - "GET /static/mock-products/29442106.jpg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63444 - "GET /api/feed/prebuilt-asset?frameId=1_000001&objectId=obj_dining_table_003 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59723 - "GET /outputs/videos/1/generated/candidate_dining_table_001/generated_model.glb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49906 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49953 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55644 - "GET /outputs/videos/1/deduplicated/candidate_dining_table_001/crop.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53573 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59008 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62463 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62464 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:57307 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58380 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52960 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51697 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54451 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54452 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53266 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53267 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57028 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55657 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56356 - "GET /health HTTP/1.1" 200 OK

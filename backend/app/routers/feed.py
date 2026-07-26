@@ -26,6 +26,7 @@ from app.services.model3d.pixal3d_provider import Pixal3DModel3DProvider
 from app.services.model3d.feature_meshy_provider import FeatureMeshyModel3DProvider
 from app.services.model3d.feature_hunyuan_provider import FeatureHunyuanModel3DProvider
 from app.services.model3d.feature_tripo_provider import FeatureTripoModel3DProvider
+from app.services.reference_resolver import find_reference_file
 from app.services.segmentation.mock_provider import MockSegmentationProvider
 from app.services.segmentation.sam3_provider import SAM3SegmentationProvider
 from app.services.video_preprocess.analysis_store import detect_response_for_time, find_object as find_preprocessed_object
@@ -60,6 +61,19 @@ def prebuilt_model_path(
         video_dir / "glb" / f"{candidate_id}.glb",
     )
     return next((path for path in candidate_paths if path.is_file()), None)
+
+
+def prebuilt_reference_path(
+    frame_id: str,
+    detected_object: DetectedObject,
+) -> Path | None:
+    video_id = video_id_from_frame_id(frame_id)
+    candidate_id = detected_object.deduplicatedObjectId
+    if not video_id or not candidate_id:
+        return None
+    return find_reference_file(
+        OUTPUTS_ROOT / "videos" / video_id / "generated" / candidate_id
+    )
 
 
 def attach_prebuilt_urls(response: DetectResponse) -> DetectResponse:
@@ -262,10 +276,11 @@ async def get_prebuilt_asset(
             detail="Object not found for the given frameId/objectId",
         )
     model_path = prebuilt_model_path(frameId, detected_object)
-    if model_path is None or not detected_object.deduplicatedObjectId:
+    preview_path = prebuilt_reference_path(frameId, detected_object)
+    if model_path is None or preview_path is None or not detected_object.deduplicatedObjectId:
         raise HTTPException(
             status_code=404,
-            detail="Prebuilt furniture model is not available",
+            detail="Prebuilt furniture model or generated reference image is not available",
         )
     return PrebuiltAssetResponse(
         frameId=frameId,
@@ -274,6 +289,7 @@ async def get_prebuilt_asset(
         name=detected_object.name,
         deduplicatedObjectId=detected_object.deduplicatedObjectId,
         glbUrl=path_to_output_url(model_path),
+        previewUrl=path_to_output_url(preview_path),
         estimatedDimensions=detected_object.estimatedDimensions,
     )
 

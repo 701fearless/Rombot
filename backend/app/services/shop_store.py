@@ -298,6 +298,27 @@ def load_feed_clip_cache(video_id: str, candidate_id: str) -> dict[str, Any] | N
     results = payload.get("results")
     if not isinstance(results, list) or not results:
         return None
+    localized: list[dict[str, Any]] = []
+    changed = False
+    for item in results:
+        if not isinstance(item, dict):
+            continue
+        row = dict(item)
+        pid = public_product_id(row.get("productId"))
+        local_url = materialize_product_image(pid)
+        if local_url and row.get("imageUrl") != local_url:
+            row["imageUrl"] = local_url
+            row["localImage"] = f"mock-products/{pid}.jpg"
+            changed = True
+        localized.append(row)
+    if not localized:
+        return None
+    payload["results"] = localized
+    if changed:
+        try:
+            path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        except OSError:
+            pass
     return payload
 
 

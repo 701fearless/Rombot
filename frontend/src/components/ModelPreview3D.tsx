@@ -27,7 +27,7 @@ export function ModelPreview3D({ glbUrl, name }: { glbUrl: string; name: string 
 
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
-    controls.autoRotate = true
+    controls.autoRotate = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
     controls.autoRotateSpeed = .7
     controls.enablePan = false
     controls.minDistance = 2.4

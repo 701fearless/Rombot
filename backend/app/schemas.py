@@ -120,6 +120,7 @@ class PrebuiltAssetResponse(BaseModel):
     name: str
     deduplicatedObjectId: str
     glbUrl: str
+    previewUrl: str
     estimatedDimensions: EstimatedDimensions | None = None
 
 
@@ -579,12 +580,15 @@ class SnapshotSemantic(BaseModel):
 
 class SnapshotGeometry(BaseModel):
     size: list[float] = Field(min_length=3, max_length=3)
+    effectiveSize: list[float] | None = Field(default=None, min_length=3, max_length=3)
     glbUrl: str | None = None
     cropUrl: str | None = None
 
-    @field_validator("size")
+    @field_validator("size", "effectiveSize")
     @classmethod
-    def validate_size(cls, value: list[float]) -> list[float]:
+    def validate_size(cls, value: list[float] | None) -> list[float] | None:
+        if value is None:
+            return value
         if any(not math.isfinite(item) or item <= 0 for item in value):
             raise ValueError("Furniture size values must be finite and greater than zero")
         return value
@@ -659,7 +663,7 @@ class SceneSnapshot(BaseModel):
 
 
 class SkillAdviceRequest(BaseModel):
-    scenarioId: Literal["children", "pets", "fengshui"]
+    scenarioId: Literal["children", "pets", "fengshui", "other"]
     profile: dict[str, Any] = Field(default_factory=dict)
 
 

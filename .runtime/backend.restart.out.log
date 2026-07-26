@@ -1,0 +1,71 @@
+INFO:     127.0.0.1:50993 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50993 - "GET /api/feed/prebuilt-asset?frameId=1_000001&objectId=obj_dining_table_003 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50993 - "GET /outputs/videos/1/generated/candidate_dining_table_001/reference_oblique_3quarter.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59561 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55871 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62108 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65160 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54194 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /outputs/videos/2/generated/candidate_table_lamp_001/generated_model.glb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64719 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64720 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52437 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52438 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52439 - "GET /outputs/videos/1/generated/candidate_curtain_001/reference_oblique_3quarter.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57935 - "GET /sample_data/videos/1.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57944 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59527 - "GET /api/shop/feed-clip-cache?videoId=3&candidateId=candidate_desk_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61472 - "GET /static/mock-products/29526097.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61469 - "GET /static/mock-products/30339735.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61470 - "GET /static/mock-products/59417515.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61471 - "GET /static/mock-products/09429568.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53400 - "GET /api/feed/prebuilt-asset?frameId=3_000002&objectId=obj_desk_002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60235 - "GET /outputs/videos/3/generated/candidate_desk_001/generated_model.glb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52873 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52651 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55452 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55453 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58786 - "GET /sample_data/floorplans/room1.glb HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54694 - "GET /outputs/videos/5/generated/candidate_rug_002/generated_model.glb HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55011 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55012 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50659 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65398 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52010 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56370 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63467 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63468 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59037 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59038 - "GET /api/room/snapshots/room1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50414 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53467 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63772 - "GET /sample_data/videos/3.mp4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63773 - "GET /sample_data/videos/2.mp4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63774 - "GET /sample_data/videos/5.mp4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63775 - "GET /sample_data/videos/4.mp4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63776 - "GET /sample_data/videos/6.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:63777 - "GET /sample_data/videos/2.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55573 - "GET /sample_data/videos/3.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55841 - "GET /sample_data/videos/4.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:58436 - "GET /sample_data/videos/6.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:58435 - "GET /sample_data/videos/5.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54420 - "GET /sample_data/videos/5.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:63029 - "GET /sample_data/videos/5.mp4 HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:65423 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49294 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58361 - "GET /api/shop/feed-clip-cache?videoId=2&candidateId=candidate_chair_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52217 - "GET /static/mock-products/60424690.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52218 - "GET /static/mock-products/49505560.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52219 - "GET /static/mock-products/40588847.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52220 - "GET /static/mock-products/10594034.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65102 - "POST /api/feed/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52456 - "GET /api/shop/feed-clip-cache?videoId=2&candidateId=candidate_sofa_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59157 - "GET /static/mock-products/49393181.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59158 - "GET /static/mock-products/29499961.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59160 - "GET /static/mock-products/50307936.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59159 - "GET /static/mock-products/99514897.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52809 - "GET /api/feed/prebuilt-asset?frameId=2_000002&objectId=obj_sofa_001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59072 - "GET /outputs/videos/2/generated/candidate_sofa_001/generated_model.glb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49905 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50415 - "GET /api/furniture/generated HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60471 - "GET /api/room/advice-options HTTP/1.1" 200 OK

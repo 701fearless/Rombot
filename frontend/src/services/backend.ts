@@ -1,4 +1,5 @@
 import type { DetectResponse, GeneratedFurniture, PrebuiltAsset, RoomLayoutAdvice, SceneSnapshot, SkillAdviceResponse, SkillAdviceScenario, UploadedFurniture } from '@/types/scene'
+import type { ClipSearchResponse, ResolveReferenceResponse, ShopProduct } from '@/types/shop'
 
 async function errorOf(response: Response, fallback: string) {
   try { const body = await response.json() as { detail?: string }; return new Error(body.detail || fallback) } catch { return new Error(fallback) }
@@ -30,4 +31,149 @@ export function requestSkillAdvice(sceneId: string, scenarioId: SkillAdviceScena
   return json<SkillAdviceResponse>(`/api/room/snapshots/${encodeURIComponent(sceneId)}/skill-advice`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ scenarioId, profile }),
   })
+}
+
+const feedSearchMemory = new Map<string, ShopProduct[]>()
+const feedSearchInflight = new Map<string, Promise<ShopProduct[]>>()
+
+function feedSearchKey(videoId: string, candidateId: string) {
+  return `${videoId}::${candidateId}`
+}
+
+function cropFileName(cropUrl?: string | null) {
+  if (!cropUrl) return ''
+  try {
+    return decodeURIComponent(cropUrl.split('?')[0]?.split('/').pop() || '')
+  } catch {
+    return cropUrl.split('/').pop() || ''
+  }
+}
+
+export async function resolveShopReference(input: {
+  videoId: string
+  imageName: string
+  signal?: AbortSignal
+}): Promise<ResolveReferenceResponse | null> {
+  const response = await fetch('/api/shop/resolve-reference', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ parentFolder: input.videoId, imageName: input.imageName }),
+    signal: input.signal,
+  })
+  if (response.status === 404 || response.status === 400) return null
+  if (!response.ok) throw await errorOf(response, '匹配 reference 失败')
+  const contentType = response.headers.get('content-type') || ''
+  if (!contentType.includes('application/json')) return null
+  return response.json() as Promise<ResolveReferenceResponse>
+}
+
+export async function getFeedClipCache(videoId: string, candidateId: string, signal?: AbortSignal): Promise<ShopProduct[] | null> {
+  const params = new URLSearchParams({ videoId, candidateId })
+  try {
+    const response = await fetch(`/api/shop/feed-clip-cache?${params}`, { signal })
+    if (response.status === 404) return null
+    if (!response.ok) return null
+    const contentType = response.headers.get('content-type') || ''
+    if (!contentType.includes('application/json')) return null
+    const payload = await response.json() as { results?: ShopProduct[] }
+    const results = (payload.results ?? []).slice(0, 4)
+    return results.length ? results : null
+  } catch {
+    return null
+  }
+}
+
+export function clipSearchProducts(input: {
+  cropUrl: string
+  topK?: number
+  textWeight?: number
+  imageName?: string
+  label?: string | null
+  persist?: boolean
+}, signal?: AbortSignal) {
+  const label = input.label?.trim()
+  return json<ClipSearchResponse>('/api/video/clip-search', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      cropUrl: input.cropUrl,
+      topK: input.topK ?? 4,
+      textOnly: false,
+      textWeight: input.textWeight ?? (label ? 0.35 : 0),
+      persist: input.persist ?? true,
+      ...(input.imageName ? { imageName: input.imageName } : {}),
+      ...(label ? { hint: { label } } : {}),
+    }),
+    signal,
+  })
+}
+
+export async function searchFeedProducts(input: {
+  videoId: string
+  deduplicatedObjectId?: string | null
+  cropUrl?: string | null
+  objectId?: string | null
+  label?: string | null
+  hint?: string
+  signal?: AbortSignal
+}): Promise<ShopProduct[]> {
+  const candidateId = input.deduplicatedObjectId?.trim() || ''
+  const cropName = cropFileName(input.cropUrl)
+  const cacheId = candidateId || cropName || input.objectId?.trim() || input.label?.trim() || 'unknown'
+  const key = feedSearchKey(input.videoId, cacheId)
+  const memorized = feedSearchMemory.get(key)
+  if (memorized?.length) return memorized
+  const inflight = feedSearchInflight.get(key)
+  if (inflight) return inflight
+
+  const task = (async () => {
+    for (const id of [candidateId, cacheId].filter(Boolean)) {
+      const cached = await getFeedClipCache(input.videoId, id, input.signal)
+      if (cached?.length) {
+        feedSearchMemory.set(key, cached)
+        return cached
+      }
+    }
+    try {
+      const resolveNames = [
+        candidateId,
+        cropName,
+        candidateId && input.videoId ? `${input.videoId}_${candidateId}_crop.jpg` : '',
+        input.objectId?.trim() || '',
+      ].filter(Boolean)
+      let referenceUrl = ''
+      let imageName = candidateId || cropName || cacheId
+      for (const name of resolveNames) {
+        const resolved = await resolveShopReference({ videoId: input.videoId, imageName: name, signal: input.signal })
+        if (resolved?.referenceUrl) {
+          referenceUrl = resolved.referenceUrl
+          imageName = resolved.matchedFolder || name
+          break
+        }
+      }
+      const queryUrl = referenceUrl || input.cropUrl?.trim() || ''
+      if (!queryUrl) throw new Error('未找到 reference / crop')
+      const live = await clipSearchProducts({
+        cropUrl: queryUrl,
+        topK: 4,
+        imageName,
+        label: input.label || undefined,
+        persist: true,
+      }, input.signal)
+      const results = (live.results ?? []).slice(0, 4)
+      if (!results.length) throw new Error('CLIP 未返回商品')
+      feedSearchMemory.set(key, results)
+      return results
+    } catch (error) {
+      if (input.signal?.aborted) throw error
+      throw error instanceof Error ? error : new Error('搜同款失败')
+    }
+  })()
+
+  feedSearchInflight.set(key, task)
+  try {
+    return await task
+  } finally {
+    feedSearchInflight.delete(key)
+  }
 }

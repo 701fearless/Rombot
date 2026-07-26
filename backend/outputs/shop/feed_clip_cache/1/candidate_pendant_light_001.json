@@ -35,8 +35,8 @@
         "Lamps & light fixtures",
         "Ceiling lights"
       ],
-      "localImage": "images/39580734.jpg",
-      "imageUrl": "/product_index/images/39580734.jpg",
+      "localImage": "mock-products/39580734.jpg",
+      "imageUrl": "/static/mock-products/39580734.jpg",
       "detailUrl": "/static/shop.html#/p/39580734",
       "rank": 1,
       "score": 0.8643,
@@ -67,8 +67,8 @@
         "Lamps & light fixtures",
         "Table lamps"
       ],
-      "localImage": "images/60518410.jpg",
-      "imageUrl": "/product_index/images/60518410.jpg",
+      "localImage": "mock-products/60518410.jpg",
+      "imageUrl": "/static/mock-products/60518410.jpg",
       "detailUrl": "/static/shop.html#/p/60518410",
       "rank": 2,
       "score": 0.8564,
@@ -99,8 +99,8 @@
         "Lamps & light fixtures",
         "Ceiling lights"
       ],
-      "localImage": "images/09530972.jpg",
-      "imageUrl": "/product_index/images/09530972.jpg",
+      "localImage": "mock-products/09530972.jpg",
+      "imageUrl": "/static/mock-products/09530972.jpg",
       "detailUrl": "/static/shop.html#/p/09530972",
       "rank": 3,
       "score": 0.8553,
@@ -131,8 +131,8 @@
         "Lamps & light fixtures",
         "Ceiling lights"
       ],
-      "localImage": "images/59597210.jpg",
-      "imageUrl": "/product_index/images/59597210.jpg",
+      "localImage": "mock-products/59597210.jpg",
+      "imageUrl": "/static/mock-products/59597210.jpg",
       "detailUrl": "/static/shop.html#/p/59597210",
       "rank": 4,
       "score": 0.8487,

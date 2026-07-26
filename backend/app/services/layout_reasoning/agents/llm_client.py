@@ -2,11 +2,16 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 import re
 from typing import Any
 
 import httpx
+
+
+class LLMUpstreamError(RuntimeError):
+    """Raised when a configured live LLM cannot return a complete response."""
 
 
 class SpatialLLMClient:
@@ -41,18 +46,43 @@ class SpatialLLMClient:
                 {"role": "user", "content": user},
             ],
             "temperature": 0.2,
+            "max_tokens": 4096,
         }
-        async with httpx.AsyncClient(timeout=self.timeout) as client:
-            response = await client.post(
-                f"{self.base_url}/chat/completions",
-                headers={
-                    "Authorization": f"Bearer {self.api_key}",
-                    "Content-Type": "application/json",
-                },
-                json=payload,
-            )
-            response.raise_for_status()
-            data = response.json()
+        if self.provider == "deepseek":
+            payload["thinking"] = {"type": "disabled"}
+            payload["response_format"] = {"type": "json_object"}
+
+        data: dict[str, Any] | None = None
+        for attempt in range(3):
+            try:
+                async with httpx.AsyncClient(timeout=self.timeout) as client:
+                    response = await client.post(
+                        f"{self.base_url}/chat/completions",
+                        headers={
+                            "Authorization": f"Bearer {self.api_key}",
+                            "Content-Type": "application/json",
+                        },
+                        json=payload,
+                    )
+                    response.raise_for_status()
+                    data = response.json()
+                break
+            except httpx.HTTPStatusError as exc:
+                status = exc.response.status_code
+                if status >= 500 and attempt < 2:
+                    await asyncio.sleep(0.5 * (2 ** attempt))
+                    continue
+                raise LLMUpstreamError(f"LLM upstream returned HTTP {status}") from exc
+            except httpx.TransportError as exc:
+                if attempt < 2:
+                    await asyncio.sleep(0.5 * (2 ** attempt))
+                    continue
+                raise LLMUpstreamError(
+                    "LLM upstream connection closed before a complete response was received"
+                ) from exc
+
+        if data is None:
+            raise LLMUpstreamError("LLM upstream did not return a response")
         text = self._extract_text(data)
         return self._parse_json(text)
 

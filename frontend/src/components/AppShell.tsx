@@ -12,7 +12,6 @@ export function AppShell() {
   return <div className='app-shell'>
     <header className='app-header'>
       <NavLink to='/' className='app-header__brand' aria-label='QQ House 首页'>QQ House</NavLink>
-      <span className='app-header__status'>ROOM6</span>
     </header>
     <aside className='app-nav' aria-label='主导航'>
       <div className='app-nav__items'>{tabs.map(({ to, label, Icon, end }) =>

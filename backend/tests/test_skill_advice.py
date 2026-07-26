@@ -47,7 +47,7 @@ class SkillAdviceApiTest(unittest.TestCase):
     def test_options_and_missing_key_response(self) -> None:
         options = self.client.get("/api/room/advice-options")
         self.assertEqual(options.status_code, 200)
-        self.assertEqual({item["id"] for item in options.json()}, {"children", "pets", "fengshui"})
+        self.assertEqual({item["id"] for item in options.json()}, {"children", "pets", "fengshui", "other"})
 
         settings = SimpleNamespace(deepseek_api_key=None)
         with patch.object(skill_advice, "get_settings", return_value=settings):
@@ -66,6 +66,7 @@ class SkillAdviceApiTest(unittest.TestCase):
         self.assertTrue(any("门窗" in item for item in gaps))
         self.assertTrue(any("行为" in item for item in gaps))
         self.assertTrue(any("实测" in item for item in gaps))
+        self.assertTrue(any("具体目标" in item for item in skill_advice.missing_fields(floorplan, "other", {})))
 
     def test_generation_uses_skill_and_strips_embedded_glb(self) -> None:
         captured = {}
@@ -86,10 +87,12 @@ class SkillAdviceApiTest(unittest.TestCase):
         )
         floorplan = {"floorplan": {"glbBase64": "large-binary", "room": {}}, "userSnapshot": {"room": {"openings": []}, "objects": []}}
         with patch.object(skill_advice, "get_settings", return_value=settings), patch.object(skill_advice, "SpatialLLMClient", return_value=FakeClient()):
-            result = asyncio.run(skill_advice.generate_skill_advice(floorplan=floorplan, scenario_id="children", profile={"ageRange": "3-6岁", "mobilityStage": "walking"}))
+            result = asyncio.run(skill_advice.generate_skill_advice(floorplan=floorplan, scenario_id="children", profile={"ageRange": "3-6岁", "mobilityStage": "walking", "extraRequest": "增加阅读角"}))
         self.assertEqual(result["model"], "deepseek-v4-pro")
         self.assertEqual(result["suggestions"][0]["priority"], "P1")
         self.assertIn("adapt-home-for-children", captured["system"])
+        self.assertIn("其他需求", captured["system"])
+        self.assertIn("增加阅读角", captured["user"])
         self.assertNotIn("large-binary", captured["user"])
 
 

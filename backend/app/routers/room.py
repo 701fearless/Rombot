@@ -19,6 +19,7 @@ from app.schemas import (
     SpatialCheckResponse,
 )
 from app.services.layout_reasoning import run_spatial_check
+from app.services.layout_reasoning.agents.llm_client import LLMUpstreamError
 from app.services.layout_reasoning.agents.phase1 import get_scenario_options, run_layout_module
 from app.services.layout_reasoning.agents.room_layout import run_room_layout
 from app.services.layout_reasoning.agents.scenario_agent import run_scenario_advice
@@ -81,6 +82,8 @@ async def create_skill_advice(
         return SkillAdviceResponse.model_validate(result)
     except FileNotFoundError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except LLMUpstreamError as exc:
+        raise HTTPException(status_code=502, detail=f"DeepSeek request failed: {exc}") from exc
     except RuntimeError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
     except (ValueError, json.JSONDecodeError) as exc:

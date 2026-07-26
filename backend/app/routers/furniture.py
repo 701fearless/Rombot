@@ -106,6 +106,30 @@ def _load_generated_items() -> list[GeneratedFurnitureItem]:
             except (OSError, ValueError):
                 continue
     return items
+CATEGORY_BY_LABEL = {
+    "sofa": "沙发",
+    "bed": "床",
+    "chair": "椅",
+    "armchair": "椅",
+    "coffee_table": "桌",
+    "dining_table": "桌",
+    "desk": "桌",
+    "cabinet": "柜",
+    "wardrobe": "柜",
+    "tv_stand": "柜",
+    "bookshelf": "柜",
+    "nightstand": "柜",
+    "chandelier": "灯",
+    "pendant_light": "灯",
+    "floor_lamp": "灯",
+    "table_lamp": "灯",
+    "rug": "地毯",
+    "curtain": "软装",
+    "plant": "装饰",
+    "mirror": "装饰",
+    "painting": "装饰",
+    "vase": "装饰",
+}
 
 
 def _safe_stem(filename: str) -> str:
@@ -142,6 +166,65 @@ def _item_path(item: FurnitureItem) -> Path:
     except ValueError as exc:
         raise HTTPException(status_code=400, detail="家具文件路径无效") from exc
     return candidate
+
+
+def _read_json(path: Path) -> dict:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        return payload if isinstance(payload, dict) else {}
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def _generated_item(model_path: Path) -> GeneratedFurnitureItem | None:
+    candidate_dir = model_path.parent
+    candidate_id = candidate_dir.name
+    video_id = candidate_dir.parents[1].name
+    result = _read_json(candidate_dir / "hunyuan_result.json")
+    if not result:
+        result = _read_json(candidate_dir / "generation_meta.json")
+    metadata = _read_json(
+        OUTPUTS_ROOT / "videos" / video_id / "deduplicated" / candidate_id / "metadata.json"
+    )
+
+    reference_meta = result.get("referenceGenerationMeta")
+    reference_meta = reference_meta if isinstance(reference_meta, dict) else {}
+    reference_name = Path(str(reference_meta.get("referenceFile", ""))).name
+    preview_candidates = [
+        candidate_dir / reference_name if reference_name else None,
+        candidate_dir / "reference_oblique_3quarter.png",
+        *sorted(candidate_dir.glob("reference*.png")),
+    ]
+    preview_path = next(
+        (path for path in preview_candidates if path is not None and path.is_file()),
+        None,
+    )
+    if preview_path is None:
+        return None
+
+    label = str(result.get("label") or metadata.get("label") or "").strip()
+    if not label and candidate_id.startswith("candidate_"):
+        label = re.sub(r"_\d+$", "", candidate_id.removeprefix("candidate_"))
+    category_key = re.sub(r"[\s-]+", "_", label.lower())
+    name = str(result.get("name") or metadata.get("name") or label or candidate_id).strip()
+    dimensions = reference_meta.get("estimatedDimensions")
+    if not isinstance(dimensions, dict):
+        dimensions = None
+
+    return GeneratedFurnitureItem(
+        id=f"{video_id}__{candidate_id}",
+        videoId=video_id,
+        candidateId=candidate_id,
+        representativeFrameId=str(metadata.get("representativeFrameId") or f"{video_id}_000001"),
+        representativeObjectId=str(metadata.get("representativeObjectId") or candidate_id),
+        label=label or "furniture",
+        category=CATEGORY_BY_LABEL.get(category_key, "其他"),
+        name=name,
+        previewUrl=path_to_output_url(preview_path),
+        glbUrl=path_to_output_url(model_path),
+        sizeBytes=model_path.stat().st_size,
+        estimatedDimensions=dimensions,
+    )
 
 
 @router.post("/upload", response_model=FurnitureUploadResponse)
@@ -191,7 +274,17 @@ async def list_uploaded_furniture() -> list[FurnitureItem]:
 
 @router.get("/generated", response_model=list[GeneratedFurnitureItem])
 async def list_generated_furniture() -> list[GeneratedFurnitureItem]:
-    return _load_generated_items()
+    items = _load_generated_items()
+    known_candidates = {(item.videoId, item.candidateId) for item in items}
+    generated_root = OUTPUTS_ROOT / "videos"
+    if generated_root.exists():
+        for model_path in generated_root.glob("*/generated/*/generated_model.glb"):
+            item = _generated_item(model_path)
+            if item is None or (item.videoId, item.candidateId) in known_candidates:
+                continue
+            items.append(item)
+            known_candidates.add((item.videoId, item.candidateId))
+    return sorted(items, key=lambda item: (item.category, item.name, item.videoId))
 
 
 @router.delete("/{furniture_id}")

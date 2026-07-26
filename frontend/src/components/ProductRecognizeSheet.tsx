@@ -33,7 +33,7 @@ export interface ProductRecognizeSheetProps {
   canPlace?: boolean
   placing?: boolean
   onClose: () => void
-  onPlace?: () => void
+  onPlace?: (product?: ShopProduct) => void
   onOpenProduct?: (product: ShopProduct) => void
 }
 
@@ -98,9 +98,9 @@ export function ProductRecognizeSheet({
                 type='button'
                 className='product-sheet__room'
                 disabled={!canPlace || !onPlace || placing}
-                onClick={() => onPlace?.()}
+                onClick={() => onPlace?.(top[0])}
               >
-                {placing ? '进入空间…' : '一键室用'}
+                {placing ? '准备模型…' : '一键室用'}
               </button>
             </div>
             {objectName ? <p className='product-sheet__caption'>识别到 · {objectName}</p> : null}
@@ -169,8 +169,8 @@ export function ProductRecognizeSheet({
               ) : null}
             </div>
             <footer className='product-sheet__detail-actions'>
-              <button type='button' className='product-sheet__room' disabled={!canPlace || !onPlace || placing} onClick={() => onPlace?.()}>
-                {placing ? '进入空间…' : '一键室用'}
+              <button type='button' className='product-sheet__room' disabled={!canPlace || !onPlace || placing} onClick={() => onPlace?.(detail)}>
+                {placing ? '准备模型…' : '一键室用'}
               </button>
               <button type='button' className='product-sheet__more' onClick={() => setDetail(null)}>返回列表</button>
             </footer>
