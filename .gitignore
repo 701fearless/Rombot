@@ -80,3 +80,5 @@ backend/user/**/*.json
 
 node_modules/
 **/node_modules/
+
+lucky-deploy-*.tar.gz

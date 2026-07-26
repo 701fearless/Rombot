@@ -4,16 +4,6 @@ WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 COPY frontend/ ./
-COPY backend/outputs/videos/2/analysis.json /app/backend/outputs/videos/2/analysis.json
-COPY backend/outputs/videos/3/analysis.json /app/backend/outputs/videos/3/analysis.json
-COPY backend/outputs/videos/4/analysis.json /app/backend/outputs/videos/4/analysis.json
-COPY backend/outputs/videos/6/analysis.json /app/backend/outputs/videos/6/analysis.json
-COPY backend/outputs/videos/7/analysis.json /app/backend/outputs/videos/7/analysis.json
-COPY backend/sample_data/videos/2.mp4 /app/backend/sample_data/videos/2.mp4
-COPY backend/sample_data/videos/3.mp4 /app/backend/sample_data/videos/3.mp4
-COPY backend/sample_data/videos/4.mp4 /app/backend/sample_data/videos/4.mp4
-COPY backend/sample_data/videos/6.mp4 /app/backend/sample_data/videos/6.mp4
-COPY backend/sample_data/videos/7.mp4 /app/backend/sample_data/videos/7.mp4
 RUN npm run build && rm -rf dist/client dist/server
 
 FROM python:3.11-slim AS runtime
