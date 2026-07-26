@@ -6,7 +6,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config import get_settings
-from app.routers import debug, feed, floorplan, furniture, health, product, room, video
+from app.routers import debug, feed, floorplan, furniture, health, product, room, shop, video
 
 
 settings = get_settings()
